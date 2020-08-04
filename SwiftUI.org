@@ -1,0 +1,346 @@
+#+TITLE: SwiftUI
+#+INCLUDE: ../web.org
+
+#+latex:\newpage
+
+* iOS app 的開發界面: UIKit v.s. SwiftUI
+** UIKit 與 SwiftUI 的差異性
+*** 系統需求
+UIKit 是從 Xcode1 就一直存在的 Framework；而 SwiftUI 則是 2019/6 WWDC 所發表的全新用來繪製 UI 的 Framework。因此，SwiftUI 必須搭配 iOS13+ 和 MacOS10.15+。[fn:1]
+*** 底層語言
+UIKit 底層仍為 Objecitve-C；而 SwiftUI 則是完完全全用 Swift 打造的 Framework。
+*** 語法簡潔度
+SwiftUI 產生一顯示文字的元件更精簡潔了。
+*** 跨平台
+跨平台指的非跨 Android(但希望有那麼一天是可以支援的😀)。跨平台指的是使用 SwiftUI 所開發的專案，可以同時支援 macOS、watchOS、tvOS 等系統。引用一句 WWDC2019 SwiftUI 演講者所說的一句話。
+#+BEGIN_QUOTE
+Learn once, apply everywhere.
+#+END_QUOTE
+*** Automatic Preview
+這是此次 SwiftUI 最大的亮點之一，所謂 Automatic Preview，意思指的是即時預覽，即我們一邊調整程式碼的同時，也可以立即看到修改後的結果。
+*** 自動支援進階功能
+SwiftUI 本身即支援 Dynamic Type、Dark Mode、 Localization 等等。這邊特別來講一下 UIKit 和 SwiftUI 在文字設定上有關於 Dark Mode 的差異，UIKit 若是無特別指定文字的顏色(意即使用 Default 的選項)，在 Light Mode 字體會是白色；相對的在 Dark Mode 即會是白色，這點跟 SwiftUI 沒有特別的差異，但是 SwiftUI 除了 Default 外，還有 Secondary，如果還不喜歡的話，還有第三個選項，就是在 Assets 自行設定 Light Mode 和 Dark Mode 分別要顯示的顏色😀
+#+CAPTION: UIKit 與 SwiftUI 的差異性比較圖
+#+LABEL:fig:Diff-1
+#+name: fig:Diff-1
+#+ATTR_LATEX: :width 400
+#+ATTR_ORG: :width 400
+[[file:images/differences.png]]
+
+** SwiftUI vs UIKit: Benefits and Drawbacks
+*** Drawbacks of SwiftUI [fn:2]
+- It supports only iOS 13 and Xcode 11. By switching to them, you abandon users of older versions of iOS, which is a radical move devoid of concern for the user. But since Apple annually updates its list of supported iOS versions, I think SwiftUI will be used more over the next two years as users install the latest iOS version.
+- It’s still very young, so there isn’t much data on Stack Overflow. This means that you can’t get much help resolving complicated issues.
+- It doesn’t allow you to examine the view hierarchy in Xcode Previews.
+*** Benefits of SwiftUI [fn:2]
+- It’s easy to learn, and the code is simple and clean.
+- It can be mixed with UIKit using UIHostingController.
+- It allows you to easily manage themes. Developers can easily add dark mode to their apps and set it as the default theme, and users can easily enable dark mode. Besides, it looks awesome.
+- SwiftUI provides mechanisms for reactive programming enthusiasts with BindableObject, ObjectBinding, and the whole Combine framework.
+- It offers Live Preview. This is a very convenient and progressive way to see the results of code execution in real time without having to build. I’m not sure if it somehow affects the processor. So far, I’ve noticed a delay provoked by the use of Live Preview, but I think Apple will soon make improvements.
+- SwiftUI no longer needs Interface Builder. It was replaced by Canvas, an interactive interface editor. When writing code, the visual part in Canvas is automatically generated, and when you create visual presentation elements, they automatically appear in the code.
+- Your application will no longer crash if you forget to update the @IBOutlet association with the variable.
+- There’s no AutoLayout or related problems. Instead, you use things like HStack, VStack, ZStack, Groups, Lists, and more. Unlike AutoLayout, SwiftUI always produces a valid layout. There’s no such thing as an ambiguous or unsatisfiable layout. SwiftUI replaces storyboards with code, making it easy to create a reusable view and avoid conflicts related with the simultaneous use of one project by the development team.
+
+* AppDelegate v.s. SceneDelegate
+- SceneDelegate 為 Xcode11 所帶來的變化(可參考官方文件 WWDC2019)，放在 SwiftUI 提似乎不太合適，但是在接下來在提到 SwiftUI App 的生命週期時會帶到，所以這邊就大概提一下。
+- AppDelegate 原來的職責為負責 App 的生命週期和 UI 生命週期，在 Xcode11 後，AppDelegate 將 UI 的生命週期(Scene Session)交給 SceneDelegate。原 Xcode10
+- 使用 Swift 為 User Interface 的專案 Launch 的生命週期為 AppDelegate → ViewController，而使用 SwiftUI 為 User Interface 的專案則變成為 AppDelegate → SceneDelegate → ContentView，原本應該出現在 AppDelegate 的 applicationWillEnterForeground(_:) 等相關 App 到前、背景等相關的生命週期邏輯也都移至 SceneDelegate 裡了，method 名稱 application 的前綴字也都更改為 scene 了。[fn:3]
+** SceneDelegate.swift
+#+begin_src swift -r -n :results output :exports both
+import UIKit
+import SwiftUI
+
+class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+
+    var window: UIWindow?
+
+
+    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
+        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
+        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+
+        // Create the SwiftUI view that provides the window contents.
+        let contentView = ContentView()
+
+        // Use a UIHostingController as window root view controller.
+        if let windowScene = scene as? UIWindowScene {
+            let window = UIWindow(windowScene: windowScene)
+            window.rootViewController = UIHostingController(rootView: contentView)
+            self.window = window
+            window.makeKeyAndVisible()
+        }
+    }
+
+    func sceneDidDisconnect(_ scene: UIScene) {
+        // Called as the scene is being released by the system.
+        // This occurs shortly after the scene enters the background, or when its session is discarded.
+        // Release any resources associated with this scene that can be re-created the next time the scene connects.
+        // The scene may re-connect later, as its session was not neccessarily discarded (see `application:didDiscardSceneSessions` instead).
+    }
+
+    func sceneDidBecomeActive(_ scene: UIScene) {
+        // Called when the scene has moved from an inactive state to an active state.
+        // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
+    }
+
+    func sceneWillResignActive(_ scene: UIScene) {
+        // Called when the scene will move from an active state to an inactive state.
+        // This may occur due to temporary interruptions (ex. an incoming phone call).
+    }
+
+    func sceneWillEnterForeground(_ scene: UIScene) {
+        // Called as the scene transitions from the background to the foreground.
+        // Use this method to undo the changes made on entering the background.
+    }
+
+    func sceneDidEnterBackground(_ scene: UIScene) {
+        // Called as the scene transitions from the foreground to the background.
+        // Use this method to save data, release shared resources, and store enough scene-specific state information
+        // to restore the scene back to its current state.
+    }
+
+
+}
+
+
+struct SceneDelegate_Previews: PreviewProvider {
+    static var previews: some View {
+        /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
+    }
+}
+#+end_src
+* UIKit
+
+* SwiftUI
+** 使用 SwiftUI 開啟新專案 [fn:3]
+1) 首先，打開 Xcode，並點擊 Create new Xcode project。在 iOS 之下選擇 Single View App，並為專案命名。
+2) 然後在下方勾選 Use SwiftUI 的選項，如果沒有勾選該選項的話，Xcode 會自動產生 storyboard 檔案(UIKit)。
+3) Xcode 會自動幫你創建一個名為 ContentView.swif 的檔案，Xcode 會在程式碼的右邊呈現一個即時的預覽視窗(preview), 點選 resume 鈕生成預覽畫面(會花一點時間)。
+*** ContentView.swift
+#+begin_src swift -r -n :results output :exports both
+import SwiftUI
+
+struct ContentView: View {
+    var body: some View {
+        Text("文字")
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
+#+end_src
+
+** Text
+*** 改變 Text 的屬性
+**** UI:
+1) on Text object (in preview screen): CMD + click
+2) select *Show SwiftUI Inspector*
+3) change *Text*, *Font*, *Color*
+4) Monitor the corresponding code changes in code window
+**** code
+***** CMD + click
+***** directly insert code
+*** Attributes
+- frame
+- foregroundColor
+- background
+- font
+  
+** VStack
+#+begin_src swift -r -n :results output :exports both
+import SwiftUI
+
+struct ContentView: View {
+    var body: some View {
+        VStack {
+            Text("第一行文字")
+            Text("第二行文字")
+        }
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
+#+end_src
+#+CAPTION: VStack
+#+LABEL:fig:VStack-1
+#+name: fig:VStack-1
+#+ATTR_LATEX: :width 300
+#+ATTR_ORG: :width 300
+[[file:images/vstack-1.jpg]]
+
+** HStack
+#+begin_src swift -r -n :results output :exports both
+import SwiftUI
+
+struct ContentView: View {
+    var body: some View {
+        HStack {
+            VStack {
+                Button("請按我") {
+                    print("TEST")
+                }
+                .frame(width: 60, height: 30, alignment: .center)
+                .foregroundColor(.white)
+                .background(Color.green)
+                Button("別亂按") {
+                    print("QQ")
+                }
+            }
+            VStack {
+                Text("第一行文字")
+                    .frame(width: 100, height: 30, alignment: .center   )
+                    .foregroundColor(.white)
+                    .background(Color.orange)
+                Text("第二行文字")
+                    .frame(width: 100, height: 30, alignment: .center)
+                    .foregroundColor(.white)
+                    .background(Color.red)
+            }
+        }
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
+#+end_src
+#+CAPTION: HStack
+#+LABEL:fig:HStack-1
+#+name: fig:HStack-1
+#+ATTR_LATEX: :width 300
+#+ATTR_ORG: :width 300
+[[file:images/hstack-1.jpg]]
+** Image
+*** System Image
+- [[https://developer.apple.com/design/human-interface-guidelines/sf-symbols/overview/][SF Symbols ]][fn:4]
+  從 iOS 13 開始，Apple 介紹了一個名為 SFSymbols 的新功能。SF Symbols 這功能由 Apple 所設計，當中集合了 1500 多個可以在 App 之中使用的符號。[fn:3]
+- [[https://developer.apple.com/design/resources/][Download SF Symbols app]]
+- code
+#+begin_src swift -r -n :results output :exports both
+Image(systemName: "icloud")
+  .resizable()
+  .scaledToFit()
+  .frame(width: 100, height: 80, alignment: .center)
+
+#+end_src
+
+*** Customized Image
+1) Drag image into Project folder *Assets.xcassets*
+2) Add following code
+#+begin_src swift -r -n :results output :exports both
+Image("ImageName")
+  .resizable()
+  .scaledToFit()
+  .frame(width: 200, height: 160, alignment: .center)
+#+end_src
+
+** Button
+*** 語法
+#+begin_src swift -r -n :results output :exports both
+//...
+Button("Title") {
+    //action
+}
+
+Button(action: <#T##() -> Void#>, label: <#T##() -> _#>)
+//...
+#+end_src
+*** 範例: 按下 Button，改變 Text title
+#+begin_src swift -r -n :results output :exports both
+struct ContentView: View {
+    @State private var title = "Hello SWiftUI"
+
+    var body: some View {
+        VStack {
+            Text(verbatim: title)
+                .padding(4)
+                .foregroundColor(.white)
+                .background(Color.gray)
+            Button(action: {
+                self.title = "Good Day"
+            }) {
+                Text("請按我1")
+                    .foregroundColor(.white)
+                    .padding(4)
+                    .background(Color.blue)
+            }
+            Button("請按我2") {
+                self.title = "Good night..."
+            }
+        }
+    }
+}
+#+end_src
+#+CAPTION: Button
+#+LABEL:fig:Button-1
+#+name: fig:Button-1
+#+ATTR_LATEX: :width 300
+#+ATTR_ORG: :width 300
+[[file:images/swbtn-1.jpg]]
+** TextField
+*** 語法
+#+begin_src swift -r -n :results output :exports both
+@State private var 變數="值"
+TextField("提示文字", text: $變數)
+#+end_src
+
+*** 範例: 於 TextField 輸入資料，顯示於 Text 中
+#+begin_src swift -r -n :results output :exports both
+import SwiftUI
+
+struct ContentView: View {
+    @State private var title = ""
+
+    var body: some View {
+        VStack {
+            Text(verbatim: "Hello "+title)
+            HStack {
+                Text("Your Name: ")
+                TextField("請輸入姓名:", text: $title)
+            }
+        }
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
+#+end_src
+#+CAPTION: Button
+#+LABEL:fig:Button-1
+#+name: fig:Button-1
+#+ATTR_LATEX: :width 300
+#+ATTR_ORG: :width 300
+[[file:images/txtfield-1.jpg]]
+
+* Customize UI Components
+
+
+
+
+* Advanced Commponents
+** List
+
+
+* Footnotes
+
+[fn:1] [[https://medium.com/@mikru168/swiftui-%E6%B7%BA%E7%8E%A9-swiftui-%E7%94%A8%E5%85%B6%E5%BB%BA%E6%A7%8B%E4%B8%80%E7%B0%A1%E5%96%AE%E7%9A%84-app-2f2477bd49d7][簡介 SwiftUI & 用其建構一簡單的 APP ]]
+
+[fn:2] [[https://medium.com/@SteelKiwiDev/swiftui-vs-uikit-benefits-and-drawbacks-6a540cced684][SwiftUI vs UIKit: Benefits and Drawbacks]]
+
+[fn:3] [[https://www.appcoda.com.tw/swiftui-introduction/][SwiftUI 初體驗： 建構一個簡單 App　讓你了解 SwiftUI 有多強大！]]
+
+[fn:4] [[https://stackoverflow.com/questions/56514998/find-all-available-images-for-imagesystemname-in-swiftui][Find all available images for Image(systemName:) in SwiftUI]]

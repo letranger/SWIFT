@@ -1,0 +1,856 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2020-08-04 Tue 23:07 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SwiftUI</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Yung Chin, Yen" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/styles/readtheorg/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/styles/readtheorg/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/styles/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/styles/readtheorg/js/readtheorg.js"></script>
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.cacheClassElem = elem.className;
+         elem.cacheClassTarget = target.className;
+         target.className = "code-highlighted";
+         elem.className   = "code-highlighted";
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(elem.cacheClassElem)
+         elem.className = elem.cacheClassElem;
+       if(elem.cacheClassTarget)
+         target.className = elem.cacheClassTarget;
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">SwiftUI</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org975e2b9">1. iOS app 的開發界面: UIKit v.s. SwiftUI</a>
+<ul>
+<li><a href="#org39a3395">1.1. UIKit 與 SwiftUI 的差異性</a>
+<ul>
+<li><a href="#org5f544a4">1.1.1. 系統需求</a></li>
+<li><a href="#orgdb48c2d">1.1.2. 底層語言</a></li>
+<li><a href="#org9702d24">1.1.3. 語法簡潔度</a></li>
+<li><a href="#org5c1ff62">1.1.4. 跨平台</a></li>
+<li><a href="#org541bf73">1.1.5. Automatic Preview</a></li>
+<li><a href="#org3220a52">1.1.6. 自動支援進階功能</a></li>
+</ul>
+</li>
+<li><a href="#org3d48265">1.2. SwiftUI vs UIKit: Benefits and Drawbacks</a>
+<ul>
+<li><a href="#org5410700">1.2.1. Drawbacks of SwiftUI </a></li>
+<li><a href="#orgb20806d">1.2.2. Benefits of SwiftUI </a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgf724547">2. AppDelegate v.s. SceneDelegate</a>
+<ul>
+<li><a href="#org0ccb095">2.1. SceneDelegate.swift</a></li>
+</ul>
+</li>
+<li><a href="#orgcada287">3. UIKit</a></li>
+<li><a href="#orgd04c900">4. SwiftUI</a>
+<ul>
+<li><a href="#orgc18c4ac">4.1. 使用 SwiftUI 開啟新專案 </a>
+<ul>
+<li><a href="#org0833e0b">4.1.1. ContentView.swift</a></li>
+</ul>
+</li>
+<li><a href="#org296c683">4.2. Text</a>
+<ul>
+<li><a href="#org0ca0316">4.2.1. 改變 Text 的屬性</a>
+<ul>
+<li><a href="#orgc3d83af">4.2.1.1. UI:</a></li>
+<li><a href="#orgc32c3c9">4.2.1.2. code</a></li>
+</ul>
+</li>
+<li><a href="#org5528897">4.2.2. Attributes</a></li>
+</ul>
+</li>
+<li><a href="#orge784394">4.3. VStack</a></li>
+<li><a href="#org01aa2ed">4.4. HStack</a></li>
+<li><a href="#org413e642">4.5. Image</a>
+<ul>
+<li><a href="#orgbd7c830">4.5.1. System Image</a></li>
+<li><a href="#org228db56">4.5.2. Customized Image</a></li>
+</ul>
+</li>
+<li><a href="#org0f67389">4.6. Button</a>
+<ul>
+<li><a href="#org4b9cae7">4.6.1. 語法</a></li>
+<li><a href="#org5320ec4">4.6.2. 範例: 按下 Button，改變 Text title</a></li>
+</ul>
+</li>
+<li><a href="#org2e0de88">4.7. TextField</a>
+<ul>
+<li><a href="#orgc2f641e">4.7.1. 語法</a></li>
+<li><a href="#org97c97c5">4.7.2. 範例: 於 TextField 輸入資料，顯示於 Text 中</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orga81a910">5. Customize UI Components</a></li>
+<li><a href="#orgf69ede3">6. Advanced Commponents</a>
+<ul>
+<li><a href="#org68657fe">6.1. List</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org975e2b9" class="outline-2">
+<h2 id="org975e2b9"><span class="section-number-2">1</span> iOS app 的開發界面: UIKit v.s. SwiftUI</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org39a3395" class="outline-3">
+<h3 id="org39a3395"><span class="section-number-3">1.1</span> UIKit 與 SwiftUI 的差異性</h3>
+<div class="outline-text-3" id="text-1-1">
+</div>
+<div id="outline-container-org5f544a4" class="outline-4">
+<h4 id="org5f544a4"><span class="section-number-4">1.1.1</span> 系統需求</h4>
+<div class="outline-text-4" id="text-1-1-1">
+<p>
+UIKit 是從 Xcode1 就一直存在的 Framework；而 SwiftUI 則是 2019/6 WWDC 所發表的全新用來繪製 UI 的 Framework。因此，SwiftUI 必須搭配 iOS13+ 和 MacOS10.15+。<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>
+</p>
+</div>
+</div>
+<div id="outline-container-orgdb48c2d" class="outline-4">
+<h4 id="orgdb48c2d"><span class="section-number-4">1.1.2</span> 底層語言</h4>
+<div class="outline-text-4" id="text-1-1-2">
+<p>
+UIKit 底層仍為 Objecitve-C；而 SwiftUI 則是完完全全用 Swift 打造的 Framework。
+</p>
+</div>
+</div>
+<div id="outline-container-org9702d24" class="outline-4">
+<h4 id="org9702d24"><span class="section-number-4">1.1.3</span> 語法簡潔度</h4>
+<div class="outline-text-4" id="text-1-1-3">
+<p>
+SwiftUI 產生一顯示文字的元件更精簡潔了。
+</p>
+</div>
+</div>
+<div id="outline-container-org5c1ff62" class="outline-4">
+<h4 id="org5c1ff62"><span class="section-number-4">1.1.4</span> 跨平台</h4>
+<div class="outline-text-4" id="text-1-1-4">
+<p>
+跨平台指的非跨 Android(但希望有那麼一天是可以支援的😀)。跨平台指的是使用 SwiftUI 所開發的專案，可以同時支援 macOS、watchOS、tvOS 等系統。引用一句 WWDC2019 SwiftUI 演講者所說的一句話。
+</p>
+<blockquote>
+<p>
+Learn once, apply everywhere.
+</p>
+</blockquote>
+</div>
+</div>
+<div id="outline-container-org541bf73" class="outline-4">
+<h4 id="org541bf73"><span class="section-number-4">1.1.5</span> Automatic Preview</h4>
+<div class="outline-text-4" id="text-1-1-5">
+<p>
+這是此次 SwiftUI 最大的亮點之一，所謂 Automatic Preview，意思指的是即時預覽，即我們一邊調整程式碼的同時，也可以立即看到修改後的結果。
+</p>
+</div>
+</div>
+<div id="outline-container-org3220a52" class="outline-4">
+<h4 id="org3220a52"><span class="section-number-4">1.1.6</span> 自動支援進階功能</h4>
+<div class="outline-text-4" id="text-1-1-6">
+<p>
+SwiftUI 本身即支援 Dynamic Type、Dark Mode、 Localization 等等。這邊特別來講一下 UIKit 和 SwiftUI 在文字設定上有關於 Dark Mode 的差異，UIKit 若是無特別指定文字的顏色(意即使用 Default 的選項)，在 Light Mode 字體會是白色；相對的在 Dark Mode 即會是白色，這點跟 SwiftUI 沒有特別的差異，但是 SwiftUI 除了 Default 外，還有 Secondary，如果還不喜歡的話，還有第三個選項，就是在 Assets 自行設定 Light Mode 和 Dark Mode 分別要顯示的顏色😀
+</p>
+
+<div id="org6bce074" class="figure">
+<p><img src="images/differences.png" alt="differences.png" />
+</p>
+<p><span class="figure-number">Figure 1: </span>UIKit 與 SwiftUI 的差異性比較圖</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3d48265" class="outline-3">
+<h3 id="org3d48265"><span class="section-number-3">1.2</span> SwiftUI vs UIKit: Benefits and Drawbacks</h3>
+<div class="outline-text-3" id="text-1-2">
+</div>
+<div id="outline-container-org5410700" class="outline-4">
+<h4 id="org5410700"><span class="section-number-4">1.2.1</span> Drawbacks of SwiftUI <sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup></h4>
+<div class="outline-text-4" id="text-1-2-1">
+<ul class="org-ul">
+<li>It supports only iOS 13 and Xcode 11. By switching to them, you abandon users of older versions of iOS, which is a radical move devoid of concern for the user. But since Apple annually updates its list of supported iOS versions, I think SwiftUI will be used more over the next two years as users install the latest iOS version.</li>
+<li>It’s still very young, so there isn’t much data on Stack Overflow. This means that you can’t get much help resolving complicated issues.</li>
+<li>It doesn’t allow you to examine the view hierarchy in Xcode Previews.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgb20806d" class="outline-4">
+<h4 id="orgb20806d"><span class="section-number-4">1.2.2</span> Benefits of SwiftUI <sup><a id="fnr.2.100" class="footref" href="#fn.2">2</a></sup></h4>
+<div class="outline-text-4" id="text-1-2-2">
+<ul class="org-ul">
+<li>It’s easy to learn, and the code is simple and clean.</li>
+<li>It can be mixed with UIKit using UIHostingController.</li>
+<li>It allows you to easily manage themes. Developers can easily add dark mode to their apps and set it as the default theme, and users can easily enable dark mode. Besides, it looks awesome.</li>
+<li>SwiftUI provides mechanisms for reactive programming enthusiasts with BindableObject, ObjectBinding, and the whole Combine framework.</li>
+<li>It offers Live Preview. This is a very convenient and progressive way to see the results of code execution in real time without having to build. I’m not sure if it somehow affects the processor. So far, I’ve noticed a delay provoked by the use of Live Preview, but I think Apple will soon make improvements.</li>
+<li>SwiftUI no longer needs Interface Builder. It was replaced by Canvas, an interactive interface editor. When writing code, the visual part in Canvas is automatically generated, and when you create visual presentation elements, they automatically appear in the code.</li>
+<li>Your application will no longer crash if you forget to update the @IBOutlet association with the variable.</li>
+<li>There’s no AutoLayout or related problems. Instead, you use things like HStack, VStack, ZStack, Groups, Lists, and more. Unlike AutoLayout, SwiftUI always produces a valid layout. There’s no such thing as an ambiguous or unsatisfiable layout. SwiftUI replaces storyboards with code, making it easy to create a reusable view and avoid conflicts related with the simultaneous use of one project by the development team.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf724547" class="outline-2">
+<h2 id="orgf724547"><span class="section-number-2">2</span> AppDelegate v.s. SceneDelegate</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>SceneDelegate 為 Xcode11 所帶來的變化(可參考官方文件 WWDC2019)，放在 SwiftUI 提似乎不太合適，但是在接下來在提到 SwiftUI App 的生命週期時會帶到，所以這邊就大概提一下。</li>
+<li>AppDelegate 原來的職責為負責 App 的生命週期和 UI 生命週期，在 Xcode11 後，AppDelegate 將 UI 的生命週期(Scene Session)交給 SceneDelegate。原 Xcode10</li>
+<li>使用 Swift 為 User Interface 的專案 Launch 的生命週期為 AppDelegate → ViewController，而使用 SwiftUI 為 User Interface 的專案則變成為 AppDelegate → SceneDelegate → ContentView，原本應該出現在 AppDelegate 的 applicationWillEnterForeground(_:) 等相關 App 到前、背景等相關的生命週期邏輯也都移至 SceneDelegate 裡了，method 名稱 application 的前綴字也都更改為 scene 了。<sup><a id="fnr.3" class="footref" href="#fn.3">3</a></sup></li>
+</ul>
+</div>
+<div id="outline-container-org0ccb095" class="outline-3">
+<h3 id="org0ccb095"><span class="section-number-3">2.1</span> SceneDelegate.swift</h3>
+<div class="outline-text-3" id="text-2-1">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> UIKit
+<span class="linenr"> 2: </span><span style="color: #51afef;">import</span> SwiftUI
+<span class="linenr"> 3: </span>
+<span class="linenr"> 4: </span><span style="color: #51afef;">class</span> <span style="color: #c678dd;">SceneDelegate</span>: UIResponder, UIWindowSceneDelegate {
+<span class="linenr"> 5: </span>
+<span class="linenr"> 6: </span>    <span style="color: #51afef;">var</span> window: UIWindow?
+<span class="linenr"> 7: </span>
+<span class="linenr"> 8: </span>
+<span class="linenr"> 9: </span>    <span style="color: #51afef;">func</span> <span style="color: #c678dd;">scene</span>(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.<span style="color: #dcaeea;">ConnectionOptions</span>) {
+<span class="linenr">10: </span>        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.</span>
+<span class="linenr">11: </span>        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">If using a storyboard, the `window` property will automatically be initialized and attached to the scene.</span>
+<span class="linenr">12: </span>        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).</span>
+<span class="linenr">13: </span>
+<span class="linenr">14: </span>        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Create the SwiftUI view that provides the window contents.</span>
+<span class="linenr">15: </span>        <span style="color: #51afef;">let</span> contentView = <span style="color: #c678dd;">ContentView</span>()
+<span class="linenr">16: </span>
+<span class="linenr">17: </span>        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Use a UIHostingController as window root view controller.</span>
+<span class="linenr">18: </span>        <span style="color: #51afef;">if</span> <span style="color: #51afef;">let</span> windowScene = scene <span style="color: #51afef;">as</span>? UIWindowScene {
+<span class="linenr">19: </span>            <span style="color: #51afef;">let</span> window = <span style="color: #c678dd;">UIWindow</span>(windowScene: windowScene)
+<span class="linenr">20: </span>            window.<span style="color: #dcaeea;">rootViewController</span> = <span style="color: #c678dd;">UIHostingController</span>(rootView: contentView)
+<span class="linenr">21: </span>            <span style="color: #51afef;">self</span>.<span style="color: #dcaeea;">window</span> = window
+<span class="linenr">22: </span>            window.<span style="color: #c678dd;">makeKeyAndVisible</span>()
+<span class="linenr">23: </span>        }
+<span class="linenr">24: </span>    }
+<span class="linenr">25: </span>
+<span class="linenr">26: </span>    <span style="color: #51afef;">func</span> <span style="color: #c678dd;">sceneDidDisconnect</span>(_ scene: UIScene) {
+<span class="linenr">27: </span>        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Called as the scene is being released by the system.</span>
+<span class="linenr">28: </span>        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">This occurs shortly after the scene enters the background, or when its session is discarded.</span>
+<span class="linenr">29: </span>        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Release any resources associated with this scene that can be re-created the next time the scene connects.</span>
+<span class="linenr">30: </span>        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">The scene may re-connect later, as its session was not neccessarily discarded (see `application:didDiscardSceneSessions` instead).</span>
+<span class="linenr">31: </span>    }
+<span class="linenr">32: </span>
+<span class="linenr">33: </span>    <span style="color: #51afef;">func</span> <span style="color: #c678dd;">sceneDidBecomeActive</span>(_ scene: UIScene) {
+<span class="linenr">34: </span>        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Called when the scene has moved from an inactive state to an active state.</span>
+<span class="linenr">35: </span>        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.</span>
+<span class="linenr">36: </span>    }
+<span class="linenr">37: </span>
+<span class="linenr">38: </span>    <span style="color: #51afef;">func</span> <span style="color: #c678dd;">sceneWillResignActive</span>(_ scene: UIScene) {
+<span class="linenr">39: </span>        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Called when the scene will move from an active state to an inactive state.</span>
+<span class="linenr">40: </span>        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">This may occur due to temporary interruptions (ex. an incoming phone call).</span>
+<span class="linenr">41: </span>    }
+<span class="linenr">42: </span>
+<span class="linenr">43: </span>    <span style="color: #51afef;">func</span> <span style="color: #c678dd;">sceneWillEnterForeground</span>(_ scene: UIScene) {
+<span class="linenr">44: </span>        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Called as the scene transitions from the background to the foreground.</span>
+<span class="linenr">45: </span>        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Use this method to undo the changes made on entering the background.</span>
+<span class="linenr">46: </span>    }
+<span class="linenr">47: </span>
+<span class="linenr">48: </span>    <span style="color: #51afef;">func</span> <span style="color: #c678dd;">sceneDidEnterBackground</span>(_ scene: UIScene) {
+<span class="linenr">49: </span>        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Called as the scene transitions from the foreground to the background.</span>
+<span class="linenr">50: </span>        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Use this method to save data, release shared resources, and store enough scene-specific state information</span>
+<span class="linenr">51: </span>        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">to restore the scene back to its current state.</span>
+<span class="linenr">52: </span>    }
+<span class="linenr">53: </span>
+<span class="linenr">54: </span>
+<span class="linenr">55: </span>}
+<span class="linenr">56: </span>
+<span class="linenr">57: </span>
+<span class="linenr">58: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">SceneDelegate_Previews</span>: PreviewProvider {
+<span class="linenr">59: </span>    <span style="color: #51afef;">static</span> <span style="color: #51afef;">var</span> previews: <span style="color: #51afef;">some</span> View {
+<span class="linenr">60: </span>        <span style="color: #5B6268;">/*</span><span style="color: #5B6268;">@START_MENU_TOKEN@*/</span><span style="color: #c678dd;">Text</span>(<span style="color: #98be65;">"Hello, World!"</span>)<span style="color: #5B6268;">/*</span><span style="color: #5B6268;">@END_MENU_TOKEN@*/</span>
+<span class="linenr">61: </span>    }
+<span class="linenr">62: </span>}
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgcada287" class="outline-2">
+<h2 id="orgcada287"><span class="section-number-2">3</span> UIKit</h2>
+</div>
+
+<div id="outline-container-orgd04c900" class="outline-2">
+<h2 id="orgd04c900"><span class="section-number-2">4</span> SwiftUI</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-orgc18c4ac" class="outline-3">
+<h3 id="orgc18c4ac"><span class="section-number-3">4.1</span> 使用 SwiftUI 開啟新專案 <sup><a id="fnr.3.100" class="footref" href="#fn.3">3</a></sup></h3>
+<div class="outline-text-3" id="text-4-1">
+<ol class="org-ol">
+<li>首先，打開 Xcode，並點擊 Create new Xcode project。在 iOS 之下選擇 Single View App，並為專案命名。</li>
+<li>然後在下方勾選 Use SwiftUI 的選項，如果沒有勾選該選項的話，Xcode 會自動產生 storyboard 檔案(UIKit)。</li>
+<li>Xcode 會自動幫你創建一個名為 ContentView.swif 的檔案，Xcode 會在程式碼的右邊呈現一個即時的預覽視窗(preview), 點選 resume 鈕生成預覽畫面(會花一點時間)。</li>
+</ol>
+</div>
+<div id="outline-container-org0833e0b" class="outline-4">
+<h4 id="org0833e0b"><span class="section-number-4">4.1.1</span> ContentView.swift</h4>
+<div class="outline-text-4" id="text-4-1-1">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> SwiftUI
+<span class="linenr"> 2: </span>
+<span class="linenr"> 3: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">ContentView</span>: View {
+<span class="linenr"> 4: </span>    <span style="color: #51afef;">var</span> body: <span style="color: #51afef;">some</span> View {
+<span class="linenr"> 5: </span>        <span style="color: #c678dd;">Text</span>(<span style="color: #98be65;">"&#25991;&#23383;"</span>)
+<span class="linenr"> 6: </span>    }
+<span class="linenr"> 7: </span>}
+<span class="linenr"> 8: </span>
+<span class="linenr"> 9: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">ContentView_Previews</span>: PreviewProvider {
+<span class="linenr">10: </span>    <span style="color: #51afef;">static</span> <span style="color: #51afef;">var</span> previews: <span style="color: #51afef;">some</span> View {
+<span class="linenr">11: </span>        <span style="color: #c678dd;">ContentView</span>()
+<span class="linenr">12: </span>    }
+<span class="linenr">13: </span>}
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org296c683" class="outline-3">
+<h3 id="org296c683"><span class="section-number-3">4.2</span> Text</h3>
+<div class="outline-text-3" id="text-4-2">
+</div>
+<div id="outline-container-org0ca0316" class="outline-4">
+<h4 id="org0ca0316"><span class="section-number-4">4.2.1</span> 改變 Text 的屬性</h4>
+<div class="outline-text-4" id="text-4-2-1">
+</div>
+<div id="outline-container-orgc3d83af" class="outline-5">
+<h5 id="orgc3d83af"><span class="section-number-5">4.2.1.1</span> UI:</h5>
+<div class="outline-text-5" id="text-4-2-1-1">
+<ol class="org-ol">
+<li>on Text object (in preview screen): CMD + click</li>
+<li>select <b>Show SwiftUI Inspector</b></li>
+<li>change <b>Text</b>, <b>Font</b>, <b>Color</b></li>
+<li>Monitor the corresponding code changes in code window</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orgc32c3c9" class="outline-5">
+<h5 id="orgc32c3c9"><span class="section-number-5">4.2.1.2</span> code</h5>
+<div class="outline-text-5" id="text-4-2-1-2">
+</div>
+<ol class="org-ol">
+<li><a id="orgdf54672"></a>CMD + click<br /></li>
+<li><a id="org3ac03ea"></a>directly insert code<br /></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org5528897" class="outline-4">
+<h4 id="org5528897"><span class="section-number-4">4.2.2</span> Attributes</h4>
+<div class="outline-text-4" id="text-4-2-2">
+<ul class="org-ul">
+<li>frame</li>
+<li>foregroundColor</li>
+<li>background</li>
+<li>font</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge784394" class="outline-3">
+<h3 id="orge784394"><span class="section-number-3">4.3</span> VStack</h3>
+<div class="outline-text-3" id="text-4-3">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> SwiftUI
+<span class="linenr"> 2: </span>
+<span class="linenr"> 3: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">ContentView</span>: View {
+<span class="linenr"> 4: </span>    <span style="color: #51afef;">var</span> body: <span style="color: #51afef;">some</span> View {
+<span class="linenr"> 5: </span>        VStack {
+<span class="linenr"> 6: </span>            <span style="color: #c678dd;">Text</span>(<span style="color: #98be65;">"&#31532;&#19968;&#34892;&#25991;&#23383;"</span>)
+<span class="linenr"> 7: </span>            <span style="color: #c678dd;">Text</span>(<span style="color: #98be65;">"&#31532;&#20108;&#34892;&#25991;&#23383;"</span>)
+<span class="linenr"> 8: </span>        }
+<span class="linenr"> 9: </span>    }
+<span class="linenr">10: </span>}
+<span class="linenr">11: </span>
+<span class="linenr">12: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">ContentView_Previews</span>: PreviewProvider {
+<span class="linenr">13: </span>    <span style="color: #51afef;">static</span> <span style="color: #51afef;">var</span> previews: <span style="color: #51afef;">some</span> View {
+<span class="linenr">14: </span>        <span style="color: #c678dd;">ContentView</span>()
+<span class="linenr">15: </span>    }
+<span class="linenr">16: </span>}
+</pre>
+</div>
+
+<div id="orgeefd286" class="figure">
+<p><img src="images/vstack-1.jpg" alt="vstack-1.jpg" />
+</p>
+<p><span class="figure-number">Figure 2: </span>VStack</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org01aa2ed" class="outline-3">
+<h3 id="org01aa2ed"><span class="section-number-3">4.4</span> HStack</h3>
+<div class="outline-text-3" id="text-4-4">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> SwiftUI
+<span class="linenr"> 2: </span>
+<span class="linenr"> 3: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">ContentView</span>: View {
+<span class="linenr"> 4: </span>    <span style="color: #51afef;">var</span> body: <span style="color: #51afef;">some</span> View {
+<span class="linenr"> 5: </span>        HStack {
+<span class="linenr"> 6: </span>            VStack {
+<span class="linenr"> 7: </span>                <span style="color: #c678dd;">Button</span>(<span style="color: #98be65;">"&#35531;&#25353;&#25105;"</span>) {
+<span class="linenr"> 8: </span>                    <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"TEST"</span>)
+<span class="linenr"> 9: </span>                }
+<span class="linenr">10: </span>                .<span style="color: #c678dd;">frame</span>(width: <span style="color: #da8548; font-weight: bold;">60</span>, height: <span style="color: #da8548; font-weight: bold;">30</span>, alignment: .<span style="color: #dcaeea;">center</span>)
+<span class="linenr">11: </span>                .<span style="color: #c678dd;">foregroundColor</span>(.<span style="color: #dcaeea;">white</span>)
+<span class="linenr">12: </span>                .<span style="color: #c678dd;">background</span>(Color.<span style="color: #dcaeea;">green</span>)
+<span class="linenr">13: </span>                <span style="color: #c678dd;">Button</span>(<span style="color: #98be65;">"&#21029;&#20098;&#25353;"</span>) {
+<span class="linenr">14: </span>                    <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"QQ"</span>)
+<span class="linenr">15: </span>                }
+<span class="linenr">16: </span>            }
+<span class="linenr">17: </span>            VStack {
+<span class="linenr">18: </span>                <span style="color: #c678dd;">Text</span>(<span style="color: #98be65;">"&#31532;&#19968;&#34892;&#25991;&#23383;"</span>)
+<span class="linenr">19: </span>                    .<span style="color: #c678dd;">frame</span>(width: <span style="color: #da8548; font-weight: bold;">100</span>, height: <span style="color: #da8548; font-weight: bold;">30</span>, alignment: .<span style="color: #dcaeea;">center</span>   )
+<span class="linenr">20: </span>                    .<span style="color: #c678dd;">foregroundColor</span>(.<span style="color: #dcaeea;">white</span>)
+<span class="linenr">21: </span>                    .<span style="color: #c678dd;">background</span>(Color.<span style="color: #dcaeea;">orange</span>)
+<span class="linenr">22: </span>                <span style="color: #c678dd;">Text</span>(<span style="color: #98be65;">"&#31532;&#20108;&#34892;&#25991;&#23383;"</span>)
+<span class="linenr">23: </span>                    .<span style="color: #c678dd;">frame</span>(width: <span style="color: #da8548; font-weight: bold;">100</span>, height: <span style="color: #da8548; font-weight: bold;">30</span>, alignment: .<span style="color: #dcaeea;">center</span>)
+<span class="linenr">24: </span>                    .<span style="color: #c678dd;">foregroundColor</span>(.<span style="color: #dcaeea;">white</span>)
+<span class="linenr">25: </span>                    .<span style="color: #c678dd;">background</span>(Color.<span style="color: #dcaeea;">red</span>)
+<span class="linenr">26: </span>            }
+<span class="linenr">27: </span>        }
+<span class="linenr">28: </span>    }
+<span class="linenr">29: </span>}
+<span class="linenr">30: </span>
+<span class="linenr">31: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">ContentView_Previews</span>: PreviewProvider {
+<span class="linenr">32: </span>    <span style="color: #51afef;">static</span> <span style="color: #51afef;">var</span> previews: <span style="color: #51afef;">some</span> View {
+<span class="linenr">33: </span>        <span style="color: #c678dd;">ContentView</span>()
+<span class="linenr">34: </span>    }
+<span class="linenr">35: </span>}
+</pre>
+</div>
+
+<div id="org2030e1b" class="figure">
+<p><img src="images/hstack-1.jpg" alt="hstack-1.jpg" />
+</p>
+<p><span class="figure-number">Figure 3: </span>HStack</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org413e642" class="outline-3">
+<h3 id="org413e642"><span class="section-number-3">4.5</span> Image</h3>
+<div class="outline-text-3" id="text-4-5">
+</div>
+<div id="outline-container-orgbd7c830" class="outline-4">
+<h4 id="orgbd7c830"><span class="section-number-4">4.5.1</span> System Image</h4>
+<div class="outline-text-4" id="text-4-5-1">
+<ul class="org-ul">
+<li><a href="https://developer.apple.com/design/human-interface-guidelines/sf-symbols/overview/">SF Symbols </a><sup><a id="fnr.4" class="footref" href="#fn.4">4</a></sup>
+從 iOS 13 開始，Apple 介紹了一個名為 SFSymbols 的新功能。SF Symbols 這功能由 Apple 所設計，當中集合了 1500 多個可以在 App 之中使用的符號。<sup><a id="fnr.3.100" class="footref" href="#fn.3">3</a></sup></li>
+<li><a href="https://developer.apple.com/design/resources/">Download SF Symbols app</a></li>
+<li>code</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #c678dd;">Image</span>(systemName: <span style="color: #98be65;">"icloud"</span>)
+<span class="linenr">2: </span>  .<span style="color: #c678dd;">resizable</span>()
+<span class="linenr">3: </span>  .<span style="color: #c678dd;">scaledToFit</span>()
+<span class="linenr">4: </span>  .<span style="color: #c678dd;">frame</span>(width: <span style="color: #da8548; font-weight: bold;">100</span>, height: <span style="color: #da8548; font-weight: bold;">80</span>, alignment: .<span style="color: #dcaeea;">center</span>)
+<span class="linenr">5: </span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org228db56" class="outline-4">
+<h4 id="org228db56"><span class="section-number-4">4.5.2</span> Customized Image</h4>
+<div class="outline-text-4" id="text-4-5-2">
+<ol class="org-ol">
+<li>Drag image into Project folder <b>Assets.xcassets</b></li>
+<li>Add following code</li>
+</ol>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #c678dd;">Image</span>(<span style="color: #98be65;">"ImageName"</span>)
+<span class="linenr">2: </span>  .<span style="color: #c678dd;">resizable</span>()
+<span class="linenr">3: </span>  .<span style="color: #c678dd;">scaledToFit</span>()
+<span class="linenr">4: </span>  .<span style="color: #c678dd;">frame</span>(width: <span style="color: #da8548; font-weight: bold;">200</span>, height: <span style="color: #da8548; font-weight: bold;">160</span>, alignment: .<span style="color: #dcaeea;">center</span>)
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0f67389" class="outline-3">
+<h3 id="org0f67389"><span class="section-number-3">4.6</span> Button</h3>
+<div class="outline-text-3" id="text-4-6">
+</div>
+<div id="outline-container-org4b9cae7" class="outline-4">
+<h4 id="org4b9cae7"><span class="section-number-4">4.6.1</span> 語法</h4>
+<div class="outline-text-4" id="text-4-6-1">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #5B6268;">//</span><span style="color: #5B6268;">...</span>
+<span class="linenr">2: </span><span style="color: #c678dd;">Button</span>(<span style="color: #98be65;">"Title"</span>) {
+<span class="linenr">3: </span>    <span style="color: #5B6268;">//</span><span style="color: #5B6268;">action</span>
+<span class="linenr">4: </span>}
+<span class="linenr">5: </span>
+<span class="linenr">6: </span><span style="color: #c678dd;">Button</span>(action: &lt;#T##() -&gt; Void#&gt;, label: &lt;#T##() -&gt; _#&gt;)
+<span class="linenr">7: </span><span style="color: #5B6268;">//</span><span style="color: #5B6268;">...</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org5320ec4" class="outline-4">
+<h4 id="org5320ec4"><span class="section-number-4">4.6.2</span> 範例: 按下 Button，改變 Text title</h4>
+<div class="outline-text-4" id="text-4-6-2">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">ContentView</span>: View {
+<span class="linenr"> 2: </span>    <span style="color: #51afef;">@State</span> <span style="color: #51afef;">private</span> <span style="color: #51afef;">var</span> title = <span style="color: #98be65;">"Hello SWiftUI"</span>
+<span class="linenr"> 3: </span>
+<span class="linenr"> 4: </span>    <span style="color: #51afef;">var</span> body: <span style="color: #51afef;">some</span> View {
+<span class="linenr"> 5: </span>        VStack {
+<span class="linenr"> 6: </span>            <span style="color: #c678dd;">Text</span>(verbatim: title)
+<span class="linenr"> 7: </span>                .<span style="color: #c678dd;">padding</span>(<span style="color: #da8548; font-weight: bold;">4</span>)
+<span class="linenr"> 8: </span>                .<span style="color: #c678dd;">foregroundColor</span>(.<span style="color: #dcaeea;">white</span>)
+<span class="linenr"> 9: </span>                .<span style="color: #c678dd;">background</span>(Color.<span style="color: #dcaeea;">gray</span>)
+<span class="linenr">10: </span>            <span style="color: #c678dd;">Button</span>(action: {
+<span class="linenr">11: </span>                <span style="color: #51afef;">self</span>.<span style="color: #c678dd;">title</span> = <span style="color: #98be65;">"Good Day"</span>
+<span class="linenr">12: </span>            }) {
+<span class="linenr">13: </span>                <span style="color: #c678dd;">Text</span>(<span style="color: #98be65;">"&#35531;&#25353;&#25105;1"</span>)
+<span class="linenr">14: </span>                    .<span style="color: #c678dd;">foregroundColor</span>(.<span style="color: #dcaeea;">white</span>)
+<span class="linenr">15: </span>                    .<span style="color: #c678dd;">padding</span>(<span style="color: #da8548; font-weight: bold;">4</span>)
+<span class="linenr">16: </span>                    .<span style="color: #c678dd;">background</span>(Color.<span style="color: #dcaeea;">blue</span>)
+<span class="linenr">17: </span>            }
+<span class="linenr">18: </span>            <span style="color: #c678dd;">Button</span>(<span style="color: #98be65;">"&#35531;&#25353;&#25105;2"</span>) {
+<span class="linenr">19: </span>                <span style="color: #51afef;">self</span>.<span style="color: #c678dd;">title</span> = <span style="color: #98be65;">"Good night..."</span>
+<span class="linenr">20: </span>            }
+<span class="linenr">21: </span>        }
+<span class="linenr">22: </span>    }
+<span class="linenr">23: </span>}
+</pre>
+</div>
+
+<div id="org7d7873f" class="figure">
+<p><img src="images/swbtn-1.jpg" alt="swbtn-1.jpg" />
+</p>
+<p><span class="figure-number">Figure 4: </span>Button</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org2e0de88" class="outline-3">
+<h3 id="org2e0de88"><span class="section-number-3">4.7</span> TextField</h3>
+<div class="outline-text-3" id="text-4-7">
+</div>
+<div id="outline-container-orgc2f641e" class="outline-4">
+<h4 id="orgc2f641e"><span class="section-number-4">4.7.1</span> 語法</h4>
+<div class="outline-text-4" id="text-4-7-1">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">@State</span> <span style="color: #51afef;">private</span> <span style="color: #51afef;">var</span> &#35722;&#25976;=<span style="color: #98be65;">"&#20540;"</span>
+<span class="linenr">2: </span><span style="color: #c678dd;">TextField</span>(<span style="color: #98be65;">"&#25552;&#31034;&#25991;&#23383;"</span>, text: $&#35722;&#25976;)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org97c97c5" class="outline-4">
+<h4 id="org97c97c5"><span class="section-number-4">4.7.2</span> 範例: 於 TextField 輸入資料，顯示於 Text 中</h4>
+<div class="outline-text-4" id="text-4-7-2">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> SwiftUI
+<span class="linenr"> 2: </span>
+<span class="linenr"> 3: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">ContentView</span>: View {
+<span class="linenr"> 4: </span>    <span style="color: #51afef;">@State</span> <span style="color: #51afef;">private</span> <span style="color: #51afef;">var</span> title = <span style="color: #98be65;">""</span>
+<span class="linenr"> 5: </span>
+<span class="linenr"> 6: </span>    <span style="color: #51afef;">var</span> body: <span style="color: #51afef;">some</span> View {
+<span class="linenr"> 7: </span>        VStack {
+<span class="linenr"> 8: </span>            <span style="color: #c678dd;">Text</span>(verbatim: <span style="color: #98be65;">"Hello "</span>+title)
+<span class="linenr"> 9: </span>            HStack {
+<span class="linenr">10: </span>                <span style="color: #c678dd;">Text</span>(<span style="color: #98be65;">"Your Name: "</span>)
+<span class="linenr">11: </span>                <span style="color: #c678dd;">TextField</span>(<span style="color: #98be65;">"&#35531;&#36664;&#20837;&#22995;&#21517;:"</span>, text: $title)
+<span class="linenr">12: </span>            }
+<span class="linenr">13: </span>        }
+<span class="linenr">14: </span>    }
+<span class="linenr">15: </span>}
+<span class="linenr">16: </span>
+<span class="linenr">17: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">ContentView_Previews</span>: PreviewProvider {
+<span class="linenr">18: </span>    <span style="color: #51afef;">static</span> <span style="color: #51afef;">var</span> previews: <span style="color: #51afef;">some</span> View {
+<span class="linenr">19: </span>        <span style="color: #c678dd;">ContentView</span>()
+<span class="linenr">20: </span>    }
+<span class="linenr">21: </span>}
+</pre>
+</div>
+
+<div id="org7a25964" class="figure">
+<p><img src="images/txtfield-1.jpg" alt="txtfield-1.jpg" />
+</p>
+<p><span class="figure-number">Figure 5: </span>Button</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga81a910" class="outline-2">
+<h2 id="orga81a910"><span class="section-number-2">5</span> Customize UI Components</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+SwiftUI 提供豐富的 modifier 幫助我們設計客製 UI 元件的樣式，諸如陰影，旋轉等效果皆可透過 modifier 實現，還可以搭配方便的拖曳加入相關程式碼。<sup><a id="fnr.5" class="footref" href="#fn.5">5</a></sup>
+</p>
+</div>
+</div>
+
+
+
+<div id="outline-container-orgf69ede3" class="outline-2">
+<h2 id="orgf69ede3"><span class="section-number-2">6</span> Advanced Commponents</h2>
+<div class="outline-text-2" id="text-6">
+</div>
+<div id="outline-container-org68657fe" class="outline-3">
+<h3 id="org68657fe"><span class="section-number-3">6.1</span> List</h3>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
+<a href="https://medium.com/@mikru168/swiftui-%E6%B7%BA%E7%8E%A9-swiftui-%E7%94%A8%E5%85%B6%E5%BB%BA%E6%A7%8B%E4%B8%80%E7%B0%A1%E5%96%AE%E7%9A%84-app-2f2477bd49d7">簡介 SwiftUI &amp; 用其建構一簡單的 APP </a>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2">2</a></sup> <div class="footpara"><p class="footpara">
+<a href="https://medium.com/@SteelKiwiDev/swiftui-vs-uikit-benefits-and-drawbacks-6a540cced684">SwiftUI vs UIKit: Benefits and Drawbacks</a>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.3" class="footnum" href="#fnr.3">3</a></sup> <div class="footpara"><p class="footpara">
+<a href="https://www.appcoda.com.tw/swiftui-introduction/">SwiftUI 初體驗： 建構一個簡單 App　讓你了解 SwiftUI 有多強大！</a>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.4" class="footnum" href="#fnr.4">4</a></sup> <div class="footpara"><p class="footpara">
+<a href="https://stackoverflow.com/questions/56514998/find-all-available-images-for-imagesystemname-in-swiftui">Find all available images for Image(systemName:) in SwiftUI</a>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.5" class="footnum" href="#fnr.5">5</a></sup> <div class="footpara"><p class="footpara">
+<a href="https://medium.com/%E5%BD%BC%E5%BE%97%E6%BD%98%E7%9A%84-swift-ios-app-%E9%96%8B%E7%99%BC%E5%95%8F%E9%A1%8C%E8%A7%A3%E7%AD%94%E9%9B%86/%E5%AE%A2%E8%A3%BD-ui-%E5%85%83%E4%BB%B6%E6%A8%A3%E5%BC%8F%E7%9A%84-swiftui-modifier-b31ff65c1f0d">客製 UI 元件樣式的 SwiftUI modifier</a>
+</p></div></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<p class="author">Author: Yung Chin, Yen</p>
+<p class="date">Created: 2020-08-04 Tue 23:07</p>
+</div>
+</body>
+</html>
