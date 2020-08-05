@@ -19,12 +19,12 @@ Learn once, apply everywhere.
 *** Automatic Preview
 這是此次 SwiftUI 最大的亮點之一，所謂 Automatic Preview，意思指的是即時預覽，即我們一邊調整程式碼的同時，也可以立即看到修改後的結果。
 *** 自動支援進階功能
-SwiftUI 本身即支援 Dynamic Type、Dark Mode、 Localization 等等。這邊特別來講一下 UIKit 和 SwiftUI 在文字設定上有關於 Dark Mode 的差異，UIKit 若是無特別指定文字的顏色(意即使用 Default 的選項)，在 Light Mode 字體會是白色；相對的在 Dark Mode 即會是白色，這點跟 SwiftUI 沒有特別的差異，但是 SwiftUI 除了 Default 外，還有 Secondary，如果還不喜歡的話，還有第三個選項，就是在 Assets 自行設定 Light Mode 和 Dark Mode 分別要顯示的顏色😀
+SwiftUI 本身即支援 Dynamic Type、Dark Mode、 Localization 等等。這邊特別來講一下 UIKit 和 SwiftUI 在文字設定上有關於 Dark Mode 的差異，UIKit 若是無特別指定文字的顏色(意即使用 Default 的選項)，在 Light Mode 字體會是白色；相對的在 Dark Mode 即會是白色，這點跟 SwiftUI 沒有特別的差異，但是 SwiftUI 除了 Default 外，還有 Secondary，如果還不喜歡的話，還有第三個選項，就是在 Assets 自行設定 Light Mode 和 Dark Mode 分別要顯示的顏色。
 #+CAPTION: UIKit 與 SwiftUI 的差異性比較圖
 #+LABEL:fig:Diff-1
 #+name: fig:Diff-1
-#+ATTR_LATEX: :width 400
-#+ATTR_ORG: :width 400
+#+ATTR_LATEX: :width 300
+#+ATTR_ORG: :width 300
 [[file:images/differences.png]]
 
 ** SwiftUI vs UIKit: Benefits and Drawbacks
@@ -46,6 +46,7 @@ SwiftUI 本身即支援 Dynamic Type、Dark Mode、 Localization 等等。這邊
 - SceneDelegate 為 Xcode11 所帶來的變化(可參考官方文件 WWDC2019)，放在 SwiftUI 提似乎不太合適，但是在接下來在提到 SwiftUI App 的生命週期時會帶到，所以這邊就大概提一下。
 - AppDelegate 原來的職責為負責 App 的生命週期和 UI 生命週期，在 Xcode11 後，AppDelegate 將 UI 的生命週期(Scene Session)交給 SceneDelegate。原 Xcode10
 - 使用 Swift 為 User Interface 的專案 Launch 的生命週期為 AppDelegate → ViewController，而使用 SwiftUI 為 User Interface 的專案則變成為 AppDelegate → SceneDelegate → ContentView，原本應該出現在 AppDelegate 的 applicationWillEnterForeground(_:) 等相關 App 到前、背景等相關的生命週期邏輯也都移至 SceneDelegate 裡了，method 名稱 application 的前綴字也都更改為 scene 了。[fn:3]
+
 ** SceneDelegate.swift
 #+begin_src swift -r -n :results output :exports both
 import UIKit
@@ -54,7 +55,6 @@ import SwiftUI
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -100,10 +100,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
-
-
 }
-
 
 struct SceneDelegate_Previews: PreviewProvider {
     static var previews: some View {
@@ -114,10 +111,14 @@ struct SceneDelegate_Previews: PreviewProvider {
 * UIKit
 
 * SwiftUI
+** 學習資源
+- [[https://developer.apple.com/tutorials/swiftui/creating-and-combining-views][SwiftUI Tutorials from Apple]]
+
 ** 使用 SwiftUI 開啟新專案 [fn:3]
 1) 首先，打開 Xcode，並點擊 Create new Xcode project。在 iOS 之下選擇 Single View App，並為專案命名。
 2) 然後在下方勾選 Use SwiftUI 的選項，如果沒有勾選該選項的話，Xcode 會自動產生 storyboard 檔案(UIKit)。
 3) Xcode 會自動幫你創建一個名為 ContentView.swif 的檔案，Xcode 會在程式碼的右邊呈現一個即時的預覽視窗(preview), 點選 resume 鈕生成預覽畫面(會花一點時間)。
+
 *** ContentView.swift
 #+begin_src swift -r -n :results output :exports both
 import SwiftUI
@@ -137,21 +138,50 @@ struct ContentView_Previews: PreviewProvider {
 
 ** Text
 *** 改變 Text 的屬性
-**** UI:
+- 改變 component 有兩種方式：工具列、code
+- Attributes
+  + frame
+  + foregroundColor
+  + background
+  + font
+
+**** SwiftUI Inspector:
 1) on Text object (in preview screen): CMD + click
 2) select *Show SwiftUI Inspector*
 3) change *Text*, *Font*, *Color*
 4) Monitor the corresponding code changes in code window
+#+CAPTION: SwiftUI Inspector
+#+LABEL:fig:Inspector-1
+#+name: fig:Inspector-1
+#+ATTR_LATEX: :width 300
+#+ATTR_ORG: :width 300
+[[file:images/inspector-1.gif]]
+**** Inspector frame
+#+CAPTION: SwiftUI Inspector
+#+LABEL:fig:inspector-2
+#+name: fig:inspector-2
+#+ATTR_LATEX: :width 300
+#+ATTR_ORG: :width 300
+[[file:images/inspector-2.gif]]
 **** code
-***** CMD + click
-***** directly insert code
-*** Attributes
-- frame
-- foregroundColor
-- background
-- font
-  
+於 Text("...")後加上屬性 function 或修改其他屬性
+#+CAPTION: SwiftUI Change Attributes
+#+LABEL:fig:ChangeAttribute
+#+name: fig:ChangeAttribute
+#+ATTR_LATEX: :width 300
+#+ATTR_ORG: :width 300
+[[file:images/inspector-3.gif]]
+
 ** VStack
+一個以上的物件都要放在 Stack 中，Stack 與 Stack 可相互包含，加入方式有二：
+*** 由工具列 drag: Xcode 會自動加入相對的 code
+#+CAPTION: Drag component from toolbar
+#+LABEL:fig:VStack
+#+name: fig:VStack
+#+ATTR_LATEX: :width 300
+#+ATTR_ORG: :width 300
+[[file:images/vstack.gif]]
+*** coding
 #+begin_src swift -r -n :results output :exports both
 import SwiftUI
 
@@ -176,6 +206,9 @@ struct ContentView_Previews: PreviewProvider {
 #+ATTR_LATEX: :width 300
 #+ATTR_ORG: :width 300
 [[file:images/vstack-1.jpg]]
+*** SwiftUI 撰寫原則
+- body 恆為只能 return 一物件。
+- 若有多個物件時，一定得放在 Stack 裡。
 
 ** HStack
 #+begin_src swift -r -n :results output :exports both
@@ -221,29 +254,89 @@ struct ContentView_Previews: PreviewProvider {
 #+ATTR_LATEX: :width 300
 #+ATTR_ORG: :width 300
 [[file:images/hstack-1.jpg]]
-** Image
-*** System Image
-- [[https://developer.apple.com/design/human-interface-guidelines/sf-symbols/overview/][SF Symbols ]][fn:4]
-  從 iOS 13 開始，Apple 介紹了一個名為 SFSymbols 的新功能。SF Symbols 這功能由 Apple 所設計，當中集合了 1500 多個可以在 App 之中使用的符號。[fn:3]
-- [[https://developer.apple.com/design/resources/][Download SF Symbols app]]
-- code
-#+begin_src swift -r -n :results output :exports both
-Image(systemName: "icloud")
-  .resizable()
-  .scaledToFit()
-  .frame(width: 100, height: 80, alignment: .center)
 
+** Image
+影像來源可以是 System Image 或自行下載/編修的影像(Customized Image)
+*** System Image
+**** [[https://developer.apple.com/design/human-interface-guidelines/sf-symbols/overview/][SF Symbols ]][fn:4]
+**** 從 iOS 13 開始，Apple 介紹了一個名為 SFSymbols 的新功能。SF Symbols 這功能由 Apple 所設計，當中集合了 1500 多個可以在 App 之中使用的符號。[fn:3]
+**** [[https://developer.apple.com/design/resources/][Download SF Symbols app]]
+**** code
+#+begin_src swift -r -n :results output :exports both
+import SwiftUI
+
+struct ContentView: View {
+    var body: some View {
+        VStack {
+            Text("System Image")
+                .font(.headline)
+                .foregroundColor(.orange)
+            Image(systemName: "icloud")
+            .resizable()
+            .scaledToFit()
+            .frame(width: 100, height: 80, alignment: .center)
+        }
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
 #+end_src
 
-*** Customized Image
+**** Demo
+#+CAPTION: Images-1
+#+LABEL:fig:Images-1
+#+name: fig:Images-1
+#+ATTR_LATEX: :width 300
+#+ATTR_ORG: :width 300
+[[file:images/image-1.jpg]]
+
+*** Customized Image 語法
 1) Drag image into Project folder *Assets.xcassets*
 2) Add following code
 #+begin_src swift -r -n :results output :exports both
-Image("ImageName")
+Image("ImageName") //file name in Assets.xcassets
   .resizable()
   .scaledToFit()
   .frame(width: 200, height: 160, alignment: .center)
 #+end_src
+
+*** Image Attributes
+#+begin_src swift -r -n :results output :exports both
+import SwiftUI
+
+struct ContentView: View {
+    var body: some View {
+        VStack {
+            Text("Albert Camus")
+                .font(.title)
+                .foregroundColor(.white)
+                .background(Color.orange)
+            Image("Albert-Camus")
+                .resizable()
+                .scaledToFill()
+                .frame(width: 200, height: 200, alignment: .center)
+                .clipShape(Circle())
+
+        }
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
+#+end_src
+#+CAPTION: Images-2
+#+LABEL:fig:Images-2
+#+name: fig:Images-2
+#+ATTR_LATEX: :width 300
+#+ATTR_ORG: :width 300
+[[file:images/image-2.jpg]]
 
 ** Button
 *** 語法
@@ -256,6 +349,7 @@ Button("Title") {
 Button(action: <#T##() -> Void#>, label: <#T##() -> _#>)
 //...
 #+end_src
+
 *** 範例: 按下 Button，改變 Text title
 #+begin_src swift -r -n :results output :exports both
 struct ContentView: View {
@@ -282,12 +376,15 @@ struct ContentView: View {
     }
 }
 #+end_src
+
+*** Demo
 #+CAPTION: Button
 #+LABEL:fig:Button-1
 #+name: fig:Button-1
 #+ATTR_LATEX: :width 300
 #+ATTR_ORG: :width 300
 [[file:images/swbtn-1.jpg]]
+
 ** TextField
 *** 語法
 #+begin_src swift -r -n :results output :exports both
@@ -319,6 +416,8 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 #+end_src
+
+*** Demo
 #+CAPTION: Button
 #+LABEL:fig:Button-1
 #+name: fig:Button-1
@@ -329,12 +428,137 @@ struct ContentView_Previews: PreviewProvider {
 * Customize UI Components
 SwiftUI 提供豐富的 modifier 幫助我們設計客製 UI 元件的樣式，諸如陰影，旋轉等效果皆可透過 modifier 實現，還可以搭配方便的拖曳加入相關程式碼。[fn:5]
 
+** Text
+*** Advanced Attributes [fn:7]
+#+begin_src swift -r -n :results output :exports both
+struct ContentView: View {
+    var body: some View {
+        Text("Example")
+            .font(.title)
+            .fontWeight(.bold)
+            .foregroundColor(Color.white)
+            .padding(4)
+            .background(Color.gray)
+            .cornerRadius(14.0)
+            .rotationEffect(Angle(degrees: 15))
+            .rotation3DEffect(Angle(degrees: 30), axis: (x: 10, y: 30, z: 30))
+            .shadow(radius: 20)
+    }
+}
+#+end_src
+*** Demo
+#+CAPTION: Text Attributes
+#+LABEL:fig:Adv-Text_Attributes
+#+name: fig:Adv-Text_Attributes
+#+ATTR_LATEX: :width 300
+#+ATTR_ORG: :width 300
+[[file:images/adv-text-attributes.jpg]]
 
+** Image
+*** Advanced Attributes [fn:6]
+#+begin_src swift -r -n :results output :exports both
+import SwiftUI
+
+struct ContentView: View {
+    var body: some View {
+        VStack {
+            Text("Albert Camus")
+                .font(.body)
+                .foregroundColor(.white)
+                .background(Color.orange)
+            Image("Albert-Camus")
+                .resizable()
+                .scaledToFill()
+                .frame(width: 100, height: 100, alignment: .center)
+                .clipShape(Circle())
+            Image(systemName: "alarm.fill")
+                .resizable()
+                .scaledToFill()
+                .frame(width: 100, height: 100, alignment: .center)
+            Image("Albert-Camus")
+                .frame(width: 100, height: 100, alignment: .center)
+                .mask(Image(systemName: "alarm.fill")
+                    .resizable()
+                    .scaledToFit())
+                .shadow(radius: 20)
+        }
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
+
+#+end_src
+*** Demo
+#+CAPTION: Image Attributes
+#+LABEL:fig:Adv-Image-Attributes
+#+name: fig:Adv-Image-Attributes
+#+ATTR_LATEX: :width 300
+#+ATTR_ORG: :width 300
+[[file:images/image-advanced-attributes.jpg]]
+
+** Button
+*** Advanced Attributes [fn:8]
+#+begin_src swift -r -n :results output :exports both
+import SwiftUI
+
+struct ContentView: View {
+    var body: some View {
+        VStack(spacing: 5.0) {
+            Text("Customized Button")
+                .font(.body)
+                .foregroundColor(.white)
+                .background(Color.orange)
+            Button(action: {
+                print("Hello button tapped!")
+            }) {
+                Text("HI HI")
+                    .fontWeight(.bold)
+                    .font(.title)
+                    .foregroundColor(.purple)
+                    .padding()
+                    .border(Color.purple, width: 5)
+            }
+            Button(action: {
+                print("Hello button tapped!")
+            }) {
+                Text("Press me")
+                    .fontWeight(.light)
+                    .font(.title)
+                    .foregroundColor(.green)
+                    .padding(5)
+                    .overlay(
+                        Capsule(style: .continuous)
+                            .stroke(Color.green, style: StrokeStyle(lineWidth: 3, dash: [10]))
+                )
+            }
+        }
+    }
+}
+
+#+end_src
+*** Demo
+#+CAPTION: Button Attributes
+#+LABEL:fig:Adv-Button-Attributes
+#+name: fig:Adv-Button-Attributes
+#+ATTR_LATEX: :width 300
+#+ATTR_ORG: :width 300
+[[file:images/customized-button-1.jpg]]
 
 * Advanced Commponents
 ** List
-
+- [[https://medium.com/@mikru168/swiftui-%E6%B7%BA%E7%8E%A9-swiftui-%E7%94%A8%E5%85%B6%E5%BB%BA%E6%A7%8B%E4%B8%80%E7%B0%A1%E5%96%AE%E7%9A%84-app-2f2477bd49d7][簡介 SwiftUI & 用其建構一簡單的 APP]]
+  
 * Footnotes
+
+[fn:8] [[https://www.appcoda.com.tw/swiftui-border/][SwiftUI 小技巧：利用 border 修飾符　輕鬆為按鈕或文本繪製邊框]]
+
+[fn:7] [[https://medium.com/%E5%BD%BC%E5%BE%97%E6%BD%98%E7%9A%84-swift-ios-app-%E9%96%8B%E7%99%BC%E5%95%8F%E9%A1%8C%E8%A7%A3%E7%AD%94%E9%9B%86/%E5%AE%A2%E8%A3%BD-ui-%E5%85%83%E4%BB%B6%E6%A8%A3%E5%BC%8F%E7%9A%84-swiftui-modifier-b31ff65c1f0d][客製 UI 元件樣式的 SwiftUI modifier]]
+
+[fn:6] [[https://medium.com/%E5%BD%BC%E5%BE%97%E6%BD%98%E7%9A%84-swift-ios-app-%E9%96%8B%E7%99%BC%E5%95%8F%E9%A1%8C%E8%A7%A3%E7%AD%94%E9%9B%86/swiftui-%E8%A3%81%E5%88%87%E5%BD%A2%E7%8B%80%E7%9A%84-clipshape-mask-4fc49b34141][SwiftUI 裁切形狀的 clipShape & mask]]
 
 [fn:1] [[https://medium.com/@mikru168/swiftui-%E6%B7%BA%E7%8E%A9-swiftui-%E7%94%A8%E5%85%B6%E5%BB%BA%E6%A7%8B%E4%B8%80%E7%B0%A1%E5%96%AE%E7%9A%84-app-2f2477bd49d7][簡介 SwiftUI & 用其建構一簡單的 APP ]]
 
