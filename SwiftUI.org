@@ -327,13 +327,12 @@ struct ContentView_Previews: PreviewProvider {
 [[file:images/txtfield-1.jpg]]
 
 * Customize UI Components
-
+SwiftUI 提供豐富的 modifier 幫助我們設計客製 UI 元件的樣式，諸如陰影，旋轉等效果皆可透過 modifier 實現，還可以搭配方便的拖曳加入相關程式碼。[fn:5]
 
 
 
 * Advanced Commponents
 ** List
-
 
 * Footnotes
 
@@ -344,3 +343,5 @@ struct ContentView_Previews: PreviewProvider {
 [fn:3] [[https://www.appcoda.com.tw/swiftui-introduction/][SwiftUI 初體驗： 建構一個簡單 App　讓你了解 SwiftUI 有多強大！]]
 
 [fn:4] [[https://stackoverflow.com/questions/56514998/find-all-available-images-for-imagesystemname-in-swiftui][Find all available images for Image(systemName:) in SwiftUI]]
+
+[fn:5] [[https://medium.com/%E5%BD%BC%E5%BE%97%E6%BD%98%E7%9A%84-swift-ios-app-%E9%96%8B%E7%99%BC%E5%95%8F%E9%A1%8C%E8%A7%A3%E7%AD%94%E9%9B%86/%E5%AE%A2%E8%A3%BD-ui-%E5%85%83%E4%BB%B6%E6%A8%A3%E5%BC%8F%E7%9A%84-swiftui-modifier-b31ff65c1f0d][客製 UI 元件樣式的 SwiftUI modifier]]
