@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-08-05 Wed 22:44 -->
+<!-- 2020-08-11 Tue 16:11 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>SwiftUI</title>
@@ -231,134 +231,234 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orge7953b2">1. iOS app 的開發界面: UIKit v.s. SwiftUI</a>
+<li><a href="#orgcc7b11d">1. iOS app 的開發界面: UIKit v.s. SwiftUI</a>
 <ul>
-<li><a href="#orgc3da799">1.1. UIKit 與 SwiftUI 的差異性</a>
+<li><a href="#org33dd331">1.1. UIKit 與 SwiftUI 的差異性</a>
 <ul>
-<li><a href="#org64afec2">1.1.1. 系統需求</a></li>
-<li><a href="#orgd68d9d1">1.1.2. 底層語言</a></li>
-<li><a href="#org052c570">1.1.3. 語法簡潔度</a></li>
-<li><a href="#org628ee9b">1.1.4. 跨平台</a></li>
-<li><a href="#org3ce55d2">1.1.5. Automatic Preview</a></li>
-<li><a href="#orga54ecbd">1.1.6. 自動支援進階功能</a></li>
+<li><a href="#org358732f">1.1.1. 系統需求</a></li>
+<li><a href="#orgda992a8">1.1.2. 底層語言</a></li>
+<li><a href="#org468f604">1.1.3. 語法簡潔度</a></li>
+<li><a href="#org646e515">1.1.4. 跨平台</a></li>
+<li><a href="#org9d9dd71">1.1.5. Automatic Preview</a></li>
+<li><a href="#org0c13d64">1.1.6. 自動支援進階功能</a></li>
 </ul>
 </li>
-<li><a href="#org71c4b8f">1.2. SwiftUI vs UIKit: Benefits and Drawbacks</a>
+<li><a href="#org0301b4e">1.2. SwiftUI vs UIKit: Benefits and Drawbacks</a>
 <ul>
-<li><a href="#org0f24a4a">1.2.1. Drawbacks of SwiftUI </a></li>
-<li><a href="#org5cac810">1.2.2. Benefits of SwiftUI </a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#orga41e903">2. AppDelegate v.s. SceneDelegate</a>
-<ul>
-<li><a href="#org28ab20a">2.1. SceneDelegate.swift</a></li>
-</ul>
-</li>
-<li><a href="#org98cbca7">3. UIKit</a></li>
-<li><a href="#orgd775381">4. SwiftUI</a>
-<ul>
-<li><a href="#org976dd9b">4.1. 學習資源</a></li>
-<li><a href="#org4d66eaa">4.2. 使用 SwiftUI 開啟新專案 </a>
-<ul>
-<li><a href="#org6f3754e">4.2.1. ContentView.swift</a></li>
-</ul>
-</li>
-<li><a href="#org4232cf8">4.3. Text</a>
-<ul>
-<li><a href="#orga2d2da2">4.3.1. 改變 Text 的屬性</a>
-<ul>
-<li><a href="#orgc48ed1c">4.3.1.1. SwiftUI Inspector:</a></li>
-<li><a href="#org64f44ac">4.3.1.2. Inspector frame</a></li>
-<li><a href="#org37522b1">4.3.1.3. code</a></li>
+<li><a href="#orga5d626c">1.2.1. Drawbacks of SwiftUI </a></li>
+<li><a href="#orgbdf6aac">1.2.2. Benefits of SwiftUI </a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orge9a9a32">4.4. VStack</a>
+<li><a href="#orge0d40b6">2. AppDelegate v.s. SceneDelegate</a>
 <ul>
-<li><a href="#org325ec4b">4.4.1. 由工具列 drag: Xcode 會自動加入相對的 code</a></li>
-<li><a href="#orga5ad2fb">4.4.2. coding</a></li>
-<li><a href="#org6226618">4.4.3. SwiftUI 撰寫原則</a></li>
+<li><a href="#org5faf2e1">2.1. SceneDelegate.swift</a></li>
 </ul>
 </li>
-<li><a href="#org8cc0be7">4.5. HStack</a></li>
-<li><a href="#org5103a4b">4.6. Image</a>
+<li><a href="#orgc7403b3">3. UIKit</a></li>
+<li><a href="#org35e3f04">4. SwiftUI</a>
 <ul>
-<li><a href="#org8099984">4.6.1. System Image</a>
+<li><a href="#orge902296">4.1. 學習資源</a></li>
+<li><a href="#orgb121e5c">4.2. 使用 SwiftUI 開啟新專案 </a>
 <ul>
-<li><a href="#org6930b59">4.6.1.1. SF Symbols </a></li>
-<li><a href="#orgdf58ebc">4.6.1.2. 從 iOS 13 開始，Apple 介紹了一個名為 SFSymbols 的新功能。SF Symbols 這功能由 Apple 所設計，當中集合了 1500 多個可以在 App 之中使用的符號。</a></li>
-<li><a href="#org1c533a6">4.6.1.3. Download SF Symbols app</a></li>
-<li><a href="#orgabef560">4.6.1.4. code</a></li>
-<li><a href="#org85b1b4c">4.6.1.5. Demo</a></li>
+<li><a href="#org73c8b9e">4.2.1. ContentView.swift</a></li>
 </ul>
 </li>
-<li><a href="#orgc51155a">4.6.2. Customized Image 語法</a></li>
-<li><a href="#org08f501c">4.6.3. Attributes</a></li>
-</ul>
-</li>
-<li><a href="#org2564002">4.7. Button</a>
+<li><a href="#orge9dc7d2">4.3. Text</a>
 <ul>
-<li><a href="#org68e4df0">4.7.1. 語法</a></li>
-<li><a href="#org449912c">4.7.2. 範例: 按下 Button，改變 Text title</a></li>
-<li><a href="#org84ed626">4.7.3. Demo</a></li>
-</ul>
-</li>
-<li><a href="#orgd10e57b">4.8. TextField</a>
+<li><a href="#org92cfb86">4.3.1. 改變 Text 的屬性</a>
 <ul>
-<li><a href="#orgdbf9dc5">4.8.1. 語法</a></li>
-<li><a href="#orgf09f888">4.8.2. 範例: 於 TextField 輸入資料，顯示於 Text 中</a></li>
-<li><a href="#orgca32dd9">4.8.3. Demo</a></li>
+<li><a href="#org679cdb8">4.3.1.1. SwiftUI Inspector:</a></li>
+<li><a href="#org7c8a148">4.3.1.2. Inspector frame</a></li>
+<li><a href="#org0266b06">4.3.1.3. code</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org8d7c36f">5. Customize UI Components</a></li>
-<li><a href="#org0fe7618">6. Advanced Commponents</a>
+<li><a href="#org4ec0a2b">4.4. VStack</a>
 <ul>
-<li><a href="#orgbea9758">6.1. List</a></li>
+<li><a href="#orgf4fedc2">4.4.1. 由工具列 drag: Xcode 會自動加入相對的 code</a></li>
+<li><a href="#orge28c76c">4.4.2. coding</a></li>
+<li><a href="#orgfa177c5">4.4.3. SwiftUI 撰寫原則</a></li>
 </ul>
 </li>
+<li><a href="#org7231af4">4.5. HStack</a></li>
+<li><a href="#orgf583868">4.6. Image</a>
+<ul>
+<li><a href="#org8a46da5">4.6.1. System Image</a>
+<ul>
+<li><a href="#org41613aa">4.6.1.1. SF Symbols </a></li>
+<li><a href="#org37414bf">4.6.1.2. 從 iOS 13 開始，Apple 介紹了一個名為 SFSymbols 的新功能。SF Symbols 這功能由 Apple 所設計，當中集合了 1500 多個可以在 App 之中使用的符號。</a></li>
+<li><a href="#orgee0586e">4.6.1.3. Download SF Symbols app</a></li>
+<li><a href="#org1320905">4.6.1.4. code</a></li>
+<li><a href="#org3efd181">4.6.1.5. Demo</a></li>
+</ul>
+</li>
+<li><a href="#orgfe0212b">4.6.2. Customized Image 語法</a></li>
+<li><a href="#orgfc3b7f3">4.6.3. Image Attributes</a></li>
+</ul>
+</li>
+<li><a href="#orgc107f6c">4.7. Button</a>
+<ul>
+<li><a href="#orgadfe878">4.7.1. 語法</a></li>
+<li><a href="#org08e33bd">4.7.2. 範例: 按下 Button，改變 Text title</a></li>
+<li><a href="#org8735e8b">4.7.3. Demo</a></li>
+</ul>
+</li>
+<li><a href="#org0b3b3d2">4.8. TextField</a>
+<ul>
+<li><a href="#orgda29ce1">4.8.1. 語法</a></li>
+<li><a href="#org628a442">4.8.2. 範例: 於 TextField 輸入資料，顯示於 Text 中</a></li>
+<li><a href="#orgf43d1fc">4.8.3. Demo</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org541331f">5. Customize UI Components</a>
+<ul>
+<li><a href="#org4b30e34">5.1. Text</a>
+<ul>
+<li><a href="#org6005680">5.1.1. Advanced Attributes </a></li>
+<li><a href="#orgd240f0c">5.1.2. Demo</a></li>
+</ul>
+</li>
+<li><a href="#org03b79bb">5.2. Image</a>
+<ul>
+<li><a href="#orgcb7a4df">5.2.1. Advanced Attributes </a></li>
+<li><a href="#org5fed45a">5.2.2. Demo</a></li>
+</ul>
+</li>
+<li><a href="#org386abea">5.3. Button</a>
+<ul>
+<li><a href="#orgda14991">5.3.1. Advanced Attributes </a></li>
+<li><a href="#org97a906b">5.3.2. Demo</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org706935f">6. Advanced Commponents</a>
+<ul>
+<li><a href="#orgbbc743b">6.1. List</a>
+<ul>
+<li><a href="#org4e975c1">6.1.1. 準備單一 cell 格式</a></li>
+<li><a href="#org2212c5b">6.1.2. 轉入 List 格式</a>
+<ul>
+<li><a href="#org4c1f037">6.1.2.1. 將最外層的 VStack 加入 List 中</a></li>
+<li><a href="#org0180049">6.1.2.2. list 語法</a></li>
+<li><a href="#orgee19a06">6.1.2.3. 結果</a></li>
+</ul>
+</li>
+<li><a href="#org63f7dca">6.1.3. 建立 list 來源數據</a></li>
+<li><a href="#org83572db">6.1.4. 將數據連結到列表中</a></li>
+<li><a href="#orga02e1cf">6.1.5. 結果</a></li>
+<li><a href="#org8557ef9">6.1.6. 為什麼要加入 id 與 Identifiable</a></li>
+</ul>
+</li>
+<li><a href="#orga0954d0">6.2. Navigation bar</a></li>
+<li><a href="#orgeb90ff8">6.3. Button, Divider</a></li>
+<li><a href="#org04870cf">6.4. background, opacity</a></li>
+</ul>
+</li>
+<li><a href="#org1f1618f">7. Struct, Class, and Enum</a>
+<ul>
+<li><a href="#orge651799">7.1. Structures</a>
+<ul>
+<li><a href="#org4851a5b">7.1.1. Mutating methods</a></li>
+</ul>
+</li>
+<li><a href="#org73ca751">7.2. Classes</a>
+<ul>
+<li><a href="#org8f4174b">7.2.1. Inheritance &amp; Override methods and properties</a></li>
+</ul>
+</li>
+<li><a href="#org7497dd6">7.3. 結構跟類的比較 (Comparing Structures and Classes) </a>
+<ul>
+<li><a href="#orgfa065ad">7.3.1. 在 Swift 中的結構與類有許多相同之處，兩者皆能：</a></li>
+<li><a href="#orgee9bcc5">7.3.2. 類具有的附加功能，但結構沒有：</a></li>
+<li><a href="#org7c616d8">7.3.3. 結構和列舉是值型別 (Structures and Enumerations Are Value Types)</a>
+<ul>
+<li><a href="#orgcbc5dda">7.3.3.1. 範例</a></li>
+</ul>
+</li>
+<li><a href="#orgd08d0c9">7.3.4. 類是參考型別 (Classes Are Reference Types)</a>
+<ul>
+<li><a href="#org6686bd6">7.3.4.1. 範例</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgfdb7694">7.4. Enumerations</a></li>
+<li><a href="#org92fca7d">7.5. 結構和類之間的選擇 (Choosing Between Structures and Classes)</a>
+<ul>
+<li><a href="#org9cf37ad">7.5.1. 選擇原則</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org5bf7ad4">8. Protocols</a>
+<ul>
+<li><a href="#org6ae9ae9">8.1. 範例</a>
+<ul>
+<li><a href="#org93a45d9">8.1.1. 版本 1</a></li>
+<li><a href="#org3a232a5">8.1.2. 版本 2</a></li>
+<li><a href="#orge33cc4f">8.1.3. 版本 3</a></li>
+</ul>
+</li>
+<li><a href="#org48c0324">8.2. mutating</a></li>
+<li><a href="#org2949d6c">8.3. 擴充 protocol</a></li>
+</ul>
+</li>
+<li><a href="#org619e134">9. some</a>
+<ul>
+<li><a href="#org3d06221">9.1. Generics</a>
+<ul>
+<li><a href="#orgc032224">9.1.1. 問題</a></li>
+<li><a href="#org4311b31">9.1.2. 解決方案</a></li>
+</ul>
+</li>
+<li><a href="#orgad78c3d">9.2. opaque</a></li>
+</ul>
+</li>
+<li><a href="#orgacf7a40">10. 進階主題</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orge7953b2" class="outline-2">
-<h2 id="orge7953b2"><span class="section-number-2">1</span> iOS app 的開發界面: UIKit v.s. SwiftUI</h2>
+<div id="outline-container-orgcc7b11d" class="outline-2">
+<h2 id="orgcc7b11d"><span class="section-number-2">1</span> iOS app 的開發界面: UIKit v.s. SwiftUI</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-orgc3da799" class="outline-3">
-<h3 id="orgc3da799"><span class="section-number-3">1.1</span> UIKit 與 SwiftUI 的差異性</h3>
+<div id="outline-container-org33dd331" class="outline-3">
+<h3 id="org33dd331"><span class="section-number-3">1.1</span> UIKit 與 SwiftUI 的差異性</h3>
 <div class="outline-text-3" id="text-1-1">
 </div>
-<div id="outline-container-org64afec2" class="outline-4">
-<h4 id="org64afec2"><span class="section-number-4">1.1.1</span> 系統需求</h4>
+<div id="outline-container-org358732f" class="outline-4">
+<h4 id="org358732f"><span class="section-number-4">1.1.1</span> 系統需求</h4>
 <div class="outline-text-4" id="text-1-1-1">
 <p>
 UIKit 是從 Xcode1 就一直存在的 Framework；而 SwiftUI 則是 2019/6 WWDC 所發表的全新用來繪製 UI 的 Framework。因此，SwiftUI 必須搭配 iOS13+ 和 MacOS10.15+。<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>
 </p>
 </div>
 </div>
-<div id="outline-container-orgd68d9d1" class="outline-4">
-<h4 id="orgd68d9d1"><span class="section-number-4">1.1.2</span> 底層語言</h4>
+<div id="outline-container-orgda992a8" class="outline-4">
+<h4 id="orgda992a8"><span class="section-number-4">1.1.2</span> 底層語言</h4>
 <div class="outline-text-4" id="text-1-1-2">
 <p>
 UIKit 底層仍為 Objecitve-C；而 SwiftUI 則是完完全全用 Swift 打造的 Framework。
 </p>
 </div>
 </div>
-<div id="outline-container-org052c570" class="outline-4">
-<h4 id="org052c570"><span class="section-number-4">1.1.3</span> 語法簡潔度</h4>
+<div id="outline-container-org468f604" class="outline-4">
+<h4 id="org468f604"><span class="section-number-4">1.1.3</span> 語法簡潔度</h4>
 <div class="outline-text-4" id="text-1-1-3">
 <p>
 SwiftUI 產生一顯示文字的元件更精簡潔了。
 </p>
 </div>
 </div>
-<div id="outline-container-org628ee9b" class="outline-4">
-<h4 id="org628ee9b"><span class="section-number-4">1.1.4</span> 跨平台</h4>
+<div id="outline-container-org646e515" class="outline-4">
+<h4 id="org646e515"><span class="section-number-4">1.1.4</span> 跨平台</h4>
 <div class="outline-text-4" id="text-1-1-4">
 <p>
 跨平台指的非跨 Android(但希望有那麼一天是可以支援的😀)。跨平台指的是使用 SwiftUI 所開發的專案，可以同時支援 macOS、watchOS、tvOS 等系統。引用一句 WWDC2019 SwiftUI 演講者所說的一句話。
@@ -370,23 +470,23 @@ Learn once, apply everywhere.
 </blockquote>
 </div>
 </div>
-<div id="outline-container-org3ce55d2" class="outline-4">
-<h4 id="org3ce55d2"><span class="section-number-4">1.1.5</span> Automatic Preview</h4>
+<div id="outline-container-org9d9dd71" class="outline-4">
+<h4 id="org9d9dd71"><span class="section-number-4">1.1.5</span> Automatic Preview</h4>
 <div class="outline-text-4" id="text-1-1-5">
 <p>
 這是此次 SwiftUI 最大的亮點之一，所謂 Automatic Preview，意思指的是即時預覽，即我們一邊調整程式碼的同時，也可以立即看到修改後的結果。
 </p>
 </div>
 </div>
-<div id="outline-container-orga54ecbd" class="outline-4">
-<h4 id="orga54ecbd"><span class="section-number-4">1.1.6</span> 自動支援進階功能</h4>
+<div id="outline-container-org0c13d64" class="outline-4">
+<h4 id="org0c13d64"><span class="section-number-4">1.1.6</span> 自動支援進階功能</h4>
 <div class="outline-text-4" id="text-1-1-6">
 <p>
 SwiftUI 本身即支援 Dynamic Type、Dark Mode、 Localization 等等。這邊特別來講一下 UIKit 和 SwiftUI 在文字設定上有關於 Dark Mode 的差異，UIKit 若是無特別指定文字的顏色(意即使用 Default 的選項)，在 Light Mode 字體會是白色；相對的在 Dark Mode 即會是白色，這點跟 SwiftUI 沒有特別的差異，但是 SwiftUI 除了 Default 外，還有 Secondary，如果還不喜歡的話，還有第三個選項，就是在 Assets 自行設定 Light Mode 和 Dark Mode 分別要顯示的顏色。
 </p>
 
-<div id="org8b32433" class="figure">
-<p><img src="images/differences.png" alt="differences.png" />
+<div id="org8b1ddf7" class="figure">
+<p><img src="images/differences.png" alt="differences.png" width="300" />
 </p>
 <p><span class="figure-number">Figure 1: </span>UIKit 與 SwiftUI 的差異性比較圖</p>
 </div>
@@ -394,12 +494,12 @@ SwiftUI 本身即支援 Dynamic Type、Dark Mode、 Localization 等等。這邊
 </div>
 </div>
 
-<div id="outline-container-org71c4b8f" class="outline-3">
-<h3 id="org71c4b8f"><span class="section-number-3">1.2</span> SwiftUI vs UIKit: Benefits and Drawbacks</h3>
+<div id="outline-container-org0301b4e" class="outline-3">
+<h3 id="org0301b4e"><span class="section-number-3">1.2</span> SwiftUI vs UIKit: Benefits and Drawbacks</h3>
 <div class="outline-text-3" id="text-1-2">
 </div>
-<div id="outline-container-org0f24a4a" class="outline-4">
-<h4 id="org0f24a4a"><span class="section-number-4">1.2.1</span> Drawbacks of SwiftUI <sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup></h4>
+<div id="outline-container-orga5d626c" class="outline-4">
+<h4 id="orga5d626c"><span class="section-number-4">1.2.1</span> Drawbacks of SwiftUI <sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup></h4>
 <div class="outline-text-4" id="text-1-2-1">
 <ul class="org-ul">
 <li>It supports only iOS 13 and Xcode 11. By switching to them, you abandon users of older versions of iOS, which is a radical move devoid of concern for the user. But since Apple annually updates its list of supported iOS versions, I think SwiftUI will be used more over the next two years as users install the latest iOS version.</li>
@@ -408,8 +508,8 @@ SwiftUI 本身即支援 Dynamic Type、Dark Mode、 Localization 等等。這邊
 </ul>
 </div>
 </div>
-<div id="outline-container-org5cac810" class="outline-4">
-<h4 id="org5cac810"><span class="section-number-4">1.2.2</span> Benefits of SwiftUI <sup><a id="fnr.2.100" class="footref" href="#fn.2">2</a></sup></h4>
+<div id="outline-container-orgbdf6aac" class="outline-4">
+<h4 id="orgbdf6aac"><span class="section-number-4">1.2.2</span> Benefits of SwiftUI <sup><a id="fnr.2.100" class="footref" href="#fn.2">2</a></sup></h4>
 <div class="outline-text-4" id="text-1-2-2">
 <ul class="org-ul">
 <li>It’s easy to learn, and the code is simple and clean.</li>
@@ -426,8 +526,8 @@ SwiftUI 本身即支援 Dynamic Type、Dark Mode、 Localization 等等。這邊
 </div>
 </div>
 
-<div id="outline-container-orga41e903" class="outline-2">
-<h2 id="orga41e903"><span class="section-number-2">2</span> AppDelegate v.s. SceneDelegate</h2>
+<div id="outline-container-orge0d40b6" class="outline-2">
+<h2 id="orge0d40b6"><span class="section-number-2">2</span> AppDelegate v.s. SceneDelegate</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li>SceneDelegate 為 Xcode11 所帶來的變化(可參考官方文件 WWDC2019)，放在 SwiftUI 提似乎不太合適，但是在接下來在提到 SwiftUI App 的生命週期時會帶到，所以這邊就大概提一下。</li>
@@ -436,8 +536,8 @@ SwiftUI 本身即支援 Dynamic Type、Dark Mode、 Localization 等等。這邊
 </ul>
 </div>
 
-<div id="outline-container-org28ab20a" class="outline-3">
-<h3 id="org28ab20a"><span class="section-number-3">2.1</span> SceneDelegate.swift</h3>
+<div id="outline-container-org5faf2e1" class="outline-3">
+<h3 id="org5faf2e1"><span class="section-number-3">2.1</span> SceneDelegate.swift</h3>
 <div class="outline-text-3" id="text-2-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> UIKit
@@ -503,16 +603,17 @@ SwiftUI 本身即支援 Dynamic Type、Dark Mode、 Localization 等等。這邊
 </div>
 </div>
 </div>
-<div id="outline-container-org98cbca7" class="outline-2">
-<h2 id="org98cbca7"><span class="section-number-2">3</span> UIKit</h2>
+
+<div id="outline-container-orgc7403b3" class="outline-2">
+<h2 id="orgc7403b3"><span class="section-number-2">3</span> UIKit</h2>
 </div>
 
-<div id="outline-container-orgd775381" class="outline-2">
-<h2 id="orgd775381"><span class="section-number-2">4</span> SwiftUI</h2>
+<div id="outline-container-org35e3f04" class="outline-2">
+<h2 id="org35e3f04"><span class="section-number-2">4</span> SwiftUI</h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-org976dd9b" class="outline-3">
-<h3 id="org976dd9b"><span class="section-number-3">4.1</span> 學習資源</h3>
+<div id="outline-container-orge902296" class="outline-3">
+<h3 id="orge902296"><span class="section-number-3">4.1</span> 學習資源</h3>
 <div class="outline-text-3" id="text-4-1">
 <ul class="org-ul">
 <li><a href="https://developer.apple.com/tutorials/swiftui/creating-and-combining-views">SwiftUI Tutorials from Apple</a></li>
@@ -520,8 +621,8 @@ SwiftUI 本身即支援 Dynamic Type、Dark Mode、 Localization 等等。這邊
 </div>
 </div>
 
-<div id="outline-container-org4d66eaa" class="outline-3">
-<h3 id="org4d66eaa"><span class="section-number-3">4.2</span> 使用 SwiftUI 開啟新專案 <sup><a id="fnr.3.100" class="footref" href="#fn.3">3</a></sup></h3>
+<div id="outline-container-orgb121e5c" class="outline-3">
+<h3 id="orgb121e5c"><span class="section-number-3">4.2</span> 使用 SwiftUI 開啟新專案 <sup><a id="fnr.3.100" class="footref" href="#fn.3">3</a></sup></h3>
 <div class="outline-text-3" id="text-4-2">
 <ol class="org-ol">
 <li>首先，打開 Xcode，並點擊 Create new Xcode project。在 iOS 之下選擇 Single View App，並為專案命名。</li>
@@ -530,8 +631,8 @@ SwiftUI 本身即支援 Dynamic Type、Dark Mode、 Localization 等等。這邊
 </ol>
 </div>
 
-<div id="outline-container-org6f3754e" class="outline-4">
-<h4 id="org6f3754e"><span class="section-number-4">4.2.1</span> ContentView.swift</h4>
+<div id="outline-container-org73c8b9e" class="outline-4">
+<h4 id="org73c8b9e"><span class="section-number-4">4.2.1</span> ContentView.swift</h4>
 <div class="outline-text-4" id="text-4-2-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> SwiftUI
@@ -553,12 +654,12 @@ SwiftUI 本身即支援 Dynamic Type、Dark Mode、 Localization 等等。這邊
 </div>
 </div>
 
-<div id="outline-container-org4232cf8" class="outline-3">
-<h3 id="org4232cf8"><span class="section-number-3">4.3</span> Text</h3>
+<div id="outline-container-orge9dc7d2" class="outline-3">
+<h3 id="orge9dc7d2"><span class="section-number-3">4.3</span> Text</h3>
 <div class="outline-text-3" id="text-4-3">
 </div>
-<div id="outline-container-orga2d2da2" class="outline-4">
-<h4 id="orga2d2da2"><span class="section-number-4">4.3.1</span> 改變 Text 的屬性</h4>
+<div id="outline-container-org92cfb86" class="outline-4">
+<h4 id="org92cfb86"><span class="section-number-4">4.3.1</span> 改變 Text 的屬性</h4>
 <div class="outline-text-4" id="text-4-3-1">
 <ul class="org-ul">
 <li>改變 component 有兩種方式：工具列、code</li>
@@ -572,8 +673,8 @@ SwiftUI 本身即支援 Dynamic Type、Dark Mode、 Localization 等等。這邊
 </ul>
 </div>
 
-<div id="outline-container-orgc48ed1c" class="outline-5">
-<h5 id="orgc48ed1c"><span class="section-number-5">4.3.1.1</span> SwiftUI Inspector:</h5>
+<div id="outline-container-org679cdb8" class="outline-5">
+<h5 id="org679cdb8"><span class="section-number-5">4.3.1.1</span> SwiftUI Inspector:</h5>
 <div class="outline-text-5" id="text-4-3-1-1">
 <ol class="org-ol">
 <li>on Text object (in preview screen): CMD + click</li>
@@ -582,58 +683,61 @@ SwiftUI 本身即支援 Dynamic Type、Dark Mode、 Localization 等等。這邊
 <li>Monitor the corresponding code changes in code window</li>
 </ol>
 
-<div id="orgc3bb509" class="figure">
-<p><img src="images/inspector-1.gif" alt="inspector-1.gif" />
+<div id="org2773890" class="figure">
+<p><img src="images/inspector-1.gif" alt="inspector-1.gif" width="600" />
 </p>
 <p><span class="figure-number">Figure 2: </span>SwiftUI Inspector</p>
 </div>
 </div>
 </div>
-<div id="outline-container-org64f44ac" class="outline-5">
-<h5 id="org64f44ac"><span class="section-number-5">4.3.1.2</span> Inspector frame</h5>
+<div id="outline-container-org7c8a148" class="outline-5">
+<h5 id="org7c8a148"><span class="section-number-5">4.3.1.2</span> Inspector frame</h5>
 <div class="outline-text-5" id="text-4-3-1-2">
 
-<div id="orgc40b401" class="figure">
-<p><img src="images/inspector-2.gif" alt="inspector-2.gif" />
+<div id="org6118e8a" class="figure">
+<p><img src="images/inspector-2.gif" alt="inspector-2.gif" width="600" />
 </p>
 <p><span class="figure-number">Figure 3: </span>SwiftUI Inspector</p>
 </div>
 </div>
 </div>
-<div id="outline-container-org37522b1" class="outline-5">
-<h5 id="org37522b1"><span class="section-number-5">4.3.1.3</span> code</h5>
+<div id="outline-container-org0266b06" class="outline-5">
+<h5 id="org0266b06"><span class="section-number-5">4.3.1.3</span> code</h5>
 <div class="outline-text-5" id="text-4-3-1-3">
 <p>
 於 Text(&ldquo;&#x2026;&rdquo;)後加上屬性 function 或修改其他屬性
 </p>
-<p>
-<img src="images/inspector-3.gif" alt="inspector-3.gif" />
-<b>*</b>
+
+<div id="orgfa385c1" class="figure">
+<p><img src="images/inspector-3.gif" alt="inspector-3.gif" width="600" />
 </p>
+<p><span class="figure-number">Figure 4: </span>SwiftUI Change Attributes</p>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-orge9a9a32" class="outline-3">
-<h3 id="orge9a9a32"><span class="section-number-3">4.4</span> VStack</h3>
+</div>
+
+<div id="outline-container-org4ec0a2b" class="outline-3">
+<h3 id="org4ec0a2b"><span class="section-number-3">4.4</span> VStack</h3>
 <div class="outline-text-3" id="text-4-4">
 <p>
 一個以上的物件都要放在 Stack 中，Stack 與 Stack 可相互包含，加入方式有二：
 </p>
 </div>
-<div id="outline-container-org325ec4b" class="outline-4">
-<h4 id="org325ec4b"><span class="section-number-4">4.4.1</span> 由工具列 drag: Xcode 會自動加入相對的 code</h4>
+<div id="outline-container-orgf4fedc2" class="outline-4">
+<h4 id="orgf4fedc2"><span class="section-number-4">4.4.1</span> 由工具列 drag: Xcode 會自動加入相對的 code</h4>
 <div class="outline-text-4" id="text-4-4-1">
 
-<div id="orgb658b0c" class="figure">
-<p><img src="images/vstack.gif" alt="vstack.gif" />
+<div id="org8c2a916" class="figure">
+<p><img src="images/vstack.gif" alt="vstack.gif" width="600" />
 </p>
-<p><span class="figure-number">Figure 4: </span>Drag component from toolbar</p>
+<p><span class="figure-number">Figure 5: </span>Drag component from toolbar</p>
 </div>
 </div>
 </div>
-<div id="outline-container-orga5ad2fb" class="outline-4">
-<h4 id="orga5ad2fb"><span class="section-number-4">4.4.2</span> coding</h4>
+<div id="outline-container-orge28c76c" class="outline-4">
+<h4 id="orge28c76c"><span class="section-number-4">4.4.2</span> coding</h4>
 <div class="outline-text-4" id="text-4-4-2">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> SwiftUI
@@ -655,15 +759,15 @@ SwiftUI 本身即支援 Dynamic Type、Dark Mode、 Localization 等等。這邊
 </pre>
 </div>
 
-<div id="org45df70d" class="figure">
-<p><img src="images/vstack-1.jpg" alt="vstack-1.jpg" />
+<div id="orgf5cd9e3" class="figure">
+<p><img src="images/vstack-1.jpg" alt="vstack-1.jpg" width="300" />
 </p>
-<p><span class="figure-number">Figure 5: </span>VStack</p>
+<p><span class="figure-number">Figure 6: </span>VStack</p>
 </div>
 </div>
 </div>
-<div id="outline-container-org6226618" class="outline-4">
-<h4 id="org6226618"><span class="section-number-4">4.4.3</span> SwiftUI 撰寫原則</h4>
+<div id="outline-container-orgfa177c5" class="outline-4">
+<h4 id="orgfa177c5"><span class="section-number-4">4.4.3</span> SwiftUI 撰寫原則</h4>
 <div class="outline-text-4" id="text-4-4-3">
 <ul class="org-ul">
 <li>body 恆為只能 return 一物件。</li>
@@ -673,8 +777,8 @@ SwiftUI 本身即支援 Dynamic Type、Dark Mode、 Localization 等等。這邊
 </div>
 </div>
 
-<div id="outline-container-org8cc0be7" class="outline-3">
-<h3 id="org8cc0be7"><span class="section-number-3">4.5</span> HStack</h3>
+<div id="outline-container-org7231af4" class="outline-3">
+<h3 id="org7231af4"><span class="section-number-3">4.5</span> HStack</h3>
 <div class="outline-text-3" id="text-4-5">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> SwiftUI
@@ -715,33 +819,36 @@ SwiftUI 本身即支援 Dynamic Type、Dark Mode、 Localization 等等。這邊
 </pre>
 </div>
 
-<div id="org77b0542" class="figure">
-<p><img src="images/hstack-1.jpg" alt="hstack-1.jpg" />
+<div id="orgb60ba58" class="figure">
+<p><img src="images/hstack-1.jpg" alt="hstack-1.jpg" width="300" />
 </p>
-<p><span class="figure-number">Figure 6: </span>HStack</p>
+<p><span class="figure-number">Figure 7: </span>HStack</p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org5103a4b" class="outline-3">
-<h3 id="org5103a4b"><span class="section-number-3">4.6</span> Image</h3>
+<div id="outline-container-orgf583868" class="outline-3">
+<h3 id="orgf583868"><span class="section-number-3">4.6</span> Image</h3>
 <div class="outline-text-3" id="text-4-6">
+<p>
+影像來源可以是 System Image 或自行下載/編修的影像(Customized Image)
+</p>
 </div>
-<div id="outline-container-org8099984" class="outline-4">
-<h4 id="org8099984"><span class="section-number-4">4.6.1</span> System Image</h4>
+<div id="outline-container-org8a46da5" class="outline-4">
+<h4 id="org8a46da5"><span class="section-number-4">4.6.1</span> System Image</h4>
 <div class="outline-text-4" id="text-4-6-1">
 </div>
-<div id="outline-container-org6930b59" class="outline-5">
-<h5 id="org6930b59"><span class="section-number-5">4.6.1.1</span> <a href="https://developer.apple.com/design/human-interface-guidelines/sf-symbols/overview/">SF Symbols </a><sup><a id="fnr.4" class="footref" href="#fn.4">4</a></sup></h5>
+<div id="outline-container-org41613aa" class="outline-5">
+<h5 id="org41613aa"><span class="section-number-5">4.6.1.1</span> <a href="https://developer.apple.com/design/human-interface-guidelines/sf-symbols/overview/">SF Symbols </a><sup><a id="fnr.4" class="footref" href="#fn.4">4</a></sup></h5>
 </div>
-<div id="outline-container-orgdf58ebc" class="outline-5">
-<h5 id="orgdf58ebc"><span class="section-number-5">4.6.1.2</span> 從 iOS 13 開始，Apple 介紹了一個名為 SFSymbols 的新功能。SF Symbols 這功能由 Apple 所設計，當中集合了 1500 多個可以在 App 之中使用的符號。<sup><a id="fnr.3.100" class="footref" href="#fn.3">3</a></sup></h5>
+<div id="outline-container-org37414bf" class="outline-5">
+<h5 id="org37414bf"><span class="section-number-5">4.6.1.2</span> 從 iOS 13 開始，Apple 介紹了一個名為 SFSymbols 的新功能。SF Symbols 這功能由 Apple 所設計，當中集合了 1500 多個可以在 App 之中使用的符號。<sup><a id="fnr.3.100" class="footref" href="#fn.3">3</a></sup></h5>
 </div>
-<div id="outline-container-org1c533a6" class="outline-5">
-<h5 id="org1c533a6"><span class="section-number-5">4.6.1.3</span> <a href="https://developer.apple.com/design/resources/">Download SF Symbols app</a></h5>
+<div id="outline-container-orgee0586e" class="outline-5">
+<h5 id="orgee0586e"><span class="section-number-5">4.6.1.3</span> <a href="https://developer.apple.com/design/resources/">Download SF Symbols app</a></h5>
 </div>
-<div id="outline-container-orgabef560" class="outline-5">
-<h5 id="orgabef560"><span class="section-number-5">4.6.1.4</span> code</h5>
+<div id="outline-container-org1320905" class="outline-5">
+<h5 id="org1320905"><span class="section-number-5">4.6.1.4</span> code</h5>
 <div class="outline-text-5" id="text-4-6-1-4">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> SwiftUI
@@ -770,21 +877,21 @@ SwiftUI 本身即支援 Dynamic Type、Dark Mode、 Localization 等等。這邊
 </div>
 </div>
 
-<div id="outline-container-org85b1b4c" class="outline-5">
-<h5 id="org85b1b4c"><span class="section-number-5">4.6.1.5</span> Demo</h5>
+<div id="outline-container-org3efd181" class="outline-5">
+<h5 id="org3efd181"><span class="section-number-5">4.6.1.5</span> Demo</h5>
 <div class="outline-text-5" id="text-4-6-1-5">
 
-<div id="org5276e02" class="figure">
-<p><img src="images/image-1.jpg" alt="image-1.jpg" />
+<div id="org88909e8" class="figure">
+<p><img src="images/image-1.jpg" alt="image-1.jpg" width="300" />
 </p>
-<p><span class="figure-number">Figure 7: </span>Images-1</p>
+<p><span class="figure-number">Figure 8: </span>Images-1</p>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgc51155a" class="outline-4">
-<h4 id="orgc51155a"><span class="section-number-4">4.6.2</span> Customized Image 語法</h4>
+<div id="outline-container-orgfe0212b" class="outline-4">
+<h4 id="orgfe0212b"><span class="section-number-4">4.6.2</span> Customized Image 語法</h4>
 <div class="outline-text-4" id="text-4-6-2">
 <ol class="org-ol">
 <li>Drag image into Project folder <b>Assets.xcassets</b></li>
@@ -800,8 +907,8 @@ SwiftUI 本身即支援 Dynamic Type、Dark Mode、 Localization 等等。這邊
 </div>
 </div>
 
-<div id="outline-container-org08f501c" class="outline-4">
-<h4 id="org08f501c"><span class="section-number-4">4.6.3</span> Attributes</h4>
+<div id="outline-container-orgfc3b7f3" class="outline-4">
+<h4 id="orgfc3b7f3"><span class="section-number-4">4.6.3</span> Image Attributes</h4>
 <div class="outline-text-4" id="text-4-6-3">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> SwiftUI
@@ -831,21 +938,21 @@ SwiftUI 本身即支援 Dynamic Type、Dark Mode、 Localization 等等。這邊
 </pre>
 </div>
 
-<div id="org7150aea" class="figure">
-<p><img src="images/image-2.jpg" alt="image-2.jpg" />
+<div id="org840d81f" class="figure">
+<p><img src="images/image-2.jpg" alt="image-2.jpg" width="300" />
 </p>
-<p><span class="figure-number">Figure 8: </span>Images-2</p>
+<p><span class="figure-number">Figure 9: </span>Images-2</p>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org2564002" class="outline-3">
-<h3 id="org2564002"><span class="section-number-3">4.7</span> Button</h3>
+<div id="outline-container-orgc107f6c" class="outline-3">
+<h3 id="orgc107f6c"><span class="section-number-3">4.7</span> Button</h3>
 <div class="outline-text-3" id="text-4-7">
 </div>
-<div id="outline-container-org68e4df0" class="outline-4">
-<h4 id="org68e4df0"><span class="section-number-4">4.7.1</span> 語法</h4>
+<div id="outline-container-orgadfe878" class="outline-4">
+<h4 id="orgadfe878"><span class="section-number-4">4.7.1</span> 語法</h4>
 <div class="outline-text-4" id="text-4-7-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #5B6268;">//</span><span style="color: #5B6268;">...</span>
@@ -860,8 +967,8 @@ SwiftUI 本身即支援 Dynamic Type、Dark Mode、 Localization 等等。這邊
 </div>
 </div>
 
-<div id="outline-container-org449912c" class="outline-4">
-<h4 id="org449912c"><span class="section-number-4">4.7.2</span> 範例: 按下 Button，改變 Text title</h4>
+<div id="outline-container-org08e33bd" class="outline-4">
+<h4 id="org08e33bd"><span class="section-number-4">4.7.2</span> 範例: 按下 Button，改變 Text title</h4>
 <div class="outline-text-4" id="text-4-7-2">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">ContentView</span>: View {
@@ -892,25 +999,25 @@ SwiftUI 本身即支援 Dynamic Type、Dark Mode、 Localization 等等。這邊
 </div>
 </div>
 
-<div id="outline-container-org84ed626" class="outline-4">
-<h4 id="org84ed626"><span class="section-number-4">4.7.3</span> Demo</h4>
+<div id="outline-container-org8735e8b" class="outline-4">
+<h4 id="org8735e8b"><span class="section-number-4">4.7.3</span> Demo</h4>
 <div class="outline-text-4" id="text-4-7-3">
 
-<div id="org05bfa07" class="figure">
-<p><img src="images/swbtn-1.jpg" alt="swbtn-1.jpg" />
+<div id="org96bdf40" class="figure">
+<p><img src="images/swbtn-1.jpg" alt="swbtn-1.jpg" width="300" />
 </p>
-<p><span class="figure-number">Figure 9: </span>Button</p>
+<p><span class="figure-number">Figure 10: </span>Button</p>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgd10e57b" class="outline-3">
-<h3 id="orgd10e57b"><span class="section-number-3">4.8</span> TextField</h3>
+<div id="outline-container-org0b3b3d2" class="outline-3">
+<h3 id="org0b3b3d2"><span class="section-number-3">4.8</span> TextField</h3>
 <div class="outline-text-3" id="text-4-8">
 </div>
-<div id="outline-container-orgdbf9dc5" class="outline-4">
-<h4 id="orgdbf9dc5"><span class="section-number-4">4.8.1</span> 語法</h4>
+<div id="outline-container-orgda29ce1" class="outline-4">
+<h4 id="orgda29ce1"><span class="section-number-4">4.8.1</span> 語法</h4>
 <div class="outline-text-4" id="text-4-8-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">@State</span> <span style="color: #51afef;">private</span> <span style="color: #51afef;">var</span> &#35722;&#25976;=<span style="color: #98be65;">"&#20540;"</span>
@@ -920,8 +1027,8 @@ SwiftUI 本身即支援 Dynamic Type、Dark Mode、 Localization 等等。這邊
 </div>
 </div>
 
-<div id="outline-container-orgf09f888" class="outline-4">
-<h4 id="orgf09f888"><span class="section-number-4">4.8.2</span> 範例: 於 TextField 輸入資料，顯示於 Text 中</h4>
+<div id="outline-container-org628a442" class="outline-4">
+<h4 id="org628a442"><span class="section-number-4">4.8.2</span> 範例: 於 TextField 輸入資料，顯示於 Text 中</h4>
 <div class="outline-text-4" id="text-4-8-2">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> SwiftUI
@@ -950,40 +1057,1182 @@ SwiftUI 本身即支援 Dynamic Type、Dark Mode、 Localization 等等。這邊
 </div>
 </div>
 
-<div id="outline-container-orgca32dd9" class="outline-4">
-<h4 id="orgca32dd9"><span class="section-number-4">4.8.3</span> Demo</h4>
+<div id="outline-container-orgf43d1fc" class="outline-4">
+<h4 id="orgf43d1fc"><span class="section-number-4">4.8.3</span> Demo</h4>
 <div class="outline-text-4" id="text-4-8-3">
 
-<div id="orgb28ab27" class="figure">
-<p><img src="images/txtfield-1.jpg" alt="txtfield-1.jpg" />
+<div id="orgad0af57" class="figure">
+<p><img src="images/txtfield-1.jpg" alt="txtfield-1.jpg" width="300" />
 </p>
-<p><span class="figure-number">Figure 10: </span>Button</p>
+<p><span class="figure-number">Figure 11: </span>Button</p>
 </div>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org8d7c36f" class="outline-2">
-<h2 id="org8d7c36f"><span class="section-number-2">5</span> Customize UI Components</h2>
+<div id="outline-container-org541331f" class="outline-2">
+<h2 id="org541331f"><span class="section-number-2">5</span> Customize UI Components</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 SwiftUI 提供豐富的 modifier 幫助我們設計客製 UI 元件的樣式，諸如陰影，旋轉等效果皆可透過 modifier 實現，還可以搭配方便的拖曳加入相關程式碼。<sup><a id="fnr.5" class="footref" href="#fn.5">5</a></sup>
 </p>
 </div>
+
+<div id="outline-container-org4b30e34" class="outline-3">
+<h3 id="org4b30e34"><span class="section-number-3">5.1</span> Text</h3>
+<div class="outline-text-3" id="text-5-1">
+</div>
+<div id="outline-container-org6005680" class="outline-4">
+<h4 id="org6005680"><span class="section-number-4">5.1.1</span> Advanced Attributes <sup><a id="fnr.6" class="footref" href="#fn.6">6</a></sup></h4>
+<div class="outline-text-4" id="text-5-1-1">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">ContentView</span>: View {
+<span class="linenr"> 2: </span>    <span style="color: #51afef;">var</span> body: <span style="color: #51afef;">some</span> View {
+<span class="linenr"> 3: </span>        <span style="color: #c678dd;">Text</span>(<span style="color: #98be65;">"Example"</span>)
+<span class="linenr"> 4: </span>            .<span style="color: #c678dd;">font</span>(.<span style="color: #c678dd;">title</span>)
+<span class="linenr"> 5: </span>            .<span style="color: #c678dd;">fontWeight</span>(.<span style="color: #dcaeea;">bold</span>)
+<span class="linenr"> 6: </span>            .<span style="color: #c678dd;">foregroundColor</span>(Color.<span style="color: #dcaeea;">white</span>)
+<span class="linenr"> 7: </span>            .<span style="color: #c678dd;">padding</span>(<span style="color: #da8548; font-weight: bold;">4</span>)
+<span class="linenr"> 8: </span>            .<span style="color: #c678dd;">background</span>(Color.<span style="color: #dcaeea;">gray</span>)
+<span class="linenr"> 9: </span>            .<span style="color: #c678dd;">cornerRadius</span>(<span style="color: #da8548; font-weight: bold;">14.0</span>)
+<span class="linenr">10: </span>            .<span style="color: #c678dd;">rotationEffect</span>(<span style="color: #c678dd;">Angle</span>(degrees: <span style="color: #da8548; font-weight: bold;">15</span>))
+<span class="linenr">11: </span>            .<span style="color: #c678dd;">rotation3DEffect</span>(<span style="color: #c678dd;">Angle</span>(degrees: <span style="color: #da8548; font-weight: bold;">30</span>), axis: (x: <span style="color: #da8548; font-weight: bold;">10</span>, y: <span style="color: #da8548; font-weight: bold;">30</span>, z: <span style="color: #da8548; font-weight: bold;">30</span>))
+<span class="linenr">12: </span>            .<span style="color: #c678dd;">shadow</span>(radius: <span style="color: #da8548; font-weight: bold;">20</span>)
+<span class="linenr">13: </span>    }
+<span class="linenr">14: </span>}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd240f0c" class="outline-4">
+<h4 id="orgd240f0c"><span class="section-number-4">5.1.2</span> Demo</h4>
+<div class="outline-text-4" id="text-5-1-2">
+
+<div id="orgb6d8eba" class="figure">
+<p><img src="images/adv-text-attributes.jpg" alt="adv-text-attributes.jpg" width="300" />
+</p>
+<p><span class="figure-number">Figure 12: </span>Text Attributes</p>
+</div>
+</div>
+</div>
 </div>
 
-<div id="outline-container-org0fe7618" class="outline-2">
-<h2 id="org0fe7618"><span class="section-number-2">6</span> Advanced Commponents</h2>
+<div id="outline-container-org03b79bb" class="outline-3">
+<h3 id="org03b79bb"><span class="section-number-3">5.2</span> Image</h3>
+<div class="outline-text-3" id="text-5-2">
+</div>
+<div id="outline-container-orgcb7a4df" class="outline-4">
+<h4 id="orgcb7a4df"><span class="section-number-4">5.2.1</span> Advanced Attributes <sup><a id="fnr.7" class="footref" href="#fn.7">7</a></sup></h4>
+<div class="outline-text-4" id="text-5-2-1">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> SwiftUI
+<span class="linenr"> 2: </span>
+<span class="linenr"> 3: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">ContentView</span>: View {
+<span class="linenr"> 4: </span>    <span style="color: #51afef;">var</span> body: <span style="color: #51afef;">some</span> View {
+<span class="linenr"> 5: </span>        VStack {
+<span class="linenr"> 6: </span>            <span style="color: #c678dd;">Text</span>(<span style="color: #98be65;">"Albert Camus"</span>)
+<span class="linenr"> 7: </span>                .<span style="color: #c678dd;">font</span>(.<span style="color: #dcaeea;">body</span>)
+<span class="linenr"> 8: </span>                .<span style="color: #c678dd;">foregroundColor</span>(.<span style="color: #dcaeea;">white</span>)
+<span class="linenr"> 9: </span>                .<span style="color: #c678dd;">background</span>(Color.<span style="color: #dcaeea;">orange</span>)
+<span class="linenr">10: </span>            <span style="color: #c678dd;">Image</span>(<span style="color: #98be65;">"Albert-Camus"</span>)
+<span class="linenr">11: </span>                .<span style="color: #c678dd;">resizable</span>()
+<span class="linenr">12: </span>                .<span style="color: #c678dd;">scaledToFill</span>()
+<span class="linenr">13: </span>                .<span style="color: #c678dd;">frame</span>(width: <span style="color: #da8548; font-weight: bold;">100</span>, height: <span style="color: #da8548; font-weight: bold;">100</span>, alignment: .<span style="color: #dcaeea;">center</span>)
+<span class="linenr">14: </span>                .<span style="color: #c678dd;">clipShape</span>(<span style="color: #c678dd;">Circle</span>())
+<span class="linenr">15: </span>            <span style="color: #c678dd;">Image</span>(systemName: <span style="color: #98be65;">"alarm.fill"</span>)
+<span class="linenr">16: </span>                .<span style="color: #c678dd;">resizable</span>()
+<span class="linenr">17: </span>                .<span style="color: #c678dd;">scaledToFill</span>()
+<span class="linenr">18: </span>                .<span style="color: #c678dd;">frame</span>(width: <span style="color: #da8548; font-weight: bold;">100</span>, height: <span style="color: #da8548; font-weight: bold;">100</span>, alignment: .<span style="color: #dcaeea;">center</span>)
+<span class="linenr">19: </span>            <span style="color: #c678dd;">Image</span>(<span style="color: #98be65;">"Albert-Camus"</span>)
+<span class="linenr">20: </span>                .<span style="color: #c678dd;">frame</span>(width: <span style="color: #da8548; font-weight: bold;">100</span>, height: <span style="color: #da8548; font-weight: bold;">100</span>, alignment: .<span style="color: #dcaeea;">center</span>)
+<span class="linenr">21: </span>                .<span style="color: #c678dd;">mask</span>(<span style="color: #c678dd;">Image</span>(systemName: <span style="color: #98be65;">"alarm.fill"</span>)
+<span class="linenr">22: </span>                    .<span style="color: #c678dd;">resizable</span>()
+<span class="linenr">23: </span>                    .<span style="color: #c678dd;">scaledToFit</span>())
+<span class="linenr">24: </span>                .<span style="color: #c678dd;">shadow</span>(radius: <span style="color: #da8548; font-weight: bold;">20</span>)
+<span class="linenr">25: </span>        }
+<span class="linenr">26: </span>    }
+<span class="linenr">27: </span>}
+<span class="linenr">28: </span>
+<span class="linenr">29: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">ContentView_Previews</span>: PreviewProvider {
+<span class="linenr">30: </span>    <span style="color: #51afef;">static</span> <span style="color: #51afef;">var</span> previews: <span style="color: #51afef;">some</span> View {
+<span class="linenr">31: </span>        <span style="color: #c678dd;">ContentView</span>()
+<span class="linenr">32: </span>    }
+<span class="linenr">33: </span>}
+<span class="linenr">34: </span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org5fed45a" class="outline-4">
+<h4 id="org5fed45a"><span class="section-number-4">5.2.2</span> Demo</h4>
+<div class="outline-text-4" id="text-5-2-2">
+
+<div id="org3bddb9e" class="figure">
+<p><img src="images/image-advanced-attributes.jpg" alt="image-advanced-attributes.jpg" width="300" />
+</p>
+<p><span class="figure-number">Figure 13: </span>Image Attributes</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org386abea" class="outline-3">
+<h3 id="org386abea"><span class="section-number-3">5.3</span> Button</h3>
+<div class="outline-text-3" id="text-5-3">
+</div>
+<div id="outline-container-orgda14991" class="outline-4">
+<h4 id="orgda14991"><span class="section-number-4">5.3.1</span> Advanced Attributes <sup><a id="fnr.8" class="footref" href="#fn.8">8</a></sup></h4>
+<div class="outline-text-4" id="text-5-3-1">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> SwiftUI
+<span class="linenr"> 2: </span>
+<span class="linenr"> 3: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">ContentView</span>: View {
+<span class="linenr"> 4: </span>    <span style="color: #51afef;">var</span> body: <span style="color: #51afef;">some</span> View {
+<span class="linenr"> 5: </span>        <span style="color: #c678dd;">VStack</span>(spacing: <span style="color: #da8548; font-weight: bold;">5.0</span>) {
+<span class="linenr"> 6: </span>            <span style="color: #c678dd;">Text</span>(<span style="color: #98be65;">"Customized Button"</span>)
+<span class="linenr"> 7: </span>                .<span style="color: #c678dd;">font</span>(.<span style="color: #dcaeea;">body</span>)
+<span class="linenr"> 8: </span>                .<span style="color: #c678dd;">foregroundColor</span>(.<span style="color: #dcaeea;">white</span>)
+<span class="linenr"> 9: </span>                .<span style="color: #c678dd;">background</span>(Color.<span style="color: #dcaeea;">orange</span>)
+<span class="linenr">10: </span>            <span style="color: #c678dd;">Button</span>(action: {
+<span class="linenr">11: </span>                <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"Hello button tapped!"</span>)
+<span class="linenr">12: </span>            }) {
+<span class="linenr">13: </span>                <span style="color: #c678dd;">Text</span>(<span style="color: #98be65;">"HI HI"</span>)
+<span class="linenr">14: </span>                    .<span style="color: #c678dd;">fontWeight</span>(.<span style="color: #dcaeea;">bold</span>)
+<span class="linenr">15: </span>                    .<span style="color: #c678dd;">font</span>(.<span style="color: #c678dd;">title</span>)
+<span class="linenr">16: </span>                    .<span style="color: #c678dd;">foregroundColor</span>(.<span style="color: #dcaeea;">purple</span>)
+<span class="linenr">17: </span>                    .<span style="color: #c678dd;">padding</span>()
+<span class="linenr">18: </span>                    .<span style="color: #c678dd;">border</span>(Color.<span style="color: #dcaeea;">purple</span>, width: <span style="color: #da8548; font-weight: bold;">5</span>)
+<span class="linenr">19: </span>            }
+<span class="linenr">20: </span>            <span style="color: #c678dd;">Button</span>(action: {
+<span class="linenr">21: </span>                <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"Hello button tapped!"</span>)
+<span class="linenr">22: </span>            }) {
+<span class="linenr">23: </span>                <span style="color: #c678dd;">Text</span>(<span style="color: #98be65;">"Press me"</span>)
+<span class="linenr">24: </span>                    .<span style="color: #c678dd;">fontWeight</span>(.<span style="color: #dcaeea;">light</span>)
+<span class="linenr">25: </span>                    .<span style="color: #c678dd;">font</span>(.<span style="color: #c678dd;">title</span>)
+<span class="linenr">26: </span>                    .<span style="color: #c678dd;">foregroundColor</span>(.<span style="color: #dcaeea;">green</span>)
+<span class="linenr">27: </span>                    .<span style="color: #c678dd;">padding</span>(<span style="color: #da8548; font-weight: bold;">5</span>)
+<span class="linenr">28: </span>                    .<span style="color: #c678dd;">overlay</span>(
+<span class="linenr">29: </span>                        <span style="color: #c678dd;">Capsule</span>(style: .<span style="color: #dcaeea;">continuous</span>)
+<span class="linenr">30: </span>                            .<span style="color: #c678dd;">stroke</span>(Color.<span style="color: #dcaeea;">green</span>, style: <span style="color: #c678dd;">StrokeStyle</span>(lineWidth: <span style="color: #da8548; font-weight: bold;">3</span>, dash: [<span style="color: #da8548; font-weight: bold;">10</span>]))
+<span class="linenr">31: </span>                )
+<span class="linenr">32: </span>            }
+<span class="linenr">33: </span>        }
+<span class="linenr">34: </span>    }
+<span class="linenr">35: </span>}
+<span class="linenr">36: </span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org97a906b" class="outline-4">
+<h4 id="org97a906b"><span class="section-number-4">5.3.2</span> Demo</h4>
+<div class="outline-text-4" id="text-5-3-2">
+
+<div id="org9ae7396" class="figure">
+<p><img src="images/customized-button-1.jpg" alt="customized-button-1.jpg" width="300" />
+</p>
+<p><span class="figure-number">Figure 14: </span>Button Attributes</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org706935f" class="outline-2">
+<h2 id="org706935f"><span class="section-number-2">6</span> Advanced Commponents</h2>
 <div class="outline-text-2" id="text-6">
 </div>
-<div id="outline-container-orgbea9758" class="outline-3">
-<h3 id="orgbea9758"><span class="section-number-3">6.1</span> List</h3>
+<div id="outline-container-orgbbc743b" class="outline-3">
+<h3 id="orgbbc743b"><span class="section-number-3">6.1</span> List</h3>
 <div class="outline-text-3" id="text-6-1">
+</div>
+<div id="outline-container-org4e975c1" class="outline-4">
+<h4 id="org4e975c1"><span class="section-number-4">6.1.1</span> 準備單一 cell 格式</h4>
+<div class="outline-text-4" id="text-6-1-1">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> SwiftUI
+<span class="linenr"> 2: </span>
+<span class="linenr"> 3: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">ContentView</span>: View {
+<span class="linenr"> 4: </span>    <span style="color: #51afef;">var</span> body: <span style="color: #51afef;">some</span> View {
+<span class="linenr"> 5: </span>        HStack {
+<span class="linenr"> 6: </span>            <span style="color: #c678dd;">Image</span>(systemName: <span style="color: #98be65;">"book"</span>)
+<span class="linenr"> 7: </span>                .<span style="color: #c678dd;">resizable</span>()
+<span class="linenr"> 8: </span>                .<span style="color: #c678dd;">frame</span>(width: <span style="color: #da8548; font-weight: bold;">30</span>, height: <span style="color: #da8548; font-weight: bold;">30</span>, alignment: .<span style="color: #dcaeea;">center</span>)
+<span class="linenr"> 9: </span>            <span style="color: #c678dd;">VStack</span>(alignment: .<span style="color: #dcaeea;">leading</span>) {
+<span class="linenr">10: </span>                <span style="color: #c678dd;">Text</span>(<span style="color: #98be65;">"Artificial Intelligence: A Modern Approach"</span>)
+<span class="linenr">11: </span>                    .<span style="color: #c678dd;">multilineTextAlignment</span>(.<span style="color: #dcaeea;">leading</span>)
+<span class="linenr">12: </span>                    .<span style="color: #c678dd;">foregroundColor</span>(Color.<span style="color: #dcaeea;">green</span>)
+<span class="linenr">13: </span>                <span style="color: #c678dd;">Text</span>(<span style="color: #98be65;">"Stuart Russell and Peter Norvig"</span>)
+<span class="linenr">14: </span>                    .<span style="color: #c678dd;">multilineTextAlignment</span>(.<span style="color: #dcaeea;">leading</span>)
+<span class="linenr">15: </span>                    .<span style="color: #c678dd;">foregroundColor</span>(Color.<span style="color: #dcaeea;">orange</span>)
+<span class="linenr">16: </span>            }
+<span class="linenr">17: </span>        }
+<span class="linenr">18: </span>    }
+<span class="linenr">19: </span>}
+<span class="linenr">20: </span>
+</pre>
+</div>
+
+<div id="orgc054556" class="figure">
+<p><img src="images/single-cell.jpg" alt="single-cell.jpg" width="300" />
+</p>
+<p><span class="figure-number">Figure 15: </span>Single cell</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org2212c5b" class="outline-4">
+<h4 id="org2212c5b"><span class="section-number-4">6.1.2</span> 轉入 List 格式</h4>
+<div class="outline-text-4" id="text-6-1-2">
+</div>
+<div id="outline-container-org4c1f037" class="outline-5">
+<h5 id="org4c1f037"><span class="section-number-5">6.1.2.1</span> 將最外層的 VStack 加入 List 中</h5>
+<div class="outline-text-5" id="text-6-1-2-1">
+
+<div id="org71a384b" class="figure">
+<p><img src="images/list-1.jpg" alt="list-1.jpg" width="500" />
+</p>
+<p><span class="figure-number">Figure 16: </span>List-1</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org0180049" class="outline-5">
+<h5 id="org0180049"><span class="section-number-5">6.1.2.2</span> list 語法</h5>
+<div class="outline-text-5" id="text-6-1-2-2">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> SwiftUI
+<span class="linenr"> 2: </span>
+<span class="linenr"> 3: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">ContentView</span>: View {
+<span class="linenr"> 4: </span>    <span style="color: #51afef;">var</span> body: <span style="color: #51afef;">some</span> View {
+<span class="linenr"> 5: </span>        <span style="color: #c678dd;">List</span>(<span style="color: #da8548; font-weight: bold;">0</span> ..&lt; <span style="color: #da8548; font-weight: bold;">5</span>) { item <span style="color: #51afef;">in</span>
+<span class="linenr"> 6: </span>            <span style="color: #c678dd;">Image</span>(systemName: <span style="color: #98be65;">"book"</span>)
+<span class="linenr"> 7: </span>                .<span style="color: #c678dd;">resizable</span>()
+<span class="linenr"> 8: </span>                .<span style="color: #c678dd;">frame</span>(width: <span style="color: #da8548; font-weight: bold;">30</span>, height: <span style="color: #da8548; font-weight: bold;">30</span>, alignment: .<span style="color: #dcaeea;">center</span>)
+<span class="linenr"> 9: </span>            <span style="color: #c678dd;">VStack</span>(alignment: .<span style="color: #dcaeea;">leading</span>) {
+<span class="linenr">10: </span>                <span style="color: #c678dd;">Text</span>(<span style="color: #98be65;">"Artificial Intelligence: A Modern Approach"</span>)
+<span class="linenr">11: </span>                    .<span style="color: #c678dd;">multilineTextAlignment</span>(.<span style="color: #dcaeea;">leading</span>)
+<span class="linenr">12: </span>                    .<span style="color: #c678dd;">foregroundColor</span>(Color.<span style="color: #dcaeea;">green</span>)
+<span class="linenr">13: </span>                <span style="color: #c678dd;">Text</span>(<span style="color: #98be65;">"Stuart Russell and Peter Norvig"</span>)
+<span class="linenr">14: </span>                    .<span style="color: #c678dd;">multilineTextAlignment</span>(.<span style="color: #dcaeea;">leading</span>)
+<span class="linenr">15: </span>                    .<span style="color: #c678dd;">foregroundColor</span>(Color.<span style="color: #dcaeea;">orange</span>)
+<span class="linenr">16: </span>            }
+<span class="linenr">17: </span>        }
+<span class="linenr">18: </span>    }
+<span class="linenr">19: </span>}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgee19a06" class="outline-5">
+<h5 id="orgee19a06"><span class="section-number-5">6.1.2.3</span> 結果</h5>
+<div class="outline-text-5" id="text-6-1-2-3">
+
+<div id="orgc82c7c7" class="figure">
+<p><img src="images/list-2.jpg" alt="list-2.jpg" width="500" />
+</p>
+<p><span class="figure-number">Figure 17: </span>List-2</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org63f7dca" class="outline-4">
+<h4 id="org63f7dca"><span class="section-number-4">6.1.3</span> 建立 list 來源數據<sup><a id="fnr.3.100" class="footref" href="#fn.3">3</a></sup></h4>
+<div class="outline-text-4" id="text-6-1-3">
+<p class="verse">
+In order to handle dynamic items, you must first tell SwiftUI how it can identify which item is which. This is done using the Identifiable protocol, which has only one requirement: some sort of id value that SwiftUI can use to see which item is which. <sup><a id="fnr.9" class="footref" href="#fn.9">9</a></sup><br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> SwiftUI
+<span class="linenr"> 2: </span>
+<span class="linenr"> 3: </span><span style="color: #5B6268;">//</span><span style="color: #5B6268;">&#24314;&#31435;book struct&#6;</span>
+<span class="linenr"> 4: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">Book</span>: Identifiable {
+<span class="linenr"> 5: </span>    <span style="color: #51afef;">var</span> id = <span style="color: #c678dd;">UUID</span>()
+<span class="linenr"> 6: </span>    <span style="color: #51afef;">var</span> title: <span style="color: #c678dd;">String</span>
+<span class="linenr"> 7: </span>    <span style="color: #51afef;">var</span> author: <span style="color: #c678dd;">String</span>
+<span class="linenr"> 8: </span>    <span style="color: #51afef;">var</span> image: <span style="color: #c678dd;">String</span>
+<span class="linenr"> 9: </span>}
+<span class="linenr">10: </span>
+<span class="linenr">11: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">ContentView</span>: View {
+<span class="linenr">12: </span>    <span style="color: #51afef;">var</span> books = [
+<span class="linenr">13: </span>      <span style="color: #c678dd;">Book</span>(id: <span style="color: #c678dd;">UUID</span>(), title: <span style="color: #98be65;">"&#22320;&#29508;&#34253;&#35519;"</span>, author: <span style="color: #98be65;">"&#26446;&#26597;&#24503;"</span>, image: <span style="color: #98be65;">"b1"</span>),
+<span class="linenr">14: </span>      <span style="color: #c678dd;">Book</span>(id: <span style="color: #c678dd;">UUID</span>(), title: <span style="color: #98be65;">"&#33267;&#27515;&#26041;&#20241;"</span>, author: <span style="color: #98be65;">"&#26446;&#26597;&#24503;"</span>, image: <span style="color: #98be65;">"b2"</span>),
+<span class="linenr">15: </span>      <span style="color: #c678dd;">Book</span>(id: <span style="color: #c678dd;">UUID</span>(), title: <span style="color: #98be65;">"&#19968;&#35320;&#21363;&#30332;"</span>, author: <span style="color: #98be65;">"&#26446;&#26597;&#24503;"</span>, image: <span style="color: #98be65;">"b3"</span>),
+<span class="linenr">16: </span>      <span style="color: #c678dd;">Book</span>(id: <span style="color: #c678dd;">UUID</span>(), title: <span style="color: #98be65;">"&#32034;&#21629;&#35370;&#23458;"</span>, author: <span style="color: #98be65;">"&#26446;&#26597;&#24503;"</span>, image: <span style="color: #98be65;">"b4"</span>),
+<span class="linenr">17: </span>      <span style="color: #c678dd;">Book</span>(id: <span style="color: #c678dd;">UUID</span>(), title: <span style="color: #98be65;">"&#38343;&#22812;&#22238;&#32882; "</span>, author: <span style="color: #98be65;">"&#26446;&#26597;&#24503;"</span>, image: <span style="color: #98be65;">"b5"</span>)]
+<span class="linenr">18: </span>
+<span class="linenr">19: </span>    <span style="color: #5B6268;">//</span><span style="color: #5B6268;">.....</span>
+<span class="linenr">20: </span>}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org83572db" class="outline-4">
+<h4 id="org83572db"><span class="section-number-4">6.1.4</span> 將數據連結到列表中<sup><a id="fnr.3.100" class="footref" href="#fn.3">3</a></sup></h4>
+<div class="outline-text-4" id="text-6-1-4">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> SwiftUI
+<span class="linenr"> 2: </span>
+<span class="linenr"> 3: </span>    <span style="color: #5B6268;">//</span><span style="color: #5B6268;">....</span>
+<span class="linenr"> 4: </span>    <span style="color: #51afef;">var</span> body: <span style="color: #51afef;">some</span> View {
+<span class="linenr"> 5: </span>        <span style="color: #c678dd;">List</span>(books) { book <span style="color: #51afef;">in</span>
+<span class="linenr"> 6: </span>            <span style="color: #c678dd;">Image</span>(book.<span style="color: #dcaeea;">image</span>)
+<span class="linenr"> 7: </span>                .<span style="color: #c678dd;">resizable</span>()
+<span class="linenr"> 8: </span>                .<span style="color: #c678dd;">frame</span>(width: <span style="color: #da8548; font-weight: bold;">40</span>, height: <span style="color: #da8548; font-weight: bold;">40</span>, alignment: .<span style="color: #dcaeea;">center</span>)
+<span class="linenr"> 9: </span>            <span style="color: #c678dd;">VStack</span>(alignment: .<span style="color: #dcaeea;">leading</span>) {
+<span class="linenr">10: </span>                <span style="color: #c678dd;">Text</span>(book.<span style="color: #c678dd;">title</span>)
+<span class="linenr">11: </span>                    .<span style="color: #c678dd;">multilineTextAlignment</span>(.<span style="color: #dcaeea;">leading</span>)
+<span class="linenr">12: </span>                    .<span style="color: #c678dd;">foregroundColor</span>(Color.<span style="color: #dcaeea;">green</span>)
+<span class="linenr">13: </span>                <span style="color: #c678dd;">Text</span>(book.<span style="color: #c678dd;">author</span>)
+<span class="linenr">14: </span>                    .<span style="color: #c678dd;">multilineTextAlignment</span>(.<span style="color: #dcaeea;">leading</span>)
+<span class="linenr">15: </span>                    .<span style="color: #c678dd;">foregroundColor</span>(Color.<span style="color: #dcaeea;">orange</span>)
+<span class="linenr">16: </span>            }
+<span class="linenr">17: </span>        }
+<span class="linenr">18: </span>    }
+<span class="linenr">19: </span>}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orga02e1cf" class="outline-4">
+<h4 id="orga02e1cf"><span class="section-number-4">6.1.5</span> 結果</h4>
+<div class="outline-text-4" id="text-6-1-5">
+
+<div id="org1a92964" class="figure">
+<p><img src="images/list-3.jpg" alt="list-3.jpg" width="300" />
+</p>
+<p><span class="figure-number">Figure 18: </span>List-3</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org8557ef9" class="outline-4">
+<h4 id="org8557ef9"><span class="section-number-4">6.1.6</span> 為什麼要加入 id 與 Identifiable</h4>
+<div class="outline-text-4" id="text-6-1-6">
 <ul class="org-ul">
-<li><a href="https://medium.com/@mikru168/swiftui-%E6%B7%BA%E7%8E%A9-swiftui-%E7%94%A8%E5%85%B6%E5%BB%BA%E6%A7%8B%E4%B8%80%E7%B0%A1%E5%96%AE%E7%9A%84-app-2f2477bd49d7">簡介 SwiftUI &amp; 用其建構一簡單的 APP</a></li>
+<li>Identifiable: 允許 Array 中有重複值</li>
+<li>id: 明確區分重複值</li>
+<li>UUID: 自動生成 unique 值</li>
+<li>詳細說明如<a href="https://medium.com/flawless-app-stories/swiftui-dynamic-list-identifiable-73c56215f9ff">SwiftUI - Dynamic List &amp; Identifiable</a></li>
 </ul>
 </div>
+</div>
+</div>
+
+<div id="outline-container-orga0954d0" class="outline-3">
+<h3 id="orga0954d0"><span class="section-number-3">6.2</span> Navigation bar</h3>
+<div class="outline-text-3" id="text-6-2">
+<ul class="org-ul">
+<li>於 body 中最外層的 component 之外加入 NavigationView</li>
+<li>Title: navigationBarTitle()</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> SwiftUI
+<span class="linenr"> 2: </span>  ...
+<span class="linenr"> 3: </span>
+<span class="linenr"> 4: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">ContentView</span>: View {
+<span class="linenr"> 5: </span>    ....
+<span class="linenr"> 6: </span>    <span style="color: #51afef;">var</span> body: <span style="color: #51afef;">some</span> View {
+<span class="linenr"> 7: </span>        NavigationView {
+<span class="linenr"> 8: </span>            <span style="color: #c678dd;">List</span>(books) { book <span style="color: #51afef;">in</span>
+<span class="linenr"> 9: </span>                ...
+<span class="linenr">10: </span>                }
+<span class="linenr">11: </span>            }.<span style="color: #c678dd;">navigationBarTitle</span>(<span style="color: #c678dd;">Text</span>(<span style="color: #98be65;">"&#26360;&#21934;"</span>))
+<span class="linenr">12: </span>        }
+<span class="linenr">13: </span>    }
+<span class="linenr">14: </span>}
+<span class="linenr">15: </span>...
+</pre>
+</div>
+
+<div id="org36d644f" class="figure">
+<p><img src="images/navigation-1.jpg" alt="navigation-1.jpg" width="300" />
+</p>
+<p><span class="figure-number">Figure 19: </span>Navigation bar</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgeb90ff8" class="outline-3">
+<h3 id="orgeb90ff8"><span class="section-number-3">6.3</span> Button, Divider</h3>
+<div class="outline-text-3" id="text-6-3">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #5B6268;">//</span>
+<span class="linenr"> 2: </span><span style="color: #5B6268;">//  </span><span style="color: #5B6268;">ContentView.swift</span>
+<span class="linenr"> 3: </span><span style="color: #5B6268;">//  </span><span style="color: #5B6268;">uitest</span>
+<span class="linenr"> 4: </span><span style="color: #5B6268;">//</span>
+<span class="linenr"> 5: </span><span style="color: #5B6268;">//  </span><span style="color: #5B6268;">Created by yen yung chin on 2020/7/29.</span>
+<span class="linenr"> 6: </span><span style="color: #5B6268;">//  </span><span style="color: #5B6268;">Copyright &#169; 2020 Letranger.tw. All rights reserved.</span>
+<span class="linenr"> 7: </span><span style="color: #5B6268;">//</span>
+<span class="linenr"> 8: </span>
+<span class="linenr"> 9: </span><span style="color: #51afef;">import</span> SwiftUI
+<span class="linenr">10: </span>
+<span class="linenr">11: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">ContentView</span>: View {
+<span class="linenr">12: </span>    <span style="color: #51afef;">@State</span> <span style="color: #51afef;">private</span> <span style="color: #51afef;">var</span> a = <span style="color: #98be65;">""</span>
+<span class="linenr">13: </span>    <span style="color: #51afef;">@State</span> <span style="color: #51afef;">private</span> <span style="color: #51afef;">var</span> b = <span style="color: #98be65;">""</span>
+<span class="linenr">14: </span>    <span style="color: #51afef;">@State</span> <span style="color: #51afef;">private</span> <span style="color: #51afef;">var</span> c = <span style="color: #98be65;">"Ans:"</span>
+<span class="linenr">15: </span>    
+<span class="linenr">16: </span>    <span style="color: #51afef;">var</span> body: <span style="color: #51afef;">some</span> View {
+<span class="linenr">17: </span>        VStack {
+<span class="linenr">18: </span>            VStack {
+<span class="linenr">19: </span>                <span style="color: #c678dd;">Divider</span>()
+<span class="linenr">20: </span>                <span style="color: #c678dd;">TextField</span>(<span style="color: #98be65;">"Number 1: "</span>, text: $b)
+<span class="linenr">21: </span>                <span style="color: #c678dd;">Divider</span>()
+<span class="linenr">22: </span>                <span style="color: #c678dd;">TextField</span>(<span style="color: #98be65;">"Number 2:"</span>, text: $a)
+<span class="linenr">23: </span>                <span style="color: #c678dd;">Divider</span>()
+<span class="linenr">24: </span>                <span style="color: #c678dd;">Button</span>(<span style="color: #98be65;">"&#10133;"</span>) {
+<span class="linenr">25: </span>                    <span style="color: #51afef;">let</span> one = <span style="color: #c678dd;">Int</span>(<span style="color: #51afef;">self</span>.<span style="color: #dcaeea;">a</span>) ?? <span style="color: #da8548; font-weight: bold;">0</span>
+<span class="linenr">26: </span>                    <span style="color: #51afef;">let</span> two = <span style="color: #c678dd;">Int</span>(<span style="color: #51afef;">self</span>.<span style="color: #dcaeea;">b</span>) ?? <span style="color: #da8548; font-weight: bold;">0</span>
+<span class="linenr">27: </span>                    <span style="color: #51afef;">self</span>.<span style="color: #dcaeea;">c</span> = <span style="color: #98be65;">"Ans: "</span> + <span style="color: #c678dd;">String</span>(one + two)
+<span class="linenr">28: </span>                }
+<span class="linenr">29: </span>                .<span style="color: #c678dd;">frame</span>(width: <span style="color: #da8548; font-weight: bold;">40</span>, height: <span style="color: #da8548; font-weight: bold;">30</span>, alignment: .<span style="color: #dcaeea;">center</span>)
+<span class="linenr">30: </span>                .<span style="color: #c678dd;">foregroundColor</span>(.<span style="color: #dcaeea;">white</span>)
+<span class="linenr">31: </span>                .<span style="color: #c678dd;">background</span>(Color.<span style="color: #dcaeea;">green</span>)
+<span class="linenr">32: </span>                .<span style="color: #c678dd;">font</span>(.<span style="color: #dcaeea;">largeTitle</span>)
+<span class="linenr">33: </span>                <span style="color: #c678dd;">Divider</span>()
+<span class="linenr">34: </span>                <span style="color: #c678dd;">Text</span>(verbatim: c)
+<span class="linenr">35: </span>                    .<span style="color: #c678dd;">foregroundColor</span>(.<span style="color: #dcaeea;">gray</span>)
+<span class="linenr">36: </span>            }
+<span class="linenr">37: </span>            .<span style="color: #c678dd;">frame</span>(width: <span style="color: #da8548; font-weight: bold;">200</span>, height: <span style="color: #da8548; font-weight: bold;">160</span>, alignment: .<span style="color: #dcaeea;">center</span>)
+<span class="linenr">38: </span>            
+<span class="linenr">39: </span>        }
+<span class="linenr">40: </span>    }
+<span class="linenr">41: </span>}
+</pre>
+</div>
+
+<div id="org17941d5" class="figure">
+<p><img src="images/btn-1.jpg" alt="btn-1.jpg" width="300" />
+</p>
+<p><span class="figure-number">Figure 20: </span>Button</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org04870cf" class="outline-3">
+<h3 id="org04870cf"><span class="section-number-3">6.4</span> background, opacity</h3>
+<div class="outline-text-3" id="text-6-4">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #5B6268;">//</span>
+<span class="linenr"> 2: </span><span style="color: #5B6268;">//  </span><span style="color: #5B6268;">ContentView.swift</span>
+<span class="linenr"> 3: </span><span style="color: #5B6268;">//  </span><span style="color: #5B6268;">uitest</span>
+<span class="linenr"> 4: </span><span style="color: #5B6268;">//</span>
+<span class="linenr"> 5: </span><span style="color: #5B6268;">//  </span><span style="color: #5B6268;">Created by yen yung chin on 2020/7/29.</span>
+<span class="linenr"> 6: </span><span style="color: #5B6268;">//  </span><span style="color: #5B6268;">Copyright &#169; 2020 Letranger.tw. All rights reserved.</span>
+<span class="linenr"> 7: </span><span style="color: #5B6268;">//</span>
+<span class="linenr"> 8: </span>
+<span class="linenr"> 9: </span><span style="color: #51afef;">import</span> SwiftUI
+<span class="linenr">10: </span>
+<span class="linenr">11: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">ContentView</span>: View {
+<span class="linenr">12: </span>    <span style="color: #51afef;">@State</span> <span style="color: #51afef;">private</span> <span style="color: #51afef;">var</span> a = <span style="color: #98be65;">""</span>
+<span class="linenr">13: </span>    <span style="color: #51afef;">@State</span> <span style="color: #51afef;">private</span> <span style="color: #51afef;">var</span> b = <span style="color: #98be65;">""</span>
+<span class="linenr">14: </span>    <span style="color: #51afef;">@State</span> <span style="color: #51afef;">private</span> <span style="color: #51afef;">var</span> c = <span style="color: #98be65;">"Ans:"</span>
+<span class="linenr">15: </span>
+<span class="linenr">16: </span>    <span style="color: #51afef;">var</span> body: <span style="color: #51afef;">some</span> View {
+<span class="linenr">17: </span>        <span style="color: #c678dd;">VStack</span>(alignment: .<span style="color: #dcaeea;">center</span>) {
+<span class="linenr">18: </span>            <span style="color: #c678dd;">Text</span>(<span style="color: #98be65;">"&#35336;&#31639;&#27231;"</span>)
+<span class="linenr">19: </span>            <span style="color: #c678dd;">Divider</span>()
+<span class="linenr">20: </span>            <span style="color: #c678dd;">TextField</span>(<span style="color: #98be65;">"Number 1: "</span>, text: $b)
+<span class="linenr">21: </span>            <span style="color: #c678dd;">Divider</span>()
+<span class="linenr">22: </span>            <span style="color: #c678dd;">TextField</span>(<span style="color: #98be65;">"Number 2:"</span>, text: $a)
+<span class="linenr">23: </span>            <span style="color: #c678dd;">Divider</span>()
+<span class="linenr">24: </span>            <span style="color: #c678dd;">Button</span>(<span style="color: #98be65;">"&#10133;"</span>) {
+<span class="linenr">25: </span>                <span style="color: #51afef;">let</span> one = <span style="color: #c678dd;">Int</span>(<span style="color: #51afef;">self</span>.<span style="color: #dcaeea;">a</span>) ?? <span style="color: #da8548; font-weight: bold;">0</span>
+<span class="linenr">26: </span>                <span style="color: #51afef;">let</span> two = <span style="color: #c678dd;">Int</span>(<span style="color: #51afef;">self</span>.<span style="color: #dcaeea;">b</span>) ?? <span style="color: #da8548; font-weight: bold;">0</span>
+<span class="linenr">27: </span>                <span style="color: #51afef;">self</span>.<span style="color: #dcaeea;">c</span> = <span style="color: #98be65;">"Ans: "</span> + <span style="color: #c678dd;">String</span>(one + two)
+<span class="linenr">28: </span>            }
+<span class="linenr">29: </span>            .<span style="color: #c678dd;">frame</span>(width: <span style="color: #da8548; font-weight: bold;">40</span>, height: <span style="color: #da8548; font-weight: bold;">30</span>, alignment: .<span style="color: #dcaeea;">center</span>)
+<span class="linenr">30: </span>            .<span style="color: #c678dd;">foregroundColor</span>(.<span style="color: #dcaeea;">white</span>)
+<span class="linenr">31: </span>            .<span style="color: #c678dd;">background</span>(Color.<span style="color: #dcaeea;">white</span>)
+<span class="linenr">32: </span>            .<span style="color: #c678dd;">font</span>(.<span style="color: #dcaeea;">largeTitle</span>)
+<span class="linenr">33: </span>            <span style="color: #c678dd;">Divider</span>()
+<span class="linenr">34: </span>            <span style="color: #c678dd;">Text</span>(verbatim: c)
+<span class="linenr">35: </span>                .<span style="color: #c678dd;">foregroundColor</span>(.<span style="color: #dcaeea;">black</span>)
+<span class="linenr">36: </span>
+<span class="linenr">37: </span>
+<span class="linenr">38: </span>        }
+<span class="linenr">39: </span>        .<span style="color: #c678dd;">padding</span>(<span style="color: #da8548; font-weight: bold;">60</span>)
+<span class="linenr">40: </span>        .<span style="color: #c678dd;">background</span>(<span style="color: #c678dd;">Image</span>(<span style="color: #98be65;">"background"</span>).<span style="color: #c678dd;">resizable</span>().<span style="color: #c678dd;">scaledToFill</span>())
+<span class="linenr">41: </span>        .<span style="color: #c678dd;">opacity</span>(<span style="color: #da8548; font-weight: bold;">0.9</span>)
+<span class="linenr">42: </span>    }
+<span class="linenr">43: </span>}
+<span class="linenr">44: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">ContentView_Previews</span>: PreviewProvider {
+<span class="linenr">45: </span>    <span style="color: #51afef;">static</span> <span style="color: #51afef;">var</span> previews: <span style="color: #51afef;">some</span> View {
+<span class="linenr">46: </span>        <span style="color: #c678dd;">ContentView</span>()
+<span class="linenr">47: </span>    }
+<span class="linenr">48: </span>}
+<span class="linenr">49: </span>
+<span class="linenr">50: </span>
+</pre>
+</div>
+
+<div id="org06a1473" class="figure">
+<p><img src="images/background-1.jpg" alt="background-1.jpg" width="300" />
+</p>
+<p><span class="figure-number">Figure 21: </span>Background</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1f1618f" class="outline-2">
+<h2 id="org1f1618f"><span class="section-number-2">7</span> Struct, Class, and Enum</h2>
+<div class="outline-text-2" id="text-7">
+<p class="verse">
+struct, class, and enum are fundamentally important concepts for every iOS developer. It’s difficult to imagine common iOS apps without them. <sup><a id="fnr.10" class="footref" href="#fn.10">10</a></sup><br />
+</p>
+</div>
+<div id="outline-container-orge651799" class="outline-3">
+<h3 id="orge651799"><span class="section-number-3">7.1</span> Structures</h3>
+<div class="outline-text-3" id="text-7-1">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">Birthday</span> {
+<span class="linenr"> 2: </span>  <span style="color: #51afef;">var</span> day: <span style="color: #c678dd;">Int</span> = <span style="color: #da8548; font-weight: bold;">12</span>
+<span class="linenr"> 3: </span>  <span style="color: #51afef;">var</span> month: <span style="color: #c678dd;">Int</span> = <span style="color: #da8548; font-weight: bold;">12</span>
+<span class="linenr"> 4: </span>  <span style="color: #51afef;">var</span> year: <span style="color: #c678dd;">Double</span> = <span style="color: #da8548; font-weight: bold;">1999</span>
+<span class="linenr"> 5: </span>
+<span class="linenr"> 6: </span>  <span style="color: #51afef;">func</span> <span style="color: #c678dd;">myBirthday</span>() {
+<span class="linenr"> 7: </span>  <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"I've born in \(</span>year<span style="color: #98be65;">).\(</span>month<span style="color: #98be65;">).\(</span>day<span style="color: #98be65;">)"</span>)
+<span class="linenr"> 8: </span>  }
+<span class="linenr"> 9: </span>}
+<span class="linenr">10: </span>
+<span class="linenr">11: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">Person</span> {
+<span class="linenr">12: </span>  <span style="color: #51afef;">var</span> firstName: <span style="color: #c678dd;">String</span> = <span style="color: #98be65;">"Abboskhon"</span>
+<span class="linenr">13: </span>  <span style="color: #51afef;">var</span> lastName: <span style="color: #c678dd;">String</span> = <span style="color: #98be65;">"Shukurullaev"</span>
+<span class="linenr">14: </span>  <span style="color: #51afef;">var</span> phoneNumber: <span style="color: #c678dd;">String</span> = <span style="color: #da8548; font-weight: bold;">123456</span>
+<span class="linenr">15: </span>  <span style="color: #51afef;">var</span> emailAddress: <span style="color: #c678dd;">String</span> = <span style="color: #98be65;">"abbsh24@gmail.com"</span>
+<span class="linenr">16: </span>
+<span class="linenr">17: </span>  <span style="color: #51afef;">func</span> <span style="color: #c678dd;">myInfo</span>() {
+<span class="linenr">18: </span>  <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"My name is \(</span>firstName<span style="color: #98be65;">) \(</span>secondName<span style="color: #98be65;">). My phone number is \(</span>phoneNumber<span style="color: #98be65;">) and email address is \(</span>emailAddress<span style="color: #98be65;">)"</span>)
+<span class="linenr">19: </span>  }
+<span class="linenr">20: </span>}
+</pre>
+</div>
+</div>
+<div id="outline-container-org4851a5b" class="outline-4">
+<h4 id="org4851a5b"><span class="section-number-4">7.1.1</span> Mutating methods</h4>
+<div class="outline-text-4" id="text-7-1-1">
+<p class="verse">
+Structs have also got so-called mutating methods that play a role in updating the property values of a structure within an instance method. <sup><a id="fnr.10.100" class="footref" href="#fn.10">10</a></sup><br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">Counter</span> {
+<span class="linenr"> 2: </span>  <span style="color: #51afef;">var</span> count: <span style="color: #c678dd;">Int</span> = <span style="color: #da8548; font-weight: bold;">0</span>
+<span class="linenr"> 3: </span>
+<span class="linenr"> 4: </span>  <span style="color: #51afef;">mutating</span> <span style="color: #51afef;">func</span> <span style="color: #c678dd;">increment</span>() {
+<span class="linenr"> 5: </span>    count += <span style="color: #da8548; font-weight: bold;">1</span>
+<span class="linenr"> 6: </span>  }
+<span class="linenr"> 7: </span>  <span style="color: #51afef;">mutating</span> <span style="color: #51afef;">func</span> <span style="color: #c678dd;">increment</span>(by amount: <span style="color: #c678dd;">Int</span>) {
+<span class="linenr"> 8: </span>    count += amount
+<span class="linenr"> 9: </span>  }
+<span class="linenr">10: </span>  <span style="color: #51afef;">mutating</span> <span style="color: #51afef;">func</span> <span style="color: #c678dd;">reset</span>() {
+<span class="linenr">11: </span>    count = <span style="color: #da8548; font-weight: bold;">0</span>
+<span class="linenr">12: </span>  }
+<span class="linenr">13: </span>}
+<span class="linenr">14: </span><span style="color: #51afef;">var</span> counter = <span style="color: #c678dd;">Counter</span>()   <span style="color: #5B6268;">//</span><span style="color: #5B6268;">default is 0</span>
+<span class="linenr">15: </span>counter.<span style="color: #c678dd;">increment</span>()       <span style="color: #5B6268;">//</span><span style="color: #5B6268;">becomes 1</span>
+<span class="linenr">16: </span>counter.<span style="color: #c678dd;">increment</span>(by: <span style="color: #da8548; font-weight: bold;">9</span>)  <span style="color: #5B6268;">//</span><span style="color: #5B6268;">becomes 10</span>
+<span class="linenr">17: </span>counter.<span style="color: #c678dd;">reset</span>()           <span style="color: #5B6268;">//</span><span style="color: #5B6268;">reset to 0</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org73ca751" class="outline-3">
+<h3 id="org73ca751"><span class="section-number-3">7.2</span> Classes</h3>
+<div class="outline-text-3" id="text-7-2">
+<p class="verse">
+Classes and structures are very similar, and both can be used to define properties and methods. <sup><a id="fnr.10.100" class="footref" href="#fn.10">10</a></sup><br />
+</p>
+</div>
+<div id="outline-container-org8f4174b" class="outline-4">
+<h4 id="org8f4174b"><span class="section-number-4">7.2.1</span> Inheritance &amp; Override methods and properties</h4>
+<div class="outline-text-4" id="text-7-2-1">
+<p class="verse">
+The biggest difference that structs do not have is hierarchical relations. Classes can have parent classes, that are called superclass, and child classes, that are called subclasses. <sup><a id="fnr.10.100" class="footref" href="#fn.10">10</a></sup><br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">class</span> <span style="color: #c678dd;">Animals</span> {
+<span class="linenr"> 2: </span>    <span style="color: #51afef;">func</span> <span style="color: #c678dd;">animals</span>() {
+<span class="linenr"> 3: </span>        <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"Animals are mainly of 3 types: Land Animals, Sea animals, Air Animals"</span>)
+<span class="linenr"> 4: </span>    }
+<span class="linenr"> 5: </span>}
+<span class="linenr"> 6: </span>
+<span class="linenr"> 7: </span><span style="color: #51afef;">class</span> <span style="color: #c678dd;">LandAnimals</span>: Animals {
+<span class="linenr"> 8: </span>    <span style="color: #51afef;">override</span> <span style="color: #51afef;">func</span> <span style="color: #c678dd;">animals</span>() {
+<span class="linenr"> 9: </span>        <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"Land animals are cats, sheeps, horses."</span>)
+<span class="linenr">10: </span>    }
+<span class="linenr">11: </span>}
+<span class="linenr">12: </span>
+<span class="linenr">13: </span><span style="color: #51afef;">class</span> <span style="color: #c678dd;">Cat</span>: LandAnimals {
+<span class="linenr">14: </span>    <span style="color: #51afef;">override</span> <span style="color: #51afef;">func</span> <span style="color: #c678dd;">animals</span>() {
+<span class="linenr">15: </span>        <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"I am a cat and I am a land animal."</span>)
+<span class="linenr">16: </span>    }
+<span class="linenr">17: </span>}
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7497dd6" class="outline-3">
+<h3 id="org7497dd6"><span class="section-number-3">7.3</span> 結構跟類的比較 (Comparing Structures and Classes) <sup><a id="fnr.11" class="footref" href="#fn.11">11</a></sup></h3>
+<div class="outline-text-3" id="text-7-3">
+</div>
+<div id="outline-container-orgfa065ad" class="outline-4">
+<h4 id="orgfa065ad"><span class="section-number-4">7.3.1</span> 在 Swift 中的結構與類有許多相同之處，兩者皆能：</h4>
+<div class="outline-text-4" id="text-7-3-1">
+<ul class="org-ul">
+<li>定義屬性來儲存值</li>
+<li>定義方法來提供功能</li>
+<li>定義下標來提供訪問他們用下標語法的值</li>
+<li>定義初始化器來設定他們的初始狀態</li>
+<li>可被擴展以擴展其功能，超越預設的實現</li>
+<li>符合協議以提供某種標準功能</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgee9bcc5" class="outline-4">
+<h4 id="orgee9bcc5"><span class="section-number-4">7.3.2</span> 類具有的附加功能，但結構沒有：</h4>
+<div class="outline-text-4" id="text-7-3-2">
+<ul class="org-ul">
+<li>繼承使一個類能夠繼承另一個的特性</li>
+<li>類型轉換使我們可以在運行時檢查和解釋類實例的類型</li>
+<li>反初始化器允許類的實例釋放它已分配的任何資源</li>
+<li>引用計數允許對類實例的多個引用</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org7c616d8" class="outline-4">
+<h4 id="org7c616d8"><span class="section-number-4">7.3.3</span> 結構和列舉是值型別 (Structures and Enumerations Are Value Types)</h4>
+<div class="outline-text-4" id="text-7-3-3">
+<p>
+值型別是一種其值在被賦值給變數或常數時被複製，或者在傳遞給函數時被複製。實際上，Swift 的整數、浮點數、布林值、字符串、數組和字典中的所有基本型別都是值型別，並且在幕後實現為結構。所有結構和列舉都是 Swift 中的值型別。這代表著我們創建的任何結構和列舉實例以及它們作為屬性的任何值類型在代碼中傳遞時始終會被複製。<sup><a id="fnr.11.100" class="footref" href="#fn.11">11</a></sup>
+</p>
+</div>
+<div id="outline-container-orgcbc5dda" class="outline-5">
+<h5 id="orgcbc5dda"><span class="section-number-5">7.3.3.1</span> 範例</h5>
+<div class="outline-text-5" id="text-7-3-3-1">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">Resolution</span> {
+<span class="linenr"> 2: </span>    <span style="color: #51afef;">var</span> width = <span style="color: #da8548; font-weight: bold;">0</span>
+<span class="linenr"> 3: </span>    <span style="color: #51afef;">var</span> height = <span style="color: #da8548; font-weight: bold;">0</span>
+<span class="linenr"> 4: </span>}
+<span class="linenr"> 5: </span>
+<span class="linenr"> 6: </span><span style="color: #51afef;">let</span> hd = <span style="color: #c678dd;">Resolution</span>(width: <span style="color: #da8548; font-weight: bold;">1920</span>, height: <span style="color: #da8548; font-weight: bold;">1080</span>)
+<span class="linenr"> 7: </span><span style="color: #51afef;">var</span> cinema = hd
+<span class="linenr"> 8: </span>
+<span class="linenr"> 9: </span>cinema.<span style="color: #dcaeea;">width</span> = <span style="color: #da8548; font-weight: bold;">2048</span>
+<span class="linenr">10: </span>
+<span class="linenr">11: </span><span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"cinema is now \(</span>cinema.<span style="color: #dcaeea;">width</span><span style="color: #98be65;">) pixels wide"</span>)
+<span class="linenr">12: </span><span style="color: #5B6268;">// </span><span style="color: #5B6268;">Prints "cinema is now 2048 pixels wide"</span>
+<span class="linenr">13: </span>
+<span class="linenr">14: </span><span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"hd is still \(</span>hd.<span style="color: #dcaeea;">width</span><span style="color: #98be65;">) pixels wide"</span>)
+<span class="linenr">15: </span><span style="color: #5B6268;">// </span><span style="color: #5B6268;">Prints "hd is still 1920 pixels wide"</span>
+</pre>
+</div>
+<p>
+由上述例子可知，當 cinema 被賦予 hd 當前的值，儲存在 hd 的值被複製到新 cinema 的實例。最後結果兩個擁有相同值但完全不同的實例，所以當修改 cinema.width = 2048 的時候，並不會影響儲存在 hd 中的 width。<sup><a id="fnr.11.100" class="footref" href="#fn.11">11</a></sup>
+</p>
+
+<div id="org08c6eac" class="figure">
+<p><img src="images/struct.png" alt="struct.png" width="400" />
+</p>
+<p><span class="figure-number">Figure 22: </span>Struct value type</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd08d0c9" class="outline-4">
+<h4 id="orgd08d0c9"><span class="section-number-4">7.3.4</span> 類是參考型別 (Classes Are Reference Types)</h4>
+<div class="outline-text-4" id="text-7-3-4">
+<p>
+不同於值型別，當參考型別被指定給一個變數或常數，或是傳遞進一個函數的時候，並不會被複製。參考型別非副本，是使用相同存在的實例。<sup><a id="fnr.11.100" class="footref" href="#fn.11">11</a></sup>
+</p>
+</div>
+<div id="outline-container-org6686bd6" class="outline-5">
+<h5 id="org6686bd6"><span class="section-number-5">7.3.4.1</span> 範例</h5>
+<div class="outline-text-5" id="text-7-3-4-1">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">class</span> <span style="color: #c678dd;">VideoMode</span> {
+<span class="linenr"> 2: </span>    <span style="color: #51afef;">var</span> interlaced = <span style="color: #a9a1e1;">false</span>
+<span class="linenr"> 3: </span>    <span style="color: #51afef;">var</span> frameRate = <span style="color: #da8548; font-weight: bold;">0.0</span>
+<span class="linenr"> 4: </span>    <span style="color: #51afef;">var</span> name: <span style="color: #c678dd;">String</span>?
+<span class="linenr"> 5: </span>}
+<span class="linenr"> 6: </span>
+<span class="linenr"> 7: </span><span style="color: #51afef;">let</span> tenEighty = <span style="color: #c678dd;">VideoMode</span>()
+<span class="linenr"> 8: </span>
+<span class="linenr"> 9: </span>tenEighty.<span style="color: #dcaeea;">interlaced</span> = <span style="color: #a9a1e1;">true</span>
+<span class="linenr">10: </span>tenEighty.<span style="color: #c678dd;">name</span> = <span style="color: #98be65;">"1080i"</span>
+<span class="linenr">11: </span>tenEighty.<span style="color: #dcaeea;">frameRate</span> = <span style="color: #da8548; font-weight: bold;">25.0</span>
+<span class="linenr">12: </span>
+<span class="linenr">13: </span><span style="color: #51afef;">let</span> alsoTenEighty = tenEighty
+<span class="linenr">14: </span>alsoTenEighty.<span style="color: #dcaeea;">frameRate</span> = <span style="color: #da8548; font-weight: bold;">30.0</span>
+<span class="linenr">15: </span>
+<span class="linenr">16: </span><span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"The frameRate property of tenEighty is now \(</span>tenEighty.<span style="color: #dcaeea;">frameRate</span><span style="color: #98be65;">)"</span>)
+<span class="linenr">17: </span><span style="color: #5B6268;">// </span><span style="color: #5B6268;">Prints "The frameRate property of tenEighty is now 30.0"</span>
+</pre>
+</div>
+<p>
+由上述例子可知，當 alsoTenEighty 被指定為 tenEighty，並且修改 alsoTenEighty.frameRate = 30.0 時，也會更動到 tenEighty.frameRate 的值。<sup><a id="fnr.11.100" class="footref" href="#fn.11">11</a></sup>
+</p>
+
+<div id="orgbf5bf8d" class="figure">
+<p><img src="images/class.png" alt="class.png" width="400" />
+</p>
+<p><span class="figure-number">Figure 23: </span>Class Reference type</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgfdb7694" class="outline-3">
+<h3 id="orgfdb7694"><span class="section-number-3">7.4</span> Enumerations</h3>
+<div class="outline-text-3" id="text-7-4">
+<p class="verse">
+Enumerations are different from structs and classes. Enum is a special Swift type that defines a common type for a group of related values. Then, enums can be interacted with other data types such as a switch, if statements, and others. <sup><a id="fnr.10.100" class="footref" href="#fn.10">10</a></sup><br />
+</p>
+<p>
+從 Swift 3 開始，我們的 enum 內設定的情境字串要以小寫字母開頭。
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #5B6268;">//</span><span style="color: #5B6268;">1 representation of enum</span>
+<span class="linenr"> 2: </span><span style="color: #51afef;">enum</span> <span style="color: #c678dd;">DownloadStatus</span> {
+<span class="linenr"> 3: </span>    <span style="color: #51afef;">case</span> downloading
+<span class="linenr"> 4: </span>    <span style="color: #51afef;">case</span> finished
+<span class="linenr"> 5: </span>    <span style="color: #51afef;">case</span> failed
+<span class="linenr"> 6: </span>    <span style="color: #51afef;">case</span> cancelled
+<span class="linenr"> 7: </span>}
+<span class="linenr"> 8: </span>
+<span class="linenr"> 9: </span><span style="color: #51afef;">var</span> currentStatus = DownloadStatus.<span style="color: #c678dd;">downloading</span>
+<span class="linenr">10: </span>
+<span class="linenr">11: </span><span style="color: #51afef;">switch</span> currentStatus {
+<span class="linenr">12: </span><span style="color: #51afef;">case</span> .<span style="color: #c678dd;">downloading</span>:
+<span class="linenr">13: </span>    <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"Downloading..."</span>)
+<span class="linenr">14: </span>
+<span class="linenr">15: </span><span style="color: #51afef;">case</span> .<span style="color: #c678dd;">finished</span>:
+<span class="linenr">16: </span>    <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"Just finished the download..."</span>)
+<span class="linenr">17: </span>
+<span class="linenr">18: </span><span style="color: #51afef;">case</span> .<span style="color: #dcaeea;">failed</span>:
+<span class="linenr">19: </span>    <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"Failed to download the file..."</span>)
+<span class="linenr">20: </span>
+<span class="linenr">21: </span><span style="color: #51afef;">case</span> .<span style="color: #c678dd;">cancelled</span>:
+<span class="linenr">22: </span>    <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"The download is cancelled..."</span>)
+<span class="linenr">23: </span>}
+</pre>
+</div>
+<p class="verse">
+此時，你可能會想，為什麼需要使用 enum 來定義多個情況，而不選擇宣告一個包含四個情境項目的 array，如下圖所示:<br />
+<br />
+let downloadStatus = [“downloading”, “finished”, “failed”, “cancelled”]<br />
+let currentStatus = downloadStatus[0]<br />
+<br />
+你可以這樣做沒錯，但是如此一來會有兩個缺點，首先，你可能會不知道 downloadStatus[0]代表什麼，除非你引用 downloadStatus array，若是比較 downloadStatus[0]與 DownloadStatus.downloading 這兩種表達方式，很明顯的是後者的可讀性比較高。<br />
+<br />
+其次，因為 currentStatus 是 String 類型，變量可以被賦予任何字符串值，無法將它限制為 “downloading”, “finished”, “failed” 以及 “cancelled”，除非執行一些額外的驗證。反之，如果使用 enum，我們可以將 myDirection 限制在 .downloading、.finished、.failed 或 .cancelled 等四種情境之一，不會出現其他意料之外的情況。 <sup><a id="fnr.12" class="footref" href="#fn.12">12</a></sup><br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org92fca7d" class="outline-3">
+<h3 id="org92fca7d"><span class="section-number-3">7.5</span> 結構和類之間的選擇 (Choosing Between Structures and Classes)</h3>
+<div class="outline-text-3" id="text-7-5">
+<p class="verse">
+總的來說，用 class 來定義資料物件的話，就好像是在用雲端共享文件一樣：每個人的螢幕上都會有一份文件可以編輯，但這個文件並沒有存在電腦裡，而是跟雲端的版本連線，所以所有的變動都是直接在雲端版本上更新的。好處是方便，壞處是誰修改了甚麼東西經理不會知道（class 本身沒有帳號功能！）。<br />
+<br />
+用 struct 的話，則是像傳統的離線文件檔案一樣。一開始文件只有經理有，而如果他想要讓手下小美去修改文件的話，他就需要拷貝一份檔案給小美。小美修改完檔案後，必須把它交還給經理，然後經理再決定要不要用修改過的檔案取代原本的文件。<sup><a id="fnr.13" class="footref" href="#fn.13">13</a></sup><br />
+</p>
+
+<div id="orgbf4f930" class="figure">
+<p><img src="images/mvc-1.png" alt="mvc-1.png" width="400" />
+</p>
+<p><span class="figure-number">Figure 24: </span>MVC</p>
+</div>
+<ul class="org-ul">
+<li>在 MVC 架構中，Model 包含了 Data Objects 與 Document，其中 Documents 包含所有的資料管理者元件(如 Core Data 的 NSManagedObjectContext，或是任何負責下載、上傳資料物件的網路層元件，如自訂的 NetworkManager)。</li>
+<li>Document 最好是用 class 來定義，因為它肩負了許多溝通的工作。Data Objects 則是資料的代表，要用 class 或 struct 來定義都可以。</li>
+<li>用 class 定義 Data Objects 的話，任何變動只要執行一次就可以了，因為它的實體只會有一個。然而，用 struct 定義的話，則需要將變動手動套用到文件所管理的那份實體，好讓整個 app 都能使用最新的資料。這雖然寫起來較為囉唆，卻讓閱讀與維護更為簡單(可以確定是在哪裡被變更資料)。<sup><a id="fnr.13.100" class="footref" href="#fn.13">13</a></sup></li>
+</ul>
+</div>
+<div id="outline-container-org9cf37ad" class="outline-4">
+<h4 id="org9cf37ad"><span class="section-number-4">7.5.1</span> 選擇原則</h4>
+<div class="outline-text-4" id="text-7-5-1">
+<ul class="org-ul">
+<li>Choose Structures by Default</li>
+<li>Use Classes When You Need Objective-C Interoperability</li>
+<li>Use Classes When You Need to Control Identity</li>
+<li>Use Structures When You Don&rsquo;t Control Identity</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5bf7ad4" class="outline-2">
+<h2 id="org5bf7ad4"><span class="section-number-2">8</span> Protocols</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+對任何程式開發來說，減少重覆的 code，把權責明確分開，讓 code 維護性變好，是非常重要的課題。而在現今的軟體開發模式中，有許多方法可以做到這點，最為人所知的一個模式，就是利用繼承 (Inheritance)，把會重覆利用的部份放在母類別，讓其它子類別去繼承。另外一種做法，則是利用 Composition Pattern，將功能做成組件分出來，讓需要的模組去組合取用。<sup><a id="fnr.14" class="footref" href="#fn.14">14</a></sup>
+</p>
+<p class="verse">
+A protocol defines a blueprint of methods, properties, and other requirements that suit a particular task or piece of functionality. The protocol can then be adopted by a class, structure, or enumeration to provide an actual implementation of those requirements. Any type that satisfies the requirements of a protocol is said to conform to that protocol. <sup><a id="fnr.15" class="footref" href="#fn.15">15</a></sup><br />
+</p>
+
+<p>
+協定提供類型可以做的資訊，Classes 和 structs 則提供物件的資訊，協定則提供物件將會執行的動作。<sup><a id="fnr.16" class="footref" href="#fn.16">16</a></sup>
+</p>
+<p class="verse">
+協定是 Swift 一個重要的特性，它會定義出為了完成某項任務或功能所需的方法、屬性，但是本身不會實作這些任務跟功能，而僅僅只是表達出該任務或功能的名稱。協定為方法、屬性、以及其他特定的任務需求或功能定義藍圖。協定可被 class、struct、或 enum 類型採納以提供所需功能的具體實現。滿足了協定中需求的任意類型都叫做遵循了該協定。<br />
+<br />
+除了指定遵循類型必須實現的要求外，你可以擴展一個協定以實現其中的一些需求或實現一個符合類型的可以利用的附加功能。<sup><a id="fnr.17" class="footref" href="#fn.17">17</a></sup><br />
+</p>
+</div>
+
+<div id="outline-container-org6ae9ae9" class="outline-3">
+<h3 id="org6ae9ae9"><span class="section-number-3">8.1</span> 範例</h3>
+<div class="outline-text-3" id="text-8-1">
+</div>
+<div id="outline-container-org93a45d9" class="outline-4">
+<h4 id="org93a45d9"><span class="section-number-4">8.1.1</span> 版本 1</h4>
+<div class="outline-text-4" id="text-8-1-1">
+<p>
+本例中有兩個 struct: Song, Album 以及一個 class 用來播放 Song 或 Album，原本的 Player 要為不同的 struct 寫不同的 func，而且程式碼大多重複。
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> Cocoa
+<span class="linenr"> 2: </span><span style="color: #51afef;">import</span> AVKit
+<span class="linenr"> 3: </span>
+<span class="linenr"> 4: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">Song</span> {
+<span class="linenr"> 5: </span>    <span style="color: #51afef;">var</span> name: <span style="color: #c678dd;">String</span>
+<span class="linenr"> 6: </span>    <span style="color: #51afef;">var</span> album: Album
+<span class="linenr"> 7: </span>    <span style="color: #51afef;">var</span> audioURL: <span style="color: #c678dd;">URL</span>
+<span class="linenr"> 8: </span>    <span style="color: #51afef;">var</span> isLiked: <span style="color: #c678dd;">Bool</span>
+<span class="linenr"> 9: </span>}
+<span class="linenr">10: </span>
+<span class="linenr">11: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">Album</span> {
+<span class="linenr">12: </span>    <span style="color: #51afef;">var</span> name: <span style="color: #c678dd;">String</span>
+<span class="linenr">13: </span>    <span style="color: #51afef;">var</span> imageURL: <span style="color: #c678dd;">URL</span>
+<span class="linenr">14: </span>    <span style="color: #51afef;">var</span> audioURL: <span style="color: #c678dd;">URL</span>
+<span class="linenr">15: </span>    <span style="color: #51afef;">var</span> isLiked: <span style="color: #c678dd;">Bool</span>
+<span class="linenr">16: </span>}
+<span class="linenr">17: </span>
+<span class="linenr">18: </span><span style="color: #51afef;">class</span> <span style="color: #c678dd;">Player</span> {
+<span class="linenr">19: </span>    <span style="color: #51afef;">private</span> <span style="color: #51afef;">let</span> avPlayer = <span style="color: #c678dd;">AVPlayer</span>()
+<span class="linenr">20: </span>
+<span class="linenr">21: </span>    <span style="color: #51afef;">func</span> <span style="color: #c678dd;">play</span>(_ song: Song) {
+<span class="linenr">22: </span>        <span style="color: #51afef;">let</span> item = <span style="color: #c678dd;">AVPlayerItem</span>(url: song.<span style="color: #dcaeea;">audioURL</span>)
+<span class="linenr">23: </span>        avPlayer.<span style="color: #c678dd;">replaceCurrentItem</span>(with: item)
+<span class="linenr">24: </span>        avPlayer.<span style="color: #c678dd;">play</span>()
+<span class="linenr">25: </span>    }
+<span class="linenr">26: </span>
+<span class="linenr">27: </span>    <span style="color: #51afef;">func</span> <span style="color: #c678dd;">play</span>(_ album: Album) {
+<span class="linenr">28: </span>        <span style="color: #51afef;">let</span> item = <span style="color: #c678dd;">AVPlayerItem</span>(url: album.<span style="color: #dcaeea;">audioURL</span>)
+<span class="linenr">29: </span>        avPlayer.<span style="color: #c678dd;">replaceCurrentItem</span>(with: item)
+<span class="linenr">30: </span>        avPlayer.<span style="color: #c678dd;">play</span>()
+<span class="linenr">31: </span>    }
+<span class="linenr">32: </span>}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org3a232a5" class="outline-4">
+<h4 id="org3a232a5"><span class="section-number-4">8.1.2</span> 版本 2</h4>
+<div class="outline-text-4" id="text-8-1-2">
+<p>
+宣告一個 protocol，定義 audioURL 變數(read only)，然後令兩個 struct 皆遵循該 protocol(方式有二)，如此，原本的 Player class 中的 play func 就能只寫一次。
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> Cocoa
+<span class="linenr"> 2: </span><span style="color: #51afef;">import</span> AVKit
+<span class="linenr"> 3: </span>
+<span class="linenr"> 4: </span><span style="color: #51afef;">protocol</span> <span style="color: #c678dd;">Playable</span> {
+<span class="linenr"> 5: </span>    <span style="color: #51afef;">var</span> audioURL: <span style="color: #c678dd;">URL</span> { <span style="color: #51afef;">get</span> }
+<span class="linenr"> 6: </span>}
+<span class="linenr"> 7: </span>
+<span class="linenr"> 8: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">Song</span>: Playable {
+<span class="linenr"> 9: </span>    <span style="color: #51afef;">var</span> name: <span style="color: #c678dd;">String</span>
+<span class="linenr">10: </span>    <span style="color: #51afef;">var</span> album: Album
+<span class="linenr">11: </span>    <span style="color: #51afef;">var</span> audioURL: <span style="color: #c678dd;">URL</span>
+<span class="linenr">12: </span>    <span style="color: #51afef;">var</span> isLiked: <span style="color: #c678dd;">Bool</span>
+<span class="linenr">13: </span>}
+<span class="linenr">14: </span>
+<span class="linenr">15: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">Album</span> {
+<span class="linenr">16: </span>    <span style="color: #51afef;">var</span> name: <span style="color: #c678dd;">String</span>
+<span class="linenr">17: </span>    <span style="color: #51afef;">var</span> imageURL: <span style="color: #c678dd;">URL</span>
+<span class="linenr">18: </span>    <span style="color: #51afef;">var</span> audioURL: <span style="color: #c678dd;">URL</span>
+<span class="linenr">19: </span>    <span style="color: #51afef;">var</span> isLiked: <span style="color: #c678dd;">Bool</span>
+<span class="linenr">20: </span>}
+<span class="linenr">21: </span>
+<span class="linenr">22: </span><span style="color: #51afef;">extension</span> <span style="color: #c678dd;">Album</span>: Playable {}
+<span class="linenr">23: </span><span style="color: #51afef;">class</span> <span style="color: #c678dd;">Player</span> {
+<span class="linenr">24: </span>    <span style="color: #51afef;">private</span> <span style="color: #51afef;">let</span> avPlayer = <span style="color: #c678dd;">AVPlayer</span>()
+<span class="linenr">25: </span>
+<span class="linenr">26: </span>    <span style="color: #51afef;">func</span> <span style="color: #c678dd;">play</span>(_ resource: Playable) {
+<span class="linenr">27: </span>        <span style="color: #51afef;">let</span> item = <span style="color: #c678dd;">AVPlayerItem</span>(url: resource.<span style="color: #dcaeea;">audioURL</span>)
+<span class="linenr">28: </span>        avPlayer.<span style="color: #c678dd;">replaceCurrentItem</span>(with: item)
+<span class="linenr">29: </span>        avPlayer.<span style="color: #c678dd;">play</span>()
+<span class="linenr">30: </span>    }
+<span class="linenr">31: </span>}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orge33cc4f" class="outline-4">
+<h4 id="orge33cc4f"><span class="section-number-4">8.1.3</span> 版本 3</h4>
+<div class="outline-text-4" id="text-8-1-3">
+<p>
+原本 protocol 的真正意思其實只是在確定 audioURL 是否能正確轉換成 Audio，所以其實將 protocol name 由 Playable 改為 AudioURLConvertable 會更貼近事實。
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> Cocoa
+<span class="linenr"> 2: </span><span style="color: #51afef;">import</span> AVKit
+<span class="linenr"> 3: </span>
+<span class="linenr"> 4: </span><span style="color: #51afef;">protocol</span> <span style="color: #c678dd;">AudioURLConvertable</span> {
+<span class="linenr"> 5: </span>    <span style="color: #51afef;">var</span> audioURL: <span style="color: #c678dd;">URL</span> { <span style="color: #51afef;">get</span> }
+<span class="linenr"> 6: </span>}
+<span class="linenr"> 7: </span>
+<span class="linenr"> 8: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">Song</span>: AudioURLConvertable {
+<span class="linenr"> 9: </span>    <span style="color: #51afef;">var</span> name: <span style="color: #c678dd;">String</span>
+<span class="linenr">10: </span>    <span style="color: #51afef;">var</span> album: Album
+<span class="linenr">11: </span>    <span style="color: #51afef;">var</span> audioURL: <span style="color: #c678dd;">URL</span>
+<span class="linenr">12: </span>    <span style="color: #51afef;">var</span> isLiked: <span style="color: #c678dd;">Bool</span>
+<span class="linenr">13: </span>}
+<span class="linenr">14: </span>
+<span class="linenr">15: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">Album</span>: AudioURLConvertable {
+<span class="linenr">16: </span>    <span style="color: #51afef;">var</span> name: <span style="color: #c678dd;">String</span>
+<span class="linenr">17: </span>    <span style="color: #51afef;">var</span> imageURL: <span style="color: #c678dd;">URL</span>
+<span class="linenr">18: </span>    <span style="color: #51afef;">var</span> audioURL: <span style="color: #c678dd;">URL</span>
+<span class="linenr">19: </span>    <span style="color: #51afef;">var</span> isLiked: <span style="color: #c678dd;">Bool</span>
+<span class="linenr">20: </span>}
+<span class="linenr">21: </span>
+<span class="linenr">22: </span><span style="color: #51afef;">class</span> <span style="color: #c678dd;">Player</span> {
+<span class="linenr">23: </span>    <span style="color: #51afef;">private</span> <span style="color: #51afef;">let</span> avPlayer = <span style="color: #c678dd;">AVPlayer</span>()
+<span class="linenr">24: </span>
+<span class="linenr">25: </span>    <span style="color: #51afef;">func</span> <span style="color: #c678dd;">play</span>(_ resource: AudioURLConvertable) {
+<span class="linenr">26: </span>        <span style="color: #51afef;">let</span> item = <span style="color: #c678dd;">AVPlayerItem</span>(url: resource.<span style="color: #dcaeea;">audioURL</span>)
+<span class="linenr">27: </span>        avPlayer.<span style="color: #c678dd;">replaceCurrentItem</span>(with: item)
+<span class="linenr">28: </span>        avPlayer.<span style="color: #c678dd;">play</span>()
+<span class="linenr">29: </span>    }
+<span class="linenr">30: </span>}
+<span class="linenr">31: </span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org48c0324" class="outline-3">
+<h3 id="org48c0324"><span class="section-number-3">8.2</span> mutating</h3>
+<div class="outline-text-3" id="text-8-2">
+<p>
+protocol 除了可以提供傳回值型態的彈性，也可以用來變更 class/struct 中的屬性。如：
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> Cocoa
+<span class="linenr"> 2: </span><span style="color: #51afef;">import</span> AVKit
+<span class="linenr"> 3: </span>
+<span class="linenr"> 4: </span><span style="color: #51afef;">protocol</span> <span style="color: #c678dd;">Likeable</span> {
+<span class="linenr"> 5: </span>    <span style="color: #51afef;">mutating</span> <span style="color: #51afef;">func</span> <span style="color: #c678dd;">markAsLiked</span>()
+<span class="linenr"> 6: </span>}
+<span class="linenr"> 7: </span>
+<span class="linenr"> 8: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">Song</span> {
+<span class="linenr"> 9: </span>    <span style="color: #51afef;">var</span> name: <span style="color: #c678dd;">String</span>
+<span class="linenr">10: </span>    <span style="color: #51afef;">var</span> album: Album
+<span class="linenr">11: </span>    <span style="color: #51afef;">var</span> audioURL: <span style="color: #c678dd;">URL</span>
+<span class="linenr">12: </span>    <span style="color: #51afef;">var</span> isLiked: <span style="color: #c678dd;">Bool</span>
+<span class="linenr">13: </span>}
+<span class="linenr">14: </span>
+<span class="linenr">15: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">Album</span> {
+<span class="linenr">16: </span>    <span style="color: #51afef;">var</span> name: <span style="color: #c678dd;">String</span>
+<span class="linenr">17: </span>    <span style="color: #51afef;">var</span> imageURL: <span style="color: #c678dd;">URL</span>
+<span class="linenr">18: </span>    <span style="color: #51afef;">var</span> audioURL: <span style="color: #c678dd;">URL</span>
+<span class="linenr">19: </span>    <span style="color: #51afef;">var</span> isLiked: <span style="color: #c678dd;">Bool</span>
+<span class="linenr">20: </span>}
+<span class="linenr">21: </span>
+<span class="linenr">22: </span><span style="color: #51afef;">extension</span> <span style="color: #c678dd;">Song</span>: Likeable {
+<span class="linenr">23: </span>    <span style="color: #51afef;">mutating</span> <span style="color: #51afef;">func</span> <span style="color: #c678dd;">markAsLiked</span>() {
+<span class="linenr">24: </span>        isLiked = <span style="color: #a9a1e1;">true</span>
+<span class="linenr">25: </span>    }
+<span class="linenr">26: </span>}
+</pre>
+</div>
+<p>
+可以在不改變原 struct Album 的情況下，藉由 extension 來擴充 Song，使其遵循 Likeable protocol，提供變供屬性 isLiked 的值，*這在擴充 API 功能時特別有用*。
+</p>
+</div>
+</div>
+<div id="outline-container-org2949d6c" class="outline-3">
+<h3 id="org2949d6c"><span class="section-number-3">8.3</span> 擴充 protocol</h3>
+<div class="outline-text-3" id="text-8-3">
+<p>
+除了擴充現有 struct，protocol 也可以用來擴充 protocol，如：
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> Cocoa
+<span class="linenr"> 2: </span><span style="color: #51afef;">import</span> AVKit
+<span class="linenr"> 3: </span>
+<span class="linenr"> 4: </span><span style="color: #51afef;">protocol</span> <span style="color: #c678dd;">Likeable</span> {
+<span class="linenr"> 5: </span>    <span style="color: #51afef;">var</span> isLiked: <span style="color: #c678dd;">Bool</span> {<span style="color: #51afef;">get</span> <span style="color: #51afef;">set</span>}
+<span class="linenr"> 6: </span>}
+<span class="linenr"> 7: </span>
+<span class="linenr"> 8: </span><span style="color: #51afef;">extension</span> <span style="color: #c678dd;">Likeable</span> {
+<span class="linenr"> 9: </span>    <span style="color: #51afef;">mutating</span> <span style="color: #51afef;">func</span> <span style="color: #c678dd;">markAsLiked</span>() {
+<span class="linenr">10: </span>        isLiked = <span style="color: #a9a1e1;">true</span>
+<span class="linenr">11: </span>    }
+<span class="linenr">12: </span>}
+<span class="linenr">13: </span>
+<span class="linenr">14: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">Song</span> {
+<span class="linenr">15: </span>    <span style="color: #51afef;">var</span> name: <span style="color: #c678dd;">String</span>
+<span class="linenr">16: </span>    <span style="color: #51afef;">var</span> album: Album
+<span class="linenr">17: </span>    <span style="color: #51afef;">var</span> audioURL: <span style="color: #c678dd;">URL</span>
+<span class="linenr">18: </span>    <span style="color: #51afef;">var</span> isLiked: <span style="color: #c678dd;">Bool</span>
+<span class="linenr">19: </span>}
+<span class="linenr">20: </span>
+<span class="linenr">21: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">Album</span> {
+<span class="linenr">22: </span>    <span style="color: #51afef;">var</span> name: <span style="color: #c678dd;">String</span>
+<span class="linenr">23: </span>    <span style="color: #51afef;">var</span> imageURL: <span style="color: #c678dd;">URL</span>
+<span class="linenr">24: </span>    <span style="color: #51afef;">var</span> audioURL: <span style="color: #c678dd;">URL</span>
+<span class="linenr">25: </span>    <span style="color: #51afef;">var</span> isLiked: <span style="color: #c678dd;">Bool</span>
+<span class="linenr">26: </span>}
+<span class="linenr">27: </span>
+<span class="linenr">28: </span><span style="color: #51afef;">extension</span> <span style="color: #c678dd;">Song</span>: Likeable {}
+<span class="linenr">29: </span><span style="color: #51afef;">extension</span> <span style="color: #c678dd;">Album</span>: Likeable {}
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org619e134" class="outline-2">
+<h2 id="org619e134"><span class="section-number-2">9</span> some</h2>
+<div class="outline-text-2" id="text-9">
+<p class="verse">
+Adding the keyword some in front of a return type indicates that the return type is opaque. <sup><a id="fnr.18" class="footref" href="#fn.18">18</a></sup><br />
+</p>
+</div>
+<div id="outline-container-org3d06221" class="outline-3">
+<h3 id="org3d06221"><span class="section-number-3">9.1</span> Generics</h3>
+<div class="outline-text-3" id="text-9-1">
+</div>
+<div id="outline-container-orgc032224" class="outline-4">
+<h4 id="orgc032224"><span class="section-number-4">9.1.1</span> 問題</h4>
+<div class="outline-text-4" id="text-9-1-1">
+<p>
+Generics 允許開發者在不同類型中複用你的程式碼，用來解決下列問題：
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">func</span> <span style="color: #c678dd;">swapInts</span>(_ a: <span style="color: #51afef;">inout</span> <span style="color: #c678dd;">Int</span>, _ b: <span style="color: #51afef;">inout</span> <span style="color: #c678dd;">Int</span>) {
+<span class="linenr"> 2: </span>    <span style="color: #51afef;">let</span> temporaryB = b
+<span class="linenr"> 3: </span>    b = a
+<span class="linenr"> 4: </span>    a = temporaryB
+<span class="linenr"> 5: </span>}
+<span class="linenr"> 6: </span>
+<span class="linenr"> 7: </span><span style="color: #51afef;">var</span> num1 = <span style="color: #da8548; font-weight: bold;">10</span>
+<span class="linenr"> 8: </span><span style="color: #51afef;">var</span> num2 = <span style="color: #da8548; font-weight: bold;">20</span>
+<span class="linenr"> 9: </span>
+<span class="linenr">10: </span><span style="color: #c678dd;">swapInts</span>(&amp;num1, &amp;num2)
+<span class="linenr">11: </span><span style="color: #c678dd;">print</span>(num1)   <span style="color: #5B6268;">// </span><span style="color: #5B6268;">20</span>
+<span class="linenr">12: </span><span style="color: #c678dd;">print</span>(num2)   <span style="color: #5B6268;">// </span><span style="color: #5B6268;">10</span>
+</pre>
+</div>
+<p>
+但若想交換字串，則要寫成
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">func</span> <span style="color: #c678dd;">swapStrings</span>(_ a: <span style="color: #51afef;">inout</span> <span style="color: #c678dd;">String</span>, _ b: <span style="color: #51afef;">inout</span> <span style="color: #c678dd;">String</span>) {
+<span class="linenr">2: </span>    <span style="color: #51afef;">let</span> temporaryB = b
+<span class="linenr">3: </span>    b = a
+<span class="linenr">4: </span>    a = temporaryB
+<span class="linenr">5: </span>}
+</pre>
+</div>
+<p>
+可以發現除了參數之外，重複的 code 實在太多
+</p>
+</div>
+</div>
+<div id="outline-container-org4311b31" class="outline-4">
+<h4 id="org4311b31"><span class="section-number-4">9.1.2</span> 解決方案</h4>
+<div class="outline-text-4" id="text-9-1-2">
+<p>
+將固定型態的參數轉為 Generic type
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> Cocoa
+<span class="linenr"> 2: </span>
+<span class="linenr"> 3: </span><span style="color: #51afef;">func</span> <span style="color: #c678dd;">swapTwoValues</span>&lt;T&gt;(_ a: <span style="color: #51afef;">inout</span> T, _ b: <span style="color: #51afef;">inout</span> T) {
+<span class="linenr"> 4: </span>    <span style="color: #51afef;">let</span> temporaryA = a
+<span class="linenr"> 5: </span>    a = b
+<span class="linenr"> 6: </span>    b = temporaryA
+<span class="linenr"> 7: </span>}
+<span class="linenr"> 8: </span>
+<span class="linenr"> 9: </span>
+<span class="linenr">10: </span><span style="color: #51afef;">var</span> num1 = <span style="color: #da8548; font-weight: bold;">10</span>
+<span class="linenr">11: </span><span style="color: #51afef;">var</span> num2 = <span style="color: #da8548; font-weight: bold;">20</span>
+<span class="linenr">12: </span>
+<span class="linenr">13: </span><span style="color: #c678dd;">swapTwoValues</span>(&amp;num1, &amp;num2)
+<span class="linenr">14: </span><span style="color: #c678dd;">print</span>(num1)   <span style="color: #5B6268;">// </span><span style="color: #5B6268;">20</span>
+<span class="linenr">15: </span><span style="color: #c678dd;">print</span>(num2)   <span style="color: #5B6268;">// </span><span style="color: #5B6268;">10</span>
+</pre>
+</div>
+<p>
+另一個例子為 Stack 的實作：原本只能儲存 Int 的 Stack 如下，若要儲存字串則要再另行定義。
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">IntStack</span> {
+<span class="linenr">2: </span>    <span style="color: #51afef;">var</span> items = [<span style="color: #c678dd;">Int</span>]()
+<span class="linenr">3: </span>    <span style="color: #51afef;">mutating</span> <span style="color: #51afef;">func</span> <span style="color: #c678dd;">push</span>(_ item: <span style="color: #c678dd;">Int</span>) {
+<span class="linenr">4: </span>        items.<span style="color: #c678dd;">append</span>(item)
+<span class="linenr">5: </span>    }
+<span class="linenr">6: </span>    <span style="color: #51afef;">mutating</span> <span style="color: #51afef;">func</span> <span style="color: #c678dd;">pop</span>() -&gt; <span style="color: #c678dd;">Int</span> {
+<span class="linenr">7: </span>        <span style="color: #51afef;">return</span> items.<span style="color: #c678dd;">removeLast</span>()
+<span class="linenr">8: </span>    }
+<span class="linenr">9: </span>}
+</pre>
+</div>
+<p>
+改為 Generic type 後可動態變更為整數 stack 或字串 stack，如：
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">Stack</span>&lt;<span style="color: #c678dd;">Element</span>&gt; {
+<span class="linenr"> 2: </span>    <span style="color: #51afef;">var</span> items = [<span style="color: #c678dd;">Element</span>]()
+<span class="linenr"> 3: </span>    <span style="color: #51afef;">mutating</span> <span style="color: #51afef;">func</span> <span style="color: #c678dd;">push</span>(_ item: <span style="color: #c678dd;">Element</span>) {
+<span class="linenr"> 4: </span>        items.<span style="color: #c678dd;">append</span>(item)
+<span class="linenr"> 5: </span>    }
+<span class="linenr"> 6: </span>    <span style="color: #51afef;">mutating</span> <span style="color: #51afef;">func</span> <span style="color: #c678dd;">pop</span>() -&gt; <span style="color: #c678dd;">Element</span> {
+<span class="linenr"> 7: </span>        <span style="color: #51afef;">return</span> items.<span style="color: #c678dd;">removeLast</span>()
+<span class="linenr"> 8: </span>    }
+<span class="linenr"> 9: </span>}
+<span class="linenr">10: </span>
+<span class="linenr">11: </span><span style="color: #51afef;">var</span> stackOfStrings = Stack&lt;<span style="color: #c678dd;">String</span>&gt;()
+<span class="linenr">12: </span>stackOfStrings.<span style="color: #c678dd;">push</span>(<span style="color: #98be65;">"uno"</span>)
+<span class="linenr">13: </span>stackOfStrings.<span style="color: #c678dd;">push</span>(<span style="color: #98be65;">"dos"</span>)
+<span class="linenr">14: </span>stackOfStrings.<span style="color: #c678dd;">push</span>(<span style="color: #98be65;">"tres"</span>)
+<span class="linenr">15: </span>stackOfStrings.<span style="color: #c678dd;">push</span>(<span style="color: #98be65;">"cuatro"</span>)
+<span class="linenr">16: </span><span style="color: #5B6268;">// </span><span style="color: #5B6268;">the stack now contains 4 strings</span>
+<span class="linenr">17: </span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgad78c3d" class="outline-3">
+<h3 id="orgad78c3d"><span class="section-number-3">9.2</span> opaque</h3>
+<div class="outline-text-3" id="text-9-2">
+<p>
+帶有不透明（opaque）返回類型的函數或方法，將會隱藏其返回值的類型<sup><a id="fnr.19" class="footref" href="#fn.19">19</a></sup>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgacf7a40" class="outline-2">
+<h2 id="orgacf7a40"><span class="section-number-2">10</span> 進階主題</h2>
+<div class="outline-text-2" id="text-10">
+<ul class="org-ul">
+<li><a href="https://www.appcoda.com.tw/protocol-extension/">利用 Protocol Extension 減少重覆的 Code　大大增強 Code 的維護性</a></li>
+<li><a href="https://appcoda.com.tw/mastering-swift/">精通Swift：列舉、閉包、泛型、Protocols和高階函數</a></li>
+</ul>
 </div>
 </div>
 <div id="footnotes">
@@ -1010,12 +2259,68 @@ SwiftUI 提供豐富的 modifier 幫助我們設計客製 UI 元件的樣式，�
 <a href="https://medium.com/%E5%BD%BC%E5%BE%97%E6%BD%98%E7%9A%84-swift-ios-app-%E9%96%8B%E7%99%BC%E5%95%8F%E9%A1%8C%E8%A7%A3%E7%AD%94%E9%9B%86/%E5%AE%A2%E8%A3%BD-ui-%E5%85%83%E4%BB%B6%E6%A8%A3%E5%BC%8F%E7%9A%84-swiftui-modifier-b31ff65c1f0d">客製 UI 元件樣式的 SwiftUI modifier</a>
 </p></div></div>
 
+<div class="footdef"><sup><a id="fn.6" class="footnum" href="#fnr.6">6</a></sup> <div class="footpara"><p class="footpara">
+<a href="https://medium.com/%E5%BD%BC%E5%BE%97%E6%BD%98%E7%9A%84-swift-ios-app-%E9%96%8B%E7%99%BC%E5%95%8F%E9%A1%8C%E8%A7%A3%E7%AD%94%E9%9B%86/%E5%AE%A2%E8%A3%BD-ui-%E5%85%83%E4%BB%B6%E6%A8%A3%E5%BC%8F%E7%9A%84-swiftui-modifier-b31ff65c1f0d">客製 UI 元件樣式的 SwiftUI modifier</a>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.7" class="footnum" href="#fnr.7">7</a></sup> <div class="footpara"><p class="footpara">
+<a href="https://medium.com/%E5%BD%BC%E5%BE%97%E6%BD%98%E7%9A%84-swift-ios-app-%E9%96%8B%E7%99%BC%E5%95%8F%E9%A1%8C%E8%A7%A3%E7%AD%94%E9%9B%86/swiftui-%E8%A3%81%E5%88%87%E5%BD%A2%E7%8B%80%E7%9A%84-clipshape-mask-4fc49b34141">SwiftUI 裁切形狀的 clipShape &amp; mask</a>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.8" class="footnum" href="#fnr.8">8</a></sup> <div class="footpara"><p class="footpara">
+<a href="https://www.appcoda.com.tw/swiftui-border/">SwiftUI 小技巧：利用 border 修飾符　輕鬆為按鈕或文本繪製邊框</a>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.9" class="footnum" href="#fnr.9">9</a></sup> <div class="footpara"><p class="footpara">
+<a href="https://www.hackingwithswift.com/quick-start/swiftui/how-to-create-a-list-of-dynamic-items">How to create a list of dynamic items</a>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.10" class="footnum" href="#fnr.10">10</a></sup> <div class="footpara"><p class="footpara">
+<a href="https://levelup.gitconnected.com/demystifying-struct-class-and-enum-in-swift-5-43dde089e96a">Demystifying Struct, Class, and Enum in Swift 5</a>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.11" class="footnum" href="#fnr.11">11</a></sup> <div class="footpara"><p class="footpara">
+<a href="https://ithelp.ithome.com.tw/articles/10220520"> Day 10: [Swift] 結構和類 (Struct and Class) </a>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.12" class="footnum" href="#fnr.12">12</a></sup> <div class="footpara"><p class="footpara">
+<a href="https://appcoda.com.tw/mastering-swift/">精通Swift：列舉、閉包、泛型、Protocols和高階函數</a>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.13" class="footnum" href="#fnr.13">13</a></sup> <div class="footpara"><p class="footpara">
+<a href="https://www.appcoda.com.tw/swift-class/">Swift Class vs Struct：設計 Model 時，該用 Struct 還是 Class 呢？</a>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.14" class="footnum" href="#fnr.14">14</a></sup> <div class="footpara"><p class="footpara">
+<a href="https://www.appcoda.com.tw/protocol-extension/">利用 Protocol Extension 減少重覆的 Code　大大增強 Code 的維護性</a>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.15" class="footnum" href="#fnr.15">15</a></sup> <div class="footpara"><p class="footpara">
+<a href="https://docs.swift.org/swift-book/LanguageGuide/Protocols.html">Protocols</a>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.16" class="footnum" href="#fnr.16">16</a></sup> <div class="footpara"><p class="footpara">
+<a href="https://www.appcoda.com.tw/swift-protocol/">Swift開發指南：Protocols與Protocol Extensions的使用心法</a>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.17" class="footnum" href="#fnr.17">17</a></sup> <div class="footpara"><p class="footpara">
+<a href="https://ithelp.ithome.com.tw/articles/10197366">Day-29 Swift 語法(25) - 協定 Protocol</a>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.18" class="footnum" href="#fnr.18">18</a></sup> <div class="footpara"><p class="footpara">
+<a href="https://medium.com/@PhiJay/whats-this-some-in-swiftui-34e2c126d4c4">What’s this “some” in SwiftUI?</a>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.19" class="footnum" href="#fnr.19">19</a></sup> <div class="footpara"><p class="footpara">
+<a href="https://medium.com/jeremy-xue-s-blog/swift-%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80-opaque-types-600ad5758b91">Swift 程式語言 — Opaque Types</a>
+</p></div></div>
+
 
 </div>
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Yung Chin, Yen</p>
-<p class="date">Created: 2020-08-05 Wed 22:44</p>
+<p class="date">Created: 2020-08-11 Tue 16:11</p>
 </div>
 </body>
 </html>

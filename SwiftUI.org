@@ -25,6 +25,7 @@ SwiftUI 本身即支援 Dynamic Type、Dark Mode、 Localization 等等。這邊
 #+name: fig:Diff-1
 #+ATTR_LATEX: :width 300
 #+ATTR_ORG: :width 300
+#+ATTR_HTML: :width 300
 [[file:images/differences.png]]
 
 ** SwiftUI vs UIKit: Benefits and Drawbacks
@@ -108,6 +109,7 @@ struct SceneDelegate_Previews: PreviewProvider {
     }
 }
 #+end_src
+
 * UIKit
 
 * SwiftUI
@@ -155,6 +157,7 @@ struct ContentView_Previews: PreviewProvider {
 #+name: fig:Inspector-1
 #+ATTR_LATEX: :width 300
 #+ATTR_ORG: :width 300
+#+ATTR_HTML: :width 600
 [[file:images/inspector-1.gif]]
 **** Inspector frame
 #+CAPTION: SwiftUI Inspector
@@ -162,6 +165,7 @@ struct ContentView_Previews: PreviewProvider {
 #+name: fig:inspector-2
 #+ATTR_LATEX: :width 300
 #+ATTR_ORG: :width 300
+#+ATTR_HTML: :width 600
 [[file:images/inspector-2.gif]]
 **** code
 於 Text("...")後加上屬性 function 或修改其他屬性
@@ -170,9 +174,11 @@ struct ContentView_Previews: PreviewProvider {
 #+name: fig:ChangeAttribute
 #+ATTR_LATEX: :width 300
 #+ATTR_ORG: :width 300
+#+ATTR_HTML: :width 600
 [[file:images/inspector-3.gif]]
 
 ** VStack
+
 一個以上的物件都要放在 Stack 中，Stack 與 Stack 可相互包含，加入方式有二：
 *** 由工具列 drag: Xcode 會自動加入相對的 code
 #+CAPTION: Drag component from toolbar
@@ -180,6 +186,7 @@ struct ContentView_Previews: PreviewProvider {
 #+name: fig:VStack
 #+ATTR_LATEX: :width 300
 #+ATTR_ORG: :width 300
+#+ATTR_HTML: :width 600
 [[file:images/vstack.gif]]
 *** coding
 #+begin_src swift -r -n :results output :exports both
@@ -205,6 +212,7 @@ struct ContentView_Previews: PreviewProvider {
 #+name: fig:VStack-1
 #+ATTR_LATEX: :width 300
 #+ATTR_ORG: :width 300
+#+ATTR_HTML: :width 300
 [[file:images/vstack-1.jpg]]
 *** SwiftUI 撰寫原則
 - body 恆為只能 return 一物件。
@@ -253,6 +261,7 @@ struct ContentView_Previews: PreviewProvider {
 #+name: fig:HStack-1
 #+ATTR_LATEX: :width 300
 #+ATTR_ORG: :width 300
+#+ATTR_HTML: :width 300
 [[file:images/hstack-1.jpg]]
 
 ** Image
@@ -292,6 +301,7 @@ struct ContentView_Previews: PreviewProvider {
 #+name: fig:Images-1
 #+ATTR_LATEX: :width 300
 #+ATTR_ORG: :width 300
+#+ATTR_HTML: :width 300
 [[file:images/image-1.jpg]]
 
 *** Customized Image 語法
@@ -336,6 +346,7 @@ struct ContentView_Previews: PreviewProvider {
 #+name: fig:Images-2
 #+ATTR_LATEX: :width 300
 #+ATTR_ORG: :width 300
+#+ATTR_HTML: :width 300
 [[file:images/image-2.jpg]]
 
 ** Button
@@ -383,6 +394,7 @@ struct ContentView: View {
 #+name: fig:Button-1
 #+ATTR_LATEX: :width 300
 #+ATTR_ORG: :width 300
+#+ATTR_HTML: :width 300
 [[file:images/swbtn-1.jpg]]
 
 ** TextField
@@ -423,13 +435,14 @@ struct ContentView_Previews: PreviewProvider {
 #+name: fig:Button-1
 #+ATTR_LATEX: :width 300
 #+ATTR_ORG: :width 300
+#+ATTR_HTML: :width 300
 [[file:images/txtfield-1.jpg]]
 
 * Customize UI Components
 SwiftUI 提供豐富的 modifier 幫助我們設計客製 UI 元件的樣式，諸如陰影，旋轉等效果皆可透過 modifier 實現，還可以搭配方便的拖曳加入相關程式碼。[fn:5]
 
 ** Text
-*** Advanced Attributes [fn:7]
+*** Advanced Attributes [fn:6]
 #+begin_src swift -r -n :results output :exports both
 struct ContentView: View {
     var body: some View {
@@ -452,10 +465,11 @@ struct ContentView: View {
 #+name: fig:Adv-Text_Attributes
 #+ATTR_LATEX: :width 300
 #+ATTR_ORG: :width 300
+#+ATTR_HTML: :width 300
 [[file:images/adv-text-attributes.jpg]]
 
 ** Image
-*** Advanced Attributes [fn:6]
+*** Advanced Attributes [fn:7]
 #+begin_src swift -r -n :results output :exports both
 import SwiftUI
 
@@ -498,6 +512,7 @@ struct ContentView_Previews: PreviewProvider {
 #+name: fig:Adv-Image-Attributes
 #+ATTR_LATEX: :width 300
 #+ATTR_ORG: :width 300
+#+ATTR_HTML: :width 300
 [[file:images/image-advanced-attributes.jpg]]
 
 ** Button
@@ -546,19 +561,773 @@ struct ContentView: View {
 #+name: fig:Adv-Button-Attributes
 #+ATTR_LATEX: :width 300
 #+ATTR_ORG: :width 300
+#+ATTR_HTML: :width 300
 [[file:images/customized-button-1.jpg]]
 
 * Advanced Commponents
 ** List
-- [[https://medium.com/@mikru168/swiftui-%E6%B7%BA%E7%8E%A9-swiftui-%E7%94%A8%E5%85%B6%E5%BB%BA%E6%A7%8B%E4%B8%80%E7%B0%A1%E5%96%AE%E7%9A%84-app-2f2477bd49d7][簡介 SwiftUI & 用其建構一簡單的 APP]]
+*** 準備單一 cell 格式
+#+begin_src swift -r -n :results output :exports both
+import SwiftUI
+
+struct ContentView: View {
+    var body: some View {
+        HStack {
+            Image(systemName: "book")
+                .resizable()
+                .frame(width: 30, height: 30, alignment: .center)
+            VStack(alignment: .leading) {
+                Text("Artificial Intelligence: A Modern Approach")
+                    .multilineTextAlignment(.leading)
+                    .foregroundColor(Color.green)
+                Text("Stuart Russell and Peter Norvig")
+                    .multilineTextAlignment(.leading)
+                    .foregroundColor(Color.orange)
+            }
+        }
+    }
+}
+
+#+end_src
+#+CAPTION: Single cell
+#+LABEL:fig:single-cell
+#+name: fig:single-cell
+#+ATTR_LATEX: :width 300
+#+ATTR_ORG: :width 300
+#+ATTR_HTML: :width 300
+[[file:images/single-cell.jpg]]
+*** 轉入 List 格式
+**** 將最外層的 VStack 加入 List 中
+#+CAPTION: List-1
+#+LABEL:fig:list-1
+#+name: fig:list-1
+#+ATTR_LATEX: :width 400
+#+ATTR_ORG: :width 400
+#+ATTR_HTML: :width 500
+[[file:images/list-1.jpg]]
+**** list 語法
+#+begin_src swift -r -n :results output :exports both
+import SwiftUI
+
+struct ContentView: View {
+    var body: some View {
+        List(0 ..< 5) { item in
+            Image(systemName: "book")
+                .resizable()
+                .frame(width: 30, height: 30, alignment: .center)
+            VStack(alignment: .leading) {
+                Text("Artificial Intelligence: A Modern Approach")
+                    .multilineTextAlignment(.leading)
+                    .foregroundColor(Color.green)
+                Text("Stuart Russell and Peter Norvig")
+                    .multilineTextAlignment(.leading)
+                    .foregroundColor(Color.orange)
+            }
+        }
+    }
+}
+#+end_src
+**** 結果
+ #+CAPTION: List-2
+ #+LABEL:fig:list-2
+ #+name: fig:list-2
+ #+ATTR_LATEX: :width 400
+ #+ATTR_ORG: :width 400
+ #+ATTR_HTML: :width 500
+ [[file:images/list-2.jpg]]
+*** 建立 list 來源數據[fn:3]
+#+begin_verse
+In order to handle dynamic items, you must first tell SwiftUI how it can identify which item is which. This is done using the Identifiable protocol, which has only one requirement: some sort of id value that SwiftUI can use to see which item is which. [fn:9]
+#+end_verse
+#+begin_src swift -r -n :results output :exports both
+import SwiftUI
+
+//建立book struct
+struct Book: Identifiable {
+    var id = UUID()
+    var title: String
+    var author: String
+    var image: String
+}
+
+struct ContentView: View {
+    var books = [
+      Book(id: UUID(), title: "地獄藍調", author: "李查德", image: "b1"),
+      Book(id: UUID(), title: "至死方休", author: "李查德", image: "b2"),
+      Book(id: UUID(), title: "一觸即發", author: "李查德", image: "b3"),
+      Book(id: UUID(), title: "索命訪客", author: "李查德", image: "b4"),
+      Book(id: UUID(), title: "闇夜回聲 ", author: "李查德", image: "b5")]
+
+    //.....
+}
+#+end_src
+*** 將數據連結到列表中[fn:3]
+#+begin_src swift -r -n :results output :exports both
+import SwiftUI
+
+    //....
+    var body: some View {
+        List(books) { book in
+            Image(book.image)
+                .resizable()
+                .frame(width: 40, height: 40, alignment: .center)
+            VStack(alignment: .leading) {
+                Text(book.title)
+                    .multilineTextAlignment(.leading)
+                    .foregroundColor(Color.green)
+                Text(book.author)
+                    .multilineTextAlignment(.leading)
+                    .foregroundColor(Color.orange)
+            }
+        }
+    }
+}
+#+end_src
+*** 結果
+#+CAPTION: List-3
+#+LABEL:fig:list-3
+#+name: fig:list-3
+#+ATTR_LATEX: :width 300
+#+ATTR_ORG: :width 300
+#+ATTR_HTML: :width 300
+[[file:images/list-3.jpg]]
+*** 為什麼要加入 id 與 Identifiable
+- Identifiable: 允許 Array 中有重複值
+- id: 明確區分重複值
+- UUID: 自動生成 unique 值
+- 詳細說明如[[https://medium.com/flawless-app-stories/swiftui-dynamic-list-identifiable-73c56215f9ff][SwiftUI - Dynamic List & Identifiable]]
   
+** Navigation bar
+- 於 body 中最外層的 component 之外加入 NavigationView
+- Title: navigationBarTitle()
+#+begin_src swift -r -n :results output :exports both
+import SwiftUI
+  ...
+
+struct ContentView: View {
+    ....
+    var body: some View {
+        NavigationView {
+            List(books) { book in
+                ...
+                }
+            }.navigationBarTitle(Text("書單"))
+        }
+    }
+}
+...
+#+end_src
+#+CAPTION: Navigation bar
+#+LABEL:fig:Navigation-1
+#+name: fig:Navigation-1
+#+ATTR_LATEX: :width 300
+#+ATTR_ORG: :width 300
+#+ATTR_HTML: :width 300
+[[file:images/navigation-1.jpg]]
+
+** Button, Divider
+#+begin_src swift -r -n :results output :exports both
+//
+//  ContentView.swift
+//  uitest
+//
+//  Created by yen yung chin on 2020/7/29.
+//  Copyright © 2020 Letranger.tw. All rights reserved.
+//
+
+import SwiftUI
+
+struct ContentView: View {
+    @State private var a = ""
+    @State private var b = ""
+    @State private var c = "Ans:"
+    
+    var body: some View {
+        VStack {
+            VStack {
+                Divider()
+                TextField("Number 1: ", text: $b)
+                Divider()
+                TextField("Number 2:", text: $a)
+                Divider()
+                Button("➕") {
+                    let one = Int(self.a) ?? 0
+                    let two = Int(self.b) ?? 0
+                    self.c = "Ans: " + String(one + two)
+                }
+                .frame(width: 40, height: 30, alignment: .center)
+                .foregroundColor(.white)
+                .background(Color.green)
+                .font(.largeTitle)
+                Divider()
+                Text(verbatim: c)
+                    .foregroundColor(.gray)
+            }
+            .frame(width: 200, height: 160, alignment: .center)
+            
+        }
+    }
+}
+#+end_src
+#+CAPTION: Button
+#+LABEL:fig:Button-1
+#+name: fig:Button-1
+#+ATTR_LATEX: :width 300
+#+ATTR_ORG: :width 300
+#+ATTR_HTML: :width 300
+[[file:images/btn-1.jpg]]
+
+** background, opacity
+#+begin_src swift -r -n :results output :exports both
+//
+//  ContentView.swift
+//  uitest
+//
+//  Created by yen yung chin on 2020/7/29.
+//  Copyright © 2020 Letranger.tw. All rights reserved.
+//
+
+import SwiftUI
+
+struct ContentView: View {
+    @State private var a = ""
+    @State private var b = ""
+    @State private var c = "Ans:"
+
+    var body: some View {
+        VStack(alignment: .center) {
+            Text("計算機")
+            Divider()
+            TextField("Number 1: ", text: $b)
+            Divider()
+            TextField("Number 2:", text: $a)
+            Divider()
+            Button("➕") {
+                let one = Int(self.a) ?? 0
+                let two = Int(self.b) ?? 0
+                self.c = "Ans: " + String(one + two)
+            }
+            .frame(width: 40, height: 30, alignment: .center)
+            .foregroundColor(.white)
+            .background(Color.white)
+            .font(.largeTitle)
+            Divider()
+            Text(verbatim: c)
+                .foregroundColor(.black)
+
+
+        }
+        .padding(60)
+        .background(Image("background").resizable().scaledToFill())
+        .opacity(0.9)
+    }
+}
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
+
+
+#+end_src
+#+CAPTION: Background
+#+LABEL:fig:Background-1
+#+name: fig:Background-1
+#+ATTR_LATEX: :width 300
+#+ATTR_ORG: :width 300
+#+ATTR_HTML: :width 300
+[[file:images/background-1.jpg]]
+
+* Struct, Class, and Enum
+#+begin_verse
+struct, class, and enum are fundamentally important concepts for every iOS developer. It’s difficult to imagine common iOS apps without them. [fn:10]
+#+end_verse
+** Structures
+#+begin_src swift -r -n :results output :exports both
+struct Birthday {
+  var day: Int = 12
+  var month: Int = 12
+  var year: Double = 1999
+
+  func myBirthday() {
+  print("I've born in \(year).\(month).\(day)")
+  }
+}
+
+struct Person {
+  var firstName: String = "Abboskhon"
+  var lastName: String = "Shukurullaev"
+  var phoneNumber: String = 123456
+  var emailAddress: String = "abbsh24@gmail.com"
+
+  func myInfo() {
+  print("My name is \(firstName) \(secondName). My phone number is \(phoneNumber) and email address is \(emailAddress)")
+  }
+}
+#+end_src
+*** Mutating methods
+#+begin_verse
+Structs have also got so-called mutating methods that play a role in updating the property values of a structure within an instance method. [fn:10]
+#+end_verse
+#+begin_src swift -r -n :results output :exports both
+struct Counter {
+  var count: Int = 0
+
+  mutating func increment() {
+    count += 1
+  }
+  mutating func increment(by amount: Int) {
+    count += amount
+  }
+  mutating func reset() {
+    count = 0
+  }
+}
+var counter = Counter()   //default is 0
+counter.increment()       //becomes 1
+counter.increment(by: 9)  //becomes 10
+counter.reset()           //reset to 0
+#+end_src
+
+** Classes
+#+begin_verse
+Classes and structures are very similar, and both can be used to define properties and methods. [fn:10]
+#+end_verse
+*** Inheritance & Override methods and properties
+#+begin_verse
+The biggest difference that structs do not have is hierarchical relations. Classes can have parent classes, that are called superclass, and child classes, that are called subclasses. [fn:10]
+#+end_verse
+#+begin_src swift -r -n :results output :exports both
+class Animals {
+    func animals() {
+        print("Animals are mainly of 3 types: Land Animals, Sea animals, Air Animals")
+    }
+}
+
+class LandAnimals: Animals {
+    override func animals() {
+        print("Land animals are cats, sheeps, horses.")
+    }
+}
+
+class Cat: LandAnimals {
+    override func animals() {
+        print("I am a cat and I am a land animal.")
+    }
+}
+#+end_src
+
+** 結構跟類的比較 (Comparing Structures and Classes) [fn:11]
+*** 在 Swift 中的結構與類有許多相同之處，兩者皆能：
+- 定義屬性來儲存值
+- 定義方法來提供功能
+- 定義下標來提供訪問他們用下標語法的值
+- 定義初始化器來設定他們的初始狀態
+- 可被擴展以擴展其功能，超越預設的實現
+- 符合協議以提供某種標準功能
+*** 類具有的附加功能，但結構沒有：
+- 繼承使一個類能夠繼承另一個的特性
+- 類型轉換使我們可以在運行時檢查和解釋類實例的類型
+- 反初始化器允許類的實例釋放它已分配的任何資源
+- 引用計數允許對類實例的多個引用
+*** 結構和列舉是值型別 (Structures and Enumerations Are Value Types)
+值型別是一種其值在被賦值給變數或常數時被複製，或者在傳遞給函數時被複製。實際上，Swift 的整數、浮點數、布林值、字符串、數組和字典中的所有基本型別都是值型別，並且在幕後實現為結構。所有結構和列舉都是 Swift 中的值型別。這代表著我們創建的任何結構和列舉實例以及它們作為屬性的任何值類型在代碼中傳遞時始終會被複製。[fn:11]
+**** 範例
+#+begin_src swift -r -n :results output :exports both
+struct Resolution {
+    var width = 0
+    var height = 0
+}
+
+let hd = Resolution(width: 1920, height: 1080)
+var cinema = hd
+
+cinema.width = 2048
+
+print("cinema is now \(cinema.width) pixels wide")
+// Prints "cinema is now 2048 pixels wide"
+
+print("hd is still \(hd.width) pixels wide")
+// Prints "hd is still 1920 pixels wide"
+#+end_src
+由上述例子可知，當 cinema 被賦予 hd 當前的值，儲存在 hd 的值被複製到新 cinema 的實例。最後結果兩個擁有相同值但完全不同的實例，所以當修改 cinema.width = 2048 的時候，並不會影響儲存在 hd 中的 width。[fn:11]
+#+CAPTION: Struct value type
+#+LABEL:fig:Structure
+#+name: fig:Structure
+#+ATTR_LATEX: :width 400
+#+ATTR_ORG: :width 400
+#+ATTR_HTML: :width 400
+[[file:images/struct.png]]
+*** 類是參考型別 (Classes Are Reference Types)
+不同於值型別，當參考型別被指定給一個變數或常數，或是傳遞進一個函數的時候，並不會被複製。參考型別非副本，是使用相同存在的實例。[fn:11]
+**** 範例
+#+begin_src swift -r -n :results output :exports both
+class VideoMode {
+    var interlaced = false
+    var frameRate = 0.0
+    var name: String?
+}
+
+let tenEighty = VideoMode()
+
+tenEighty.interlaced = true
+tenEighty.name = "1080i"
+tenEighty.frameRate = 25.0
+
+let alsoTenEighty = tenEighty
+alsoTenEighty.frameRate = 30.0
+
+print("The frameRate property of tenEighty is now \(tenEighty.frameRate)")
+// Prints "The frameRate property of tenEighty is now 30.0"
+#+end_src
+由上述例子可知，當 alsoTenEighty 被指定為 tenEighty，並且修改 alsoTenEighty.frameRate = 30.0 時，也會更動到 tenEighty.frameRate 的值。[fn:11]
+#+CAPTION: Class Reference type
+#+LABEL:fig:Class-1
+#+name: fig:Class-1
+#+ATTR_LATEX: :width 400
+#+ATTR_ORG: :width 400
+#+ATTR_HTML: :width 400
+[[file:images/class.png]]
+
+** Enumerations
+#+begin_verse
+Enumerations are different from structs and classes. Enum is a special Swift type that defines a common type for a group of related values. Then, enums can be interacted with other data types such as a switch, if statements, and others. [fn:10]
+#+end_verse
+從 Swift 3 開始，我們的 enum 內設定的情境字串要以小寫字母開頭。
+#+begin_src swift -r -n :results output :exports both
+//1 representation of enum
+enum DownloadStatus {
+    case downloading
+    case finished
+    case failed
+    case cancelled
+}
+
+var currentStatus = DownloadStatus.downloading
+
+switch currentStatus {
+case .downloading:
+    print("Downloading...")
+
+case .finished:
+    print("Just finished the download...")
+
+case .failed:
+    print("Failed to download the file...")
+
+case .cancelled:
+    print("The download is cancelled...")
+}
+#+end_src
+#+begin_verse
+此時，你可能會想，為什麼需要使用 enum 來定義多個情況，而不選擇宣告一個包含四個情境項目的 array，如下圖所示:
+
+let downloadStatus = [“downloading”, “finished”, “failed”, “cancelled”]
+let currentStatus = downloadStatus[0]
+
+你可以這樣做沒錯，但是如此一來會有兩個缺點，首先，你可能會不知道 downloadStatus[0]代表什麼，除非你引用 downloadStatus array，若是比較 downloadStatus[0]與 DownloadStatus.downloading 這兩種表達方式，很明顯的是後者的可讀性比較高。
+
+其次，因為 currentStatus 是 String 類型，變量可以被賦予任何字符串值，無法將它限制為 “downloading”, “finished”, “failed” 以及 “cancelled”，除非執行一些額外的驗證。反之，如果使用 enum，我們可以將 myDirection 限制在 .downloading、.finished、.failed 或 .cancelled 等四種情境之一，不會出現其他意料之外的情況。 [fn:12]
+#+end_verse
+
+** 結構和類之間的選擇 (Choosing Between Structures and Classes)
+#+begin_verse
+總的來說，用 class 來定義資料物件的話，就好像是在用雲端共享文件一樣：每個人的螢幕上都會有一份文件可以編輯，但這個文件並沒有存在電腦裡，而是跟雲端的版本連線，所以所有的變動都是直接在雲端版本上更新的。好處是方便，壞處是誰修改了甚麼東西經理不會知道（class 本身沒有帳號功能！）。
+
+用 struct 的話，則是像傳統的離線文件檔案一樣。一開始文件只有經理有，而如果他想要讓手下小美去修改文件的話，他就需要拷貝一份檔案給小美。小美修改完檔案後，必須把它交還給經理，然後經理再決定要不要用修改過的檔案取代原本的文件。[fn:13]
+#+end_verse
+#+CAPTION: MVC
+#+LABEL:fig:MVC
+#+name: fig:MVC
+#+ATTR_LATEX: :width 400
+#+ATTR_ORG: :width 400
+#+ATTR_HTML: :width 400
+[[file:images/mvc-1.png]]
+- 在 MVC 架構中，Model 包含了 Data Objects 與 Document，其中 Documents 包含所有的資料管理者元件(如 Core Data 的 NSManagedObjectContext，或是任何負責下載、上傳資料物件的網路層元件，如自訂的 NetworkManager)。
+- Document 最好是用 class 來定義，因為它肩負了許多溝通的工作。Data Objects 則是資料的代表，要用 class 或 struct 來定義都可以。
+- 用 class 定義 Data Objects 的話，任何變動只要執行一次就可以了，因為它的實體只會有一個。然而，用 struct 定義的話，則需要將變動手動套用到文件所管理的那份實體，好讓整個 app 都能使用最新的資料。這雖然寫起來較為囉唆，卻讓閱讀與維護更為簡單(可以確定是在哪裡被變更資料)。[fn:13]
+*** 選擇原則
+- Choose Structures by Default
+- Use Classes When You Need Objective-C Interoperability
+- Use Classes When You Need to Control Identity
+- Use Structures When You Don't Control Identity
+
+* Protocols
+對任何程式開發來說，減少重覆的 code，把權責明確分開，讓 code 維護性變好，是非常重要的課題。而在現今的軟體開發模式中，有許多方法可以做到這點，最為人所知的一個模式，就是利用繼承 (Inheritance)，把會重覆利用的部份放在母類別，讓其它子類別去繼承。另外一種做法，則是利用 Composition Pattern，將功能做成組件分出來，讓需要的模組去組合取用。[fn:14]
+#+begin_verse
+A protocol defines a blueprint of methods, properties, and other requirements that suit a particular task or piece of functionality. The protocol can then be adopted by a class, structure, or enumeration to provide an actual implementation of those requirements. Any type that satisfies the requirements of a protocol is said to conform to that protocol. [fn:15]
+#+end_verse
+
+協定提供類型可以做的資訊，Classes 和 structs 則提供物件的資訊，協定則提供物件將會執行的動作。[fn:16]
+#+begin_verse
+協定是 Swift 一個重要的特性，它會定義出為了完成某項任務或功能所需的方法、屬性，但是本身不會實作這些任務跟功能，而僅僅只是表達出該任務或功能的名稱。協定為方法、屬性、以及其他特定的任務需求或功能定義藍圖。協定可被 class、struct、或 enum 類型採納以提供所需功能的具體實現。滿足了協定中需求的任意類型都叫做遵循了該協定。
+
+除了指定遵循類型必須實現的要求外，你可以擴展一個協定以實現其中的一些需求或實現一個符合類型的可以利用的附加功能。[fn:17]
+#+end_verse
+
+** 範例
+*** 版本 1
+本例中有兩個 struct: Song, Album 以及一個 class 用來播放 Song 或 Album，原本的 Player 要為不同的 struct 寫不同的 func，而且程式碼大多重複。
+#+begin_src swift -r -n :results output :exports both
+import Cocoa
+import AVKit
+
+struct Song {
+    var name: String
+    var album: Album
+    var audioURL: URL
+    var isLiked: Bool
+}
+
+struct Album {
+    var name: String
+    var imageURL: URL
+    var audioURL: URL
+    var isLiked: Bool
+}
+
+class Player {
+    private let avPlayer = AVPlayer()
+
+    func play(_ song: Song) {
+        let item = AVPlayerItem(url: song.audioURL)
+        avPlayer.replaceCurrentItem(with: item)
+        avPlayer.play()
+    }
+
+    func play(_ album: Album) {
+        let item = AVPlayerItem(url: album.audioURL)
+        avPlayer.replaceCurrentItem(with: item)
+        avPlayer.play()
+    }
+}
+#+end_src
+*** 版本 2
+宣告一個 protocol，定義 audioURL 變數(read only)，然後令兩個 struct 皆遵循該 protocol(方式有二)，如此，原本的 Player class 中的 play func 就能只寫一次。
+#+begin_src swift -r -n :results output :exports both
+import Cocoa
+import AVKit
+
+protocol Playable {
+    var audioURL: URL { get }
+}
+
+struct Song: Playable {
+    var name: String
+    var album: Album
+    var audioURL: URL
+    var isLiked: Bool
+}
+
+struct Album {
+    var name: String
+    var imageURL: URL
+    var audioURL: URL
+    var isLiked: Bool
+}
+
+extension Album: Playable {}
+class Player {
+    private let avPlayer = AVPlayer()
+
+    func play(_ resource: Playable) {
+        let item = AVPlayerItem(url: resource.audioURL)
+        avPlayer.replaceCurrentItem(with: item)
+        avPlayer.play()
+    }
+}
+#+end_src
+*** 版本 3
+原本 protocol 的真正意思其實只是在確定 audioURL 是否能正確轉換成 Audio，所以其實將 protocol name 由 Playable 改為 AudioURLConvertable 會更貼近事實。
+#+begin_src swift -r -n :results output :exports both
+import Cocoa
+import AVKit
+
+protocol AudioURLConvertable {
+    var audioURL: URL { get }
+}
+
+struct Song: AudioURLConvertable {
+    var name: String
+    var album: Album
+    var audioURL: URL
+    var isLiked: Bool
+}
+
+struct Album: AudioURLConvertable {
+    var name: String
+    var imageURL: URL
+    var audioURL: URL
+    var isLiked: Bool
+}
+
+class Player {
+    private let avPlayer = AVPlayer()
+
+    func play(_ resource: AudioURLConvertable) {
+        let item = AVPlayerItem(url: resource.audioURL)
+        avPlayer.replaceCurrentItem(with: item)
+        avPlayer.play()
+    }
+}
+
+#+end_src
+
+** mutating
+protocol 除了可以提供傳回值型態的彈性，也可以用來變更 class/struct 中的屬性。如：
+#+begin_src swift -r -n :results output :exports both
+import Cocoa
+import AVKit
+
+protocol Likeable {
+    mutating func markAsLiked()
+}
+
+struct Song {
+    var name: String
+    var album: Album
+    var audioURL: URL
+    var isLiked: Bool
+}
+
+struct Album {
+    var name: String
+    var imageURL: URL
+    var audioURL: URL
+    var isLiked: Bool
+}
+
+extension Song: Likeable {
+    mutating func markAsLiked() {
+        isLiked = true
+    }
+}
+#+end_src
+可以在不改變原 struct Album 的情況下，藉由 extension 來擴充 Song，使其遵循 Likeable protocol，提供變供屬性 isLiked 的值，*這在擴充 API 功能時特別有用*。
+** 擴充 protocol
+除了擴充現有 struct，protocol 也可以用來擴充 protocol，如：
+#+begin_src swift -r -n :results output :exports both
+import Cocoa
+import AVKit
+
+protocol Likeable {
+    var isLiked: Bool {get set}
+}
+
+extension Likeable {
+    mutating func markAsLiked() {
+        isLiked = true
+    }
+}
+
+struct Song {
+    var name: String
+    var album: Album
+    var audioURL: URL
+    var isLiked: Bool
+}
+
+struct Album {
+    var name: String
+    var imageURL: URL
+    var audioURL: URL
+    var isLiked: Bool
+}
+
+extension Song: Likeable {}
+extension Album: Likeable {}
+#+end_src
+
+* some
+#+begin_verse
+Adding the keyword some in front of a return type indicates that the return type is opaque. [fn:18]
+#+end_verse
+** Generics
+*** 問題
+Generics 允許開發者在不同類型中複用你的程式碼，用來解決下列問題：
+#+begin_src swift -r -n :results output :exports both
+func swapInts(_ a: inout Int, _ b: inout Int) {
+    let temporaryB = b
+    b = a
+    a = temporaryB
+}
+
+var num1 = 10
+var num2 = 20
+
+swapInts(&num1, &num2)
+print(num1)   // 20
+print(num2)   // 10
+#+end_src
+但若想交換字串，則要寫成
+#+begin_src swift -r -n :results output :exports both
+func swapStrings(_ a: inout String, _ b: inout String) {
+    let temporaryB = b
+    b = a
+    a = temporaryB
+}
+#+end_src
+可以發現除了參數之外，重複的 code 實在太多
+*** 解決方案
+將固定型態的參數轉為 Generic type
+#+begin_src swift -r -n :results output :exports both
+import Cocoa
+
+func swapTwoValues<T>(_ a: inout T, _ b: inout T) {
+    let temporaryA = a
+    a = b
+    b = temporaryA
+}
+
+
+var num1 = 10
+var num2 = 20
+
+swapTwoValues(&num1, &num2)
+print(num1)   // 20
+print(num2)   // 10
+#+end_src
+另一個例子為 Stack 的實作：
+原本只能儲存 Int 的 Stack 如下，若要儲存字串則要再另行定義。
+#+begin_src swift -r -n :results output :exports both
+struct IntStack {
+    var items = [Int]()
+    mutating func push(_ item: Int) {
+        items.append(item)
+    }
+    mutating func pop() -> Int {
+        return items.removeLast()
+    }
+}
+#+end_src
+改為 Generic type 後可動態變更為整數 stack 或字串 stack，如：
+#+begin_src swift -r -n :results output :exports both
+struct Stack<Element> {
+    var items = [Element]()
+    mutating func push(_ item: Element) {
+        items.append(item)
+    }
+    mutating func pop() -> Element {
+        return items.removeLast()
+    }
+}
+
+var stackOfStrings = Stack<String>()
+stackOfStrings.push("uno")
+stackOfStrings.push("dos")
+stackOfStrings.push("tres")
+stackOfStrings.push("cuatro")
+// the stack now contains 4 strings
+
+#+end_src
+** opaque
+帶有不透明（opaque）返回類型的函數或方法，將會隱藏其返回值的類型[fn:19]
+
+* 進階主題
+- [[https://www.appcoda.com.tw/protocol-extension/][利用 Protocol Extension 減少重覆的 Code　大大增強 Code 的維護性]]
+- [[https://appcoda.com.tw/mastering-swift/][精通Swift：列舉、閉包、泛型、Protocols和高階函數]]
+
 * Footnotes
-
-[fn:8] [[https://www.appcoda.com.tw/swiftui-border/][SwiftUI 小技巧：利用 border 修飾符　輕鬆為按鈕或文本繪製邊框]]
-
-[fn:7] [[https://medium.com/%E5%BD%BC%E5%BE%97%E6%BD%98%E7%9A%84-swift-ios-app-%E9%96%8B%E7%99%BC%E5%95%8F%E9%A1%8C%E8%A7%A3%E7%AD%94%E9%9B%86/%E5%AE%A2%E8%A3%BD-ui-%E5%85%83%E4%BB%B6%E6%A8%A3%E5%BC%8F%E7%9A%84-swiftui-modifier-b31ff65c1f0d][客製 UI 元件樣式的 SwiftUI modifier]]
-
-[fn:6] [[https://medium.com/%E5%BD%BC%E5%BE%97%E6%BD%98%E7%9A%84-swift-ios-app-%E9%96%8B%E7%99%BC%E5%95%8F%E9%A1%8C%E8%A7%A3%E7%AD%94%E9%9B%86/swiftui-%E8%A3%81%E5%88%87%E5%BD%A2%E7%8B%80%E7%9A%84-clipshape-mask-4fc49b34141][SwiftUI 裁切形狀的 clipShape & mask]]
 
 [fn:1] [[https://medium.com/@mikru168/swiftui-%E6%B7%BA%E7%8E%A9-swiftui-%E7%94%A8%E5%85%B6%E5%BB%BA%E6%A7%8B%E4%B8%80%E7%B0%A1%E5%96%AE%E7%9A%84-app-2f2477bd49d7][簡介 SwiftUI & 用其建構一簡單的 APP ]]
 
@@ -569,3 +1338,33 @@ struct ContentView: View {
 [fn:4] [[https://stackoverflow.com/questions/56514998/find-all-available-images-for-imagesystemname-in-swiftui][Find all available images for Image(systemName:) in SwiftUI]]
 
 [fn:5] [[https://medium.com/%E5%BD%BC%E5%BE%97%E6%BD%98%E7%9A%84-swift-ios-app-%E9%96%8B%E7%99%BC%E5%95%8F%E9%A1%8C%E8%A7%A3%E7%AD%94%E9%9B%86/%E5%AE%A2%E8%A3%BD-ui-%E5%85%83%E4%BB%B6%E6%A8%A3%E5%BC%8F%E7%9A%84-swiftui-modifier-b31ff65c1f0d][客製 UI 元件樣式的 SwiftUI modifier]]
+
+[fn:6] [[https://medium.com/%E5%BD%BC%E5%BE%97%E6%BD%98%E7%9A%84-swift-ios-app-%E9%96%8B%E7%99%BC%E5%95%8F%E9%A1%8C%E8%A7%A3%E7%AD%94%E9%9B%86/%E5%AE%A2%E8%A3%BD-ui-%E5%85%83%E4%BB%B6%E6%A8%A3%E5%BC%8F%E7%9A%84-swiftui-modifier-b31ff65c1f0d][客製 UI 元件樣式的 SwiftUI modifier]]
+
+[fn:7] [[https://medium.com/%E5%BD%BC%E5%BE%97%E6%BD%98%E7%9A%84-swift-ios-app-%E9%96%8B%E7%99%BC%E5%95%8F%E9%A1%8C%E8%A7%A3%E7%AD%94%E9%9B%86/swiftui-%E8%A3%81%E5%88%87%E5%BD%A2%E7%8B%80%E7%9A%84-clipshape-mask-4fc49b34141][SwiftUI 裁切形狀的 clipShape & mask]]
+
+[fn:8] [[https://www.appcoda.com.tw/swiftui-border/][SwiftUI 小技巧：利用 border 修飾符　輕鬆為按鈕或文本繪製邊框]]
+
+[fn:9] [[https://www.hackingwithswift.com/quick-start/swiftui/how-to-create-a-list-of-dynamic-items][How to create a list of dynamic items]]
+
+[fn:10] [[https://levelup.gitconnected.com/demystifying-struct-class-and-enum-in-swift-5-43dde089e96a][Demystifying Struct, Class, and Enum in Swift 5]]
+
+[fn:11] [[https://ithelp.ithome.com.tw/articles/10220520][ Day 10: [Swift] 結構和類 (Struct and Class) ]]
+
+[fn:12] [[https://appcoda.com.tw/mastering-swift/][精通Swift：列舉、閉包、泛型、Protocols和高階函數]]
+
+[fn:13] [[https://www.appcoda.com.tw/swift-class/][Swift Class vs Struct：設計 Model 時，該用 Struct 還是 Class 呢？]]
+
+[fn:14] [[https://www.appcoda.com.tw/protocol-extension/][利用 Protocol Extension 減少重覆的 Code　大大增強 Code 的維護性]]
+
+[fn:15] [[https://docs.swift.org/swift-book/LanguageGuide/Protocols.html][Protocols]]
+
+[fn:16] [[https://www.appcoda.com.tw/swift-protocol/][Swift開發指南：Protocols與Protocol Extensions的使用心法]]
+
+[fn:17] [[https://ithelp.ithome.com.tw/articles/10197366][Day-29 Swift 語法(25) - 協定 Protocol]]
+
+[fn:18] [[https://medium.com/@PhiJay/whats-this-some-in-swiftui-34e2c126d4c4][What’s this “some” in SwiftUI?]]
+
+[fn:19] [[https://medium.com/jeremy-xue-s-blog/swift-%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80-opaque-types-600ad5758b91][Swift 程式語言 — Opaque Types]]
+
+[fn:20] [[https://medium.com/jeremy-xue-s-blog/swift-%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80-opaque-types-600ad5758b91][Swift 程式語言 — Opaque Types]]
