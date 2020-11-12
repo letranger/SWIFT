@@ -1,0 +1,8 @@
+#+TITLE: SwiftUI v.s. Firebase
+#+INCLUDE: ../web.org
+
+#+latex:\newpage
+
+* Videos
+- [[https://www.youtube.com/watch?v=4RUeW5rUcww][Building a to-do list app with SwiftUI and Firebase - Part 1]]
+- [[https://www.youtube.com/watch?v=2k6_Mi2ERWc][Building a Todo List App Using Firebase and SwiftUI - Part 2 ]]

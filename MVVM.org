@@ -1,0 +1,12 @@
+#+TITLE: MVVM
+#+INCLUDE: ../web.org
+#+latex:\newpage
+
+* 延伸閱讀
+** web
+- [[https://www.tpisoftware.com/tpu/articleDetails/1440][簡易實作MVVM範例]]
+- [[https://chiahsien.github.io/post/common-ios-architecture-from-mvc-to-viper-with-redux/][漫談 iOS 架構：從 MVC 到 VIPER，以及 Redux]]
+** Video
+- [[https://www.youtube.com/watch?v=4GjXq2Sr55Q&t=5254s][Lecture 2: MVVM and the Swift Type System]]
+- [[https://www.youtube.com/watch?v=dodQeGmf5a0&list=PLOAhunPTyNdllmzgEo59sVQWQ6-27cb_d][SwiftUI Amiibo App Series]]
+- [[https://www.youtube.com/watch?v=qDyb6AkX0s0][iPlayground 2019 | 漫談 iOS 架構：MVC / MVVM / VIPER 與 Redux]]

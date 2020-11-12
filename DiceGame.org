@@ -1,0 +1,3 @@
+#+TITLE: Dice Game
+#+INCLUDE: ../web.org
+#+latex:\newpage
