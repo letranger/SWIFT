@@ -1,0 +1,2270 @@
+#+TITLE: SwiftUI
+#+INCLUDE: ../web.org
+#+latex:\newpage
+
+* iOS app 的開發界面: UIKit v.s. SwiftUI
+:PROPERTIES:
+:CUSTOM_ID: SW-UIKIT-SWIFTUI
+:END:
+** UIKit 與 SwiftUI 的差異性
+*** 系統需求
+UIKit 是從 Xcode1 就一直存在的 Framework；而 SwiftUI 則是 2019/6 WWDC 所發表的全新用來繪製 UI 的 Framework。因此，SwiftUI 必須搭配 iOS13+ 和 MacOS10.15+。[fn:1]
+*** 底層語言
+UIKit 底層仍為 Objecitve-C；而 SwiftUI 則是完完全全用 Swift 打造的 Framework。
+*** 語法簡潔度
+SwiftUI 產生一顯示文字的元件更精簡潔了。
+*** Declarative vs Imperative Programming
+- imperative programming：告訴電腦如何做(HOW)來得到我們想要的結果(WHAT)，如 Java, C++, PHP, C#, Swift
+- declarative programming：告訴電腦我們想要的結果(WHAT)，讓電腦決定如何做(HOW)，如 SwiftUI
+
+*** 跨平台
+跨平台指的非跨 Android(但希望有那麼一天是可以支援的😀)。跨平台指的是使用 SwiftUI 所開發的專案，可以同時支援 macOS、watchOS、tvOS 等系統。引用一句 WWDC2019 SwiftUI 演講者所說的一句話。
+#+BEGIN_QUOTE
+Learn once, apply everywhere.
+#+END_QUOTE
+*** Automatic Preview
+這是此次 SwiftUI 最大的亮點之一，所謂 Automatic Preview，意思指的是即時預覽，即我們一邊調整程式碼的同時，也可以立即看到修改後的結果。
+*** 自動支援進階功能
+SwiftUI 本身即支援 Dynamic Type、Dark Mode、 Localization 等等。這邊特別來講一下 UIKit 和 SwiftUI 在文字設定上有關於 Dark Mode 的差異，UIKit 若是無特別指定文字的顏色(意即使用 Default 的選項)，在 Light Mode 字體會是白色；相對的在 Dark Mode 即會是白色，這點跟 SwiftUI 沒有特別的差異，但是 SwiftUI 除了 Default 外，還有 Secondary，如果還不喜歡的話，還有第三個選項，就是在 Assets 自行設定 Light Mode 和 Dark Mode 分別要顯示的顏色。
+#+CAPTION: UIKit 與 SwiftUI 的差異性比較圖
+#+LABEL:fig:Diff-1
+#+name: fig:Diff-1
+#+ATTR_LATEX: :width 300
+#+ATTR_ORG: :width 300
+#+ATTR_HTML: :width 300
+[[file:images/differences.png]]
+
+** SwiftUI vs UIKit: Benefits and Drawbacks
+*** Drawbacks of SwiftUI [fn:2]
+- It supports only iOS 13 and Xcode 11. By switching to them, you abandon users of older versions of iOS, which is a radical move devoid of concern for the user. But since Apple annually updates its list of supported iOS versions, I think SwiftUI will be used more over the next two years as users install the latest iOS version.
+- It’s still very young, so there isn’t much data on [[https://stackoverflow.com/][Stack Overflow]]. This means that you can’t get much help resolving complicated issues.
+- It doesn’t allow you to examine the view hierarchy in Xcode Previews.
+*** Benefits of SwiftUI [fn:2]
+- It’s easy to learn, and the code is simple and clean.
+- It can be mixed with UIKit using UIHostingController.
+- It allows you to easily manage themes. Developers can easily add dark mode to their apps and set it as the default theme, and users can easily enable dark mode. Besides, it looks awesome.
+- SwiftUI provides mechanisms for reactive programming enthusiasts with BindableObject, ObjectBinding, and the whole Combine framework.
+- It offers Live Preview. This is a very convenient and progressive way to see the results of code execution in real time without having to build. I’m not sure if it somehow affects the processor. So far, I’ve noticed a delay provoked by the use of Live Preview, but I think Apple will soon make improvements.
+- SwiftUI no longer needs Interface Builder. It was replaced by Canvas, an interactive interface editor. When writing code, the visual part in Canvas is automatically generated, and when you create visual presentation elements, they automatically appear in the code.
+- Your application will no longer crash if you forget to update the @IBOutlet association with the variable.
+- There’s no AutoLayout or related problems. Instead, you use things like HStack, VStack, ZStack, Groups, Lists, and more. Unlike AutoLayout, SwiftUI always produces a valid layout. There’s no such thing as an ambiguous or unsatisfiable layout. SwiftUI replaces storyboards with code, making it easy to create a reusable view and avoid conflicts related with the simultaneous use of one project by the development team.
+
+  #+latex:\newpage
+
+* AppDelegate v.s. SceneDelegate
+:PROPERTIES:
+:CUSTOM_ID: delegate
+:END:
+- AppDelegate 原來的職責為負責 App 的生命週期和 UI 生命週期，在 Xcode11 後，AppDelegate 將 UI 的生命週期(Scene Session)交給 SceneDelegate。原 Xcode10
+- 使用 Swift 為 User Interface 的專案 Launch 的生命週期為 AppDelegate → ViewController，而使用 SwiftUI 為 User Interface 的專案則變成為 AppDelegate → SceneDelegate → ContentView，原本應該出現在 AppDelegate 的 applicationWillEnterForeground(_:) 等相關 App 到前、背景等相關的生命週期邏輯也都移至 SceneDelegate 裡了，method 名稱 application 的前綴字也都更改為 scene 了。[fn:3]
+
+** SceneDelegate.swift
+#+BEGIN_SRC swift -r -n
+import UIKit
+import SwiftUI
+
+class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+
+    var window: UIWindow?
+
+    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
+        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
+        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+
+        // Create the SwiftUI view that provides the window contents.
+        let contentView = ContentView()
+
+        // Use a UIHostingController as window root view controller.
+        if let windowScene = scene as? UIWindowScene {
+            let window = UIWindow(windowScene: windowScene)
+            window.rootViewController = UIHostingController(rootView: contentView)
+            self.window = window
+            window.makeKeyAndVisible()
+        }
+    }
+
+    func sceneDidDisconnect(_ scene: UIScene) {
+        // Called as the scene is being released by the system.
+        // This occurs shortly after the scene enters the background, or when its session is discarded.
+        // Release any resources associated with this scene that can be re-created the next time the scene connects.
+        // The scene may re-connect later, as its session was not neccessarily discarded (see `application:didDiscardSceneSessions` instead).
+    }
+
+    func sceneDidBecomeActive(_ scene: UIScene) {
+        // Called when the scene has moved from an inactive state to an active state.
+        // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
+    }
+
+    func sceneWillResignActive(_ scene: UIScene) {
+        // Called when the scene will move from an active state to an inactive state.
+        // This may occur due to temporary interruptions (ex. an incoming phone call).
+    }
+
+    func sceneWillEnterForeground(_ scene: UIScene) {
+        // Called as the scene transitions from the background to the foreground.
+        // Use this method to undo the changes made on entering the background.
+    }
+
+    func sceneDidEnterBackground(_ scene: UIScene) {
+        // Called as the scene transitions from the foreground to the background.
+        // Use this method to save data, release shared resources, and store enough scene-specific state information
+        // to restore the scene back to its current state.
+    }
+}
+
+struct SceneDelegate_Previews: PreviewProvider {
+    static var previews: some View {
+        /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
+    }
+}
+#+END_SRC
+#+latex:\newpage
+
+* UIKit
+:PROPERTIES:
+:CUSTOM_ID: SW-UIKIT-SWIFTUI
+:END:
+DEMO
+#+latex:\newpage
+
+* SwiftUI
+:PROPERTIES:
+:CUSTOM_ID: SW-SWIFTUI-INTRO
+:END:
+** 教學影片
+- [[https://www.youtube.com/watch?v=VlhcNR7Qrno][Your First SwiftUI App (Full Compilation!)]]
+- [[https://www.youtube.com/watch?v=jbtqIBpUG7g][Lecture 1: Course Logistics and Introduction to SwiftUI]]: Stanford University CS193p
+- [[https://www.youtube.com/watch?v=4GjXq2Sr55Q&t=5254s][Lecture 2: MVVM and the Swift Type System]]
+- [[https://www.youtube.com/watch?v=uUMWEu2YJew&list=PLuoeXyslFTuZRi4q4VT6lZKxYbr7so1Mr][SwiftUI by Paul Hudson: Play All]]
+- [[https://www.youtube.com/watch?v=uUMWEu2YJew][Understanding the basic structure of a SwiftUI app –  WeSplit SwiftUI Tutorial 1/10]]
+- [[https://www.youtube.com/watch?v=BB3Gi4CGKrA][Creating a form – WeSplit SwiftUI Tutorial 2/10]]
+- [[https://www.youtube.com/watch?v=K5628N_vTCs][Pushing new views onto the stack using NavigationLink – Moonshot SwiftUI Tutorial 3/10]]
+- [[https://www.youtube.com/watch?v=46vqD5OPdys][Modifying program state – WeSplit SwiftUI Tutorial 4/10]]
+- [[https://www.youtube.com/watch?v=IG1os9XXNiI&list=PLuoeXyslFTuZRi4q4VT6lZKxYbr7so1Mr&index=5][Binding state to user interface controls – WeSplit SwiftUI Tutorial 5/10]]
+- [[https://www.youtube.com/watch?v=JGlWrqMbizI][SwiftUI - Calculator Demo from Stanford iOS Course Part 1 of 2]]
+- [[https://www.youtube.com/watch?v=cjrAWGcpwJM][The Calculator (part 1) - Learn Swift UI]]
+- [[https://www.youtube.com/watch?v=cbqMkIG6Qeg][Understanding MVVM Design Pattern]]: 講的超清楚
+- [[https://www.youtube.com/user/azamsharp/videos][azamsharp SwiftUI Videos]]
+- [[https://www.youtube.com/watch?v=nc-n5Gc8wN0][系列: Setting up - SwiftUI Starter Project 1/14]]
+
+** 使用 SwiftUI 開啟新專案 [fn:3]
+1) 首先，打開 Xcode，並點擊 Create new Xcode project。在 iOS 之下選擇 Single View App，並為專案命名。
+2) 然後在下方勾選 Use SwiftUI 的選項，如果沒有勾選該選項的話，Xcode 會自動產生 storyboard 檔案(UIKit)。
+3) Xcode 會自動幫你創建一個名為 ContentView.swif 的檔案，Xcode 會在程式碼的右邊呈現一個即時的預覽視窗(preview), 點選 resume 鈕生成預覽畫面(會花一點時間)。
+
+*** ContentView.swift
+#+BEGIN_SRC swift -r -n
+import SwiftUI (ref:import)
+
+struct ContentView: View { (ref:struct)
+    var body: some View { (ref:vg)
+        Text("文字") (ref:text)
+    }
+}
+
+struct ContentView_Previews: PreviewProvider { (ref:preview)
+    static var previews: some View {
+        ContentView()
+    }
+}
+#+END_SRC
+- 第[[(import)]]行和 C++中的#include <iostream>同意，先匯入所需函式庫
+- 第[[(struct)]]行說明有一個 struct 名為 ContentView，這個 ContentView conform(尊循)View 這個 Protocol，這代表必須有一個 some view 或回傳一個 some view
+- 在 ContentView 中，有一個叫 body 的變數(第[[(vg)]]行)，這個 body 的回傳類型為 some view，some 為 swift 5.1 出現的新 keyword，屬於 opaque 回傳類型，代表它會回傳某些類型為 view 的值，至於實際回傳的是那一種類型的 view，swift 並不太在意
+- 第[[(text)]]行的最前面省略了一個 return，意思是 body 這個 variable 最後會傳回一個 Text, 即，呈現在 View 上，body 只能回傳一個值，若 view 上面有許多物件，則需包含進一個 container 中，最後回傳這一個 container。
+- 第[[(preview)]]行的 ContentView_Previews 負責產生預覧畫面。
+
+** Text
+*** 改變 Text 的屬性
+- 改變 component 有兩種方式：工具列、code
+- Attributes (modifier 的不同順序可能產生不同效果)
+  + frame
+  + foregroundColor
+  + background
+  + font
+  + padding
+  + cornerRadius
+
+
+**** SwiftUI Inspector:
+1) on Text object (in preview screen): CMD + click
+2) select *Show SwiftUI Inspector*
+3) change *Text*, *Font*, *Color*
+4) Monitor the corresponding code changes in code window
+#+CAPTION: SwiftUI Inspector
+#+LABEL:fig:Inspector-1
+#+name: fig:Inspector-1
+#+ATTR_LATEX: :width 300
+#+ATTR_ORG: :width 300
+#+ATTR_HTML: :width 600
+[[file:images/inspector-1.gif]]
+**** Inspector frame
+#+CAPTION: SwiftUI Inspector
+#+LABEL:fig:inspector-2
+#+name: fig:inspector-2
+#+ATTR_LATEX: :width 300
+#+ATTR_ORG: :width 300
+#+ATTR_HTML: :width 600
+[[file:images/inspector-2.gif]]
+**** code
+於 Text("...")後加上屬性 function 或修改其他屬性
+#+CAPTION: SwiftUI Change Attributes
+#+LABEL:fig:ChangeAttribute
+#+name: fig:ChangeAttribute
+#+ATTR_LATEX: :width 300
+#+ATTR_ORG: :width 300
+#+ATTR_HTML: :width 600
+[[file:images/inspector-3.gif]]
+
+** VStack
+
+一個以上的物件都要放在 Stack 中，Stack 與 Stack 可相互包含，加入方式有二：
+*** 由工具列 drag: Xcode 會自動加入相對的 code
+#+CAPTION: Drag component from toolbar
+#+LABEL:fig:VStack
+#+name: fig:VStack
+#+ATTR_LATEX: :width 300
+#+ATTR_ORG: :width 300
+#+ATTR_HTML: :width 600
+[[file:images/vstack.gif]]
+*** coding
+#+begin_src swift -r -n :results output :exports both
+import SwiftUI
+
+struct ContentView: View {
+    var body: some View {
+        VStack {
+            Text("第一行文字")
+            Text("第二行文字")
+        }
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
+#+end_src
+
+#+RESULTS:
+
+#+CAPTION: VStack
+#+LABEL:fig:VStack-1
+#+name: fig:VStack-1
+#+ATTR_LATEX: :width 300
+#+ATTR_ORG: :width 300
+#+ATTR_HTML: :width 300
+[[file:images/vstack-1.jpg]]
+*** SwiftUI 撰寫原則
+- body 恆為只能 return 一物件。
+- 若有多個物件時，一定得放在 Stack 裡。
+
+** HStack
+#+begin_src swift -r -n :eval no
+import SwiftUI
+
+struct ContentView: View {
+    var body: some View {
+        HStack {
+            VStack {
+                Button("請按我") {
+                    print("TEST")
+                }
+                .frame(width: 60, height: 30, alignment: .center)
+                .foregroundColor(.white)
+                .background(Color.green)
+                Button("別亂按") {
+                    print("QQ")
+                }
+            }
+            VStack {
+                Text("第一行文字")
+                    .frame(width: 100, height: 30, alignment: .center   )
+                    .foregroundColor(.white)
+                    .background(Color.orange)
+                Text("第二行文字")
+                    .frame(width: 100, height: 30, alignment: .center)
+                    .foregroundColor(.white)
+                    .background(Color.red)
+            }
+        }
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
+#+end_src
+#+CAPTION: HStack
+#+LABEL:fig:HStack-1
+#+name: fig:HStack-1
+#+ATTR_LATEX: :width 300
+#+ATTR_ORG: :width 300
+#+ATTR_HTML: :width 300
+[[file:images/hstack-1.jpg]]
+
+** ZStack
+
+** Image
+影像來源可以是 System Image 或自行下載/編修的影像(Customized Image)
+*** System Image
+**** [[https://developer.apple.com/design/human-interface-guidelines/sf-symbols/overview/][SF Symbols ]][fn:4]
+**** 從 iOS 13 開始，Apple 介紹了一個名為 SFSymbols 的新功能。SF Symbols 這功能由 Apple 所設計，當中集合了 1500 多個可以在 App 之中使用的符號。[fn:3]
+**** [[https://developer.apple.com/design/resources/][Download SF Symbols app]]
+**** code
+#+begin_src swift -r -n :eval no
+import SwiftUI
+
+struct ContentView: View {
+    var body: some View {
+        VStack {
+            Text("System Image")
+                .font(.headline)
+                .foregroundColor(.orange)
+            Image(systemName: "icloud")
+            .resizable()
+            .scaledToFit()
+            .frame(width: 100, height: 80, alignment: .center)
+        }
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
+#+end_src
+
+**** Demo
+#+CAPTION: Images-1
+#+LABEL:fig:Images-1
+#+name: fig:Images-1
+#+ATTR_LATEX: :width 300
+#+ATTR_ORG: :width 300
+#+ATTR_HTML: :width 300
+[[file:images/image-1.jpg]]
+
+*** Customized Image 語法
+1) Drag image into Project folder *Assets.xcassets*
+2) Add following code
+#+begin_src swift -r -n :eval no
+Image("ImageName") //file name in Assets.xcassets
+  .resizable()
+  .scaledToFit()
+  .frame(width: 200, height: 160, alignment: .center)
+#+end_src
+
+*** Image Attributes
+#+begin_src swift -r -n :eval no
+import SwiftUI
+
+struct ContentView: View {
+    var body: some View {
+        VStack {
+            Text("Albert Camus")
+                .font(.title)
+                .foregroundColor(.white)
+                .background(Color.orange)
+            Image("Albert-Camus")
+                .resizable()
+                .scaledToFill()
+                .frame(width: 200, height: 200, alignment: .center)
+                .clipShape(Circle())
+
+        }
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
+#+end_src
+#+CAPTION: Images-2
+#+LABEL:fig:Images-2
+#+name: fig:Images-2
+#+ATTR_LATEX: :width 300
+#+ATTR_ORG: :width 300
+#+ATTR_HTML: :width 300
+[[file:images/image-2.jpg]]
+
+*** Using SF Symbols
+- SF Symbols app
+- [[https://sfsymbols.com/][sfsymbols.com]]
+- [[https://www.avanderlee.com/swift/sf-symbols-guide/][SF Symbols: The benefits and how to use them guide]]
+
+** Button
+*** 語法
+#+begin_src swift -r -n :eval no
+//...
+Button("Title") {
+    //action
+}
+
+Button(action: <#T##() -> Void#>, label: <#T##() -> _#>)
+//...
+#+end_src
+*** 將變數加入 View 中
+#+begin_src swift -r -n :eval no
+struct ContentView: View {
+    var title = "Hello SWiftUI"
+
+    var body: some View {
+        VStack {
+            Text(verbatim: title)
+                .padding(4)
+                .foregroundColor(.white)
+                .background(Color.gray)
+        }
+    }
+}
+#+end_src
+*** 問題：可否於程式中改變 title 的值來改變 View 的顯示內容?
+*** @State
+#+begin_src swift -r -n :eval no
+struct ContentView: View {
+    @State var title = "Hello SWiftUI"
+
+    var body: some View {
+        VStack {
+            Text(verbatim: title)
+                .padding(4)
+                .foregroundColor(.white)
+                .background(Color.gray)
+        }
+    }
+}
+#+end_src
+View為struct，未加上 @State 的變數是不允許變更的(immutable)；加了 @State 後，SwiftUI 將認為這個變數(或，struct的property)代表某種影將View畫面或內容的狀態，並在背後另外產生空間儲存 property 的內容，它不再儲存在 ContentView 裡，因此我們可以修改它的內容[fn:5]。
+
+以 @State 宣告的 property 有個重要的特性，只要它的內容改變，畫面也會立即更新。它帶來了以下兩個好處:
+- 不用另外寫 property 內容改變時更新畫面的程式。
+- 不用擔心畫面顯示的內容跟 property 的內容不同步，比方修改了 property，但卻忘了更新畫面。
+
+**** 問題：在什麼地方去改變 title 的值？ --> Button
+*** 範例: 按下 Button，改變 Text title
+#+begin_src swift -r -n :eval no
+struct ContentView: View {
+    @State var title = "Hello SWiftUI"
+
+    var body: some View {
+        VStack {
+            Text(verbatim: title)
+                .padding(4)
+                .foregroundColor(.white)
+                .background(Color.gray)
+            Button("Click Me") {
+                self.title = "QQ"
+            }
+        }
+    }
+}
+#+end_src
+*** 問題：可否自行輸入要更改的 title 內容？ --> TextField + $var
+
+** TextField
+*** 語法
+#+begin_src swift -r -n :eval no
+@State private var 變數="值"
+TextField("提示文字", text: $變數)
+#+end_src
+
+*** 範例: 於 TextField 輸入資料，顯示於 Text 中
+#+begin_src swift -r -n :eval no
+import SwiftUI
+
+struct ContentView: View {
+    @State private var title = "" (ref:StateVar)
+
+    var body: some View {
+        VStack {
+            Text(verbatim: "Hello "+title) (ref:strTitle)
+            HStack {
+                Text("Your Name: ")
+                TextField("請輸入姓名:", text: $title) (ref:dollarSign)
+
+            }
+        }
+    }
+}
+#+end_src
+在上述程式中，我們希望在 *TextField* 中輸入文字時就能即時改變title的值，便要做綁定(Binding)的動作，也就是在 *TextField* 中title前加上一個$ (第[[(dollarSign)]]行)，由 *TextField* 的語法也可以看出: TextField(<titleKey: LocalizedStringKey, text: Binding<String>)。SwiftUI便是透過「在@State property前加上$」的方式來取得這個property的binding，當第[[(dollarSign)]]的值一改變，第[[(strTitle)]]行的Text也會即時跟著改變，這便是binding的作用。
+
+除了 *TextField* 之外，SwiftUI還有許多提供 *Binding* 的元件，例如：Toggle, Slider, DatePicker...。
+
+*** Demo
+#+CAPTION: Button
+#+LABEL:fig:Button-1
+#+name: fig:Button-1
+#+ATTR_LATEX: :width 300
+#+ATTR_ORG: :width 300
+#+ATTR_HTML: :width 300
+[[file:images/txtfield-1.jpg]]
+
+*** @State
+單一view內讓不同的object共享變數
+
+** some view
+
+** SubView
+*** 自行改寫
+*** Extract Subview
+
+** @State v.s. @Bidning
+#+begin_src swift -r -n :eval no
+struct ContentView: View {
+    var isRain = true
+    var body: some View {
+        VStack {
+            Image(systemName: isRain ? "cloud.rain.fill" : "sun.max.fill")
+                .resizable()
+                .frame(width: 100, height: 100)
+            Text(isRain ? "我們淋著大雨不知何時才能放晴" : "太陽公公出來了，他對我呀笑呀笑")
+
+            Button("今天天氣如何 ?") {
+                self.isRain = Bool.random() (ref:immutable)
+            }
+        }
+    }
+}
+#+end_src
+
+上述程式中第[[(immutable)]]行會產生 *Cannot assign to property: self is immutable* 的錯誤，因為 Swift 的 view 為 struct 定義，而 struct 為 value type，故無法在 computed property 裡 getter & function 中修改其 property.
+
+修正方式為：在 isRain 最前面加上@State，如
+#+begin_src swift -r -n :eval no
+// ...
+@State var isRain = true
+//...
+#+end_src
+
+** TODO onAppear(perform:)
+View 秀出時要額外做哪些事情....
+
+** 學習資源
+- [[https://developer.apple.com/tutorials/swiftui/creating-and-combining-views][SwiftUI Tutorials from Apple (官方基本教材)]]
+- [[https://swiftdoc.org/][swiftdoc.org]]
+- [[http://swiftdeveloperblog.com/code-examples/][Swift Developer Blog]]
+- [[https://www.hackingwithswift.com/quick-start/swiftui][Hacking with SWIFT]]
+#+latex:\newpage
+
+* Customize UI Components
+:PROPERTIES:
+:CUSTOM_ID: SW-CUSTOMIZED-UI-COMPONENTS
+:END:
+SwiftUI 提供豐富的 modifier 幫助我們設計客製 UI 元件的樣式，諸如陰影，旋轉等效果皆可透過 modifier 實現，還可以搭配方便的拖曳加入相關程式碼。[fn:6]
+
+** Text
+*** Advanced Attributes [fn:6]
+#+begin_src swift -r -n :eval no
+struct ContentView: View {
+    var body: some View {
+        Text("Example")
+          .font(.title)
+          .fontWeight(.bold)
+          .foregroundColor(Color.white)
+          .padding(4)
+          .background(Color.gray)
+          .cornerRadius(14.0)
+          .rotationEffect(Angle(degrees: 15))
+          .rotation3DEffect(Angle(degrees: 30), axis: (x: 10, y: 30, z: 30))
+          .shadow(radius: 20)
+    }
+}
+#+end_src
+*** Demo
+#+CAPTION: Text Attributes
+#+LABEL:fig:Adv-Text_Attributes
+#+name: fig:Adv-Text_Attributes
+#+ATTR_LATEX: :width 300
+#+ATTR_ORG: :width 300
+#+ATTR_HTML: :width 300
+[[file:images/adv-text-attributes.jpg]]
+
+** Image
+*** Advanced Attributes s[fn:7]
+#+begin_src swift -r -n :eval no
+import SwiftUI
+
+struct ContentView: View {
+    var body: some View {
+        VStack {
+            Text("Albert Camus")
+              .font(.body)
+              .foregroundColor(.white)
+              .background(Color.orange)
+            Image("Albert-Camus")
+              .resizable()
+              .scaledToFill()
+              .frame(width: 100, height: 100, alignment: .center)
+              .clipShape(Circle())
+            Image(systemName: "alarm.fill")
+              .resizable()
+              .scaledToFill()
+              .frame(width: 100, height: 100, alignment: .center)
+            Image("Albert-Camus")
+              .frame(width: 100, height: 100, alignment: .center)
+              .mask(Image(systemName: "alarm.fill")
+                      .resizable()
+                      .scaledToFit())
+              .shadow(radius: 20)
+        }
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
+
+#+end_src
+*** Demo
+#+CAPTION: Image Attributes
+#+LABEL:fig:Adv-Image-Attributes
+#+name: fig:Adv-Image-Attributes
+#+ATTR_LATEX: :width 300
+#+ATTR_ORG: :width 300
+#+ATTR_HTML: :width 300
+[[file:images/image-advanced-attributes.jpg]]
+
+** Button
+*** Advanced Attributes [fn:8]
+#+begin_src swift -r -n :eval no
+import SwiftUI
+
+struct ContentView: View {
+    var body: some View {
+        VStack(spacing: 5.0) {
+            Text("Customized Button")
+              .font(.body)
+              .foregroundColor(.white)
+              .background(Color.orange)
+            Button(action: {
+                       print("Hello button tapped!")
+                   }) {
+                Text("HI HI")
+                  .fontWeight(.bold)
+                  .font(.title)
+                  .foregroundColor(.purple)
+                  .padding()
+                  .border(Color.purple, width: 5)
+            }
+            Button(action: {
+                       print("Hello button tapped!")
+                   }) {
+                Text("Press me")
+                  .fontWeight(.light)
+                  .font(.title)
+                  .foregroundColor(.green)
+                  .padding(5)
+                  .overlay(
+                    Capsule(style: .continuous)
+                      .stroke(Color.green, style: StrokeStyle(lineWidth: 3, dash: [10]))
+                  )
+            }
+        }
+    }
+}
+
+#+end_src
+*** Demo
+#+CAPTION: Button Attributes
+#+LABEL:fig:Adv-Button-Attributes
+#+name: fig:Adv-Button-Attributes
+#+ATTR_LATEX: :width 300
+#+ATTR_ORG: :width 300
+#+ATTR_HTML: :width 300
+[[file:images/customized-button-1.jpg]]
+
+** Button, Divider
+#+begin_src swift -r -n :eval no
+//
+//  ContentView.swift
+//  uitest
+//
+//  Created by yen yung chin on 2020/7/29.
+//  Copyright © 2020 Letranger.tw. All rights reserved.
+//
+
+import SwiftUI
+
+struct ContentView: View {
+    @State private var a = ""
+    @State private var b = ""
+    @State private var c = "Ans:"
+
+    var body: some View {
+        VStack {
+            VStack {
+                Divider()
+                TextField("Number 1: ", text: $b)
+                Divider()
+                TextField("Number 2:", text: $a)
+                Divider()
+                Button("➕") {
+                    let one = Int(self.a) ?? 0
+                    let two = Int(self.b) ?? 0
+                    self.c = "Ans: " + String(one + two)
+                }
+                  .frame(width: 40, height: 30, alignment: .center)
+                  .foregroundColor(.white)
+                  .background(Color.green)
+                  .font(.largeTitle)
+                Divider()
+                Text(verbatim: c)
+                  .foregroundColor(.gray)
+            }
+              .frame(width: 200, height: 160, alignment: .center)
+        }
+    }
+}
+#+end_src
+#+CAPTION: Button
+#+LABEL:fig:Button-1
+#+name: fig:Button-1
+#+ATTR_LATEX: :width 300
+#+ATTR_ORG: :width 300
+#+ATTR_HTML: :width 300
+[[file:images/btn-1.jpg]]
+
+** background, opacity
+#+begin_src swift -r -n :eval no
+//
+//  ContentView.swift
+//  uitest
+//
+//  Created by yen yung chin on 2020/7/29.
+//  Copyright © 2020 Letranger.tw. All rights reserved.
+//
+
+import SwiftUI
+
+struct ContentView: View {
+    @State private var a = ""
+    @State private var b = ""
+    @State private var c = "Ans:"
+
+    var body: some View {
+        VStack(alignment: .center) {
+            Text("計算機")
+            Divider()
+            TextField("Number 1: ", text: $b)
+            Divider()
+            TextField("Number 2:", text: $a)
+            Divider()
+            Button("➕") {
+                let one = Int(self.a) ?? 0
+                let two = Int(self.b) ?? 0
+                self.c = "Ans: " + String(one + two)
+            }
+              .frame(width: 40, height: 30, alignment: .center)
+              .foregroundColor(.white)
+              .background(Color.white)
+              .font(.largeTitle)
+            Divider()
+            Text(verbatim: c)
+              .foregroundColor(.black)
+
+
+        }
+          .padding(60)
+          .background(Image("background").resizable().scaledToFill())
+          .opacity(0.9)
+    }
+}
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
+
+
+#+end_src
+#+CAPTION: Background
+#+LABEL:fig:Background-1
+#+name: fig:Background-1
+#+ATTR_LATEX: :width 300
+#+ATTR_ORG: :width 300
+#+ATTR_HTML: :width 300
+[[file:images/background-1.jpg]]
+** Further reading
+- [[https://www.simpleswiftguide.com/advanced-swiftui-button-styling-and-animation/][Advanced SwiftUI button styling and animation]]
+
+* List
+:PROPERTIES:
+:CUSTOM_ID: list
+:END:
+** What is List
+#+begin_src swift -r -n :results output :exports nil
+struct ContentView: View {
+    var body: some View {
+        List {
+            Text("Hello world.")
+            Text("Hello world.")
+            Text("Hello world.")
+        }
+    }
+}
+#+end_src
+
+** 準備單一 cell 格式
+#+begin_src swift -r -n :eval no
+import SwiftUI
+
+struct ContentView: View {
+    var body: some View {
+        HStack {
+            Image(systemName: "book")
+              .resizable()
+              .frame(width: 30, height: 30, alignment: .center)
+            VStack(alignment: .leading) {
+                Text("Artificial Intelligence: A Modern Approach")
+                  .multilineTextAlignment(.leading)
+                  .foregroundColor(Color.green)
+                Text("Stuart Russell and Peter Norvig")
+                  .multilineTextAlignment(.leading)
+                  .foregroundColor(Color.orange)
+            }
+        }
+    }
+}
+
+#+end_src
+#+CAPTION: Single cell
+#+LABEL:fig:single-cell
+#+name: fig:single-cell
+#+ATTR_LATEX: :width 300
+#+ATTR_ORG: :width 300
+#+ATTR_HTML: :width 300
+[[file:images/single-cell.jpg]]
+
+** 轉入 List 格式(靜態 List)
+*** 將最外層的 VStack 加入 List 中
+#+CAPTION: List-1
+#+LABEL:fig:list-1
+#+name: fig:list-1
+#+ATTR_LATEX: :width 400
+#+ATTR_ORG: :width 400
+#+ATTR_HTML: :width 500
+[[file:images/list-1.jpg]]
+*** list 語法
+#+begin_src swift -r -n :eval no
+import SwiftUI
+
+struct ContentView: View {
+    var body: some View {
+        List(0 ..< 5) { item in
+            Image(systemName: "book")
+              .resizable()
+              .frame(width: 30, height: 30, alignment: .center)
+            VStack(alignment: .leading) {
+                Text("Artificial Intelligence: A Modern Approach")
+                  .multilineTextAlignment(.leading)
+                  .foregroundColor(Color.green)
+                Text("Stuart Russell and Peter Norvig")
+                  .multilineTextAlignment(.leading)
+                  .foregroundColor(Color.orange)
+            }
+        }
+    }
+}
+#+end_src
+*** 結果
+#+CAPTION: List-2
+#+LABEL:fig:list-2
+#+name: fig:list-2
+#+ATTR_LATEX: :width 400
+#+ATTR_ORG: :width 400
+#+ATTR_HTML: :width 500
+[[file:images/list-2.jpg]]
+
+** 建立 list 來源資料(動態 List) [fn:3]
+#+begin_verse
+In order to handle dynamic items, you must first tell SwiftUI how it can identify which item is which. This is done using the Identifiable protocol, which has only one requirement: some sort of id value that SwiftUI can use to see which item is which. [fn:9]
+#+end_verse
+#+begin_src swift -r -n :eval no
+import SwiftUI
+
+//建立book struct
+struct Book: Identifiable {
+    var id = UUID()
+    var title: String
+    var author: String
+    var image: String
+}
+
+struct ContentView: View {
+    var books = [
+      Book(id: UUID(), title: "地獄藍調", author: "李查德", image: "b1"),
+      Book(id: UUID(), title: "至死方休", author: "李查德", image: "b2"),
+      Book(id: UUID(), title: "一觸即發", author: "李查德", image: "b3"),
+      Book(id: UUID(), title: "索命訪客", author: "李查德", image: "b4"),
+      Book(id: UUID(), title: "闇夜回聲 ", author: "李查德", image: "b5")]
+
+    //.....
+}
+#+end_src
+
+** 將資料連結到列表中 [fn:3]
+#+begin_src swift -r -n :eval no
+import SwiftUI
+
+//....
+var body: some View {
+    List(books) { book in
+        Image(book.image)
+          .resizable()
+          .frame(width: 40, height: 40, alignment: .center)
+        VStack(alignment: .leading) {
+            Text(book.title)
+              .multilineTextAlignment(.leading)
+              .foregroundColor(Color.green)
+            Text(book.author)
+              .multilineTextAlignment(.leading)
+              .foregroundColor(Color.orange)
+        }
+    }
+}
+}
+#+end_src
+
+** 結果
+#+CAPTION: List-3
+#+LABEL:fig:list-3
+#+name: fig:list-3
+#+ATTR_LATEX: :width 300
+#+ATTR_ORG: :width 300
+#+ATTR_HTML: :width 300
+[[file:images/list-3.jpg]]
+
+** 為什麼要加入 id 與 Identifiable
+- Identifiable: 允許 Array 中有重複值
+- id: 明確區分重複值
+- UUID: 自動生成 unique 值
+- 詳細說明如[[https://medium.com/flawless-app-stories/swiftui-dynamic-list-identifiable-73c56215f9ff][SwiftUI - Dynamic List & Identifiable]]
+
+** Reading source
+- [[https://www.youtube.com/watch?v=bz6GTYaIQXU][SwiftUI Basics: Dynamic Lists, HStack VStack, Images with Circle Clipped Stroke Overlays]]
+- [[https://developer.apple.com/tutorials/swiftui/building-lists-and-navigation][Building Lists and Navigation]]
+
+#+latex:\newpage
+
+* Open new View and passing data between Views: @State and @Binding
+:PROPERTIES:
+:CUSTOM_ID: StateBinding
+:END:
+** Switch to second View
+目的：在ContentView中按下Button，至Order View輸入下單內容，最後將下單內容傳回ContentView
+#+begin_src swift -r -n :results output :exports nil
+struct ContentView: View {
+    var body: some View {
+        VStack {
+            Button("下單") {
+            }
+        }
+    }
+}
+#+end_src
+主程式click button後，秀出目標View (order), 下單View內容為：
+#+begin_src swift -r -n :results output :exports nil
+import SwiftUI
+
+struct Order: View {
+    @Binding var orders:String (ref:bindBack)
+    var body: some View {
+        VStack {
+            Text("下單區")
+            TextField("請輸入要購買的物品", text: $orders)
+              .textFieldStyle(RoundedBorderTextFieldStyle())
+              .padding()
+        }
+    }
+}
+
+struct Order_Previews: PreviewProvider {
+    static var previews: some View {
+        Order(orders: .constant("")) (ref:ordersPassing)
+    }
+}
+
+#+end_src
+程式中第[[(bindBack)]]行的orders為儲存下單內容的字串，並於稍後將字串內容傳回主程式，故這個property主要是來自ContentView中的某一個變數(property)，並在ContentView呼叫(或秀出)order View時要交待清楚變數來源(傳遞參數)。這也可以從底下的Order_previews在要呼叫Order時會被強迫填入一個參數(第[[(ordersPassing)]]行)看出其呼叫方式。
+
+而此時的ContentView再加入呼叫Order以及準備傳過去的參數，其內容如下(應該是要先在ContentView宣告好這個參數，不過此處先依反向順序進行以利說明)：
+#+begin_src swift -r -n :results output :exports nil
+struct ContentView: View {
+    @State private var isPresented: Bool = false (ref:initIsP)
+    @State private var orderContent: String = ""
+    var body: some View {
+
+        VStack {
+            Button("下單") {
+                self.isPresented = true
+            }.sheet(isPresented: self.$isPresented, content: {
+                                                        Order(orders: $orderContent) (ref:callOrder)
+                                                    })
+            Text(orderContent)
+        }
+    }
+}
+#+end_src
+
+ContentView的第[[(callOrder)]]行呼叫Order並將本身的property(orderContent)傳過去，而isPresented是用來控制Order秀出與否，故在一開始其初值設定為false(第[[(initIsP)]]行)，等到Button被按下後再變更內容為true，秀出下單View的內容(可以實驗一下將isPresented初值設定為true，觀察實驗結果)。
+
+#+LATEX:\newpage
+
+* Alert
+:PROPERTIES:
+:CUSTOM_ID: Alert
+:END:
+** 以Buuton觸發
+和呼叫其他View一樣，仍然是以一個bool來控制是否秀出Alert
+#+begin_src swift -r -n :results output :exports nil
+struct SecondView: View {
+    @State private var showAlert:Bool = false
+    var body: some View {
+        Button("請按我") {
+            showAlert = true
+        }.alert(isPresented: $showAlert, content: {
+                                             return Alert(title: Text("別亂按"))
+                                         })
+    }
+}
+#+end_src
+
+** 以TextField觸發
+將控制顯示的boo值寫在 *onCommit*
+#+begin_src swift -r -n :results output :exports nil
+struct SecondView: View {
+    @State private var title:String = ""
+    @State private var showAlert:Bool = false
+    var body: some View {
+        TextField("To be or not to be", text: $title, onCommit:  {
+                                                          showAlert = true
+                                                      })
+          .alert(isPresented: $showAlert, content: {
+                                              return Alert(title: Text("\(title)"))
+                                          })
+
+    }
+}
+#+end_src
+
+#+LATEX: \newpage
+
+* Navigation between View: Tabbed View
+Tab bar是在App螢幕底部出現的欄，提供了在不同的版面之間進行快速切換的途徑。Tab bar的背景顏色是半透明，可以有調色。Tab bar在所有螢幕尺寸都保持一樣的高度，並且在鍵盤時出現會隱藏起來。
+
+一個tab bar可以包含無數個tab，但可以能容納的數量視乎根據手機/平板的大小，以及橫、豎屏模式都會有所影響。在空間的限制下，當某些tab無法被顯示時，最後一個tab會變成“更多”(More)， 通過這個tab可以到另一個獨立的列表頁面，那裡會列出所有無法被顯示的tab。[fn:10]
+
+** Create subView
+#+begin_src swift -r -n :results output :exports nil
+// create StoreView, AboutView, NewsView first
+struct ContentView: View {
+    @ObservedObject var user = User()
+
+    init() {
+        UITabBarItem.appearance().setTitleTextAttributes([.font: UIFont.systemFont(ofSize: 16) ], for: .normal)
+    }
+
+    var body: some View {
+        TabView {
+            StoreView().tabItem {
+                Image(systemName: "cart.fill.badge.plus")
+                Text("購買")
+            }
+            AboutView().tabItem {
+                Image(systemName: "person.3")
+                Text("關於")
+            }
+            NewsView().tabItem {
+                Image(systemName: "message")
+                Text("消息")
+            }
+        }.accentColor(.pink)    }
+}
+#+end_src
+
+** customize tab bar
+*** Change tabView font size
+#+begin_src swift -r -n :results output :exports nil
+init() {
+    UITabBarItem.appearance().setTitleTextAttributes([.font: UIFont.systemFont(ofSize: 14) ], for: .normal)
+}
+
+#+end_src
+*** the color of unselected tab bar
+#+begin_src swift -r -n :results output :exports nil
+init() {
+    UITabBar.appearance().unselectedItemTintColor = UIColor.systemGray3
+}
+#+end_src
+*** the color of the tab bar item : .accentColor
+#+begin_src swift -r -n :results output :exports nil
+TabView {
+
+}.accentColor(.pink)
+#+end_src
+*** the tab bar’s color: appearance()
+兩種做法(尚未區分backgroundColor與barTintColor之差異)
+**** init()
+#+begin_src swift -r -n :results output :exports nil
+init() {
+        UITabBar.appearance().barTintColor = UIColor.systemPink
+    }
+#+end_src
+**** onAppear()
+與init()共用時，onAppear()優先
+#+begin_src swift -r -n :results output :exports nil
+.onAppear() {
+    UITabBar.appearance().barTintColor = .white
+}
+#+end_src
+
+** Switching Between Tabs Programmatically
+Users can tap the tab bar items to switch between tabs, which is automatically handled the TabView. In some use cases, you may want to switch to a specific tab programmatically. The TabView has another init method for this purpose. The method takes a state variable which associates with the tag value of the tabs.[fn:11]
+#+begin_src swift -r -n :results output :exports nil
+TabView(selection: $selection)
+#+end_src
+As an example, declare the following state variable in ContentView:
+#+begin_src swift -r -n :results output :exports nil
+@State private var selection = 0
+#+end_src
+Here we initialize the selection variable with a value of 0, which is the tag value of the first tab item. We haven’t defined the tag value for the tab items yet. Therefore, update the code like this and attach the tag modifier for each of the tab items:
+#+begin_src swift -r -n :results output :exports nil
+import SwiftUI
+
+struct BookDetailView: View {
+    var body: some View {
+        Text("This is the Book Detail View")
+    }
+}
+
+struct BookOrderView: View {
+    var body: some View {
+        Text("購物車")
+    }
+}
+
+struct BookAboutView: View {
+    var body: some View {
+        Text("About me")
+    }
+}
+
+struct ContentView: View {
+    init() {
+        UITabBar.appearance().barTintColor = UIColor.systemPink
+        UITabBar.appearance().unselectedItemTintColor = UIColor.systemGray3
+    }
+    @State private var selection = 0
+    var body: some View {
+
+        ZStack(alignment: Alignment(horizontal: .trailing, vertical: .top), content: {
+            TabView(selection: $selection,
+                    content:  {
+                        BookDetailView().tabItem {
+                            Image(systemName: "book.fill")
+                            Text("Detail")
+                        }.tag(0)
+                        BookOrderView().tabItem {
+                            Image(systemName: "cart.fill")
+                            Text("Order")
+                        }.tag(1)
+                        BookAboutView().tabItem {
+                            Image(systemName: "person")
+                            Text("About")
+                        }.tag(2)
+                    })
+                .accentColor(.white)
+            Button(action: {
+                selection = (selection + 1) % 3
+                print(selection)
+            }, label: {
+                Text("Button")
+                    .padding(3)
+                    .background(Color.pink)
+                    .foregroundColor(.white)
+                    .padding(3)
+            })
+        })
+    }
+}
+#+end_src
+
+** 一個優秀的Tab Bar 應該具備哪些特點？[fn:10]
+1. 不會有太多的tab
+   每增加一個tab 會減小了選擇各別的可觸區域，並增加app的複雜性，讓用戶更難找到所需的資料。即使“更多(More)”標籤可以展示額外的tab，但這會需要額外的點擊步驟，而且沒有很好利用tab bar的有限空間。太少的tab也是問題，它會使你的界面感覺被分離。一般來說，在iPhone上應使用3至5個標籤，在iPad上則可稍微多幾個。
+1. 不會經常變動
+   在某個tab的功能無法使用時， 不要移除這個tab或是讓它失效。如果tab時有時無，App界面會變得不穩定和難以捉摸。確保所有的tab都可有效點擊，並且向用戶解釋目前tab內容不可用的原因。譬如說，當iOS裝置沒有歌曲時，音樂app的“我的音樂”tab會顯示如何下載歌曲的說明。
+1. 應在相連接的視窗進行內容的轉換
+   為了讓界面符合用戶預期，選擇一個tab後的作用應該直接顯示於與其tab bar相連的視窗，而不是螢幕上其它範圍的視窗。例如，如在左邊的split view選擇了一個tab，是不會讓右半部分突然產生變化的。在popover中選擇的tab不會導致後方的視窗發生改變。
+1. 應保持 icon 的風格統一和平衡
+   系統提供了一系列預先設定好、一般用途的icon，我們也可以創建自己的icon，確保tab bar icon在視覺上的風格統一和平衡。
+1. 應使用 badge傳遞信息
+   我們可以在tab上加上badge (一個紅色橢圓上帶有白色數字或感嘆號的圖案) ，來暗示該tab或模式有新信息。
+
+** Reading Resources
+- [[https://www.appcoda.com/swiftui-tabview/][Customizing the Tab Bar Color]]
+- [[https://www.youtube.com/watch?v=tDyvkIe9RsA][Tabbed View SwiaftUI - TabBar Tutorial & Basic Customization - Xcode 11 - 2019]]
+- [[https://medium.com/@nwyyy/swift%E7%AD%86%E8%A8%98-tab-bar-2ddba7d56587][iOS筆記：Tab Bar]]
+- [[https://www.simpleswiftguide.com/][Simple Swift Guide]]
+#+latex:\newpage
+
+* Navigation between Views: Navigation Bar
+:PROPERTIES:
+:CUSTOM_ID: navigation
+:END:
+** Navigation bar
+- 於 body 中最外層的 component 之外加入 NavigationView
+- Title: navigationBarTitle()，title 置於 NavigationView {}內 attach 在 List 上，因為 NavigationView 主要負責於不同的 View 中切換，每個 View 都會有自己的 content 與 Title。
+- DisplayMode 有 三類：
+  1) large: 適用於 top level
+  2) inline: 適用於 detail level
+  3) automatic: 自動判斷有無 parent level
+#+begin_src swift -r -n :eval no
+import SwiftUI
+  ...
+
+struct ContentView: View {
+    ....
+    var body: some View {
+        NavigationView {
+            List(books) { book in
+                ...
+                }
+            .navigationBarTitle(Text("書單"))
+            .navigationBarTitleDisplayMode(.large)
+            }
+        }
+    }
+}
+...
+#+end_src
+#+CAPTION: Navigation bar
+#+LABEL:fig:Navigation-1
+#+name: fig:Navigation-1
+#+ATTR_LATEX: :width 300
+#+ATTR_ORG: :width 300
+#+ATTR_HTML: :width 300
+[[file:images/navigation-1.jpg]]
+
+*** Hide Navigation Bar
+使用 Hide 與不設定 BarTitle 的差異在於：後者仍會佔掉 Bar 的空間
+#+begin_src swift -r -n :results output :exports nil
+import SwiftUI
+  ...
+
+struct ContentView: View {
+    ....
+    var body: some View {
+        NavigationView {
+            List(books) { book in
+                ...
+                }
+            .navigationBarTitle(Text("書單"))
+            .navigationBarTitleDisplayMode(.large)
+            .navigationBarHidden(true)
+            }
+        }
+    }
+}
+...
+#+end_src
+
+**** NavigationLink
+***** Create
+***** 語法:
+#+begin_src swift -r -n :results output :exports both
+NavigationLink(<title: StringProtocol, destination:)
+#+end_src
+***** 方式
+1. Attach link in NavigationLink()
+ #+begin_src swift -r -n :results output :exports nil
+struct ContentView: View {
+    var body: some View {
+        NavigationView {
+            VStack {
+                NavigationLink("JumpToSecond", destination: SecondView())
+                Text("Hello, world!")
+                    .padding()
+            }
+            .navigationTitle("Book List")
+            .navigationBarTitleDisplayMode(.large)
+        }
+    }
+}
+#+end_src
+2. Attach link to other object(Text in this example)
+#+begin_src swift -r -n :results output :exports nil
+struct ContentView: View {
+    var body: some View {
+        NavigationView {
+            VStack {
+                NavigationLink(destination: SecondView()) {
+                    Text("TextLink")
+                        .padding()
+                }
+            }
+            .navigationTitle("Book List")
+            .navigationBarTitleDisplayMode(.large)
+        }
+    }
+}
+#+end_src
+若是將 link attach 至 image，則要加上 renderingMode，否則會看不到圖，例：
+#+begin_src swift -r -n :results output :exports nil
+struct ContentView: View {
+    var body: some View {
+        NavigationView {
+            VStack {
+                NavigationLink(destination: SecondView()) {
+                    Image(systemName: "myImage")
+                        .renderingMode(.original)
+                }
+            }
+            .navigationTitle("Book List")
+        }
+    }
+}
+#+end_src
+
+**** Reading
+- [[https://www.youtube.com/watch?v=nA6Jo6YnL9g][The Complete Guide to NavigationView in SwiftUI]]
+
+** Create New Views
+*** in same file
+#+begin_src swift -r -n :results output :exports nil
+import SwiftUI
+
+struct BookDetailView: View {
+    var body: some View {
+        Text("This is the Book Detail View")
+    }
+}
+
+struct ContentView: View {
+    var body: some View {
+        NavigationView {
+            VStack {
+                NavigationLink(destination: BookDetailView()) {
+                    Text("GoToDetail")
+                }
+            }
+              .navigationTitle("Book List")
+
+        }
+    }
+}
+#+end_src
+**** class exercise
+為上述NavigationView加入另外兩個subView: OrderView, AboutView
+*** in new file
+將上述專案中的每個subView改為獨立View
+
+** Navigation v.s. List v.s. NavigationLink
+#+begin_src swift -r -n :results output :exports nil
+//
+//  ContentView.swift
+//  navigation
+//
+//  Created by yen yung chin on 2020/9/27.
+//
+
+import SwiftUI
+
+struct Book: Identifiable {
+    var id = UUID()
+    var title: String
+    var author: String
+}
+
+struct ContentView: View {
+    var books = [
+        Book(title:"X的悲劇", author: "艾勒里．昆恩"),
+        Book(title:"地獄藍調", author: "李查德"),
+        Book(title:"東方列車謀殺案", author: "阿嘉莎‧克莉絲蒂"),
+        Book(title:"八百萬種死法", author: "勞倫斯.卜洛克"),
+        Book(title:"血字研究", author: "柯南道爾")
+    ]
+
+    var body: some View {
+        NavigationView {
+            List(books) { book in
+                NavigationLink(destination: DetailView(book: book) ){
+                        bookRow(book: book)
+                    }
+                }
+            .navigationTitle("書單")
+        }
+    }
+}
+
+struct bookRow: View {
+    var book: Book
+    var body: some View {
+        VStack {
+            Text(book.title)
+            Text(book.author)
+        }
+    }
+}
+
+struct DetailView: View {
+    var book: Book
+    var body: some View {
+        VStack {
+            Text(book.title)
+        }
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
+
+#+end_src
+* @EnvironmentObject: Create once, access everywhere
+:PROPERTIES:
+:CUSTOM_ID: EnvironmentObject
+:END:
+適用情境：app中某些property需要於很多View中存取，例如，app的setting
+** ContentView
+情境說明：在app中建立一個ShoppingCart類別，這個class也可以獨立存在於一個檔案中，並讓這個class confirm ObservableObject protocol，於class中將要在各View中share的property以@Published標示出來。
+
+在每一個要使用到這個EnvironmentObject的View中以@EnvironmentObject來建立該class的instance(第[[(environmentObject)]]行)，同時，在previews中也要加入environmentObject()的modifier(第[[(emptyConstructor)]]行)。
+
+#+begin_src swift -r -n :results output :exports nil
+import SwiftUI
+
+class ShoppingCart: ObservableObject {
+    @Published var Title = "Testing"
+    @Published var items = 0
+}
+
+struct ContentView: View {
+
+    @State private var showCart: Bool = false
+    @EnvironmentObject var cart: ShoppingCart (ref:EnvironmentObject)
+
+
+    var body: some View {
+        VStack {
+            Text(cart.Title)
+            Spacer()
+            Button("下單") {
+                self.showCart = true
+            }.sheet(isPresented: self.$showCart, content: {
+                                                     SecondView()
+                                                 })
+
+            Text("目前數量\(self.cart.items)")
+            Spacer()
+            TextField("Change Title", text: $cart.Title)
+              .textFieldStyle(RoundedBorderTextFieldStyle())
+              .padding()
+            Spacer()
+        }
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView().environmentObject(ShoppingCart()) (ref:emptyConstructor)
+    }
+}
+#+end_src
+
+** SecondView
+同樣的，在SecondView中要使用到environment object也要以@EnvironmentObject來宣告利用該class所建立的instance(第[[(useEnv)]]行)，而SecondView的preview也要加上同樣的modifier(傳入參數)。
+#+begin_src swift -r -n :results output :exports nil
+import SwiftUI
+
+struct SecondView: View {
+    @EnvironmentObject var cart: ShoppingCart (ref:useEnv)
+
+    var body: some View {
+        Text("\(cart.Title)")
+        Spacer()
+        Button("加購! 數量\(self.cart.items)") {
+            self.cart.items += 1
+        }
+        Spacer()
+    }
+}
+
+struct SecondView_Previews: PreviewProvider {
+    static var previews: some View {
+        SecondView().environmentObject(ShoppingCart())
+    }
+}
+#+end_src
+這裡的cart.items在變更後，ContentView的數量會即時更新，同樣的，ContentView中被變更的Title也會即時在SecondView中看出結果。
+
+#+LATEX: \newpage
+
+** Ways to share Data between Views
+Three ways for sharing data in SwiftUI[fn:12]
++------------------------------+------------------------------+------------------------------+
+|@State                        |@ObservedObject               |@EnvironmentObject            |
++------------------------------+------------------------------+------------------------------+
+|Simple properties like String |Can be shared across views    |Similar to @ObservedObject    |
+|or Int                        |                              |                              |
++------------------------------+------------------------------+------------------------------+
+|Belongs to a specific view    |More complex properties (e.g. |Possiblity to make it         |
+|                              |custom type)                  |available to all views through|
+|                              |                              |the application itself        |
++------------------------------+------------------------------+------------------------------+
+|Never used outside that view  |External reference type that  |If one view changes the model |
+|                              |has to be managed (Create an  |all views update              |
+|                              |instance of the class, create |                              |
+|                              |its own properties, ...)      |                              |
++------------------------------+------------------------------+------------------------------+
+|                              |Class should conform to       |                              |
+|                              |ObservableObject              |                              |
++------------------------------+------------------------------+------------------------------+
+|                              |@Published property wrapper   |                              |
+|                              |used to mark properties that  |                              |
+|                              |should force a view to refresh|                              |
++------------------------------+------------------------------+------------------------------+
+
+** Passing data between Views
+:PROPERTIES:
+:CUSTOM_ID: passingData
+:END:
+*** Passing parameter
+Single way, Just pass variable from A to B.
+#+begin_src swift -r -n :results output :exports nil
+struct BookDetailView: View {
+    var operation: String
+    var body: some View {
+        Text("已為你\(operation)這本書")
+    }
+}
+
+struct ContentView: View {
+    var body: some View {
+        NavigationView {
+            VStack {
+                NavigationLink(destination: BookDetailView(operation: "借閱")) { Text("Loan")
+                }
+                NavigationLink(destination: BookDetailView(operation: "續借")) { Text("Renew")
+                }
+                NavigationLink(destination: BookDetailView(operation: "歸還")) { Text("Return")
+                }
+            }
+              .navigationTitle("Book List")
+
+        }
+    }
+}
+#+end_src
+
+*** with @State and @Binding
+if you have view A with data that view B will also be using, you can pass data by creating a @State in view A and declaring the same variable with @Binding declaration in view B[fn:13]
+#+begin_src swift -r -n :results output :exports nil
+struct ViewA : View {
+    @State var myItems: [Items]
+    var body: some View {
+        NavigationView {
+            VStack {
+                NavigationButton(destination: ViewB(items: $myItems)) {
+                    Text("Go To ViewB")
+                }
+            }
+        }
+    }
+}
+#+end_src
+#+begin_src swift -r -n :results output :exports nil
+struct ViewB : View {
+    @Binding var myItems: [Items] //連結回到parent viewl 的myItems
+    var body: some View {
+        NavigationView {
+            List{
+                ForEach(myItems.identified(by: \.self)) {
+                    Text($0.itemName)
+                }
+            }.navigationBarTitle(Text("My Items"))
+        }
+    }
+}
+
+#+end_src
+
+*** with @ObservableObject, @EnvironmentObject and @ObservedObject
+#+begin_src swift -r -n :results output :exports nil
+import SwiftUI
+
+class User: ObservableObject {
+    @Published var score = 0
+}
+
+struct BuyBookView: View {
+    @EnvironmentObject var user: User
+
+    var body: some View {
+        Button("加購! 數量\(self.user.score)") {
+            self.user.score += 1
+        }
+    }
+}
+
+struct ContentView: View {
+    @ObservedObject var user = User()
+
+    var body: some View {
+        NavigationView {
+            VStack {
+                Text("mount: \(user.score)")
+                NavigationLink(destination: BuyBookView() ){ (ref:buybook)
+                                                             Text("Show amount, now")
+                }
+            }
+              .navigationTitle("Book List")
+        }
+          .environmentObject(user) (ref:envobj)
+    }
+}
+#+end_src
+第[[(envobj)]]行的 modifier attach 於 NavigationView，所以所有以 Navigation 連接的 View 均可共享此變數。若將此 modifier attach 在 BuyBookView()後(第[[(buybook)]]行)，則只有這個 View 可存取此一變數。
+
+#+LATEX: \newpage
+
+* TODO MVVM
+:PROPERTIES:
+:CUSTOM_ID: SW-MVVM
+:END:
+以"推薦書單"的 APP 為例:
+- Model: 包含書名、作者、出版社....，而實際的資料來源可能是雲端資料庫(Firebase)、Web API、本機資料庫(Core data)。
+    #+begin_src swift -r -n :eval no
+struct Book {
+    let title: String
+    let author: String
+    let dateReleased: String
+    let publisher: String
+    let isFavorite: Bool
+}
+  #+end_src
+- View: 在 APP 畫面上呈現 Model 中資料的元件，如 Text, Image, Button, List.....
+- ViewModel: 將 Model 中的資料取出，供 View 呈現，或是接受 View 輸入的資料，存回 Model。以"推薦書單 APP"為例，其 ViewModel 可能包含如下 struct:
+  #+begin_src swift -r -n :eval no
+struct BookDetailViewModel {
+    var book: Book
+
+    var isFavorite: Bool
+
+    init(book: Book) {
+        self.book = book
+        self.isFavorite = false
+    }
+
+    var title: String {
+        return self.book.title
+    }
+
+    var author: String {
+        return self.book.author
+    }
+
+    var dateReleased: String {
+        return self.book.dateReleased
+    }
+
+    var publisher: String {
+        return self.book.publisher
+    }
+}
+  #+end_src
+  如果在 View 上有一個 Favorite Button，則當 user 點了 Favorite 後，ViewModel 應負責將 struct 中的 isFavorite 改存 True，並回存至 Model 中。Model 的資料只能透過 ViewModel 來新增刪除，View 無法直接染指。
+  Model 與 UI 完全無關，單純用來儲存資料，ViewModel 為 Model 與 View 溝通的橋樑。
+  
+** View+ViewModel
+- [[https://www.youtube.com/watch?v=gkAV4D1nopA][SwiftUI Tip Calculator Using MVVM Design Pattern]]
+- [[https://www.youtube.com/watch?v=cbqMkIG6Qeg][Understanding MVVM Design Pattern]]: 講的超清楚
+
+** DEMO
+- Video:  [[https://www.youtube.com/watch?v=EhtK_H9LsYQ][MVVM SwiftUI - Model View ViewModel Pattern - Getting Started]]
+- GitHub: https://github.com/rebeloper/SwiftUIMVVM.git
+
+** DICE DEMO
+
+* TODO Protocols
+:PROPERTIES:
+:CUSTOM_ID: SW-Protocols
+:END:
+對任何程式開發來說，減少重覆的 code，把權責明確分開，讓 code 維護性變好，是非常重要的課題。而在現今的軟體開發模式中，有許多方法可以做到這點，最為人所知的一個模式，就是利用繼承 (Inheritance)，把會重覆利用的部份放在母類別，讓其它子類別去繼承。另外一種做法，則是利用 Composition Pattern，將功能做成組件分出來，讓需要的模組去組合取用。[fn:14]
+#+begin_verse
+A protocol defines a blueprint of methods, properties, and other requirements that suit a particular task or piece of functionality. The protocol can then be adopted by a class, structure, or enumeration to provide an actual implementation of those requirements. Any type that satisfies the requirements of a protocol is said to conform to that protocol. [fn:15]
+#+end_verse
+
+協定提供類型可以做的資訊，Classes 和 structs 則提供物件的資訊，協定則提供物件將會執行的動作。[fn:16]
+#+begin_verse
+協定是 Swift 一個重要的特性，它會定義出為了完成某項任務或功能所需的方法、屬性，但是本身不會實作這些任務跟功能，而僅僅只是表達出該任務或功能的名稱。協定為方法、屬性、以及其他特定的任務需求或功能定義藍圖。協定可被 class、struct、或 enum 類型採納以提供所需功能的具體實現。滿足了協定中需求的任意類型都叫做遵循了該協定。
+
+除了指定遵循類型必須實現的要求外，你可以擴展一個協定以實現其中的一些需求或實現一個符合類型的可以利用的附加功能。[fn:17]
+#+end_verse
+
+** 範例
+*** 版本 1
+本例中有兩個 struct: Song, Album 以及一個 class 用來播放 Song 或 Album，原本的 Player 要為不同的 struct 寫不同的 func，而且程式碼大多重複。
+#+begin_src swift -r -n :eval no
+import Cocoa
+import AVKit
+
+struct Song {
+    var name: String
+    var album: Album
+    var audioURL: URL
+    var isLiked: Bool
+}
+
+struct Album {
+    var name: String
+    var imageURL: URL
+    var audioURL: URL
+    var isLiked: Bool
+}
+
+class Player {
+    private let avPlayer = AVPlayer()
+
+    func play(_ song: Song) {
+        let item = AVPlayerItem(url: song.audioURL)
+        avPlayer.replaceCurrentItem(with: item)
+        avPlayer.play()
+    }
+
+    func play(_ album: Album) {
+        let item = AVPlayerItem(url: album.audioURL)
+        avPlayer.replaceCurrentItem(with: item)
+        avPlayer.play()
+    }
+}
+#+end_src
+*** 版本 2
+宣告一個 protocol，定義 audioURL 變數(read only)，然後令兩個 struct 皆遵循該 protocol(方式有二)，如此，原本的 Player class 中的 play func 就能只寫一次。
+#+begin_src swift -r -n :eval no
+import Cocoa
+import AVKit
+
+protocol Playable {
+    var audioURL: URL { get }
+}
+
+struct Song: Playable {
+    var name: String
+    var album: Album
+    var audioURL: URL
+    var isLiked: Bool
+}
+
+struct Album {
+    var name: String
+    var imageURL: URL
+    var audioURL: URL
+    var isLiked: Bool
+}
+
+extension Album: Playable {}
+class Player {
+    private let avPlayer = AVPlayer()
+
+    func play(_ resource: Playable) {
+        let item = AVPlayerItem(url: resource.audioURL)
+        avPlayer.replaceCurrentItem(with: item)
+        avPlayer.play()
+    }
+}
+#+end_src
+*** 版本 3
+原本 protocol 的真正意思其實只是在確定 audioURL 是否能正確轉換成 Audio，所以其實將 protocol name 由 Playable 改為 AudioURLConvertable 會更貼近事實。
+#+begin_src swift -r -n :eval no
+import Cocoa
+import AVKit
+
+protocol AudioURLConvertable {
+    var audioURL: URL { get }
+}
+
+struct Song: AudioURLConvertable {
+    var name: String
+    var album: Album
+    var audioURL: URL
+    var isLiked: Bool
+}
+
+struct Album: AudioURLConvertable {
+    var name: String
+    var imageURL: URL
+    var audioURL: URL
+    var isLiked: Bool
+}
+
+class Player {
+    private let avPlayer = AVPlayer()
+
+    func play(_ resource: AudioURLConvertable) {
+        let item = AVPlayerItem(url: resource.audioURL)
+        avPlayer.replaceCurrentItem(with: item)
+        avPlayer.play()
+    }
+}
+
+#+end_src
+
+** mutating
+protocol 除了可以提供傳回值型態的彈性，也可以用來變更 class/struct 中的屬性。如：
+#+begin_src swift -r -n :eval no
+import Cocoa
+import AVKit
+
+protocol Likeable {
+    mutating func markAsLiked()
+}
+
+struct Song {
+    var name: String
+    var album: Album
+    var audioURL: URL
+    var isLiked: Bool
+}
+
+struct Album {
+    var name: String
+    var imageURL: URL
+    var audioURL: URL
+    var isLiked: Bool
+}
+
+extension Song: Likeable {
+    mutating func markAsLiked() {
+        isLiked = true
+    }
+}
+#+end_src
+可以在不改變原 struct Album 的情況下，藉由 extension 來擴充 Song，使其遵循 Likeable protocol，提供變供屬性 isLiked 的值，*這在擴充 API 功能時特別有用*。
+
+** 擴充 protocol
+除了擴充現有 struct，protocol 也可以用來擴充 protocol，如：
+#+begin_src swift -r -n :eval no
+import Cocoa
+import AVKit
+
+protocol Likeable {
+    var isLiked: Bool {get set}
+}
+
+extension Likeable {
+    mutating func markAsLiked() {
+        isLiked = true
+    }
+}
+
+struct Song {
+    var name: String
+    var album: Album
+    var audioURL: URL
+    var isLiked: Bool
+}
+
+struct Album {
+    var name: String
+    var imageURL: URL
+    var audioURL: URL
+    var isLiked: Bool
+}
+
+extension Song: Likeable {}
+extension Album: Likeable {}
+#+end_src
+
+* TODO Web API and JSON
+:PROPERTIES:
+:CUSTOM_ID: json
+:END:
+- [[https://www.youtube.com/watch?v=tdxKIPpPDAI][iOS Swift Tutorial: Use Web APIs and JSON Data with Swift 5]]
+Develop in MVVM
+
+* Property Wrappers
+:PROPERTIES:
+:CUSTOM_ID: Wrappers
+:END:
+All of these @Something statements are property wrappers. A property wrapper is actually a struct. These structs encapsulate some "template" behavior applied to the vars they wrap.
+
+The property wrapper feature adds *"syntactic sugar"* to make these structs easy to create/use." [fn:18]
+
+** Property wrapper syntactic Sugar
+#+begin_src swift -r -n :eval no
+@Published var dice: Dice = Dice()
+#+end_src
+上述宣告實際同以下 struct
+#+begin_src swift -r -n :eval no
+struct Published {
+    var wrappedValue: Dice
+    var projectedValue: Publisher<Dice, Never>
+}
+#+end_src
+接下來 Swift 產生以下變數
+#+begin_src swift -r -n :eval no
+var _dice: Published = Published(wrappedValue: Dice())
+var dice: Dice {
+    get { _dice.wrappedValue  }
+    set { _dice.wrappedValue = newValue }
+}
+#+end_src
+
+** @State
+- Simple properties like String or Int
+- Belongs to a specific view
+- Never used outside that view
+- The wrappedValue is: anything (but almost certainly a value type).
+- What it does: stores the wrappedValue in the heap; when it changes, invalidates the View.
+- Projected value (i.e. $): a Binding (to that value in the heap).
+
+** @ObservedObject
+- Can b shared across views
+- More complex properties (e.g custom type)
+- External reference type that has to be managed (Create an instance of the class, create its own properties, ...)
+- Class should confrom to *ObservableObject*
+- *@Published* property wrapper used to mark properties that should force a view to refresh
+- The wrappedValue is: anything that implements the OvservableObject protocol (ViewModels basicly).
+- What is does: invalidates the View when wrappedValue does objectWillChange.send().
+- Projected value (i.e. %): a Binding (to the vars of the wrappedValue (a ViewModel)). You can bind a variable in your View to the variable in your ViewModel with @ObservedObject.
+
+** @EnvironmentObject
+- Similar to @ObservedObject
+- Possibility to make it available to all views through the application itself
+- If one view changes the model all views updatezz
+- ThewrappedValue is: ObservvableObject obtained via .environemntObject() sent to the View.
+- What is does: invalidates the View when wrappedValue does objectWillChange.send().
+- Projected value (i.e. $): a Binding (to the vars of the wrappedValue (a ViewModel)).
+
+** @Binding
+- The wrappedValue is: a value that is bound to something else.
+- What it does: gets/sets the value of the wrappedValue from some other source.
+- What it does: when the bound-to value changes, it invalidates the View.
+- Projected value (i.e. $): a Binding (self; i.e. the Binding itself)
+
+** Time to use Binding
+Bindings are all about having a *single source of the truth (data)!*.
+- Getting text out of a TextField
+- Using a Toggle or other state-modifying UI element
+- Finding out which ittem in a NavigationView was chosen.
+- Find out whether we're being targeted with a Drag
+- Binding our gesture to the .updating function of a gesture.
+
+** Demo: @State v.s. @Bidning
+透過@State 與@Bidning, ContentView.swift 可以將變數 switchIsOn pass 給 SwitchView.swift，而後者可以藉由更改變數值來改變 ContentView.swift 的顯示結果。
+*** ContentView.swift
+#+begin_src swift -r -n :eval no
+import SwiftUI
+
+struct ContentView: View {
+    @State var switchIsOn = false
+
+    var body: some Vie {
+        VStack {
+            Text(switchIsOn ? "-_-" : "^_^")
+            SwitchView(switchIsOn: $switchIsOn)
+        }
+    }
+}
+#+end_src
+*** SwitchView.swift
+#+begin_src swift -r -n :eval no
+import SwiftUI
+
+struct SwitchView: View {
+    @Binding var swtichIsOn: Bool
+
+    var body: some View {
+        Toggle(isOn: $switchIsOn, label: {
+            Text(switchIsOn ? "ON" : "OFF")
+        })
+    }
+}
+#+end_src
+
+** Demo: ObservaleObject
+*** UserStats.swift
+#+begin_src swift -r -n :eval no
+import Foundation
+import SwiftUI
+import Combine
+
+class UserStats: ObservableObject {
+    var objectWillChange = ObservableObjectPublisher()
+
+    var score = 0 {
+        willSet {
+            self.objectWillChange.send()
+        }
+    }
+}
+#+end_src
+*** ScoreView.swift
+#+begin_src swift -r -n :eval no
+import SwiftUI
+
+struct ScoreView: View {
+    @ObservedObject var userStats = UserStats()
+
+    var body: some View {
+        VStack {
+            Text("\self.userStats.score")
+            Button(action: {self.userStats.score += 1}
+                  , label: {
+                        Text("Add Point")
+                    })
+        }
+    }
+}
+#+end_src
+
+** Demo: EnvironmentObject
+*** UserSettings.swift (ObservableObject)
+#+begin_src swift -r -n :eval no
+import SwiftUI
+
+class UserSettings: ObservableObject {
+    @Published var name = ""
+    // use this ObservableObject as an environment object
+}
+#+end_src
+*** SceneDeleate.swift
+add new var in SceneDelegate
+#+begin_src swift -r -n :eval no
+//....
+
+var settings: UserSettings()
+func scene(.......) {
+    //....
+    //let tabbedView = TabbedView()
+    let tabbedView = TabbedView().environemntObject(settings)
+}
+//....
+#+end_src
+and now the settings is universally available throughtout the tabbed views
+*** UserSettingsView.swift
+#+begin_src swift -r -n :eval no
+import SwiftUI
+
+struct UserSettingsView: View {
+    @EnvironmentObject var settings: UserSettings
+    var body: some View {
+        VStack {
+            Text("My anme: \(settings.name)")
+            EditView()
+        }
+    }
+}
+#+end_src
+*** EditView.swift
+#+begin_src swift -r -n :eval no
+import SwiftUI
+
+struct EditView: View {
+    @EnvironmentObject var settings: UserSettings
+    var body: some Veiw {
+        TextField("Type in your name:", text: $settings.name)
+    }
+}
+#+end_src
+
+** 進階閱讀
+- [[https://www.youtube.com/watch?v=iH88uJcdzDM][SwiftUI Reactive Intro - Understanding State and Binding in SwiftUI in Xcode 11 (2019)]]
+- [[https://medium.com/%E5%BD%BC%E5%BE%97%E6%BD%98%E7%9A%84-swift-ios-app-%E9%96%8B%E7%99%BC%E5%95%8F%E9%A1%8C%E8%A7%A3%E7%AD%94%E9%9B%86/%E7%94%A8%E7%8B%80%E6%85%8B%E8%A8%AD%E8%A8%88-swiftui-%E7%95%AB%E9%9D%A2-%E8%AA%8D%E8%AD%98-state-property-binding-27fea6885ead][用狀態設計 SwiftUI 畫面 — 認識 @State property，binding & Toggle]]
+#+latex:\newpage
+
+* TODO some
+:PROPERTIES:
+:CUSTOM_ID: some
+:END:
+#+begin_verse
+Adding the keyword some in front of a return type indicates that the return type is opaque. [fn:19]
+#+end_verse
+** Generics
+*** 問題
+Generics 允許開發者在不同類型中複用你的程式碼，用來解決下列問題：
+#+begin_src swift -r -n :eval no
+func swapInts(_ a: inout Int, _ b: inout Int) {
+    let temporaryB = b
+    b = a
+    a = temporaryB
+}
+
+var num1 = 10
+var num2 = 20
+
+swapInts(&num1, &num2)
+print(num1)   // 20
+print(num2)   // 10
+#+end_src
+但若想交換字串，則要寫成
+#+begin_src swift -r -n :eval no
+func swapStrings(_ a: inout String, _ b: inout String) {
+    let temporaryB = b
+    b = a
+    a = temporaryB
+}
+#+end_src
+可以發現除了參數之外，重複的 code 實在太多
+*** 解決方案
+將固定型態的參數轉為 Generic type
+#+begin_src swift -r -n :eval no
+import Cocoa
+
+func swapTwoValues<T>(_ a: inout T, _ b: inout T) {
+    let temporaryA = a
+    a = b
+    b = temporaryA
+}
+
+
+var num1 = 10
+var num2 = 20
+
+swapTwoValues(&num1, &num2)
+print(num1)   // 20
+print(num2)   // 10
+#+end_src
+另一個例子為 Stack 的實作：
+原本只能儲存 Int 的 Stack 如下，若要儲存字串則要再另行定義。
+#+begin_src swift -r -n :eval no
+struct IntStack {
+    var items = [Int]()
+    mutating func push(_ item: Int) {
+        items.append(item)
+    }
+    mutating func pop() -> Int {
+        return items.removeLast()
+    }
+}
+#+end_src
+改為 Generic type 後可動態變更為整數 stack 或字串 stack，如：
+#+begin_src swift -r -n :eval no
+struct Stack<Element> {
+    var items = [Element]()
+    mutating func push(_ item: Element) {
+        items.append(item)
+    }
+    mutating func pop() -> Element {
+        return items.removeLast()
+    }
+}
+
+var stackOfStrings = Stack<String>()
+stackOfStrings.push("uno")
+stackOfStrings.push("dos")
+stackOfStrings.push("tres")
+stackOfStrings.push("cuatro")
+// the stack now contains 4 strings
+
+#+end_src
+** opaque
+帶有不透明（opaque）返回類型的函數或方法，將會隱藏其返回值的類型[fn:20]
+#+latex:\newpage
+
+* TODO UserDefaults
+:PROPERTIES:
+:CUSTOM_ID: userDevaults
+:END:
+Ways to make data "persist" in iOS:
+- Filesystem: FileManager
+- SQL database: CoreData
+- Cloud: ClodKit, Firebase
+- UserDefualts
+
+我們可以將之視為 persistent dictionary。UserDefaults 可以儲存 Property List 類型的資料。Property List is not a protocol or a struct or anything tangible or Swift-like. It is any combination of String, Int, Bool, Floating point, Date, Array or Dictionary.
+
+A powerful way to do this is using the *Codable* protocol inf Swift. Codable converts structs into Data objects.
+
+** Using userDefaults
+#+begin_src swift -r -n :eval no
+let defaults = UserDefaults.standard
+#+end_src
+
+** Storing Data
+#+begin_src swift -r -n :eval no
+defaults.set(object, forKey: "SomeKey")
+defautls.setDouble(37.5, forKey: "MyDouble")
+#+end_src
+
+** Retrieving Data
+#+begin_src swift -r -n :eval no
+let i: Int = defaults.integer(forKey: "MyInt")
+let u: URL? = defaults.url(forKey: "MyURL")
+let strings: [String]? = defaults.stringArray(forKey: "MyString")
+#+end_src
+#+latex:\newpage
+
+* TODO 進階主題
+:PROPERTIES:
+:CUSTOM_ID: advanced
+:END:
+- [[https://developer.apple.com/design/human-interface-guidelines/][Human Interface Guidelines]]: Apple的人機設計界面指南
+- [[https://developer.apple.com/documentation][Apple Developer Documentation]]: Apple開發者文件
+- [[https://www.appcoda.com.tw/protocol-extension/][利用 Protocol Extension 減少重覆的 Code　大大增強 Code 的維護性]]
+- [[https://appcoda.com.tw/mastering-swift/][精通Swift：列舉、閉包、泛型、Protocols和高階函數]]
+#+latex:\newpage
+
+* Footnotes
+
+[fn:1] [[https://medium.com/@mikru168/swiftui-%E6%B7%BA%E7%8E%A9-swiftui-%E7%94%A8%E5%85%B6%E5%BB%BA%E6%A7%8B%E4%B8%80%E7%B0%A1%E5%96%AE%E7%9A%84-app-2f2477bd49d7][簡介 SwiftUI & 用其建構一簡單的 APP ]]
+
+[fn:2] [[https://medium.com/@SteelKiwiDev/swiftui-vs-uikit-benefits-and-drawbacks-6a540cced684][SwiftUI vs UIKit: Benefits and Drawbacks]]
+
+[fn:3] [[https://www.appcoda.com.tw/swiftui-introduction/][SwiftUI 初體驗： 建構一個簡單 App　讓你了解 SwiftUI 有多強大！]]
+
+[fn:4] [[https://stackoverflow.com/questions/56514998/find-all-available-images-for-imagesystemname-in-swiftui][Find all available images for Image(systemName:) in SwiftUI]]
+
+[fn:5] [[https://medium.com/%E5%BD%BC%E5%BE%97%E6%BD%98%E7%9A%84-swift-ios-app-%E9%96%8B%E7%99%BC%E5%95%8F%E9%A1%8C%E8%A7%A3%E7%AD%94%E9%9B%86/%E7%94%A8%E7%8B%80%E6%85%8B%E8%A8%AD%E8%A8%88-swiftui-%E7%95%AB%E9%9D%A2-%E8%AA%8D%E8%AD%98-state-property-binding-27fea6885ead][用狀態設計 SwiftUI 畫面 — 認識 @State property，binding & Toggle]]
+
+[fn:6] [[https://medium.com/%E5%BD%BC%E5%BE%97%E6%BD%98%E7%9A%84-swift-ios-app-%E9%96%8B%E7%99%BC%E5%95%8F%E9%A1%8C%E8%A7%A3%E7%AD%94%E9%9B%86/%E5%AE%A2%E8%A3%BD-ui-%E5%85%83%E4%BB%B6%E6%A8%A3%E5%BC%8F%E7%9A%84-swiftui-modifier-b31ff65c1f0d][客製 UI 元件樣式的 SwiftUI modifier]]
+
+[fn:7] [[https://medium.com/%E5%BD%BC%E5%BE%97%E6%BD%98%E7%9A%84-swift-ios-app-%E9%96%8B%E7%99%BC%E5%95%8F%E9%A1%8C%E8%A7%A3%E7%AD%94%E9%9B%86/swiftui-%E8%A3%81%E5%88%87%E5%BD%A2%E7%8B%80%E7%9A%84-clipshape-mask-4fc49b34141][SwiftUI 裁切形狀的 clipShape & mask]]
+
+[fn:8] [[https://www.appcoda.com.tw/swiftui-border/][SwiftUI 小技巧：利用 border 修飾符　輕鬆為按鈕或文本繪製邊框]]
+
+[fn:9] [[https://www.hackingwithswift.com/quick-start/swiftui/how-to-create-a-list-of-dynamic-items][How to create a list of dynamic items]]
+
+[fn:10] [[https://medium.com/@nwyyy/swift%E7%AD%86%E8%A8%98-tab-bar-2ddba7d56587][iOS筆記：Tab Bar]]
+
+[fn:11] [[https://www.appcoda.com/swiftui-tabview/][Introducing SwiftUI TabView and Working with Tab Bar Customization]]
+
+[fn:12] [[https://www.youtube.com/watch?v=cc23YTGZVbQ][iOS 13 SwiftUI Tutorial: Interactively Transition and Share Data between Views with SwiftUI]]
+
+[fn:13] [[https://stackoverflow.com/questions/56437335/go-to-a-new-view-using-swiftui][Go to a new view using SwiftUI]]
+
+[fn:14] [[https://www.appcoda.com.tw/protocol-extension/][利用 Protocol Extension 減少重覆的 Code　大大增強 Code 的維護性]]
+
+[fn:15] [[https://docs.swift.org/swift-book/LanguageGuide/Protocols.html][Protocols]]
+
+[fn:16] [[https://www.appcoda.com.tw/swift-protocol/][Swift開發指南：Protocols與Protocol Extensions的使用心法]]
+
+[fn:17] [[https://ithelp.ithome.com.tw/articles/10197366][Day-29 Swift 語法(25) - 協定 Protocol]]
+
+[fn:18] [[https://www.youtube.com/watch?v=0i152oA3T3s][Lecture 9: Data Flow]]
+
+[fn:19] [[https://medium.com/@PhiJay/whats-this-some-in-swiftui-34e2c126d4c4][What’s this “some” in SwiftUI?]]
+
+[fn:20] [[https://medium.com/jeremy-xue-s-blog/swift-%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80-opaque-types-600ad5758b91][Swift 程式語言 — Opaque Types]]
+
+[fn:24] [[https://levelup.gitconnected.com/demystifying-struct-class-and-enum-in-swift-5-43dde089e96a][Demystifying Struct, Class, and Enum in Swift 5]]
+mu index --maildir="~/.gmail
+
+[fn:23] [[https://ithelp.ithome.com.tw/articles/10220520][ Day 10: [Swift] 結構和類 (Struct and Class) ]]
+
+[fn:22] [[https://appcoda.com.tw/mastering-swift/][精通Swift：列舉、閉包、泛型、Protocols和高階函數]]
+
+[fn:21] [[https://www.appcoda.com.tw/swift-class/][Swift Class vs Struct：設計 Model 時，該用 Struct 還是 Class 呢？]]

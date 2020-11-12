@@ -1,0 +1,2603 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2020-10-21 Wed 20:06 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Swift Introduction</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Yung Chin, Yen" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/styles/readtheorg/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/styles/readtheorg/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/styles/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/styles/readtheorg/js/readtheorg.js"></script>
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.cacheClassElem = elem.className;
+         elem.cacheClassTarget = target.className;
+         target.className = "code-highlighted";
+         elem.className   = "code-highlighted";
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(elem.cacheClassElem)
+         elem.className = elem.cacheClassElem;
+       if(elem.cacheClassTarget)
+         target.className = elem.cacheClassTarget;
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Swift Introduction</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#basic">1. The Basics</a></li>
+<li><a href="#resources">2. Learning Resources</a>
+<ul>
+<li><a href="#org66ff74b">2.1. Web sites</a></li>
+<li><a href="#org9d30b65">2.2. Videos</a></li>
+</ul>
+</li>
+<li><a href="#variable">3. Swift 常數與變數</a>
+<ul>
+<li><a href="#org8384661">3.1. 宣告常數和變數</a></li>
+<li><a href="#org413f7d8">3.2. Swift v.s. C/C++</a></li>
+<li><a href="#org59a5ed6">3.3. Swift is a type-safe language</a></li>
+<li><a href="#org1ffb2bb">3.4. 常數與變數的命名</a></li>
+<li><a href="#org78360c0">3.5. 變數與常數的輸出</a></li>
+<li><a href="#org07ecf54">3.6. 變數與常數的基本規範</a></li>
+<li><a href="#org24580ea">3.7. Stored variable v.s. Computed variable</a>
+<ul>
+<li><a href="#org853bd9c">3.7.1. computed variable</a></li>
+<li><a href="#orgc5e83f7">3.7.2. contentView 裡的 body 就是 computed variable</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#operation">4. 基本運算</a>
+<ul>
+<li><a href="#org7bb91d0">4.1. 指派運算子</a></li>
+<li><a href="#orgf6ab439">4.2. 數值運算子</a>
+<ul>
+<li><a href="#org82999e1">4.2.1. Swift 支援所有數值型別基本運算：</a></li>
+<li><a href="#org1f87fb9">4.2.2. 不同數值的運算</a></li>
+<li><a href="#orgce74482">4.2.3. 加法運算子也用於 String 的拼接：</a></li>
+</ul>
+</li>
+<li><a href="#org243a6ca">4.3. 複合指派運算子（Compound Assignment Operators）</a></li>
+<li><a href="#org5569ed2">4.4. 邏輯運算子</a></li>
+</ul>
+</li>
+<li><a href="#observer">5. Property Observers</a>
+<ul>
+<li><a href="#org9498765">5.1. Set/Get</a></li>
+<li><a href="#org541597d">5.2. willSet/set/didSet</a></li>
+</ul>
+</li>
+<li><a href="#flow-control">6. 控制流程</a>
+<ul>
+<li><a href="#orgef298b4">6.1. Conditional Statement</a>
+<ul>
+<li><a href="#orga54fad5">6.1.1. if</a>
+<ul>
+<li><a href="#org6ad3321">6.1.1.1. single condition</a></li>
+<li><a href="#org1bef02d">6.1.1.2. combined conditions</a></li>
+</ul>
+</li>
+<li><a href="#org1684f60">6.1.2. if-else</a></li>
+<li><a href="#org3dda633">6.1.3. if-else if</a></li>
+<li><a href="#org7e33c3d">6.1.4. switch</a></li>
+</ul>
+</li>
+<li><a href="#orgd75c542">6.2. For-In Loops</a>
+<ul>
+<li><a href="#orge740b97">6.2.1. 語法</a></li>
+<li><a href="#org4c5d3ca">6.2.2. DEMO</a></li>
+</ul>
+</li>
+<li><a href="#orgf3c3f7b">6.3. While Loops</a>
+<ul>
+<li><a href="#orgbba7a54">6.3.1. while</a>
+<ul>
+<li><a href="#orgec99a56">6.3.1.1. 語法</a></li>
+<li><a href="#org55a3987">6.3.1.2. DEMO</a></li>
+</ul>
+</li>
+<li><a href="#org089f7d3">6.3.2. repeat &#x2026; while</a>
+<ul>
+<li><a href="#org3ee2e48">6.3.2.1. 語法</a></li>
+<li><a href="#org3d88bed">6.3.2.2. DEMO</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#set">7. 集合型別</a>
+<ul>
+<li><a href="#org4babe4a">7.1. 陣列（Arrays）</a>
+<ul>
+<li><a href="#org78af12a">7.1.1. 陣列建構語法</a></li>
+<li><a href="#org5a5c8ca">7.1.2. 存取和修改陣列</a></li>
+<li><a href="#orga80cd45">7.1.3. 以 for 遍歷陣列</a></li>
+<li><a href="#org3d3ad6e">7.1.4. 以 repeat 產生 array</a></li>
+<li><a href="#orgc8f9749">7.1.5. Modify array</a>
+<ul>
+<li><a href="#orgeb71774">7.1.5.1. map: 批次 update array</a></li>
+</ul>
+</li>
+<li><a href="#org4e33362">7.1.6. flatMap()</a></li>
+<li><a href="#org55374dd">7.1.7. compactMap</a></li>
+<li><a href="#org50da82f">7.1.8. Array of Struct</a></li>
+</ul>
+</li>
+<li><a href="#org9c4c369">7.2. 集合（Sets）</a>
+<ul>
+<li><a href="#orgab0ac94">7.2.1. 宣告</a></li>
+<li><a href="#orgdcf33f6">7.2.2. 存取集合</a></li>
+<li><a href="#org7653d60">7.2.3. 交集、聯集</a></li>
+<li><a href="#org63c7fb6">7.2.4. 學習資源</a></li>
+</ul>
+</li>
+<li><a href="#orge9d01fe">7.3. 字典（Dictionaries）</a>
+<ul>
+<li><a href="#orgfa1886f">7.3.1. 建立字典</a></li>
+<li><a href="#org5f72e60">7.3.2. 存取字典</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#function">8. Functions</a>
+<ul>
+<li><a href="#orgb923054">8.1. Functions 的定義與呼叫</a>
+<ul>
+<li><a href="#org3091631">8.1.1. 語法</a></li>
+<li><a href="#org5400499">8.1.2. DEMO</a></li>
+<li><a href="#org2b132ed">8.1.3. Functions 的參數與傳回值</a>
+<ul>
+<li><a href="#org66c6f84">8.1.3.1. 沒有參數</a></li>
+<li><a href="#orgd28e050">8.1.3.2. 有很多參數</a></li>
+<li><a href="#org12b5a4b">8.1.3.3. 沒有傳回值</a></li>
+<li><a href="#org5d6c317">8.1.3.4. 有很多傳回值</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#generics">9. Generics</a></li>
+<li><a href="#types">10. Types</a>
+<ul>
+<li><a href="#org3bd2478">10.1. Varietities of Types</a></li>
+<li><a href="#org6fd0040">10.2. Functions as Types</a>
+<ul>
+<li><a href="#org4c8bcc2">10.2.1. Closures</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#SW-Struct-Class-Enum">11. Struct, Class, and Enum</a>
+<ul>
+<li><a href="#org5e37442">11.1. 語法</a></li>
+<li><a href="#orga216598">11.2. DEMO</a>
+<ul>
+<li><a href="#orgc1ebec3">11.2.1. 宣告</a></li>
+<li><a href="#orgc68d7b6">11.2.2. Init</a></li>
+<li><a href="#org08d1bed">11.2.3. Structure and Class Instances</a></li>
+<li><a href="#org5572f5c">11.2.4. Accessing Properties</a></li>
+</ul>
+</li>
+<li><a href="#orge5d6985">11.3. Structures</a>
+<ul>
+<li><a href="#org96825ef">11.3.1. Mutating methods</a></li>
+</ul>
+</li>
+<li><a href="#org4e6b9dc">11.4. Classes</a>
+<ul>
+<li><a href="#orged40cf0">11.4.1. Inheritance &amp; Override methods and properties</a></li>
+</ul>
+</li>
+<li><a href="#org403cad3">11.5. 結構跟類的比較 (Comparing Structures and Classes) </a>
+<ul>
+<li><a href="#orgdb51ceb">11.5.1. 在 Swift 中的結構與類有許多相同之處，兩者皆能：</a></li>
+<li><a href="#org23f3463">11.5.2. 類具有的附加功能，但結構沒有：</a></li>
+<li><a href="#orgc3c8130">11.5.3. 結構和列舉是值型別 (Structures and Enumerations Are Value Types)</a>
+<ul>
+<li><a href="#org7fe4f92">11.5.3.1. 範例</a></li>
+</ul>
+</li>
+<li><a href="#org0715222">11.5.4. 類是參考型別 (Classes Are Reference Types)</a>
+<ul>
+<li><a href="#orgfdd9fae">11.5.4.1. 範例</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org3e8b871">11.6. with v.s. without struct: Why you need struct</a>
+<ul>
+<li><a href="#org99071df">11.6.1. 狀況一: without struct</a></li>
+<li><a href="#org4023d2a">11.6.2. 狀況二: with struct</a></li>
+</ul>
+</li>
+<li><a href="#orgca0574b">11.7. Inheritance</a>
+<ul>
+<li><a href="#orgd18e7f0">11.7.1. 使用 inheritance 的優點</a>
+<ul>
+<li><a href="#org7b60a11">11.7.1.1. 不用 inheritance</a></li>
+<li><a href="#org3c93399">11.7.1.2. 使用 inheritance</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orga157065">11.8. Computer property</a></li>
+<li><a href="#orgee5d6cc">11.9. Structures and Enumerations Are Value Types</a></li>
+<li><a href="#org47d21b6">11.10. Classes Are Reference Types</a></li>
+<li><a href="#org26965d8">11.11. Enumerations</a></li>
+<li><a href="#org6dda531">11.12. 結構和類之間的選擇 (Choosing Between Structures and Classes)</a>
+<ul>
+<li><a href="#org7da2eaf">11.12.1. 選擇原則</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#protocol">12. 協定</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-basic" class="outline-2">
+<h2 id="basic"><span class="section-number-2">1</span> The Basics</h2>
+<div class="outline-text-2" id="text-basic">
+<p>
+Swift 是 2014 年由蘋果公司在其開發者大會 WWDC 上所發佈的程式語言<br />
+</p>
+
+<p>
+The Swift Programming Language 一書中提到<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>：<br />
+</p>
+<ol class="org-ol">
+<li>Swift 用來撰寫 iOS 及 Mac OSX 的程式。<br /></li>
+<li>Swift 吸收了 C 和 Objective-C 的優點，使其在設計更具彈性、容易，且撰寫時有更多樂趣。<br /></li>
+<li>Swift 是基於成熟而且倍受喜愛的 Cocoa 和 Cocoa Touch framework，意即 Swift 可以直接使用這些現有的框架<br /></li>
+<li>Swift 兼具編譯語言的性能，以及直譯式語言的特性。<br /></li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-resources" class="outline-2">
+<h2 id="resources"><span class="section-number-2">2</span> Learning Resources</h2>
+<div class="outline-text-2" id="text-resources">
+</div>
+<div id="outline-container-org66ff74b" class="outline-3">
+<h3 id="org66ff74b"><span class="section-number-3">2.1</span> Web sites</h3>
+<div class="outline-text-3" id="text-2-1">
+<ul class="org-ul">
+<li><a href="https://swiftdoc.org/">swiftdoc.org</a><br /></li>
+<li>Swift 官方線上學習手冊: <a href="https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html">The Swift Programming Language</a><br /></li>
+<li><a href="https://www.cnswift.org/the-basics">Swift 编程语言</a><br /></li>
+<li><a href="https://www.hackingwithswift.com/quick-start/swiftui">SwiftUI by Example</a><br /></li>
+<li><a href="https://www.hackingwithswift.com/100/swiftui">https://www.hackingwithswift.com/100/swiftui</a><br /></li>
+<li><a href="http://swiftdeveloperblog.com/code-examples/">Swift Developer Blog</a><br /></li>
+<li><a href="https://gradyzhuo.gitbooks.io/meetswifttutorial/content/Episode_1/Chapter_1.html">第一章 - Class, Struct and Enum 的抉擇</a><br /></li>
+<li><a href="https://www.hackingwithswift.com/quick-start/swiftui">Hacking with SWIFT</a><br /></li>
+<li><a href="https://github.com/search?q=language%3Aswift&amp;ref=cmdform">Github#swift</a><br /></li>
+<li><a href="https://stackoverflow.com/questions/tagged/swift">Stack Overflow#swift</a><br /></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org9d30b65" class="outline-3">
+<h3 id="org9d30b65"><span class="section-number-3">2.2</span> Videos</h3>
+<div class="outline-text-3" id="text-2-2">
+<ul class="org-ul">
+<li><a href="https://www.youtube.com/watch?v=Ulp1Kimblg0">Swift Programming Tutorial for Beginners (Full Tutorial)</a><br /></li>
+<li><a href="https://www.raywenderlich.com/ios">iOS &amp; Swift Videos</a><br /></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-variable" class="outline-2">
+<h2 id="variable"><span class="section-number-2">3</span> Swift 常數與變數</h2>
+<div class="outline-text-2" id="text-variable">
+</div>
+<div id="outline-container-org8384661" class="outline-3">
+<h3 id="org8384661"><span class="section-number-3">3.1</span> 宣告常數和變數</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+常數和變數必須在使用前宣告，用 let 來宣告常數，用 var 來宣告變數。下面的範例展示了如何用常數和變數來記錄使用者嘗試登錄的次數：<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">let</span> maximumNumberOfLoginAttempts = <span style="color: #da8548; font-weight: bold;">10</span>
+<span class="linenr">2: </span><span style="color: #51afef;">var</span> currentLoginAttempt = <span style="color: #da8548; font-weight: bold;">0</span>
+</pre>
+</div>
+<p>
+你可以在一行中宣告多個常數或者多個變數，用逗號隔開：<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">var</span> x = <span style="color: #da8548; font-weight: bold;">0.0</span>, y = <span style="color: #da8548; font-weight: bold;">0.0</span>, z = <span style="color: #da8548; font-weight: bold;">0.0</span>
+<span class="linenr">2: </span><span style="color: #51afef;">var</span> population = 8_000_000
+<span class="linenr">3: </span>x = <span style="color: #da8548; font-weight: bold;">3</span>
+<span class="linenr">4: </span>y = <span style="color: #da8548; font-weight: bold;">4</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org413f7d8" class="outline-3">
+<h3 id="org413f7d8"><span class="section-number-3">3.2</span> Swift v.s. C/C++</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+Swift 的變數宣告與 C/C++的差異之一在於宣告時不必要先宣告變數型別，例如，同樣要宣告一小數變數與整數變數，C++的做法為<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span>int x = <span style="color: #da8548; font-weight: bold;">20</span>;
+<span class="linenr">2: </span>double pi = <span style="color: #da8548; font-weight: bold;">3.1416</span>;
+</pre>
+</div>
+<p>
+而 Swift 的寫法為：<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">var</span> x = <span style="color: #da8548; font-weight: bold;">20</span>
+<span class="linenr">2: </span><span style="color: #51afef;">var</span> pi = <span style="color: #da8548; font-weight: bold;">3.1416</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org59a5ed6" class="outline-3">
+<h3 id="org59a5ed6"><span class="section-number-3">3.3</span> Swift is a type-safe language</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+We declared the variable <i>numOfStudent</i> and assigned 42 (第<a href="#coderef-safeType" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-safeType');" onmouseout="CodeHighlightOff(this, 'coderef-safeType');">1</a>行) as its initial value, Swift will assigned it the type integer. We can&rsquo;t change its type: it will always be an integer.<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span id="coderef-safeType" class="coderef-off"><span class="linenr">1: </span><span style="color: #51afef;">var</span> numOfStudent = <span style="color: #da8548; font-weight: bold;">42</span></span>
+<span class="linenr">2: </span>numOfStudent = <span style="color: #da8548; font-weight: bold;">30</span>
+<span class="linenr">3: </span>numOfStudent = <span style="color: #da8548; font-weight: bold;">25.8</span>
+<span class="linenr">4: </span>numOfStudent = <span style="color: #98be65;">"fourty"</span> <span style="color: #5B6268;">// </span><span style="color: #5B6268;">wrong</span>
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org1ffb2bb" class="outline-3">
+<h3 id="org1ffb2bb"><span class="section-number-3">3.4</span> 常數與變數的命名</h3>
+<div class="outline-text-3" id="text-3-4">
+<p>
+我們可以使用喜歡的字元作為常數和變數名，包括 Unicode 字元：<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">let</span> &#960; = <span style="color: #da8548; font-weight: bold;">3.14159</span>
+<span class="linenr">2: </span><span style="color: #51afef;">let</span> &#20320;&#22909; = <span style="color: #98be65;">"&#20320;&#22909;&#19990;&#30028;"</span>
+<span class="linenr">3: </span><span style="color: #51afef;">let</span> &#128054;&#128046; = <span style="color: #98be65;">"dogcow"</span>
+<span class="linenr">4: </span>&#960; = <span style="color: #da8548; font-weight: bold;">3.14</span> <span style="color: #5B6268;">// </span><span style="color: #5B6268;">try to change the value of constant and find out what happen</span>
+</pre>
+</div>
+<p>
+但 Swift 的變數亦有其限制，包括：常數與變數名不能包含數學符號、箭頭、保留的（或者非法的）Unicode 碼位、連線與制表字元（box-drawing characters），也不能以數字開頭，但是可以在常數與變數名的其他地方包含數字。<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org78360c0" class="outline-3">
+<h3 id="org78360c0"><span class="section-number-3">3.5</span> 變數與常數的輸出</h3>
+<div class="outline-text-3" id="text-3-5">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">var</span> x = <span style="color: #da8548; font-weight: bold;">20</span>
+<span class="linenr">2: </span><span style="color: #51afef;">var</span> pi = <span style="color: #da8548; font-weight: bold;">3.1416</span>
+<span class="linenr">3: </span><span style="color: #c678dd;">print</span>(x)
+<span class="linenr">4: </span><span style="color: #c678dd;">print</span>(pi)
+</pre>
+</div>
+
+<pre class="example">
+20
+3.1416
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org07ecf54" class="outline-3">
+<h3 id="org07ecf54"><span class="section-number-3">3.6</span> 變數與常數的基本規範</h3>
+<div class="outline-text-3" id="text-3-6">
+<ul class="org-ul">
+<li>使用前需先宣告<br /></li>
+<li>不能重複宣告<br /></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">var</span> x = <span style="color: #da8548; font-weight: bold;">30</span>
+<span class="linenr">2: </span><span style="color: #51afef;">let</span> y = <span style="color: #da8548; font-weight: bold;">10</span>
+<span class="linenr">3: </span><span style="color: #5B6268;">// </span><span style="color: #5B6268;">invalid redeclaration of variable</span>
+<span class="linenr">4: </span><span style="color: #51afef;">var</span> x = <span style="color: #da8548; font-weight: bold;">40</span>
+<span class="linenr">5: </span><span style="color: #51afef;">let</span> y = <span style="color: #da8548; font-weight: bold;">5</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org24580ea" class="outline-3">
+<h3 id="org24580ea"><span class="section-number-3">3.7</span> Stored variable v.s. Computed variable</h3>
+<div class="outline-text-3" id="text-3-7">
+</div>
+<div id="outline-container-org853bd9c" class="outline-4">
+<h4 id="org853bd9c"><span class="section-number-4">3.7.1</span> computed variable</h4>
+<div class="outline-text-4" id="text-3-7-1">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">var</span> x: <span style="color: #c678dd;">Double</span> = <span style="color: #da8548; font-weight: bold;">4.3</span>
+<span class="linenr">2: </span><span style="color: #51afef;">var</span> y: <span style="color: #c678dd;">Double</span> = <span style="color: #da8548; font-weight: bold;">3.4</span>
+<span class="linenr">3: </span><span style="color: #51afef;">var</span> z: <span style="color: #c678dd;">Double</span> {
+<span class="linenr">4: </span>    <span style="color: #51afef;">return</span> x*y
+<span class="linenr">5: </span>}
+<span class="linenr">6: </span><span style="color: #c678dd;">print</span>(z)
+<span class="linenr">7: </span>x = <span style="color: #da8548; font-weight: bold;">10</span>
+<span class="linenr">8: </span>y = <span style="color: #da8548; font-weight: bold;">10</span>
+<span class="linenr">9: </span><span style="color: #c678dd;">print</span>(z) <span style="color: #5B6268;">//</span><span style="color: #5B6268;">&#33258;&#21205;&#37325;&#26032;&#35336;&#31639;z&#20540;</span>
+</pre>
+</div>
+
+<pre class="example">
+14.62
+100.0
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgc5e83f7" class="outline-4">
+<h4 id="orgc5e83f7"><span class="section-number-4">3.7.2</span> contentView 裡的 body 就是 computed variable</h4>
+<div class="outline-text-4" id="text-3-7-2">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">var</span> body: som View {
+<span class="linenr">2: </span>    <span style="color: #51afef;">return</span> <span style="color: #c678dd;">Text</span>(<span style="color: #98be65;">"Hello world"</span>)
+<span class="linenr">3: </span>}
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-operation" class="outline-2">
+<h2 id="operation"><span class="section-number-2">4</span> 基本運算</h2>
+<div class="outline-text-2" id="text-operation">
+</div>
+<div id="outline-container-org7bb91d0" class="outline-3">
+<h3 id="org7bb91d0"><span class="section-number-3">4.1</span> 指派運算子</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+指派運算（a = b），表示用 b 的值來初始化或更新 a 的值：<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">let</span> b = <span style="color: #da8548; font-weight: bold;">10</span>
+<span class="linenr">2: </span><span style="color: #51afef;">var</span> a = <span style="color: #da8548; font-weight: bold;">5</span>
+<span class="linenr">3: </span>a = b
+<span class="linenr">4: </span><span style="color: #5B6268;">// </span><span style="color: #5B6268;">a &#29694;&#22312;&#31561;&#26044; 10</span>
+<span class="linenr">5: </span>
+<span class="linenr">6: </span><span style="color: #51afef;">let</span> decimalInteger = <span style="color: #da8548; font-weight: bold;">17</span>
+<span class="linenr">7: </span><span style="color: #51afef;">let</span> binaryInteger = 0b10001       <span style="color: #5B6268;">// </span><span style="color: #5B6268;">17 in binary notation</span>
+<span class="linenr">8: </span><span style="color: #51afef;">let</span> octalInteger = 0o21           <span style="color: #5B6268;">// </span><span style="color: #5B6268;">17 in octal notation</span>
+<span class="linenr">9: </span><span style="color: #51afef;">let</span> hexadecimalInteger = 0x11     <span style="color: #5B6268;">// </span><span style="color: #5B6268;">17 in hexadecimal notation</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf6ab439" class="outline-3">
+<h3 id="orgf6ab439"><span class="section-number-3">4.2</span> 數值運算子</h3>
+<div class="outline-text-3" id="text-4-2">
+</div>
+<div id="outline-container-org82999e1" class="outline-4">
+<h4 id="org82999e1"><span class="section-number-4">4.2.1</span> Swift 支援所有數值型別基本運算：</h4>
+<div class="outline-text-4" id="text-4-2-1">
+<ul class="org-ul">
+<li>加法(+)<br /></li>
+<li>減法(-)<br /></li>
+<li>乘法(*)<br /></li>
+<li>除法(/)<br /></li>
+<li>餘數(%)<br /></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #c678dd;">print</span>(<span style="color: #da8548; font-weight: bold;">1</span> + <span style="color: #da8548; font-weight: bold;">2</span>)       <span style="color: #5B6268;">// </span><span style="color: #5B6268;">&#31561;&#26044; 3</span>
+<span class="linenr">2: </span><span style="color: #c678dd;">print</span>(<span style="color: #da8548; font-weight: bold;">5</span> - <span style="color: #da8548; font-weight: bold;">3</span>)       <span style="color: #5B6268;">// </span><span style="color: #5B6268;">&#31561;&#26044; 2</span>
+<span class="linenr">3: </span><span style="color: #c678dd;">print</span>(<span style="color: #da8548; font-weight: bold;">2</span> * <span style="color: #da8548; font-weight: bold;">3</span>)       <span style="color: #5B6268;">// </span><span style="color: #5B6268;">&#31561;&#26044; 6</span>
+<span class="linenr">4: </span><span style="color: #c678dd;">print</span>(<span style="color: #da8548; font-weight: bold;">10.0</span> / <span style="color: #da8548; font-weight: bold;">2.5</span>)  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">&#31561;&#26044; 4.0</span>
+<span class="linenr">5: </span><span style="color: #c678dd;">print</span>(<span style="color: #da8548; font-weight: bold;">10</span> / <span style="color: #da8548; font-weight: bold;">3</span>)      <span style="color: #5B6268;">// </span><span style="color: #5B6268;">&#31561;&#26044; 1</span>
+<span class="linenr">6: </span><span style="color: #c678dd;">print</span>(<span style="color: #da8548; font-weight: bold;">10</span> &amp; <span style="color: #da8548; font-weight: bold;">3</span>)      <span style="color: #5B6268;">// </span><span style="color: #5B6268;">&#31561;&#26044; 1</span>
+</pre>
+</div>
+
+<pre class="example">
+3
+2
+6
+4.0
+3
+32.0
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org1f87fb9" class="outline-4">
+<h4 id="org1f87fb9"><span class="section-number-4">4.2.2</span> 不同數值的運算</h4>
+<div class="outline-text-4" id="text-4-2-2">
+<div class="org-src-container">
+<pre class="src src-"exports">"exports both"body
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgce74482" class="outline-4">
+<h4 id="orgce74482"><span class="section-number-4">4.2.3</span> 加法運算子也用於 String 的拼接：</h4>
+<div class="outline-text-4" id="text-4-2-3">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #98be65;">"hello, "</span> + <span style="color: #98be65;">"world"</span>  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">&#31561;&#26044; "hello, world"</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org243a6ca" class="outline-3">
+<h3 id="org243a6ca"><span class="section-number-3">4.3</span> 複合指派運算子（Compound Assignment Operators）</h3>
+<div class="outline-text-3" id="text-4-3">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">var</span> a = <span style="color: #da8548; font-weight: bold;">1</span>
+<span class="linenr">2: </span>a += <span style="color: #da8548; font-weight: bold;">2</span> <span style="color: #5B6268;">// </span><span style="color: #5B6268;">a &#29694;&#22312;&#26159; 3 (ref:+=)</span>
+</pre>
+</div>
+<p>
+上述程式第<a href="#coderef-+=" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-+=');" onmouseout="CodeHighlightOff(this, 'coderef-+=');">2</a>行中的 a += 2 為 a = a + 2 的另一種寫法，其他運算子如-、*、/、%皆可套用同樣的簡寫方式。<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5569ed2" class="outline-3">
+<h3 id="org5569ed2"><span class="section-number-3">4.4</span> 邏輯運算子</h3>
+<div class="outline-text-3" id="text-4-4">
+<p>
+邏輯運算的操作物件是邏輯布林值。Swift 支援基於 C 語言的三個標準邏輯運算。<br />
+</p>
+<ul class="org-ul">
+<li>邏輯非（!a）<br /></li>
+<li>邏輯且（a &amp;&amp; b）<br /></li>
+<li>邏輯或（a || b）<br /></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-observer" class="outline-2">
+<h2 id="observer"><span class="section-number-2">5</span> Property Observers</h2>
+<div class="outline-text-2" id="text-observer">
+</div>
+<div id="outline-container-org9498765" class="outline-3">
+<h3 id="org9498765"><span class="section-number-3">5.1</span> Set/Get</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+在以往的經驗中，對變數進行 assign 是一件直覺而簡單的事，例如：<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">var</span> x: <span style="color: #c678dd;">Int</span> = <span style="color: #da8548; font-weight: bold;">4</span>
+<span class="linenr">2: </span><span style="color: #51afef;">var</span> y: <span style="color: #c678dd;">Int</span> = <span style="color: #da8548; font-weight: bold;">5</span>
+<span class="linenr">3: </span><span style="color: #51afef;">var</span> z: <span style="color: #c678dd;">Int</span>
+<span class="linenr">4: </span>
+<span class="linenr">5: </span>z = x + y
+<span class="linenr">6: </span><span style="color: #c678dd;">print</span>(z)
+</pre>
+</div>
+
+<pre class="example">
+9
+</pre>
+
+
+<p>
+類似 C#，在 Swift 中，我們卻能透過 Set/Get 來介入 assign 的過程，例如：<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">var</span> x: <span style="color: #c678dd;">Int</span> = <span style="color: #da8548; font-weight: bold;">4</span>
+<span class="linenr"> 2: </span><span style="color: #51afef;">var</span> y: <span style="color: #c678dd;">Int</span> = <span style="color: #da8548; font-weight: bold;">5</span>
+<span class="linenr"> 3: </span><span style="color: #51afef;">var</span> z: <span style="color: #c678dd;">Int</span> {
+<span class="linenr"> 4: </span>    <span style="color: #51afef;">get</span> { <span style="color: #51afef;">return</span> x + y }
+<span id="coderef-set" class="coderef-off"><span class="linenr"> 5: </span>    <span style="color: #51afef;">set</span> { y = newValue - x }</span>
+<span class="linenr"> 6: </span>}
+<span class="linenr"> 7: </span>
+<span class="linenr"> 8: </span><span style="color: #c678dd;">print</span>(z)
+<span class="linenr"> 9: </span>z = <span style="color: #da8548; font-weight: bold;">30</span>
+<span class="linenr">10: </span><span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"x&#26032;&#20540;: \(</span>x<span style="color: #98be65;">), y&#26032;&#20540;: \(</span>y<span style="color: #98be65;">)"</span>)
+</pre>
+</div>
+
+<pre class="example">
+9
+x 新值: 4, y 新值: 26
+</pre>
+
+
+<p>
+如上例中，我們可以夾帶一些程式碼，在有人賦予 z 新值時(z=?)利用 set(第<a href="#coderef-set" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-set');" onmouseout="CodeHighlightOff(this, 'coderef-set');">5</a>行)觸發這些程式碼；同理，也可以在有人讀取其值時觸發。而 newValue 代表被 assign 的新值。<br />
+</p>
+
+<p>
+又如下例，某學生的期中考三科成績就可以在輸入成績後自行判斷各科是否及格<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">class</span> <span style="color: #c678dd;">MidExam</span> {
+<span class="linenr"> 2: </span>    <span style="color: #51afef;">var</span> id: <span style="color: #c678dd;">String</span> = <span style="color: #98be65;">""</span>
+<span class="linenr"> 3: </span>    <span style="color: #51afef;">var</span> chPass = <span style="color: #a9a1e1;">false</span>
+<span class="linenr"> 4: </span>    <span style="color: #51afef;">var</span> ch: <span style="color: #c678dd;">Int</span> = <span style="color: #da8548; font-weight: bold;">0</span> {
+<span id="coderef-didset1" class="coderef-off"><span class="linenr"> 5: </span>        <span style="color: #51afef;">didSet</span> {</span>
+<span class="linenr"> 6: </span>            <span style="color: #51afef;">if</span> ch &gt;= <span style="color: #da8548; font-weight: bold;">60</span> {chPass = <span style="color: #a9a1e1;">true</span>}
+<span class="linenr"> 7: </span>        }
+<span class="linenr"> 8: </span>    }
+<span class="linenr"> 9: </span>    <span style="color: #51afef;">var</span> maPass = <span style="color: #a9a1e1;">false</span>
+<span class="linenr">10: </span>    <span style="color: #51afef;">var</span> ma: <span style="color: #c678dd;">Int</span> = <span style="color: #da8548; font-weight: bold;">0</span> {
+<span id="coderef-didset2" class="coderef-off"><span class="linenr">11: </span>        <span style="color: #51afef;">didSet</span> {</span>
+<span class="linenr">12: </span>            <span style="color: #51afef;">if</span> ma &gt;= <span style="color: #da8548; font-weight: bold;">60</span> {maPass = <span style="color: #a9a1e1;">true</span>}
+<span class="linenr">13: </span>        }
+<span class="linenr">14: </span>    }
+<span class="linenr">15: </span>}
+<span class="linenr">16: </span>
+<span class="linenr">17: </span><span style="color: #51afef;">let</span> stsc = <span style="color: #c678dd;">MidExam</span>()
+<span class="linenr">18: </span>stsc.<span style="color: #dcaeea;">id</span> = <span style="color: #98be65;">"202010101"</span>
+<span class="linenr">19: </span>stsc.<span style="color: #dcaeea;">ch</span> = <span style="color: #da8548; font-weight: bold;">70</span>
+<span class="linenr">20: </span>stsc.<span style="color: #dcaeea;">ma</span> = <span style="color: #da8548; font-weight: bold;">32</span>
+<span class="linenr">21: </span>
+<span class="linenr">22: </span><span style="color: #c678dd;">print</span>(stsc.<span style="color: #dcaeea;">chPass</span>)
+<span class="linenr">23: </span><span style="color: #c678dd;">print</span>(stsc.<span style="color: #dcaeea;">maPass</span>)
+</pre>
+</div>
+
+<pre class="example">
+true
+false
+</pre>
+
+
+<p>
+上述程式第<a href="#coderef-didset1" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-didset1');" onmouseout="CodeHighlightOff(this, 'coderef-didset1');">5</a>及<a href="#coderef-didset2" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-didset2');" onmouseout="CodeHighlightOff(this, 'coderef-didset2');">11</a>行中的 didSet 會在變數被 assign 新值時觸發執行，而 willSet 則是在變數即將被 assign 時觸發。<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org541597d" class="outline-3">
+<h3 id="org541597d"><span class="section-number-3">5.2</span> willSet/set/didSet</h3>
+<div class="outline-text-3" id="text-5-2">
+<ul class="org-ul">
+<li>使用 set 時，因為變數的值正在被改變，所以有 newValue 來儲存新值；<br /></li>
+<li>使用 willSet 則變數尚未被改變；<br /></li>
+<li>使用 didSet 則是變數已被改變，所以有 oldValue<br /></li>
+</ul>
+<p>
+根據 apple 的說法，willSet 和 didSet 不會在 init 中被呼叫：The willSet and didSet observers of superclass properties are called when a property is set in a subclass initializer, after the superclass initializer has been called. They are not called while a class is setting its own properties, before the superclass initializer has been called.<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup><br />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-flow-control" class="outline-2">
+<h2 id="flow-control"><span class="section-number-2">6</span> 控制流程</h2>
+<div class="outline-text-2" id="text-flow-control">
+</div>
+<div id="outline-container-orgef298b4" class="outline-3">
+<h3 id="orgef298b4"><span class="section-number-3">6.1</span> Conditional Statement</h3>
+<div class="outline-text-3" id="text-6-1">
+<p>
+The following examples were from <a href="https://docs.swift.org/swift-book/LanguageGuide/ControlFlow.html#">docs.swift.org.</a><br />
+</p>
+</div>
+<div id="outline-container-orga54fad5" class="outline-4">
+<h4 id="orga54fad5"><span class="section-number-4">6.1.1</span> if</h4>
+<div class="outline-text-4" id="text-6-1-1">
+<p>
+In its simplest form, the if statement has a single if condition. It executes a set of statements only if that condition is true.<br />
+</p>
+</div>
+<div id="outline-container-org6ad3321" class="outline-5">
+<h5 id="org6ad3321"><span class="section-number-5">6.1.1.1</span> single condition</h5>
+<div class="outline-text-5" id="text-6-1-1-1">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">var</span> temperatureInFahrenheit = <span style="color: #da8548; font-weight: bold;">30</span>
+<span class="linenr">2: </span><span style="color: #51afef;">if</span> temperatureInFahrenheit &lt;= <span style="color: #da8548; font-weight: bold;">32</span> {
+<span class="linenr">3: </span>    <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"It's very cold. Consider wearing a scarf."</span>)
+<span class="linenr">4: </span>}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1bef02d" class="outline-5">
+<h5 id="org1bef02d"><span class="section-number-5">6.1.1.2</span> combined conditions</h5>
+<div class="outline-text-5" id="text-6-1-1-2">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">var</span> mathScore = <span style="color: #da8548; font-weight: bold;">91</span>
+<span class="linenr">2: </span><span style="color: #51afef;">if</span> mathScore &lt;= <span style="color: #da8548; font-weight: bold;">100</span> &amp;&amp; mathScore &gt;= <span style="color: #da8548; font-weight: bold;">90</span> {
+<span class="linenr">3: </span>    <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"Grade A"</span>)
+<span class="linenr">4: </span>}
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1684f60" class="outline-4">
+<h4 id="org1684f60"><span class="section-number-4">6.1.2</span> if-else</h4>
+<div class="outline-text-4" id="text-6-1-2">
+<p>
+The if statement can provide an alternative set of statements, known as an else clause, for situations when the if condition is false.<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span>temperatureInFahrenheit = <span style="color: #da8548; font-weight: bold;">40</span>
+<span class="linenr">2: </span><span style="color: #51afef;">if</span> temperatureInFahrenheit &lt;= <span style="color: #da8548; font-weight: bold;">32</span> {
+<span class="linenr">3: </span>    <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"It's very cold. Consider wearing a scarf."</span>)
+<span class="linenr">4: </span>} <span style="color: #51afef;">else</span> {
+<span class="linenr">5: </span>    <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"It's not that cold. Wear a t-shirt."</span>)
+<span class="linenr">6: </span>}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3dda633" class="outline-4">
+<h4 id="org3dda633"><span class="section-number-4">6.1.3</span> if-else if</h4>
+<div class="outline-text-4" id="text-6-1-3">
+<p>
+You can chain multiple if statements together to consider additional clauses.<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span>temperatureInFahrenheit = <span style="color: #da8548; font-weight: bold;">90</span>
+<span class="linenr">2: </span><span style="color: #51afef;">if</span> temperatureInFahrenheit &lt;= <span style="color: #da8548; font-weight: bold;">32</span> {
+<span class="linenr">3: </span>    <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"It's very cold. Consider wearing a scarf."</span>)
+<span class="linenr">4: </span>} <span style="color: #51afef;">else</span> <span style="color: #51afef;">if</span> temperatureInFahrenheit &gt;= <span style="color: #da8548; font-weight: bold;">86</span> {
+<span class="linenr">5: </span>    <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"It's really warm. Don't forget to wear sunscreen."</span>)
+<span class="linenr">6: </span>} <span style="color: #51afef;">else</span> {
+<span class="linenr">7: </span>    <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"It's not that cold. Wear a t-shirt."</span>)
+<span class="linenr">8: </span>}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7e33c3d" class="outline-4">
+<h4 id="org7e33c3d"><span class="section-number-4">6.1.4</span> switch</h4>
+<div class="outline-text-4" id="text-6-1-4">
+<p>
+In its simplest form, a switch statement compares a value against one or more values of the same type.<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">switch</span> <span style="color: #51afef;">some</span> value to consider {
+<span class="linenr">2: </span><span style="color: #51afef;">case</span> value <span style="color: #da8548; font-weight: bold;">1</span>:
+<span class="linenr">3: </span>    respond to value <span style="color: #da8548; font-weight: bold;">1</span>
+<span class="linenr">4: </span><span style="color: #51afef;">case</span> value <span style="color: #da8548; font-weight: bold;">2</span>,
+<span class="linenr">5: </span>     value <span style="color: #da8548; font-weight: bold;">3</span>:
+<span class="linenr">6: </span>    respond to value <span style="color: #da8548; font-weight: bold;">2</span> or <span style="color: #da8548; font-weight: bold;">3</span>
+<span class="linenr">7: </span><span style="color: #51afef;">default</span>:
+<span class="linenr">8: </span>    otherwise, <span style="color: #51afef;">do</span> something <span style="color: #51afef;">else</span>
+<span class="linenr">9: </span>}
+</pre>
+</div>
+<p>
+This example uses a switch statement to consider a single lowercase character called someCharacter:<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">let</span> someCharacter: <span style="color: #c678dd;">Character</span> = <span style="color: #98be65;">"z"</span>
+<span class="linenr">2: </span><span style="color: #51afef;">switch</span> someCharacter {
+<span class="linenr">3: </span><span style="color: #51afef;">case</span> <span style="color: #98be65;">"a"</span>:
+<span class="linenr">4: </span>    <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"The first letter of the alphabet"</span>)
+<span class="linenr">5: </span><span style="color: #51afef;">case</span> <span style="color: #98be65;">"z"</span>:
+<span class="linenr">6: </span>    <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"The last letter of the alphabet"</span>)
+<span class="linenr">7: </span><span style="color: #51afef;">default</span>:
+<span class="linenr">8: </span>    <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"Some other character"</span>)
+<span class="linenr">9: </span>}
+</pre>
+</div>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #5B6268;">// </span><span style="color: #5B6268;">&#25226;&#20998;&#25976;&#36681;&#25104;&#31561;&#31532;</span>
+<span class="linenr"> 2: </span><span style="color: #5B6268;">// </span><span style="color: #5B6268;">A(90-100), B(80-90), C(70-80), D(60-70), E(60-)</span>
+<span class="linenr"> 3: </span><span style="color: #51afef;">import</span> Foundation
+<span class="linenr"> 4: </span>
+<span class="linenr"> 5: </span><span style="color: #51afef;">let</span> str = <span style="color: #c678dd;">readLine</span>()    <span style="color: #5B6268;">//</span><span style="color: #5B6268;">&#24478;&#37749;&#30436;&#35712;&#20837;&#19968;&#23383;&#20018;, &#23384;&#21040;str&#20013;</span>
+<span class="linenr"> 6: </span><span style="color: #51afef;">let</span> choice = <span style="color: #c678dd;">Int</span>(str!)   <span style="color: #5B6268;">//</span><span style="color: #5B6268;">&#25226;str&#36681;&#25104;&#25972;&#25976;&#65292;&#23384;&#20837;score</span>
+<span class="linenr"> 7: </span>
+<span class="linenr"> 8: </span><span style="color: #51afef;">switch</span> choice! {
+<span class="linenr"> 9: </span><span style="color: #51afef;">case</span> <span style="color: #da8548; font-weight: bold;">90</span>..&lt;<span style="color: #da8548; font-weight: bold;">101</span>:
+<span class="linenr">10: </span>    <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"A"</span>)
+<span class="linenr">11: </span><span style="color: #51afef;">case</span> <span style="color: #da8548; font-weight: bold;">80</span>..&lt;<span style="color: #da8548; font-weight: bold;">90</span>:
+<span class="linenr">12: </span>    <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"B"</span>)
+<span class="linenr">13: </span><span style="color: #51afef;">case</span> <span style="color: #da8548; font-weight: bold;">70</span>..&lt;<span style="color: #da8548; font-weight: bold;">80</span>:
+<span class="linenr">14: </span>    <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"C"</span>)
+<span class="linenr">15: </span><span style="color: #51afef;">default</span>:
+<span class="linenr">16: </span>    <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"E"</span>)
+<span class="linenr">17: </span>}
+<span class="linenr">18: </span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd75c542" class="outline-3">
+<h3 id="orgd75c542"><span class="section-number-3">6.2</span> For-In Loops</h3>
+<div class="outline-text-3" id="text-6-2">
+</div>
+<div id="outline-container-orge740b97" class="outline-4">
+<h4 id="orge740b97"><span class="section-number-4">6.2.1</span> 語法</h4>
+<div class="outline-text-4" id="text-6-2-1">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">for</span> counter <span style="color: #51afef;">in</span> lower...<span style="color: #dcaeea;">upper</span>{
+<span class="linenr">2: </span>    your codes
+<span class="linenr">3: </span>}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org4c5d3ca" class="outline-4">
+<h4 id="org4c5d3ca"><span class="section-number-4">6.2.2</span> DEMO</h4>
+<div class="outline-text-4" id="text-6-2-2">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">for</span> index <span style="color: #51afef;">in</span> <span style="color: #da8548; font-weight: bold;">1</span>...<span style="color: #da8548; font-weight: bold;">5</span> {
+<span class="linenr">2: </span>    <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"\(</span>index<span style="color: #98be65;">) times 5 is \(</span>index * <span style="color: #da8548; font-weight: bold;">5</span><span style="color: #98be65;">)"</span>)
+<span class="linenr">3: </span>}
+</pre>
+</div>
+
+<pre class="example">
+1 times 5 is 5
+2 times 5 is 10
+3 times 5 is 15
+4 times 5 is 20
+5 times 5 is 25
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">let</span> base = <span style="color: #da8548; font-weight: bold;">3</span>
+<span class="linenr">2: </span><span style="color: #51afef;">let</span> power = <span style="color: #da8548; font-weight: bold;">10</span>
+<span class="linenr">3: </span><span style="color: #51afef;">var</span> answer = <span style="color: #da8548; font-weight: bold;">1</span>
+<span class="linenr">4: </span><span style="color: #51afef;">for</span> _ <span style="color: #51afef;">in</span> <span style="color: #da8548; font-weight: bold;">1</span>...<span style="color: #dcaeea;">power</span> {
+<span class="linenr">5: </span>    answer *= base
+<span class="linenr">6: </span>}
+<span class="linenr">7: </span><span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"\(</span>base<span style="color: #98be65;">) to the power of \(</span>power<span style="color: #98be65;">) is \(</span>answer<span style="color: #98be65;">)"</span>)
+</pre>
+</div>
+
+<pre class="example">
+3 to the power of 10 is 59049
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf3c3f7b" class="outline-3">
+<h3 id="orgf3c3f7b"><span class="section-number-3">6.3</span> While Loops</h3>
+<div class="outline-text-3" id="text-6-3">
+<p>
+A while loop performs a set of statements until a condition becomes false. These kinds of loops are best used when the number of iterations is not known before the first iteration begins. Swift provides two kinds of while loops:<br />
+</p>
+
+<ul class="org-ul">
+<li>while evaluates its condition at the start of each pass through the loop.<br /></li>
+<li>repeat-while evaluates its condition at the end of each pass through the loop.<br /></li>
+</ul>
+</div>
+
+<div id="outline-container-orgbba7a54" class="outline-4">
+<h4 id="orgbba7a54"><span class="section-number-4">6.3.1</span> while</h4>
+<div class="outline-text-4" id="text-6-3-1">
+<p>
+A while loop starts by evaluating a single condition. If the condition is true, a set of statements is repeated until the condition becomes false.<br />
+</p>
+</div>
+
+<div id="outline-container-orgec99a56" class="outline-5">
+<h5 id="orgec99a56"><span class="section-number-5">6.3.1.1</span> 語法</h5>
+<div class="outline-text-5" id="text-6-3-1-1">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">while</span> condition {
+<span class="linenr">2: </span>    your codes here
+<span class="linenr">3: </span>}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org55a3987" class="outline-5">
+<h5 id="org55a3987"><span class="section-number-5">6.3.1.2</span> DEMO</h5>
+<div class="outline-text-5" id="text-6-3-1-2">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">var</span> counter = <span style="color: #da8548; font-weight: bold;">5</span>
+<span class="linenr">2: </span><span style="color: #51afef;">while</span> counter &gt; <span style="color: #da8548; font-weight: bold;">0</span> {
+<span class="linenr">3: </span>    <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"Hello, \(</span>counter<span style="color: #98be65;">)"</span>)
+<span class="linenr">4: </span>    counter -= <span style="color: #da8548; font-weight: bold;">1</span>
+<span class="linenr">5: </span>}
+</pre>
+</div>
+
+<pre class="example">
+Hello, 5
+Hello, 4
+Hello, 3
+Hello, 2
+Hello, 1
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org089f7d3" class="outline-4">
+<h4 id="org089f7d3"><span class="section-number-4">6.3.2</span> repeat &#x2026; while</h4>
+<div class="outline-text-4" id="text-6-3-2">
+<p>
+The other variation of the while loop, known as the repeat-while loop, performs a single pass through the loop block first, before considering the loop’s condition. It then continues to repeat the loop until the condition is false.<br />
+</p>
+</div>
+
+<div id="outline-container-org3ee2e48" class="outline-5">
+<h5 id="org3ee2e48"><span class="section-number-5">6.3.2.1</span> 語法</h5>
+<div class="outline-text-5" id="text-6-3-2-1">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">repeat</span> {
+<span class="linenr">2: </span>    your codes here
+<span class="linenr">3: </span>} <span style="color: #51afef;">while</span> condition
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3d88bed" class="outline-5">
+<h5 id="org3d88bed"><span class="section-number-5">6.3.2.2</span> DEMO</h5>
+<div class="outline-text-5" id="text-6-3-2-2">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">var</span> counter = <span style="color: #da8548; font-weight: bold;">5</span>
+<span class="linenr">2: </span><span style="color: #51afef;">repeat</span> {
+<span class="linenr">3: </span>    <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"Hello, \(</span>counter<span style="color: #98be65;">)"</span>)
+<span class="linenr">4: </span>    counter -= <span style="color: #da8548; font-weight: bold;">1</span>
+<span class="linenr">5: </span>} <span style="color: #51afef;">while</span> counter &gt; <span style="color: #da8548; font-weight: bold;">0</span>
+</pre>
+</div>
+
+<pre class="example">
+Hello, 5
+Hello, 4
+Hello, 3
+Hello, 2
+Hello, 1
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-set" class="outline-2">
+<h2 id="set"><span class="section-number-2">7</span> 集合型別</h2>
+<div class="outline-text-2" id="text-set">
+<p>
+Swift provides three primary collection types, known as arrays, sets, and dictionaries, for storing collections of values. Arrays are ordered collections of values. Sets are unordered collections of unique values. Dictionaries are unordered collections of key-value associations.<sup><a id="fnr.3" class="footref" href="#fn.3">3</a></sup><br />
+</p>
+
+<div id="org40e7f5b" class="figure">
+<p><img src="images/CollectionTypes_intro_2x.png" alt="CollectionTypes_intro_2x.png" width="400" /><br />
+</p>
+<p><span class="figure-number">Figure 1: </span>Collection Types of Swift</p>
+</div>
+</div>
+<div id="outline-container-org4babe4a" class="outline-3">
+<h3 id="org4babe4a"><span class="section-number-3">7.1</span> 陣列（Arrays）</h3>
+<div class="outline-text-3" id="text-7-1">
+<p>
+陣列使用有序列表儲存同一型別的多個值。相同的值可以多次出現在一個陣列的不同位置中。<br />
+</p>
+</div>
+<div id="outline-container-org78af12a" class="outline-4">
+<h4 id="org78af12a"><span class="section-number-4">7.1.1</span> 陣列建構語法</h4>
+<div class="outline-text-4" id="text-7-1-1">
+<p>
+要建立一個空的整數陣列：<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">var</span> EnglishScores = [<span style="color: #c678dd;">Int</span>]()
+<span class="linenr">2: </span><span style="color: #c678dd;">print</span>(EnglishScores)
+</pre>
+</div>
+
+<pre class="example">
+[]
+</pre>
+
+
+<p>
+下面這個範例創建了一個叫做 shoppingList 並且儲存字串的陣列：<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">var</span> shoppingList: [<span style="color: #c678dd;">String</span>] = [<span style="color: #98be65;">"Eggs"</span>, <span style="color: #98be65;">"Milk"</span>]
+<span class="linenr">2: </span><span style="color: #5B6268;">// </span><span style="color: #5B6268;">shoppingList &#24050;&#32147;&#34987;&#24314;&#27083;&#20006;&#19988;&#25793;&#26377;&#20841;&#20491;&#21021;&#22987;&#38917;&#12290;</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5a5c8ca" class="outline-4">
+<h4 id="org5a5c8ca"><span class="section-number-4">7.1.2</span> 存取和修改陣列</h4>
+<div class="outline-text-4" id="text-7-1-2">
+<p>
+我們可以通過陣列的方法和屬性來存取和修改陣列，或者下標語法。 還可以<br />
+</p>
+<ul class="org-ul">
+<li>使用陣列的唯讀屬性 count 來獲取陣列中的資料項數量<br /></li>
+<li>使用布林項 isEmpty 來作為檢查 count 屬性的值是否為 0<br /></li>
+<li>使用 append 方法在陣列後面添加新的資料項<br /></li>
+<li>+=<br /></li>
+<li>remove(at: index)<br /></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">var</span> shoppingList: [<span style="color: #c678dd;">String</span>]  = [<span style="color: #98be65;">"Eggs"</span>, <span style="color: #98be65;">"Milk"</span>]
+<span class="linenr"> 2: </span><span style="color: #c678dd;">print</span>(shoppingList.<span style="color: #c678dd;">count</span>)
+<span class="linenr"> 3: </span><span style="color: #c678dd;">print</span>(shoppingList.<span style="color: #c678dd;">isEmpty</span>)
+<span class="linenr"> 4: </span>shoppingList += [<span style="color: #98be65;">"Bird"</span>]  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Not += "Bird"</span>
+<span class="linenr"> 5: </span>shoppingList.<span style="color: #c678dd;">append</span>(<span style="color: #98be65;">"Fish"</span>)
+<span class="linenr"> 6: </span><span style="color: #c678dd;">print</span>(shoppingList)
+<span class="linenr"> 7: </span><span style="color: #c678dd;">print</span>(shoppingList[<span style="color: #da8548; font-weight: bold;">0</span>])
+<span class="linenr"> 8: </span>shoppingList += [<span style="color: #98be65;">"Beer"</span>]
+<span class="linenr"> 9: </span><span style="color: #c678dd;">print</span>(shoppingList)
+<span class="linenr">10: </span>shoppingList.<span style="color: #c678dd;">remove</span>(at: <span style="color: #da8548; font-weight: bold;">1</span>)
+<span class="linenr">11: </span><span style="color: #c678dd;">print</span>(shoppingList)
+</pre>
+</div>
+
+<pre class="example">
+2
+false
+["Eggs", "Milk", "Bird", "Fish"]
+Eggs
+["Eggs", "Milk", "Bird", "Fish", "Beer"]
+["Eggs", "Bird", "Fish", "Beer"]
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orga80cd45" class="outline-4">
+<h4 id="orga80cd45"><span class="section-number-4">7.1.3</span> 以 for 遍歷陣列</h4>
+<div class="outline-text-4" id="text-7-1-3">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">var</span> shoppingList: [<span style="color: #c678dd;">String</span>]  = [<span style="color: #98be65;">"Eggs"</span>, <span style="color: #98be65;">"Milk"</span>, <span style="color: #98be65;">"Beer"</span>]
+<span class="linenr">2: </span><span style="color: #51afef;">for</span> index <span style="color: #51afef;">in</span> <span style="color: #da8548; font-weight: bold;">0</span>...<span style="color: #da8548; font-weight: bold;">2</span> {
+<span class="linenr">3: </span>    <span style="color: #c678dd;">print</span>(shoppingList[index])
+<span class="linenr">4: </span>}
+<span class="linenr">5: </span><span style="color: #51afef;">for</span> item <span style="color: #51afef;">in</span> shoppingList {
+<span class="linenr">6: </span>    <span style="color: #c678dd;">print</span>(item)
+<span class="linenr">7: </span>}
+</pre>
+</div>
+
+<pre class="example">
+Eggs
+Milk
+Beer
+Eggs
+Milk
+Beer
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org3d3ad6e" class="outline-4">
+<h4 id="org3d3ad6e"><span class="section-number-4">7.1.4</span> 以 repeat 產生 array</h4>
+<div class="outline-text-4" id="text-7-1-4">
+<p>
+If you need to create an array of a specific size holding some default values, Swift has a built-in initializer called repeating:count:. You tell it what to repeat, and how often, and Swift will generate an array of that size.<sup><a id="fnr.4" class="footref" href="#fn.4">4</a></sup><br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">let</span> nums1 = [<span style="color: #c678dd;">Int</span>](repeating: <span style="color: #da8548; font-weight: bold;">0</span>, count: <span style="color: #da8548; font-weight: bold;">10</span>)
+<span class="linenr">2: </span><span style="color: #51afef;">let</span> str1 = [<span style="color: #c678dd;">String</span>](repeating: <span style="color: #98be65;">"TNFSH"</span>, count: <span style="color: #da8548; font-weight: bold;">5</span>)
+<span class="linenr">3: </span><span style="color: #c678dd;">print</span>(nums1)
+<span class="linenr">4: </span><span style="color: #c678dd;">print</span>(str1)
+<span class="linenr">5: </span>
+<span class="linenr">6: </span><span style="color: #51afef;">let</span> nums2 = [[<span style="color: #c678dd;">Int</span>]](repeating: [<span style="color: #c678dd;">Int</span>](repeating: <span style="color: #da8548; font-weight: bold;">6</span>, count: <span style="color: #da8548; font-weight: bold;">3</span>), count: <span style="color: #da8548; font-weight: bold;">2</span>)
+<span class="linenr">7: </span><span style="color: #c678dd;">print</span>(nums2)
+</pre>
+</div>
+
+<pre class="example">
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+["TNFSH", "TNFSH", "TNFSH", "TNFSH", "TNFSH"]
+[[6, 6, 6], [6, 6, 6]]
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgc8f9749" class="outline-4">
+<h4 id="orgc8f9749"><span class="section-number-4">7.1.5</span> Modify array</h4>
+<div class="outline-text-4" id="text-7-1-5">
+</div>
+<div id="outline-container-orgeb71774" class="outline-5">
+<h5 id="orgeb71774"><span class="section-number-5">7.1.5.1</span> map: 批次 update array</h5>
+<div class="outline-text-5" id="text-7-1-5-1">
+<p>
+通常我們會使用到 map 函數的原因，主要是要將陣列的內容進行批次變更<sup><a id="fnr.5" class="footref" href="#fn.5">5</a></sup>，如：<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">let</span> origin = [<span style="color: #98be65;">"James"</span>, <span style="color: #98be65;">"Vanessa"</span>, <span style="color: #98be65;">"Ruby"</span>, <span style="color: #98be65;">"Letranger"</span>]
+<span class="linenr"> 2: </span><span style="color: #51afef;">let</span> lowercaseVersion = origin.<span style="color: #c678dd;">map</span> { $0.<span style="color: #c678dd;">lowercased</span>() }
+<span class="linenr"> 3: </span><span style="color: #c678dd;">print</span>(lowercaseVersion)
+<span class="linenr"> 4: </span>
+<span class="linenr"> 5: </span><span style="color: #51afef;">let</span> letterCounts = origin.<span style="color: #c678dd;">map</span> { $0.<span style="color: #c678dd;">count</span> }
+<span class="linenr"> 6: </span><span style="color: #c678dd;">print</span>(letterCounts)
+<span class="linenr"> 7: </span>
+<span class="linenr"> 8: </span><span style="color: #51afef;">let</span> nums = [<span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #da8548; font-weight: bold;">2</span>, <span style="color: #da8548; font-weight: bold;">3</span>, <span style="color: #da8548; font-weight: bold;">4</span>, <span style="color: #da8548; font-weight: bold;">5</span>]
+<span class="linenr"> 9: </span><span style="color: #51afef;">let</span> doubleNums = nums.<span style="color: #c678dd;">map</span> { (number) -&gt; <span style="color: #c678dd;">Int</span> <span style="color: #51afef;">in</span>
+<span class="linenr">10: </span>    number * <span style="color: #da8548; font-weight: bold;">2</span>
+<span class="linenr">11: </span>}
+<span class="linenr">12: </span><span style="color: #c678dd;">print</span>(doubleNums)
+<span class="linenr">13: </span>
+<span class="linenr">14: </span><span style="color: #51afef;">let</span> doubleStrings = nums.<span style="color: #c678dd;">map</span> { (number) -&gt; <span style="color: #c678dd;">String</span> <span style="color: #51afef;">in</span>
+<span class="linenr">15: </span>    <span style="color: #98be65;">"2 * \(</span>number<span style="color: #98be65;">) = \(</span>number * <span style="color: #da8548; font-weight: bold;">2</span><span style="color: #98be65;">)"</span>
+<span class="linenr">16: </span>}
+<span class="linenr">17: </span><span style="color: #c678dd;">print</span>(doubleStrings)
+</pre>
+</div>
+
+<pre class="example">
+["james", "vanessa", "ruby", "letranger"]
+[5, 7, 4, 9]
+[0, 2, 4, 6, 8, 10]
+["2 * 0 = 0", "2 * 1 = 2", "2 * 2 = 4", "2 * 3 = 6", "2 * 4 = 8", "2 * 5 = 10"]
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4e33362" class="outline-4">
+<h4 id="org4e33362"><span class="section-number-4">7.1.6</span> flatMap()</h4>
+<div class="outline-text-4" id="text-7-1-6">
+<p>
+flatMap 其實就是 flat + map 的結果。而 flatMap 最常是用來處理攤平某個陣列的狀況<sup><a id="fnr.5.100" class="footref" href="#fn.5">5</a></sup><br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">let</span> nums = [<span style="color: #da8548; font-weight: bold;">2</span>, <span style="color: #da8548; font-weight: bold;">3</span>, <span style="color: #da8548; font-weight: bold;">4</span>]
+<span class="linenr">2: </span><span style="color: #51afef;">let</span> mapped = nums.<span style="color: #c678dd;">map</span> { <span style="color: #c678dd;">Array</span>(repeating: $0, count: $0) }
+<span class="linenr">3: </span><span style="color: #c678dd;">print</span>(mapped)
+<span class="linenr">4: </span>
+<span id="coderef-flat" class="coderef-off"><span class="linenr">5: </span><span style="color: #51afef;">let</span> flatMapped = mapped.<span style="color: #c678dd;">flatMap</span>{$0}</span>
+<span class="linenr">6: </span><span style="color: #c678dd;">print</span>(flatMapped)
+<span class="linenr">7: </span>
+</pre>
+</div>
+
+<pre class="example">
+[[2, 2], [3, 3, 3], [4, 4, 4, 4]]
+[2, 2, 3, 3, 3, 4, 4, 4, 4]
+</pre>
+
+
+<p>
+上述程式中第<a href="#coderef-flat" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-flat');" onmouseout="CodeHighlightOff(this, 'coderef-flat');">5</a>行的效果與 Array(nums.map(transform).joined())相同。<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org55374dd" class="outline-4">
+<h4 id="org55374dd"><span class="section-number-4">7.1.7</span> compactMap</h4>
+<div class="outline-text-4" id="text-7-1-7">
+<p>
+compactMap 所映射出的元素結果都是非可選（non-nil）的值。因此，當你的希望映射結果的陣列是非可選類型的，那麼使用 compactMap 是一個適合的做法<sup><a id="fnr.5.100" class="footref" href="#fn.5">5</a></sup>。<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">let</span> possibleNums = [<span style="color: #98be65;">"1"</span>, <span style="color: #98be65;">"2"</span>, <span style="color: #98be65;">"three"</span>, <span style="color: #98be65;">"///4///"</span>, <span style="color: #98be65;">"5"</span>]
+<span class="linenr">2: </span><span style="color: #51afef;">let</span> mapped = possibleNums.<span style="color: #c678dd;">map</span> { str <span style="color: #51afef;">in</span> <span style="color: #c678dd;">Int</span>(str) }
+<span class="linenr">3: </span><span style="color: #c678dd;">print</span>(mapped)
+<span class="linenr">4: </span>
+<span class="linenr">5: </span><span style="color: #51afef;">let</span> comMapped = possibleNums.<span style="color: #c678dd;">compactMap</span> { str <span style="color: #51afef;">in</span> <span style="color: #c678dd;">Int</span>(str) }
+<span class="linenr">6: </span><span style="color: #c678dd;">print</span>(comMapped)
+</pre>
+</div>
+
+<pre class="example">
+[Optional(1), Optional(2), nil, nil, Optional(5)]
+[1, 2, 5]
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org50da82f" class="outline-4">
+<h4 id="org50da82f"><span class="section-number-4">7.1.8</span> Array of Struct</h4>
+<div class="outline-text-4" id="text-7-1-8">
+<p>
+基本的陣列提供了我們儲存大批資料的機制，然而，上述所示範的簡易型陣列彈性略嫌不足，如果我們想要開發一個圖書相關的 app，一開始我們至少需要這樣的陣列：<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">let</span> book = [<span style="color: #98be65;">"X&#30340;&#24754;&#21127;"</span>, <span style="color: #98be65;">"&#22320;&#29508;&#34253;&#35519;"</span>,<span style="color: #98be65;">"&#26481;&#26041;&#21015;&#36554;&#35584;&#27578;&#26696;"</span>,<span style="color: #98be65;">"&#20843;&#30334;&#33836;&#31278;&#27515;&#27861;"</span>,<span style="color: #98be65;">"&#34880;&#23383;&#30740;&#31350;"</span>]
+</pre>
+</div>
+<p>
+然而，書本至少還要有作者吧，於是，我們可能又會加入作者的陣列:<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">let</span> book = [<span style="color: #98be65;">"X&#30340;&#24754;&#21127;"</span>, <span style="color: #98be65;">"&#22320;&#29508;&#34253;&#35519;"</span>,<span style="color: #98be65;">"&#26481;&#26041;&#21015;&#36554;&#35584;&#27578;&#26696;"</span>,<span style="color: #98be65;">"&#20843;&#30334;&#33836;&#31278;&#27515;&#27861;"</span>,<span style="color: #98be65;">"&#34880;&#23383;&#30740;&#31350;"</span>]
+<span class="linenr">2: </span><span style="color: #51afef;">let</span> author = [<span style="color: #98be65;">"&#33406;&#21202;&#37324;&#65294;&#26118;&#24681;"</span>, <span style="color: #98be65;">"&#26446;&#26597;&#24503;"</span>, <span style="color: #98be65;">"&#38463;&#22025;&#33678;&#8231;&#20811;&#33673;&#32114;&#33922;"</span>,<span style="color: #98be65;">"&#21214;&#20523;&#26031;.&#21340;&#27931;&#20811;"</span>,<span style="color: #98be65;">"&#26607;&#21335;&#36947;&#29246;"</span>]
+</pre>
+</div>
+<p>
+這種設計方式雖然可行，但是卻有幾個問題：<br />
+</p>
+<ol class="org-ol">
+<li>書名與作者存在不同陣列中，而且書名與作者並無直接的連結<br /></li>
+<li>當我們要再加入出版年份、出版社、售價&#x2026;等資訊時，就會發現需要太多的陣列了<br /></li>
+</ol>
+
+<p>
+Struct 就是一種十分適合用來儲存相關資料的型別，以上述書籍資料為例，我們可以先建立一個這樣的 Struct:<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">Book</span> {
+<span class="linenr">2: </span>    <span style="color: #51afef;">var</span> title: <span style="color: #c678dd;">String</span>
+<span class="linenr">3: </span>    <span style="color: #51afef;">var</span> author: <span style="color: #c678dd;">String</span>
+<span class="linenr">4: </span>}
+</pre>
+</div>
+<p>
+接下來，再建立一個上述 struct 的陣列，如此一來，不管書籍資料再如何複雜，我們都可以一個陣列來儲存：<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">Book</span> {
+<span class="linenr"> 2: </span>    <span style="color: #51afef;">var</span> title: <span style="color: #c678dd;">String</span>
+<span class="linenr"> 3: </span>    <span style="color: #51afef;">var</span> author: <span style="color: #c678dd;">String</span>
+<span class="linenr"> 4: </span>}
+<span class="linenr"> 5: </span><span style="color: #51afef;">var</span> books = [
+<span class="linenr"> 6: </span>    <span style="color: #c678dd;">Book</span>(title:<span style="color: #98be65;">"X&#30340;&#24754;&#21127;"</span>, author: <span style="color: #98be65;">"&#33406;&#21202;&#37324;&#65294;&#26118;&#24681;"</span>),
+<span class="linenr"> 7: </span>    <span style="color: #c678dd;">Book</span>(title:<span style="color: #98be65;">"&#22320;&#29508;&#34253;&#35519;"</span>, author: <span style="color: #98be65;">"&#26446;&#26597;&#24503;"</span>),
+<span class="linenr"> 8: </span>    <span style="color: #c678dd;">Book</span>(title:<span style="color: #98be65;">"&#26481;&#26041;&#21015;&#36554;&#35584;&#27578;&#26696;"</span>, author: <span style="color: #98be65;">"&#38463;&#22025;&#33678;&#8231;&#20811;&#33673;&#32114;&#33922;"</span>),
+<span class="linenr"> 9: </span>    <span style="color: #c678dd;">Book</span>(title:<span style="color: #98be65;">"&#20843;&#30334;&#33836;&#31278;&#27515;&#27861;"</span>, author: <span style="color: #98be65;">"&#21214;&#20523;&#26031;.&#21340;&#27931;&#20811;"</span>),
+<span class="linenr">10: </span>    <span style="color: #c678dd;">Book</span>(title:<span style="color: #98be65;">"&#34880;&#23383;&#30740;&#31350;"</span>, author: <span style="color: #98be65;">"&#26607;&#21335;&#36947;&#29246;"</span>)
+<span class="linenr">11: </span>]
+<span class="linenr">12: </span><span style="color: #5B6268;">// </span><span style="color: #5B6268;">&#23384;&#21462;&#38499;&#21015;&#20013;struct&#30340;&#26041;&#24335;</span>
+<span class="linenr">13: </span><span style="color: #c678dd;">print</span>(books[<span style="color: #da8548; font-weight: bold;">1</span>].<span style="color: #c678dd;">title</span>)
+<span class="linenr">14: </span><span style="color: #c678dd;">print</span>(books[<span style="color: #da8548; font-weight: bold;">1</span>].<span style="color: #c678dd;">author</span>)
+</pre>
+</div>
+
+<pre class="example">
+地獄藍調
+李查德
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9c4c369" class="outline-3">
+<h3 id="org9c4c369"><span class="section-number-3">7.2</span> 集合（Sets）</h3>
+<div class="outline-text-3" id="text-7-2">
+<p>
+集合（Set）是 Swift 集合類型（collection types）之一，集合用來存儲類型相同且沒有確定順序唯一的值。<br />
+</p>
+</div>
+
+<div id="outline-container-orgab0ac94" class="outline-4">
+<h4 id="orgab0ac94"><span class="section-number-4">7.2.1</span> 宣告</h4>
+<div class="outline-text-4" id="text-7-2-1">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">var</span> letrers = <span style="color: #c678dd;">Set</span>&lt;<span style="color: #c678dd;">Character</span>&gt;()
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgdcf33f6" class="outline-4">
+<h4 id="orgdcf33f6"><span class="section-number-4">7.2.2</span> 存取集合</h4>
+<div class="outline-text-4" id="text-7-2-2">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">var</span> letters = <span style="color: #c678dd;">Set</span>&lt;<span style="color: #c678dd;">Character</span>&gt;()
+<span class="linenr"> 2: </span><span style="color: #c678dd;">print</span>(letters.<span style="color: #c678dd;">count</span>)
+<span class="linenr"> 3: </span>letters.<span style="color: #c678dd;">insert</span>(<span style="color: #98be65;">"a"</span>)
+<span class="linenr"> 4: </span><span style="color: #c678dd;">print</span>(letters.<span style="color: #c678dd;">isEmpty</span>)
+<span class="linenr"> 5: </span>letters.<span style="color: #c678dd;">insert</span>(<span style="color: #98be65;">"b"</span>)
+<span class="linenr"> 6: </span>letters.<span style="color: #c678dd;">insert</span>(<span style="color: #98be65;">"c"</span>)
+<span class="linenr"> 7: </span>letters.<span style="color: #c678dd;">insert</span>(<span style="color: #98be65;">"d"</span>)
+<span class="linenr"> 8: </span>letters.<span style="color: #c678dd;">remove</span>(<span style="color: #98be65;">"c"</span>)
+<span class="linenr"> 9: </span><span style="color: #51afef;">for</span> item <span style="color: #51afef;">in</span> letters {
+<span class="linenr">10: </span>    <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"\(</span>item<span style="color: #98be65;">)"</span>)
+<span class="linenr">11: </span>}
+</pre>
+</div>
+
+<pre class="example">
+0
+false
+a
+b
+d
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org7653d60" class="outline-4">
+<h4 id="org7653d60"><span class="section-number-4">7.2.3</span> 交集、聯集</h4>
+<div class="outline-text-4" id="text-7-2-3">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">let</span> oddDigits: <span style="color: #c678dd;">Set</span> = [<span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #da8548; font-weight: bold;">3</span>, <span style="color: #da8548; font-weight: bold;">5</span>, <span style="color: #da8548; font-weight: bold;">7</span>, <span style="color: #da8548; font-weight: bold;">9</span>]
+<span class="linenr">2: </span><span style="color: #51afef;">let</span> evenDigits: <span style="color: #c678dd;">Set</span> = [<span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">2</span>, <span style="color: #da8548; font-weight: bold;">4</span>, <span style="color: #da8548; font-weight: bold;">6</span>, <span style="color: #da8548; font-weight: bold;">8</span>]
+<span class="linenr">3: </span><span style="color: #51afef;">let</span> primeNumbers: <span style="color: #c678dd;">Set</span> = [<span style="color: #da8548; font-weight: bold;">2</span>, <span style="color: #da8548; font-weight: bold;">3</span>, <span style="color: #da8548; font-weight: bold;">5</span>, <span style="color: #da8548; font-weight: bold;">7</span>]
+<span class="linenr">4: </span>
+<span class="linenr">5: </span><span style="color: #c678dd;">print</span>(oddDigits.<span style="color: #c678dd;">union</span>(evenDigits))
+<span class="linenr">6: </span><span style="color: #c678dd;">print</span>(oddDigits.<span style="color: #c678dd;">union</span>(evenDigits).<span style="color: #c678dd;">sorted</span>())
+<span class="linenr">7: </span><span style="color: #c678dd;">print</span>(oddDigits.<span style="color: #c678dd;">intersection</span>(evenDigits).<span style="color: #c678dd;">sorted</span>())
+<span class="linenr">8: </span><span style="color: #c678dd;">print</span>(oddDigits.<span style="color: #c678dd;">subtracting</span>(primeNumbers).<span style="color: #c678dd;">sorted</span>())
+<span class="linenr">9: </span><span style="color: #c678dd;">print</span>(oddDigits.<span style="color: #c678dd;">symmetricDifference</span>(primeNumbers).<span style="color: #c678dd;">sorted</span>())
+</pre>
+</div>
+
+<pre class="example">
+[4, 7, 6, 1, 2, 3, 5, 8, 9, 0]
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[]
+[1, 9]
+[1, 2, 9]
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org63c7fb6" class="outline-4">
+<h4 id="org63c7fb6"><span class="section-number-4">7.2.4</span> 學習資源</h4>
+<div class="outline-text-4" id="text-7-2-4">
+<ul class="org-ul">
+<li><a href="https://swift.gg/2019/07/09/Sets-in-Swift/">Swift中的集合(Set)</a><br /></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge9d01fe" class="outline-3">
+<h3 id="orge9d01fe"><span class="section-number-3">7.3</span> 字典（Dictionaries）</h3>
+<div class="outline-text-3" id="text-7-3">
+<p>
+字典是一種儲存多個相同型別的值的容器。每個值（value）都關聯唯一的鍵（key），鍵作為字典中的這個值資料的識別符號。和陣列中的資料項不同，字典中的資料項並沒有具體順序。我們在需要通過識別符號（鍵）存取資料的時候使用字典，這種方法很大程度上和我們在現實世界中使用字典查字義的方法一樣<sup><a id="fnr.6" class="footref" href="#fn.6">6</a></sup>。<br />
+</p>
+</div>
+
+<div id="outline-container-orgfa1886f" class="outline-4">
+<h4 id="orgfa1886f"><span class="section-number-4">7.3.1</span> 建立字典</h4>
+<div class="outline-text-4" id="text-7-3-1">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">var</span> namesOfIntegers = [<span style="color: #c678dd;">Int</span>: <span style="color: #c678dd;">String</span>]()
+<span class="linenr">2: </span><span style="color: #5B6268;">// </span><span style="color: #5B6268;">namesOfIntegers is an empty [Int: String] dictionary</span>
+<span class="linenr">3: </span>namesOfIntegers[<span style="color: #da8548; font-weight: bold;">16</span>] = <span style="color: #98be65;">"Sixteen"</span>
+<span class="linenr">4: </span><span style="color: #c678dd;">print</span>(namesOfIntegers)
+</pre>
+</div>
+
+<pre class="example">
+[16: "Sixteen"]
+</pre>
+
+
+<p>
+一個字典字面量是一個定義擁有一個或者多個鍵值對的字典集合的簡單語句。一個鍵值對是一個 key 和一個 value 的結合體。在字典字面量中，每一個鍵值對的鍵和值都由冒號分割。這些鍵值對構成一個列表，其中這些鍵值對由方括號包含並且由逗號分割：<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span>[key <span style="color: #da8548; font-weight: bold;">1</span>: value <span style="color: #da8548; font-weight: bold;">1</span>, key <span style="color: #da8548; font-weight: bold;">2</span>: value <span style="color: #da8548; font-weight: bold;">2</span>, key <span style="color: #da8548; font-weight: bold;">3</span>: value <span style="color: #da8548; font-weight: bold;">3</span>]
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5f72e60" class="outline-4">
+<h4 id="org5f72e60"><span class="section-number-4">7.3.2</span> 存取字典</h4>
+<div class="outline-text-4" id="text-7-3-2">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">var</span> autherOfWriting: [<span style="color: #c678dd;">String</span>: <span style="color: #c678dd;">String</span>] = [<span style="color: #98be65;">"&#32769;&#20154;&#33287;&#28023;"</span>: <span style="color: #98be65;">"&#28023;&#26126;&#23041;"</span>, <span style="color: #98be65;">"&#30064;&#37129;&#20154;"</span>: <span style="color: #98be65;">"&#21345;&#35628;"</span>, <span style="color: #98be65;">"&#30334;&#24180;&#23396;&#23490;"</span>: <span style="color: #98be65;">"&#39340;&#22862;&#26031;"</span>, <span style="color: #98be65;">"&#28010;&#28120;&#27801;"</span>: <span style="color: #98be65;">"&#26481;&#26041;&#30333;"</span>]
+<span class="linenr">2: </span><span style="color: #c678dd;">print</span>(autherOfWriting)
+<span class="linenr">3: </span><span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"&#19968;&#20849;&#26377;\(</span>autherOfWriting.<span style="color: #c678dd;">count</span><span style="color: #98be65;">)&#26412;&#26360;"</span>)
+<span class="linenr">4: </span><span style="color: #c678dd;">print</span>(autherOfWriting.<span style="color: #c678dd;">isEmpty</span>)
+<span class="linenr">5: </span>autherOfWriting[<span style="color: #98be65;">"&#40736;&#30123;"</span>] = <span style="color: #98be65;">"&#21345;&#35628;"</span>
+<span class="linenr">6: </span><span style="color: #51afef;">for</span> (writing, author) <span style="color: #51afef;">in</span> autherOfWriting {
+<span class="linenr">7: </span>    <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"\(</span>writing<span style="color: #98be65;">)&#30340;&#20316;&#32773;&#28858;\(</span>author<span style="color: #98be65;">)"</span>)
+<span class="linenr">8: </span>}
+</pre>
+</div>
+
+<pre class="example">
+["浪淘沙": "東方白", "百年孤寂": "馬奎斯", "老人與海": "海明威", "異鄉人": "卡謬"]
+一共有 4 本書
+false
+浪淘沙的作者為東方白
+百年孤寂的作者為馬奎斯
+老人與海的作者為海明威
+異鄉人的作者為卡謬
+鼠疫的作者為卡謬
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-function" class="outline-2">
+<h2 id="function"><span class="section-number-2">8</span> Functions</h2>
+<div class="outline-text-2" id="text-function">
+<p>
+Functions are self-contained chunks of code that perform a specific task. You give a function a name that identifies what it does, and this name is used to “call” the function to perform its task when needed.<br />
+</p>
+
+<p>
+Swift’s unified function syntax is flexible enough to express anything from a simple C-style function with no parameter names to a complex Objective-C-style method with names and argument labels for each parameter. Parameters can provide default values to simplify function calls and can be passed as in-out parameters, which modify a passed variable once the function has completed its execution.<br />
+</p>
+</div>
+
+<div id="outline-container-orgb923054" class="outline-3">
+<h3 id="orgb923054"><span class="section-number-3">8.1</span> Functions 的定義與呼叫</h3>
+<div class="outline-text-3" id="text-8-1">
+</div>
+<div id="outline-container-org3091631" class="outline-4">
+<h4 id="org3091631"><span class="section-number-4">8.1.1</span> 語法</h4>
+<div class="outline-text-4" id="text-8-1-1">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">func</span> <span style="color: #c678dd;">name</span>(arg1 param1: DataTyp, arg2 param2: DataType) -&gt; returnValue DataType {
+<span class="linenr">2: </span>     your code here
+<span class="linenr">3: </span>     <span style="color: #51afef;">return</span> returnValue
+<span class="linenr">4: </span>}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5400499" class="outline-4">
+<h4 id="org5400499"><span class="section-number-4">8.1.2</span> DEMO</h4>
+<div class="outline-text-4" id="text-8-1-2">
+<div class="org-src-container">
+<pre class="src src-"exports">"exports both"body
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2b132ed" class="outline-4">
+<h4 id="org2b132ed"><span class="section-number-4">8.1.3</span> Functions 的參數與傳回值</h4>
+<div class="outline-text-4" id="text-8-1-3">
+<p>
+Function 可以沒有參數，也可以有很多參數，可以沒有傳回值，也可以有很多傳回值(這點與 C/C++不同)<br />
+</p>
+</div>
+<div id="outline-container-org66c6f84" class="outline-5">
+<h5 id="org66c6f84"><span class="section-number-5">8.1.3.1</span> 沒有參數</h5>
+<div class="outline-text-5" id="text-8-1-3-1">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">func</span> <span style="color: #c678dd;">sayHelloWorld</span>() -&gt; <span style="color: #c678dd;">String</span> {
+<span class="linenr">2: </span>    <span style="color: #51afef;">return</span> <span style="color: #98be65;">"hello, world"</span>
+<span class="linenr">3: </span>}
+<span class="linenr">4: </span><span style="color: #c678dd;">print</span>(<span style="color: #c678dd;">sayHelloWorld</span>())
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd28e050" class="outline-5">
+<h5 id="orgd28e050"><span class="section-number-5">8.1.3.2</span> 有很多參數</h5>
+<div class="outline-text-5" id="text-8-1-3-2">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">func</span> <span style="color: #c678dd;">greet</span>(person: <span style="color: #c678dd;">String</span>, alreadyGreeted: <span style="color: #c678dd;">Bool</span>) -&gt; <span style="color: #c678dd;">String</span> {
+<span class="linenr">2: </span>    <span style="color: #51afef;">if</span> alreadyGreeted {
+<span class="linenr">3: </span>        <span style="color: #51afef;">return</span> <span style="color: #98be65;">"Hello, "</span> + person + <span style="color: #98be65;">" again."</span>
+<span class="linenr">4: </span>    } <span style="color: #51afef;">else</span> {
+<span class="linenr">5: </span>        <span style="color: #51afef;">return</span> <span style="color: #98be65;">"Hello, "</span> + person
+<span class="linenr">6: </span>    }
+<span class="linenr">7: </span>}
+<span class="linenr">8: </span><span style="color: #c678dd;">print</span>(<span style="color: #c678dd;">greet</span>(person: <span style="color: #98be65;">"Tim"</span>, alreadyGreeted: <span style="color: #a9a1e1;">true</span>))
+<span class="linenr">9: </span><span style="color: #5B6268;">// </span><span style="color: #5B6268;">Prints "Hello again, Tim!"</span>
+</pre>
+</div>
+
+<p>
+function 的參數可以有兩種名稱：internal name 與 external name，internal 用於 function 內；external name 提供外部程式呼叫 function 使用。若 function 有一個以上的參數，可以省略第一個參數的名稱，如：<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">func</span> <span style="color: #c678dd;">greet</span>(_ person: <span style="color: #c678dd;">String</span>, hiAgain alreadyGreeted: <span style="color: #c678dd;">Bool</span>) -&gt; <span style="color: #c678dd;">String</span> {
+<span class="linenr"> 2: </span>    <span style="color: #51afef;">if</span> alreadyGreeted {
+<span class="linenr"> 3: </span>        <span style="color: #51afef;">return</span> <span style="color: #98be65;">"Hello, "</span> + person + <span style="color: #98be65;">" again."</span>
+<span class="linenr"> 4: </span>    } <span style="color: #51afef;">else</span> {
+<span class="linenr"> 5: </span>        <span style="color: #51afef;">return</span> <span style="color: #98be65;">"Hello, "</span> + person
+<span class="linenr"> 6: </span>    }
+<span class="linenr"> 7: </span>}
+<span class="linenr"> 8: </span><span style="color: #c678dd;">print</span>(<span style="color: #c678dd;">greet</span>(<span style="color: #98be65;">"Vanessa"</span>, hiAgain: <span style="color: #a9a1e1;">true</span>))
+<span class="linenr"> 9: </span><span style="color: #c678dd;">print</span>(<span style="color: #c678dd;">greet</span>(<span style="color: #98be65;">"James"</span>, hiAgain: <span style="color: #a9a1e1;">false</span>))
+<span class="linenr">10: </span><span style="color: #5B6268;">// </span><span style="color: #5B6268;">Prints "Hello again, Tim!"</span>
+<span class="linenr">11: </span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org12b5a4b" class="outline-5">
+<h5 id="org12b5a4b"><span class="section-number-5">8.1.3.3</span> 沒有傳回值</h5>
+<div class="outline-text-5" id="text-8-1-3-3">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">func</span> <span style="color: #c678dd;">greet</span>(person: <span style="color: #c678dd;">String</span>) {
+<span class="linenr">2: </span>    <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"Hello, \(</span>person<span style="color: #98be65;">)!"</span>)
+<span class="linenr">3: </span>}
+<span class="linenr">4: </span><span style="color: #c678dd;">greet</span>(person: <span style="color: #98be65;">"Dave"</span>)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org5d6c317" class="outline-5">
+<h5 id="org5d6c317"><span class="section-number-5">8.1.3.4</span> 有很多傳回值</h5>
+<div class="outline-text-5" id="text-8-1-3-4">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">func</span> <span style="color: #c678dd;">myDiv</span>(dividend: <span style="color: #c678dd;">Int</span>, divisor: <span style="color: #c678dd;">Int</span>) -&gt; (quotient: <span style="color: #c678dd;">Int</span>, remainder: <span style="color: #c678dd;">Int</span>) {
+<span class="linenr">2: </span>    <span style="color: #51afef;">return</span> (dividend / divisor, dividend % divisor)
+<span class="linenr">3: </span>}
+<span class="linenr">4: </span>
+<span class="linenr">5: </span><span style="color: #51afef;">let</span> results = <span style="color: #c678dd;">myDiv</span>(dividend: <span style="color: #da8548; font-weight: bold;">10</span>, divisor: <span style="color: #da8548; font-weight: bold;">3</span>)
+<span class="linenr">6: </span><span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"&#21830;&#65306;\(</span>results.<span style="color: #dcaeea;">quotient</span><span style="color: #98be65;">)&#65292;&#39192;&#25976;&#65306;\(</span>results.<span style="color: #dcaeea;">remainder</span><span style="color: #98be65;">)"</span>)
+</pre>
+</div>
+
+<pre class="example">
+商：3，餘數：1
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-generics" class="outline-2">
+<h2 id="generics"><span class="section-number-2">9</span> Generics</h2>
+<div class="outline-text-2" id="text-generics">
+<p>
+當使用者&ldquo;不在乎&rdquo;其資料型別時使用，典型的例子為陣列，陣列可以儲存各式各樣型態的資料：Int, Double, String, Struct&#x2026;<br />
+</p>
+
+<p>
+陣列的定義方式如下<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span>strut <span style="color: #c678dd;">Array</span>&lt;<span style="color: #c678dd;">Element</span>&gt; {
+<span class="linenr">2: </span>    <span style="color: #5B6268;">//</span><span style="color: #5B6268;">....</span>
+<span id="coderef-arap" class="coderef-off"><span class="linenr">3: </span>    <span style="color: #51afef;">func</span> <span style="color: #c678dd;">append</span>(_ element: <span style="color: #c678dd;">Element</span>) {...}</span>
+<span class="linenr">4: </span>}
+</pre>
+</div>
+<p>
+上述程式第<a href="#coderef-arap" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-arap');" onmouseout="CodeHighlightOff(this, 'coderef-arap');">3</a>行 append 的參數 Element 即為一&ldquo;don&rsquo;t care&rdquo;型別，代表&lt;Element&gt;裡可以填上 Int, String, Struct&#x2026;。其正式名稱為 Type Parameter。<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-types" class="outline-2">
+<h2 id="types"><span class="section-number-2">10</span> Types</h2>
+<div class="outline-text-2" id="text-types">
+</div>
+<div id="outline-container-org3bd2478" class="outline-3">
+<h3 id="org3bd2478"><span class="section-number-3">10.1</span> Varietities of Types</h3>
+<div class="outline-text-3" id="text-10-1">
+<ul class="org-ul">
+<li>struct<br /></li>
+<li>class<br /></li>
+<li>protocol<br /></li>
+<li>&ldquo;Dont&rsquo; Care&rdquo; type (generics)<br /></li>
+<li>enum<br /></li>
+<li>functions<br /></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org6fd0040" class="outline-3">
+<h3 id="org6fd0040"><span class="section-number-3">10.2</span> Functions as Types</h3>
+<div class="outline-text-3" id="text-10-2">
+<p>
+如同 Int 或 Double，function 也可以是一種 type，如：<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">var</span> foo: (<span style="color: #c678dd;">Double</span>) -&gt; <span style="color: #c678dd;">Void</span>
+<span class="linenr">2: </span><span style="color: #51afef;">func</span> <span style="color: #c678dd;">doSomething</span>(what: () -&gt;)
+</pre>
+</div>
+<p>
+上述程式中第 1 行的 foo 為一變數，其型別為：輸入一小數變數、不傳回值，第 2 行 function 中的參數 what 的型別為一個沒有輸入、傳回 bool 的變數。<br />
+</p>
+
+<p>
+如下例：<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">func</span> <span style="color: #c678dd;">square</span>(operand: <span style="color: #c678dd;">Double</span>) -&gt; <span style="color: #c678dd;">Double</span> {
+<span class="linenr"> 2: </span>    <span style="color: #51afef;">return</span> operand * operand
+<span class="linenr"> 3: </span>}
+<span class="linenr"> 4: </span>
+<span id="coderef-fat" class="coderef-off"><span class="linenr"> 5: </span><span style="color: #51afef;">var</span> operation = square</span>
+<span class="linenr"> 6: </span><span style="color: #51afef;">let</span> result1 = <span style="color: #c678dd;">operation</span>(<span style="color: #da8548; font-weight: bold;">4</span>)
+<span class="linenr"> 7: </span><span style="color: #c678dd;">print</span>(result1)
+<span class="linenr"> 8: </span>
+<span class="linenr"> 9: </span>operation = abs
+<span class="linenr">10: </span><span style="color: #51afef;">let</span> result2 = <span style="color: #c678dd;">operation</span>(-<span style="color: #da8548; font-weight: bold;">3</span>)
+<span class="linenr">11: </span><span style="color: #c678dd;">print</span>(result2)
+</pre>
+</div>
+
+<p>
+程式中的第<a href="#coderef-fat" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-fat');" onmouseout="CodeHighlightOff(this, 'coderef-fat');">5</a>行中，令 operation 變數之型別為 square 這個 function，於是 operation 就可以如 function 般進行計算；也可以令 operation 為內建的 function(如 abs)<br />
+</p>
+</div>
+
+<div id="outline-container-org4c8bcc2" class="outline-4">
+<h4 id="org4c8bcc2"><span class="section-number-4">10.2.1</span> Closures</h4>
+<div class="outline-text-4" id="text-10-2-1">
+<p>
+在將 function 視為參數傳遞時，也可以把 function 內容直接寫出來，這種 inlined function 就稱為 closure<br />
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-SW-Struct-Class-Enum" class="outline-2">
+<h2 id="SW-Struct-Class-Enum"><span class="section-number-2">11</span> Struct, Class, and Enum</h2>
+<div class="outline-text-2" id="text-SW-Struct-Class-Enum">
+<p class="verse">
+struct, class, and enum are fundamentally important concepts for every iOS developer. It’s difficult to imagine common iOS apps without them. <sup><a id="fnr.7" class="footref" href="#fn.7">7</a></sup><br />
+</p>
+
+<p>
+Class 和 Struct 是一種多功能且靈活的構造體，作為程式碼中的構造基礎。你可以使用與常數，變數和函數完全相同的語法來定義屬性和方法，以便為 Class 和 Struct 增加功能<sup><a id="fnr.8" class="footref" href="#fn.8">8</a></sup>。<br />
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">strudt</td>
+<td class="org-left">class</td>
+</tr>
+
+<tr>
+<td class="org-left">Value type</td>
+<td class="org-left">Reference type</td>
+</tr>
+
+<tr>
+<td class="org-left">Copied when passed or assigned</td>
+<td class="org-left">Passed around via pointers</td>
+</tr>
+
+<tr>
+<td class="org-left">Copy on write</td>
+<td class="org-left">Automatically reference counted</td>
+</tr>
+
+<tr>
+<td class="org-left">Functional programming</td>
+<td class="org-left">Object-oriented programming</td>
+</tr>
+
+<tr>
+<td class="org-left">No inheritance</td>
+<td class="org-left">Inheritance (single)</td>
+</tr>
+
+<tr>
+<td class="org-left">&ldquo;Free&rdquo; init initalizes ALL vars</td>
+<td class="org-left">&ldquo;Free&rdquo; init initializes NO vars</td>
+</tr>
+
+<tr>
+<td class="org-left">Mutability must be explicitly stated</td>
+<td class="org-left">Always mutable</td>
+</tr>
+
+<tr>
+<td class="org-left">Your &ldquo;go to&rdquo; data structure</td>
+<td class="org-left">Used in specific circumstances</td>
+</tr>
+
+<tr>
+<td class="org-left">Everything you&rsquo;ve seen so far is a struct</td>
+<td class="org-left">The ViewModel in MVVM is always a class</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+<ul class="org-ul">
+<li>大多變數均為 struct(除了 View 之外)，如 arrays, dictionaries, Ints, Bools, Doubles,<br /></li>
+<li>functional programming: foucs 在資料的 functionality<br /></li>
+<li>object-oriented programming: focus 在將資料與其 functionality 封裝(encapsulate)入某個 object<br /></li>
+<li>single inheritance: 只能繼承自一個 class<br /></li>
+<li>支援 multiple inheritance 的語言：C++, Common Lisp, Perl, Python, R, Raku, Tcl<sup><a id="fnr.9" class="footref" href="#fn.9">9</a></sup>.<br /></li>
+</ul>
+</div>
+
+<div id="outline-container-org5e37442" class="outline-3">
+<h3 id="org5e37442"><span class="section-number-3">11.1</span> 語法</h3>
+<div class="outline-text-3" id="text-11-1">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">SomeStructure</span> {
+<span class="linenr">2: </span>    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">structure definition goes here</span>
+<span class="linenr">3: </span>}
+<span class="linenr">4: </span><span style="color: #51afef;">class</span> <span style="color: #c678dd;">SomeClass</span> {
+<span class="linenr">5: </span>    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">class definition goes here</span>
+<span class="linenr">6: </span>}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga216598" class="outline-3">
+<h3 id="orga216598"><span class="section-number-3">11.2</span> DEMO</h3>
+<div class="outline-text-3" id="text-11-2">
+</div>
+<div id="outline-container-orgc1ebec3" class="outline-4">
+<h4 id="orgc1ebec3"><span class="section-number-4">11.2.1</span> 宣告</h4>
+<div class="outline-text-4" id="text-11-2-1">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">Resolution</span> {
+<span class="linenr"> 2: </span>    <span style="color: #51afef;">var</span> width = <span style="color: #da8548; font-weight: bold;">0</span>
+<span class="linenr"> 3: </span>    <span style="color: #51afef;">var</span> height = <span style="color: #da8548; font-weight: bold;">0</span>
+<span class="linenr"> 4: </span>}
+<span class="linenr"> 5: </span><span style="color: #51afef;">class</span> <span style="color: #c678dd;">VideoMode</span> {
+<span class="linenr"> 6: </span>    <span style="color: #51afef;">var</span> resolution = <span style="color: #c678dd;">Resolution</span>()
+<span class="linenr"> 7: </span>    <span style="color: #51afef;">var</span> interlaced = <span style="color: #a9a1e1;">false</span>
+<span class="linenr"> 8: </span>    <span style="color: #51afef;">var</span> frameRate = <span style="color: #da8548; font-weight: bold;">0.0</span>
+<span class="linenr"> 9: </span>    <span style="color: #51afef;">var</span> name: <span style="color: #c678dd;">String</span>?
+<span class="linenr">10: </span>}
+<span class="linenr">11: </span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc68d7b6" class="outline-4">
+<h4 id="orgc68d7b6"><span class="section-number-4">11.2.2</span> Init</h4>
+<div class="outline-text-4" id="text-11-2-2">
+<p>
+用於建立 stuct 或 class，為內部變數進行初始化。<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">DiceGme</span> {
+<span class="linenr">2: </span>    <span style="color: #51afef;">init</span>(numberOfDices: <span style="color: #c678dd;">Int</span>){
+<span class="linenr">3: </span>        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">create a dice with that many dices</span>
+<span class="linenr">4: </span>    }
+<span class="linenr">5: </span>}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org08d1bed" class="outline-4">
+<h4 id="org08d1bed"><span class="section-number-4">11.2.3</span> Structure and Class Instances</h4>
+<div class="outline-text-4" id="text-11-2-3">
+<p>
+The Resolution structure definition and the VideoMode class definition only describe what a Resolution or VideoMode will look like. They themselves don’t describe a specific resolution or video mode. To do that, you need to create an instance of the structure or class.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">let</span> someResolution = <span style="color: #c678dd;">Resolution</span>()
+<span class="linenr">2: </span><span style="color: #51afef;">let</span> someVideoMode = <span style="color: #c678dd;">VideoMode</span>()
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5572f5c" class="outline-4">
+<h4 id="org5572f5c"><span class="section-number-4">11.2.4</span> Accessing Properties</h4>
+<div class="outline-text-4" id="text-11-2-4">
+<p>
+You can access the properties of an instance using dot syntax. In dot syntax, you write the property name immediately after the instance name, separated by a period (.), without any spaces:<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"The width of someResolution is \(</span>someResolution.<span style="color: #dcaeea;">width</span><span style="color: #98be65;">)"</span>)
+<span class="linenr">2: </span><span style="color: #5B6268;">// </span><span style="color: #5B6268;">Prints "The width of someResolution is 0"</span>
+<span class="linenr">3: </span><span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"The width of someVideoMode is \(</span>someVideoMode.<span style="color: #dcaeea;">resolution</span>.<span style="color: #dcaeea;">width</span><span style="color: #98be65;">)"</span>)
+<span class="linenr">4: </span><span style="color: #5B6268;">// </span><span style="color: #5B6268;">Prints "The width of someVideoMode is 0"</span>
+</pre>
+</div>
+
+<p>
+You can also use dot syntax to assign a new value to a variable property:<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span>someVideoMode.<span style="color: #dcaeea;">resolution</span>.<span style="color: #dcaeea;">width</span> = <span style="color: #da8548; font-weight: bold;">1280</span>
+<span class="linenr">2: </span><span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"The width of someVideoMode is now \(</span>someVideoMode.<span style="color: #dcaeea;">resolution</span>.<span style="color: #dcaeea;">width</span><span style="color: #98be65;">)"</span>)
+<span class="linenr">3: </span><span style="color: #5B6268;">// </span><span style="color: #5B6268;">Prints "The width of someVideoMode is now 1280"</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge5d6985" class="outline-3">
+<h3 id="orge5d6985"><span class="section-number-3">11.3</span> Structures</h3>
+<div class="outline-text-3" id="text-11-3">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">Birthday</span> {
+<span class="linenr"> 2: </span>  <span style="color: #51afef;">var</span> day: <span style="color: #c678dd;">Int</span> = <span style="color: #da8548; font-weight: bold;">12</span>
+<span class="linenr"> 3: </span>  <span style="color: #51afef;">var</span> month: <span style="color: #c678dd;">Int</span> = <span style="color: #da8548; font-weight: bold;">12</span>
+<span class="linenr"> 4: </span>  <span style="color: #51afef;">var</span> year: <span style="color: #c678dd;">Double</span> = <span style="color: #da8548; font-weight: bold;">1999</span>
+<span class="linenr"> 5: </span>
+<span class="linenr"> 6: </span>  <span style="color: #51afef;">func</span> <span style="color: #c678dd;">myBirthday</span>() {
+<span class="linenr"> 7: </span>  <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"I've born in \(</span>year<span style="color: #98be65;">).\(</span>month<span style="color: #98be65;">).\(</span>day<span style="color: #98be65;">)"</span>)
+<span class="linenr"> 8: </span>  }
+<span class="linenr"> 9: </span>}
+<span class="linenr">10: </span>
+<span class="linenr">11: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">Person</span> {
+<span class="linenr">12: </span>  <span style="color: #51afef;">var</span> firstName: <span style="color: #c678dd;">String</span> = <span style="color: #98be65;">"Abboskhon"</span>
+<span class="linenr">13: </span>  <span style="color: #51afef;">var</span> lastName: <span style="color: #c678dd;">String</span> = <span style="color: #98be65;">"Shukurullaev"</span>
+<span class="linenr">14: </span>  <span style="color: #51afef;">var</span> phoneNumber: <span style="color: #c678dd;">String</span> = <span style="color: #da8548; font-weight: bold;">123456</span>
+<span class="linenr">15: </span>  <span style="color: #51afef;">var</span> emailAddress: <span style="color: #c678dd;">String</span> = <span style="color: #98be65;">"abbsh24@gmail.com"</span>
+<span class="linenr">16: </span>
+<span class="linenr">17: </span>  <span style="color: #51afef;">func</span> <span style="color: #c678dd;">myInfo</span>() {
+<span class="linenr">18: </span>  <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"My name is \(</span>firstName<span style="color: #98be65;">) \(</span>secondName<span style="color: #98be65;">). My phone number is \(</span>phoneNumber<span style="color: #98be65;">) and email address is \(</span>emailAddress<span style="color: #98be65;">)"</span>)
+<span class="linenr">19: </span>  }
+<span class="linenr">20: </span>}
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org96825ef" class="outline-4">
+<h4 id="org96825ef"><span class="section-number-4">11.3.1</span> Mutating methods</h4>
+<div class="outline-text-4" id="text-11-3-1">
+<p class="verse">
+Structs have also got so-called mutating methods that play a role in updating the property values of a structure within an instance method. <sup><a id="fnr.7.100" class="footref" href="#fn.7">7</a></sup><br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">Counter</span> {
+<span class="linenr"> 2: </span>  <span style="color: #51afef;">var</span> count: <span style="color: #c678dd;">Int</span> = <span style="color: #da8548; font-weight: bold;">0</span>
+<span class="linenr"> 3: </span>
+<span class="linenr"> 4: </span>  <span style="color: #51afef;">mutating</span> <span style="color: #51afef;">func</span> <span style="color: #c678dd;">increment</span>() {
+<span class="linenr"> 5: </span>    count += <span style="color: #da8548; font-weight: bold;">1</span>
+<span class="linenr"> 6: </span>  }
+<span class="linenr"> 7: </span>  <span style="color: #51afef;">mutating</span> <span style="color: #51afef;">func</span> <span style="color: #c678dd;">increment</span>(by amount: <span style="color: #c678dd;">Int</span>) {
+<span class="linenr"> 8: </span>    count += amount
+<span class="linenr"> 9: </span>  }
+<span class="linenr">10: </span>  <span style="color: #51afef;">mutating</span> <span style="color: #51afef;">func</span> <span style="color: #c678dd;">reset</span>() {
+<span class="linenr">11: </span>    count = <span style="color: #da8548; font-weight: bold;">0</span>
+<span class="linenr">12: </span>  }
+<span class="linenr">13: </span>}
+<span class="linenr">14: </span><span style="color: #51afef;">var</span> counter = <span style="color: #c678dd;">Counter</span>()   <span style="color: #5B6268;">//</span><span style="color: #5B6268;">default is 0</span>
+<span class="linenr">15: </span>counter.<span style="color: #c678dd;">increment</span>()       <span style="color: #5B6268;">//</span><span style="color: #5B6268;">becomes 1</span>
+<span class="linenr">16: </span>counter.<span style="color: #c678dd;">increment</span>(by: <span style="color: #da8548; font-weight: bold;">9</span>)  <span style="color: #5B6268;">//</span><span style="color: #5B6268;">becomes 10</span>
+<span class="linenr">17: </span>counter.<span style="color: #c678dd;">reset</span>()           <span style="color: #5B6268;">//</span><span style="color: #5B6268;">reset to 0</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4e6b9dc" class="outline-3">
+<h3 id="org4e6b9dc"><span class="section-number-3">11.4</span> Classes</h3>
+<div class="outline-text-3" id="text-11-4">
+<p class="verse">
+Classes and structures are very similar, and both can be used to define properties and methods. <sup><a id="fnr.7.100" class="footref" href="#fn.7">7</a></sup><br />
+</p>
+</div>
+<div id="outline-container-orged40cf0" class="outline-4">
+<h4 id="orged40cf0"><span class="section-number-4">11.4.1</span> Inheritance &amp; Override methods and properties</h4>
+<div class="outline-text-4" id="text-11-4-1">
+<p class="verse">
+The biggest difference that structs do not have is hierarchical relations. Classes can have parent classes, that are called superclass, and child classes, that are called subclasses. <sup><a id="fnr.7.100" class="footref" href="#fn.7">7</a></sup><br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">class</span> <span style="color: #c678dd;">Animals</span> {
+<span class="linenr"> 2: </span>    <span style="color: #51afef;">func</span> <span style="color: #c678dd;">animals</span>() {
+<span class="linenr"> 3: </span>        <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"Animals are mainly of 3 types: Land Animals, Sea animals, Air Animals"</span>)
+<span class="linenr"> 4: </span>    }
+<span class="linenr"> 5: </span>}
+<span class="linenr"> 6: </span>
+<span class="linenr"> 7: </span><span style="color: #51afef;">class</span> <span style="color: #c678dd;">LandAnimals</span>: Animals {
+<span class="linenr"> 8: </span>    <span style="color: #51afef;">override</span> <span style="color: #51afef;">func</span> <span style="color: #c678dd;">animals</span>() {
+<span class="linenr"> 9: </span>        <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"Land animals are cats, sheeps, horses."</span>)
+<span class="linenr">10: </span>    }
+<span class="linenr">11: </span>}
+<span class="linenr">12: </span>
+<span class="linenr">13: </span><span style="color: #51afef;">class</span> <span style="color: #c678dd;">Cat</span>: LandAnimals {
+<span class="linenr">14: </span>    <span style="color: #51afef;">override</span> <span style="color: #51afef;">func</span> <span style="color: #c678dd;">animals</span>() {
+<span class="linenr">15: </span>        <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"I am a cat and I am a land animal."</span>)
+<span class="linenr">16: </span>    }
+<span class="linenr">17: </span>}
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org403cad3" class="outline-3">
+<h3 id="org403cad3"><span class="section-number-3">11.5</span> 結構跟類的比較 (Comparing Structures and Classes) <sup><a id="fnr.10" class="footref" href="#fn.10">10</a></sup></h3>
+<div class="outline-text-3" id="text-11-5">
+</div>
+<div id="outline-container-orgdb51ceb" class="outline-4">
+<h4 id="orgdb51ceb"><span class="section-number-4">11.5.1</span> 在 Swift 中的結構與類有許多相同之處，兩者皆能：</h4>
+<div class="outline-text-4" id="text-11-5-1">
+<ul class="org-ul">
+<li>定義屬性來儲存值<br /></li>
+<li>定義方法來提供功能<br /></li>
+<li>定義下標來提供訪問他們用下標語法的值<br /></li>
+<li>定義初始化器來設定他們的初始狀態<br /></li>
+<li>可被擴展以擴展其功能，超越預設的實現<br /></li>
+<li>符合協議以提供某種標準功能<br /></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org23f3463" class="outline-4">
+<h4 id="org23f3463"><span class="section-number-4">11.5.2</span> 類具有的附加功能，但結構沒有：</h4>
+<div class="outline-text-4" id="text-11-5-2">
+<ul class="org-ul">
+<li>繼承使一個類能夠繼承另一個的特性<br /></li>
+<li>類型轉換使我們可以在運行時檢查和解釋類實例的類型<br /></li>
+<li>反初始化器允許類的實例釋放它已分配的任何資源<br /></li>
+<li>引用計數允許對類實例的多個引用<br /></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgc3c8130" class="outline-4">
+<h4 id="orgc3c8130"><span class="section-number-4">11.5.3</span> 結構和列舉是值型別 (Structures and Enumerations Are Value Types)</h4>
+<div class="outline-text-4" id="text-11-5-3">
+<p>
+值型別是一種其值在被賦值給變數或常數時被複製，或者在傳遞給函數時被複製。實際上，Swift 的整數、浮點數、布林值、字符串、數組和字典中的所有基本型別都是值型別，並且在幕後實現為結構。所有結構和列舉都是 Swift 中的值型別。這代表著我們創建的任何結構和列舉實例以及它們作為屬性的任何值類型在代碼中傳遞時始終會被複製。<sup><a id="fnr.10.100" class="footref" href="#fn.10">10</a></sup><br />
+</p>
+</div>
+<div id="outline-container-org7fe4f92" class="outline-5">
+<h5 id="org7fe4f92"><span class="section-number-5">11.5.3.1</span> 範例</h5>
+<div class="outline-text-5" id="text-11-5-3-1">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">Resolution</span> {
+<span class="linenr"> 2: </span>    <span style="color: #51afef;">var</span> width = <span style="color: #da8548; font-weight: bold;">0</span>
+<span class="linenr"> 3: </span>    <span style="color: #51afef;">var</span> height = <span style="color: #da8548; font-weight: bold;">0</span>
+<span class="linenr"> 4: </span>}
+<span class="linenr"> 5: </span>
+<span class="linenr"> 6: </span><span style="color: #51afef;">let</span> hd = <span style="color: #c678dd;">Resolution</span>(width: <span style="color: #da8548; font-weight: bold;">1920</span>, height: <span style="color: #da8548; font-weight: bold;">1080</span>)
+<span class="linenr"> 7: </span><span style="color: #51afef;">var</span> cinema = hd
+<span class="linenr"> 8: </span>
+<span class="linenr"> 9: </span>cinema.<span style="color: #dcaeea;">width</span> = <span style="color: #da8548; font-weight: bold;">2048</span>
+<span class="linenr">10: </span>
+<span class="linenr">11: </span><span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"cinema is now \(</span>cinema.<span style="color: #dcaeea;">width</span><span style="color: #98be65;">) pixels wide"</span>)
+<span class="linenr">12: </span><span style="color: #5B6268;">// </span><span style="color: #5B6268;">Prints "cinema is now 2048 pixels wide"</span>
+<span class="linenr">13: </span>
+<span class="linenr">14: </span><span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"hd is still \(</span>hd.<span style="color: #dcaeea;">width</span><span style="color: #98be65;">) pixels wide"</span>)
+<span class="linenr">15: </span><span style="color: #5B6268;">// </span><span style="color: #5B6268;">Prints "hd is still 1920 pixels wide"</span>
+</pre>
+</div>
+<p>
+由上述例子可知，當 cinema 被賦予 hd 當前的值，儲存在 hd 的值被複製到新 cinema 的實例。最後結果兩個擁有相同值但完全不同的實例，所以當修改 cinema.width = 2048 的時候，並不會影響儲存在 hd 中的 width。<sup><a id="fnr.10.100" class="footref" href="#fn.10">10</a></sup><br />
+</p>
+
+<div id="org96c7716" class="figure">
+<p><img src="images/struct.png" alt="struct.png" width="400" /><br />
+</p>
+<p><span class="figure-number">Figure 2: </span>Struct value type</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org0715222" class="outline-4">
+<h4 id="org0715222"><span class="section-number-4">11.5.4</span> 類是參考型別 (Classes Are Reference Types)</h4>
+<div class="outline-text-4" id="text-11-5-4">
+<p>
+不同於值型別，當參考型別被指定給一個變數或常數，或是傳遞進一個函數的時候，並不會被複製。參考型別非副本，是使用相同存在的實例。<sup><a id="fnr.10.100" class="footref" href="#fn.10">10</a></sup><br />
+</p>
+</div>
+<div id="outline-container-orgfdd9fae" class="outline-5">
+<h5 id="orgfdd9fae"><span class="section-number-5">11.5.4.1</span> 範例</h5>
+<div class="outline-text-5" id="text-11-5-4-1">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">class</span> <span style="color: #c678dd;">VideoMode</span> {
+<span class="linenr"> 2: </span>    <span style="color: #51afef;">var</span> interlaced = <span style="color: #a9a1e1;">false</span>
+<span class="linenr"> 3: </span>    <span style="color: #51afef;">var</span> frameRate = <span style="color: #da8548; font-weight: bold;">0.0</span>
+<span class="linenr"> 4: </span>    <span style="color: #51afef;">var</span> name: <span style="color: #c678dd;">String</span>?
+<span class="linenr"> 5: </span>}
+<span class="linenr"> 6: </span>
+<span class="linenr"> 7: </span><span style="color: #51afef;">let</span> tenEighty = <span style="color: #c678dd;">VideoMode</span>()
+<span class="linenr"> 8: </span>
+<span class="linenr"> 9: </span>tenEighty.<span style="color: #dcaeea;">interlaced</span> = <span style="color: #a9a1e1;">true</span>
+<span class="linenr">10: </span>tenEighty.<span style="color: #c678dd;">name</span> = <span style="color: #98be65;">"1080i"</span>
+<span class="linenr">11: </span>tenEighty.<span style="color: #dcaeea;">frameRate</span> = <span style="color: #da8548; font-weight: bold;">25.0</span>
+<span class="linenr">12: </span>
+<span class="linenr">13: </span>
+<span class="linenr">14: </span><span style="color: #51afef;">let</span> alsoTenEighty = tenEighty
+<span class="linenr">15: </span>alsoTenEighty.<span style="color: #dcaeea;">frameRate</span> = <span style="color: #da8548; font-weight: bold;">30.0</span>
+<span class="linenr">16: </span>
+<span class="linenr">17: </span><span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"The frameRate property of tenEighty is now \(</span>tenEighty.<span style="color: #dcaeea;">frameRate</span><span style="color: #98be65;">)"</span>)
+<span class="linenr">18: </span><span style="color: #5B6268;">// </span><span style="color: #5B6268;">Prints "The frameRate property of tenEighty is now 30.0"</span>
+</pre>
+</div>
+<p>
+由上述例子可知，當 alsoTenEighty 被指定為 tenEighty，並且修改 alsoTenEighty.frameRate = 30.0 時，也會更動到 tenEighty.frameRate 的值。<sup><a id="fnr.10.100" class="footref" href="#fn.10">10</a></sup><br />
+</p>
+
+<div id="org9087afb" class="figure">
+<p><img src="images/class.png" alt="class.png" width="400" /><br />
+</p>
+<p><span class="figure-number">Figure 3: </span>Class Reference type</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3e8b871" class="outline-3">
+<h3 id="org3e8b871"><span class="section-number-3">11.6</span> with v.s. without struct: Why you need struct</h3>
+<div class="outline-text-3" id="text-11-6">
+</div>
+<div id="outline-container-org99071df" class="outline-4">
+<h4 id="org99071df"><span class="section-number-4">11.6.1</span> 狀況一: without struct</h4>
+<div class="outline-text-4" id="text-11-6-1">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #5B6268;">//</span><span style="color: #5B6268;">&#23416;&#29983;1&#36039;&#26009;</span>
+<span class="linenr"> 2: </span><span style="color: #51afef;">var</span> st1-no = <span style="color: #98be65;">"S01"</span>
+<span class="linenr"> 3: </span><span style="color: #51afef;">var</span> st1-name = <span style="color: #98be65;">"James"</span>
+<span class="linenr"> 4: </span><span style="color: #51afef;">var</span> st1-english = <span style="color: #da8548; font-weight: bold;">93</span>
+<span class="linenr"> 5: </span><span style="color: #51afef;">var</span> st1-math = <span style="color: #da8548; font-weight: bold;">90</span>
+<span class="linenr"> 6: </span><span style="color: #5B6268;">//</span><span style="color: #5B6268;">&#23416;&#29983;2&#36039;&#26009;</span>
+<span class="linenr"> 7: </span><span style="color: #51afef;">var</span> st2-no = <span style="color: #98be65;">"S02"</span>
+<span class="linenr"> 8: </span><span style="color: #51afef;">var</span> st2-name = <span style="color: #98be65;">"Vanessa"</span>
+<span class="linenr"> 9: </span><span style="color: #51afef;">var</span> st2-english = <span style="color: #da8548; font-weight: bold;">90</span>
+<span class="linenr">10: </span><span style="color: #51afef;">var</span> st2-math = <span style="color: #da8548; font-weight: bold;">99</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org4023d2a" class="outline-4">
+<h4 id="org4023d2a"><span class="section-number-4">11.6.2</span> 狀況二: with struct</h4>
+<div class="outline-text-4" id="text-11-6-2">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">Student</span> {
+<span class="linenr"> 2: </span>    <span style="color: #51afef;">var</span> no: <span style="color: #c678dd;">String</span>?
+<span class="linenr"> 3: </span>    <span style="color: #51afef;">var</span> name: <span style="color: #c678dd;">String</span>
+<span class="linenr"> 4: </span>    <span style="color: #51afef;">var</span> english = <span style="color: #da8548; font-weight: bold;">0.0</span>
+<span class="linenr"> 5: </span>    <span style="color: #51afef;">var</span> math = <span style="color: #da8548; font-weight: bold;">0.0</span>
+<span class="linenr"> 6: </span>}
+<span class="linenr"> 7: </span>
+<span class="linenr"> 8: </span><span style="color: #51afef;">let</span> st1 = <span style="color: #c678dd;">Studetn</span>(no: <span style="color: #98be65;">"S01"</span>, name: <span style="color: #98be65;">"James"</span>, english: <span style="color: #da8548; font-weight: bold;">93</span>, math: <span style="color: #da8548; font-weight: bold;">92</span>)
+<span class="linenr"> 9: </span><span style="color: #51afef;">let</span> st2 = <span style="color: #c678dd;">Studetn</span>()
+<span class="linenr">10: </span>st2.<span style="color: #c678dd;">no</span> = <span style="color: #98be65;">"S02"</span>
+<span class="linenr">11: </span>st2.<span style="color: #c678dd;">name</span> = <span style="color: #98be65;">"Vanessa"</span>
+<span class="linenr">12: </span>st2.<span style="color: #dcaeea;">english</span> = <span style="color: #da8548; font-weight: bold;">90</span>
+<span class="linenr">13: </span>st2.<span style="color: #dcaeea;">math</span> =  <span style="color: #da8548; font-weight: bold;">99</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgca0574b" class="outline-3">
+<h3 id="orgca0574b"><span class="section-number-3">11.7</span> Inheritance</h3>
+<div class="outline-text-3" id="text-11-7">
+</div>
+<div id="outline-container-orgd18e7f0" class="outline-4">
+<h4 id="orgd18e7f0"><span class="section-number-4">11.7.1</span> 使用 inheritance 的優點</h4>
+<div class="outline-text-4" id="text-11-7-1">
+</div>
+<div id="outline-container-org7b60a11" class="outline-5">
+<h5 id="org7b60a11"><span class="section-number-5">11.7.1.1</span> 不用 inheritance</h5>
+<div class="outline-text-5" id="text-11-7-1-1">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">class</span> <span style="color: #c678dd;">Car</span> {
+<span class="linenr"> 2: </span>    <span style="color: #51afef;">var</span> topSpeed = <span style="color: #da8548; font-weight: bold;">200</span>
+<span class="linenr"> 3: </span>    <span style="color: #51afef;">func</span> <span style="color: #c678dd;">drive</span>() {
+<span class="linenr"> 4: </span>        <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"Driving at \(</span>topSpeed<span style="color: #98be65;">)"</span>)
+<span class="linenr"> 5: </span>    }
+<span class="linenr"> 6: </span>}
+<span class="linenr"> 7: </span><span style="color: #51afef;">class</span> <span style="color: #c678dd;">FutureCar</span> {
+<span class="linenr"> 8: </span>    <span style="color: #51afef;">var</span> topSpeed = <span style="color: #da8548; font-weight: bold;">300</span>
+<span class="linenr"> 9: </span>    <span style="color: #51afef;">func</span> <span style="color: #c678dd;">drive</span>() {
+<span class="linenr">10: </span>        <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"Driving at \(</span>topSpeed<span style="color: #98be65;">)"</span>)
+<span class="linenr">11: </span>    }
+<span class="linenr">12: </span>    <span style="color: #51afef;">func</span> <span style="color: #c678dd;">autoDrive</span>() {
+<span class="linenr">13: </span>        <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"Auto-driving"</span>)
+<span class="linenr">14: </span>    }
+<span class="linenr">15: </span>}
+<span class="linenr">16: </span><span style="color: #51afef;">let</span> myRide = <span style="color: #c678dd;">Car</span>()
+<span class="linenr">17: </span><span style="color: #c678dd;">print</span>(myRide.<span style="color: #dcaeea;">topSpeed</span>)
+<span class="linenr">18: </span>myRide.<span style="color: #c678dd;">drive</span>()
+<span class="linenr">19: </span>
+<span class="linenr">20: </span><span style="color: #51afef;">let</span> myNewRide = <span style="color: #c678dd;">FutureCar</span>()
+<span class="linenr">21: </span>myNewRide.<span style="color: #c678dd;">drive</span>()
+<span class="linenr">22: </span>myNewRide.<span style="color: #c678dd;">autoDrive</span>()
+</pre>
+</div>
+
+<pre class="example">
+200
+Driving at 200
+Driving at 300
+Auto-driving
+</pre>
+</div>
+</div>
+<div id="outline-container-org3c93399" class="outline-5">
+<h5 id="org3c93399"><span class="section-number-5">11.7.1.2</span> 使用 inheritance</h5>
+<div class="outline-text-5" id="text-11-7-1-2">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">class</span> <span style="color: #c678dd;">Car</span> {
+<span class="linenr"> 2: </span>    <span style="color: #51afef;">var</span> topSpeed = <span style="color: #da8548; font-weight: bold;">200</span>
+<span class="linenr"> 3: </span>    <span style="color: #51afef;">func</span> <span style="color: #c678dd;">drive</span>() {
+<span class="linenr"> 4: </span>        <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"Driving at \(</span>topSpeed<span style="color: #98be65;">)"</span>)
+<span class="linenr"> 5: </span>    }
+<span class="linenr"> 6: </span>}
+<span class="linenr"> 7: </span><span style="color: #51afef;">class</span> <span style="color: #c678dd;">FutureCar</span>: Car {
+<span class="linenr"> 8: </span>    <span style="color: #51afef;">override</span> <span style="color: #51afef;">func</span> <span style="color: #c678dd;">drive</span>() {
+<span class="linenr"> 9: </span>        <span style="color: #51afef;">super</span>.<span style="color: #c678dd;">drive</span>()
+<span class="linenr">10: </span>        <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"and rockets boosting at 50"</span>)
+<span class="linenr">11: </span>    }
+<span class="linenr">12: </span>
+<span class="linenr">13: </span>    <span style="color: #51afef;">func</span> <span style="color: #c678dd;">autoDrive</span>() {
+<span class="linenr">14: </span>        <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"Auto-driving"</span>)
+<span class="linenr">15: </span>    }
+<span class="linenr">16: </span>}
+<span class="linenr">17: </span><span style="color: #51afef;">let</span> myNewRide = <span style="color: #c678dd;">FutureCar</span>()
+<span class="linenr">18: </span><span style="color: #c678dd;">print</span>(myNewRide.<span style="color: #dcaeea;">topSpeed</span>)
+<span class="linenr">19: </span>myNewRide.<span style="color: #c678dd;">drive</span>()
+</pre>
+</div>
+
+<pre class="example">
+200
+Driving at 200
+and rockets boosting at 50
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga157065" class="outline-3">
+<h3 id="orga157065"><span class="section-number-3">11.8</span> Computer property</h3>
+<div class="outline-text-3" id="text-11-8">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">class</span> <span style="color: #c678dd;">Square</span> {
+<span class="linenr"> 2: </span>    <span style="color: #51afef;">var</span> edge = <span style="color: #da8548; font-weight: bold;">0.0</span>
+<span class="linenr"> 3: </span>    <span style="color: #51afef;">var</span> area: <span style="color: #c678dd;">Double</span> {
+<span class="linenr"> 4: </span>        <span style="color: #51afef;">get</span> {
+<span class="linenr"> 5: </span>            <span style="color: #51afef;">return</span> edge*edge
+<span class="linenr"> 6: </span>        }
+<span class="linenr"> 7: </span>        <span style="color: #51afef;">set</span>(newArea) {
+<span class="linenr"> 8: </span>            edge = newArea.<span style="color: #c678dd;">squareRoot</span>()
+<span class="linenr"> 9: </span>        }
+<span class="linenr">10: </span>    }
+<span class="linenr">11: </span>}
+<span class="linenr">12: </span>
+<span class="linenr">13: </span><span style="color: #51afef;">let</span> square = <span style="color: #c678dd;">Square</span>()
+<span class="linenr">14: </span>square.<span style="color: #dcaeea;">edge</span> = <span style="color: #da8548; font-weight: bold;">10</span>
+<span class="linenr">15: </span><span style="color: #c678dd;">print</span>(square.<span style="color: #dcaeea;">area</span>)
+<span class="linenr">16: </span>square.<span style="color: #dcaeea;">area</span> = <span style="color: #da8548; font-weight: bold;">36</span>
+<span class="linenr">17: </span><span style="color: #c678dd;">print</span>(square.<span style="color: #dcaeea;">edge</span>)
+</pre>
+</div>
+
+<pre class="example">
+100.0
+6.0
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgee5d6cc" class="outline-3">
+<h3 id="orgee5d6cc"><span class="section-number-3">11.9</span> Structures and Enumerations Are Value Types</h3>
+<div class="outline-text-3" id="text-11-9">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">Resolution</span> {
+<span class="linenr">2: </span>  <span style="color: #51afef;">var</span> width = <span style="color: #da8548; font-weight: bold;">0</span>
+<span class="linenr">3: </span>  <span style="color: #51afef;">var</span> height = <span style="color: #da8548; font-weight: bold;">0</span>
+<span class="linenr">4: </span>}
+<span class="linenr">5: </span>
+<span class="linenr">6: </span><span style="color: #51afef;">let</span> hd = <span style="color: #c678dd;">Resolution</span>(width: <span style="color: #da8548; font-weight: bold;">1920</span>, height: <span style="color: #da8548; font-weight: bold;">1080</span>)
+<span class="linenr">7: </span><span style="color: #51afef;">var</span> cinema = hd
+</pre>
+</div>
+
+<p>
+When cinema was given the current value of hd, the values stored in hd were copied into the new cinema instance. The end result was two completely separate instances that contained the same numeric values. However, because they are separate instances, setting the width of cinema to 2048 doesn’t affect the width stored in hd, as shown in the figure below<sup><a id="fnr.11" class="footref" href="#fn.11">11</a></sup>:<br />
+</p>
+
+
+<div id="orgd7dffba" class="figure">
+<p><img src="images/sharedStateStruct_2x.png" alt="sharedStateStruct_2x.png" width="400" /><br />
+</p>
+<p><span class="figure-number">Figure 4: </span>Value Types</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org47d21b6" class="outline-3">
+<h3 id="org47d21b6"><span class="section-number-3">11.10</span> Classes Are Reference Types</h3>
+<div class="outline-text-3" id="text-11-10">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span>
+<span class="linenr"> 2: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">Resolution</span> {
+<span class="linenr"> 3: </span>  <span style="color: #51afef;">var</span> width = <span style="color: #da8548; font-weight: bold;">0</span>
+<span class="linenr"> 4: </span>  <span style="color: #51afef;">var</span> height = <span style="color: #da8548; font-weight: bold;">0</span>
+<span class="linenr"> 5: </span>}
+<span class="linenr"> 6: </span><span style="color: #51afef;">class</span> <span style="color: #c678dd;">VideoMode</span> {
+<span class="linenr"> 7: </span>    <span style="color: #51afef;">var</span> resolution = <span style="color: #c678dd;">Resolution</span>()
+<span class="linenr"> 8: </span>    <span style="color: #51afef;">var</span> interlaced = <span style="color: #a9a1e1;">false</span>
+<span class="linenr"> 9: </span>    <span style="color: #51afef;">var</span> frameRate = <span style="color: #da8548; font-weight: bold;">0.0</span>
+<span class="linenr">10: </span>    <span style="color: #51afef;">var</span> name: <span style="color: #c678dd;">String</span>?
+<span class="linenr">11: </span>}
+<span class="linenr">12: </span>
+<span class="linenr">13: </span><span style="color: #51afef;">let</span> tenEighty = <span style="color: #c678dd;">VideoMode</span>()
+<span class="linenr">14: </span>tenEighty.<span style="color: #dcaeea;">resolution</span> = hd
+<span class="linenr">15: </span>tenEighty.<span style="color: #dcaeea;">interlaced</span> = <span style="color: #a9a1e1;">true</span>
+<span class="linenr">16: </span>tenEighty.<span style="color: #c678dd;">name</span> = <span style="color: #98be65;">"1080i"</span>
+<span class="linenr">17: </span>tenEighty.<span style="color: #dcaeea;">frameRate</span> = <span style="color: #da8548; font-weight: bold;">25.0</span>
+<span class="linenr">18: </span>
+<span class="linenr">19: </span><span style="color: #51afef;">let</span> alsoTenEighty = tenEighty
+<span class="linenr">20: </span>alsoTenEighty.<span style="color: #dcaeea;">frameRate</span> = <span style="color: #da8548; font-weight: bold;">30.0</span>
+</pre>
+</div>
+
+<p>
+Because classes are reference types, tenEighty and alsoTenEighty actually both refer to the same VideoMode instance. Effectively, they are just two different names for the same single instance, as shown in the figure below<sup><a id="fnr.11.100" class="footref" href="#fn.11">11</a></sup>:<br />
+</p>
+
+
+<div id="org0a582b8" class="figure">
+<p><img src="images/sharedStateClass_2x.png" alt="sharedStateClass_2x.png" width="400" /><br />
+</p>
+<p><span class="figure-number">Figure 5: </span>Value Types</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org26965d8" class="outline-3">
+<h3 id="org26965d8"><span class="section-number-3">11.11</span> Enumerations</h3>
+<div class="outline-text-3" id="text-11-11">
+<p class="verse">
+Enumerations are different from structs and classes. Enum is a special Swift type that defines a common type for a group of related values. Then, enums can be interacted with other data types such as a switch, if statements, and others. <sup><a id="fnr.7.100" class="footref" href="#fn.7">7</a></sup><br />
+</p>
+<p>
+從 Swift 3 開始，我們的 enum 內設定的情境字串要以小寫字母開頭。<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #5B6268;">//</span><span style="color: #5B6268;">1 representation of enum</span>
+<span class="linenr"> 2: </span><span style="color: #51afef;">enum</span> <span style="color: #c678dd;">DownloadStatus</span> {
+<span class="linenr"> 3: </span>    <span style="color: #51afef;">case</span> downloading
+<span class="linenr"> 4: </span>    <span style="color: #51afef;">case</span> finished
+<span class="linenr"> 5: </span>    <span style="color: #51afef;">case</span> failed
+<span class="linenr"> 6: </span>    <span style="color: #51afef;">case</span> cancelled
+<span class="linenr"> 7: </span>}
+<span class="linenr"> 8: </span>
+<span class="linenr"> 9: </span><span style="color: #51afef;">var</span> currentStatus = DownloadStatus.<span style="color: #c678dd;">downloading</span>
+<span class="linenr">10: </span>
+<span class="linenr">11: </span><span style="color: #51afef;">switch</span> currentStatus {
+<span class="linenr">12: </span><span style="color: #51afef;">case</span> .<span style="color: #c678dd;">downloading</span>:
+<span class="linenr">13: </span>    <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"Downloading..."</span>)
+<span class="linenr">14: </span>
+<span class="linenr">15: </span><span style="color: #51afef;">case</span> .<span style="color: #c678dd;">finished</span>:
+<span class="linenr">16: </span>    <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"Just finished the download..."</span>)
+<span class="linenr">17: </span>
+<span class="linenr">18: </span><span style="color: #51afef;">case</span> .<span style="color: #dcaeea;">failed</span>:
+<span class="linenr">19: </span>    <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"Failed to download the file..."</span>)
+<span class="linenr">20: </span>
+<span class="linenr">21: </span><span style="color: #51afef;">case</span> .<span style="color: #c678dd;">cancelled</span>:
+<span class="linenr">22: </span>    <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"The download is cancelled..."</span>)
+<span class="linenr">23: </span>}
+</pre>
+</div>
+
+<p class="verse">
+此時，你可能會想，為什麼需要使用 enum 來定義多個情況，而不選擇宣告一個包含四個情境項目的 array，如下圖所示:<br />
+<br />
+let downloadStatus = [“downloading”, “finished”, “failed”, “cancelled”]<br />
+let currentStatus = downloadStatus[0]<br />
+<br />
+你可以這樣做沒錯，但是如此一來會有兩個缺點，首先，你可能會不知道 downloadStatus[0]代表什麼，除非你引用 downloadStatus array，若是比較 downloadStatus[0]與 DownloadStatus.downloading 這兩種表達方式，很明顯的是後者的可讀性比較高。<br />
+<br />
+其次，因為 currentStatus 是 String 類型，變量可以被賦予任何字符串值，無法將它限制為 “downloading”, “finished”, “failed” 以及 “cancelled”，除非執行一些額外的驗證。反之，如果使用 enum，我們可以將 myDirection 限制在 .downloading、.finished、.failed 或 .cancelled 等四種情境之一，不會出現其他意料之外的情況。 <sup><a id="fnr.12" class="footref" href="#fn.12">12</a></sup><br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6dda531" class="outline-3">
+<h3 id="org6dda531"><span class="section-number-3">11.12</span> 結構和類之間的選擇 (Choosing Between Structures and Classes)</h3>
+<div class="outline-text-3" id="text-11-12">
+<p class="verse">
+總的來說，用 class 來定義資料物件的話，就好像是在用雲端共享文件一樣：每個人的螢幕上都會有一份文件可以編輯，但這個文件並沒有存在電腦裡，而是跟雲端的版本連線，所以所有的變動都是直接在雲端版本上更新的。好處是方便，壞處是誰修改了甚麼東西經理不會知道（class 本身沒有帳號功能！）。<br />
+<br />
+用 struct 的話，則是像傳統的離線文件檔案一樣。一開始文件只有經理有，而如果他想要讓手下小美去修改文件的話，他就需要拷貝一份檔案給小美。小美修改完檔案後，必須把它交還給經理，然後經理再決定要不要用修改過的檔案取代原本的文件。<sup><a id="fnr.13" class="footref" href="#fn.13">13</a></sup><br />
+</p>
+
+<div id="orgf8b63e0" class="figure">
+<p><img src="images/mvc-1.png" alt="mvc-1.png" width="400" /><br />
+</p>
+<p><span class="figure-number">Figure 6: </span>MVC</p>
+</div>
+<ul class="org-ul">
+<li>在 MVC 架構中，Model 包含了 Data Objects 與 Document，其中 Documents 包含所有的資料管理者元件(如 Core Data 的 NSManagedObjectContext，或是任何負責下載、上傳資料物件的網路層元件，如自訂的 NetworkManager)。<br /></li>
+<li>Document 最好是用 class 來定義，因為它肩負了許多溝通的工作。Data Objects 則是資料的代表，要用 class 或 struct 來定義都可以。<br /></li>
+<li>用 class 定義 Data Objects 的話，任何變動只要執行一次就可以了，因為它的實體只會有一個。然而，用 struct 定義的話，則需要將變動手動套用到文件所管理的那份實體，好讓整個 app 都能使用最新的資料。這雖然寫起來較為囉唆，卻讓閱讀與維護更為簡單(可以確定是在哪裡被變更資料)<sup><a id="fnr.13.100" class="footref" href="#fn.13">13</a></sup>。<br /></li>
+</ul>
+</div>
+<div id="outline-container-org7da2eaf" class="outline-4">
+<h4 id="org7da2eaf"><span class="section-number-4">11.12.1</span> 選擇原則</h4>
+<div class="outline-text-4" id="text-11-12-1">
+<ul class="org-ul">
+<li>Choose Structures by Default<br /></li>
+<li>Use Classes When You Need Objective-C Interoperability<br /></li>
+<li>Use Classes When You Need to Control Identity<br /></li>
+<li>Use Structures When You Don&rsquo;t Control Identity<br /></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-protocol" class="outline-2">
+<h2 id="protocol"><span class="section-number-2">12</span> 協定</h2>
+<div class="outline-text-2" id="text-protocol">
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
+<a href="https://ithelp.ithome.com.tw/articles/10157433">[Swift] (1) - Swift 簡介 </a><br />
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2">2</a></sup> <div class="footpara"><p class="footpara">
+<a href="https://docs.swift.org/swift-book/LanguageGuide/Properties.html#//apple_ref/doc/uid/TP40014097-CH14-XID_368">Properties</a><br />
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.3" class="footnum" href="#fnr.3">3</a></sup> <div class="footpara"><p class="footpara">
+<a href="https://docs.swift.org/swift-book/LanguageGuide/CollectionTypes.html">The Swift Programming Language Swift 5.3</a><br />
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.4" class="footnum" href="#fnr.4">4</a></sup> <div class="footpara"><p class="footpara">
+<a href="https://www.hackingwithswift.com/example-code/language/how-to-create-an-array-by-repeating-an-item">How to create an array by repeating an item</a><br />
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.5" class="footnum" href="#fnr.5">5</a></sup> <div class="footpara"><p class="footpara">
+<a href="https://medium.com/jeremy-xue-s-blog/swift-transforming-an-array-e2bcb4f4d67d">Swift — Transforming an Array</a><br />
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.6" class="footnum" href="#fnr.6">6</a></sup> <div class="footpara"><p class="footpara">
+<a href="https://tommy60703.gitbooks.io/swift-language-traditional-chinese/content/chapter2/04_Collection_Types.html">《The Sw­ift Pr­ogramm­ing La­nguage­》正體中文版</a><br />
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.7" class="footnum" href="#fnr.7">7</a></sup> <div class="footpara"><p class="footpara">
+<a href="https://levelup.gitconnected.com/demystifying-struct-class-and-enum-in-swift-5-43dde089e96a">Demystifying Struct, Class, and Enum in Swift 5</a><br />
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.8" class="footnum" href="#fnr.8">8</a></sup> <div class="footpara"><p class="footpara">
+<a href="https://ithelp.ithome.com.tw/articles/10195467">Day-15 Swift 語法(11) - Class 與 Struct 的愛恨交織 </a><br />
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.9" class="footnum" href="#fnr.9">9</a></sup> <div class="footpara"><p class="footpara">
+<a href="https://en.wikipedia.org/wiki/Multiple_inheritance">Multiple inheritance</a><br />
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.10" class="footnum" href="#fnr.10">10</a></sup> <div class="footpara"><p class="footpara">
+<a href="https://ithelp.ithome.com.tw/articles/10220520"> Day 10: [Swift] 結構和類 (Struct and Class) </a><br />
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.11" class="footnum" href="#fnr.11">11</a></sup> <div class="footpara"><p class="footpara">
+<a href="https://docs.swift.org/swift-book/LanguageGuide/ClassesAndStructures.html">Structures and Classes</a><br />
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.12" class="footnum" href="#fnr.12">12</a></sup> <div class="footpara"><p class="footpara">
+<a href="https://appcoda.com.tw/mastering-swift/">精通Swift：列舉、閉包、泛型、Protocols和高階函數</a><br />
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.13" class="footnum" href="#fnr.13">13</a></sup> <div class="footpara"><p class="footpara">
+<a href="https://www.appcoda.com.tw/swift-class/">Swift Class vs Struct：設計 Model 時，該用 Struct 還是 Class 呢？</a><br />
+</p></div></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<p class="author">Author: Yung Chin, Yen</p>
+<p class="date">Created: 2020-10-21 Wed 20:06</p>
+</div>
+</body>
+</html>
