@@ -552,6 +552,7 @@ View 秀出時要額外做哪些事情....
 - [[https://swiftdoc.org/][swiftdoc.org]]
 - [[http://swiftdeveloperblog.com/code-examples/][Swift Developer Blog]]
 - [[https://www.hackingwithswift.com/quick-start/swiftui][Hacking with SWIFT]]
+- [[https://medium.com/@ivanchemical/swift-ui-social-network-c27a67078d62][Swift UI social network]]
 #+latex:\newpage
 
 * Customize UI Components
@@ -1433,6 +1434,7 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 #+end_src
+
 * @EnvironmentObject: Create once, access everywhere
 :PROPERTIES:
 :CUSTOM_ID: EnvironmentObject
