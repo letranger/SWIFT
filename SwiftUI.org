@@ -441,7 +441,7 @@ struct ContentView: View {
     }
 }
 #+end_src
-View為struct，未加上 @State 的變數是不允許變更的(immutable)；加了 @State 後，SwiftUI 將認為這個變數(或，struct的property)代表某種影將View畫面或內容的狀態，並在背後另外產生空間儲存 property 的內容，它不再儲存在 ContentView 裡，因此我們可以修改它的內容[fn:5]。
+View 為 struct，未加上 @State 的變數是不允許變更的(immutable)；加了 @State 後，SwiftUI 將認為這個變數(或，struct 的 property)代表某種影將 View 畫面或內容的狀態，並在背後另外產生空間儲存 property 的內容，它不再儲存在 ContentView 裡，因此我們可以修改它的內容[fn:5]。
 
 以 @State 宣告的 property 有個重要的特性，只要它的內容改變，畫面也會立即更新。它帶來了以下兩個好處:
 - 不用另外寫 property 內容改變時更新畫面的程式。
@@ -494,9 +494,9 @@ struct ContentView: View {
     }
 }
 #+end_src
-在上述程式中，我們希望在 *TextField* 中輸入文字時就能即時改變title的值，便要做綁定(Binding)的動作，也就是在 *TextField* 中title前加上一個$ (第[[(dollarSign)]]行)，由 *TextField* 的語法也可以看出: TextField(<titleKey: LocalizedStringKey, text: Binding<String>)。SwiftUI便是透過「在@State property前加上$」的方式來取得這個property的binding，當第[[(dollarSign)]]的值一改變，第[[(strTitle)]]行的Text也會即時跟著改變，這便是binding的作用。
+在上述程式中，我們希望在 *TextField* 中輸入文字時就能即時改變 title 的值，便要做綁定(Binding)的動作，也就是在 *TextField* 中 title 前加上一個$ (第[[(dollarSign)]]行)，由 *TextField* 的語法也可以看出: TextField(<titleKey: LocalizedStringKey, text: Binding<String>)。SwiftUI 便是透過「在@State property 前加上$」的方式來取得這個 property 的 binding，當第[[(dollarSign)]]的值一改變，第[[(strTitle)]]行的 Text 也會即時跟著改變，這便是 binding 的作用。
 
-除了 *TextField* 之外，SwiftUI還有許多提供 *Binding* 的元件，例如：Toggle, Slider, DatePicker...。
+除了 *TextField* 之外，SwiftUI 還有許多提供 *Binding* 的元件，例如：Toggle, Slider, DatePicker...。
 
 *** Demo
 #+CAPTION: Button
@@ -508,7 +508,7 @@ struct ContentView: View {
 [[file:images/txtfield-1.jpg]]
 
 *** @State
-單一view內讓不同的object共享變數
+單一 view 內讓不同的 object 共享變數
 
 ** some view
 
@@ -962,7 +962,7 @@ var body: some View {
 :CUSTOM_ID: StateBinding
 :END:
 ** Switch to second View
-目的：在ContentView中按下Button，至Order View輸入下單內容，最後將下單內容傳回ContentView
+目的：在 ContentView 中按下 Button，至 Order View 輸入下單內容，最後將下單內容傳回 ContentView
 #+begin_src swift -r -n :results output :exports nil
 struct ContentView: View {
     var body: some View {
@@ -973,7 +973,7 @@ struct ContentView: View {
     }
 }
 #+end_src
-主程式click button後，秀出目標View (order), 下單View內容為：
+主程式 click button 後，秀出目標 View (order), 下單 View 內容為：
 #+begin_src swift -r -n :results output :exports nil
 import SwiftUI
 
@@ -996,9 +996,9 @@ struct Order_Previews: PreviewProvider {
 }
 
 #+end_src
-程式中第[[(bindBack)]]行的orders為儲存下單內容的字串，並於稍後將字串內容傳回主程式，故這個property主要是來自ContentView中的某一個變數(property)，並在ContentView呼叫(或秀出)order View時要交待清楚變數來源(傳遞參數)。這也可以從底下的Order_previews在要呼叫Order時會被強迫填入一個參數(第[[(ordersPassing)]]行)看出其呼叫方式。
+程式中第[[(bindBack)]]行的 orders 為儲存下單內容的字串，並於稍後將字串內容傳回主程式，故這個 property 主要是來自 ContentView 中的某一個變數(property)，並在 ContentView 呼叫(或秀出)order View 時要交待清楚變數來源(傳遞參數)。這也可以從底下的 Order_previews 在要呼叫 Order 時會被強迫填入一個參數(第[[(ordersPassing)]]行)看出其呼叫方式。
 
-而此時的ContentView再加入呼叫Order以及準備傳過去的參數，其內容如下(應該是要先在ContentView宣告好這個參數，不過此處先依反向順序進行以利說明)：
+而此時的 ContentView 再加入呼叫 Order 以及準備傳過去的參數，其內容如下(應該是要先在 ContentView 宣告好這個參數，不過此處先依反向順序進行以利說明)：
 #+begin_src swift -r -n :results output :exports nil
 struct ContentView: View {
     @State private var isPresented: Bool = false (ref:initIsP)
@@ -1017,7 +1017,7 @@ struct ContentView: View {
 }
 #+end_src
 
-ContentView的第[[(callOrder)]]行呼叫Order並將本身的property(orderContent)傳過去，而isPresented是用來控制Order秀出與否，故在一開始其初值設定為false(第[[(initIsP)]]行)，等到Button被按下後再變更內容為true，秀出下單View的內容(可以實驗一下將isPresented初值設定為true，觀察實驗結果)。
+ContentView 的第[[(callOrder)]]行呼叫 Order 並將本身的 property(orderContent)傳過去，而 isPresented 是用來控制 Order 秀出與否，故在一開始其初值設定為 false(第[[(initIsP)]]行)，等到 Button 被按下後再變更內容為 true，秀出下單 View 的內容(可以實驗一下將 isPresented 初值設定為 true，觀察實驗結果)。
 
 #+LATEX:\newpage
 
@@ -1025,8 +1025,8 @@ ContentView的第[[(callOrder)]]行呼叫Order並將本身的property(orderConte
 :PROPERTIES:
 :CUSTOM_ID: Alert
 :END:
-** 以Buuton觸發
-和呼叫其他View一樣，仍然是以一個bool來控制是否秀出Alert
+** 以 Buuton 觸發
+和呼叫其他 View 一樣，仍然是以一個 bool 來控制是否秀出 Alert
 #+begin_src swift -r -n :results output :exports nil
 struct SecondView: View {
     @State private var showAlert:Bool = false
@@ -1040,8 +1040,8 @@ struct SecondView: View {
 }
 #+end_src
 
-** 以TextField觸發
-將控制顯示的boo值寫在 *onCommit*
+** 以 TextField 觸發
+將控制顯示的 boo 值寫在 *onCommit*
 #+begin_src swift -r -n :results output :exports nil
 struct SecondView: View {
     @State private var title:String = ""
@@ -1061,9 +1061,9 @@ struct SecondView: View {
 #+LATEX: \newpage
 
 * Navigation between View: Tabbed View
-Tab bar是在App螢幕底部出現的欄，提供了在不同的版面之間進行快速切換的途徑。Tab bar的背景顏色是半透明，可以有調色。Tab bar在所有螢幕尺寸都保持一樣的高度，並且在鍵盤時出現會隱藏起來。
+Tab bar 是在 App 螢幕底部出現的欄，提供了在不同的版面之間進行快速切換的途徑。Tab bar 的背景顏色是半透明，可以有調色。Tab bar 在所有螢幕尺寸都保持一樣的高度，並且在鍵盤時出現會隱藏起來。
 
-一個tab bar可以包含無數個tab，但可以能容納的數量視乎根據手機/平板的大小，以及橫、豎屏模式都會有所影響。在空間的限制下，當某些tab無法被顯示時，最後一個tab會變成“更多”(More)， 通過這個tab可以到另一個獨立的列表頁面，那裡會列出所有無法被顯示的tab。[fn:10]
+一個 tab bar 可以包含無數個 tab，但可以能容納的數量視乎根據手機/平板的大小，以及橫、豎屏模式都會有所影響。在空間的限制下，當某些 tab 無法被顯示時，最後一個 tab 會變成“更多”(More)， 通過這個 tab 可以到另一個獨立的列表頁面，那裡會列出所有無法被顯示的 tab。[fn:10]
 
 ** Create subView
 #+begin_src swift -r -n :results output :exports nil
@@ -1114,7 +1114,7 @@ TabView {
 }.accentColor(.pink)
 #+end_src
 *** the tab bar’s color: appearance()
-兩種做法(尚未區分backgroundColor與barTintColor之差異)
+兩種做法(尚未區分 backgroundColor 與 barTintColor 之差異)
 **** init()
 #+begin_src swift -r -n :results output :exports nil
 init() {
@@ -1122,7 +1122,7 @@ init() {
     }
 #+end_src
 **** onAppear()
-與init()共用時，onAppear()優先
+與 init()共用時，onAppear()優先
 #+begin_src swift -r -n :results output :exports nil
 .onAppear() {
     UITabBar.appearance().barTintColor = .white
@@ -1200,17 +1200,17 @@ struct ContentView: View {
 }
 #+end_src
 
-** 一個優秀的Tab Bar 應該具備哪些特點？[fn:10]
-1. 不會有太多的tab
-   每增加一個tab 會減小了選擇各別的可觸區域，並增加app的複雜性，讓用戶更難找到所需的資料。即使“更多(More)”標籤可以展示額外的tab，但這會需要額外的點擊步驟，而且沒有很好利用tab bar的有限空間。太少的tab也是問題，它會使你的界面感覺被分離。一般來說，在iPhone上應使用3至5個標籤，在iPad上則可稍微多幾個。
+** 一個優秀的 Tab Bar 應該具備哪些特點？[fn:10]
+1. 不會有太多的 tab
+   每增加一個 tab 會減小了選擇各別的可觸區域，並增加 app 的複雜性，讓用戶更難找到所需的資料。即使“更多(More)”標籤可以展示額外的 tab，但這會需要額外的點擊步驟，而且沒有很好利用 tab bar 的有限空間。太少的 tab 也是問題，它會使你的界面感覺被分離。一般來說，在 iPhone 上應使用 3 至 5 個標籤，在 iPad 上則可稍微多幾個。
 1. 不會經常變動
-   在某個tab的功能無法使用時， 不要移除這個tab或是讓它失效。如果tab時有時無，App界面會變得不穩定和難以捉摸。確保所有的tab都可有效點擊，並且向用戶解釋目前tab內容不可用的原因。譬如說，當iOS裝置沒有歌曲時，音樂app的“我的音樂”tab會顯示如何下載歌曲的說明。
+   在某個 tab 的功能無法使用時， 不要移除這個 tab 或是讓它失效。如果 tab 時有時無，App 界面會變得不穩定和難以捉摸。確保所有的 tab 都可有效點擊，並且向用戶解釋目前 tab 內容不可用的原因。譬如說，當 iOS 裝置沒有歌曲時，音樂 app 的“我的音樂”tab 會顯示如何下載歌曲的說明。
 1. 應在相連接的視窗進行內容的轉換
-   為了讓界面符合用戶預期，選擇一個tab後的作用應該直接顯示於與其tab bar相連的視窗，而不是螢幕上其它範圍的視窗。例如，如在左邊的split view選擇了一個tab，是不會讓右半部分突然產生變化的。在popover中選擇的tab不會導致後方的視窗發生改變。
+   為了讓界面符合用戶預期，選擇一個 tab 後的作用應該直接顯示於與其 tab bar 相連的視窗，而不是螢幕上其它範圍的視窗。例如，如在左邊的 split view 選擇了一個 tab，是不會讓右半部分突然產生變化的。在 popover 中選擇的 tab 不會導致後方的視窗發生改變。
 1. 應保持 icon 的風格統一和平衡
-   系統提供了一系列預先設定好、一般用途的icon，我們也可以創建自己的icon，確保tab bar icon在視覺上的風格統一和平衡。
-1. 應使用 badge傳遞信息
-   我們可以在tab上加上badge (一個紅色橢圓上帶有白色數字或感嘆號的圖案) ，來暗示該tab或模式有新信息。
+   系統提供了一系列預先設定好、一般用途的 icon，我們也可以創建自己的 icon，確保 tab bar icon 在視覺上的風格統一和平衡。
+1. 應使用 badge 傳遞信息
+   我們可以在 tab 上加上 badge (一個紅色橢圓上帶有白色數字或感嘆號的圖案) ，來暗示該 tab 或模式有新信息。
 
 ** Reading Resources
 - [[https://www.appcoda.com/swiftui-tabview/][Customizing the Tab Bar Color]]
@@ -1366,11 +1366,11 @@ struct ContentView: View {
 }
 #+end_src
 **** class exercise
-為上述NavigationView加入另外兩個subView: OrderView, AboutView
+為上述 NavigationView 加入另外兩個 subView: OrderView, AboutView
 *** in new file
-將上述專案中的每個subView改為獨立View
+將上述專案中的每個 subView 改為獨立 View
 
-** Navigation v.s. List v.s. NavigationLink
+** Version-1: Navigation v.s. List v.s. NavigationLink
 #+begin_src swift -r -n :results output :exports nil
 //
 //  ContentView.swift
@@ -1434,16 +1434,110 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 #+end_src
+** Version-2:
+將記錄架構(Book.swift)、List(ContentView.swift)以及 Detail(DetailView.swift)各自以獨立檔案設計。
+*** Book.swift
+#+begin_src swift -r -n :eval no
+// 不涉及使用者界面
+
+import Foundation
+
+// 建立一個書籍的基本結構
+// 加上Identifiable以及UUID()是為了可以將書籍透過List來呈現
+
+struct Book: Identifiable {
+    var id = UUID() //產生一個唯一(unique)的亂數
+    var title: String
+    var author: String
+    var image: String
+}
+#+end_src
+*** ContentView.swift
+#+begin_src swift -r -n :eval no
+import SwiftUI
+
+struct ContentView: View {
+    // 在這裡臨生產生一個Book陣列，然後在List秀出來
+    var books = [
+        Book(id: UUID(), title: "地獄藍調", author: "李查德", image: "b1"),
+        Book(id: UUID(), title: "至死方休", author: "李查德", image: "b2"),
+        Book(id: UUID(), title: "一觸即發", author: "李查德", image: "b3"),
+        Book(id: UUID(), title: "索命訪客", author: "李查德", image: "b4")
+    ]
+
+    var body: some View {
+        NavigationView {
+            List(books) { book in
+                NavigationLink(destination: DetailView(thisbook: book)) {
+                    VStack(alignment: .leading) {
+                        Text(book.title)
+                            .font(.title)
+                        Text(book.author)
+                            .font(.subheadline)
+                    }
+                .navigationBarTitle("我的書單")
+                }
+            }
+        }
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
+#+end_src
+#+CAPTION: 主選單
+#+LABEL:fig:Navi-List-1
+#+name: fig:Navi-List-1
+#+ATTR_LATEX: :width 300
+#+ATTR_ORG: :width 300
+#+ATTR_HTML: :width 300
+[[file:images/Navi-List-1.png]]
+
+*** DetailView.swift
+#+begin_src swift -r -n :eval no
+import SwiftUI
+
+struct DetailView: View {
+    //我希望等一下有任何人呼叫我，一定要傳書本的資料給我
+    var thisbook: Book
+    var body: some View {
+        VStack {
+            Image(thisbook.image)
+            Text(thisbook.title)
+            Text(thisbook.author)
+        }
+
+    }
+}
+
+struct DetailView_Previews: PreviewProvider {
+    static var previews: some View {
+        // 臨時給個資料，讓preview可以秀出來就好
+
+        DetailView(thisbook: Book(id: UUID(), title: "索命訪客", author: "李查德", image: "b4"))
+    }
+}
+#+end_src
+#+CAPTION: Detail
+#+LABEL:fig:Navi-List-2
+#+name: fig:Navi-List-
+#+ATTR_LATEX: :width 300
+#+ATTR_ORG: :width 300
+#+ATTR_HTML: :width 300
+[[file:images/Navi-List-2.png]]
 
 * @EnvironmentObject: Create once, access everywhere
 :PROPERTIES:
 :CUSTOM_ID: EnvironmentObject
 :END:
-適用情境：app中某些property需要於很多View中存取，例如，app的setting
+適用情境：app 中某些 property 需要於很多 View 中存取，例如，app 的 setting
 ** ContentView
-情境說明：在app中建立一個ShoppingCart類別，這個class也可以獨立存在於一個檔案中，並讓這個class confirm ObservableObject protocol，於class中將要在各View中share的property以@Published標示出來。
+情境說明：在 app 中建立一個 ShoppingCart 類別，這個 class 也可以獨立存在於一個檔案中，並讓這個 class confirm ObservableObject protocol，於 class 中將要在各 View 中 share 的 property 以@Published 標示出來。
 
-在每一個要使用到這個EnvironmentObject的View中以@EnvironmentObject來建立該class的instance(第[[(environmentObject)]]行)，同時，在previews中也要加入environmentObject()的modifier(第[[(emptyConstructor)]]行)。
+在每一個要使用到這個 EnvironmentObject 的 View 中以@EnvironmentObject 來建立該 class 的 instance(第[[(environmentObject)]]行)，同時，在 previews 中也要加入 environmentObject()的 modifier(第[[(emptyConstructor)]]行)。
 
 #+begin_src swift -r -n :results output :exports nil
 import SwiftUI
@@ -1487,7 +1581,7 @@ struct ContentView_Previews: PreviewProvider {
 #+end_src
 
 ** SecondView
-同樣的，在SecondView中要使用到environment object也要以@EnvironmentObject來宣告利用該class所建立的instance(第[[(useEnv)]]行)，而SecondView的preview也要加上同樣的modifier(傳入參數)。
+同樣的，在 SecondView 中要使用到 environment object 也要以@EnvironmentObject 來宣告利用該 class 所建立的 instance(第[[(useEnv)]]行)，而 SecondView 的 preview 也要加上同樣的 modifier(傳入參數)。
 #+begin_src swift -r -n :results output :exports nil
 import SwiftUI
 
@@ -1510,7 +1604,7 @@ struct SecondView_Previews: PreviewProvider {
     }
 }
 #+end_src
-這裡的cart.items在變更後，ContentView的數量會即時更新，同樣的，ContentView中被變更的Title也會即時在SecondView中看出結果。
+這裡的 cart.items 在變更後，ContentView 的數量會即時更新，同樣的，ContentView 中被變更的 Title 也會即時在 SecondView 中看出結果。
 
 #+LATEX: \newpage
 
@@ -1646,7 +1740,7 @@ struct ContentView: View {
 :PROPERTIES:
 :CUSTOM_ID: userDevaults
 :END:
-Ways to make data "persist" in iOS:
+** 幾種可以在 iOS app 永久儲存資料的方式:
 - Filesystem: FileManager
 - SQL database: CoreData
 - Cloud: ClodKit, Firebase
@@ -1678,7 +1772,6 @@ let strings: [String]? = defaults.stringArray(forKey: "MyString")
 - [[https://www.simpleswiftguide.com/how-to-use-userdefaults-in-swiftui/][How to use UserDefaults in SwiftUI]]
 
 #+latex:\newpage
-
 
 * TODO MVVM
 :PROPERTIES:
@@ -2219,8 +2312,8 @@ stackOfStrings.push("cuatro")
 :PROPERTIES:
 :CUSTOM_ID: advanced
 :END:
-- [[https://developer.apple.com/design/human-interface-guidelines/][Human Interface Guidelines]]: Apple的人機設計界面指南
-- [[https://developer.apple.com/documentation][Apple Developer Documentation]]: Apple開發者文件
+- [[https://developer.apple.com/design/human-interface-guidelines/][Human Interface Guidelines]]: Apple 的人機設計界面指南
+- [[https://developer.apple.com/documentation][Apple Developer Documentation]]: Apple 開發者文件
 - [[https://www.appcoda.com.tw/protocol-extension/][利用 Protocol Extension 減少重覆的 Code　大大增強 Code 的維護性]]
 - [[https://appcoda.com.tw/mastering-swift/][精通Swift：列舉、閉包、泛型、Protocols和高階函數]]
 #+latex:\newpage
