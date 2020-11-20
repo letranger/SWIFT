@@ -1371,7 +1371,7 @@ struct ContentView: View {
 將上述專案中的每個 subView 改為獨立 View
 
 ** Version-1: Navigation v.s. List v.s. NavigationLink
-#+begin_src swift -r -n :results output :exports nil
+#+begin_src swift -r -n :eval no
 //
 //  ContentView.swift
 //  navigation
