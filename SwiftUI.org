@@ -1642,6 +1642,9 @@ struct ContentView: View {
 
 #+LATEX: \newpage
 
+* TODO UserDefaults
+- [[https://www.simpleswiftguide.com/how-to-use-userdefaults-in-swiftui/][How to use UserDefaults in SwiftUI]]
+
 * TODO MVVM
 :PROPERTIES:
 :CUSTOM_ID: SW-MVVM
