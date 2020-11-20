@@ -1643,7 +1643,42 @@ struct ContentView: View {
 #+LATEX: \newpage
 
 * TODO UserDefaults
+:PROPERTIES:
+:CUSTOM_ID: userDevaults
+:END:
+Ways to make data "persist" in iOS:
+- Filesystem: FileManager
+- SQL database: CoreData
+- Cloud: ClodKit, Firebase
+- UserDefualts
+
+我們可以將之視為 persistent dictionary。UserDefaults 可以儲存 Property List 類型的資料。Property List is not a protocol or a struct or anything tangible or Swift-like. It is any combination of String, Int, Bool, Floating point, Date, Array or Dictionary.
+
+A powerful way to do this is using the *Codable* protocol inf Swift. Codable converts structs into Data objects.
+
+** Using userDefaults
+#+begin_src swift -r -n :eval no
+let defaults = UserDefaults.standard
+#+end_src
+
+** Storing Data
+#+begin_src swift -r -n :eval no
+defaults.set(object, forKey: "SomeKey")
+defautls.setDouble(37.5, forKey: "MyDouble")
+#+end_src
+
+** Retrieving Data
+#+begin_src swift -r -n :eval no
+let i: Int = defaults.integer(forKey: "MyInt")
+let u: URL? = defaults.url(forKey: "MyURL")
+let strings: [String]? = defaults.stringArray(forKey: "MyString")
+#+end_src
+
+** Resources
 - [[https://www.simpleswiftguide.com/how-to-use-userdefaults-in-swiftui/][How to use UserDefaults in SwiftUI]]
+
+#+latex:\newpage
+
 
 * TODO MVVM
 :PROPERTIES:
@@ -2178,39 +2213,6 @@ stackOfStrings.push("cuatro")
 #+end_src
 ** opaque
 帶有不透明（opaque）返回類型的函數或方法，將會隱藏其返回值的類型[fn:20]
-#+latex:\newpage
-
-* TODO UserDefaults
-:PROPERTIES:
-:CUSTOM_ID: userDevaults
-:END:
-Ways to make data "persist" in iOS:
-- Filesystem: FileManager
-- SQL database: CoreData
-- Cloud: ClodKit, Firebase
-- UserDefualts
-
-我們可以將之視為 persistent dictionary。UserDefaults 可以儲存 Property List 類型的資料。Property List is not a protocol or a struct or anything tangible or Swift-like. It is any combination of String, Int, Bool, Floating point, Date, Array or Dictionary.
-
-A powerful way to do this is using the *Codable* protocol inf Swift. Codable converts structs into Data objects.
-
-** Using userDefaults
-#+begin_src swift -r -n :eval no
-let defaults = UserDefaults.standard
-#+end_src
-
-** Storing Data
-#+begin_src swift -r -n :eval no
-defaults.set(object, forKey: "SomeKey")
-defautls.setDouble(37.5, forKey: "MyDouble")
-#+end_src
-
-** Retrieving Data
-#+begin_src swift -r -n :eval no
-let i: Int = defaults.integer(forKey: "MyInt")
-let u: URL? = defaults.url(forKey: "MyURL")
-let strings: [String]? = defaults.stringArray(forKey: "MyString")
-#+end_src
 #+latex:\newpage
 
 * TODO 進階主題
