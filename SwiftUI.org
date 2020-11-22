@@ -1871,9 +1871,10 @@ Three ways for sharing data in SwiftUI[fn:14]
 |                              |should force a view to refresh|                              |
 +------------------------------+------------------------------+------------------------------+
 
-** 進階閱讀
+** Further Reading
 - [[https://www.youtube.com/watch?v=iH88uJcdzDM][SwiftUI Reactive Intro - Understanding State and Binding in SwiftUI in Xcode 11 (2019)]]
 - [[https://medium.com/%E5%BD%BC%E5%BE%97%E6%BD%98%E7%9A%84-swift-ios-app-%E9%96%8B%E7%99%BC%E5%95%8F%E9%A1%8C%E8%A7%A3%E7%AD%94%E9%9B%86/%E7%94%A8%E7%8B%80%E6%85%8B%E8%A8%AD%E8%A8%88-swiftui-%E7%95%AB%E9%9D%A2-%E8%AA%8D%E8%AD%98-state-property-binding-27fea6885ead][用狀態設計 SwiftUI 畫面 — 認識 @State property，binding & Toggle]]
+- [[https://www.youtube.com/watch?v=stSB04C4iS4][SwiftUI Tutorial: What's the difference between @State, @ObjectBinding, and @EnvironmentObject?]]
 
 #+LATEX: \newpage
 
@@ -2056,7 +2057,7 @@ struct BookDetailViewModel {
   #+end_src
   如果在 View 上有一個 Favorite Button，則當 user 點了 Favorite 後，ViewModel 應負責將 struct 中的 isFavorite 改存 True，並回存至 Model 中。Model 的資料只能透過 ViewModel 來新增刪除，View 無法直接染指。
   Model 與 UI 完全無關，單純用來儲存資料，ViewModel 為 Model 與 View 溝通的橋樑。
-  
+
 ** View+ViewModel
 - [[https://www.youtube.com/watch?v=gkAV4D1nopA][SwiftUI Tip Calculator Using MVVM Design Pattern]]
 - [[https://www.youtube.com/watch?v=cbqMkIG6Qeg][Understanding MVVM Design Pattern]]: 講的超清楚
@@ -2067,21 +2068,314 @@ struct BookDetailViewModel {
 
 ** DICE DEMO
 
+** Reading Resources
+- [[https://www.youtube.com/watch?v=1IlUBHvgY8Q&t=29s][SwiftUI MVVM Programming with ObservableObject @Published @ObservedObject]]
+
+#+latex:\newpage
+
+* TODO Web API: URLSession v.s. JSONDecoder
+** Demo 1
+*** ContentView.swift
+#+begin_src swift -r -n :results output :exports nil
+import SwiftUI
+
+struct Todo: Codable, Identifiable {
+    public var id: Int
+    public var title: String
+    public var completed: Bool
+}
+
+class FetchToDo: ObservableObject {
+  // 1.
+  @Published var todos = [Todo]()
+
+    init() {
+        let url = URL(string: "https://jsonplaceholder.typicode.com/todos")!
+        // 2.
+        URLSession.shared.dataTask(with: url) {(data, response, error) in
+            do {
+                if let todoData = data {
+                    // 3.
+                    let decodedData = try JSONDecoder().decode([Todo].self, from: todoData)
+                    DispatchQueue.main.async {
+                        self.todos = decodedData
+                    }
+                } else {
+                    print("No data")
+                }
+            } catch {
+                print("Error")
+            }
+        }.resume()
+    }
+}
+
+struct ContentView: View {
+    // 1.
+    @ObservedObject var fetch = FetchToDo()
+    var body: some View {
+        VStack {
+            // 2.
+            List(fetch.todos) { todo in
+                VStack(alignment: .leading) {
+                    // 3.
+                    Text(todo.title)
+                    Text("\(todo.completed.description)") // print boolean
+                        .font(.system(size: 11))
+                        .foregroundColor(Color.gray)
+                }
+            }
+        }
+    }
+}
+#+end_src
+#+LABEL:fig:JSON-1
+#+name: fig:JSON-1
+#+ATTR_LATEX: :width 300
+#+ATTR_ORG: :width 300
+#+ATTR_HTML: :width 600
+[[file:images/json-1.jpg]]
+
+** Demo 2
+*** Flow.swift
+#+begin_src swift -r -n :results output :exports nil
+//
+//  Flow.swift
+//  json
+//
+//  Created by yen yung chin on 2020/11/21.
+//
+
+import Foundation
+
+struct Flow: Decodable, Hashable {
+    var 年: Int? = nil
+    var 月: Int? = nil
+    var 總運量: Int? = nil
+    var 日均運量: Int? = nil
+    var 假日均運量: Int? = nil
+    var 月台上刷卡日均筆數: Double? = nil
+    var 車上刷卡日均筆數: Double? = nil
+    var 售票機日均筆數: Double? = nil
+    var 補票日均筆數: Double? = nil
+    var 團體票日均筆數: Double? = nil
+}
+
+class FetchFlow: ObservableObject {
+    @Published var flows = [Flow]()
+    init() {
+        guard let url = URL(string: "https://data.kcg.gov.tw/dataset/6f29f6f4-2549-4473-aa90-bf60d10895dc/resource/30dfc2cf-17b5-4a40-8bb7-c511ea166bd3/download/lightrailtraffic.json") else {
+            print("高雄輕軌統計")
+            return
+        }
+        URLSession.shared.dataTask(with: url) {(data, response, error) in
+            do {
+                if let flowData = data {
+                    let decodeData = try JSONDecoder().decode([Flow].self, from: flowData)
+
+                    DispatchQueue.main.async {
+                        self.flows = decodeData
+                    }
+                } else {
+                    print("No data")
+                }
+            } catch {
+                print("\(error)")
+            }
+        }.resume()
+    }
+}
+
+#+end_src
+
+#+RESULTS:
+
+*** ContentView.swift
+#+begin_src swift -r -n :results output :exports nil
+import SwiftUI
+
+struct ContentView: View {
+    @ObservedObject var flow = FetchFlow()
+
+    var body: some View {
+        NavigationView {
+            List() {
+                ForEach(flow.flows, id: \.self) {(item) in
+                    NavigationLink(destination: Text("總運量: \(item.總運量!)")) {
+                        HStack {
+                            Text("\(item.年!)年\(item.月!)月")
+                            Text("\(item.日均運量!)")
+                        }
+                    }
+                }
+            }.navigationTitle("")
+        }
+    }
+}
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
+
+#+end_src
+#+LABEL:fig:JSON-2
+#+name: fig:JSON-2
+#+ATTR_LATEX: :width 500
+#+ATTR_ORG: :width 500
+#+ATTR_HTML: :width 600
+[[file:images/json-2.jpg]]
+
+** 公開資料平台
+- [[https://data.gov.tw/][政府資料開放平台]]
+- [[https://data.kcg.gov.tw/dataset][高雄市政府開放資料集]]
+- [[https://data.tainan.gov.tw/dataset][台南市政府開放資料集]]
+- [[https://ptx.transportdata.tw/PTX/Service][公共運輸整合資訊]]
+- [[https://kaleidosblog.s3-eu-west-1.amazonaws.com/json/tutorial.json][country/code JSON sample]]
+
+** Further Reading
+- [[https://www.youtube.com/watch?v=tdxKIPpPDAI][iOS Swift Tutorial: Use Web APIs and JSON Data with Swift 5]]- [[https://www.ioscreator.com/tutorials/swiftui-json-list-tutorial][SwiftUI Fetch JSON Data into List]]
+- [[https://programmingwithswift.com/parse-json-from-file-and-url-with-swift/][Parse JSON from file and URL with Swift]]
+- [[https://www.youtube.com/watch?v=1en4JyW3XSI][Making an API call and fetch JSON data in SwiftUI]]
+- [[https://benoitpasquier.com/encoding-decoding-json-swift4/][The best way to encode and decode JSON in Swift4 ]]
+- [[https://www.reddit.com/r/swift/comments/emw0i3/jsondecoder_fails_if_i_dont_have_an_id_for_each/][JSONDecoder fails if I don't have an "id" for each item... why doesn't UUID work?]]
+- [[https://medium.com/%E5%BD%BC%E5%BE%97%E6%BD%98%E7%9A%84-swift-ios-app-%E9%96%8B%E7%99%BC%E6%95%99%E5%AE%A4/%E8%A7%A3%E6%B1%BAjson-key%E4%B8%8D%E5%9B%BA%E5%AE%9A%E6%99%82%E5%87%BA%E7%8F%BE-no-value-associated-with-key-codingkeys-%E7%8B%80%E6%B3%81-720d7d09486a][解決Json Key不固定時出現“No value associated with key CodingKeys” 狀況]]
+
+#+latex: \newpage
+
 * TODO Protocols
 :PROPERTIES:
 :CUSTOM_ID: SW-Protocols
 :END:
-對任何程式開發來說，減少重覆的 code，把權責明確分開，讓 code 維護性變好，是非常重要的課題。而在現今的軟體開發模式中，有許多方法可以做到這點，最為人所知的一個模式，就是利用繼承 (Inheritance)，把會重覆利用的部份放在母類別，讓其它子類別去繼承。另外一種做法，則是利用 Composition Pattern，將功能做成組件分出來，讓需要的模組去組合取用。[fn:16]
+- Protocols are a fundamental feature of Swift. They play a leading role in the structure of the Swift standard library and are a common method of abstraction. They provide a similar experience to interfaces that some other languages have. An advantage of protocols in Swift is that objects can conform to multiple protocols.[fn:16]
+- Protocol是一個只宣告不定義的型別，然而這個特性可以讓我們的程式更有彈性，像在IOS SDK裡面，耳熟能詳的Delegate，就大量的運用Potocol，方便我們客製化事件發生時要處理的事情。[fn:17]
+
+- 對任何程式開發來說，減少重覆的 code，把權責明確分開，讓 code 維護性變好，是非常重要的課題。而在現今的軟體開發模式中，有許多方法可以做到這點，最為人所知的一個模式，就是利用繼承 (Inheritance)，把會重覆利用的部份放在母類別，讓其它子類別去繼承。另外一種做法，則是利用 Composition Pattern，將功能做成組件分出來，讓需要的模組去組合取用。[fn:18]
 #+begin_verse
-A protocol defines a blueprint of methods, properties, and other requirements that suit a particular task or piece of functionality. The protocol can then be adopted by a class, structure, or enumeration to provide an actual implementation of those requirements. Any type that satisfies the requirements of a protocol is said to conform to that protocol. [fn:17]
+A protocol defines a blueprint of methods, properties, and other requirements that suit a particular task or piece of functionality. The protocol can then be adopted by a class, structure, or enumeration to provide an actual implementation of those requirements. Any type that satisfies the requirements of a protocol is said to conform to that protocol. [fn:19]
 #+end_verse
 
-協定提供類型可以做的資訊，Classes 和 structs 則提供物件的資訊，協定則提供物件將會執行的動作。[fn:18]
+- 協定提供類型可以做的資訊，Classes 和 structs 則提供物件的資訊，協定則提供物件將會執行的動作。[fn:20]
 #+begin_verse
 協定是 Swift 一個重要的特性，它會定義出為了完成某項任務或功能所需的方法、屬性，但是本身不會實作這些任務跟功能，而僅僅只是表達出該任務或功能的名稱。協定為方法、屬性、以及其他特定的任務需求或功能定義藍圖。協定可被 class、struct、或 enum 類型採納以提供所需功能的具體實現。滿足了協定中需求的任意類型都叫做遵循了該協定。
-
-除了指定遵循類型必須實現的要求外，你可以擴展一個協定以實現其中的一些需求或實現一個符合類型的可以利用的附加功能。[fn:19]
 #+end_verse
+
+除了指定遵循類型必須實現的要求外，你可以擴展一個協定以實現其中的一些需求或實現一個符合類型的可以利用的附加功能。[fn:21]
+- 例如，你可能有一個名為str的變量，其類型為String。身為一個開發人員，你應該知道str代表String，如果我們定義了一個名為StringProtocol的協定，它具有所有的String的API，我們可以擴展任何類型去遵循StringProtocol（意思是滿足其所有要求），如此一來，即可以使用該對象，讓它就像是一個String，儘管我們不知道它是什麼！如果看起來像一隻鴨子，游泳像一隻鴨子，叫聲像一隻鴨子，那就是一隻鴨子。我們新的StringProtocol可以告訴那些遵守它協定的類型能夠做什麼，且不需要知道這些類型的資訊。[fn:20]
+
+** Protocol Syntax
+*** Syntax
+#+begin_src swift -r -n :results output :exports nil
+protocol SomeProtocol {
+    // protocol definition goes here
+}
+#+end_src
+Classes , structs, enums can adopt these protocol by placing protocol’s name after the type’s name, separated by a colon, as part of their definition. Multiple protocols can be listed, and are separated by commas:[fn:22]
+#+begin_src swift -r -n :results output :exports nil
+struct SomeStructure: FirstProtocol, AnotherProtocol {
+    //structure definition goes here
+}
+#+end_src
+*** Adding property requirements
+source: [[https://abhimuralidharan.medium.com/all-about-protocols-in-swift-11a72d6ea354][All about protocols in swift]]
+- A protocol can have properties as well as methods that a class, enum or struct conforming to this protocol can implement.
+- A protocol declaration only specifies the required property name and type. It doesn’t say anything about whether the property should be a stored one or a computed one.
+- A protocol also specifies whether each property must be gettable or gettable and settable.
+- Property requirements are always declared as variable properties, prefixed with the var keyword.
+- Gettable and settable properties are indicated by writing { get set } after their type declaration, and gettable properties are indicated by writing { get }.
+#+begin_src swift -r -n :results output :exports nil
+protocol SomeProtocol {
+    var mustBeSettable: Int { get set }
+    var doesNotNeedToBeSettable: Int { get }
+}
+#+end_src
+*** Protocols with mutating methods
+Mutating methods are methods that we use on value types like structs and enums. These methods are allowed to modify the instance it belongs to and any properties of that instance. A small example:
+
+Consider a simple struct Rectangle:
+#+begin_src swift -r -n :results output :exports nil
+struct Rectangle {
+    var width = 1
+    var height = 1
+
+    func area() -> Int {
+        return width * height
+    }
+
+    mutating func scaleBy(value: Int) {
+        width *= value
+        height *= value
+    }
+}
+#+end_src
+The scaleBy(value:) method modifies the value of width and height. So it should be marked as mutating. Otherwise the compiler will throw error at you.
+
+#+begin_verse
+If you mark a protocol instance method requirement as mutating, you do not need to write the mutatingkeyword when writing an implementation of that method for a class. The mutating keyword is only used by structures and enumerations.
+#+end_verse
+Consider an enum and class implementing a protocol with mutating function:
+#+begin_src swift -r -n :results output :exports nil
+protocol Togglable {
+    mutating func toggle()
+}
+
+enum OnOffSwitch: Toggglable {
+    case off, on
+    mutating func toggle() {
+        switch self {
+        case .off:
+            self = .on
+        case .on:
+            self = .off
+        }
+    }
+}
+
+var lightSwitch = OnOffSwitch.off
+lightSwitch.toggle()
+
+class ToggleClass: Togglable {
+    var someBool = false
+    func toggle() {
+        someBool = true
+    }
+}
+
+let toggleClassObj = ToggleClass()
+toggleClassObj.toggle()
+#+end_src
+*** Initializer Requirements
+Protocols can have specific initializers like normal methods which the conforming types can implement.
+#+begin_src swift -r -n :results output :exports nil
+protocol SomeProtocol {
+    init(someParameter: Int)
+}
+#+end_src
+
+** DEMO
+#+begin_src swift -r -n :results output :exports nil
+protocol Sound {
+    func makeSound()
+}
+
+struct Dog: Sound {
+    func makeSound() {
+        print("Woof")
+    }
+}
+
+struct Tree: Sound {
+    func makeSound() {
+        print("Susrrate")
+    }
+}
+
+struct iPhone: Sound {
+    func makeSound() {
+        print("Ring")
+    }
+}
+#+end_src
 
 ** 範例
 *** 版本 1
@@ -2257,19 +2551,20 @@ extension Song: Likeable {}
 extension Album: Likeable {}
 #+end_src
 
-* TODO Web API and JSON
-:PROPERTIES:
-:CUSTOM_ID: json
-:END:
-- [[https://www.youtube.com/watch?v=tdxKIPpPDAI][iOS Swift Tutorial: Use Web APIs and JSON Data with Swift 5]]
-Develop in MVVM
+** Further Reading
+- [[https://docs.swift.org/swift-book/LanguageGuide/Protocols.html][Protocol]]
+- [[https://appcoda.com.tw/swift-protocol/][Swift開發指南：Protocols與Protocol Extensions的使用心法]]
+- [[https://abhimuralidharan.medium.com/all-about-protocols-in-swift-11a72d6ea354][All about protocols in SWIFT]]
+- [[https://blog.csdn.net/XunCiy/article/details/107367571][Swift5 14.Protocols]]
+
+#+latex:\newpage
 
 * TODO some
 :PROPERTIES:
 :CUSTOM_ID: some
 :END:
 #+begin_verse
-Adding the keyword some in front of a return type indicates that the return type is opaque. [fn:20]
+Adding the keyword some in front of a return type indicates that the return type is opaque. [fn:23]
 #+end_verse
 ** Generics
 *** 問題
@@ -2350,7 +2645,7 @@ stackOfStrings.push("cuatro")
 
 #+end_src
 ** opaque
-帶有不透明（opaque）返回類型的函數或方法，將會隱藏其返回值的類型[fn:21]
+帶有不透明（opaque）返回類型的函數或方法，將會隱藏其返回值的類型[fn:24]
 #+latex:\newpage
 
 * TODO 進階主題
@@ -2395,25 +2690,31 @@ stackOfStrings.push("cuatro")
 
 [fn:15] [[https://www.youtube.com/watch?v=0i152oA3T3s][Lecture 9: Data Flow]]
 
-[fn:16] [[https://www.appcoda.com.tw/protocol-extension/][利用 Protocol Extension 減少重覆的 Code　大大增強 Code 的維護性]]
+[fn:16] [[https://www.raywenderlich.com/6742901-protocol-oriented-programming-tutorial-in-swift-5-1-getting-started][Protocol-Oriented Programming Tutorial in Swift 5.1: Getting Started]]
 
-[fn:17] [[https://docs.swift.org/swift-book/LanguageGuide/Protocols.html][Protocols]]
+[fn:17] [[https://medium.com/%E5%BD%BC%E5%BE%97%E6%BD%98%E7%9A%84-swift-ios-app-%E9%96%8B%E7%99%BC%E6%95%99%E5%AE%A4/%E7%B0%A1%E6%98%93%E8%AA%AA%E6%98%8Eswift-4-protocol-919b7f9cbaee][『簡易說明Swift 4』Protocol]]
 
-[fn:18] [[https://www.appcoda.com.tw/swift-protocol/][Swift開發指南：Protocols與Protocol Extensions的使用心法]]
+[fn:18] [[https://www.appcoda.com.tw/protocol-extension/][利用 Protocol Extension 減少重覆的 Code　大大增強 Code 的維護性]]
 
-[fn:19] [[https://ithelp.ithome.com.tw/articles/10197366][Day-29 Swift 語法(25) - 協定 Protocol]]
+[fn:19] [[https://docs.swift.org/swift-book/LanguageGuide/Protocols.html][Protocols]]
 
-[fn:20] [[https://medium.com/@PhiJay/whats-this-some-in-swiftui-34e2c126d4c4][What’s this “some” in SwiftUI?]]
+[fn:20] [[https://www.appcoda.com.tw/swift-protocol/][Swift開發指南：Protocols與Protocol Extensions的使用心法]]
 
-[fn:21] [[https://medium.com/jeremy-xue-s-blog/swift-%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80-opaque-types-600ad5758b91][Swift 程式語言 — Opaque Types]]
+[fn:21] [[https://ithelp.ithome.com.tw/articles/10197366][Day-29 Swift 語法(25) - 協定 Protocol]]
 
-[fn:26] [[https://levelup.gitconnected.com/demystifying-struct-class-and-enum-in-swift-5-43dde089e96a][Demystifying Struct, Class, and Enum in Swift 5]]
+[fn:22] [[https://abhimuralidharan.medium.com/all-about-protocols-in-swift-11a72d6ea354][All about protocols in swift]]
+
+[fn:23] [[https://medium.com/@PhiJay/whats-this-some-in-swiftui-34e2c126d4c4][What’s this “some” in SwiftUI?]]
+
+[fn:24] [[https://medium.com/jeremy-xue-s-blog/swift-%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80-opaque-types-600ad5758b91][Swift 程式語言 — Opaque Types]]
+
+[fn:29] [[https://stackoverflow.com/questions/56437335/go-to-a-new-view-using-swiftui][Go to a new view using SwiftUI]]
+
+[fn:28] [[https://www.appcoda.com.tw/swift-class/][Swift Class vs Struct：設計 Model 時，該用 Struct 還是 Class 呢？]]
+
+[fn:27] [[https://appcoda.com.tw/mastering-swift/][精通Swift：列舉、閉包、泛型、Protocols和高階函數]]
+
+[fn:26] [[https://ithelp.ithome.com.tw/articles/10220520][ Day 10: [Swift] 結構和類 (Struct and Class) ]]
+
+[fn:25] [[https://levelup.gitconnected.com/demystifying-struct-class-and-enum-in-swift-5-43dde089e96a][Demystifying Struct, Class, and Enum in Swift 5]]
 mu index --maildir="~/.gmail
-
-[fn:25] [[https://ithelp.ithome.com.tw/articles/10220520][ Day 10: [Swift] 結構和類 (Struct and Class) ]]
-
-[fn:24] [[https://appcoda.com.tw/mastering-swift/][精通Swift：列舉、閉包、泛型、Protocols和高階函數]]
-
-[fn:23] [[https://www.appcoda.com.tw/swift-class/][Swift Class vs Struct：設計 Model 時，該用 Struct 還是 Class 呢？]]
-
-[fn:22] [[https://stackoverflow.com/questions/56437335/go-to-a-new-view-using-swiftui][Go to a new view using SwiftUI]]
