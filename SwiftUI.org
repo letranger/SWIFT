@@ -1950,14 +1950,14 @@ All of these @Something statements are property wrappers. A property wrapper is 
 The property wrapper feature adds *"syntactic sugar"* to make these structs easy to create/use." [fn:15]
 ** SwiftUI的狀態管理
 [[https://onevcat.com/2020/06/stateobject/][資料來源:@StateObject 和 @ObservedObject 的区别和使用]]
-在2019年SwiftUI剛問世時，除去專門用來管理手勢的@GestureState以外，有三個常用的和狀態管理相關的property wrapper，它們分別是@State，@ObservedObject和@EnvironmentObject。根據職責和作用範圍不同，它們各自的適用場景也有區別[fn:33]。一般來說：
+在2019年SwiftUI剛問世時，除去專門用來管理手勢的@GestureState以外，有三個常用的和狀態管理相關的property wrapper，它們分別是@State，@ObservedObject和@EnvironmentObject。根據職責和作用範圍不同，它們各自的適用場景也有區別[fn:16]。一般來說：
 - @State用於View中的私有狀態值，一般來說它所修飾的都應該是struct值，並且不應該被其他的view看到。它代表了SwiftUI中作用範圍最小，本身也最簡單的狀態，比如一個Bool，一個Int或者一個String。簡單說，如果一個狀態能夠被標記為private並且它是值類型，那麼@State是適合的。
 - 對於更複雜的一組狀態，我們可以將它組織在一個class中，並讓其實現ObservableObject協議。對於這樣的class類型，其中被標記為@Published的屬性，將會在變更時自動發出事件，通知對它有依賴的View進行更新。View中如果需要依賴這樣的ObservableObject對象，在聲明時則使用@ObservedObject來訂閱。
 - @EnvironmentObject針對那些需要傳遞到深層次的子View中的ObservableObject對象，我們可以在父層級的View上用.environmentObject修飾器來將它注入到環境中，這樣任意子View都可以通過@EnvironmentObject來獲取對應的對象。
 
 這基本就是初版SwiftUI 狀態管理的全部了。看起來對於狀態管理，SwiftUI的覆蓋已經很全面了，那為什麼要新加一個@StateObjectproperty wrapper呢？
 ** @StateObject v.s. @ObservedObject
-@ObservedObject不管存儲，會隨著View的創建被多次創建。而@StateObject保證對像只會被創建一次。因此，如果是在View裡自行創建的ObservableObjectmodel對象，大概率來說使用@StateObject會是更正確的選擇。@StateObject基本上來說就是一個針對class的@State升級版[fn:33]
+@ObservedObject不管存儲，會隨著View的創建被多次創建。而@StateObject保證對像只會被創建一次。因此，如果是在View裡自行創建的ObservableObjectmodel對象，大概率來說使用@StateObject會是更正確的選擇。@StateObject基本上來說就是一個針對class的@State升級版[fn:16]
 *** 程式範例
 #+begin_src swift -r -n :results output :exports nil
 struct ContentView: View {
@@ -2020,7 +2020,7 @@ struct GradeText: View {
 
 上例中，按加分後，及格與等級的判斷都能正常運作，然而一旦切換學生姓名與學號，scoreModel的分數就會被重置為60分。原因在於按下「加分」button導致ContentView的狀態發生變化，ContentView.body被重新求值，連帶scoreBoard這個View也被重建，而其中的scoreModel也一起重新生成，於是之前所做的改變(狀態)就消失了。
 *** Create once
-只要理解了@ObservedObject存在的問題，@StateObject的意義也就很明顯了。@StateObject就是@State的升級版：@State是針對struct狀態所創建的存儲，@StateObject則是針對ObservableObjectclass的存儲。它保證這個class實例不會隨著View被重新創建。從而解決問題[fn:33]。
+只要理解了@ObservedObject存在的問題，@StateObject的意義也就很明顯了。@StateObject就是@State的升級版：@State是針對struct狀態所創建的存儲，@StateObject則是針對ObservableObjectclass的存儲。它保證這個class實例不會隨著View被重新創建。從而解決問題[fn:16]。
 
 解決方案：把scoreBoard中的@ObservedObject改為@StateObject
 #+begin_src swift -r -n :results output :exports nil
@@ -2383,21 +2383,21 @@ class FetchFlow: ObservableObject {
 :PROPERTIES:
 :CUSTOM_ID: SW-Protocols
 :END:
-- Protocols are a fundamental feature of Swift. They play a leading role in the structure of the Swift standard library and are a common method of abstraction. They provide a similar experience to interfaces that some other languages have. An advantage of protocols in Swift is that objects can conform to multiple protocols.[fn:16]
-- Protocol是一個只宣告不定義的型別，然而這個特性可以讓我們的程式更有彈性，像在IOS SDK裡面，耳熟能詳的Delegate，就大量的運用Potocol，方便我們客製化事件發生時要處理的事情。[fn:17]
+- Protocols are a fundamental feature of Swift. They play a leading role in the structure of the Swift standard library and are a common method of abstraction. They provide a similar experience to interfaces that some other languages have. An advantage of protocols in Swift is that objects can conform to multiple protocols.[fn:17]
+- Protocol是一個只宣告不定義的型別，然而這個特性可以讓我們的程式更有彈性，像在IOS SDK裡面，耳熟能詳的Delegate，就大量的運用Potocol，方便我們客製化事件發生時要處理的事情。[fn:18]
 
-- 對任何程式開發來說，減少重覆的 code，把權責明確分開，讓 code 維護性變好，是非常重要的課題。而在現今的軟體開發模式中，有許多方法可以做到這點，最為人所知的一個模式，就是利用繼承 (Inheritance)，把會重覆利用的部份放在母類別，讓其它子類別去繼承。另外一種做法，則是利用 Composition Pattern，將功能做成組件分出來，讓需要的模組去組合取用。[fn:18]
+- 對任何程式開發來說，減少重覆的 code，把權責明確分開，讓 code 維護性變好，是非常重要的課題。而在現今的軟體開發模式中，有許多方法可以做到這點，最為人所知的一個模式，就是利用繼承 (Inheritance)，把會重覆利用的部份放在母類別，讓其它子類別去繼承。另外一種做法，則是利用 Composition Pattern，將功能做成組件分出來，讓需要的模組去組合取用。[fn:19]
 #+begin_verse
-A protocol defines a blueprint of methods, properties, and other requirements that suit a particular task or piece of functionality. The protocol can then be adopted by a class, structure, or enumeration to provide an actual implementation of those requirements. Any type that satisfies the requirements of a protocol is said to conform to that protocol. [fn:19]
+A protocol defines a blueprint of methods, properties, and other requirements that suit a particular task or piece of functionality. The protocol can then be adopted by a class, structure, or enumeration to provide an actual implementation of those requirements. Any type that satisfies the requirements of a protocol is said to conform to that protocol. [fn:20]
 #+end_verse
 
-- 協定提供類型可以做的資訊，Classes 和 structs 則提供物件的資訊，協定則提供物件將會執行的動作。[fn:20]
+- 協定提供類型可以做的資訊，Classes 和 structs 則提供物件的資訊，協定則提供物件將會執行的動作。[fn:21]
 #+begin_verse
 協定是 Swift 一個重要的特性，它會定義出為了完成某項任務或功能所需的方法、屬性，但是本身不會實作這些任務跟功能，而僅僅只是表達出該任務或功能的名稱。協定為方法、屬性、以及其他特定的任務需求或功能定義藍圖。協定可被 class、struct、或 enum 類型採納以提供所需功能的具體實現。滿足了協定中需求的任意類型都叫做遵循了該協定。
 #+end_verse
 
-除了指定遵循類型必須實現的要求外，你可以擴展一個協定以實現其中的一些需求或實現一個符合類型的可以利用的附加功能。[fn:21]
-- 例如，你可能有一個名為str的變量，其類型為String。身為一個開發人員，你應該知道str代表String，如果我們定義了一個名為StringProtocol的協定，它具有所有的String的API，我們可以擴展任何類型去遵循StringProtocol（意思是滿足其所有要求），如此一來，即可以使用該對象，讓它就像是一個String，儘管我們不知道它是什麼！如果看起來像一隻鴨子，游泳像一隻鴨子，叫聲像一隻鴨子，那就是一隻鴨子。我們新的StringProtocol可以告訴那些遵守它協定的類型能夠做什麼，且不需要知道這些類型的資訊。[fn:20]
+除了指定遵循類型必須實現的要求外，你可以擴展一個協定以實現其中的一些需求或實現一個符合類型的可以利用的附加功能。[fn:22]
+- 例如，你可能有一個名為str的變量，其類型為String。身為一個開發人員，你應該知道str代表String，如果我們定義了一個名為StringProtocol的協定，它具有所有的String的API，我們可以擴展任何類型去遵循StringProtocol（意思是滿足其所有要求），如此一來，即可以使用該對象，讓它就像是一個String，儘管我們不知道它是什麼！如果看起來像一隻鴨子，游泳像一隻鴨子，叫聲像一隻鴨子，那就是一隻鴨子。我們新的StringProtocol可以告訴那些遵守它協定的類型能夠做什麼，且不需要知道這些類型的資訊。[fn:21]
 ** Protocol Syntax
 *** Syntax
 #+begin_src swift -r -n :results output :exports nil
@@ -2405,7 +2405,7 @@ protocol SomeProtocol {
     // protocol definition goes here
 }
 #+end_src
-Classes , structs, enums can adopt these protocol by placing protocol’s name after the type’s name, separated by a colon, as part of their definition. Multiple protocols can be listed, and are separated by commas:[fn:22]
+Classes , structs, enums can adopt these protocol by placing protocol’s name after the type’s name, separated by a colon, as part of their definition. Multiple protocols can be listed, and are separated by commas:[fn:23]
 #+begin_src swift -r -n :results output :exports nil
 struct SomeStructure: FirstProtocol, AnotherProtocol {
     //structure definition goes here
@@ -2716,7 +2716,7 @@ extension Album: Likeable {}
 #+latex:\newpage
 * Struct v.s. Class
 [[https://www.hackingwithswift.com/books/ios-swiftui/why-does-swiftui-use-structs-for-views][資料來源:Why does SwiftUI use structs for views?]]
-If you ever programmed for UIKit or AppKit (Apple’s original user interface frameworks for iOS and macOS) you’ll know that they use classes for views rather than structs. SwiftUI does not: we prefer to use structs for views across the board, and there are a couple of reasons why.[fn:23]
+If you ever programmed for UIKit or AppKit (Apple’s original user interface frameworks for iOS and macOS) you’ll know that they use classes for views rather than structs. SwiftUI does not: we prefer to use structs for views across the board, and there are a couple of reasons why.[fn:24]
 - Structs are simpler and faster than classes.
   In SwiftUI, all our views are trivial structs and are almost free to create. Think about it: if you make a struct that holds a single integer, the entire size of your struct is… that one integer. Nothing else. No surprise extra values inherited from parent classes, or grandparent classes, or great-grandparent classes, etc – they contain exactly what you can see and nothing more.
 
@@ -2822,7 +2822,7 @@ Structs make your code easier to reason about and make it easier to work in mult
 ** Two important differences between struct and class
 - Structs always have unique owners, whereas with classes multiple things can point to the same value.
 - Classes don’t need the *mutating* keyword before methods that change their properties, because you can change properties of constant classes.
-In practice, what this means is that if we have two SwiftUI views and we send them both the same struct to work with, they actually each have a unique copy of that struct; if one changes it, the other won’t see that change. On the other hand, if we create an instance of a class and send that to both views, they will share changes.[fn:24]
+In practice, what this means is that if we have two SwiftUI views and we send them both the same struct to work with, they actually each have a unique copy of that struct; if one changes it, the other won’t see that change. On the other hand, if we create an instance of a class and send that to both views, they will share changes.[fn:25]
 ** DEMO
 以下這個View可正常運作，於TextField中所做的編輯修改都會即時顯示於Text中。
 #+begin_src swift -r -n :results output :exports nil
@@ -2845,7 +2845,7 @@ struct ContentView: View {
 }
 #+end_src
 但若將struct改為class，雖程式仍可執行，但Text中的姓名卻不再隨TextField的修改而連動。
-To fix this, we need to tell SwiftUI when interesting parts of our class have changed. By “interesting parts” I mean parts that should cause SwiftUI to reload any views that are watching our class – it’s possible you might have lots of properties inside your class, but only a few should be exposed to the wider world in this way.[fn:32]
+To fix this, we need to tell SwiftUI when interesting parts of our class have changed. By “interesting parts” I mean parts that should cause SwiftUI to reload any views that are watching our class – it’s possible you might have lots of properties inside your class, but only a few should be exposed to the wider world in this way.[fn:26]
 若要將struct改為class，則程式要改成：
 #+begin_src swift -r -n :results output :exports nil
 class User: ObservableObject{
@@ -2887,7 +2887,7 @@ The end result is that we can have our state stored in an external object, and, 
 :CUSTOM_ID: some
 :END:
 #+begin_verse
-Adding the keyword some in front of a return type indicates that the return type is opaque. [fn:25]
+Adding the keyword some in front of a return type indicates that the return type is opaque. [fn:27]
 #+end_verse
 ** Generics
 *** 問題
@@ -2968,7 +2968,7 @@ stackOfStrings.push("cuatro")
 
 #+end_src
 ** opaque
-帶有不透明（opaque）返回類型的函數或方法，將會隱藏其返回值的類型[fn:26]
+帶有不透明（opaque）返回類型的函數或方法，將會隱藏其返回值的類型[fn:28]
 #+latex:\newpage
 * TODO 進階主題
 :PROPERTIES:
@@ -2984,11 +2984,8 @@ stackOfStrings.push("cuatro")
 - [[https://benmcmahen.com/authentication-with-swiftui-and-firebase/][Using Firebase Authentication with SwiftUI]]
 - [[https://www.youtube.com/watch?v=4RUeW5rUcww][Building a to-do list app with SwiftUI and Firebase - Part 1 | Firebase Semi-live]]
 #+latex: \newpage
+
 * Footnotes
-
-[fn:33] [[https://onevcat.com/2020/06/stateobject/][@StateObject 和 @ObservedObject 的区别和使用]]
-
-[fn:32] [[https://www.hackingwithswift.com/books/ios-swiftui/sharing-swiftui-state-with-observedobject][Sharing SwiftUI state with @ObservedObject]]
 
 [fn:1] [[https://medium.com/@mikru168/swiftui-%E6%B7%BA%E7%8E%A9-swiftui-%E7%94%A8%E5%85%B6%E5%BB%BA%E6%A7%8B%E4%B8%80%E7%B0%A1%E5%96%AE%E7%9A%84-app-2f2477bd49d7][簡介 SwiftUI & 用其建構一簡單的 APP ]]
 
@@ -3020,35 +3017,38 @@ stackOfStrings.push("cuatro")
 
 [fn:15] [[https://www.youtube.com/watch?v=0i152oA3T3s][Lecture 9: Data Flow]]
 
-[fn:16] [[https://www.raywenderlich.com/6742901-protocol-oriented-programming-tutorial-in-swift-5-1-getting-started][Protocol-Oriented Programming Tutorial in Swift 5.1: Getting Started]]
+[fn:16] [[https://onevcat.com/2020/06/stateobject/][@StateObject 和 @ObservedObject 的区别和使用]]
 
-[fn:17] [[https://medium.com/%E5%BD%BC%E5%BE%97%E6%BD%98%E7%9A%84-swift-ios-app-%E9%96%8B%E7%99%BC%E6%95%99%E5%AE%A4/%E7%B0%A1%E6%98%93%E8%AA%AA%E6%98%8Eswift-4-protocol-919b7f9cbaee][『簡易說明Swift 4』Protocol]]
+[fn:17] [[https://www.raywenderlich.com/6742901-protocol-oriented-programming-tutorial-in-swift-5-1-getting-started][Protocol-Oriented Programming Tutorial in Swift 5.1: Getting Started]]
 
-[fn:18] [[https://www.appcoda.com.tw/protocol-extension/][利用 Protocol Extension 減少重覆的 Code　大大增強 Code 的維護性]]
+[fn:18] [[https://medium.com/%E5%BD%BC%E5%BE%97%E6%BD%98%E7%9A%84-swift-ios-app-%E9%96%8B%E7%99%BC%E6%95%99%E5%AE%A4/%E7%B0%A1%E6%98%93%E8%AA%AA%E6%98%8Eswift-4-protocol-919b7f9cbaee][『簡易說明Swift 4』Protocol]]
 
-[fn:19] [[https://docs.swift.org/swift-book/LanguageGuide/Protocols.html][Protocols]]
+[fn:19] [[https://www.appcoda.com.tw/protocol-extension/][利用 Protocol Extension 減少重覆的 Code　大大增強 Code 的維護性]]
 
-[fn:20] [[https://www.appcoda.com.tw/swift-protocol/][Swift開發指南：Protocols與Protocol Extensions的使用心法]]
+[fn:20] [[https://docs.swift.org/swift-book/LanguageGuide/Protocols.html][Protocols]]
 
-[fn:21] [[https://ithelp.ithome.com.tw/articles/10197366][Day-29 Swift 語法(25) - 協定 Protocol]]
+[fn:21] [[https://www.appcoda.com.tw/swift-protocol/][Swift開發指南：Protocols與Protocol Extensions的使用心法]]
 
-[fn:22] [[https://abhimuralidharan.medium.com/all-about-protocols-in-swift-11a72d6ea354][All about protocols in swift]]
+[fn:22] [[https://ithelp.ithome.com.tw/articles/10197366][Day-29 Swift 語法(25) - 協定 Protocol]]
 
-[fn:23] [[https://www.hackingwithswift.com/books/ios-swiftui/why-does-swiftui-use-structs-for-views][Why does SwiftUI use structs for views?]]
+[fn:23] [[https://abhimuralidharan.medium.com/all-about-protocols-in-swift-11a72d6ea354][All about protocols in swift]]
 
-[fn:24] [[https://www.hackingwithswift.com/books/ios-swiftui/why-state-only-works-with-structs][Why @State only works with structs]]
+[fn:24] [[https://www.hackingwithswift.com/books/ios-swiftui/why-does-swiftui-use-structs-for-views][Why does SwiftUI use structs for views?]]
 
-[fn:25] [[https://medium.com/@PhiJay/whats-this-some-in-swiftui-34e2c126d4c4][What’s this “some” in SwiftUI?]]
+[fn:25] [[https://www.hackingwithswift.com/books/ios-swiftui/why-state-only-works-with-structs][Why @State only works with structs]]
 
-[fn:26] [[https://medium.com/jeremy-xue-s-blog/swift-%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80-opaque-types-600ad5758b91][Swift 程式語言 — Opaque Types]]
+[fn:26] [[https://www.hackingwithswift.com/books/ios-swiftui/sharing-swiftui-state-with-observedobject][Sharing SwiftUI state with @ObservedObject]]
 
-[fn:31] [[https://levelup.gitconnected.com/demystifying-struct-class-and-enum-in-swift-5-43dde089e96a][Demystifying Struct, Class, and Enum in Swift 5]]
-mu index --maildir="~/.gmail
+[fn:27] [[https://medium.com/@PhiJay/whats-this-some-in-swiftui-34e2c126d4c4][What’s this “some” in SwiftUI?]]
+
+[fn:28] [[https://medium.com/jeremy-xue-s-blog/swift-%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80-opaque-types-600ad5758b91][Swift 程式語言 — Opaque Types]]
+
+[fn:33] [[https://stackoverflow.com/questions/56437335/go-to-a-new-view-using-swiftui][Go to a new view using SwiftUI]]
+
+[fn:32] [[https://www.appcoda.com.tw/swift-class/][Swift Class vs Struct：設計 Model 時，該用 Struct 還是 Class 呢？]]
+
+[fn:31] [[https://appcoda.com.tw/mastering-swift/][精通Swift：列舉、閉包、泛型、Protocols和高階函數]]
 
 [fn:30] [[https://ithelp.ithome.com.tw/articles/10220520][ Day 10: [Swift] 結構和類 (Struct and Class) ]]
 
-[fn:29] [[https://appcoda.com.tw/mastering-swift/][精通Swift：列舉、閉包、泛型、Protocols和高階函數]]
-
-[fn:28] [[https://www.appcoda.com.tw/swift-class/][Swift Class vs Struct：設計 Model 時，該用 Struct 還是 Class 呢？]]
-
-[fn:27] [[https://stackoverflow.com/questions/56437335/go-to-a-new-view-using-swiftui][Go to a new view using SwiftUI]]
+[fn:29] [[https://levelup.gitconnected.com/demystifying-struct-class-and-enum-in-swift-5-43dde089e96a][Demystifying Struct, Class, and Enum in Swift 5]]
