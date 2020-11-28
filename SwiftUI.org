@@ -2274,7 +2274,7 @@ struct ContentView: View {
 #+name: fig:JSON-1
 #+ATTR_LATEX: :width 300
 #+ATTR_ORG: :width 300
-#+ATTR_HTML: :width 600
+#+ATTR_HTML: :width 300
 [[file:images/json-1.jpg]]
 ** Demo 2
 *** MVVM
