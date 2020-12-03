@@ -1593,6 +1593,175 @@ struct DetailView_Previews: PreviewProvider {
 [[file:images/Navi-List-2.png]]
 
 #+latex:\newpage
+* Dynamic List
+** DataModel
+*** BookMOdel.swift (Model)
+#+begin_src swift -r -n :results output :exports nil
+import Foundation
+
+struct BookModel: Identifiable {
+    var id = UUID()
+    var title: String
+    var author: String
+}
+
+
+#+end_src
+*** BookMV.swift (ViewModel)
+#+begin_src swift -r -n :results output :exports nil
+//
+//  BookMV.swift
+//  navigation
+//
+//  Created by yen yung chin on 2020/12/3.
+//
+
+import Foundation
+
+class Book: ObservableObject{
+    @Published var list: [BookModel]
+    init(){
+        self.list = [
+            BookModel(title:"X的悲劇", author: "艾勒里．昆恩"),
+            BookModel(title:"地獄藍調", author: "李查德"),
+            BookModel(title:"東方列車謀殺案", author: "阿嘉莎‧克莉絲蒂"),
+            BookModel(title:"八百萬種死法", author: "勞倫斯.卜洛克"),
+            BookModel(title:"血字研究", author: "柯南道爾")
+        ]
+    }
+}
+
+#+end_src
+** New Item (Single View)
+*** ContentView.swift
+import SwiftUI
+
+struct ContentView: View {
+    @State var books = [
+        BookModel(title:"X的悲劇", author: "艾勒里．昆恩"),
+        BookModel(title:"地獄藍調", author: "李查德"),
+        BookModel(title:"東方列車謀殺案", author: "阿嘉莎‧克莉絲蒂"),
+        BookModel(title:"八百萬種死法", author: "勞倫斯.卜洛克"),
+        BookModel(title:"血字研究", author: "柯南道爾")
+    ]
+    @State var title: String
+    @State var author: String
+
+    var body: some View {
+        VStack {
+            NavigationView {
+                List(books) { book in
+                    NavigationLink(destination: DetailView(book: book) ){
+                        bookRow(book: book)
+                    }
+                }
+                .navigationTitle("書單")
+            }
+            TextField("書名", text: self.$title)
+            TextField("作者", text: self.$author)
+            Button("Done") {
+                books.append(BookModel(title: self.title, author: self.author))
+            }
+        }
+    }
+}
+
+struct bookRow: View {
+    var book: BookModel
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text(book.title)
+            Text(book.author)
+        }
+    }
+}
+
+
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView(title: "", author: "")
+    }
+}
+
+#+end_src
+** New Item (isolated View)
+*** ContentView.swift
+#+begin_src swift -r -n :results output :exports nil
+import SwiftUI
+
+struct ContentView: View {
+    @ObservedObject var book = Book()
+    @State var showNewBook = false
+    var body: some View {
+        NavigationView {
+            List(book.list) { book in
+                NavigationLink(destination: DetailView(book: book) ){
+                    bookRow(book: book)
+                }
+            }
+            .navigationBarItems(trailing: Button("New"){
+                self.showNewBook = true
+            }.sheet(isPresented: self.$showNewBook, content: {
+                AddNewBook(book: book, showThisView: $showNewBook, title: "", author: "")
+            }))
+        }
+    }
+}
+
+
+struct bookRow: View {
+    var book: BookModel
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text(book.title)
+            Text(book.author)
+        }
+    }
+}
+
+
+
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
+
+#+end_src
+*** AddNewBook.swift
+#+begin_src swift -r -n :results output :exports nil
+import SwiftUI
+import Combine
+
+struct AddNewBook: View {
+    @ObservedObject var book = Book()
+    @Binding var showThisView: Bool
+    @State  var title: String
+    @State  var author: String
+
+    var body: some View {
+        VStack {
+            Text("Adding New Book....")
+            TextField("書名", text: self.$title)
+            TextField("作者", text: self.$author)
+            Button("Done") {
+                book.list.append(BookModel(title: self.title, author: self.author))
+                showThisView.toggle()
+            }
+        }
+        Text("TEST")
+    }
+}
+
+struct AddNewBook_Previews: PreviewProvider {
+    static var previews: some View {
+        AddNewBook(showThisView: .constant(true), title: "", author: "")
+    }
+}
+
+#+end_src
 * Passing data between Views #2: @EnvironmentObject
 :PROPERTIES:
 :CUSTOM_ID: EnvironmentObject
@@ -2105,16 +2274,24 @@ MVVM的概念最早應該是在2005年由Microsoft的[[https://blogs.msdn.micros
 [[https://www.codementor.io/@koromiko/mvvm-app-cl1wvw2sh][資料來源: 歡迎來到真實世界 - 原來是那個傳說中的MVVM阿]]
 ** What is the idea behind MVVM
 *** Model
-- 負責Data and Logic
+- Business logic
 - UI Independent
 *** View
-- Everything visible on screen
-- to display the source of truth
+- Presentation
+- User interaction
 *** ViewModel
-- Interpreter
+- Presentation logic
 - Glue between Model and View
-*** 為什麼要拆成三部份
-以[[https://www.youtube.com/watch?v=LntH6moCuo0]]來解釋
+*** 為什麼要拆成三部份(What does it solve?)
+- MVC - Massive View Controller
+- Testability
+- Code organization
+- Code reusability
+*** Limitations / Cons
+- Requires binding
+- Potential for boilerplate code
+- Overkill for simple views and logic
+- Doesn't cover every case
 ** DEMO
 以"推薦書單"的 APP 為例:
 - Model: 包含書名、作者、出版社....，而實際的資料來源可能是雲端資料庫(Firebase)、Web API、本機資料庫(Core data)。
@@ -2204,14 +2381,15 @@ herCat.name = "Mumu"
 怎麼會有這樣的差別呢？因為 herDog 儲存了所有的 Dog 實體內容，所以任何 Dog 實體的屬性的變動，就等於說 herDog 本身有變動。然而，herCat 並沒有儲存 Cat 實體的內容，所以 Cat 實體屬性的變動是在別的地方發生的，且 herCat 本身所儲存的 Cat 實體位址並沒有任何的改變。
 由圖[[fig: MVVMPNG]]可看出，
 *** MMVM中的Model
-
 ** DICE DEMO
 ** Further Reading Resources
 - [[https://www.youtube.com/watch?v=1IlUBHvgY8Q&t=29s][SwiftUI MVVM Programming with ObservableObject @Published @ObservedObject]]
 - [[https://www.youtube.com/watch?v=LntH6moCuo0][SwiftUI 2.0: MVVM - A Practical Approach]]
 - [[https://www.youtube.com/watch?v=gkAV4D1nopA][SwiftUI Tip Calculator Using MVVM Design Pattern]]
 - [[https://www.youtube.com/watch?v=cbqMkIG6Qeg][Understanding MVVM Design Pattern]]: 講的超清楚
-- Video:  [[https://www.youtube.com/watch?v=EhtK_H9LsYQ][MVVM SwiftUI - Model View ViewModel Pattern - Getting Started]]
+- Video: [[https://www.youtube.com/watch?v=EhtK_H9LsYQ][MVVM SwiftUI - Model View ViewModel Pattern - Getting Started]]
+- Video: [[https://www.youtube.com/watch?v=LntH6moCuo0]]
+- Video: [[https://www.youtube.com/watch?v=sWx8TtRBOfk][MVVM in Practice - RWDevCon Session - raywenderlich.com]]
 - GitHub: https://github.com/rebeloper/SwiftUIMVVM.git
 #+latex:\newpage
 * Web API: URLSession v.s. JSONDecoder
