@@ -1594,7 +1594,9 @@ struct DetailView_Previews: PreviewProvider {
 
 #+latex:\newpage
 * Dynamic List
-** DataModel
+:PROPERTIES:
+:CUSTOM_ID: DynamicList
+:END:** DataModel
 *** BookMOdel.swift (Model)
 #+begin_src swift -r -n :results output :exports nil
 import Foundation
