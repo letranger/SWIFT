@@ -1607,33 +1607,9 @@ struct BookModel: Identifiable {
 
 
 #+end_src
-*** BookMV.swift (ViewModel)
-#+begin_src swift -r -n :results output :exports nil
-//
-//  BookMV.swift
-//  navigation
-//
-//  Created by yen yung chin on 2020/12/3.
-//
-
-import Foundation
-
-class Book: ObservableObject{
-    @Published var list: [BookModel]
-    init(){
-        self.list = [
-            BookModel(title:"X的悲劇", author: "艾勒里．昆恩"),
-            BookModel(title:"地獄藍調", author: "李查德"),
-            BookModel(title:"東方列車謀殺案", author: "阿嘉莎‧克莉絲蒂"),
-            BookModel(title:"八百萬種死法", author: "勞倫斯.卜洛克"),
-            BookModel(title:"血字研究", author: "柯南道爾")
-        ]
-    }
-}
-
-#+end_src
 ** New Item (Single View)
 *** ContentView.swift
+#+begin_src swift -r -n :results output :exports nil
 import SwiftUI
 
 struct ContentView: View {
@@ -1676,8 +1652,6 @@ struct bookRow: View {
     }
 }
 
-
-
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView(title: "", author: "")
@@ -1686,6 +1660,31 @@ struct ContentView_Previews: PreviewProvider {
 
 #+end_src
 ** New Item (isolated View)
+*** BookMV.swift (ViewModel)
+#+begin_src swift -r -n :results output :exports nil
+//
+//  BookMV.swift
+//  navigation
+//
+//  Created by yen yung chin on 2020/12/3.
+//
+
+import Foundation
+
+class Book: ObservableObject{
+    @Published var list: [BookModel]
+    init(){
+        self.list = [
+            BookModel(title:"X的悲劇", author: "艾勒里．昆恩"),
+            BookModel(title:"地獄藍調", author: "李查德"),
+            BookModel(title:"東方列車謀殺案", author: "阿嘉莎‧克莉絲蒂"),
+            BookModel(title:"八百萬種死法", author: "勞倫斯.卜洛克"),
+            BookModel(title:"血字研究", author: "柯南道爾")
+        ]
+    }
+}
+
+#+end_src
 *** ContentView.swift
 #+begin_src swift -r -n :results output :exports nil
 import SwiftUI
@@ -1719,9 +1718,6 @@ struct bookRow: View {
         }
     }
 }
-
-
-
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
