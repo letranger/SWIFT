@@ -1598,7 +1598,7 @@ struct DetailView_Previews: PreviewProvider {
 :CUSTOM_ID: DynamicList
 :END:
 ** DataModel
-*** BookMOdel.swift (Model)
+*** BookModel.swift (Model)
 #+begin_src swift -r -n :results output :exports nil
 import Foundation
 
@@ -1663,10 +1663,10 @@ struct ContentView_Previews: PreviewProvider {
 
 #+end_src
 ** New Item (isolated View)
-*** BookMV.swift (ViewModel)
+*** BookVM.swift (ViewModel)
 #+begin_src swift -r -n :results output :exports nil
 //
-//  BookMV.swift
+//  BookVM.swift
 //  navigation
 //
 //  Created by yen yung chin on 2020/12/3.
@@ -2029,13 +2029,11 @@ A powerful way to do this is using the *Codable* protocol inf Swift. Codable con
 #+begin_src swift -r -n :eval no
 let defaults = UserDefaults.standard
 #+end_src
-
 *** Storing Data
 #+begin_src swift -r -n :eval no
 defaults.set(object, forKey: "SomeKey")
 defautls.setDouble(37.5, forKey: "MyDouble")
 #+end_src
-
 *** Retrieving Data
 #+begin_src swift -r -n :eval no
 let i: Int = defaults.integer(forKey: "MyInt")
@@ -2105,6 +2103,175 @@ struct ContentView: View {
 #+ATTR_ORG: :width 500
 #+ATTR_HTML: :width 500
 [[file:images/UserDefaults.jpg]]
+*** BookList: UserDefault v.s. @EnvironmentObject
+**** UserSettings.swift
+#+begin_src swift -r -n :results output :exports nil
+//
+//  UserSettings.swift
+//  navigation
+//
+//  Created by yen yung chin on 2020/12/14.
+//
+
+import Foundation
+import Combine
+
+class UserSettings: ObservableObject {
+    @Published var username: String {
+        didSet {
+            UserDefaults.standard.set(username, forKey: "username")
+        }
+    }
+    @Published var isVIP: Bool {
+        didSet {
+            UserDefaults.standard.set(isVIP, forKey: "isAccountVIP")
+        }
+    }
+    init() {
+        self.username = UserDefaults.standard.object(forKey: "username") as? String ?? ""
+        self.isVIP = UserDefaults.standard.object(forKey: "isAccountVIP") as? Bool ?? true
+    }
+}
+
+#+end_src
+**** ContentView.swift
+The way to arrange ore than one navigationBarItems.
+#+begin_src swift -r -n :results output :exports nil
+//
+//  ContentView.swift
+//  navigation
+//
+//  Created by yen yung chin on 2020/9/27.
+//
+
+import SwiftUI
+
+struct ContentView: View {
+    @ObservedObject var book = Book()
+    @State var showNewBook = false
+    @State var showSetting = false
+    @EnvironmentObject var userSettings: UserSettings
+    var body: some View {
+        NavigationView {
+            List(book.list) { book in
+                NavigationLink(destination: DetailView(book: book) ){
+                    bookRow(book: book)
+                }
+            }
+            .navigationTitle("\(userSettings.username)書單")
+            .navigationBarItems(trailing:
+                                    HStack {
+                                        Button(action: { self.showNewBook = true }, label: {
+                                            Image(systemName: "plus")
+                                        }).sheet(isPresented: self.$showNewBook, content: {
+                                            AddNewBook(book: book, showThisView: $showNewBook, title: "", author: "")
+                                        })
+                                        Button(action: {
+                                                self.showSetting = true }, label: {
+                                                    Image(systemName: "gearshape")
+                                                }).sheet(isPresented: self.$showSetting, content: {
+                                                    settingView(showThisView: self.$showSetting)
+                                                })
+                                    })
+        }
+    }
+}
+
+
+struct bookRow: View {
+    var book: BookModel
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text(book.title)
+            Text(book.author)
+        }
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
+
+#+end_src
+#+CAPTION: UserDefault v.s. @Environment
+#+NAME: fig: DefaultEnvironment-1
+#+ATTR_LATEX: :width 300
+#+ATTR_ORG: :width 300
+#+ATTR_HTML: :width 300
+[[file:images/UserDefault-1.png]]
+**** settingView.swift
+#+begin_src swift -r -n :results output :exports nil
+//
+//  Setting.swift
+//  navigation
+//
+//  Created by yen yung chin on 2020/12/14.
+//
+
+import SwiftUI
+
+struct settingView: View {
+    @EnvironmentObject var userSettings: UserSettings
+    @Binding var showThisView: Bool
+    var body: some View {
+        VStack {
+            Text("Setting").font(.largeTitle)
+            Spacer()
+            List{
+                TextField("Username", text: $userSettings.username)
+                Toggle(isOn: $userSettings.isVIP, label: {
+                    Text("VIP")
+                })
+            }
+            Button("DONE", action: {
+                self.showThisView = false
+            })
+        }
+    }
+}
+
+struct Setting_Previews: PreviewProvider {
+    static var previews: some View {
+        settingView(showThisView: .constant(true))
+    }
+}
+
+#+end_src
+#+CAPTION: UserDefault v.s. @Environment
+#+NAME: fig: DefaultEnvironment-2
+#+ATTR_LATEX: :width 300
+#+ATTR_ORG: :width 300
+#+ATTR_HTML: :width 300
+[[file:images/UserDefault-2.png]]
+**** SceneDelegate.swift
+#+begin_src swift -r -n :results output :exports nil
+
+import UIKit
+import SwiftUI
+
+class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+
+    var window: UIWindow?
+    var userSetting = UserSettings()
+
+    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+
+        let contentView = ContentView().environmentObject(userSetting)
+
+        // Use a UIHostingController as window root view controller.
+        if let windowScene = scene as? UIWindowScene {
+            let window = UIWindow(windowScene: windowScene)
+            window.rootViewController = UIHostingController(rootView: contentView)
+            self.window = window
+            window.makeKeyAndVisible()
+        }
+    }
+      ......
+}
+
+#+end_src
 ** Reading Resources
 - [[https://www.simpleswiftguide.com/how-to-use-userdefaults-in-swiftui/][How to use UserDefaults in SwiftUI]]
 
@@ -2549,6 +2716,7 @@ class FetchFlow: ObservableObject {
 - [[https://ptx.transportdata.tw/PTX/Service][公共運輸整合資訊]]
 - [[https://kaleidosblog.s3-eu-west-1.amazonaws.com/json/tutorial.json][country/code JSON sample]]
 ** Further Reading
+- [[https://www.youtube.com/watch?v=HvfE4G9PfeU][SwiftUI Tutorial - Using an API and Decoding JSON Data]]
 - [[https://www.youtube.com/watch?v=tdxKIPpPDAI][iOS Swift Tutorial: Use Web APIs and JSON Data with Swift 5]]- [[https://www.ioscreator.com/tutorials/swiftui-json-list-tutorial][SwiftUI Fetch JSON Data into List]]
 - [[https://programmingwithswift.com/parse-json-from-file-and-url-with-swift/][Parse JSON from file and URL with Swift]]
 - [[https://www.youtube.com/watch?v=1en4JyW3XSI][Making an API call and fetch JSON data in SwiftUI]]
@@ -2942,7 +3110,10 @@ struct ArticleStruct {
 }
 #+end_src
 *** What are the differences between a struct and a class?
-**** Value vs reference types
+Structs always have unique owners, whereas with classes multiple things can point to the same value.[fn:25]
+Classes don’t need the *mutating* keyword before methods that change their properties, because you can change properties of constant classes.
+In practice, what this means is that if we have two SwiftUI views and we send them both the same struct to work with, they actually each have a unique copy of that struct; if one changes it, the other won’t see that change. On the other hand, if we create an instance of a class and send that to both views, they will share changes.[fn:25]
+Value vs reference types
 One of the most important differences is that a struct is a value type while a class is a reference type. References to a class instance share single data which means that any changes in that class will be available to each reference.
 #+begin_src swift -r -n :results output :exports nil
 let articleClass = ArticleClass(title: "Struct vs Class", url: URL(string: "www.avanderlee.com")!)
@@ -2960,9 +3131,9 @@ var articleStructCopy = articleStruct
 articleStruct.readCount = 10
 print(articleStructCopy.readCount) // Prints: 0
 #+end_src
-**** The benefit of mutation in safety
+The benefit of mutation in safety
 With this, structs have the benefit of mutation in safety as you can trust that no other part of your app is changing the data at the same time. This makes it easier to reason about your code and is especially helpful in multi-threaded environments where a different thread could alter your data at the same time.
-**** Structs get an initializer for free
+Structs get an initializer for free
 If you go back and compare the above code examples you can see that the ArticleClass has a defined initializer which is required for classes. Structs, however, get an initializer for free.
 #+begin_src swift -r -n :results output :exports nil
 // Before Swift 5.1 Memberwise initializers:
@@ -2973,7 +3144,7 @@ let article = ArticleStruct(title: "", url: URL(string: "")!, readCount: 0)
 // Generated memberwise init: init(title: String, url: URL, readCount: Int = 0)
 let article = ArticleStruct(title: "", url: URL(string: "")!)
 #+end_src
-**** Classes allow inheritance
+Classes allow inheritance
 Classes can inherit the characteristics of another class and with that, act like abstract classes. A common example is a custom view controller which inherit from UIViewController.
 
 With protocols in Swift, this is often no longer needed and replaceable with protocols. Protocols can be used with both classes and structs while inheritance is only possible with classes.
@@ -2983,23 +3154,19 @@ A class allows executing code just before it gets destroyed by using a deinit me
 #+begin_verse
 Deinitializers may only be declared within a class
 #+end_verse
-** when should I go for a struct and when for a class?
+** 如何決擇? / When should I go for a struct and when for a class?
 A simple bullet point list will make it a lot easier to decide.
-You should use a class when:
+*** You should use a class when:
 - Comparing instance identity is needed by using ===
 - Shared mutable state is required
 - Objective-C interoperability is required
 
-You should use a struct when:
+*** You should use a struct when:
 - Comparing instance data is needed by using ==
 - Unique copies with an independent state are required
 - The data is used in multiple threads
-** Try to go for a struct by default. 
+*** Try to go for a struct by default.
 Structs make your code easier to reason about and make it easier to work in multithreaded environments which we often have while developing in Swift.
-** Two important differences between struct and class
-- Structs always have unique owners, whereas with classes multiple things can point to the same value.
-- Classes don’t need the *mutating* keyword before methods that change their properties, because you can change properties of constant classes.
-In practice, what this means is that if we have two SwiftUI views and we send them both the same struct to work with, they actually each have a unique copy of that struct; if one changes it, the other won’t see that change. On the other hand, if we create an instance of a class and send that to both views, they will share changes.[fn:25]
 ** DEMO
 以下這個View可正常運作，於TextField中所做的編輯修改都會即時顯示於Text中。
 #+begin_src swift -r -n :results output :exports nil
