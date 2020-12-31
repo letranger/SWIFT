@@ -554,7 +554,13 @@ struct SecondView_Previews: PreviewProvider {
 #+begin_src swift -r -n :results output :exports nil
 SecondView(showMe: self.$showSecondView)
 #+end_src
-同樣的，SecondView最底下負責產生app預覽畫面的SecondView_Previews也要提供這個參數，不過，由於它只是產生預覽畫面，與程式實際執行無實際影響，所以我們可以隨便傳個true/false轉為常數給它就行，如上例中的第[[(Binding4)]]行。
+同樣的，SecondView最底下負責產生app預覽畫面的SecondView_Previews也要提供這個參數，不過，由於它只是產生預覽畫面，與程式執行無實際影響，所以我們可以隨便傳個true/false轉為常數給它就行，如上例中的第[[(Binding4)]]行。執行結果如下:
+#+CAPTION: Close New View
+#+NAME: fig:CloseNewView
+#+ATTR_LATEX: :width 300
+#+ATTR_ORG: :width 300
+#+ATTR_HTML: :width 300
+[[file:images/closeView.gif]]
 * TextField (with @State)
 ** 語法
 #+begin_src swift -r -n :eval no

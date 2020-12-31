@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-12-31 Thu 11:50 -->
+<!-- 2020-12-31 Thu 11:59 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>SwiftUI</title>
@@ -231,457 +231,457 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgda2ee86">1. Recommending Reading</a></li>
+<li><a href="#org63c3dab">1. Recommending Reading</a></li>
 <li><a href="#SW-UIKIT-SWIFTUI">2. iOS app 的開發界面: UIKit v.s. SwiftUI</a>
 <ul>
-<li><a href="#org5d35aa9">2.1. UIKit 與 SwiftUI 的差異性</a>
+<li><a href="#org8c65ca8">2.1. UIKit 與 SwiftUI 的差異性</a>
 <ul>
-<li><a href="#orgfcf9a03">2.1.1. 系統需求</a></li>
-<li><a href="#org619afeb">2.1.2. 底層語言</a></li>
-<li><a href="#org2ff552d">2.1.3. 語法簡潔度</a></li>
-<li><a href="#org60c275f">2.1.4. Declarative vs Imperative Programming</a></li>
-<li><a href="#org17b84c9">2.1.5. 跨平台</a></li>
-<li><a href="#orge3c551d">2.1.6. Automatic Preview</a></li>
-<li><a href="#org72fc8ca">2.1.7. 自動支援進階功能</a></li>
+<li><a href="#org9c82ede">2.1.1. 系統需求</a></li>
+<li><a href="#orgb6df03f">2.1.2. 底層語言</a></li>
+<li><a href="#orga26bddd">2.1.3. 語法簡潔度</a></li>
+<li><a href="#org1f43147">2.1.4. Declarative vs Imperative Programming</a></li>
+<li><a href="#org44ddb94">2.1.5. 跨平台</a></li>
+<li><a href="#orgf398eb9">2.1.6. Automatic Preview</a></li>
+<li><a href="#org50b5016">2.1.7. 自動支援進階功能</a></li>
 </ul>
 </li>
-<li><a href="#orgecb453b">2.2. SwiftUI vs UIKit: Benefits and Drawbacks</a>
+<li><a href="#org2bf2480">2.2. SwiftUI vs UIKit: Benefits and Drawbacks</a>
 <ul>
-<li><a href="#org0155447">2.2.1. Drawbacks of SwiftUI </a></li>
-<li><a href="#org1e48017">2.2.2. Benefits of SwiftUI </a></li>
+<li><a href="#org57dd147">2.2.1. Drawbacks of SwiftUI </a></li>
+<li><a href="#orgb44182d">2.2.2. Benefits of SwiftUI </a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><a href="#delegate">3. AppDelegate v.s. SceneDelegate</a>
 <ul>
-<li><a href="#org0957bd1">3.1. SceneDelegate.swift</a></li>
+<li><a href="#org50856d8">3.1. SceneDelegate.swift</a></li>
 </ul>
 </li>
 <li><a href="#SW-SWIFTUI-INTRO">4. 建立SwiftUI Project</a>
 <ul>
-<li><a href="#org8b78c73">4.1. 教學影片</a></li>
-<li><a href="#orgd65d8f3">4.2. 使用 SwiftUI 開啟新專案 </a>
+<li><a href="#orgd14bb42">4.1. 教學影片</a></li>
+<li><a href="#orgd28c7c3">4.2. 使用 SwiftUI 開啟新專案 </a>
 <ul>
-<li><a href="#orgb1c5503">4.2.1. ContentView.swift</a></li>
+<li><a href="#orgf7e72e5">4.2.1. ContentView.swift</a></li>
 </ul>
 </li>
-<li><a href="#org6a052d6">4.3. Text</a>
+<li><a href="#orgfbc8816">4.3. Text</a>
 <ul>
-<li><a href="#orgca6493e">4.3.1. 改變 Text 的屬性</a>
+<li><a href="#org8e7f400">4.3.1. 改變 Text 的屬性</a>
 <ul>
-<li><a href="#orgb532705">4.3.1.1. SwiftUI Inspector:</a></li>
-<li><a href="#org4b5a3ea">4.3.1.2. Inspector frame</a></li>
-<li><a href="#org52978c7">4.3.1.3. code</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#orgd505e94">4.4. Stack</a>
-<ul>
-<li><a href="#org00d9505">4.4.1. Stack 與 Stack 可相互包含，於View中加入Stack的方式有二:</a>
-<ul>
-<li><a href="#org0cca621">4.4.1.1. 由工具列 drag: Xcode 會自動加入相對的 code</a></li>
-<li><a href="#org14f84f5">4.4.1.2. coding</a></li>
-</ul>
-</li>
-<li><a href="#org3030acf">4.4.2. SwiftUI 撰寫原則</a></li>
-<li><a href="#org43e9905">4.4.3. HStack DEMO</a></li>
+<li><a href="#org28f3211">4.3.1.1. SwiftUI Inspector:</a></li>
+<li><a href="#orgd97ffa9">4.3.1.2. Inspector frame</a></li>
+<li><a href="#orgba41c0f">4.3.1.3. code</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org57f0e80">5. Image</a>
+<li><a href="#org46c0555">4.4. Stack</a>
 <ul>
-<li><a href="#org98a4b50">5.1. System Image</a>
+<li><a href="#orgb393d9f">4.4.1. Stack 與 Stack 可相互包含，於View中加入Stack的方式有二:</a>
 <ul>
-<li><a href="#orgbd56160">5.1.1. SF Symbols </a></li>
-<li><a href="#orgc57de4e">5.1.2. 從 iOS 13 開始，Apple 介紹了一個名為 SFSymbols 的新功能。SF Symbols 這功能由 Apple 所設計，當中集合了 1500 多個可以在 App 之中使用的符號。</a></li>
-<li><a href="#org231759e">5.1.3. Download SF Symbols app</a></li>
-<li><a href="#org50093d6">5.1.4. code</a></li>
-<li><a href="#org5bc3542">5.1.5. Demo</a></li>
+<li><a href="#org6fbdbc1">4.4.1.1. 由工具列 drag: Xcode 會自動加入相對的 code</a></li>
+<li><a href="#orga1d4611">4.4.1.2. coding</a></li>
 </ul>
 </li>
-<li><a href="#orga282da0">5.2. Customized Image 語法</a></li>
-<li><a href="#org6d87e5f">5.3. Image Attributes</a></li>
-<li><a href="#org5cf6053">5.4. Using SF Symbols</a></li>
+<li><a href="#orgb8bb05d">4.4.2. SwiftUI 撰寫原則</a></li>
+<li><a href="#orga87f634">4.4.3. HStack DEMO</a></li>
 </ul>
 </li>
-<li><a href="#orgf8e43b3">6. Button</a>
-<ul>
-<li><a href="#org6a30157">6.1. 語法</a></li>
-<li><a href="#org46a4ef2">6.2. 將變數加入 View 中</a></li>
-<li><a href="#org974bc8c">6.3. 如何於程式中改變 title 的值來改變 View 的顯示內容?</a></li>
-<li><a href="#orgccb7459">6.4. 範例: 按下 Button，改變 Text title</a></li>
-<li><a href="#org2aaa93d">6.5. 以Button開啟一個新的View</a></li>
-<li><a href="#orgcba6c3f">6.6. 以Button關閉View</a></li>
 </ul>
 </li>
-<li><a href="#orgd009541">7. TextField (with @State)</a>
+<li><a href="#orgb81043a">5. Image</a>
 <ul>
-<li><a href="#org002fd53">7.1. 語法</a></li>
-<li><a href="#org17d8140">7.2. 範例: 於 TextField 輸入資料，顯示於 Text 中</a></li>
-<li><a href="#orgd92e1fb">7.3. 範例2: @state struct</a></li>
-<li><a href="#org2434dbf">7.4. What is @State</a></li>
+<li><a href="#orgafe4e58">5.1. System Image</a>
+<ul>
+<li><a href="#orgace904b">5.1.1. SF Symbols </a></li>
+<li><a href="#orgce2c139">5.1.2. 從 iOS 13 開始，Apple 介紹了一個名為 SFSymbols 的新功能。SF Symbols 這功能由 Apple 所設計，當中集合了 1500 多個可以在 App 之中使用的符號。</a></li>
+<li><a href="#orgee060d2">5.1.3. Download SF Symbols app</a></li>
+<li><a href="#org2195ef0">5.1.4. code</a></li>
+<li><a href="#org3dff8db">5.1.5. Demo</a></li>
+</ul>
+</li>
+<li><a href="#orgc3b3591">5.2. Customized Image 語法</a></li>
+<li><a href="#orgfb40b3e">5.3. Image Attributes</a></li>
+<li><a href="#org2fc97e0">5.4. Using SF Symbols</a></li>
+</ul>
+</li>
+<li><a href="#org635a4cd">6. Button</a>
+<ul>
+<li><a href="#org8380014">6.1. 語法</a></li>
+<li><a href="#orgbb65ca8">6.2. 將變數加入 View 中</a></li>
+<li><a href="#org32624f9">6.3. 如何於程式中改變 title 的值來改變 View 的顯示內容?</a></li>
+<li><a href="#org5fcd6c6">6.4. 範例: 按下 Button，改變 Text title</a></li>
+<li><a href="#org31fa367">6.5. 以Button開啟一個新的View</a></li>
+<li><a href="#orge252c2b">6.6. 以Button關閉View</a></li>
+</ul>
+</li>
+<li><a href="#org2f33e6d">7. TextField (with @State)</a>
+<ul>
+<li><a href="#orgde4f2fe">7.1. 語法</a></li>
+<li><a href="#orgd3fa2d3">7.2. 範例: 於 TextField 輸入資料，顯示於 Text 中</a></li>
+<li><a href="#org745625c">7.3. 範例2: @state struct</a></li>
+<li><a href="#org49ab093">7.4. What is @State</a></li>
 </ul>
 </li>
 <li><a href="#SW-CUSTOMIZED-UI-COMPONENTS">8. Customize UI Components</a>
 <ul>
-<li><a href="#orgd182c7b">8.1. Text</a>
+<li><a href="#org1f68e9f">8.1. Text</a>
 <ul>
-<li><a href="#org9b2202d">8.1.1. Advanced Attributes </a></li>
-<li><a href="#org584dcee">8.1.2. Demo</a></li>
+<li><a href="#orgbe6a4f8">8.1.1. Advanced Attributes </a></li>
+<li><a href="#org92ed13b">8.1.2. Demo</a></li>
 </ul>
 </li>
-<li><a href="#org1cd538f">8.2. Image</a>
+<li><a href="#org5d100ee">8.2. Image</a>
 <ul>
-<li><a href="#orgb9baeed">8.2.1. Advanced Attributes s</a></li>
-<li><a href="#org1a3d4f4">8.2.2. Demo</a></li>
+<li><a href="#org60dd7fe">8.2.1. Advanced Attributes s</a></li>
+<li><a href="#org306ff11">8.2.2. Demo</a></li>
 </ul>
 </li>
-<li><a href="#orgef829e9">8.3. Button II</a>
+<li><a href="#org9e1a7f4">8.3. Button II</a>
 <ul>
-<li><a href="#orge59eff6">8.3.1. 外觀控制</a>
+<li><a href="#org0dfa3e7">8.3.1. 外觀控制</a>
 <ul>
-<li><a href="#org4f9423f">8.3.1.1. Advanced Attributes </a></li>
-<li><a href="#org85263b1">8.3.1.2. Demo</a></li>
+<li><a href="#org58bf073">8.3.1.1. Advanced Attributes </a></li>
+<li><a href="#org9d61179">8.3.1.2. Demo</a></li>
 </ul>
 </li>
-<li><a href="#org0b09bb0">8.3.2. Button v.s. @State</a></li>
+<li><a href="#org06725aa">8.3.2. Button v.s. @State</a></li>
 </ul>
 </li>
-<li><a href="#org8bf9700">8.4. background, opacity</a></li>
-<li><a href="#org7f351f4">8.5. Further reading</a></li>
+<li><a href="#orgb02c647">8.4. background, opacity</a></li>
+<li><a href="#orga167890">8.5. Further reading</a></li>
 </ul>
 </li>
 <li><a href="#list">9. List</a>
 <ul>
-<li><a href="#org8d4672a">9.1. What is List</a></li>
-<li><a href="#org1398462">9.2. 準備單一 cell 格式</a></li>
-<li><a href="#orgb8ed930">9.3. 轉入 List 格式(靜態 List)</a>
+<li><a href="#org9c8dec6">9.1. What is List</a></li>
+<li><a href="#org404863f">9.2. 準備單一 cell 格式</a></li>
+<li><a href="#orgcee9eb4">9.3. 轉入 List 格式(靜態 List)</a>
 <ul>
-<li><a href="#orge6fbda2">9.3.1. 將最外層的 VStack 加入 List 中</a></li>
-<li><a href="#org4279e23">9.3.2. list 語法</a></li>
-<li><a href="#orgd2dff48">9.3.3. 結果</a></li>
+<li><a href="#org7f0d18d">9.3.1. 將最外層的 VStack 加入 List 中</a></li>
+<li><a href="#org91e4b11">9.3.2. list 語法</a></li>
+<li><a href="#orge6ed72a">9.3.3. 結果</a></li>
 </ul>
 </li>
-<li><a href="#org3a0cae1">9.4. 建立 list 來源資料(動態 List) </a></li>
-<li><a href="#orgf66e987">9.5. 將資料連結到列表中 </a></li>
-<li><a href="#org84057ce">9.6. 結果</a></li>
-<li><a href="#orgca4cb2c">9.7. 為什麼要加入 id 與 Identifiable</a></li>
-<li><a href="#org2e73a53">9.8. Reading source</a></li>
+<li><a href="#org4da42e8">9.4. 建立 list 來源資料(動態 List) </a></li>
+<li><a href="#org9077c37">9.5. 將資料連結到列表中 </a></li>
+<li><a href="#orgd2977da">9.6. 結果</a></li>
+<li><a href="#orgea00ea6">9.7. 為什麼要加入 id 與 Identifiable</a></li>
+<li><a href="#org3b6a249">9.8. Reading source</a></li>
 </ul>
 </li>
 <li><a href="#StateBinding">10. Passing data between Views #1: @Binding</a>
 <ul>
-<li><a href="#org45bf6ff">10.1. Time to use Binding</a></li>
-<li><a href="#orgb47148e">10.2. Demo 1: @State v.s. @Bidning</a>
+<li><a href="#orge0179a9">10.1. Time to use Binding</a></li>
+<li><a href="#org97a0bea">10.2. Demo 1: @State v.s. @Bidning</a>
 <ul>
-<li><a href="#orgd8e9b26">10.2.1. ContentView.swift</a></li>
-<li><a href="#org88e073d">10.2.2. SwitchView.swift</a></li>
+<li><a href="#org31adbea">10.2.1. ContentView.swift</a></li>
+<li><a href="#orgf01b6e0">10.2.2. SwitchView.swift</a></li>
 </ul>
 </li>
-<li><a href="#org3d59b12">10.3. Demo 2: Sharing multiple variable</a>
+<li><a href="#org904a218">10.3. Demo 2: Sharing multiple variable</a>
 <ul>
-<li><a href="#org83fc153">10.3.1. User.swift</a></li>
-<li><a href="#org776403b">10.3.2. ContentView.swift</a></li>
-<li><a href="#orgad92840">10.3.3. EditUser.swift</a></li>
+<li><a href="#org80836af">10.3.1. User.swift</a></li>
+<li><a href="#org4e2444f">10.3.2. ContentView.swift</a></li>
+<li><a href="#org8d059c5">10.3.3. EditUser.swift</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><a href="#Alert">11. Alert</a>
 <ul>
-<li><a href="#org4d8ac05">11.1. 以 Button 觸發</a></li>
-<li><a href="#orga5f1149">11.2. 以 TextField 觸發</a></li>
+<li><a href="#org1ee250f">11.1. 以 Button 觸發</a></li>
+<li><a href="#orgc2d0d91">11.2. 以 TextField 觸發</a></li>
 </ul>
 </li>
-<li><a href="#orgc910d96">12. Navigation Views: Tabbed View</a>
+<li><a href="#orgb679cec">12. Navigation Views: Tabbed View</a>
 <ul>
-<li><a href="#org60cd3be">12.1. Create subView</a></li>
-<li><a href="#orge468dc5">12.2. customize tab bar</a>
+<li><a href="#orgdbec2f7">12.1. Create subView</a></li>
+<li><a href="#orge589e07">12.2. customize tab bar</a>
 <ul>
-<li><a href="#orgae98a30">12.2.1. Change tabView font size</a></li>
-<li><a href="#org3c4bb75">12.2.2. the color of unselected tab bar</a></li>
-<li><a href="#org5ac84cf">12.2.3. the color of the tab bar item : .accentColor</a></li>
-<li><a href="#org6b772dc">12.2.4. the tab bar’s color: appearance()</a>
+<li><a href="#org92d857e">12.2.1. Change tabView font size</a></li>
+<li><a href="#org1026e70">12.2.2. the color of unselected tab bar</a></li>
+<li><a href="#org0a6dba3">12.2.3. the color of the tab bar item : .accentColor</a></li>
+<li><a href="#org3435e7c">12.2.4. the tab bar’s color: appearance()</a>
 <ul>
-<li><a href="#org22ca39b">12.2.4.1. init()</a></li>
-<li><a href="#org5b1a9fb">12.2.4.2. onAppear()</a></li>
+<li><a href="#org4db7281">12.2.4.1. init()</a></li>
+<li><a href="#org0704d2c">12.2.4.2. onAppear()</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org3ac11f2">12.3. Switching Between Tabs Programmatically</a></li>
-<li><a href="#orgcdfce16">12.4. 一個優秀的 Tab Bar 應該具備哪些特點？</a></li>
-<li><a href="#org6a75857">12.5. Reading Resources</a></li>
+<li><a href="#orge382399">12.3. Switching Between Tabs Programmatically</a></li>
+<li><a href="#orgadd9b7c">12.4. 一個優秀的 Tab Bar 應該具備哪些特點？</a></li>
+<li><a href="#orga7ddd5f">12.5. Reading Resources</a></li>
 </ul>
 </li>
 <li><a href="#navigation">13. Navigation Views: Navigation Bar</a>
 <ul>
-<li><a href="#org1de20df">13.1. Navigation bar</a>
+<li><a href="#org56ad542">13.1. Navigation bar</a>
 <ul>
-<li><a href="#org0721465">13.1.1. Hide Navigation Bar</a>
+<li><a href="#org58baba2">13.1.1. Hide Navigation Bar</a>
 <ul>
-<li><a href="#org6eccb96">13.1.1.1. NavigationLink</a></li>
-<li><a href="#org364a765">13.1.1.2. Reading</a></li>
+<li><a href="#orgb4d9708">13.1.1.1. NavigationLink</a></li>
+<li><a href="#orge8728df">13.1.1.2. Reading</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org47aa194">13.2. Create New Views</a>
+<li><a href="#org2a521e5">13.2. Create New Views</a>
 <ul>
-<li><a href="#org87761a8">13.2.1. in same file</a>
+<li><a href="#org92ba107">13.2.1. in same file</a>
 <ul>
-<li><a href="#orgb42800f">13.2.1.1. class exercise</a></li>
+<li><a href="#org6e8e7cb">13.2.1.1. class exercise</a></li>
 </ul>
 </li>
-<li><a href="#org3fedf60">13.2.2. in new file</a></li>
+<li><a href="#org0acecf1">13.2.2. in new file</a></li>
 </ul>
 </li>
-<li><a href="#orgd3d64a6">13.3. Passing parameter(單純參數傳遞)</a></li>
-<li><a href="#orgc9bbd3e">13.4. Version-1: Navigation v.s. List v.s. NavigationLink</a></li>
-<li><a href="#orgbfa6acc">13.5. Version-2:</a>
+<li><a href="#orgc807c6d">13.3. Passing parameter(單純參數傳遞)</a></li>
+<li><a href="#orgfb46e03">13.4. Version-1: Navigation v.s. List v.s. NavigationLink</a></li>
+<li><a href="#org212de6d">13.5. Version-2:</a>
 <ul>
-<li><a href="#org833a37f">13.5.1. Book.swift</a></li>
-<li><a href="#org5ebc55b">13.5.2. ContentView.swift</a></li>
-<li><a href="#org1332668">13.5.3. DetailView.swift</a></li>
+<li><a href="#org05a9ecd">13.5.1. Book.swift</a></li>
+<li><a href="#org61e9da5">13.5.2. ContentView.swift</a></li>
+<li><a href="#orgd4ad100">13.5.3. DetailView.swift</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><a href="#DynamicList">14. Dynamic List</a>
 <ul>
-<li><a href="#orgfe1b3d7">14.1. DataModel</a>
+<li><a href="#orgaeacda7">14.1. DataModel</a>
 <ul>
-<li><a href="#org711f316">14.1.1. BookModel.swift (Model)</a></li>
+<li><a href="#orgec10882">14.1.1. BookModel.swift (Model)</a></li>
 </ul>
 </li>
-<li><a href="#org590cd7a">14.2. ViewModel</a>
+<li><a href="#org119244b">14.2. ViewModel</a>
 <ul>
-<li><a href="#org17d7353">14.2.1. Book.swift</a></li>
+<li><a href="#orgfd34054">14.2.1. Book.swift</a></li>
 </ul>
 </li>
-<li><a href="#org0c50107">14.3. 主畫面</a>
+<li><a href="#orge41d1bf">14.3. 主畫面</a>
 <ul>
-<li><a href="#org9258413">14.3.1. ContentView.swift</a></li>
+<li><a href="#org036710f">14.3.1. ContentView.swift</a></li>
 </ul>
 </li>
-<li><a href="#org5cd2820">14.4. 加入新記錄</a>
+<li><a href="#org52a78a3">14.4. 加入新記錄</a>
 <ul>
-<li><a href="#orgaa08805">14.4.1. AddNewBook.swift</a></li>
+<li><a href="#orgb916c43">14.4.1. AddNewBook.swift</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><a href="#ObservedObject">15. Passing data between Views #2: @ObservedObject</a>
 <ul>
-<li><a href="#org3450659">15.1. ObservedObject範例</a></li>
-<li><a href="#org39699a9">15.2. ObservedObject特性</a></li>
-<li><a href="#org06d9ff8">15.3. @ObservedObject v.s. @ObjectBinding</a></li>
+<li><a href="#org73e7a78">15.1. ObservedObject範例</a></li>
+<li><a href="#orgfdb6be4">15.2. ObservedObject特性</a></li>
+<li><a href="#org6b13b03">15.3. @ObservedObject v.s. @ObjectBinding</a></li>
 </ul>
 </li>
 <li><a href="#EnvironmentObject">16. Passing data between Views #3: @EnvironmentObject</a>
 <ul>
-<li><a href="#orgbc7b792">16.1. @EnvironmentObject與@ObservedObject的異同</a>
+<li><a href="#orgd456cf2">16.1. @EnvironmentObject與@ObservedObject的異同</a>
 <ul>
-<li><a href="#orgdfb873b">16.1.1. 相同</a></li>
-<li><a href="#orge0d30d5">16.1.2. 差異</a></li>
-<li><a href="#orgf2e46de">16.1.3. 範例</a></li>
+<li><a href="#orga681ef1">16.1.1. 相同</a></li>
+<li><a href="#org6267159">16.1.2. 差異</a></li>
+<li><a href="#org4738116">16.1.3. 範例</a></li>
 </ul>
 </li>
-<li><a href="#orgfcde61b">16.2. EnvironmentObject設定方式</a>
+<li><a href="#org4a59a8f">16.2. EnvironmentObject設定方式</a>
 <ul>
-<li><a href="#orgc93891e">16.2.1. 建立EnvironmentObject class</a></li>
-<li><a href="#orgc0e2296">16.2.2. 設定app環境</a>
+<li><a href="#org9e90760">16.2.1. 建立EnvironmentObject class</a></li>
+<li><a href="#orgea4a3c2">16.2.2. 設定app環境</a>
 <ul>
-<li><a href="#org0d938b4">16.2.2.1. Xcode 11.X: SceneDeleate.swift</a></li>
-<li><a href="#org25350cb">16.2.2.2. Xcode 12.X: xxxApp.swift</a></li>
+<li><a href="#org2d60da4">16.2.2.1. Xcode 11.X: SceneDeleate.swift</a></li>
+<li><a href="#orge1bc2fe">16.2.2.2. Xcode 12.X: xxxApp.swift</a></li>
 </ul>
 </li>
-<li><a href="#org9a2861e">16.2.3. 設定Client View</a>
+<li><a href="#org989a50e">16.2.3. 設定Client View</a>
 <ul>
-<li><a href="#org2a09269">16.2.3.1. Read</a></li>
-<li><a href="#org260b18b">16.2.3.2. Write</a></li>
+<li><a href="#org905ee2a">16.2.3.1. Read</a></li>
+<li><a href="#org1a5d9cd">16.2.3.2. Write</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org95b1b31">16.3. 範例</a>
+<li><a href="#org10ca6f0">16.3. 範例</a>
 <ul>
-<li><a href="#org69fdd4a">16.3.1. ShoppingCart.swift</a></li>
-<li><a href="#orgda8a295">16.3.2. 環境設定 SceneDelegate.swift / xxxApp.swift</a>
+<li><a href="#org7851abd">16.3.1. ShoppingCart.swift</a></li>
+<li><a href="#org3b6fe30">16.3.2. 環境設定 SceneDelegate.swift / xxxApp.swift</a>
 <ul>
-<li><a href="#org41be30c">16.3.2.1. 舊版: SceneDelegate.swift</a></li>
-<li><a href="#org788e306">16.3.2.2. 新版: xxxApp.swift</a></li>
+<li><a href="#orgaac1b6e">16.3.2.1. 舊版: SceneDelegate.swift</a></li>
+<li><a href="#org30592d1">16.3.2.2. 新版: xxxApp.swift</a></li>
 </ul>
 </li>
-<li><a href="#orgaa0a992">16.3.3. ContentView.swift</a></li>
-<li><a href="#org7936e38">16.3.4. SecondView</a></li>
+<li><a href="#org012bd6a">16.3.3. ContentView.swift</a></li>
+<li><a href="#org81c41c3">16.3.4. SecondView</a></li>
 </ul>
 </li>
-<li><a href="#orgc85d76b">16.4. Further Reading</a></li>
+<li><a href="#org332adac">16.4. Further Reading</a></li>
 </ul>
 </li>
 <li><a href="#UserDefaults">17. UserDefaults</a>
 <ul>
-<li><a href="#orgf5803e3">17.1. 幾種可以在 iOS app 永久儲存資料的方式:</a></li>
-<li><a href="#org10113d0">17.2. UserDefautls</a></li>
-<li><a href="#org8dfcc45">17.3. Using userDefaults</a>
+<li><a href="#org9f9425e">17.1. 幾種可以在 iOS app 永久儲存資料的方式:</a></li>
+<li><a href="#orgaf5fd0f">17.2. UserDefautls</a></li>
+<li><a href="#org0bd3b36">17.3. Using userDefaults</a>
 <ul>
-<li><a href="#orgf4031a2">17.3.1. Storing Data</a></li>
-<li><a href="#orga71e567">17.3.2. Retrieving Data</a></li>
+<li><a href="#org1d7551d">17.3.1. Storing Data</a></li>
+<li><a href="#org5f89f4d">17.3.2. Retrieving Data</a></li>
 </ul>
 </li>
-<li><a href="#org93281f2">17.4. Demo</a>
+<li><a href="#orgcee4d5f">17.4. Demo</a>
 <ul>
-<li><a href="#org5e06c1f">17.4.1. Create UserDefault.swift</a></li>
-<li><a href="#org8dfd2be">17.4.2. use userSetting in ContentView.swift</a></li>
-<li><a href="#org3ae2023">17.4.3. BookList: UserDefault v.s. @EnvironmentObject</a>
+<li><a href="#orgb7dab60">17.4.1. Create UserDefault.swift</a></li>
+<li><a href="#org1ec09cb">17.4.2. use userSetting in ContentView.swift</a></li>
+<li><a href="#orgf87127c">17.4.3. BookList: UserDefault v.s. @EnvironmentObject</a>
 <ul>
-<li><a href="#orgc54a0fb">17.4.3.1. UserSettings.swift</a></li>
-<li><a href="#orgc541e87">17.4.3.2. ContentView.swift</a></li>
-<li><a href="#org717140f">17.4.3.3. settingView.swift</a></li>
-<li><a href="#org43b0b70">17.4.3.4. SceneDelegate.swift</a></li>
+<li><a href="#org8edc991">17.4.3.1. UserSettings.swift</a></li>
+<li><a href="#org3045dfe">17.4.3.2. ContentView.swift</a></li>
+<li><a href="#org72806f5">17.4.3.3. settingView.swift</a></li>
+<li><a href="#org15314bb">17.4.3.4. SceneDelegate.swift</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgdd2fbff">17.5. Reading Resources</a></li>
+<li><a href="#org52cfa53">17.5. Reading Resources</a></li>
 </ul>
 </li>
 <li><a href="#Wrappers">18. Passing data between Views #4: Property Wrappers</a>
 <ul>
-<li><a href="#org7e73327">18.1. SwiftUI的狀態管理</a></li>
-<li><a href="#org5eaf6f9">18.2. @StateObject v.s. @ObservedObject</a>
+<li><a href="#orga61543e">18.1. SwiftUI的狀態管理</a></li>
+<li><a href="#org585d14c">18.2. @StateObject v.s. @ObservedObject</a>
 <ul>
-<li><a href="#org052d628">18.2.1. 程式範例</a></li>
-<li><a href="#orge6b4862">18.2.2. Create once</a></li>
+<li><a href="#orgdc59642">18.2.1. 程式範例</a></li>
+<li><a href="#org0936e0a">18.2.2. Create once</a></li>
 </ul>
 </li>
-<li><a href="#orgbf9c00c">18.3. 使用@EnvironmentObject保持狀態</a></li>
-<li><a href="#orgfce6c76">18.4. Property wrapper syntactic Sugar</a></li>
-<li><a href="#orga9c08e4">18.5. 各種property wrapper比較</a></li>
+<li><a href="#orgc5b3309">18.3. 使用@EnvironmentObject保持狀態</a></li>
+<li><a href="#orgb247ab3">18.4. Property wrapper syntactic Sugar</a></li>
+<li><a href="#org2ed890c">18.5. 各種property wrapper比較</a></li>
 </ul>
 </li>
-<li><a href="#org21edb5d">19. Filtered List</a>
+<li><a href="#org5f385ab">19. Filtered List</a>
 <ul>
-<li><a href="#org7248b6a">19.1. Model</a></li>
-<li><a href="#org3984fd9">19.2. ViewModel</a></li>
-<li><a href="#orga1f1764">19.3. 主畫面</a></li>
+<li><a href="#org7d25879">19.1. Model</a></li>
+<li><a href="#org1044888">19.2. ViewModel</a></li>
+<li><a href="#org20098fd">19.3. 主畫面</a></li>
 </ul>
 </li>
 <li><a href="#SW-MVVM">20. MVVM</a>
 <ul>
-<li><a href="#orge563fe3">20.1. Design pattern</a></li>
-<li><a href="#org1379a7f">20.2. What is the idea behind MVVM</a>
+<li><a href="#org0202019">20.1. Design pattern</a></li>
+<li><a href="#org49ef338">20.2. What is the idea behind MVVM</a>
 <ul>
-<li><a href="#org6294ffe">20.2.1. Model</a></li>
-<li><a href="#org460e9f3">20.2.2. View</a></li>
-<li><a href="#org61bac8e">20.2.3. ViewModel</a></li>
-<li><a href="#org433b2c3">20.2.4. 為什麼要拆成三部份(What does it solve?)</a></li>
-<li><a href="#org5297f24">20.2.5. Limitations / Cons</a></li>
+<li><a href="#org53170ef">20.2.1. Model</a></li>
+<li><a href="#orgf66e930">20.2.2. View</a></li>
+<li><a href="#orgf28ca5d">20.2.3. ViewModel</a></li>
+<li><a href="#org8436c73">20.2.4. 為什麼要拆成三部份(What does it solve?)</a></li>
+<li><a href="#orgae17d31">20.2.5. Limitations / Cons</a></li>
 </ul>
 </li>
-<li><a href="#org45a0bf9">20.3. DEMO</a></li>
-<li><a href="#orgd86f715">20.4. Model要用Struct或是Class</a>
+<li><a href="#orgee8ea97">20.3. DEMO</a></li>
+<li><a href="#org0129394">20.4. Model要用Struct或是Class</a>
 <ul>
-<li><a href="#orgf863f11">20.4.1. Struct 與 Class 的不同性質</a></li>
-<li><a href="#orgce6030e">20.4.2. MMVM中的Model</a></li>
+<li><a href="#orgcba05b8">20.4.1. Struct 與 Class 的不同性質</a></li>
+<li><a href="#org5a1f14d">20.4.2. MMVM中的Model</a></li>
 </ul>
 </li>
-<li><a href="#org9563f3c">20.5. DICE DEMO</a></li>
-<li><a href="#orgc8cac42">20.6. Further Reading Resources</a></li>
+<li><a href="#orgc80e6ab">20.5. DICE DEMO</a></li>
+<li><a href="#org7a19b46">20.6. Further Reading Resources</a></li>
 </ul>
 </li>
-<li><a href="#orgee52a02">21. Web API: URLSession v.s. JSONDecoder</a>
+<li><a href="#org6238fec">21. Web API: URLSession v.s. JSONDecoder</a>
 <ul>
-<li><a href="#org6cd7894">21.1. Demo 1</a>
+<li><a href="#orga5d0c61">21.1. Demo 1</a>
 <ul>
-<li><a href="#orgeb8c023">21.1.1. ContentView.swift</a></li>
+<li><a href="#org507efc7">21.1.1. ContentView.swift</a></li>
 </ul>
 </li>
-<li><a href="#org4047746">21.2. Demo 2</a>
+<li><a href="#org7e9dbc2">21.2. Demo 2</a>
 <ul>
-<li><a href="#org9035be2">21.2.1. MVVM</a></li>
-<li><a href="#org81a0a99">21.2.2. FlowModel.swift</a></li>
-<li><a href="#org58b3a26">21.2.3. ContentView.swift</a></li>
-<li><a href="#orga21fc47">21.2.4. Flow.swift</a></li>
-<li><a href="#org6904183">21.2.5. Result</a></li>
+<li><a href="#orgaf3771a">21.2.1. MVVM</a></li>
+<li><a href="#org8aad15e">21.2.2. FlowModel.swift</a></li>
+<li><a href="#orgb086c36">21.2.3. ContentView.swift</a></li>
+<li><a href="#orgdecc472">21.2.4. Flow.swift</a></li>
+<li><a href="#org7d20551">21.2.5. Result</a></li>
 </ul>
 </li>
-<li><a href="#org2cb5296">21.3. 公開資料平台</a></li>
-<li><a href="#org4b85c75">21.4. Further Reading</a></li>
+<li><a href="#orgd626e25">21.3. 公開資料平台</a></li>
+<li><a href="#org2083b31">21.4. Further Reading</a></li>
 </ul>
 </li>
 <li><a href="#SW-Protocols">22. <span class="todo STRT">STRT</span> Protocols</a>
 <ul>
-<li><a href="#org90f821e">22.1. Protocol Syntax</a>
+<li><a href="#orgb3875dc">22.1. Protocol Syntax</a>
 <ul>
-<li><a href="#orga9ef42a">22.1.1. Syntax</a></li>
-<li><a href="#org63719f3">22.1.2. DEMO</a></li>
-<li><a href="#orgeca1195">22.1.3. Adding property requirements</a></li>
-<li><a href="#org59972e9">22.1.4. Protocols with mutating methods</a></li>
-<li><a href="#org75ece52">22.1.5. Initializer Requirements</a></li>
+<li><a href="#org5648412">22.1.1. Syntax</a></li>
+<li><a href="#org723eb24">22.1.2. DEMO</a></li>
+<li><a href="#org1275e4a">22.1.3. Adding property requirements</a></li>
+<li><a href="#orgbfb0c1b">22.1.4. Protocols with mutating methods</a></li>
+<li><a href="#orgbe628ea">22.1.5. Initializer Requirements</a></li>
 </ul>
 </li>
-<li><a href="#orgd7603c3">22.2. DEMO</a></li>
-<li><a href="#org45166c0">22.3. 範例</a>
+<li><a href="#org9f0059d">22.2. DEMO</a></li>
+<li><a href="#org78ec150">22.3. 範例</a>
 <ul>
-<li><a href="#orgf689021">22.3.1. 版本 1</a></li>
-<li><a href="#orgf2020a0">22.3.2. 版本 2</a></li>
-<li><a href="#org01300d8">22.3.3. 版本 3</a></li>
+<li><a href="#org46634e6">22.3.1. 版本 1</a></li>
+<li><a href="#orgcc38a7c">22.3.2. 版本 2</a></li>
+<li><a href="#org6e57183">22.3.3. 版本 3</a></li>
 </ul>
 </li>
-<li><a href="#org2406f63">22.4. mutating</a></li>
-<li><a href="#org37c9be5">22.5. 擴充 protocol</a></li>
-<li><a href="#org6b7b7fa">22.6. Further Reading</a></li>
+<li><a href="#orga59979d">22.4. mutating</a></li>
+<li><a href="#org9600edd">22.5. 擴充 protocol</a></li>
+<li><a href="#org47e74ec">22.6. Further Reading</a></li>
 </ul>
 </li>
-<li><a href="#org11d6ec8">23. Struct v.s. Class</a>
+<li><a href="#orga53d5f6">23. Struct v.s. Class</a>
 <ul>
-<li><a href="#orge52cb72">23.1. What is in class/struct</a>
+<li><a href="#org500ce4f">23.1. What is in class/struct</a>
 <ul>
-<li><a href="#org96bd142">23.1.1. What is a class in Swift?</a></li>
-<li><a href="#org6d60e13">23.1.2. What is a struct in Swift?</a></li>
-<li><a href="#org883bb0a">23.1.3. What are the differences between a struct and a class?</a>
+<li><a href="#org0b6e09d">23.1.1. What is a class in Swift?</a></li>
+<li><a href="#org7022b1b">23.1.2. What is a struct in Swift?</a></li>
+<li><a href="#org9b09d39">23.1.3. What are the differences between a struct and a class?</a>
 <ul>
-<li><a href="#org3995e41">23.1.3.1. The benefit of mutation in safety</a></li>
-<li><a href="#org3b814d3">23.1.3.2. Structs get an initializer for free</a></li>
-<li><a href="#org88f417e">23.1.3.3. Classes allow inheritance</a></li>
+<li><a href="#org7966e77">23.1.3.1. The benefit of mutation in safety</a></li>
+<li><a href="#org7f72649">23.1.3.2. Structs get an initializer for free</a></li>
+<li><a href="#orga04ac05">23.1.3.3. Classes allow inheritance</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orge4df61d">23.2. 如何決擇? / When should I go for a struct and when for a class?</a>
+<li><a href="#org89a5091">23.2. 如何決擇? / When should I go for a struct and when for a class?</a>
 <ul>
-<li><a href="#org6761213">23.2.1. You should use a class when:</a></li>
-<li><a href="#org78a89d4">23.2.2. You should use a struct when:</a></li>
-<li><a href="#orgf83f5ca">23.2.3. Try to go for a struct by default.</a></li>
+<li><a href="#orgc5e1ee2">23.2.1. You should use a class when:</a></li>
+<li><a href="#org048e7de">23.2.2. You should use a struct when:</a></li>
+<li><a href="#org53810e5">23.2.3. Try to go for a struct by default.</a></li>
 </ul>
 </li>
-<li><a href="#org9e123a9">23.3. DEMO</a></li>
+<li><a href="#orga07b2cb">23.3. DEMO</a></li>
 </ul>
 </li>
 <li><a href="#some">24. <span class="todo TODO">TODO</span> some</a>
 <ul>
-<li><a href="#org664449c">24.1. Generics</a>
+<li><a href="#orgbf98b70">24.1. Generics</a>
 <ul>
-<li><a href="#orga7f52bb">24.1.1. 問題</a></li>
-<li><a href="#org5671f59">24.1.2. 解決方案</a></li>
+<li><a href="#org3d31ad6">24.1.1. 問題</a></li>
+<li><a href="#org23059d7">24.1.2. 解決方案</a></li>
 </ul>
 </li>
-<li><a href="#org7d54747">24.2. opaque</a></li>
+<li><a href="#org1551cca">24.2. opaque</a></li>
 </ul>
 </li>
 <li><a href="#advanced">25. <span class="todo TODO">TODO</span> 進階主題</a></li>
-<li><a href="#org99e4aec">26. Firebase</a></li>
+<li><a href="#orge989cff">26. Firebase</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgda2ee86" class="outline-2">
-<h2 id="orgda2ee86"><span class="section-number-2">1</span> Recommending Reading</h2>
+<div id="outline-container-org63c3dab" class="outline-2">
+<h2 id="org63c3dab"><span class="section-number-2">1</span> Recommending Reading</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 這些都只是為了選修課臨時整理的教材，內容深度與廣度都有限，建議有學習野心的同學還是多多去讀其他的資料：<br />
@@ -695,36 +695,36 @@
 <h2 id="SW-UIKIT-SWIFTUI"><span class="section-number-2">2</span> iOS app 的開發界面: UIKit v.s. SwiftUI</h2>
 <div class="outline-text-2" id="text-SW-UIKIT-SWIFTUI">
 </div>
-<div id="outline-container-org5d35aa9" class="outline-3">
-<h3 id="org5d35aa9"><span class="section-number-3">2.1</span> UIKit 與 SwiftUI 的差異性</h3>
+<div id="outline-container-org8c65ca8" class="outline-3">
+<h3 id="org8c65ca8"><span class="section-number-3">2.1</span> UIKit 與 SwiftUI 的差異性</h3>
 <div class="outline-text-3" id="text-2-1">
 </div>
-<div id="outline-container-orgfcf9a03" class="outline-4">
-<h4 id="orgfcf9a03"><span class="section-number-4">2.1.1</span> 系統需求</h4>
+<div id="outline-container-org9c82ede" class="outline-4">
+<h4 id="org9c82ede"><span class="section-number-4">2.1.1</span> 系統需求</h4>
 <div class="outline-text-4" id="text-2-1-1">
 <p>
 UIKit 是從 Xcode1 就一直存在的 Framework；而 SwiftUI 則是 2019/6 WWDC 所發表的全新用來繪製 UI 的 Framework。因此，SwiftUI 必須搭配 iOS13+ 和 MacOS10.15+。<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup><br />
 </p>
 </div>
 </div>
-<div id="outline-container-org619afeb" class="outline-4">
-<h4 id="org619afeb"><span class="section-number-4">2.1.2</span> 底層語言</h4>
+<div id="outline-container-orgb6df03f" class="outline-4">
+<h4 id="orgb6df03f"><span class="section-number-4">2.1.2</span> 底層語言</h4>
 <div class="outline-text-4" id="text-2-1-2">
 <p>
 UIKit 底層仍為 Objecitve-C；而 SwiftUI 則是完完全全用 Swift 打造的 Framework。<br />
 </p>
 </div>
 </div>
-<div id="outline-container-org2ff552d" class="outline-4">
-<h4 id="org2ff552d"><span class="section-number-4">2.1.3</span> 語法簡潔度</h4>
+<div id="outline-container-orga26bddd" class="outline-4">
+<h4 id="orga26bddd"><span class="section-number-4">2.1.3</span> 語法簡潔度</h4>
 <div class="outline-text-4" id="text-2-1-3">
 <p>
 SwiftUI 產生一顯示文字的元件更精簡潔了。<br />
 </p>
 </div>
 </div>
-<div id="outline-container-org60c275f" class="outline-4">
-<h4 id="org60c275f"><span class="section-number-4">2.1.4</span> Declarative vs Imperative Programming</h4>
+<div id="outline-container-org1f43147" class="outline-4">
+<h4 id="org1f43147"><span class="section-number-4">2.1.4</span> Declarative vs Imperative Programming</h4>
 <div class="outline-text-4" id="text-2-1-4">
 <ul class="org-ul">
 <li>imperative programming：告訴電腦如何做(HOW)來得到我們想要的結果(WHAT)，如 Java, C++, PHP, C#, Swift<br /></li>
@@ -733,8 +733,8 @@ SwiftUI 產生一顯示文字的元件更精簡潔了。<br />
 </div>
 </div>
 
-<div id="outline-container-org17b84c9" class="outline-4">
-<h4 id="org17b84c9"><span class="section-number-4">2.1.5</span> 跨平台</h4>
+<div id="outline-container-org44ddb94" class="outline-4">
+<h4 id="org44ddb94"><span class="section-number-4">2.1.5</span> 跨平台</h4>
 <div class="outline-text-4" id="text-2-1-5">
 <p>
 跨平台指的非跨 Android(但希望有那麼一天是可以支援的😀)。跨平台指的是使用 SwiftUI 所開發的專案，可以同時支援 macOS、watchOS、tvOS 等系統。引用一句 WWDC2019 SwiftUI 演講者所說的一句話。<br />
@@ -746,22 +746,22 @@ Learn once, apply everywhere.<br />
 </blockquote>
 </div>
 </div>
-<div id="outline-container-orge3c551d" class="outline-4">
-<h4 id="orge3c551d"><span class="section-number-4">2.1.6</span> Automatic Preview</h4>
+<div id="outline-container-orgf398eb9" class="outline-4">
+<h4 id="orgf398eb9"><span class="section-number-4">2.1.6</span> Automatic Preview</h4>
 <div class="outline-text-4" id="text-2-1-6">
 <p>
 這是此次 SwiftUI 最大的亮點之一，所謂 Automatic Preview，意思指的是即時預覽，即我們一邊調整程式碼的同時，也可以立即看到修改後的結果。<br />
 </p>
 </div>
 </div>
-<div id="outline-container-org72fc8ca" class="outline-4">
-<h4 id="org72fc8ca"><span class="section-number-4">2.1.7</span> 自動支援進階功能</h4>
+<div id="outline-container-org50b5016" class="outline-4">
+<h4 id="org50b5016"><span class="section-number-4">2.1.7</span> 自動支援進階功能</h4>
 <div class="outline-text-4" id="text-2-1-7">
 <p>
 SwiftUI 本身即支援 Dynamic Type、Dark Mode、 Localization 等等。這邊特別來講一下 UIKit 和 SwiftUI 在文字設定上有關於 Dark Mode 的差異，UIKit 若是無特別指定文字的顏色(意即使用 Default 的選項)，在 Light Mode 字體會是白色；相對的在 Dark Mode 即會是白色，這點跟 SwiftUI 沒有特別的差異，但是 SwiftUI 除了 Default 外，還有 Secondary，如果還不喜歡的話，還有第三個選項，就是在 Assets 自行設定 Light Mode 和 Dark Mode 分別要顯示的顏色。<br />
 </p>
 
-<div id="orgbe738f8" class="figure">
+<div id="orgb5f1336" class="figure">
 <p><img src="images/differences.png" alt="differences.png" width="300" /><br />
 </p>
 <p><span class="figure-number">Figure 1: </span>UIKit 與 SwiftUI 的差異性比較圖</p>
@@ -769,12 +769,12 @@ SwiftUI 本身即支援 Dynamic Type、Dark Mode、 Localization 等等。這邊
 </div>
 </div>
 </div>
-<div id="outline-container-orgecb453b" class="outline-3">
-<h3 id="orgecb453b"><span class="section-number-3">2.2</span> SwiftUI vs UIKit: Benefits and Drawbacks</h3>
+<div id="outline-container-org2bf2480" class="outline-3">
+<h3 id="org2bf2480"><span class="section-number-3">2.2</span> SwiftUI vs UIKit: Benefits and Drawbacks</h3>
 <div class="outline-text-3" id="text-2-2">
 </div>
-<div id="outline-container-org0155447" class="outline-4">
-<h4 id="org0155447"><span class="section-number-4">2.2.1</span> Drawbacks of SwiftUI <sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup></h4>
+<div id="outline-container-org57dd147" class="outline-4">
+<h4 id="org57dd147"><span class="section-number-4">2.2.1</span> Drawbacks of SwiftUI <sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup></h4>
 <div class="outline-text-4" id="text-2-2-1">
 <ul class="org-ul">
 <li>It supports only iOS 13 and Xcode 11. By switching to them, you abandon users of older versions of iOS, which is a radical move devoid of concern for the user. But since Apple annually updates its list of supported iOS versions, I think SwiftUI will be used more over the next two years as users install the latest iOS version.<br /></li>
@@ -783,8 +783,8 @@ SwiftUI 本身即支援 Dynamic Type、Dark Mode、 Localization 等等。這邊
 </ul>
 </div>
 </div>
-<div id="outline-container-org1e48017" class="outline-4">
-<h4 id="org1e48017"><span class="section-number-4">2.2.2</span> Benefits of SwiftUI <sup><a id="fnr.2.100" class="footref" href="#fn.2">2</a></sup></h4>
+<div id="outline-container-orgb44182d" class="outline-4">
+<h4 id="orgb44182d"><span class="section-number-4">2.2.2</span> Benefits of SwiftUI <sup><a id="fnr.2.100" class="footref" href="#fn.2">2</a></sup></h4>
 <div class="outline-text-4" id="text-2-2-2">
 <ul class="org-ul">
 <li>It’s easy to learn, and the code is simple and clean.<br /></li>
@@ -810,8 +810,8 @@ There’s no AutoLayout or related problems. Instead, you use things like HStack
 <li>使用 Swift 為 User Interface 的專案 Launch 的生命週期為 AppDelegate → ViewController，而使用 SwiftUI 為 User Interface 的專案則變成為 AppDelegate → SceneDelegate → ContentView，原本應該出現在 AppDelegate 的 applicationWillEnterForeground(_:) 等相關 App 到前、背景等相關的生命週期邏輯也都移至 SceneDelegate 裡了，method 名稱 application 的前綴字也都更改為 scene 了。<sup><a id="fnr.3" class="footref" href="#fn.3">3</a></sup><br /></li>
 </ul>
 </div>
-<div id="outline-container-org0957bd1" class="outline-3">
-<h3 id="org0957bd1"><span class="section-number-3">3.1</span> SceneDelegate.swift</h3>
+<div id="outline-container-org50856d8" class="outline-3">
+<h3 id="org50856d8"><span class="section-number-3">3.1</span> SceneDelegate.swift</h3>
 <div class="outline-text-3" id="text-3-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> UIKit
@@ -881,8 +881,8 @@ There’s no AutoLayout or related problems. Instead, you use things like HStack
 <h2 id="SW-SWIFTUI-INTRO"><span class="section-number-2">4</span> 建立SwiftUI Project</h2>
 <div class="outline-text-2" id="text-SW-SWIFTUI-INTRO">
 </div>
-<div id="outline-container-org8b78c73" class="outline-3">
-<h3 id="org8b78c73"><span class="section-number-3">4.1</span> 教學影片</h3>
+<div id="outline-container-orgd14bb42" class="outline-3">
+<h3 id="orgd14bb42"><span class="section-number-3">4.1</span> 教學影片</h3>
 <div class="outline-text-3" id="text-4-1">
 <ul class="org-ul">
 <li><a href="https://www.youtube.com/watch?v=VlhcNR7Qrno">Your First SwiftUI App (Full Compilation!)</a><br /></li>
@@ -902,8 +902,8 @@ There’s no AutoLayout or related problems. Instead, you use things like HStack
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd65d8f3" class="outline-3">
-<h3 id="orgd65d8f3"><span class="section-number-3">4.2</span> 使用 SwiftUI 開啟新專案 <sup><a id="fnr.3.100" class="footref" href="#fn.3">3</a></sup></h3>
+<div id="outline-container-orgd28c7c3" class="outline-3">
+<h3 id="orgd28c7c3"><span class="section-number-3">4.2</span> 使用 SwiftUI 開啟新專案 <sup><a id="fnr.3.100" class="footref" href="#fn.3">3</a></sup></h3>
 <div class="outline-text-3" id="text-4-2">
 <ol class="org-ol">
 <li>首先，打開 Xcode，並點擊 Create new Xcode project。在 iOS 之下選擇 Single View App，並為專案命名。<br /></li>
@@ -911,8 +911,8 @@ There’s no AutoLayout or related problems. Instead, you use things like HStack
 <li>Xcode 會自動幫你創建一個名為 ContentView.swif 的檔案，Xcode 會在程式碼的右邊呈現一個即時的預覽視窗(preview), 點選 resume 鈕生成預覽畫面(會花一點時間)。<br /></li>
 </ol>
 </div>
-<div id="outline-container-orgb1c5503" class="outline-4">
-<h4 id="orgb1c5503"><span class="section-number-4">4.2.1</span> ContentView.swift</h4>
+<div id="outline-container-orgf7e72e5" class="outline-4">
+<h4 id="orgf7e72e5"><span class="section-number-4">4.2.1</span> ContentView.swift</h4>
 <div class="outline-text-4" id="text-4-2-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span id="coderef-import" class="coderef-off"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> SwiftUI</span>
@@ -940,12 +940,12 @@ There’s no AutoLayout or related problems. Instead, you use things like HStack
 </div>
 </div>
 </div>
-<div id="outline-container-org6a052d6" class="outline-3">
-<h3 id="org6a052d6"><span class="section-number-3">4.3</span> Text</h3>
+<div id="outline-container-orgfbc8816" class="outline-3">
+<h3 id="orgfbc8816"><span class="section-number-3">4.3</span> Text</h3>
 <div class="outline-text-3" id="text-4-3">
 </div>
-<div id="outline-container-orgca6493e" class="outline-4">
-<h4 id="orgca6493e"><span class="section-number-4">4.3.1</span> 改變 Text 的屬性</h4>
+<div id="outline-container-org8e7f400" class="outline-4">
+<h4 id="org8e7f400"><span class="section-number-4">4.3.1</span> 改變 Text 的屬性</h4>
 <div class="outline-text-4" id="text-4-3-1">
 <ul class="org-ul">
 <li>改變 component 有兩種方式：工具列、code<br /></li>
@@ -962,8 +962,8 @@ There’s no AutoLayout or related problems. Instead, you use things like HStack
 </div>
 
 
-<div id="outline-container-orgb532705" class="outline-5">
-<h5 id="orgb532705"><span class="section-number-5">4.3.1.1</span> SwiftUI Inspector:</h5>
+<div id="outline-container-org28f3211" class="outline-5">
+<h5 id="org28f3211"><span class="section-number-5">4.3.1.1</span> SwiftUI Inspector:</h5>
 <div class="outline-text-5" id="text-4-3-1-1">
 <ol class="org-ol">
 <li>on Text object (in preview screen): CMD + click<br /></li>
@@ -972,32 +972,32 @@ There’s no AutoLayout or related problems. Instead, you use things like HStack
 <li>Monitor the corresponding code changes in code window<br /></li>
 </ol>
 
-<div id="orgf24078d" class="figure">
+<div id="org54aa767" class="figure">
 <p><img src="images/inspector-1.gif" alt="inspector-1.gif" width="600" /><br />
 </p>
 <p><span class="figure-number">Figure 2: </span>SwiftUI Inspector</p>
 </div>
 </div>
 </div>
-<div id="outline-container-org4b5a3ea" class="outline-5">
-<h5 id="org4b5a3ea"><span class="section-number-5">4.3.1.2</span> Inspector frame</h5>
+<div id="outline-container-orgd97ffa9" class="outline-5">
+<h5 id="orgd97ffa9"><span class="section-number-5">4.3.1.2</span> Inspector frame</h5>
 <div class="outline-text-5" id="text-4-3-1-2">
 
-<div id="orgc47a7e1" class="figure">
+<div id="org2eca409" class="figure">
 <p><img src="images/inspector-2.gif" alt="inspector-2.gif" width="600" /><br />
 </p>
 <p><span class="figure-number">Figure 3: </span>SwiftUI Inspector</p>
 </div>
 </div>
 </div>
-<div id="outline-container-org52978c7" class="outline-5">
-<h5 id="org52978c7"><span class="section-number-5">4.3.1.3</span> code</h5>
+<div id="outline-container-orgba41c0f" class="outline-5">
+<h5 id="orgba41c0f"><span class="section-number-5">4.3.1.3</span> code</h5>
 <div class="outline-text-5" id="text-4-3-1-3">
 <p>
 於 Text(&ldquo;&#x2026;&rdquo;)後加上屬性 function 或修改其他屬性<br />
 </p>
 
-<div id="org1468470" class="figure">
+<div id="orgc29e1c9" class="figure">
 <p><img src="images/inspector-3.gif" alt="inspector-3.gif" width="600" /><br />
 </p>
 <p><span class="figure-number">Figure 4: </span>SwiftUI Change Attributes</p>
@@ -1006,8 +1006,8 @@ There’s no AutoLayout or related problems. Instead, you use things like HStack
 </div>
 </div>
 </div>
-<div id="outline-container-orgd505e94" class="outline-3">
-<h3 id="orgd505e94"><span class="section-number-3">4.4</span> Stack</h3>
+<div id="outline-container-org46c0555" class="outline-3">
+<h3 id="org46c0555"><span class="section-number-3">4.4</span> Stack</h3>
 <div class="outline-text-3" id="text-4-4">
 <p>
 一個以上的物件都要放在 Stack 中，Stack可分為以下三類<br />
@@ -1018,23 +1018,23 @@ There’s no AutoLayout or related problems. Instead, you use things like HStack
 <li>ZStack: 上下排列(重叠)<br /></li>
 </ul>
 </div>
-<div id="outline-container-org00d9505" class="outline-4">
-<h4 id="org00d9505"><span class="section-number-4">4.4.1</span> Stack 與 Stack 可相互包含，於View中加入Stack的方式有二:</h4>
+<div id="outline-container-orgb393d9f" class="outline-4">
+<h4 id="orgb393d9f"><span class="section-number-4">4.4.1</span> Stack 與 Stack 可相互包含，於View中加入Stack的方式有二:</h4>
 <div class="outline-text-4" id="text-4-4-1">
 </div>
-<div id="outline-container-org0cca621" class="outline-5">
-<h5 id="org0cca621"><span class="section-number-5">4.4.1.1</span> 由工具列 drag: Xcode 會自動加入相對的 code</h5>
+<div id="outline-container-org6fbdbc1" class="outline-5">
+<h5 id="org6fbdbc1"><span class="section-number-5">4.4.1.1</span> 由工具列 drag: Xcode 會自動加入相對的 code</h5>
 <div class="outline-text-5" id="text-4-4-1-1">
 
-<div id="orgd709ba4" class="figure">
+<div id="org4a5c442" class="figure">
 <p><img src="images/vstack.gif" alt="vstack.gif" width="600" /><br />
 </p>
 <p><span class="figure-number">Figure 5: </span>Drag component from toolbar</p>
 </div>
 </div>
 </div>
-<div id="outline-container-org14f84f5" class="outline-5">
-<h5 id="org14f84f5"><span class="section-number-5">4.4.1.2</span> coding</h5>
+<div id="outline-container-orga1d4611" class="outline-5">
+<h5 id="orga1d4611"><span class="section-number-5">4.4.1.2</span> coding</h5>
 <div class="outline-text-5" id="text-4-4-1-2">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> SwiftUI
@@ -1057,7 +1057,7 @@ There’s no AutoLayout or related problems. Instead, you use things like HStack
 </div>
 
 
-<div id="org22c59c1" class="figure">
+<div id="org05c5887" class="figure">
 <p><img src="images/vstack-1.jpg" alt="vstack-1.jpg" width="300" /><br />
 </p>
 <p><span class="figure-number">Figure 6: </span>VStack</p>
@@ -1065,8 +1065,8 @@ There’s no AutoLayout or related problems. Instead, you use things like HStack
 </div>
 </div>
 </div>
-<div id="outline-container-org3030acf" class="outline-4">
-<h4 id="org3030acf"><span class="section-number-4">4.4.2</span> SwiftUI 撰寫原則</h4>
+<div id="outline-container-orgb8bb05d" class="outline-4">
+<h4 id="orgb8bb05d"><span class="section-number-4">4.4.2</span> SwiftUI 撰寫原則</h4>
 <div class="outline-text-4" id="text-4-4-2">
 <ul class="org-ul">
 <li>body 恆為只能 return 一物件。<br /></li>
@@ -1074,8 +1074,8 @@ There’s no AutoLayout or related problems. Instead, you use things like HStack
 </ul>
 </div>
 </div>
-<div id="outline-container-org43e9905" class="outline-4">
-<h4 id="org43e9905"><span class="section-number-4">4.4.3</span> HStack DEMO</h4>
+<div id="outline-container-orga87f634" class="outline-4">
+<h4 id="orga87f634"><span class="section-number-4">4.4.3</span> HStack DEMO</h4>
 <div class="outline-text-4" id="text-4-4-3">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> SwiftUI
@@ -1116,7 +1116,7 @@ There’s no AutoLayout or related problems. Instead, you use things like HStack
 </pre>
 </div>
 
-<div id="orga58db4c" class="figure">
+<div id="orgab05e5e" class="figure">
 <p><img src="images/hstack-1.jpg" alt="hstack-1.jpg" width="300" /><br />
 </p>
 <p><span class="figure-number">Figure 7: </span>HStack</p>
@@ -1125,28 +1125,28 @@ There’s no AutoLayout or related problems. Instead, you use things like HStack
 </div>
 </div>
 </div>
-<div id="outline-container-org57f0e80" class="outline-2">
-<h2 id="org57f0e80"><span class="section-number-2">5</span> Image</h2>
+<div id="outline-container-orgb81043a" class="outline-2">
+<h2 id="orgb81043a"><span class="section-number-2">5</span> Image</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 影像來源可以是 System Image 或自行下載/編修的影像(Customized Image)<br />
 </p>
 </div>
-<div id="outline-container-org98a4b50" class="outline-3">
-<h3 id="org98a4b50"><span class="section-number-3">5.1</span> System Image</h3>
+<div id="outline-container-orgafe4e58" class="outline-3">
+<h3 id="orgafe4e58"><span class="section-number-3">5.1</span> System Image</h3>
 <div class="outline-text-3" id="text-5-1">
 </div>
-<div id="outline-container-orgbd56160" class="outline-4">
-<h4 id="orgbd56160"><span class="section-number-4">5.1.1</span> <a href="https://developer.apple.com/design/human-interface-guidelines/sf-symbols/overview/">SF Symbols </a><sup><a id="fnr.4" class="footref" href="#fn.4">4</a></sup></h4>
+<div id="outline-container-orgace904b" class="outline-4">
+<h4 id="orgace904b"><span class="section-number-4">5.1.1</span> <a href="https://developer.apple.com/design/human-interface-guidelines/sf-symbols/overview/">SF Symbols </a><sup><a id="fnr.4" class="footref" href="#fn.4">4</a></sup></h4>
 </div>
-<div id="outline-container-orgc57de4e" class="outline-4">
-<h4 id="orgc57de4e"><span class="section-number-4">5.1.2</span> 從 iOS 13 開始，Apple 介紹了一個名為 SFSymbols 的新功能。SF Symbols 這功能由 Apple 所設計，當中集合了 1500 多個可以在 App 之中使用的符號。<sup><a id="fnr.3.100" class="footref" href="#fn.3">3</a></sup></h4>
+<div id="outline-container-orgce2c139" class="outline-4">
+<h4 id="orgce2c139"><span class="section-number-4">5.1.2</span> 從 iOS 13 開始，Apple 介紹了一個名為 SFSymbols 的新功能。SF Symbols 這功能由 Apple 所設計，當中集合了 1500 多個可以在 App 之中使用的符號。<sup><a id="fnr.3.100" class="footref" href="#fn.3">3</a></sup></h4>
 </div>
-<div id="outline-container-org231759e" class="outline-4">
-<h4 id="org231759e"><span class="section-number-4">5.1.3</span> <a href="https://developer.apple.com/design/resources/">Download SF Symbols app</a></h4>
+<div id="outline-container-orgee060d2" class="outline-4">
+<h4 id="orgee060d2"><span class="section-number-4">5.1.3</span> <a href="https://developer.apple.com/design/resources/">Download SF Symbols app</a></h4>
 </div>
-<div id="outline-container-org50093d6" class="outline-4">
-<h4 id="org50093d6"><span class="section-number-4">5.1.4</span> code</h4>
+<div id="outline-container-org2195ef0" class="outline-4">
+<h4 id="org2195ef0"><span class="section-number-4">5.1.4</span> code</h4>
 <div class="outline-text-4" id="text-5-1-4">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> SwiftUI
@@ -1174,11 +1174,11 @@ There’s no AutoLayout or related problems. Instead, you use things like HStack
 </div>
 </div>
 </div>
-<div id="outline-container-org5bc3542" class="outline-4">
-<h4 id="org5bc3542"><span class="section-number-4">5.1.5</span> Demo</h4>
+<div id="outline-container-org3dff8db" class="outline-4">
+<h4 id="org3dff8db"><span class="section-number-4">5.1.5</span> Demo</h4>
 <div class="outline-text-4" id="text-5-1-5">
 
-<div id="org2fddd01" class="figure">
+<div id="org63f9df8" class="figure">
 <p><img src="images/image-1.jpg" alt="image-1.jpg" width="300" /><br />
 </p>
 <p><span class="figure-number">Figure 8: </span>Images-1</p>
@@ -1186,8 +1186,8 @@ There’s no AutoLayout or related problems. Instead, you use things like HStack
 </div>
 </div>
 </div>
-<div id="outline-container-orga282da0" class="outline-3">
-<h3 id="orga282da0"><span class="section-number-3">5.2</span> Customized Image 語法</h3>
+<div id="outline-container-orgc3b3591" class="outline-3">
+<h3 id="orgc3b3591"><span class="section-number-3">5.2</span> Customized Image 語法</h3>
 <div class="outline-text-3" id="text-5-2">
 <ol class="org-ol">
 <li>Drag image into Project folder <b>Assets.xcassets</b><br /></li>
@@ -1202,8 +1202,8 @@ There’s no AutoLayout or related problems. Instead, you use things like HStack
 </div>
 </div>
 </div>
-<div id="outline-container-org6d87e5f" class="outline-3">
-<h3 id="org6d87e5f"><span class="section-number-3">5.3</span> Image Attributes</h3>
+<div id="outline-container-orgfb40b3e" class="outline-3">
+<h3 id="orgfb40b3e"><span class="section-number-3">5.3</span> Image Attributes</h3>
 <div class="outline-text-3" id="text-5-3">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> SwiftUI
@@ -1233,15 +1233,15 @@ There’s no AutoLayout or related problems. Instead, you use things like HStack
 </pre>
 </div>
 
-<div id="orgb57821c" class="figure">
+<div id="org1ce59da" class="figure">
 <p><img src="images/image-2.jpg" alt="image-2.jpg" width="300" /><br />
 </p>
 <p><span class="figure-number">Figure 9: </span>Images-2</p>
 </div>
 </div>
 </div>
-<div id="outline-container-org5cf6053" class="outline-3">
-<h3 id="org5cf6053"><span class="section-number-3">5.4</span> Using SF Symbols</h3>
+<div id="outline-container-org2fc97e0" class="outline-3">
+<h3 id="org2fc97e0"><span class="section-number-3">5.4</span> Using SF Symbols</h3>
 <div class="outline-text-3" id="text-5-4">
 <ul class="org-ul">
 <li>SF Symbols app<br /></li>
@@ -1251,12 +1251,12 @@ There’s no AutoLayout or related problems. Instead, you use things like HStack
 </div>
 </div>
 </div>
-<div id="outline-container-orgf8e43b3" class="outline-2">
-<h2 id="orgf8e43b3"><span class="section-number-2">6</span> Button</h2>
+<div id="outline-container-org635a4cd" class="outline-2">
+<h2 id="org635a4cd"><span class="section-number-2">6</span> Button</h2>
 <div class="outline-text-2" id="text-6">
 </div>
-<div id="outline-container-org6a30157" class="outline-3">
-<h3 id="org6a30157"><span class="section-number-3">6.1</span> 語法</h3>
+<div id="outline-container-org8380014" class="outline-3">
+<h3 id="org8380014"><span class="section-number-3">6.1</span> 語法</h3>
 <div class="outline-text-3" id="text-6-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #5B6268;">//</span><span style="color: #5B6268;">...</span>
@@ -1270,8 +1270,8 @@ There’s no AutoLayout or related problems. Instead, you use things like HStack
 </div>
 </div>
 </div>
-<div id="outline-container-org46a4ef2" class="outline-3">
-<h3 id="org46a4ef2"><span class="section-number-3">6.2</span> 將變數加入 View 中</h3>
+<div id="outline-container-orgbb65ca8" class="outline-3">
+<h3 id="orgbb65ca8"><span class="section-number-3">6.2</span> 將變數加入 View 中</h3>
 <div class="outline-text-3" id="text-6-2">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">ContentView</span>: View {
@@ -1290,8 +1290,8 @@ There’s no AutoLayout or related problems. Instead, you use things like HStack
 </div>
 </div>
 </div>
-<div id="outline-container-org974bc8c" class="outline-3">
-<h3 id="org974bc8c"><span class="section-number-3">6.3</span> 如何於程式中改變 title 的值來改變 View 的顯示內容?</h3>
+<div id="outline-container-org32624f9" class="outline-3">
+<h3 id="org32624f9"><span class="section-number-3">6.3</span> 如何於程式中改變 title 的值來改變 View 的顯示內容?</h3>
 <div class="outline-text-3" id="text-6-3">
 <p>
 解決方案: @State<br />
@@ -1329,8 +1329,8 @@ View 為 struct，未加上 @State 的變數是不允許變更的(immutable)；�
 </p>
 </div>
 </div>
-<div id="outline-container-orgccb7459" class="outline-3">
-<h3 id="orgccb7459"><span class="section-number-3">6.4</span> 範例: 按下 Button，改變 Text title</h3>
+<div id="outline-container-org5fcd6c6" class="outline-3">
+<h3 id="org5fcd6c6"><span class="section-number-3">6.4</span> 範例: 按下 Button，改變 Text title</h3>
 <div class="outline-text-3" id="text-6-4">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">ContentView</span>: View {
@@ -1352,8 +1352,8 @@ View 為 struct，未加上 @State 的變數是不允許變更的(immutable)；�
 </div>
 </div>
 </div>
-<div id="outline-container-org2aaa93d" class="outline-3">
-<h3 id="org2aaa93d"><span class="section-number-3">6.5</span> 以Button開啟一個新的View</h3>
+<div id="outline-container-org31fa367" class="outline-3">
+<h3 id="org31fa367"><span class="section-number-3">6.5</span> 以Button開啟一個新的View</h3>
 <div class="outline-text-3" id="text-6-5">
 <p>
 一個app當然不會只有一個View，我們可以透過NavigationLink來控制一系列View的呈現，也可以簡單的以Button來控制。<br />
@@ -1408,15 +1408,15 @@ Button藉由sheet裡的contet來指定要打開的是哪一個View(第<a href="#
 而此例執行結果為:<br />
 </p>
 
-<div id="org60156b6" class="figure">
+<div id="orgfde59ca" class="figure">
 <p><img src="images/showSecondView.gif" alt="showSecondView.gif" width="300" /><br />
 </p>
 <p><span class="figure-number">Figure 10: </span>Show New View</p>
 </div>
 </div>
 </div>
-<div id="outline-container-orgcba6c3f" class="outline-3">
-<h3 id="orgcba6c3f"><span class="section-number-3">6.6</span> 以Button關閉View</h3>
+<div id="outline-container-orge252c2b" class="outline-3">
+<h3 id="orge252c2b"><span class="section-number-3">6.6</span> 以Button關閉View</h3>
 <div class="outline-text-3" id="text-6-6">
 <p>
 在上例中，把SecondView關掉的方式為往下滑動螢幕，另一種關掉的方式是加上一個Button:<br />
@@ -1481,17 +1481,23 @@ Button藉由sheet裡的contet來指定要打開的是哪一個View(第<a href="#
 </pre>
 </div>
 <p>
-同樣的，SecondView最底下負責產生app預覽畫面的SecondView<sub>Previews也要提供這個參數</sub>，不過，由於它只是產生預覽畫面，與程式實際執行無實際影響，所以我們可以隨便傳個true/false轉為常數給它就行，如上例中的第<a href="#coderef-Binding4" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-Binding4');" onmouseout="CodeHighlightOff(this, 'coderef-Binding4');">19</a>行。<br />
+同樣的，SecondView最底下負責產生app預覽畫面的SecondView<sub>Previews也要提供這個參數</sub>，不過，由於它只是產生預覽畫面，與程式執行無實際影響，所以我們可以隨便傳個true/false轉為常數給它就行，如上例中的第<a href="#coderef-Binding4" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-Binding4');" onmouseout="CodeHighlightOff(this, 'coderef-Binding4');">19</a>行。執行結果如下:<br />
 </p>
+
+<div id="org3393318" class="figure">
+<p><img src="images/closeView.gif" alt="closeView.gif" width="300" /><br />
+</p>
+<p><span class="figure-number">Figure 11: </span>Close New View</p>
 </div>
 </div>
 </div>
-<div id="outline-container-orgd009541" class="outline-2">
-<h2 id="orgd009541"><span class="section-number-2">7</span> TextField (with @State)</h2>
+</div>
+<div id="outline-container-org2f33e6d" class="outline-2">
+<h2 id="org2f33e6d"><span class="section-number-2">7</span> TextField (with @State)</h2>
 <div class="outline-text-2" id="text-7">
 </div>
-<div id="outline-container-org002fd53" class="outline-3">
-<h3 id="org002fd53"><span class="section-number-3">7.1</span> 語法</h3>
+<div id="outline-container-orgde4f2fe" class="outline-3">
+<h3 id="orgde4f2fe"><span class="section-number-3">7.1</span> 語法</h3>
 <div class="outline-text-3" id="text-7-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">@State</span> <span style="color: #51afef;">private</span> <span style="color: #51afef;">var</span> &#35722;&#25976;=<span style="color: #98be65;">"&#20540;"</span>
@@ -1500,8 +1506,8 @@ Button藉由sheet裡的contet來指定要打開的是哪一個View(第<a href="#
 </div>
 </div>
 </div>
-<div id="outline-container-org17d8140" class="outline-3">
-<h3 id="org17d8140"><span class="section-number-3">7.2</span> 範例: 於 TextField 輸入資料，顯示於 Text 中</h3>
+<div id="outline-container-orgd3fa2d3" class="outline-3">
+<h3 id="orgd3fa2d3"><span class="section-number-3">7.2</span> 範例: 於 TextField 輸入資料，顯示於 Text 中</h3>
 <div class="outline-text-3" id="text-7-2">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> SwiftUI
@@ -1535,8 +1541,8 @@ Button藉由sheet裡的contet來指定要打開的是哪一個View(第<a href="#
 </p>
 </div>
 </div>
-<div id="outline-container-orgd92e1fb" class="outline-3">
-<h3 id="orgd92e1fb"><span class="section-number-3">7.3</span> 範例2: @state struct</h3>
+<div id="outline-container-org745625c" class="outline-3">
+<h3 id="org745625c"><span class="section-number-3">7.3</span> 範例2: @state struct</h3>
 <div class="outline-text-3" id="text-7-3">
 <p>
 當在View中有許多變數的值需要Binding時，一個一個加入@State property有點太麻煩，此時可以將這些相關變數組合為一struct，如下例：<br />
@@ -1571,8 +1577,8 @@ That all works: SwiftUI is smart enough to understand that one object contains a
 </p>
 </div>
 </div>
-<div id="outline-container-org2434dbf" class="outline-3">
-<h3 id="org2434dbf"><span class="section-number-3">7.4</span> What is @State</h3>
+<div id="outline-container-org49ab093" class="outline-3">
+<h3 id="org49ab093"><span class="section-number-3">7.4</span> What is @State</h3>
 <div class="outline-text-3" id="text-7-4">
 <p>
 用途:在同一View中給不同元件共享(變更)變數，而且這種共享是雙向的，即，任何一端變更了變數的值，另一端都會立即更新。@tate的相關特性如下：<br />
@@ -1597,12 +1603,12 @@ That all works: SwiftUI is smart enough to understand that one object contains a
 SwiftUI 提供豐富的 modifier 幫助我們設計客製 UI 元件的樣式，諸如陰影，旋轉等效果皆可透過 modifier 實現，還可以搭配方便的拖曳加入相關程式碼。<sup><a id="fnr.7" class="footref" href="#fn.7">7</a></sup><br />
 </p>
 </div>
-<div id="outline-container-orgd182c7b" class="outline-3">
-<h3 id="orgd182c7b"><span class="section-number-3">8.1</span> Text</h3>
+<div id="outline-container-org1f68e9f" class="outline-3">
+<h3 id="org1f68e9f"><span class="section-number-3">8.1</span> Text</h3>
 <div class="outline-text-3" id="text-8-1">
 </div>
-<div id="outline-container-org9b2202d" class="outline-4">
-<h4 id="org9b2202d"><span class="section-number-4">8.1.1</span> Advanced Attributes <sup><a id="fnr.7.100" class="footref" href="#fn.7">7</a></sup></h4>
+<div id="outline-container-orgbe6a4f8" class="outline-4">
+<h4 id="orgbe6a4f8"><span class="section-number-4">8.1.1</span> Advanced Attributes <sup><a id="fnr.7.100" class="footref" href="#fn.7">7</a></sup></h4>
 <div class="outline-text-4" id="text-8-1-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">ContentView</span>: View {
@@ -1623,24 +1629,24 @@ SwiftUI 提供豐富的 modifier 幫助我們設計客製 UI 元件的樣式，�
 </div>
 </div>
 </div>
-<div id="outline-container-org584dcee" class="outline-4">
-<h4 id="org584dcee"><span class="section-number-4">8.1.2</span> Demo</h4>
+<div id="outline-container-org92ed13b" class="outline-4">
+<h4 id="org92ed13b"><span class="section-number-4">8.1.2</span> Demo</h4>
 <div class="outline-text-4" id="text-8-1-2">
 
-<div id="org5185607" class="figure">
+<div id="orgb4cdbfa" class="figure">
 <p><img src="images/adv-text-attributes.jpg" alt="adv-text-attributes.jpg" width="300" /><br />
 </p>
-<p><span class="figure-number">Figure 11: </span>Text Attributes</p>
+<p><span class="figure-number">Figure 12: </span>Text Attributes</p>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org1cd538f" class="outline-3">
-<h3 id="org1cd538f"><span class="section-number-3">8.2</span> Image</h3>
+<div id="outline-container-org5d100ee" class="outline-3">
+<h3 id="org5d100ee"><span class="section-number-3">8.2</span> Image</h3>
 <div class="outline-text-3" id="text-8-2">
 </div>
-<div id="outline-container-orgb9baeed" class="outline-4">
-<h4 id="orgb9baeed"><span class="section-number-4">8.2.1</span> Advanced Attributes s<sup><a id="fnr.8" class="footref" href="#fn.8">8</a></sup></h4>
+<div id="outline-container-org60dd7fe" class="outline-4">
+<h4 id="org60dd7fe"><span class="section-number-4">8.2.1</span> Advanced Attributes s<sup><a id="fnr.8" class="footref" href="#fn.8">8</a></sup></h4>
 <div class="outline-text-4" id="text-8-2-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> SwiftUI
@@ -1681,28 +1687,28 @@ SwiftUI 提供豐富的 modifier 幫助我們設計客製 UI 元件的樣式，�
 </div>
 </div>
 </div>
-<div id="outline-container-org1a3d4f4" class="outline-4">
-<h4 id="org1a3d4f4"><span class="section-number-4">8.2.2</span> Demo</h4>
+<div id="outline-container-org306ff11" class="outline-4">
+<h4 id="org306ff11"><span class="section-number-4">8.2.2</span> Demo</h4>
 <div class="outline-text-4" id="text-8-2-2">
 
-<div id="orgaa81f2a" class="figure">
+<div id="org36ca82c" class="figure">
 <p><img src="images/image-advanced-attributes.jpg" alt="image-advanced-attributes.jpg" width="300" /><br />
 </p>
-<p><span class="figure-number">Figure 12: </span>Image Attributes</p>
+<p><span class="figure-number">Figure 13: </span>Image Attributes</p>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-orgef829e9" class="outline-3">
-<h3 id="orgef829e9"><span class="section-number-3">8.3</span> Button II</h3>
+<div id="outline-container-org9e1a7f4" class="outline-3">
+<h3 id="org9e1a7f4"><span class="section-number-3">8.3</span> Button II</h3>
 <div class="outline-text-3" id="text-8-3">
 </div>
-<div id="outline-container-orge59eff6" class="outline-4">
-<h4 id="orge59eff6"><span class="section-number-4">8.3.1</span> 外觀控制</h4>
+<div id="outline-container-org0dfa3e7" class="outline-4">
+<h4 id="org0dfa3e7"><span class="section-number-4">8.3.1</span> 外觀控制</h4>
 <div class="outline-text-4" id="text-8-3-1">
 </div>
-<div id="outline-container-org4f9423f" class="outline-5">
-<h5 id="org4f9423f"><span class="section-number-5">8.3.1.1</span> Advanced Attributes <sup><a id="fnr.9" class="footref" href="#fn.9">9</a></sup></h5>
+<div id="outline-container-org58bf073" class="outline-5">
+<h5 id="org58bf073"><span class="section-number-5">8.3.1.1</span> Advanced Attributes <sup><a id="fnr.9" class="footref" href="#fn.9">9</a></sup></h5>
 <div class="outline-text-5" id="text-8-3-1-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> SwiftUI
@@ -1745,20 +1751,20 @@ SwiftUI 提供豐富的 modifier 幫助我們設計客製 UI 元件的樣式，�
 </div>
 </div>
 </div>
-<div id="outline-container-org85263b1" class="outline-5">
-<h5 id="org85263b1"><span class="section-number-5">8.3.1.2</span> Demo</h5>
+<div id="outline-container-org9d61179" class="outline-5">
+<h5 id="org9d61179"><span class="section-number-5">8.3.1.2</span> Demo</h5>
 <div class="outline-text-5" id="text-8-3-1-2">
 
-<div id="org3f1dc05" class="figure">
+<div id="org300e3a8" class="figure">
 <p><img src="images/customized-button-1.jpg" alt="customized-button-1.jpg" width="300" /><br />
 </p>
-<p><span class="figure-number">Figure 13: </span>Button Attributes</p>
+<p><span class="figure-number">Figure 14: </span>Button Attributes</p>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org0b09bb0" class="outline-4">
-<h4 id="org0b09bb0"><span class="section-number-4">8.3.2</span> Button v.s. @State</h4>
+<div id="outline-container-org06725aa" class="outline-4">
+<h4 id="org06725aa"><span class="section-number-4">8.3.2</span> Button v.s. @State</h4>
 <div class="outline-text-4" id="text-8-3-2">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> SwiftUI
@@ -1796,16 +1802,16 @@ SwiftUI 提供豐富的 modifier 幫助我們設計客製 UI 元件的樣式，�
 </pre>
 </div>
 
-<div id="org64a889f" class="figure">
+<div id="org4c43792" class="figure">
 <p><img src="images/btn-1.jpg" alt="btn-1.jpg" width="300" /><br />
 </p>
-<p><span class="figure-number">Figure 14: </span>Button</p>
+<p><span class="figure-number">Figure 15: </span>Button</p>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org8bf9700" class="outline-3">
-<h3 id="org8bf9700"><span class="section-number-3">8.4</span> background, opacity</h3>
+<div id="outline-container-orgb02c647" class="outline-3">
+<h3 id="orgb02c647"><span class="section-number-3">8.4</span> background, opacity</h3>
 <div class="outline-text-3" id="text-8-4">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #5B6268;">//</span>
@@ -1861,15 +1867,15 @@ SwiftUI 提供豐富的 modifier 幫助我們設計客製 UI 元件的樣式，�
 </pre>
 </div>
 
-<div id="org42bd5c1" class="figure">
+<div id="orge543670" class="figure">
 <p><img src="images/background-1.jpg" alt="background-1.jpg" width="300" /><br />
 </p>
-<p><span class="figure-number">Figure 15: </span>Background</p>
+<p><span class="figure-number">Figure 16: </span>Background</p>
 </div>
 </div>
 </div>
-<div id="outline-container-org7f351f4" class="outline-3">
-<h3 id="org7f351f4"><span class="section-number-3">8.5</span> Further reading</h3>
+<div id="outline-container-orga167890" class="outline-3">
+<h3 id="orga167890"><span class="section-number-3">8.5</span> Further reading</h3>
 <div class="outline-text-3" id="text-8-5">
 <ul class="org-ul">
 <li><a href="https://www.simpleswiftguide.com/advanced-swiftui-button-styling-and-animation/">Advanced SwiftUI button styling and animation</a><br /></li>
@@ -1881,8 +1887,8 @@ SwiftUI 提供豐富的 modifier 幫助我們設計客製 UI 元件的樣式，�
 <h2 id="list"><span class="section-number-2">9</span> List</h2>
 <div class="outline-text-2" id="text-list">
 </div>
-<div id="outline-container-org8d4672a" class="outline-3">
-<h3 id="org8d4672a"><span class="section-number-3">9.1</span> What is List</h3>
+<div id="outline-container-org9c8dec6" class="outline-3">
+<h3 id="org9c8dec6"><span class="section-number-3">9.1</span> What is List</h3>
 <div class="outline-text-3" id="text-9-1">
 <p>
 SwiftUI 的列表視圖 (List View) 其實和 UIKit 的表格視圖 (Table View) 很類似，它們都是讓開發者把項目一列列地呈現，而預設設定上，每一列資料都會用分隔線 (line separator) 分開。<br />
@@ -1901,8 +1907,8 @@ SwiftUI 的列表視圖 (List View) 其實和 UIKit 的表格視圖 (Table View)
 </div>
 </div>
 </div>
-<div id="outline-container-org1398462" class="outline-3">
-<h3 id="org1398462"><span class="section-number-3">9.2</span> 準備單一 cell 格式</h3>
+<div id="outline-container-org404863f" class="outline-3">
+<h3 id="org404863f"><span class="section-number-3">9.2</span> 準備單一 cell 格式</h3>
 <div class="outline-text-3" id="text-9-2">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> SwiftUI
@@ -1928,30 +1934,30 @@ SwiftUI 的列表視圖 (List View) 其實和 UIKit 的表格視圖 (Table View)
 </pre>
 </div>
 
-<div id="org4ddd79d" class="figure">
+<div id="orga674fb1" class="figure">
 <p><img src="images/single-cell.jpg" alt="single-cell.jpg" width="300" /><br />
 </p>
-<p><span class="figure-number">Figure 16: </span>Single cell</p>
+<p><span class="figure-number">Figure 17: </span>Single cell</p>
 </div>
 </div>
 </div>
-<div id="outline-container-orgb8ed930" class="outline-3">
-<h3 id="orgb8ed930"><span class="section-number-3">9.3</span> 轉入 List 格式(靜態 List)</h3>
+<div id="outline-container-orgcee9eb4" class="outline-3">
+<h3 id="orgcee9eb4"><span class="section-number-3">9.3</span> 轉入 List 格式(靜態 List)</h3>
 <div class="outline-text-3" id="text-9-3">
 </div>
-<div id="outline-container-orge6fbda2" class="outline-4">
-<h4 id="orge6fbda2"><span class="section-number-4">9.3.1</span> 將最外層的 VStack 加入 List 中</h4>
+<div id="outline-container-org7f0d18d" class="outline-4">
+<h4 id="org7f0d18d"><span class="section-number-4">9.3.1</span> 將最外層的 VStack 加入 List 中</h4>
 <div class="outline-text-4" id="text-9-3-1">
 
-<div id="org1bc4a47" class="figure">
+<div id="org67a28c0" class="figure">
 <p><img src="images/list-1.jpg" alt="list-1.jpg" width="500" /><br />
 </p>
-<p><span class="figure-number">Figure 17: </span>List-1</p>
+<p><span class="figure-number">Figure 18: </span>List-1</p>
 </div>
 </div>
 </div>
-<div id="outline-container-org4279e23" class="outline-4">
-<h4 id="org4279e23"><span class="section-number-4">9.3.2</span> list 語法</h4>
+<div id="outline-container-org91e4b11" class="outline-4">
+<h4 id="org91e4b11"><span class="section-number-4">9.3.2</span> list 語法</h4>
 <div class="outline-text-4" id="text-9-3-2">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> SwiftUI
@@ -1977,20 +1983,20 @@ SwiftUI 的列表視圖 (List View) 其實和 UIKit 的表格視圖 (Table View)
 </div>
 </div>
 </div>
-<div id="outline-container-orgd2dff48" class="outline-4">
-<h4 id="orgd2dff48"><span class="section-number-4">9.3.3</span> 結果</h4>
+<div id="outline-container-orge6ed72a" class="outline-4">
+<h4 id="orge6ed72a"><span class="section-number-4">9.3.3</span> 結果</h4>
 <div class="outline-text-4" id="text-9-3-3">
 
-<div id="org5d183c7" class="figure">
+<div id="org6a70d0b" class="figure">
 <p><img src="images/list-2.jpg" alt="list-2.jpg" width="500" /><br />
 </p>
-<p><span class="figure-number">Figure 18: </span>List-2</p>
+<p><span class="figure-number">Figure 19: </span>List-2</p>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org3a0cae1" class="outline-3">
-<h3 id="org3a0cae1"><span class="section-number-3">9.4</span> 建立 list 來源資料(動態 List) <sup><a id="fnr.3.100" class="footref" href="#fn.3">3</a></sup></h3>
+<div id="outline-container-org4da42e8" class="outline-3">
+<h3 id="org4da42e8"><span class="section-number-3">9.4</span> 建立 list 來源資料(動態 List) <sup><a id="fnr.3.100" class="footref" href="#fn.3">3</a></sup></h3>
 <div class="outline-text-3" id="text-9-4">
 <p class="verse">
 In order to handle dynamic items, you must first tell SwiftUI how it can identify which item is which. This is done using the Identifiable protocol, which has only one requirement: some sort of id value that SwiftUI can use to see which item is which. <sup><a id="fnr.10" class="footref" href="#fn.10">10</a></sup><br />
@@ -2020,8 +2026,8 @@ In order to handle dynamic items, you must first tell SwiftUI how it can identif
 </div>
 </div>
 </div>
-<div id="outline-container-orgf66e987" class="outline-3">
-<h3 id="orgf66e987"><span class="section-number-3">9.5</span> 將資料連結到列表中 <sup><a id="fnr.3.100" class="footref" href="#fn.3">3</a></sup></h3>
+<div id="outline-container-org9077c37" class="outline-3">
+<h3 id="org9077c37"><span class="section-number-3">9.5</span> 將資料連結到列表中 <sup><a id="fnr.3.100" class="footref" href="#fn.3">3</a></sup></h3>
 <div class="outline-text-3" id="text-9-5">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> SwiftUI
@@ -2047,19 +2053,19 @@ In order to handle dynamic items, you must first tell SwiftUI how it can identif
 </div>
 </div>
 </div>
-<div id="outline-container-org84057ce" class="outline-3">
-<h3 id="org84057ce"><span class="section-number-3">9.6</span> 結果</h3>
+<div id="outline-container-orgd2977da" class="outline-3">
+<h3 id="orgd2977da"><span class="section-number-3">9.6</span> 結果</h3>
 <div class="outline-text-3" id="text-9-6">
 
-<div id="org448bcb6" class="figure">
+<div id="org160e147" class="figure">
 <p><img src="images/list-3.jpg" alt="list-3.jpg" width="300" /><br />
 </p>
-<p><span class="figure-number">Figure 19: </span>List-3</p>
+<p><span class="figure-number">Figure 20: </span>List-3</p>
 </div>
 </div>
 </div>
-<div id="outline-container-orgca4cb2c" class="outline-3">
-<h3 id="orgca4cb2c"><span class="section-number-3">9.7</span> 為什麼要加入 id 與 Identifiable</h3>
+<div id="outline-container-orgea00ea6" class="outline-3">
+<h3 id="orgea00ea6"><span class="section-number-3">9.7</span> 為什麼要加入 id 與 Identifiable</h3>
 <div class="outline-text-3" id="text-9-7">
 <ul class="org-ul">
 <li>Identifiable: 允許 Array 中有重複值<br /></li>
@@ -2069,8 +2075,8 @@ In order to handle dynamic items, you must first tell SwiftUI how it can identif
 </ul>
 </div>
 </div>
-<div id="outline-container-org2e73a53" class="outline-3">
-<h3 id="org2e73a53"><span class="section-number-3">9.8</span> Reading source</h3>
+<div id="outline-container-org3b6a249" class="outline-3">
+<h3 id="org3b6a249"><span class="section-number-3">9.8</span> Reading source</h3>
 <div class="outline-text-3" id="text-9-8">
 <ul class="org-ul">
 <li><a href="https://www.youtube.com/watch?v=bz6GTYaIQXU">SwiftUI Basics: Dynamic Lists, HStack VStack, Images with Circle Clipped Stroke Overlays</a><br /></li>
@@ -2093,8 +2099,8 @@ In order to handle dynamic items, you must first tell SwiftUI how it can identif
 <li>What it does: when the bound-to value changes, it invalidates the View.<br /></li>
 </ul>
 </div>
-<div id="outline-container-org45bf6ff" class="outline-3">
-<h3 id="org45bf6ff"><span class="section-number-3">10.1</span> Time to use Binding</h3>
+<div id="outline-container-orge0179a9" class="outline-3">
+<h3 id="orge0179a9"><span class="section-number-3">10.1</span> Time to use Binding</h3>
 <div class="outline-text-3" id="text-10-1">
 <p>
 Bindings are all about having a <b>single source of the truth (data)!</b>.<br />
@@ -2108,15 +2114,15 @@ Bindings are all about having a <b>single source of the truth (data)!</b>.<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-orgb47148e" class="outline-3">
-<h3 id="orgb47148e"><span class="section-number-3">10.2</span> Demo 1: @State v.s. @Bidning</h3>
+<div id="outline-container-org97a0bea" class="outline-3">
+<h3 id="org97a0bea"><span class="section-number-3">10.2</span> Demo 1: @State v.s. @Bidning</h3>
 <div class="outline-text-3" id="text-10-2">
 <p>
 透過@State 與@Bidning, ContentView.swift 可以將變數 switchIsOn pass 給 SwitchView.swift，而後者可以藉由更改變數值來改變 ContentView.swift 的顯示結果。<br />
 </p>
 </div>
-<div id="outline-container-orgd8e9b26" class="outline-4">
-<h4 id="orgd8e9b26"><span class="section-number-4">10.2.1</span> ContentView.swift</h4>
+<div id="outline-container-org31adbea" class="outline-4">
+<h4 id="org31adbea"><span class="section-number-4">10.2.1</span> ContentView.swift</h4>
 <div class="outline-text-4" id="text-10-2-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> SwiftUI
@@ -2135,8 +2141,8 @@ Bindings are all about having a <b>single source of the truth (data)!</b>.<br />
 </div>
 </div>
 </div>
-<div id="outline-container-org88e073d" class="outline-4">
-<h4 id="org88e073d"><span class="section-number-4">10.2.2</span> SwitchView.swift</h4>
+<div id="outline-container-orgf01b6e0" class="outline-4">
+<h4 id="orgf01b6e0"><span class="section-number-4">10.2.2</span> SwitchView.swift</h4>
 <div class="outline-text-4" id="text-10-2-2">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> SwiftUI
@@ -2155,15 +2161,15 @@ Bindings are all about having a <b>single source of the truth (data)!</b>.<br />
 </div>
 </div>
 </div>
-<div id="outline-container-org3d59b12" class="outline-3">
-<h3 id="org3d59b12"><span class="section-number-3">10.3</span> Demo 2: Sharing multiple variable</h3>
+<div id="outline-container-org904a218" class="outline-3">
+<h3 id="org904a218"><span class="section-number-3">10.3</span> Demo 2: Sharing multiple variable</h3>
 <div class="outline-text-3" id="text-10-3">
 <p>
 建立一個User struct，透過@Binding與其他View共享struct裡的變數<br />
 </p>
 </div>
-<div id="outline-container-org83fc153" class="outline-4">
-<h4 id="org83fc153"><span class="section-number-4">10.3.1</span> User.swift</h4>
+<div id="outline-container-org80836af" class="outline-4">
+<h4 id="org80836af"><span class="section-number-4">10.3.1</span> User.swift</h4>
 <div class="outline-text-4" id="text-10-3-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> Foundation
@@ -2183,8 +2189,8 @@ Bindings are all about having a <b>single source of the truth (data)!</b>.<br />
 </div>
 </div>
 </div>
-<div id="outline-container-org776403b" class="outline-4">
-<h4 id="org776403b"><span class="section-number-4">10.3.2</span> ContentView.swift</h4>
+<div id="outline-container-org4e2444f" class="outline-4">
+<h4 id="org4e2444f"><span class="section-number-4">10.3.2</span> ContentView.swift</h4>
 <div class="outline-text-4" id="text-10-3-2">
 <p>
 建立一個可以其他View共享的struct variable (user)，將user struct傳給EditUser進行編輯<br />
@@ -2222,8 +2228,8 @@ Bindings are all about having a <b>single source of the truth (data)!</b>.<br />
 </div>
 </div>
 </div>
-<div id="outline-container-orgad92840" class="outline-4">
-<h4 id="orgad92840"><span class="section-number-4">10.3.3</span> EditUser.swift</h4>
+<div id="outline-container-org8d059c5" class="outline-4">
+<h4 id="org8d059c5"><span class="section-number-4">10.3.3</span> EditUser.swift</h4>
 <div class="outline-text-4" id="text-10-3-3">
 <p>
 以@Bidning接收來自ContentView的user<br />
@@ -2260,8 +2266,8 @@ Bindings are all about having a <b>single source of the truth (data)!</b>.<br />
 目的: 跳出對話視窗<br />
 </p>
 </div>
-<div id="outline-container-org4d8ac05" class="outline-3">
-<h3 id="org4d8ac05"><span class="section-number-3">11.1</span> 以 Button 觸發</h3>
+<div id="outline-container-org1ee250f" class="outline-3">
+<h3 id="org1ee250f"><span class="section-number-3">11.1</span> 以 Button 觸發</h3>
 <div class="outline-text-3" id="text-11-1">
 <p>
 和呼叫其他 View 一樣，仍然是以一個 bool 來控制是否秀出 Alert<br />
@@ -2281,8 +2287,8 @@ Bindings are all about having a <b>single source of the truth (data)!</b>.<br />
 </div>
 </div>
 </div>
-<div id="outline-container-orga5f1149" class="outline-3">
-<h3 id="orga5f1149"><span class="section-number-3">11.2</span> 以 TextField 觸發</h3>
+<div id="outline-container-orgc2d0d91" class="outline-3">
+<h3 id="orgc2d0d91"><span class="section-number-3">11.2</span> 以 TextField 觸發</h3>
 <div class="outline-text-3" id="text-11-2">
 <p>
 將控制顯示的 boo 值寫在 <b>onCommit</b><br />
@@ -2306,8 +2312,8 @@ Bindings are all about having a <b>single source of the truth (data)!</b>.<br />
 </div>
 </div>
 </div>
-<div id="outline-container-orgc910d96" class="outline-2">
-<h2 id="orgc910d96"><span class="section-number-2">12</span> Navigation Views: Tabbed View</h2>
+<div id="outline-container-orgb679cec" class="outline-2">
+<h2 id="orgb679cec"><span class="section-number-2">12</span> Navigation Views: Tabbed View</h2>
 <div class="outline-text-2" id="text-12">
 <p>
 Tab bar 是在 App 螢幕底部出現的欄，提供了在不同的版面之間進行快速切換的途徑。Tab bar 的背景顏色是半透明，可以有調色。Tab bar 在所有螢幕尺寸都保持一樣的高度，並且在鍵盤時出現會隱藏起來。<br />
@@ -2318,8 +2324,8 @@ Tab bar 是在 App 螢幕底部出現的欄，提供了在不同的版面之間�
 </p>
 </div>
 
-<div id="outline-container-org60cd3be" class="outline-3">
-<h3 id="org60cd3be"><span class="section-number-3">12.1</span> Create subView</h3>
+<div id="outline-container-orgdbec2f7" class="outline-3">
+<h3 id="orgdbec2f7"><span class="section-number-3">12.1</span> Create subView</h3>
 <div class="outline-text-3" id="text-12-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #5B6268;">// </span><span style="color: #5B6268;">create StoreView, AboutView, NewsView first</span>
@@ -2350,12 +2356,12 @@ Tab bar 是在 App 螢幕底部出現的欄，提供了在不同的版面之間�
 </div>
 </div>
 </div>
-<div id="outline-container-orge468dc5" class="outline-3">
-<h3 id="orge468dc5"><span class="section-number-3">12.2</span> customize tab bar</h3>
+<div id="outline-container-orge589e07" class="outline-3">
+<h3 id="orge589e07"><span class="section-number-3">12.2</span> customize tab bar</h3>
 <div class="outline-text-3" id="text-12-2">
 </div>
-<div id="outline-container-orgae98a30" class="outline-4">
-<h4 id="orgae98a30"><span class="section-number-4">12.2.1</span> Change tabView font size</h4>
+<div id="outline-container-org92d857e" class="outline-4">
+<h4 id="org92d857e"><span class="section-number-4">12.2.1</span> Change tabView font size</h4>
 <div class="outline-text-4" id="text-12-2-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">init</span>() {
@@ -2366,8 +2372,8 @@ Tab bar 是在 App 螢幕底部出現的欄，提供了在不同的版面之間�
 </div>
 </div>
 </div>
-<div id="outline-container-org3c4bb75" class="outline-4">
-<h4 id="org3c4bb75"><span class="section-number-4">12.2.2</span> the color of unselected tab bar</h4>
+<div id="outline-container-org1026e70" class="outline-4">
+<h4 id="org1026e70"><span class="section-number-4">12.2.2</span> the color of unselected tab bar</h4>
 <div class="outline-text-4" id="text-12-2-2">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">init</span>() {
@@ -2377,8 +2383,8 @@ Tab bar 是在 App 螢幕底部出現的欄，提供了在不同的版面之間�
 </div>
 </div>
 </div>
-<div id="outline-container-org5ac84cf" class="outline-4">
-<h4 id="org5ac84cf"><span class="section-number-4">12.2.3</span> the color of the tab bar item : .accentColor</h4>
+<div id="outline-container-org0a6dba3" class="outline-4">
+<h4 id="org0a6dba3"><span class="section-number-4">12.2.3</span> the color of the tab bar item : .accentColor</h4>
 <div class="outline-text-4" id="text-12-2-3">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span>TabView {
@@ -2388,15 +2394,15 @@ Tab bar 是在 App 螢幕底部出現的欄，提供了在不同的版面之間�
 </div>
 </div>
 </div>
-<div id="outline-container-org6b772dc" class="outline-4">
-<h4 id="org6b772dc"><span class="section-number-4">12.2.4</span> the tab bar’s color: appearance()</h4>
+<div id="outline-container-org3435e7c" class="outline-4">
+<h4 id="org3435e7c"><span class="section-number-4">12.2.4</span> the tab bar’s color: appearance()</h4>
 <div class="outline-text-4" id="text-12-2-4">
 <p>
 兩種做法(尚未區分 backgroundColor 與 barTintColor 之差異)<br />
 </p>
 </div>
-<div id="outline-container-org22ca39b" class="outline-5">
-<h5 id="org22ca39b"><span class="section-number-5">12.2.4.1</span> init()</h5>
+<div id="outline-container-org4db7281" class="outline-5">
+<h5 id="org4db7281"><span class="section-number-5">12.2.4.1</span> init()</h5>
 <div class="outline-text-5" id="text-12-2-4-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">init</span>() {
@@ -2406,8 +2412,8 @@ Tab bar 是在 App 螢幕底部出現的欄，提供了在不同的版面之間�
 </div>
 </div>
 </div>
-<div id="outline-container-org5b1a9fb" class="outline-5">
-<h5 id="org5b1a9fb"><span class="section-number-5">12.2.4.2</span> onAppear()</h5>
+<div id="outline-container-org0704d2c" class="outline-5">
+<h5 id="org0704d2c"><span class="section-number-5">12.2.4.2</span> onAppear()</h5>
 <div class="outline-text-5" id="text-12-2-4-2">
 <p>
 與 init()共用時，onAppear()優先<br />
@@ -2422,8 +2428,8 @@ Tab bar 是在 App 螢幕底部出現的欄，提供了在不同的版面之間�
 </div>
 </div>
 </div>
-<div id="outline-container-org3ac11f2" class="outline-3">
-<h3 id="org3ac11f2"><span class="section-number-3">12.3</span> Switching Between Tabs Programmatically</h3>
+<div id="outline-container-orge382399" class="outline-3">
+<h3 id="orge382399"><span class="section-number-3">12.3</span> Switching Between Tabs Programmatically</h3>
 <div class="outline-text-3" id="text-12-3">
 <p>
 Users can tap the tab bar items to switch between tabs, which is automatically handled the TabView. In some use cases, you may want to switch to a specific tab programmatically. The TabView has another init method for this purpose. The method takes a state variable which associates with the tag value of the tabs.<sup><a id="fnr.13" class="footref" href="#fn.13">13</a></sup><br />
@@ -2505,8 +2511,8 @@ Here we initialize the selection variable with a value of 0, which is the tag va
 </div>
 </div>
 </div>
-<div id="outline-container-orgcdfce16" class="outline-3">
-<h3 id="orgcdfce16"><span class="section-number-3">12.4</span> 一個優秀的 Tab Bar 應該具備哪些特點？<sup><a id="fnr.12.100" class="footref" href="#fn.12">12</a></sup></h3>
+<div id="outline-container-orgadd9b7c" class="outline-3">
+<h3 id="orgadd9b7c"><span class="section-number-3">12.4</span> 一個優秀的 Tab Bar 應該具備哪些特點？<sup><a id="fnr.12.100" class="footref" href="#fn.12">12</a></sup></h3>
 <div class="outline-text-3" id="text-12-4">
 <ol class="org-ol">
 <li>不會有太多的 tab<br />
@@ -2522,8 +2528,8 @@ Here we initialize the selection variable with a value of 0, which is the tag va
 </ol>
 </div>
 </div>
-<div id="outline-container-org6a75857" class="outline-3">
-<h3 id="org6a75857"><span class="section-number-3">12.5</span> Reading Resources</h3>
+<div id="outline-container-orga7ddd5f" class="outline-3">
+<h3 id="orga7ddd5f"><span class="section-number-3">12.5</span> Reading Resources</h3>
 <div class="outline-text-3" id="text-12-5">
 <ul class="org-ul">
 <li><a href="https://www.appcoda.com/swiftui-tabview/">Customizing the Tab Bar Color</a><br /></li>
@@ -2538,8 +2544,8 @@ Here we initialize the selection variable with a value of 0, which is the tag va
 <h2 id="navigation"><span class="section-number-2">13</span> Navigation Views: Navigation Bar</h2>
 <div class="outline-text-2" id="text-navigation">
 </div>
-<div id="outline-container-org1de20df" class="outline-3">
-<h3 id="org1de20df"><span class="section-number-3">13.1</span> Navigation bar</h3>
+<div id="outline-container-org56ad542" class="outline-3">
+<h3 id="org56ad542"><span class="section-number-3">13.1</span> Navigation bar</h3>
 <div class="outline-text-3" id="text-13-1">
 <ul class="org-ul">
 <li>於 body 中最外層的 component 之外加入 NavigationView<br /></li>
@@ -2572,15 +2578,15 @@ Here we initialize the selection variable with a value of 0, which is the tag va
 </pre>
 </div>
 
-<div id="org9f147a7" class="figure">
+<div id="orgf6d04f1" class="figure">
 <p><img src="images/navigation-1.jpg" alt="navigation-1.jpg" width="300" /><br />
 </p>
-<p><span class="figure-number">Figure 20: </span>Navigation bar</p>
+<p><span class="figure-number">Figure 21: </span>Navigation bar</p>
 </div>
 </div>
 
-<div id="outline-container-org0721465" class="outline-4">
-<h4 id="org0721465"><span class="section-number-4">13.1.1</span> Hide Navigation Bar</h4>
+<div id="outline-container-org58baba2" class="outline-4">
+<h4 id="org58baba2"><span class="section-number-4">13.1.1</span> Hide Navigation Bar</h4>
 <div class="outline-text-4" id="text-13-1-1">
 <p>
 使用 Hide 與不設定 BarTitle 的差異在於：後者仍會佔掉 Bar 的空間<br />
@@ -2608,13 +2614,13 @@ Here we initialize the selection variable with a value of 0, which is the tag va
 </div>
 </div>
 
-<div id="outline-container-org6eccb96" class="outline-5">
-<h5 id="org6eccb96"><span class="section-number-5">13.1.1.1</span> NavigationLink</h5>
+<div id="outline-container-orgb4d9708" class="outline-5">
+<h5 id="orgb4d9708"><span class="section-number-5">13.1.1.1</span> NavigationLink</h5>
 <div class="outline-text-5" id="text-13-1-1-1">
 </div>
 <ol class="org-ol">
-<li><a id="org33450f6"></a>Create<br /></li>
-<li><a id="orgb95bcaa"></a>語法:<br />
+<li><a id="org8adaec0"></a>Create<br /></li>
+<li><a id="orgc5a5d68"></a>語法:<br />
 <div class="outline-text-6" id="text-13-1-1-1-2">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #c678dd;">NavigationLink</span>(&lt;title: <span style="color: #c678dd;">StringProtocol</span>, destination:)
@@ -2622,7 +2628,7 @@ Here we initialize the selection variable with a value of 0, which is the tag va
 </div>
 </div>
 </li>
-<li><a id="orgc60d5c3"></a>方式<br />
+<li><a id="org6c5817e"></a>方式<br />
 <div class="outline-text-6" id="text-13-1-1-1-3">
 <ol class="org-ol">
 <li><p>
@@ -2687,8 +2693,8 @@ Attach link in NavigationLink()<br />
 </ol>
 </div>
 
-<div id="outline-container-org364a765" class="outline-5">
-<h5 id="org364a765"><span class="section-number-5">13.1.1.2</span> Reading</h5>
+<div id="outline-container-orge8728df" class="outline-5">
+<h5 id="orge8728df"><span class="section-number-5">13.1.1.2</span> Reading</h5>
 <div class="outline-text-5" id="text-13-1-1-2">
 <ul class="org-ul">
 <li><a href="https://www.youtube.com/watch?v=nA6Jo6YnL9g">The Complete Guide to NavigationView in SwiftUI</a><br /></li>
@@ -2697,12 +2703,12 @@ Attach link in NavigationLink()<br />
 </div>
 </div>
 </div>
-<div id="outline-container-org47aa194" class="outline-3">
-<h3 id="org47aa194"><span class="section-number-3">13.2</span> Create New Views</h3>
+<div id="outline-container-org2a521e5" class="outline-3">
+<h3 id="org2a521e5"><span class="section-number-3">13.2</span> Create New Views</h3>
 <div class="outline-text-3" id="text-13-2">
 </div>
-<div id="outline-container-org87761a8" class="outline-4">
-<h4 id="org87761a8"><span class="section-number-4">13.2.1</span> in same file</h4>
+<div id="outline-container-org92ba107" class="outline-4">
+<h4 id="org92ba107"><span class="section-number-4">13.2.1</span> in same file</h4>
 <div class="outline-text-4" id="text-13-2-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> SwiftUI
@@ -2729,8 +2735,8 @@ Attach link in NavigationLink()<br />
 </pre>
 </div>
 </div>
-<div id="outline-container-orgb42800f" class="outline-5">
-<h5 id="orgb42800f"><span class="section-number-5">13.2.1.1</span> class exercise</h5>
+<div id="outline-container-org6e8e7cb" class="outline-5">
+<h5 id="org6e8e7cb"><span class="section-number-5">13.2.1.1</span> class exercise</h5>
 <div class="outline-text-5" id="text-13-2-1-1">
 <p>
 為上述 NavigationView 加入另外兩個 subView: OrderView, AboutView<br />
@@ -2738,8 +2744,8 @@ Attach link in NavigationLink()<br />
 </div>
 </div>
 </div>
-<div id="outline-container-org3fedf60" class="outline-4">
-<h4 id="org3fedf60"><span class="section-number-4">13.2.2</span> in new file</h4>
+<div id="outline-container-org0acecf1" class="outline-4">
+<h4 id="org0acecf1"><span class="section-number-4">13.2.2</span> in new file</h4>
 <div class="outline-text-4" id="text-13-2-2">
 <p>
 將上述專案中的每個 subView 改為獨立 View<br />
@@ -2747,8 +2753,8 @@ Attach link in NavigationLink()<br />
 </div>
 </div>
 </div>
-<div id="outline-container-orgd3d64a6" class="outline-3">
-<h3 id="orgd3d64a6"><span class="section-number-3">13.3</span> Passing parameter(單純參數傳遞)</h3>
+<div id="outline-container-orgc807c6d" class="outline-3">
+<h3 id="orgc807c6d"><span class="section-number-3">13.3</span> Passing parameter(單純參數傳遞)</h3>
 <div class="outline-text-3" id="text-13-3">
 <p>
 Single way, Just pass variable from A to B.<br />
@@ -2781,8 +2787,8 @@ Single way, Just pass variable from A to B.<br />
 </div>
 </div>
 </div>
-<div id="outline-container-orgc9bbd3e" class="outline-3">
-<h3 id="orgc9bbd3e"><span class="section-number-3">13.4</span> Version-1: Navigation v.s. List v.s. NavigationLink</h3>
+<div id="outline-container-orgfb46e03" class="outline-3">
+<h3 id="orgfb46e03"><span class="section-number-3">13.4</span> Version-1: Navigation v.s. List v.s. NavigationLink</h3>
 <div class="outline-text-3" id="text-13-4">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #5B6268;">//</span>
@@ -2850,15 +2856,15 @@ Single way, Just pass variable from A to B.<br />
 </div>
 </div>
 </div>
-<div id="outline-container-orgbfa6acc" class="outline-3">
-<h3 id="orgbfa6acc"><span class="section-number-3">13.5</span> Version-2:</h3>
+<div id="outline-container-org212de6d" class="outline-3">
+<h3 id="org212de6d"><span class="section-number-3">13.5</span> Version-2:</h3>
 <div class="outline-text-3" id="text-13-5">
 <p>
 將記錄架構(Book.swift)、List(ContentView.swift)以及 Detail(DetailView.swift)各自以獨立檔案設計。<br />
 </p>
 </div>
-<div id="outline-container-org833a37f" class="outline-4">
-<h4 id="org833a37f"><span class="section-number-4">13.5.1</span> Book.swift</h4>
+<div id="outline-container-org05a9ecd" class="outline-4">
+<h4 id="org05a9ecd"><span class="section-number-4">13.5.1</span> Book.swift</h4>
 <div class="outline-text-4" id="text-13-5-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #5B6268;">// </span><span style="color: #5B6268;">&#19981;&#28041;&#21450;&#20351;&#29992;&#32773;&#30028;&#38754;</span>
@@ -2878,8 +2884,8 @@ Single way, Just pass variable from A to B.<br />
 </div>
 </div>
 </div>
-<div id="outline-container-org5ebc55b" class="outline-4">
-<h4 id="org5ebc55b"><span class="section-number-4">13.5.2</span> ContentView.swift</h4>
+<div id="outline-container-org61e9da5" class="outline-4">
+<h4 id="org61e9da5"><span class="section-number-4">13.5.2</span> ContentView.swift</h4>
 <div class="outline-text-4" id="text-13-5-2">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> SwiftUI
@@ -2918,15 +2924,15 @@ Single way, Just pass variable from A to B.<br />
 </pre>
 </div>
 
-<div id="orgfb29cce" class="figure">
+<div id="org00b9a16" class="figure">
 <p><img src="images/Navi-List-1.png" alt="Navi-List-1.png" width="300" /><br />
 </p>
-<p><span class="figure-number">Figure 21: </span>主選單</p>
+<p><span class="figure-number">Figure 22: </span>主選單</p>
 </div>
 </div>
 </div>
-<div id="outline-container-org1332668" class="outline-4">
-<h4 id="org1332668"><span class="section-number-4">13.5.3</span> DetailView.swift</h4>
+<div id="outline-container-orgd4ad100" class="outline-4">
+<h4 id="orgd4ad100"><span class="section-number-4">13.5.3</span> DetailView.swift</h4>
 <div class="outline-text-4" id="text-13-5-3">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> SwiftUI
@@ -2954,10 +2960,10 @@ Single way, Just pass variable from A to B.<br />
 </pre>
 </div>
 
-<div id="org2898187" class="figure">
+<div id="org26e9afa" class="figure">
 <p><img src="images/Navi-List-2.png" alt="Navi-List-2.png" width="300" /><br />
 </p>
-<p><span class="figure-number">Figure 22: </span>Detail</p>
+<p><span class="figure-number">Figure 23: </span>Detail</p>
 </div>
 </div>
 </div>
@@ -2967,15 +2973,15 @@ Single way, Just pass variable from A to B.<br />
 <h2 id="DynamicList"><span class="section-number-2">14</span> Dynamic List</h2>
 <div class="outline-text-2" id="text-DynamicList">
 </div>
-<div id="outline-container-orgfe1b3d7" class="outline-3">
-<h3 id="orgfe1b3d7"><span class="section-number-3">14.1</span> DataModel</h3>
+<div id="outline-container-orgaeacda7" class="outline-3">
+<h3 id="orgaeacda7"><span class="section-number-3">14.1</span> DataModel</h3>
 <div class="outline-text-3" id="text-14-1">
 <p>
 每筆記錄的基本欄位<br />
 </p>
 </div>
-<div id="outline-container-org711f316" class="outline-4">
-<h4 id="org711f316"><span class="section-number-4">14.1.1</span> BookModel.swift (Model)</h4>
+<div id="outline-container-orgec10882" class="outline-4">
+<h4 id="orgec10882"><span class="section-number-4">14.1.1</span> BookModel.swift (Model)</h4>
 <div class="outline-text-4" id="text-14-1-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">import</span> Foundation
@@ -2991,12 +2997,12 @@ Single way, Just pass variable from A to B.<br />
 </div>
 </div>
 </div>
-<div id="outline-container-org590cd7a" class="outline-3">
-<h3 id="org590cd7a"><span class="section-number-3">14.2</span> ViewModel</h3>
+<div id="outline-container-org119244b" class="outline-3">
+<h3 id="org119244b"><span class="section-number-3">14.2</span> ViewModel</h3>
 <div class="outline-text-3" id="text-14-2">
 </div>
-<div id="outline-container-org17d7353" class="outline-4">
-<h4 id="org17d7353"><span class="section-number-4">14.2.1</span> Book.swift</h4>
+<div id="outline-container-orgfd34054" class="outline-4">
+<h4 id="orgfd34054"><span class="section-number-4">14.2.1</span> Book.swift</h4>
 <div class="outline-text-4" id="text-14-2-1">
 <p>
 資料來源:所有書本的內容，建立一個ObservableObject的class，以@Published方式分享書籍記錄(list)<br />
@@ -3021,12 +3027,12 @@ Single way, Just pass variable from A to B.<br />
 </div>
 </div>
 </div>
-<div id="outline-container-org0c50107" class="outline-3">
-<h3 id="org0c50107"><span class="section-number-3">14.3</span> 主畫面</h3>
+<div id="outline-container-orge41d1bf" class="outline-3">
+<h3 id="orge41d1bf"><span class="section-number-3">14.3</span> 主畫面</h3>
 <div class="outline-text-3" id="text-14-3">
 </div>
-<div id="outline-container-org9258413" class="outline-4">
-<h4 id="org9258413"><span class="section-number-4">14.3.1</span> ContentView.swift</h4>
+<div id="outline-container-org036710f" class="outline-4">
+<h4 id="org036710f"><span class="section-number-4">14.3.1</span> ContentView.swift</h4>
 <div class="outline-text-4" id="text-14-3-1">
 <p>
 以@ObservedObject的方式讀取ViewModel裡分享的記錄<br />
@@ -3075,12 +3081,12 @@ Single way, Just pass variable from A to B.<br />
 </div>
 </div>
 </div>
-<div id="outline-container-org5cd2820" class="outline-3">
-<h3 id="org5cd2820"><span class="section-number-3">14.4</span> 加入新記錄</h3>
+<div id="outline-container-org52a78a3" class="outline-3">
+<h3 id="org52a78a3"><span class="section-number-3">14.4</span> 加入新記錄</h3>
 <div class="outline-text-3" id="text-14-4">
 </div>
-<div id="outline-container-orgaa08805" class="outline-4">
-<h4 id="orgaa08805"><span class="section-number-4">14.4.1</span> AddNewBook.swift</h4>
+<div id="outline-container-orgb916c43" class="outline-4">
+<h4 id="orgb916c43"><span class="section-number-4">14.4.1</span> AddNewBook.swift</h4>
 <div class="outline-text-4" id="text-14-4-1">
 <p>
 以@ObservedObject的方式新增ViewModel裡分享的記錄<br />
@@ -3125,8 +3131,8 @@ Single way, Just pass variable from A to B.<br />
 <h2 id="ObservedObject"><span class="section-number-2">15</span> Passing data between Views #2: @ObservedObject</h2>
 <div class="outline-text-2" id="text-ObservedObject">
 </div>
-<div id="outline-container-org3450659" class="outline-3">
-<h3 id="org3450659"><span class="section-number-3">15.1</span> ObservedObject範例</h3>
+<div id="outline-container-org73e7a78" class="outline-3">
+<h3 id="org73e7a78"><span class="section-number-3">15.1</span> ObservedObject範例</h3>
 <div class="outline-text-3" id="text-15-1">
 <p>
 前節的Book.swift中使用@Published將書籍資料設定為可以其他View共享，與@State, @Binding相同，@Published為一種Property wrapper(屬性包裝器)。SwiftUI 中幾個常見的 @ 開頭修飾，如 @State，@Binding，@Environment，@EnvironmentObject 等都是運用了 Property Wrappers 這個特性。<br />
@@ -3189,8 +3195,8 @@ Single way, Just pass variable from A to B.<br />
 </p>
 </div>
 </div>
-<div id="outline-container-org39699a9" class="outline-3">
-<h3 id="org39699a9"><span class="section-number-3">15.2</span> ObservedObject特性</h3>
+<div id="outline-container-orgfdb6be4" class="outline-3">
+<h3 id="orgfdb6be4"><span class="section-number-3">15.2</span> ObservedObject特性</h3>
 <div class="outline-text-3" id="text-15-2">
 <ul class="org-ul">
 <li>Can be shared across views<br /></li>
@@ -3205,8 +3211,8 @@ Single way, Just pass variable from A to B.<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-org06d9ff8" class="outline-3">
-<h3 id="org06d9ff8"><span class="section-number-3">15.3</span> @ObservedObject v.s. @ObjectBinding</h3>
+<div id="outline-container-org6b13b03" class="outline-3">
+<h3 id="org6b13b03"><span class="section-number-3">15.3</span> @ObservedObject v.s. @ObjectBinding</h3>
 <div class="outline-text-3" id="text-15-3">
 <p>
 另一種與@ObservedObject有點相似的wrapper為@ObjectBinding，但不同的是，使用@ObservedObject的object必須要有@Published wrapper；而使用@ObjectBinding則要自已加上didChange。@ObjectBindin的範例如下:<br />
@@ -3249,12 +3255,12 @@ Single way, Just pass variable from A to B.<br />
 <li>If one view changes the model all views update<br /></li>
 </ul>
 </div>
-<div id="outline-container-orgbc7b792" class="outline-3">
-<h3 id="orgbc7b792"><span class="section-number-3">16.1</span> @EnvironmentObject與@ObservedObject的異同</h3>
+<div id="outline-container-orgd456cf2" class="outline-3">
+<h3 id="orgd456cf2"><span class="section-number-3">16.1</span> @EnvironmentObject與@ObservedObject的異同</h3>
 <div class="outline-text-3" id="text-16-1">
 </div>
-<div id="outline-container-orgdfb873b" class="outline-4">
-<h4 id="orgdfb873b"><span class="section-number-4">16.1.1</span> 相同</h4>
+<div id="outline-container-orga681ef1" class="outline-4">
+<h4 id="orga681ef1"><span class="section-number-4">16.1.1</span> 相同</h4>
 <div class="outline-text-4" id="text-16-1-1">
 <p>
 @EnvironmentObject has a lot in common with @ObservedObject<br />
@@ -3266,36 +3272,36 @@ Single way, Just pass variable from A to B.<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-orge0d30d5" class="outline-4">
-<h4 id="orge0d30d5"><span class="section-number-4">16.1.2</span> 差異</h4>
+<div id="outline-container-org6267159" class="outline-4">
+<h4 id="org6267159"><span class="section-number-4">16.1.2</span> 差異</h4>
 <div class="outline-text-4" id="text-16-1-2">
 <ul class="org-ul">
 <li>However, @EnvironmentObject specifically means “this object will be provided from some outside entity, rather than being created by the current view or specifically passed in.<sup><a id="fnr.14.100" class="footref" href="#fn.14">14</a></sup><br /></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf2e46de" class="outline-4">
-<h4 id="orgf2e46de"><span class="section-number-4">16.1.3</span> 範例</h4>
+<div id="outline-container-org4738116" class="outline-4">
+<h4 id="org4738116"><span class="section-number-4">16.1.3</span> 範例</h4>
 <div class="outline-text-4" id="text-16-1-3">
 <p>
 以如下app為例，若View A裡有某些data要在未來與View E共用，若是使用@ObservedObject來進行分享，則View A要依序將這些data傳給View B、View C、View D，最後再傳到View E裡。<br />
 然而，若使用@EnvironmentObject的機制來進行分享data，則可以在View A中將這些要分享的data置於Swift environment中，所有處於同一environment中的所有View都能與之共享，而不用依次傳遞。<br />
 </p>
 
-<div id="orgf83ab51" class="figure">
+<div id="orgf4e9367" class="figure">
 <p><img src="images/environmentObject.png" alt="environmentObject.png" width="500" /><br />
 </p>
-<p><span class="figure-number">Figure 23: </span>@Environment適用狀況</p>
+<p><span class="figure-number">Figure 24: </span>@Environment適用狀況</p>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-orgfcde61b" class="outline-3">
-<h3 id="orgfcde61b"><span class="section-number-3">16.2</span> EnvironmentObject設定方式</h3>
+<div id="outline-container-org4a59a8f" class="outline-3">
+<h3 id="org4a59a8f"><span class="section-number-3">16.2</span> EnvironmentObject設定方式</h3>
 <div class="outline-text-3" id="text-16-2">
 </div>
-<div id="outline-container-orgc93891e" class="outline-4">
-<h4 id="orgc93891e"><span class="section-number-4">16.2.1</span> 建立EnvironmentObject class</h4>
+<div id="outline-container-org9e90760" class="outline-4">
+<h4 id="org9e90760"><span class="section-number-4">16.2.1</span> 建立EnvironmentObject class</h4>
 <div class="outline-text-4" id="text-16-2-1">
 <p>
 UserSettings.swift (ObservableObject)<br />
@@ -3311,12 +3317,12 @@ UserSettings.swift (ObservableObject)<br />
 </div>
 </div>
 </div>
-<div id="outline-container-orgc0e2296" class="outline-4">
-<h4 id="orgc0e2296"><span class="section-number-4">16.2.2</span> 設定app環境</h4>
+<div id="outline-container-orgea4a3c2" class="outline-4">
+<h4 id="orgea4a3c2"><span class="section-number-4">16.2.2</span> 設定app環境</h4>
 <div class="outline-text-4" id="text-16-2-2">
 </div>
-<div id="outline-container-org0d938b4" class="outline-5">
-<h5 id="org0d938b4"><span class="section-number-5">16.2.2.1</span> Xcode 11.X: SceneDeleate.swift</h5>
+<div id="outline-container-org2d60da4" class="outline-5">
+<h5 id="org2d60da4"><span class="section-number-5">16.2.2.1</span> Xcode 11.X: SceneDeleate.swift</h5>
 <div class="outline-text-5" id="text-16-2-2-1">
 <p>
 加入變數宣告(x)及environmentObject(x)<br />
@@ -3335,8 +3341,8 @@ UserSettings.swift (ObservableObject)<br />
 </div>
 </div>
 </div>
-<div id="outline-container-org25350cb" class="outline-5">
-<h5 id="org25350cb"><span class="section-number-5">16.2.2.2</span> Xcode 12.X: xxxApp.swift</h5>
+<div id="outline-container-orge1bc2fe" class="outline-5">
+<h5 id="orge1bc2fe"><span class="section-number-5">16.2.2.2</span> Xcode 12.X: xxxApp.swift</h5>
 <div class="outline-text-5" id="text-16-2-2-2">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> SwiftUI
@@ -3355,12 +3361,12 @@ UserSettings.swift (ObservableObject)<br />
 </div>
 </div>
 </div>
-<div id="outline-container-org9a2861e" class="outline-4">
-<h4 id="org9a2861e"><span class="section-number-4">16.2.3</span> 設定Client View</h4>
+<div id="outline-container-org989a50e" class="outline-4">
+<h4 id="org989a50e"><span class="section-number-4">16.2.3</span> 設定Client View</h4>
 <div class="outline-text-4" id="text-16-2-3">
 </div>
-<div id="outline-container-org2a09269" class="outline-5">
-<h5 id="org2a09269"><span class="section-number-5">16.2.3.1</span> Read</h5>
+<div id="outline-container-org905ee2a" class="outline-5">
+<h5 id="org905ee2a"><span class="section-number-5">16.2.3.1</span> Read</h5>
 <div class="outline-text-5" id="text-16-2-3-1">
 <p>
 UserSettingsView.swift<br />
@@ -3381,8 +3387,8 @@ UserSettingsView.swift<br />
 </div>
 </div>
 </div>
-<div id="outline-container-org260b18b" class="outline-5">
-<h5 id="org260b18b"><span class="section-number-5">16.2.3.2</span> Write</h5>
+<div id="outline-container-org1a5d9cd" class="outline-5">
+<h5 id="org1a5d9cd"><span class="section-number-5">16.2.3.2</span> Write</h5>
 <div class="outline-text-5" id="text-16-2-3-2">
 <p>
 EditView.swift<br />
@@ -3402,15 +3408,15 @@ EditView.swift<br />
 </div>
 </div>
 </div>
-<div id="outline-container-org95b1b31" class="outline-3">
-<h3 id="org95b1b31"><span class="section-number-3">16.3</span> 範例</h3>
+<div id="outline-container-org10ca6f0" class="outline-3">
+<h3 id="org10ca6f0"><span class="section-number-3">16.3</span> 範例</h3>
 <div class="outline-text-3" id="text-16-3">
 <p>
 建立environment物件(ShoppingCart)，由各View共享/編輯內容<br />
 </p>
 </div>
-<div id="outline-container-org69fdd4a" class="outline-4">
-<h4 id="org69fdd4a"><span class="section-number-4">16.3.1</span> ShoppingCart.swift</h4>
+<div id="outline-container-org7851abd" class="outline-4">
+<h4 id="org7851abd"><span class="section-number-4">16.3.1</span> ShoppingCart.swift</h4>
 <div class="outline-text-4" id="text-16-3-1">
 <p>
 情境說明：在 app 中建立一個 ShoppingCart 類別，並讓這個 class confirm ObservableObject protocol，於 class 中將要在各 View 中 share 的 property 以@Published 標示出來。<br />
@@ -3426,15 +3432,15 @@ EditView.swift<br />
 </div>
 </div>
 </div>
-<div id="outline-container-orgda8a295" class="outline-4">
-<h4 id="orgda8a295"><span class="section-number-4">16.3.2</span> 環境設定 SceneDelegate.swift / xxxApp.swift</h4>
+<div id="outline-container-org3b6fe30" class="outline-4">
+<h4 id="org3b6fe30"><span class="section-number-4">16.3.2</span> 環境設定 SceneDelegate.swift / xxxApp.swift</h4>
 <div class="outline-text-4" id="text-16-3-2">
 <p>
 環境變數由swift環境提供，故在SceneDelegate.swift檔案中宣告要共享的變數(程式第<a href="#coderef-decEnvObj" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-decEnvObj');" onmouseout="CodeHighlightOff(this, 'coderef-decEnvObj');">7</a>行)，並於UIHostingController function中將之加入起始View中，如下列程式第<a href="#coderef-attEnvObj" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-attEnvObj');" onmouseout="CodeHighlightOff(this, 'coderef-attEnvObj');">16</a>行。<br />
 </p>
 </div>
-<div id="outline-container-org41be30c" class="outline-5">
-<h5 id="org41be30c"><span class="section-number-5">16.3.2.1</span> 舊版: SceneDelegate.swift</h5>
+<div id="outline-container-orgaac1b6e" class="outline-5">
+<h5 id="orgaac1b6e"><span class="section-number-5">16.3.2.1</span> 舊版: SceneDelegate.swift</h5>
 <div class="outline-text-5" id="text-16-3-2-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> UIKit
@@ -3463,8 +3469,8 @@ EditView.swift<br />
 </div>
 </div>
 </div>
-<div id="outline-container-org788e306" class="outline-5">
-<h5 id="org788e306"><span class="section-number-5">16.3.2.2</span> 新版: xxxApp.swift</h5>
+<div id="outline-container-org30592d1" class="outline-5">
+<h5 id="org30592d1"><span class="section-number-5">16.3.2.2</span> 新版: xxxApp.swift</h5>
 <div class="outline-text-5" id="text-16-3-2-2">
 <p>
 在WWDC20之前，使用SwiftUI建立View必須將其包裝在UIHostingController，Controller被包裝在一個UIWindow，window在SceneDelegate中定義。在WWDC20之後，一個新的解決方案出現：App。<br />
@@ -3490,8 +3496,8 @@ EditView.swift<br />
 </div>
 </div>
 </div>
-<div id="outline-container-orgaa0a992" class="outline-4">
-<h4 id="orgaa0a992"><span class="section-number-4">16.3.3</span> ContentView.swift</h4>
+<div id="outline-container-org012bd6a" class="outline-4">
+<h4 id="org012bd6a"><span class="section-number-4">16.3.3</span> ContentView.swift</h4>
 <div class="outline-text-4" id="text-16-3-3">
 <p>
 在每一個要使用到這個 EnvironmentObject 的 View 中以@EnvironmentObject 來建立該 class 的 instance(第<a href="#coderef-environmentObject" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-environmentObject');" onmouseout="CodeHighlightOff(this, 'coderef-environmentObject');">6</a>行)，同時，在 previews 中也要加入 environmentObject()的 modifier(第<a href="#coderef-emptyConstructor" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-emptyConstructor');" onmouseout="CodeHighlightOff(this, 'coderef-emptyConstructor');">26</a>行)，在需用到環境變數的View(如SecondView)被呼叫時加入environmentObject(第<a href="#coderef-envObj" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-envObj');" onmouseout="CodeHighlightOff(this, 'coderef-envObj');">17</a>行)。<br />
@@ -3530,8 +3536,8 @@ EditView.swift<br />
 </div>
 </div>
 </div>
-<div id="outline-container-org7936e38" class="outline-4">
-<h4 id="org7936e38"><span class="section-number-4">16.3.4</span> SecondView</h4>
+<div id="outline-container-org81c41c3" class="outline-4">
+<h4 id="org81c41c3"><span class="section-number-4">16.3.4</span> SecondView</h4>
 <div class="outline-text-4" id="text-16-3-4">
 <p>
 同樣的，在 SecondView 中要使用到 environment object 也要以@EnvironmentObject 來宣告利用該 class 所建立的 instance(第<a href="#coderef-useEnv" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-useEnv');" onmouseout="CodeHighlightOff(this, 'coderef-useEnv');">4</a>行)，而 SecondView 的 preview 也要加上同樣的 modifier(傳入參數)。<br />
@@ -3568,8 +3574,8 @@ EditView.swift<br />
 </div>
 </div>
 </div>
-<div id="outline-container-orgc85d76b" class="outline-3">
-<h3 id="orgc85d76b"><span class="section-number-3">16.4</span> Further Reading</h3>
+<div id="outline-container-org332adac" class="outline-3">
+<h3 id="org332adac"><span class="section-number-3">16.4</span> Further Reading</h3>
 <div class="outline-text-3" id="text-16-4">
 <ul class="org-ul">
 <li><a href="https://www.youtube.com/watch?v=iH88uJcdzDM">SwiftUI Reactive Intro - Understanding State and Binding in SwiftUI in Xcode 11 (2019)</a><br /></li>
@@ -3583,8 +3589,8 @@ EditView.swift<br />
 <h2 id="UserDefaults"><span class="section-number-2">17</span> UserDefaults</h2>
 <div class="outline-text-2" id="text-UserDefaults">
 </div>
-<div id="outline-container-orgf5803e3" class="outline-3">
-<h3 id="orgf5803e3"><span class="section-number-3">17.1</span> 幾種可以在 iOS app 永久儲存資料的方式:</h3>
+<div id="outline-container-org9f9425e" class="outline-3">
+<h3 id="org9f9425e"><span class="section-number-3">17.1</span> 幾種可以在 iOS app 永久儲存資料的方式:</h3>
 <div class="outline-text-3" id="text-17-1">
 <ul class="org-ul">
 <li>Filesystem: FileManager<br /></li>
@@ -3594,8 +3600,8 @@ EditView.swift<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-org10113d0" class="outline-3">
-<h3 id="org10113d0"><span class="section-number-3">17.2</span> UserDefautls</h3>
+<div id="outline-container-orgaf5fd0f" class="outline-3">
+<h3 id="orgaf5fd0f"><span class="section-number-3">17.2</span> UserDefautls</h3>
 <div class="outline-text-3" id="text-17-2">
 <p>
 我們可以將UserDefaults視為 persistent dictionary。UserDefaults 可以儲存 Property List 類型的資料。Property List is not a protocol or a struct or anything tangible or Swift-like. It is any combination of String, Int, Bool, Floating point, Date, Array or Dictionary.<br />
@@ -3606,16 +3612,16 @@ A powerful way to do this is using the <b>Codable</b> protocol inf Swift. Codabl
 </p>
 </div>
 </div>
-<div id="outline-container-org8dfcc45" class="outline-3">
-<h3 id="org8dfcc45"><span class="section-number-3">17.3</span> Using userDefaults</h3>
+<div id="outline-container-org0bd3b36" class="outline-3">
+<h3 id="org0bd3b36"><span class="section-number-3">17.3</span> Using userDefaults</h3>
 <div class="outline-text-3" id="text-17-3">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">let</span> defaults = <span style="color: #c678dd;">UserDefaults</span>.<span style="color: #c678dd;">standard</span>
 </pre>
 </div>
 </div>
-<div id="outline-container-orgf4031a2" class="outline-4">
-<h4 id="orgf4031a2"><span class="section-number-4">17.3.1</span> Storing Data</h4>
+<div id="outline-container-org1d7551d" class="outline-4">
+<h4 id="org1d7551d"><span class="section-number-4">17.3.1</span> Storing Data</h4>
 <div class="outline-text-4" id="text-17-3-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span>defaults.<span style="color: #51afef;">set</span>(object, forKey: <span style="color: #98be65;">"SomeKey"</span>)
@@ -3624,8 +3630,8 @@ A powerful way to do this is using the <b>Codable</b> protocol inf Swift. Codabl
 </div>
 </div>
 </div>
-<div id="outline-container-orga71e567" class="outline-4">
-<h4 id="orga71e567"><span class="section-number-4">17.3.2</span> Retrieving Data</h4>
+<div id="outline-container-org5f89f4d" class="outline-4">
+<h4 id="org5f89f4d"><span class="section-number-4">17.3.2</span> Retrieving Data</h4>
 <div class="outline-text-4" id="text-17-3-2">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">let</span> i: <span style="color: #c678dd;">Int</span> = defaults.<span style="color: #c678dd;">integer</span>(forKey: <span style="color: #98be65;">"MyInt"</span>)
@@ -3636,12 +3642,12 @@ A powerful way to do this is using the <b>Codable</b> protocol inf Swift. Codabl
 </div>
 </div>
 </div>
-<div id="outline-container-org93281f2" class="outline-3">
-<h3 id="org93281f2"><span class="section-number-3">17.4</span> Demo</h3>
+<div id="outline-container-orgcee4d5f" class="outline-3">
+<h3 id="orgcee4d5f"><span class="section-number-3">17.4</span> Demo</h3>
 <div class="outline-text-3" id="text-17-4">
 </div>
-<div id="outline-container-org5e06c1f" class="outline-4">
-<h4 id="org5e06c1f"><span class="section-number-4">17.4.1</span> Create UserDefault.swift</h4>
+<div id="outline-container-orgb7dab60" class="outline-4">
+<h4 id="orgb7dab60"><span class="section-number-4">17.4.1</span> Create UserDefault.swift</h4>
 <div class="outline-text-4" id="text-17-4-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> Foundation
@@ -3667,8 +3673,8 @@ A powerful way to do this is using the <b>Codable</b> protocol inf Swift. Codabl
 </div>
 </div>
 </div>
-<div id="outline-container-org8dfd2be" class="outline-4">
-<h4 id="org8dfd2be"><span class="section-number-4">17.4.2</span> use userSetting in ContentView.swift</h4>
+<div id="outline-container-org1ec09cb" class="outline-4">
+<h4 id="org1ec09cb"><span class="section-number-4">17.4.2</span> use userSetting in ContentView.swift</h4>
 <div class="outline-text-4" id="text-17-4-2">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> SwiftUI
@@ -3704,19 +3710,19 @@ A powerful way to do this is using the <b>Codable</b> protocol inf Swift. Codabl
 </pre>
 </div>
 
-<div id="org57d5cd9" class="figure">
+<div id="org41b2701" class="figure">
 <p><img src="images/UserDefaults.jpg" alt="UserDefaults.jpg" width="500" /><br />
 </p>
-<p><span class="figure-number">Figure 24: </span>UserDefault for Settings</p>
+<p><span class="figure-number">Figure 25: </span>UserDefault for Settings</p>
 </div>
 </div>
 </div>
-<div id="outline-container-org3ae2023" class="outline-4">
-<h4 id="org3ae2023"><span class="section-number-4">17.4.3</span> BookList: UserDefault v.s. @EnvironmentObject</h4>
+<div id="outline-container-orgf87127c" class="outline-4">
+<h4 id="orgf87127c"><span class="section-number-4">17.4.3</span> BookList: UserDefault v.s. @EnvironmentObject</h4>
 <div class="outline-text-4" id="text-17-4-3">
 </div>
-<div id="outline-container-orgc54a0fb" class="outline-5">
-<h5 id="orgc54a0fb"><span class="section-number-5">17.4.3.1</span> UserSettings.swift</h5>
+<div id="outline-container-org8edc991" class="outline-5">
+<h5 id="org8edc991"><span class="section-number-5">17.4.3.1</span> UserSettings.swift</h5>
 <div class="outline-text-5" id="text-17-4-3-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #5B6268;">//</span>
@@ -3750,8 +3756,8 @@ A powerful way to do this is using the <b>Codable</b> protocol inf Swift. Codabl
 </div>
 </div>
 </div>
-<div id="outline-container-orgc541e87" class="outline-5">
-<h5 id="orgc541e87"><span class="section-number-5">17.4.3.2</span> ContentView.swift</h5>
+<div id="outline-container-org3045dfe" class="outline-5">
+<h5 id="org3045dfe"><span class="section-number-5">17.4.3.2</span> ContentView.swift</h5>
 <div class="outline-text-5" id="text-17-4-3-2">
 <p>
 The way to arrange ore than one navigationBarItems.<br />
@@ -3817,15 +3823,15 @@ The way to arrange ore than one navigationBarItems.<br />
 </pre>
 </div>
 
-<div id="org8a3fa13" class="figure">
+<div id="orgf961d2f" class="figure">
 <p><img src="images/UserDefault-1.png" alt="UserDefault-1.png" width="300" /><br />
 </p>
-<p><span class="figure-number">Figure 25: </span>UserDefault v.s. @Environment</p>
+<p><span class="figure-number">Figure 26: </span>UserDefault v.s. @Environment</p>
 </div>
 </div>
 </div>
-<div id="outline-container-org717140f" class="outline-5">
-<h5 id="org717140f"><span class="section-number-5">17.4.3.3</span> settingView.swift</h5>
+<div id="outline-container-org72806f5" class="outline-5">
+<h5 id="org72806f5"><span class="section-number-5">17.4.3.3</span> settingView.swift</h5>
 <div class="outline-text-5" id="text-17-4-3-3">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #5B6268;">//</span>
@@ -3866,15 +3872,15 @@ The way to arrange ore than one navigationBarItems.<br />
 </pre>
 </div>
 
-<div id="orgfc29bc3" class="figure">
+<div id="org82ea8a8" class="figure">
 <p><img src="images/UserDefault-2.png" alt="UserDefault-2.png" width="300" /><br />
 </p>
-<p><span class="figure-number">Figure 26: </span>UserDefault v.s. @Environment</p>
+<p><span class="figure-number">Figure 27: </span>UserDefault v.s. @Environment</p>
 </div>
 </div>
 </div>
-<div id="outline-container-org43b0b70" class="outline-5">
-<h5 id="org43b0b70"><span class="section-number-5">17.4.3.4</span> SceneDelegate.swift</h5>
+<div id="outline-container-org15314bb" class="outline-5">
+<h5 id="org15314bb"><span class="section-number-5">17.4.3.4</span> SceneDelegate.swift</h5>
 <div class="outline-text-5" id="text-17-4-3-4">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span>
@@ -3907,8 +3913,8 @@ The way to arrange ore than one navigationBarItems.<br />
 </div>
 </div>
 </div>
-<div id="outline-container-orgdd2fbff" class="outline-3">
-<h3 id="orgdd2fbff"><span class="section-number-3">17.5</span> Reading Resources</h3>
+<div id="outline-container-org52cfa53" class="outline-3">
+<h3 id="org52cfa53"><span class="section-number-3">17.5</span> Reading Resources</h3>
 <div class="outline-text-3" id="text-17-5">
 <ul class="org-ul">
 <li><a href="https://www.simpleswiftguide.com/how-to-use-userdefaults-in-swiftui/">How to use UserDefaults in SwiftUI</a><br /></li>
@@ -3927,8 +3933,8 @@ All of these @Something statements are property wrappers. A property wrapper is 
 The property wrapper feature adds <b>&ldquo;syntactic sugar&rdquo;</b> to make these structs easy to create/use.&ldquo; <sup><a id="fnr.15" class="footref" href="#fn.15">15</a></sup><br />
 </p>
 </div>
-<div id="outline-container-org7e73327" class="outline-3">
-<h3 id="org7e73327"><span class="section-number-3">18.1</span> SwiftUI的狀態管理</h3>
+<div id="outline-container-orga61543e" class="outline-3">
+<h3 id="orga61543e"><span class="section-number-3">18.1</span> SwiftUI的狀態管理</h3>
 <div class="outline-text-3" id="text-18-1">
 <p>
 <a href="https://onevcat.com/2020/06/stateobject/">資料來源:@StateObject 和 @ObservedObject 的区别和使用</a><br />
@@ -3945,15 +3951,15 @@ The property wrapper feature adds <b>&ldquo;syntactic sugar&rdquo;</b> to make t
 </p>
 </div>
 </div>
-<div id="outline-container-org5eaf6f9" class="outline-3">
-<h3 id="org5eaf6f9"><span class="section-number-3">18.2</span> @StateObject v.s. @ObservedObject</h3>
+<div id="outline-container-org585d14c" class="outline-3">
+<h3 id="org585d14c"><span class="section-number-3">18.2</span> @StateObject v.s. @ObservedObject</h3>
 <div class="outline-text-3" id="text-18-2">
 <p>
 @ObservedObject不管存儲，會隨著View的創建被多次創建。而@StateObject保證對像只會被創建一次。因此，如果是在View裡自行創建的ObservableObjectmodel對象，大概率來說使用@StateObject會是更正確的選擇。@StateObject基本上來說就是一個針對class的@State升級版<sup><a id="fnr.16.100" class="footref" href="#fn.16">16</a></sup><br />
 </p>
 </div>
-<div id="outline-container-org052d628" class="outline-4">
-<h4 id="org052d628"><span class="section-number-4">18.2.1</span> 程式範例</h4>
+<div id="outline-container-orgdc59642" class="outline-4">
+<h4 id="orgdc59642"><span class="section-number-4">18.2.1</span> 程式範例</h4>
 <div class="outline-text-4" id="text-18-2-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">ContentView</span>: View {
@@ -4009,10 +4015,10 @@ The property wrapper feature adds <b>&ldquo;syntactic sugar&rdquo;</b> to make t
 </pre>
 </div>
 
-<div id="orgdf748c9" class="figure">
+<div id="org934e0ab" class="figure">
 <p><img src="images/observeState.jpg" alt="observeState.jpg" width="300" /><br />
 </p>
-<p><span class="figure-number">Figure 27: </span>@ObservableObject v.s. @StateObject</p>
+<p><span class="figure-number">Figure 28: </span>@ObservableObject v.s. @StateObject</p>
 </div>
 
 <p>
@@ -4020,8 +4026,8 @@ The property wrapper feature adds <b>&ldquo;syntactic sugar&rdquo;</b> to make t
 </p>
 </div>
 </div>
-<div id="outline-container-orge6b4862" class="outline-4">
-<h4 id="orge6b4862"><span class="section-number-4">18.2.2</span> Create once</h4>
+<div id="outline-container-org0936e0a" class="outline-4">
+<h4 id="org0936e0a"><span class="section-number-4">18.2.2</span> Create once</h4>
 <div class="outline-text-4" id="text-18-2-2">
 <p>
 只要理解了@ObservedObject存在的問題，@StateObject的意義也就很明顯了。@StateObject就是@State的升級版：@State是針對struct狀態所創建的存儲，@StateObject則是針對ObservableObjectclass的存儲。它保證這個class實例不會隨著View被重新創建。從而解決問題<sup><a id="fnr.16.100" class="footref" href="#fn.16">16</a></sup>。<br />
@@ -4045,8 +4051,8 @@ The property wrapper feature adds <b>&ldquo;syntactic sugar&rdquo;</b> to make t
 </div>
 </div>
 </div>
-<div id="outline-container-orgbf9c00c" class="outline-3">
-<h3 id="orgbf9c00c"><span class="section-number-3">18.3</span> 使用@EnvironmentObject保持狀態</h3>
+<div id="outline-container-orgc5b3309" class="outline-3">
+<h3 id="orgc5b3309"><span class="section-number-3">18.3</span> 使用@EnvironmentObject保持狀態</h3>
 <div class="outline-text-3" id="text-18-3">
 <p>
 除了@StateObject外，另一種讓狀態object保持住的方式，是在更外層使用.environmentObject：<br />
@@ -4081,8 +4087,8 @@ The property wrapper feature adds <b>&ldquo;syntactic sugar&rdquo;</b> to make t
 </div>
 </div>
 </div>
-<div id="outline-container-orgfce6c76" class="outline-3">
-<h3 id="orgfce6c76"><span class="section-number-3">18.4</span> Property wrapper syntactic Sugar</h3>
+<div id="outline-container-orgb247ab3" class="outline-3">
+<h3 id="orgb247ab3"><span class="section-number-3">18.4</span> Property wrapper syntactic Sugar</h3>
 <div class="outline-text-3" id="text-18-4">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">@Published</span> <span style="color: #51afef;">var</span> dice: Dice = <span style="color: #c678dd;">Dice</span>()
@@ -4111,8 +4117,8 @@ The property wrapper feature adds <b>&ldquo;syntactic sugar&rdquo;</b> to make t
 </div>
 </div>
 </div>
-<div id="outline-container-orga9c08e4" class="outline-3">
-<h3 id="orga9c08e4"><span class="section-number-3">18.5</span> 各種property wrapper比較</h3>
+<div id="outline-container-org2ed890c" class="outline-3">
+<h3 id="org2ed890c"><span class="section-number-3">18.5</span> 各種property wrapper比較</h3>
 <div class="outline-text-3" id="text-18-5">
 <p>
 Three ways for sharing data in SwiftUI<sup><a id="fnr.17" class="footref" href="#fn.17">17</a></sup><br />
@@ -4216,15 +4222,15 @@ Three ways for sharing data in SwiftUI<sup><a id="fnr.17" class="footref" href="
 </div>
 </div>
 </div>
-<div id="outline-container-org21edb5d" class="outline-2">
-<h2 id="org21edb5d"><span class="section-number-2">19</span> Filtered List</h2>
+<div id="outline-container-org5f385ab" class="outline-2">
+<h2 id="org5f385ab"><span class="section-number-2">19</span> Filtered List</h2>
 <div class="outline-text-2" id="text-19">
 <p>
 為Dynamic List加入顯示過濾功能<br />
 </p>
 </div>
-<div id="outline-container-org7248b6a" class="outline-3">
-<h3 id="org7248b6a"><span class="section-number-3">19.1</span> Model</h3>
+<div id="outline-container-org7d25879" class="outline-3">
+<h3 id="org7d25879"><span class="section-number-3">19.1</span> Model</h3>
 <div class="outline-text-3" id="text-19-1">
 <p>
 BookModel.swift<br />
@@ -4243,8 +4249,8 @@ BookModel.swift<br />
 </div>
 </div>
 </div>
-<div id="outline-container-org3984fd9" class="outline-3">
-<h3 id="org3984fd9"><span class="section-number-3">19.2</span> ViewModel</h3>
+<div id="outline-container-org1044888" class="outline-3">
+<h3 id="org1044888"><span class="section-number-3">19.2</span> ViewModel</h3>
 <div class="outline-text-3" id="text-19-2">
 <p>
 Book.swift<br />
@@ -4268,8 +4274,8 @@ Book.swift<br />
 </div>
 </div>
 </div>
-<div id="outline-container-orga1f1764" class="outline-3">
-<h3 id="orga1f1764"><span class="section-number-3">19.3</span> 主畫面</h3>
+<div id="outline-container-org20098fd" class="outline-3">
+<h3 id="org20098fd"><span class="section-number-3">19.3</span> 主畫面</h3>
 <div class="outline-text-3" id="text-19-3">
 <p>
 ContentView.swift<br />
@@ -4328,10 +4334,10 @@ ContentView.swift<br />
 </pre>
 </div>
 
-<div id="org3b6a160" class="figure">
+<div id="orgf09715b" class="figure">
 <p><img src="images/filterList.gif" alt="filterList.gif" width="300" /><br />
 </p>
-<p><span class="figure-number">Figure 28: </span>Filtered List</p>
+<p><span class="figure-number">Figure 29: </span>Filtered List</p>
 </div>
 </div>
 </div>
@@ -4340,18 +4346,18 @@ ContentView.swift<br />
 <h2 id="SW-MVVM"><span class="section-number-2">20</span> MVVM</h2>
 <div class="outline-text-2" id="text-SW-MVVM">
 </div>
-<div id="outline-container-orge563fe3" class="outline-3">
-<h3 id="orge563fe3"><span class="section-number-3">20.1</span> Design pattern</h3>
+<div id="outline-container-org0202019" class="outline-3">
+<h3 id="org0202019"><span class="section-number-3">20.1</span> Design pattern</h3>
 <div class="outline-text-3" id="text-20-1">
 <p>
 MVVM的概念最早應該是在2005年由Microsoft的<a href="https://blogs.msdn.microsoft.com/johngossman/2005/10/08/introduction-to-modelviewviewmodel-pattern-for-building-wpf-apps/">John Gossman</a>提出來的，它的概念是，整個Swift project會拆分成三個部份: View、ViewModel、Model，其中View的角色就是單純的視覺元件，像是按鈕、文字標籤等等，在View裡面不會有邏輯、狀態等等，單純就是個呈現資料的元件。而要讓View呈現資料，最直覺的方式，就是把View跟Model做綁定，讓View的元件跟著Model一起做變化。但這樣會有個問題，就是通常Model來的資料，並不是簡單就能轉換成View的樣式的，這時候就需要有個物件，介在View跟Model的中間，這個物件會掌管這些跟View高度相關的邏輯的操作，像是轉換Date物件變成人看得懂的文字格式等，稱之為ViewModel。上面的概念可以畫成這樣的資料流：<br />
 </p>
 
 
-<div id="org7d6946b" class="figure">
+<div id="org5742775" class="figure">
 <p><img src="images/MVVM-Basic.jpg" alt="MVVM-Basic.jpg" width="600" /><br />
 </p>
-<p><span class="figure-number">Figure 29: </span>MVVM Architecture</p>
+<p><span class="figure-number">Figure 30: </span>MVVM Architecture</p>
 </div>
 
 <p>
@@ -4374,12 +4380,12 @@ MVVM的概念最早應該是在2005年由Microsoft的<a href="https://blogs.msdn
 </p>
 </div>
 </div>
-<div id="outline-container-org1379a7f" class="outline-3">
-<h3 id="org1379a7f"><span class="section-number-3">20.2</span> What is the idea behind MVVM</h3>
+<div id="outline-container-org49ef338" class="outline-3">
+<h3 id="org49ef338"><span class="section-number-3">20.2</span> What is the idea behind MVVM</h3>
 <div class="outline-text-3" id="text-20-2">
 </div>
-<div id="outline-container-org6294ffe" class="outline-4">
-<h4 id="org6294ffe"><span class="section-number-4">20.2.1</span> Model</h4>
+<div id="outline-container-org53170ef" class="outline-4">
+<h4 id="org53170ef"><span class="section-number-4">20.2.1</span> Model</h4>
 <div class="outline-text-4" id="text-20-2-1">
 <ul class="org-ul">
 <li>Business logic<br /></li>
@@ -4387,8 +4393,8 @@ MVVM的概念最早應該是在2005年由Microsoft的<a href="https://blogs.msdn
 </ul>
 </div>
 </div>
-<div id="outline-container-org460e9f3" class="outline-4">
-<h4 id="org460e9f3"><span class="section-number-4">20.2.2</span> View</h4>
+<div id="outline-container-orgf66e930" class="outline-4">
+<h4 id="orgf66e930"><span class="section-number-4">20.2.2</span> View</h4>
 <div class="outline-text-4" id="text-20-2-2">
 <ul class="org-ul">
 <li>Presentation<br /></li>
@@ -4396,8 +4402,8 @@ MVVM的概念最早應該是在2005年由Microsoft的<a href="https://blogs.msdn
 </ul>
 </div>
 </div>
-<div id="outline-container-org61bac8e" class="outline-4">
-<h4 id="org61bac8e"><span class="section-number-4">20.2.3</span> ViewModel</h4>
+<div id="outline-container-orgf28ca5d" class="outline-4">
+<h4 id="orgf28ca5d"><span class="section-number-4">20.2.3</span> ViewModel</h4>
 <div class="outline-text-4" id="text-20-2-3">
 <ul class="org-ul">
 <li>Presentation logic<br /></li>
@@ -4405,8 +4411,8 @@ MVVM的概念最早應該是在2005年由Microsoft的<a href="https://blogs.msdn
 </ul>
 </div>
 </div>
-<div id="outline-container-org433b2c3" class="outline-4">
-<h4 id="org433b2c3"><span class="section-number-4">20.2.4</span> 為什麼要拆成三部份(What does it solve?)</h4>
+<div id="outline-container-org8436c73" class="outline-4">
+<h4 id="org8436c73"><span class="section-number-4">20.2.4</span> 為什麼要拆成三部份(What does it solve?)</h4>
 <div class="outline-text-4" id="text-20-2-4">
 <ul class="org-ul">
 <li>MVC - Massive View Controller<br /></li>
@@ -4416,8 +4422,8 @@ MVVM的概念最早應該是在2005年由Microsoft的<a href="https://blogs.msdn
 </ul>
 </div>
 </div>
-<div id="outline-container-org5297f24" class="outline-4">
-<h4 id="org5297f24"><span class="section-number-4">20.2.5</span> Limitations / Cons</h4>
+<div id="outline-container-orgae17d31" class="outline-4">
+<h4 id="orgae17d31"><span class="section-number-4">20.2.5</span> Limitations / Cons</h4>
 <div class="outline-text-4" id="text-20-2-5">
 <ul class="org-ul">
 <li>Requires binding<br /></li>
@@ -4428,8 +4434,8 @@ MVVM的概念最早應該是在2005年由Microsoft的<a href="https://blogs.msdn
 </div>
 </div>
 </div>
-<div id="outline-container-org45a0bf9" class="outline-3">
-<h3 id="org45a0bf9"><span class="section-number-3">20.3</span> DEMO</h3>
+<div id="outline-container-orgee8ea97" class="outline-3">
+<h3 id="orgee8ea97"><span class="section-number-3">20.3</span> DEMO</h3>
 <div class="outline-text-3" id="text-20-3">
 <p>
 以&ldquo;推薦書單&rdquo;的 APP 為例:<br />
@@ -4492,15 +4498,15 @@ Model 與 UI 完全無關，單純用來儲存資料，ViewModel 為 Model 與 V
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd86f715" class="outline-3">
-<h3 id="orgd86f715"><span class="section-number-3">20.4</span> Model要用Struct或是Class</h3>
+<div id="outline-container-org0129394" class="outline-3">
+<h3 id="org0129394"><span class="section-number-3">20.4</span> Model要用Struct或是Class</h3>
 <div class="outline-text-3" id="text-20-4">
 <p>
 <a href="https://www.appcoda.com.tw/swift-class/">資料來源:Swift Class vs Struct：設計 Model 時，該用 Struct 還是 Class 呢？</a><br />
 </p>
 </div>
-<div id="outline-container-orgf863f11" class="outline-4">
-<h4 id="orgf863f11"><span class="section-number-4">20.4.1</span> Struct 與 Class 的不同性質</h4>
+<div id="outline-container-orgcba05b8" class="outline-4">
+<h4 id="orgcba05b8"><span class="section-number-4">20.4.1</span> Struct 與 Class 的不同性質</h4>
 <div class="outline-text-4" id="text-20-4-1">
 <p>
 首先，當我們指派 (assign) 一個實體給一個辨識符（identifier，也就是變數／常數名）的時候，如果該實體是 struct 的話，該辨識符所容納的會是該實體的所有內容；但如果它是 class 的話，這個辨識符就只會容納存放該實體的位址：<br />
@@ -4545,19 +4551,19 @@ Model 與 UI 完全無關，單純用來儲存資料，ViewModel 為 Model 與 V
 </div>
 <p>
 怎麼會有這樣的差別呢？因為 herDog 儲存了所有的 Dog 實體內容，所以任何 Dog 實體的屬性的變動，就等於說 herDog 本身有變動。然而，herCat 並沒有儲存 Cat 實體的內容，所以 Cat 實體屬性的變動是在別的地方發生的，且 herCat 本身所儲存的 Cat 實體位址並沒有任何的改變。<br />
-由圖<a href="#org7d6946b">29</a>可看出，<br />
+由圖<a href="#org5742775">30</a>可看出，<br />
 </p>
 </div>
 </div>
-<div id="outline-container-orgce6030e" class="outline-4">
-<h4 id="orgce6030e"><span class="section-number-4">20.4.2</span> MMVM中的Model</h4>
+<div id="outline-container-org5a1f14d" class="outline-4">
+<h4 id="org5a1f14d"><span class="section-number-4">20.4.2</span> MMVM中的Model</h4>
 </div>
 </div>
-<div id="outline-container-org9563f3c" class="outline-3">
-<h3 id="org9563f3c"><span class="section-number-3">20.5</span> DICE DEMO</h3>
+<div id="outline-container-orgc80e6ab" class="outline-3">
+<h3 id="orgc80e6ab"><span class="section-number-3">20.5</span> DICE DEMO</h3>
 </div>
-<div id="outline-container-orgc8cac42" class="outline-3">
-<h3 id="orgc8cac42"><span class="section-number-3">20.6</span> Further Reading Resources</h3>
+<div id="outline-container-org7a19b46" class="outline-3">
+<h3 id="org7a19b46"><span class="section-number-3">20.6</span> Further Reading Resources</h3>
 <div class="outline-text-3" id="text-20-6">
 <ul class="org-ul">
 <li><a href="https://www.youtube.com/watch?v=1IlUBHvgY8Q&amp;t=29s">SwiftUI MVVM Programming with ObservableObject @Published @ObservedObject</a><br /></li>
@@ -4572,16 +4578,16 @@ Model 與 UI 完全無關，單純用來儲存資料，ViewModel 為 Model 與 V
 </div>
 </div>
 </div>
-<div id="outline-container-orgee52a02" class="outline-2">
-<h2 id="orgee52a02"><span class="section-number-2">21</span> Web API: URLSession v.s. JSONDecoder</h2>
+<div id="outline-container-org6238fec" class="outline-2">
+<h2 id="org6238fec"><span class="section-number-2">21</span> Web API: URLSession v.s. JSONDecoder</h2>
 <div class="outline-text-2" id="text-21">
 </div>
-<div id="outline-container-org6cd7894" class="outline-3">
-<h3 id="org6cd7894"><span class="section-number-3">21.1</span> Demo 1</h3>
+<div id="outline-container-orga5d0c61" class="outline-3">
+<h3 id="orga5d0c61"><span class="section-number-3">21.1</span> Demo 1</h3>
 <div class="outline-text-3" id="text-21-1">
 </div>
-<div id="outline-container-orgeb8c023" class="outline-4">
-<h4 id="orgeb8c023"><span class="section-number-4">21.1.1</span> ContentView.swift</h4>
+<div id="outline-container-org507efc7" class="outline-4">
+<h4 id="org507efc7"><span class="section-number-4">21.1.1</span> ContentView.swift</h4>
 <div class="outline-text-4" id="text-21-1-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> SwiftUI
@@ -4638,19 +4644,19 @@ Model 與 UI 完全無關，單純用來儲存資料，ViewModel 為 Model 與 V
 </pre>
 </div>
 
-<div id="orgbd710a1" class="figure">
+<div id="org34ef731" class="figure">
 <p><img src="images/json-1.jpg" alt="json-1.jpg" width="300" /><br />
 </p>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org4047746" class="outline-3">
-<h3 id="org4047746"><span class="section-number-3">21.2</span> Demo 2</h3>
+<div id="outline-container-org7e9dbc2" class="outline-3">
+<h3 id="org7e9dbc2"><span class="section-number-3">21.2</span> Demo 2</h3>
 <div class="outline-text-3" id="text-21-2">
 </div>
-<div id="outline-container-org9035be2" class="outline-4">
-<h4 id="org9035be2"><span class="section-number-4">21.2.1</span> MVVM</h4>
+<div id="outline-container-orgaf3771a" class="outline-4">
+<h4 id="orgaf3771a"><span class="section-number-4">21.2.1</span> MVVM</h4>
 <div class="outline-text-4" id="text-21-2-1">
 <ul class="org-ul">
 <li>Model: FlowModel.swift<br /></li>
@@ -4659,8 +4665,8 @@ Model 與 UI 完全無關，單純用來儲存資料，ViewModel 為 Model 與 V
 </ul>
 </div>
 </div>
-<div id="outline-container-org81a0a99" class="outline-4">
-<h4 id="org81a0a99"><span class="section-number-4">21.2.2</span> FlowModel.swift</h4>
+<div id="outline-container-org8aad15e" class="outline-4">
+<h4 id="org8aad15e"><span class="section-number-4">21.2.2</span> FlowModel.swift</h4>
 <div class="outline-text-4" id="text-21-2-2">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> Foundation
@@ -4681,8 +4687,8 @@ Model 與 UI 完全無關，單純用來儲存資料，ViewModel 為 Model 與 V
 </div>
 </div>
 </div>
-<div id="outline-container-org58b3a26" class="outline-4">
-<h4 id="org58b3a26"><span class="section-number-4">21.2.3</span> ContentView.swift</h4>
+<div id="outline-container-orgb086c36" class="outline-4">
+<h4 id="orgb086c36"><span class="section-number-4">21.2.3</span> ContentView.swift</h4>
 <div class="outline-text-4" id="text-21-2-3">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> SwiftUI
@@ -4715,8 +4721,8 @@ Model 與 UI 完全無關，單純用來儲存資料，ViewModel 為 Model 與 V
 </div>
 </div>
 </div>
-<div id="outline-container-orga21fc47" class="outline-4">
-<h4 id="orga21fc47"><span class="section-number-4">21.2.4</span> Flow.swift</h4>
+<div id="outline-container-orgdecc472" class="outline-4">
+<h4 id="orgdecc472"><span class="section-number-4">21.2.4</span> Flow.swift</h4>
 <div class="outline-text-4" id="text-21-2-4">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> Foundation
@@ -4749,19 +4755,19 @@ Model 與 UI 完全無關，單純用來儲存資料，ViewModel 為 Model 與 V
 </div>
 </div>
 </div>
-<div id="outline-container-org6904183" class="outline-4">
-<h4 id="org6904183"><span class="section-number-4">21.2.5</span> Result</h4>
+<div id="outline-container-org7d20551" class="outline-4">
+<h4 id="org7d20551"><span class="section-number-4">21.2.5</span> Result</h4>
 <div class="outline-text-4" id="text-21-2-5">
 
-<div id="org16bff94" class="figure">
+<div id="orgfdc43cc" class="figure">
 <p><img src="images/json-2.jpg" alt="json-2.jpg" width="600" /><br />
 </p>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org2cb5296" class="outline-3">
-<h3 id="org2cb5296"><span class="section-number-3">21.3</span> 公開資料平台</h3>
+<div id="outline-container-orgd626e25" class="outline-3">
+<h3 id="orgd626e25"><span class="section-number-3">21.3</span> 公開資料平台</h3>
 <div class="outline-text-3" id="text-21-3">
 <ul class="org-ul">
 <li><a href="https://data.gov.tw/">政府資料開放平台</a><br /></li>
@@ -4772,8 +4778,8 @@ Model 與 UI 完全無關，單純用來儲存資料，ViewModel 為 Model 與 V
 </ul>
 </div>
 </div>
-<div id="outline-container-org4b85c75" class="outline-3">
-<h3 id="org4b85c75"><span class="section-number-3">21.4</span> Further Reading</h3>
+<div id="outline-container-org2083b31" class="outline-3">
+<h3 id="org2083b31"><span class="section-number-3">21.4</span> Further Reading</h3>
 <div class="outline-text-3" id="text-21-4">
 <ul class="org-ul">
 <li><a href="https://www.youtube.com/watch?v=HvfE4G9PfeU">SwiftUI Tutorial - Using an API and Decoding JSON Data</a><br /></li>
@@ -4814,12 +4820,12 @@ A protocol defines a blueprint of methods, properties, and other requirements th
 <li>例如，你可能有一個名為str的變量，其類型為String。身為一個開發人員，你應該知道str代表String，如果我們定義了一個名為StringProtocol的協定，它具有所有的String的API，我們可以擴展任何類型去遵循StringProtocol（意思是滿足其所有要求），如此一來，即可以使用該對象，讓它就像是一個String，儘管我們不知道它是什麼！如果看起來像一隻鴨子，游泳像一隻鴨子，叫聲像一隻鴨子，那就是一隻鴨子。我們新的StringProtocol可以告訴那些遵守它協定的類型能夠做什麼，且不需要知道這些類型的資訊。<sup><a id="fnr.22.100" class="footref" href="#fn.22">22</a></sup><br /></li>
 </ul>
 </div>
-<div id="outline-container-org90f821e" class="outline-3">
-<h3 id="org90f821e"><span class="section-number-3">22.1</span> Protocol Syntax</h3>
+<div id="outline-container-orgb3875dc" class="outline-3">
+<h3 id="orgb3875dc"><span class="section-number-3">22.1</span> Protocol Syntax</h3>
 <div class="outline-text-3" id="text-22-1">
 </div>
-<div id="outline-container-orga9ef42a" class="outline-4">
-<h4 id="orga9ef42a"><span class="section-number-4">22.1.1</span> Syntax</h4>
+<div id="outline-container-org5648412" class="outline-4">
+<h4 id="org5648412"><span class="section-number-4">22.1.1</span> Syntax</h4>
 <div class="outline-text-4" id="text-22-1-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">protocol</span> <span style="color: #c678dd;">SomeProtocol</span> {
@@ -4838,8 +4844,8 @@ Classes , structs, enums can adopt these protocol by placing protocol’s name a
 </div>
 </div>
 </div>
-<div id="outline-container-org63719f3" class="outline-4">
-<h4 id="org63719f3"><span class="section-number-4">22.1.2</span> DEMO</h4>
+<div id="outline-container-org723eb24" class="outline-4">
+<h4 id="org723eb24"><span class="section-number-4">22.1.2</span> DEMO</h4>
 <div class="outline-text-4" id="text-22-1-2">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">protocol</span> <span style="color: #c678dd;">Polite</span> {
@@ -4869,8 +4875,8 @@ Classes , structs, enums can adopt these protocol by placing protocol’s name a
 </div>
 </div>
 </div>
-<div id="outline-container-orgeca1195" class="outline-4">
-<h4 id="orgeca1195"><span class="section-number-4">22.1.3</span> Adding property requirements</h4>
+<div id="outline-container-org1275e4a" class="outline-4">
+<h4 id="org1275e4a"><span class="section-number-4">22.1.3</span> Adding property requirements</h4>
 <div class="outline-text-4" id="text-22-1-3">
 <p>
 source: <a href="https://abhimuralidharan.medium.com/all-about-protocols-in-swift-11a72d6ea354">All about protocols in swift</a><br />
@@ -4891,8 +4897,8 @@ source: <a href="https://abhimuralidharan.medium.com/all-about-protocols-in-swif
 </div>
 </div>
 </div>
-<div id="outline-container-org59972e9" class="outline-4">
-<h4 id="org59972e9"><span class="section-number-4">22.1.4</span> Protocols with mutating methods</h4>
+<div id="outline-container-orgbfb0c1b" class="outline-4">
+<h4 id="orgbfb0c1b"><span class="section-number-4">22.1.4</span> Protocols with mutating methods</h4>
 <div class="outline-text-4" id="text-22-1-4">
 <p>
 Mutating methods are methods that we use on value types like structs and enums. These methods are allowed to modify the instance it belongs to and any properties of that instance. A small example:<br />
@@ -4960,8 +4966,8 @@ Consider an enum and class implementing a protocol with mutating function:<br />
 </div>
 </div>
 </div>
-<div id="outline-container-org75ece52" class="outline-4">
-<h4 id="org75ece52"><span class="section-number-4">22.1.5</span> Initializer Requirements</h4>
+<div id="outline-container-orgbe628ea" class="outline-4">
+<h4 id="orgbe628ea"><span class="section-number-4">22.1.5</span> Initializer Requirements</h4>
 <div class="outline-text-4" id="text-22-1-5">
 <p>
 Protocols can have specific initializers like normal methods which the conforming types can implement.<br />
@@ -4975,8 +4981,8 @@ Protocols can have specific initializers like normal methods which the conformin
 </div>
 </div>
 </div>
-<div id="outline-container-orgd7603c3" class="outline-3">
-<h3 id="orgd7603c3"><span class="section-number-3">22.2</span> DEMO</h3>
+<div id="outline-container-org9f0059d" class="outline-3">
+<h3 id="org9f0059d"><span class="section-number-3">22.2</span> DEMO</h3>
 <div class="outline-text-3" id="text-22-2">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">protocol</span> <span style="color: #c678dd;">Sound</span> {
@@ -5004,12 +5010,12 @@ Protocols can have specific initializers like normal methods which the conformin
 </div>
 </div>
 </div>
-<div id="outline-container-org45166c0" class="outline-3">
-<h3 id="org45166c0"><span class="section-number-3">22.3</span> 範例</h3>
+<div id="outline-container-org78ec150" class="outline-3">
+<h3 id="org78ec150"><span class="section-number-3">22.3</span> 範例</h3>
 <div class="outline-text-3" id="text-22-3">
 </div>
-<div id="outline-container-orgf689021" class="outline-4">
-<h4 id="orgf689021"><span class="section-number-4">22.3.1</span> 版本 1</h4>
+<div id="outline-container-org46634e6" class="outline-4">
+<h4 id="org46634e6"><span class="section-number-4">22.3.1</span> 版本 1</h4>
 <div class="outline-text-4" id="text-22-3-1">
 <p>
 本例中有兩個 struct: Song, Album 以及一個 class 用來播放 Song 或 Album，原本的 Player 要為不同的 struct 寫不同的 func，而且程式碼大多重複。<br />
@@ -5051,8 +5057,8 @@ Protocols can have specific initializers like normal methods which the conformin
 </div>
 </div>
 </div>
-<div id="outline-container-orgf2020a0" class="outline-4">
-<h4 id="orgf2020a0"><span class="section-number-4">22.3.2</span> 版本 2</h4>
+<div id="outline-container-orgcc38a7c" class="outline-4">
+<h4 id="orgcc38a7c"><span class="section-number-4">22.3.2</span> 版本 2</h4>
 <div class="outline-text-4" id="text-22-3-2">
 <p>
 宣告一個 protocol，定義 audioURL 變數(read only)，然後令兩個 struct 皆遵循該 protocol(方式有二)，如此，原本的 Player class 中的 play func 就能只寫一次。<br />
@@ -5093,8 +5099,8 @@ Protocols can have specific initializers like normal methods which the conformin
 </div>
 </div>
 </div>
-<div id="outline-container-org01300d8" class="outline-4">
-<h4 id="org01300d8"><span class="section-number-4">22.3.3</span> 版本 3</h4>
+<div id="outline-container-org6e57183" class="outline-4">
+<h4 id="org6e57183"><span class="section-number-4">22.3.3</span> 版本 3</h4>
 <div class="outline-text-4" id="text-22-3-3">
 <p>
 原本 protocol 的真正意思其實只是在確定 audioURL 是否能正確轉換成 Audio，所以其實將 protocol name 由 Playable 改為 AudioURLConvertable 會更貼近事實。<br />
@@ -5136,8 +5142,8 @@ Protocols can have specific initializers like normal methods which the conformin
 </div>
 </div>
 </div>
-<div id="outline-container-org2406f63" class="outline-3">
-<h3 id="org2406f63"><span class="section-number-3">22.4</span> mutating</h3>
+<div id="outline-container-orga59979d" class="outline-3">
+<h3 id="orga59979d"><span class="section-number-3">22.4</span> mutating</h3>
 <div class="outline-text-3" id="text-22-4">
 <p>
 protocol 除了可以提供傳回值型態的彈性，也可以用來變更 class/struct 中的屬性。如：<br />
@@ -5176,8 +5182,8 @@ protocol 除了可以提供傳回值型態的彈性，也可以用來變更 clas
 </p>
 </div>
 </div>
-<div id="outline-container-org37c9be5" class="outline-3">
-<h3 id="org37c9be5"><span class="section-number-3">22.5</span> 擴充 protocol</h3>
+<div id="outline-container-org9600edd" class="outline-3">
+<h3 id="org9600edd"><span class="section-number-3">22.5</span> 擴充 protocol</h3>
 <div class="outline-text-3" id="text-22-5">
 <p>
 除了擴充現有 struct，protocol 也可以用來擴充 protocol，如：<br />
@@ -5216,8 +5222,8 @@ protocol 除了可以提供傳回值型態的彈性，也可以用來變更 clas
 </div>
 </div>
 </div>
-<div id="outline-container-org6b7b7fa" class="outline-3">
-<h3 id="org6b7b7fa"><span class="section-number-3">22.6</span> Further Reading</h3>
+<div id="outline-container-org47e74ec" class="outline-3">
+<h3 id="org47e74ec"><span class="section-number-3">22.6</span> Further Reading</h3>
 <div class="outline-text-3" id="text-22-6">
 <ul class="org-ul">
 <li><a href="https://docs.swift.org/swift-book/LanguageGuide/Protocols.html">Protocol</a><br /></li>
@@ -5228,8 +5234,8 @@ protocol 除了可以提供傳回值型態的彈性，也可以用來變更 clas
 </div>
 </div>
 </div>
-<div id="outline-container-org11d6ec8" class="outline-2">
-<h2 id="org11d6ec8"><span class="section-number-2">23</span> Struct v.s. Class</h2>
+<div id="outline-container-orga53d5f6" class="outline-2">
+<h2 id="orga53d5f6"><span class="section-number-2">23</span> Struct v.s. Class</h2>
 <div class="outline-text-2" id="text-23">
 <p>
 <a href="https://www.hackingwithswift.com/books/ios-swiftui/why-does-swiftui-use-structs-for-views">資料來源:Why does SwiftUI use structs for views?</a><br />
@@ -5244,15 +5250,15 @@ In SwiftUI, all our views are trivial structs and are almost free to create. Thi
 <li>In comparison, Apple’s documentation for UIView lists about 200 properties and methods that UIView has, all of which get passed on to its subclasses whether they need them or not.<br /></li>
 </ul>
 </div>
-<div id="outline-container-orge52cb72" class="outline-3">
-<h3 id="orge52cb72"><span class="section-number-3">23.1</span> What is in class/struct</h3>
+<div id="outline-container-org500ce4f" class="outline-3">
+<h3 id="org500ce4f"><span class="section-number-3">23.1</span> What is in class/struct</h3>
 <div class="outline-text-3" id="text-23-1">
 <p>
 <a href="https://www.avanderlee.com/swift/struct-class-differences/">資料來源:Struct vs classes in Swift: The differences explained</a><br />
 </p>
 </div>
-<div id="outline-container-org96bd142" class="outline-4">
-<h4 id="org96bd142"><span class="section-number-4">23.1.1</span> What is a class in Swift?</h4>
+<div id="outline-container-org0b6e09d" class="outline-4">
+<h4 id="org0b6e09d"><span class="section-number-4">23.1.1</span> What is a class in Swift?</h4>
 <div class="outline-text-4" id="text-23-1-1">
 <p>
 A class in Swift is a reference type which can contain:<br />
@@ -5284,8 +5290,8 @@ It’s often described as a template definition of an object, like in the follow
 </div>
 </div>
 </div>
-<div id="outline-container-org6d60e13" class="outline-4">
-<h4 id="org6d60e13"><span class="section-number-4">23.1.2</span> What is a struct in Swift?</h4>
+<div id="outline-container-org7022b1b" class="outline-4">
+<h4 id="org7022b1b"><span class="section-number-4">23.1.2</span> What is a struct in Swift?</h4>
 <div class="outline-text-4" id="text-23-1-2">
 <p>
 A struct in Swift is a value type which, just like classes, can contain:<br />
@@ -5312,8 +5318,8 @@ It can also be seen as a template definition of an object, like in the following
 </div>
 </div>
 </div>
-<div id="outline-container-org883bb0a" class="outline-4">
-<h4 id="org883bb0a"><span class="section-number-4">23.1.3</span> What are the differences between a struct and a class?</h4>
+<div id="outline-container-org9b09d39" class="outline-4">
+<h4 id="org9b09d39"><span class="section-number-4">23.1.3</span> What are the differences between a struct and a class?</h4>
 <div class="outline-text-4" id="text-23-1-3">
 <p width="300">
 <img src="images/coffee.gif" alt="coffee.gif" width="300" /><br />
@@ -5356,16 +5362,16 @@ A struct is a value type and will create a unique copy for each new reference.<b
 </pre>
 </div>
 </div>
-<div id="outline-container-org3995e41" class="outline-5">
-<h5 id="org3995e41"><span class="section-number-5">23.1.3.1</span> The benefit of mutation in safety</h5>
+<div id="outline-container-org7966e77" class="outline-5">
+<h5 id="org7966e77"><span class="section-number-5">23.1.3.1</span> The benefit of mutation in safety</h5>
 <div class="outline-text-5" id="text-23-1-3-1">
 <p>
 With this, structs have the benefit of mutation in safety as you can trust that no other part of your app is changing the data at the same time. This makes it easier to reason about your code and is especially helpful in multi-threaded environments where a different thread could alter your data at the same time.<br />
 </p>
 </div>
 </div>
-<div id="outline-container-org3b814d3" class="outline-5">
-<h5 id="org3b814d3"><span class="section-number-5">23.1.3.2</span> Structs get an initializer for free</h5>
+<div id="outline-container-org7f72649" class="outline-5">
+<h5 id="org7f72649"><span class="section-number-5">23.1.3.2</span> Structs get an initializer for free</h5>
 <div class="outline-text-5" id="text-23-1-3-2">
 <p>
 If you go back and compare the above code examples you can see that the ArticleClass has a defined initializer which is required for classes. Structs, however, get an initializer for free.<br />
@@ -5382,8 +5388,8 @@ If you go back and compare the above code examples you can see that the ArticleC
 </div>
 </div>
 </div>
-<div id="outline-container-org88f417e" class="outline-5">
-<h5 id="org88f417e"><span class="section-number-5">23.1.3.3</span> Classes allow inheritance</h5>
+<div id="outline-container-orga04ac05" class="outline-5">
+<h5 id="orga04ac05"><span class="section-number-5">23.1.3.3</span> Classes allow inheritance</h5>
 <div class="outline-text-5" id="text-23-1-3-3">
 <p>
 Classes can inherit the characteristics of another class and with that, act like abstract classes. A common example is a custom view controller which inherit from UIViewController.<br />
@@ -5404,15 +5410,15 @@ Deinitializers may only be declared within a class<br />
 </div>
 </div>
 </div>
-<div id="outline-container-orge4df61d" class="outline-3">
-<h3 id="orge4df61d"><span class="section-number-3">23.2</span> 如何決擇? / When should I go for a struct and when for a class?</h3>
+<div id="outline-container-org89a5091" class="outline-3">
+<h3 id="org89a5091"><span class="section-number-3">23.2</span> 如何決擇? / When should I go for a struct and when for a class?</h3>
 <div class="outline-text-3" id="text-23-2">
 <p>
 A simple bullet point list will make it a lot easier to decide.<br />
 </p>
 </div>
-<div id="outline-container-org6761213" class="outline-4">
-<h4 id="org6761213"><span class="section-number-4">23.2.1</span> You should use a class when:</h4>
+<div id="outline-container-orgc5e1ee2" class="outline-4">
+<h4 id="orgc5e1ee2"><span class="section-number-4">23.2.1</span> You should use a class when:</h4>
 <div class="outline-text-4" id="text-23-2-1">
 <ul class="org-ul">
 <li>Comparing instance identity is needed by using <code>=</code><br /></li>
@@ -5421,8 +5427,8 @@ A simple bullet point list will make it a lot easier to decide.<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-org78a89d4" class="outline-4">
-<h4 id="org78a89d4"><span class="section-number-4">23.2.2</span> You should use a struct when:</h4>
+<div id="outline-container-org048e7de" class="outline-4">
+<h4 id="org048e7de"><span class="section-number-4">23.2.2</span> You should use a struct when:</h4>
 <div class="outline-text-4" id="text-23-2-2">
 <ul class="org-ul">
 <li>Comparing instance data is needed by using ==<br /></li>
@@ -5431,8 +5437,8 @@ A simple bullet point list will make it a lot easier to decide.<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf83f5ca" class="outline-4">
-<h4 id="orgf83f5ca"><span class="section-number-4">23.2.3</span> Try to go for a struct by default.</h4>
+<div id="outline-container-org53810e5" class="outline-4">
+<h4 id="org53810e5"><span class="section-number-4">23.2.3</span> Try to go for a struct by default.</h4>
 <div class="outline-text-4" id="text-23-2-3">
 <p>
 Structs make your code easier to reason about and make it easier to work in multithreaded environments which we often have while developing in Swift.<br />
@@ -5440,8 +5446,8 @@ Structs make your code easier to reason about and make it easier to work in mult
 </div>
 </div>
 </div>
-<div id="outline-container-org9e123a9" class="outline-3">
-<h3 id="org9e123a9"><span class="section-number-3">23.3</span> DEMO</h3>
+<div id="outline-container-orga07b2cb" class="outline-3">
+<h3 id="orga07b2cb"><span class="section-number-3">23.3</span> DEMO</h3>
 <div class="outline-text-3" id="text-23-3">
 <p>
 以下這個View可正常運作，於TextField中所做的編輯修改都會即時顯示於Text中。<br />
@@ -5530,12 +5536,12 @@ The end result is that we can have our state stored in an external object, and, 
 Adding the keyword some in front of a return type indicates that the return type is opaque. <sup><a id="fnr.29" class="footref" href="#fn.29">29</a></sup><br />
 </p>
 </div>
-<div id="outline-container-org664449c" class="outline-3">
-<h3 id="org664449c"><span class="section-number-3">24.1</span> Generics</h3>
+<div id="outline-container-orgbf98b70" class="outline-3">
+<h3 id="orgbf98b70"><span class="section-number-3">24.1</span> Generics</h3>
 <div class="outline-text-3" id="text-24-1">
 </div>
-<div id="outline-container-orga7f52bb" class="outline-4">
-<h4 id="orga7f52bb"><span class="section-number-4">24.1.1</span> 問題</h4>
+<div id="outline-container-org3d31ad6" class="outline-4">
+<h4 id="org3d31ad6"><span class="section-number-4">24.1.1</span> 問題</h4>
 <div class="outline-text-4" id="text-24-1-1">
 <p>
 Generics 允許開發者在不同類型中複用你的程式碼，用來解決下列問題：<br />
@@ -5571,8 +5577,8 @@ Generics 允許開發者在不同類型中複用你的程式碼，用來解決�
 </p>
 </div>
 </div>
-<div id="outline-container-org5671f59" class="outline-4">
-<h4 id="org5671f59"><span class="section-number-4">24.1.2</span> 解決方案</h4>
+<div id="outline-container-org23059d7" class="outline-4">
+<h4 id="org23059d7"><span class="section-number-4">24.1.2</span> 解決方案</h4>
 <div class="outline-text-4" id="text-24-1-2">
 <p>
 將固定型態的參數轉為 Generic type<br />
@@ -5637,8 +5643,8 @@ Generics 允許開發者在不同類型中複用你的程式碼，用來解決�
 </div>
 </div>
 </div>
-<div id="outline-container-org7d54747" class="outline-3">
-<h3 id="org7d54747"><span class="section-number-3">24.2</span> opaque</h3>
+<div id="outline-container-org1551cca" class="outline-3">
+<h3 id="org1551cca"><span class="section-number-3">24.2</span> opaque</h3>
 <div class="outline-text-3" id="text-24-2">
 <p>
 帶有不透明（opaque）返回類型的函數或方法，將會隱藏其返回值的類型<sup><a id="fnr.30" class="footref" href="#fn.30">30</a></sup><br />
@@ -5657,8 +5663,8 @@ Generics 允許開發者在不同類型中複用你的程式碼，用來解決�
 </ul>
 </div>
 </div>
-<div id="outline-container-org99e4aec" class="outline-2">
-<h2 id="org99e4aec"><span class="section-number-2">26</span> Firebase</h2>
+<div id="outline-container-orge989cff" class="outline-2">
+<h2 id="orge989cff"><span class="section-number-2">26</span> Firebase</h2>
 <div class="outline-text-2" id="text-26">
 <ul class="org-ul">
 <li><a href="https://medium.com/flawless-app-stories/how-to-build-a-firebase-app-with-swiftui-5919d2d8a396">How To Build A Firebase App With SwiftUI</a><br /></li>
@@ -5796,7 +5802,7 @@ Generics 允許開發者在不同類型中複用你的程式碼，用來解決�
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Yung Chin, Yen</p>
-<p class="date">Created: 2020-12-31 Thu 11:50</p>
+<p class="date">Created: 2020-12-31 Thu 11:59</p>
 </div>
 </body>
 </html>
