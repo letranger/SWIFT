@@ -298,7 +298,7 @@ struct ContentView_Previews: PreviewProvider {
 [[file:images/hstack-1.jpg]]
 * Image
 影像來源可以是 System Image 或自行下載/編修的影像(Customized Image)
-** System Image
+** 使用系統內建的圖
 *** [[https://developer.apple.com/design/human-interface-guidelines/sf-symbols/overview/][SF Symbols ]][fn:4]
 *** 從 iOS 13 開始，Apple 介紹了一個名為 SFSymbols 的新功能。SF Symbols 這功能由 Apple 所設計，當中集合了 1500 多個可以在 App 之中使用的符號。[fn:3]
 *** [[https://developer.apple.com/design/resources/][Download SF Symbols app]]
@@ -334,7 +334,7 @@ struct ContentView_Previews: PreviewProvider {
 #+ATTR_ORG: :width 300
 #+ATTR_HTML: :width 300
 [[file:images/image-1.jpg]]
-** Customized Image 語法
+** 使用自己的圖
 1) Drag image into Project folder *Assets.xcassets*
 2) Add following code
 #+begin_src swift -r -n :eval no
@@ -1359,6 +1359,340 @@ struct ContentView: View {
 #+latex:\newpage
 
 * Navigation Views
+:PROPERTIES:
+:CUSTOM_ID: navigation
+:END:
+** Navigation bar
+- 於 body 中最外層的 component 之外加入 NavigationView
+- Title: navigationBarTitle()，title 置於 NavigationView {}內 attach 在 List 上，因為 NavigationView 主要負責於不同的 View 中切換，每個 View 都會有自己的 content 與 Title。
+- DisplayMode 有 三類：
+  1) large: 適用於 top level
+  2) inline: 適用於 detail level
+  3) automatic: 自動判斷有無 parent level
+#+begin_src swift -r -n :eval no
+import SwiftUI
+  ...
+
+struct ContentView: View {
+    ....
+    var body: some View {
+        NavigationView {
+            List(books) { book in
+                ...
+                }
+            .navigationBarTitle(Text("書單"))
+            .navigationBarTitleDisplayMode(.large)
+            }
+        }
+    }
+}
+...
+#+end_src
+#+CAPTION: Navigation bar
+#+LABEL:fig:Navigation-1
+#+name: fig:Navigation-1
+#+ATTR_LATEX: :width 300
+#+ATTR_ORG: :width 300
+#+ATTR_HTML: :width 300
+[[file:images/navigation-1.jpg]]
+
+*** Hide Navigation Bar
+使用 Hide 與不設定 BarTitle 的差異在於：後者仍會佔掉 Bar 的空間
+#+begin_src swift -r -n :results output :exports nil
+import SwiftUI
+  ...
+
+struct ContentView: View {
+    ....
+    var body: some View {
+        NavigationView {
+            List(books) { book in
+                ...
+                }
+            .navigationBarTitle(Text("書單"))
+            .navigationBarTitleDisplayMode(.large)
+            .navigationBarHidden(true)
+            }
+        }
+    }
+}
+...
+#+end_src
+
+**** NavigationLink
+***** Create
+***** 語法:
+#+begin_src swift -r -n :results output :exports both
+NavigationLink(<title: StringProtocol, destination:)
+#+end_src
+***** 方式
+1. Attach link in NavigationLink()
+ #+begin_src swift -r -n :results output :exports nil
+struct ContentView: View {
+    var body: some View {
+        NavigationView {
+            VStack {
+                NavigationLink("JumpToSecond", destination: SecondView())
+                Text("Hello, world!")
+                    .padding()
+            }
+            .navigationTitle("Book List")
+            .navigationBarTitleDisplayMode(.large)
+        }
+    }
+}
+#+end_src
+2. Attach link to other object(Text in this example)
+#+begin_src swift -r -n :results output :exports nil
+struct ContentView: View {
+    var body: some View {
+        NavigationView {
+            VStack {
+                NavigationLink(destination: SecondView()) {
+                    Text("TextLink")
+                        .padding()
+                }
+            }
+            .navigationTitle("Book List")
+            .navigationBarTitleDisplayMode(.large)
+        }
+    }
+}
+#+end_src
+若是將 link attach 至 image，則要加上 renderingMode，否則會看不到圖，例：
+#+begin_src swift -r -n :results output :exports nil
+struct ContentView: View {
+    var body: some View {
+        NavigationView {
+            VStack {
+                NavigationLink(destination: SecondView()) {
+                    Image(systemName: "myImage")
+                        .renderingMode(.original)
+                }
+            }
+            .navigationTitle("Book List")
+        }
+    }
+}
+#+end_src
+
+**** Reading
+- [[https://www.youtube.com/watch?v=nA6Jo6YnL9g][The Complete Guide to NavigationView in SwiftUI]]
+** Create New Views
+*** in same file
+#+begin_src swift -r -n :results output :exports nil
+import SwiftUI
+
+struct BookDetailView: View {
+    var body: some View {
+        Text("This is the Book Detail View")
+    }
+}
+
+struct ContentView: View {
+    var body: some View {
+        NavigationView {
+            VStack {
+                NavigationLink(destination: BookDetailView()) {
+                    Text("GoToDetail")
+                }
+            }
+              .navigationTitle("Book List")
+
+        }
+    }
+}
+#+end_src
+**** class exercise
+為上述 NavigationView 加入另外兩個 subView: OrderView, AboutView
+*** in new file
+將上述專案中的每個 subView 改為獨立 View
+** Passing parameter(單純參數傳遞)
+Single way, Just pass variable from A to B.
+#+begin_src swift -r -n :results output :exports nil
+struct BookDetailView: View {
+    var operation: String
+    var body: some View {
+        Text("已為你\(operation)這本書")
+    }
+}
+
+struct ContentView: View {
+    var body: some View {
+        NavigationView {
+            VStack {
+                NavigationLink(destination: BookDetailView(operation: "借閱")) { Text("Loan")
+                }
+                NavigationLink(destination: BookDetailView(operation: "續借")) { Text("Renew")
+                }
+                NavigationLink(destination: BookDetailView(operation: "歸還")) { Text("Return")
+                }
+            }
+              .navigationTitle("Book List")
+
+        }
+    }
+}
+#+end_src
+** Version-1: Navigation v.s. List v.s. NavigationLink
+#+begin_src swift -r -n :eval no
+//
+//  ContentView.swift
+//  navigation
+//
+//  Created by yen yung chin on 2020/9/27.
+//
+
+import SwiftUI
+
+struct Book: Identifiable {
+    var id = UUID()
+    var title: String
+    var author: String
+}
+
+struct ContentView: View {
+    var books = [
+        Book(title:"X的悲劇", author: "艾勒里．昆恩"),
+        Book(title:"地獄藍調", author: "李查德"),
+        Book(title:"東方列車謀殺案", author: "阿嘉莎‧克莉絲蒂"),
+        Book(title:"八百萬種死法", author: "勞倫斯.卜洛克"),
+        Book(title:"血字研究", author: "柯南道爾")
+    ]
+
+    var body: some View {
+        NavigationView {
+            List(books) { book in
+                NavigationLink(destination: DetailView(book: book) ){
+                        bookRow(book: book)
+                    }
+                }
+            .navigationTitle("書單")
+        }
+    }
+}
+
+struct bookRow: View {
+    var book: Book
+    var body: some View {
+        VStack {
+            Text(book.title)
+            Text(book.author)
+        }
+    }
+}
+
+struct DetailView: View {
+    var book: Book
+    var body: some View {
+        VStack {
+            Text(book.title)
+        }
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
+
+#+end_src
+** Version-2:
+將記錄架構(Book.swift)、List(ContentView.swift)以及 Detail(DetailView.swift)各自以獨立檔案設計。
+*** Book.swift
+#+begin_src swift -r -n :eval no
+// 不涉及使用者界面
+
+import Foundation
+
+// 建立一個書籍的基本結構
+// 加上Identifiable以及UUID()是為了可以將書籍透過List來呈現
+
+struct Book: Identifiable {
+    var id = UUID() //產生一個唯一(unique)的亂數
+    var title: String
+    var author: String
+    var image: String
+}
+#+end_src
+*** ContentView.swift
+#+begin_src swift -r -n :eval no
+import SwiftUI
+
+struct ContentView: View {
+    // 在這裡臨生產生一個Book陣列，然後在List秀出來
+    var books = [
+        Book(id: UUID(), title: "地獄藍調", author: "李查德", image: "b1"),
+        Book(id: UUID(), title: "至死方休", author: "李查德", image: "b2"),
+        Book(id: UUID(), title: "一觸即發", author: "李查德", image: "b3"),
+        Book(id: UUID(), title: "索命訪客", author: "李查德", image: "b4")
+    ]
+
+    var body: some View {
+        NavigationView {
+            List(books) { book in
+                NavigationLink(destination: DetailView(thisbook: book)) {
+                    VStack(alignment: .leading) {
+                        Text(book.title)
+                            .font(.title)
+                        Text(book.author)
+                            .font(.subheadline)
+                    }
+                .navigationBarTitle("我的書單")
+                }
+            }
+        }
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
+#+end_src
+#+CAPTION: 主選單
+#+LABEL:fig:Navi-List-1
+#+name: fig:Navi-List-1
+#+ATTR_LATEX: :width 300
+#+ATTR_ORG: :width 300
+#+ATTR_HTML: :width 300
+[[file:images/Navi-List-1.png]]
+*** DetailView.swift
+#+begin_src swift -r -n :eval no
+import SwiftUI
+
+struct DetailView: View {
+    //我希望等一下有任何人呼叫我，一定要傳書本的資料給我
+    var thisbook: Book
+    var body: some View {
+        VStack {
+            Image(thisbook.image)
+            Text(thisbook.title)
+            Text(thisbook.author)
+        }
+
+    }
+}
+
+struct DetailView_Previews: PreviewProvider {
+    static var previews: some View {
+        // 臨時給個資料，讓preview可以秀出來就好
+
+        DetailView(thisbook: Book(id: UUID(), title: "索命訪客", author: "李查德", image: "b4"))
+    }
+}
+#+end_src
+#+CAPTION: Detail
+#+LABEL:fig:Navi-List-2
+#+name: fig:Navi-List-
+#+ATTR_LATEX: :width 300
+#+ATTR_ORG: :width 300
+#+ATTR_HTML: :width 300
+[[file:images/Navi-List-2.png]]
+
+#+latex:\newpage
 * Dynamic List
 :PROPERTIES:
 :CUSTOM_ID: DynamicList
