@@ -1,8 +1,34 @@
 #+TITLE: SwiftUI v.s. Firebase
-#+INCLUDE: ../web.org
+#+INCLUDE: ../purpleweb.org
 
 #+latex:\newpage
 
+* Introduction
+什麼是Firebase？Firebase是由Google收購的子公司，所提供的是行動應用程式開發的平台服務，也就是BaaS(Backend as a Service)，它能夠幫助我們快速開發我們的應用程式，並且支援跨平台包括Android、iOS以及Web，幫我們整合大部分建立一個服務所需要的後台功能。主要像是提供雲端給使用者架起網頁、提供資料庫供使用者存取資料以及做後台分析等等。[fn:1]
+
+** Firebase的歷史
+Firebase從Envolve演變而來。 Envolve是James Tamplin和Andrew Lee在2011年創立的一家早期創業公司。Envolve為開發人員提供了一個API,該API允許將在線聊天功能集成到他們的網站中。釋放聊天服務後,它發現envlove被用來傳遞不是聊天消息的應用程序數據。開發人員使用Envolve同步應用程序,以分離實時體系結構和為其提供動力的聊天系統。2011年9月,Tamplin和Lee單獨成立了Firebase。最後於2012年4月向公眾發佈。[fn:2]
+
+
+* Firebase console
+** Web sites
+- [[https://firebase.google.com/docs/ios/setup][Firebase Documentation]]
+- [[https://github.com/firebase/firebase-ios-sdk/blob/master/SwiftPackageManager.md][Swift Package Manager for Firebase Beta]]
+- 
+** Adding Firebase to your iOS project
+1. Create a FIrebase project
+2. Register your app with Firebase
+3. Add a Firebase configuration file
+4. Add Firebase SDKs to your app
+5. Initialize Firebase in your app
+**
+* Setting up Firebase project
 * Videos
 - [[https://www.youtube.com/watch?v=4RUeW5rUcww][Building a to-do list app with SwiftUI and Firebase - Part 1]]
 - [[https://www.youtube.com/watch?v=2k6_Mi2ERWc][Building a Todo List App Using Firebase and SwiftUI - Part 2 ]]
+
+* Footnotes
+
+[fn:2] [[http://www.srcmini.com/14739.html][Firebase介紹]]
+
+[fn:1] [[https://medium.com/ho-japan/%E5%89%8D%E7%AB%AF%E4%BA%BA%E7%9A%84%E6%95%91%E6%98%9Ffirebase%E7%9A%84%E7%94%A8%E9%80%94%E8%88%87%E5%AF%A6%E4%BD%9Ctodolist-c7af49fe3104][前端工程師的救星，Firebase的簡介與實作TodoList]]

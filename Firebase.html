@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-09-21 Mon 01:45 -->
+<!-- 2020-12-14 Mon 21:42 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>SwiftUI v.s. Firebase</title>
@@ -193,12 +193,12 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/styles/readtheorg/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/styles/readtheorg/css/readtheorg.css"/>
+<link rel="stylesheet" type="text/css" href="https://letranger.github.io/org-html-themes/styles/purplereadtheorg/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://letranger.github.io/org-html-themes/styles/purplereadtheorg/css/readtheorg.css"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/styles/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/styles/readtheorg/js/readtheorg.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <script type="text/javascript">
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
 <!--/*--><![CDATA[/*><!--*/
@@ -231,24 +231,102 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org6d9e643">1. Videos</a></li>
+<li><a href="#orgdb1eddf">1. Introduction</a>
+<ul>
+<li><a href="#org2c10574">1.1. Firebase的歷史</a></li>
+</ul>
+</li>
+<li><a href="#org399657b">2. Firebase console</a>
+<ul>
+<li><a href="#org9086805">2.1. Web sites</a></li>
+<li><a href="#org21b6c56">2.2. Adding Firebase to your iOS project</a></li>
+</ul>
+</li>
+<li><a href="#orgc13a844">3. Setting up Firebase project</a></li>
+<li><a href="#orgdcdd65f">4. Videos</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org6d9e643" class="outline-2">
-<h2 id="org6d9e643"><span class="section-number-2">1</span> Videos</h2>
+<div id="outline-container-orgdb1eddf" class="outline-2">
+<h2 id="orgdb1eddf"><span class="section-number-2">1</span> Introduction</h2>
 <div class="outline-text-2" id="text-1">
+<p>
+什麼是Firebase？Firebase是由Google收購的子公司，所提供的是行動應用程式開發的平台服務，也就是BaaS(Backend as a Service)，它能夠幫助我們快速開發我們的應用程式，並且支援跨平台包括Android、iOS以及Web，幫我們整合大部分建立一個服務所需要的後台功能。主要像是提供雲端給使用者架起網頁、提供資料庫供使用者存取資料以及做後台分析等等。<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup><br />
+</p>
+</div>
+
+<div id="outline-container-org2c10574" class="outline-3">
+<h3 id="org2c10574"><span class="section-number-3">1.1</span> Firebase的歷史</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+Firebase從Envolve演變而來。 Envolve是James Tamplin和Andrew Lee在2011年創立的一家早期創業公司。Envolve為開發人員提供了一個API,該API允許將在線聊天功能集成到他們的網站中。釋放聊天服務後,它發現envlove被用來傳遞不是聊天消息的應用程序數據。開發人員使用Envolve同步應用程序,以分離實時體系結構和為其提供動力的聊天系統。2011年9月,Tamplin和Lee單獨成立了Firebase。最後於2012年4月向公眾發佈。<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup><br />
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org399657b" class="outline-2">
+<h2 id="org399657b"><span class="section-number-2">2</span> Firebase console</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org9086805" class="outline-3">
+<h3 id="org9086805"><span class="section-number-3">2.1</span> Web sites</h3>
+<div class="outline-text-3" id="text-2-1">
 <ul class="org-ul">
-<li><a href="https://www.youtube.com/watch?v=4RUeW5rUcww">Building a to-do list app with SwiftUI and Firebase - Part 1</a></li>
-<li><a href="https://www.youtube.com/watch?v=2k6_Mi2ERWc">Building a Todo List App Using Firebase and SwiftUI - Part 2 </a></li>
+<li><a href="https://firebase.google.com/docs/ios/setup">Firebase Documentation</a><br /></li>
+<li><a href="https://github.com/firebase/firebase-ios-sdk/blob/master/SwiftPackageManager.md">Swift Package Manager for Firebase Beta</a><br /></li>
+<li></li>
 </ul>
 </div>
 </div>
+<div id="outline-container-org21b6c56" class="outline-3">
+<h3 id="org21b6c56"><span class="section-number-3">2.2</span> Adding Firebase to your iOS project</h3>
+<div class="outline-text-3" id="text-2-2">
+<ol class="org-ol">
+<li>Create a FIrebase project<br /></li>
+<li>Register your app with Firebase<br /></li>
+<li>Add a Firebase configuration file<br /></li>
+<li>Add Firebase SDKs to your app<br /></li>
+<li>Initialize Firebase in your app<br /></li>
+</ol>
+<p>
+**<br />
+</p>
 </div>
+</div>
+</div>
+<div id="outline-container-orgc13a844" class="outline-2">
+<h2 id="orgc13a844"><span class="section-number-2">3</span> Setting up Firebase project</h2>
+</div>
+<div id="outline-container-orgdcdd65f" class="outline-2">
+<h2 id="orgdcdd65f"><span class="section-number-2">4</span> Videos</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li><a href="https://www.youtube.com/watch?v=4RUeW5rUcww">Building a to-do list app with SwiftUI and Firebase - Part 1</a><br /></li>
+<li><a href="https://www.youtube.com/watch?v=2k6_Mi2ERWc">Building a Todo List App Using Firebase and SwiftUI - Part 2 </a><br /></li>
+</ul>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
+<a href="https://medium.com/ho-japan/%E5%89%8D%E7%AB%AF%E4%BA%BA%E7%9A%84%E6%95%91%E6%98%9Ffirebase%E7%9A%84%E7%94%A8%E9%80%94%E8%88%87%E5%AF%A6%E4%BD%9Ctodolist-c7af49fe3104">前端工程師的救星，Firebase的簡介與實作TodoList</a><br />
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2">2</a></sup> <div class="footpara"><p class="footpara">
+<a href="http://www.srcmini.com/14739.html">Firebase介紹</a><br />
+</p></div></div>
+
+
+</div>
+</div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Yung Chin, Yen</p>
-<p class="date">Created: 2020-09-21 Mon 01:45</p>
+<p class="date">Created: 2020-12-14 Mon 21:42</p>
 </div>
 </body>
 </html>
