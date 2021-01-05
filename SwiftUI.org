@@ -1848,7 +1848,13 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 #+end_src
-
+#+CAPTION: 搜尋功能
+#+LABEL:fig:searching
+#+name: fig:searching
+#+ATTR_LATEX: :width 300
+#+ATTR_ORG: :width 300
+#+ATTR_HTML: :width 300
+[[file:images/FilteredList.gif]]
 * Passing data between Views #2: @ObservedObject
 :PROPERTIES:
 :CUSTOM_ID: ObservedObject
