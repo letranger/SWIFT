@@ -1,7 +1,7 @@
 #+TITLE: SwiftUI
 #+INCLUDE: ../purpleweb.org
 #+latex:\newpage
-
+* test
 * Recommending Reading
 這些都只是為了選修課臨時整理的教材，內容深度與廣度都有限，建議有學習野心的同學還是多多去讀其他的資料：
 - [[https://www.hackingwithswift.com/100/swiftui][100 Days of SwfitUI]]
