@@ -1,7 +1,7 @@
 #+TITLE: SwiftUI
 #+INCLUDE: ../purpleweb.org
 #+latex:\newpage
-* test
+
 * Recommending Reading
 這些都只是為了選修課臨時整理的教材，內容深度與廣度都有限，建議有學習野心的同學還是多多去讀其他的資料：
 - [[https://www.hackingwithswift.com/100/swiftui][100 Days of SwfitUI]]
@@ -120,7 +120,7 @@ struct SceneDelegate_Previews: PreviewProvider {
 }
 #+END_SRC
 #+latex:\newpage
-* 建立SwiftUI Project
+* 建立 SwiftUI Project
 :PROPERTIES:
 :CUSTOM_ID: SW-SWIFTUI-INTRO
 :END:
@@ -206,11 +206,11 @@ struct ContentView_Previews: PreviewProvider { (ref:preview)
 #+ATTR_HTML: :width 600
 [[file:images/inspector-3.gif]]
 ** Stack
-一個以上的物件都要放在 Stack 中，Stack可分為以下三類
+一個以上的物件都要放在 Stack 中，Stack 可分為以下三類
 - VStack: 垂直排列
 - HStack: 水平排列
 - ZStack: 上下排列(重叠)
-*** Stack 與 Stack 可相互包含，於View中加入Stack的方式有二:
+*** Stack 與 Stack 可相互包含，於 View 中加入 Stack 的方式有二:
 **** 由工具列 drag: Xcode 會自動加入相對的 code
 #+CAPTION: Drag component from toolbar
 #+LABEL:fig:VStack
@@ -449,9 +449,9 @@ struct ContentView: View {
     }
 }
 #+end_src
-** 以Button開啟一個新的View
-一個app當然不會只有一個View，我們可以透過NavigationLink來控制一系列View的呈現，也可以簡單的以Button來控制。
-在下例中，按下BUtton後會秀出SecondView，而SwiftUI控制一個新View的方式是透過sheet(isPreseted)中isPresented的true/false。
+** 以 Button 開啟一個新的 View
+一個 app 當然不會只有一個 View，我們可以透過 NavigationLink 來控制一系列 View 的呈現，也可以簡單的以 Button 來控制。
+在下例中，按下 BUtton 後會秀出 SecondView，而 SwiftUI 控制一個新 View 的方式是透過 sheet(isPreseted)中 isPresented 的 true/false。
 ContentView.swift
 #+begin_src swift -r -n :results output :exports nil
 import SwiftUI
@@ -476,7 +476,7 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 #+end_src
-Button藉由sheet裡的contet來指定要打開的是哪一個View(第[[(whichView)]]行，在此例中目標View為SecondView)，而真正控制是否秀出這個View的變數為showSecondView這個bool(第[[(controlView)]])，之所以按下Button後能秀出SecondView，是因為在Button的action中，我們把showSecondView的值改為true(第[[(changeShow)]]行)。SecondView.swift的內容如下:
+Button 藉由 sheet 裡的 contet 來指定要打開的是哪一個 View(第[[(whichView)]]行，在此例中目標 View 為 SecondView)，而真正控制是否秀出這個 View 的變數為 showSecondView 這個 bool(第[[(controlView)]])，之所以按下 Button 後能秀出 SecondView，是因為在 Button 的 action 中，我們把 showSecondView 的值改為 true(第[[(changeShow)]]行)。SecondView.swift 的內容如下:
 #+begin_src swift -r -n :results output :exports nil
 import SwiftUI
 
@@ -500,8 +500,8 @@ struct SecondView_Previews: PreviewProvider {
 #+ATTR_ORG: :width 300
 #+ATTR_HTML: :width 300
 [[file:images/showSecondView.gif]]
-** 以Button關閉View
-在上例中，把SecondView關掉的方式為往下滑動螢幕，另一種關掉的方式是加上一個Button:
+** 以 Button 關閉 View
+在上例中，把 SecondView 關掉的方式為往下滑動螢幕，另一種關掉的方式是加上一個 Button:
 #+begin_src swift -r -n :results output :exports nil
 import SwiftUI
 
@@ -525,7 +525,7 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 #+end_src
-上述程式碼與前節唯一的差異在第[[(Binding1)]]行，此處我們把控制SecondView是否出現的變數showSecondView傳給SecondView。
+上述程式碼與前節唯一的差異在第[[(Binding1)]]行，此處我們把控制 SecondView 是否出現的變數 showSecondView 傳給 SecondView。
 #+begin_src swift -r -n :results output :exports nil
 import SwiftUI
 
@@ -549,12 +549,12 @@ struct SecondView_Previews: PreviewProvider {
     }
 }
 #+end_src
-在SecondView.swift中，以showMe「接住」來自ContentView的共享變數(showSecondView)(第[[(Binding2)]]行)，然後在Buuton的action中將showMe的值改為false(第[[(Binding3)]]行)，這同時也就是把ContentView中的showSecondView的值由true改為false，然後SecondView就被關掉了。
-由於SecondView中宣告了一個@Binding變數，所有呼叫這個View的程式碼都要傳這個變數給它，例如ContentView中的
+在 SecondView.swift 中，以 showMe「接住」來自 ContentView 的共享變數(showSecondView)(第[[(Binding2)]]行)，然後在 Buuton 的 action 中將 showMe 的值改為 false(第[[(Binding3)]]行)，這同時也就是把 ContentView 中的 showSecondView 的值由 true 改為 false，然後 SecondView 就被關掉了。
+由於 SecondView 中宣告了一個@Binding 變數，所有呼叫這個 View 的程式碼都要傳這個變數給它，例如 ContentView 中的
 #+begin_src swift -r -n :results output :exports nil
 SecondView(showMe: self.$showSecondView)
 #+end_src
-同樣的，SecondView最底下負責產生app預覽畫面的SecondView_Previews也要提供這個參數，不過，由於它只是產生預覽畫面，與程式h執行無實際影響，所以我們可以隨便傳個true/false轉為常數給它就行，如上例中的第[[(Binding4)]]行。執行結果如下:
+同樣的，SecondView 最底下負責產生 app 預覽畫面的 SecondView_Previews 也要提供這個參數，不過，由於它只是產生預覽畫面，與程式 h 執行無實際影響，所以我們可以隨便傳個 true/false 轉為常數給它就行，如上例中的第[[(Binding4)]]行。執行結果如下:
 #+CAPTION: Close New View
 #+NAME: fig:CloseNewView
 #+ATTR_LATEX: :width 300
@@ -597,8 +597,8 @@ struct ContentView: View {
 在上述程式中，我們希望在 *TextField* 中輸入文字時就能即時改變 title 的值，便要做綁定(Binding)的動作，也就是在 *TextField* 中 title 前加上一個$ (第[[(dollarSign)]]行)，由 *TextField* 的語法也可以看出: TextField(<titleKey: LocalizedStringKey, text: Binding<String>)。SwiftUI 便是透過「在@State property 前加上$」的方式來取得這個 property 的 binding，當第[[(dollarSign)]]的值一改變，第[[(strTitle)]]行的 Text 也會即時跟著改變，這便是 binding 的作用。
 
 除了 *TextField* 之外，SwiftUI 還有許多提供 *Binding* 的元件，例如：Toggle, Slider, DatePicker...。
-** 範例2: @state struct
-當在View中有許多變數的值需要Binding時，一個一個加入@State property有點太麻煩，此時可以將這些相關變數組合為一struct，如下例：
+** 範例 2: @state struct
+當在 View 中有許多變數的值需要 Binding 時，一個一個加入@State property 有點太麻煩，此時可以將這些相關變數組合為一 struct，如下例：
 #+begin_src swift -r -n :results output :exports nil
 struct User {
     var firstName = "Bilbo"
@@ -622,9 +622,9 @@ struct ContentView: View {
 #+end_src
 That all works: SwiftUI is smart enough to understand that one object contains all our data, and will update the UI when either value changes. Behind the scenes, what’s actually happening is that each time a value inside our struct changes the whole struct changes – it’s like a new user every time we type a key for the first or last name. That might sound wasteful, but it’s actually extremely fast.
 ** What is @State
-用途:在同一View中給不同元件共享(變更)變數，而且這種共享是雙向的，即，任何一端變更了變數的值，另一端都會立即更新。@tate的相關特性如下：
+用途:在同一 View 中給不同元件共享(變更)變數，而且這種共享是雙向的，即，任何一端變更了變數的值，另一端都會立即更新。@tate 的相關特性如下：
 - State is a value, or a set of values, that can change over time, and that affects a view’s behavior, content, or layout. You use a property with the @State attribute to add state to a view.
-- 通過使用 @State 修飾器我們可以關聯出 View 的狀態. SwiftUI 將會把使用過 @State 修飾器的屬性存儲到一個特殊的內存區域(heap)，並且這個區域和 View struct 是隔離的. 當 @State 裝飾過的屬性發生了變化，SwiftUI 會根據新的屬性值重新創建View。[fn:10]
+- 通過使用 @State 修飾器我們可以關聯出 View 的狀態. SwiftUI 將會把使用過 @State 修飾器的屬性存儲到一個特殊的內存區域(heap)，並且這個區域和 View struct 是隔離的. 當 @State 裝飾過的屬性發生了變化，SwiftUI 會根據新的屬性值重新創建 View。[fn:10]
 - Simple properties like String or Int
 - Belongs to a specific view
 - Never used outside that view
@@ -1017,7 +1017,7 @@ var body: some View {
 :PROPERTIES:
 :CUSTOM_ID: StateBinding
 :END:
-用途:不同View間共享變數
+用途:不同 View 間共享變數
 - @Binding is one of SwiftUI’s less used property wrappers, but it’s still hugely important: it lets us declare that one value actually comes from elsewhere, and should be shared in both places. This is not the same as @ObservedObject or @EnvironmentObject, both of which are designed for reference types to be shared across potentially many views.[fn:11]
 - 有時候我們會把一個視圖的屬性傳至子節點中，但是又不能直接的傳遞給子節點，因為在 Swift 中值的傳遞形式是值類型傳遞方式，也就是傳遞給子節點的是一個拷貝過的值。但是通過 @Binding 修飾器修飾後，屬性變成了一個引用類型，傳遞變成了引用傳遞，這樣父子視圖的狀態就能關聯起來了。[fn:10]
 - The wrappedValue is: a value that is bound to something else.
@@ -1062,7 +1062,7 @@ struct SwitchView: View {
 }
 #+end_src
 ** Demo 2: Sharing multiple variable
-建立一個User struct，透過@Binding與其他View共享struct裡的變數
+建立一個 User struct，透過@Binding 與其他 View 共享 struct 裡的變數
 *** User.swift
 #+begin_src swift -r -n :results output :exports nil
 import Foundation
@@ -1080,7 +1080,7 @@ struct User {
 
 #+end_src
 *** ContentView.swift
-建立一個可以其他View共享的struct variable (user)，將user struct傳給EditUser進行編輯
+建立一個可以其他 View 共享的 struct variable (user)，將 user struct 傳給 EditUser 進行編輯
 #+begin_src swift -r -n :results output :exports nil
 import SwiftUI
 
@@ -1112,7 +1112,7 @@ struct ContentView_Previews: PreviewProvider {
 }
 #+end_src
 *** EditUser.swift
-以@Bidning接收來自ContentView的user
+以@Bidning 接收來自 ContentView 的 user
 #+begin_src swift -r -n :results output :exports nil
 import SwiftUI
 
@@ -1175,7 +1175,6 @@ struct SecondView: View {
 Tab bar 是在 App 螢幕底部出現的欄，提供了在不同的版面之間進行快速切換的途徑。Tab bar 的背景顏色是半透明，可以有調色。Tab bar 在所有螢幕尺寸都保持一樣的高度，並且在鍵盤時出現會隱藏起來。
 
 一個 tab bar 可以包含無數個 tab，但可以能容納的數量視乎根據手機/平板的大小，以及橫、豎屏模式都會有所影響。在空間的限制下，當某些 tab 無法被顯示時，最後一個 tab 會變成“更多”(More)， 通過這個 tab 可以到另一個獨立的列表頁面，那裡會列出所有無法被顯示的 tab。[fn:12]
-
 ** Create subView
 #+begin_src swift -r -n :results output :exports nil
 import SwiftUI
@@ -1235,7 +1234,7 @@ struct tabView_Previews: PreviewProvider {
 #+ATTR_ORG: :width 300
 #+ATTR_HTML: :width 300
 [[file:images/tabbedView.gif]]
-** 自訂底下的主控tab bar
+** 自訂底下的主控 tab bar
 *** Change tabView font size
 #+begin_src swift -r -n :results output :exports nil
 init() {
@@ -1270,7 +1269,7 @@ init() {
     UITabBar.appearance().barTintColor = .white
 }
 #+end_src
-** 以程式控制tabbed view的subview的切換
+** 以程式控制 tabbed view 的 subview 的切換
 Users can tap the tab bar items to switch between tabs, which is automatically handled the TabView. In some use cases, you may want to switch to a specific tab programmatically. The TabView has another init method for this purpose. The method takes a state variable which associates with the tag value of the tabs.[fn:13]
 #+begin_src swift -r -n :results output :exports nil
 TabView(selection: $selection)
@@ -1357,7 +1356,6 @@ struct ContentView: View {
 - [[https://medium.com/@nwyyy/swift%E7%AD%86%E8%A8%98-tab-bar-2ddba7d56587][iOS筆記：Tab Bar]]
 - [[https://www.simpleswiftguide.com/][Simple Swift Guide]]
 #+latex:\newpage
-
 * Navigation Views
 :PROPERTIES:
 :CUSTOM_ID: navigation
@@ -1712,7 +1710,7 @@ struct BookModel: Identifiable {
 #+end_src
 ** ViewModel
 *** Book.swift
-資料來源:所有書本的內容，建立一個ObservableObject的class，以@Published方式分享書籍記錄(list)
+資料來源:所有書本的內容，建立一個 ObservableObject 的 class，以@Published 方式分享書籍記錄(list)
 #+begin_src swift -r -n :results output :exports nil
 import Foundation
 
@@ -1731,7 +1729,7 @@ class Book: ObservableObject{
 #+end_src
 ** 主畫面
 *** ContentView.swift
-以@ObservedObject的方式讀取ViewModel裡分享的記錄
+以@ObservedObject 的方式讀取 ViewModel 裡分享的記錄
 #+begin_src swift -r -n :results output :exports nil
 import SwiftUI
 
@@ -1774,7 +1772,7 @@ struct ContentView_Previews: PreviewProvider {
 #+end_src
 ** 加入新記錄
 *** AddNewBook.swift
-以@ObservedObject的方式新增ViewModel裡分享的記錄
+以@ObservedObject 的方式新增 ViewModel 裡分享的記錄
 #+begin_src swift -r -n :results output :exports nil
 import SwiftUI
 import Combine
@@ -1806,16 +1804,61 @@ struct AddNewBook_Previews: PreviewProvider {
 }
 
 #+end_src
+** 加入搜尋功能
+為 List 加入基本的搜尋(過濾)功能十分容易，最簡單的方式就是在 List 上方加入一個 TextField，宣告一個@State 變數 Bind 到這個 TextField，然後以這個變數做為 List 的搜尋條件。接下來就在 list 後加入 filter，這裡用到的 filter 語法為:
+#+begin_src swift -r -n :eval no
+book.list.filter ({ self.filterKey.isEmpty ? true : $0.title.contains(self.filterKey.lowercased())})
+#+end_src
+裡面的 A ? B : C 意思是，如果條件 A 成立，就傳回 B，否則就傳回 C，即，如果 TextField 裡沒有搜尋值，則 filterKey.isEmpty 會成立，就不進行過濾(傳回 true)，否則就傳回那些書名包含 filterKey 的記錄($0.title.contains(self.filterKey.lowercased())，另，為避免大小寫問題，一律轉為小寫
+#+begin_src swift -r -n :eval no
+import SwiftUI
+
+struct ContentView: View {
+    //建立一個BookClass類別的物件，叫做book
+    @ObservedObject var book = BookClass()
+    @State var showNewbookView = false
+    @State var filterKey = "" //儲存搜尋內容
+    var body: some View {
+        VStack {
+            // 這裡輸入要搜尋的關鍵字
+            TextField("請輸入搜尋內容", text: $filterKey)
+            NavigationView {
+                // 透過對list進行即時filter來過濾list的顯示結果
+                // 如果filterKey沒有值，就將filter條件設為true(不過濾)
+                List(book.list.filter ({ self.filterKey.isEmpty ? true : $0.title.contains(self.filterKey.lowercased())})) { book in
+                    NavigationLink(destination: DetailView(thisbook: book)) {
+                        VStack(alignment: .leading) { //cell格子
+                            Text(book.title)
+                                .font(.title)
+                            Text(book.author)
+                                .font(.subheadline)
+                        }
+                        .navigationBarTitle("我的書單")
+                    }
+                }
+
+            }
+        }
+    }
+}
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
+
+#+end_src
+
 * Passing data between Views #2: @ObservedObject
 :PROPERTIES:
 :CUSTOM_ID: ObservedObject
 :END:
-** ObservedObject範例
-前節的Book.swift中使用@Published將書籍資料設定為可以其他View共享，與@State, @Binding相同，@Published為一種Property wrapper(屬性包裝器)。SwiftUI 中幾個常見的 @ 開頭修飾，如 @State，@Binding，@Environment，@EnvironmentObject 等都是運用了 Property Wrappers 這個特性。
+** ObservedObject 範例
+前節的 Book.swift 中使用@Published 將書籍資料設定為可以其他 View 共享，與@State, @Binding 相同，@Published 為一種 Property wrapper(屬性包裝器)。SwiftUI 中幾個常見的 @ 開頭修飾，如 @State，@Binding，@Environment，@EnvironmentObject 等都是運用了 Property Wrappers 這個特性。
 
 當你以 @State 來標註一個屬性時，SwiftUI 會自動儲存它在你的應用程式的某處。還有，使用這些屬性的視圖會自動監聽屬性值的變更。在狀態改變時，SwiftUI 會重新計算那些視圖並更新應用程式的外觀。
 
-@Published可以讓我們建立observable object(如前節Book.swift的list)
+@Published 可以讓我們建立 observable object(如前節 Book.swift 的 list)
 #+begin_src swift -r -n :results output :exports nil
 import Foundation
 
@@ -1832,7 +1875,7 @@ class Book: ObservableObject{
     }
 }
 #+end_src
-被宣告為@Published變數，SwiftUI會自動監控list，一旦其內容有所變更，則所有引用到這個object的View都會接收到通知，然後重新載入做必要的變更。至此，我們只做好了資料來源端的設定，那麼，要使用這些共享變數的View要如何做呢？可以先看一下前節的ContentView.swift或AddNewBook.swift：
+被宣告為@Published 變數，SwiftUI 會自動監控 list，一旦其內容有所變更，則所有引用到這個 object 的 View 都會接收到通知，然後重新載入做必要的變更。至此，我們只做好了資料來源端的設定，那麼，要使用這些共享變數的 View 要如何做呢？可以先看一下前節的 ContentView.swift 或 AddNewBook.swift：
 #+begin_src swift -r -n :results output :exports nil
 import SwiftUI
 
@@ -1857,8 +1900,8 @@ struct ContentView: View {
 ///... 下略
 #+end_src
 
-不同於@State，在ContentView以及AddNewBook.swift中，我們以@ObservedObject建立外部參考型態(external reference type)的變數(即之前以@Published宣告的變數)，所有以@ObservedObject包裝的變數都必須conform @ObservableObject protocol(即class Book)，透過此二者的連結，我們就能輕易的在不同的View間共享或編輯變數(如本例中的book)
-** ObservedObject特性
+不同於@State，在 ContentView 以及 AddNewBook.swift 中，我們以@ObservedObject 建立外部參考型態(external reference type)的變數(即之前以@Published 宣告的變數)，所有以@ObservedObject 包裝的變數都必須 conform @ObservableObject protocol(即 class Book)，透過此二者的連結，我們就能輕易的在不同的 View 間共享或編輯變數(如本例中的 book)
+** ObservedObject 特性
 - Can be shared across views
 - More complex properties (e.g custom type)
 - External reference type that has to be managed (Create an instance of the class, create its own properties, ...)
@@ -1869,7 +1912,7 @@ struct ContentView: View {
 - Projected value (i.e. %): a Binding (to the vars of the wrappedValue (a ViewModel)). You can bind a variable in your View to the variable in your ViewModel with @ObservedObject.
 - @ObservedObject 的用處和 @State 非常相似，從名字看來它是來修飾一個對象的，這個對象可以給多個獨立的 View 使用。如果你用 @ObservedObject 來修飾一個對象，那麼那個對象必須要實現 ObservableObject 協議，然後用 @Published 修飾對象裡屬性，表示這個屬性是需要被 SwiftUI 監聽的。[fn:10]
 ** @ObservedObject v.s. @ObjectBinding
-另一種與@ObservedObject有點相似的wrapper為@ObjectBinding，但不同的是，使用@ObservedObject的object必須要有@Published wrapper；而使用@ObjectBinding則要自已加上didChange。@ObjectBindin的範例如下:
+另一種與@ObservedObject 有點相似的 wrapper 為@ObjectBinding，但不同的是，使用@ObservedObject 的 object 必須要有@Published wrapper；而使用@ObjectBinding 則要自已加上 didChange。@ObjectBindin 的範例如下:
 #+begin_src swift -r -n :results output :exports nil
 import SwiftUI
 
@@ -1900,7 +1943,7 @@ struct ContentView:View {
 - Similar to @ObservedObject
 - Possibility to make it available to all views through the application itself
 - If one view changes the model all views update
-** @EnvironmentObject與@ObservedObject的異同
+** @EnvironmentObject 與@ObservedObject 的異同
 *** 相同
 @EnvironmentObject has a lot in common with @ObservedObject
 - both must refer to a class that conforms to ObservableObject
@@ -1909,17 +1952,17 @@ struct ContentView:View {
 *** 差異
 - However, @EnvironmentObject specifically means “this object will be provided from some outside entity, rather than being created by the current view or specifically passed in.[fn:36]
 *** 範例
-以如下app為例，若View A裡有某些data要在未來與View E共用，若是使用@ObservedObject來進行分享，則View A要依序將這些data傳給View B、View C、View D，最後再傳到View E裡。
-然而，若使用@EnvironmentObject的機制來進行分享data，則可以在View A中將這些要分享的data置於Swift environment中，所有處於同一environment中的所有View都能與之共享，而不用依次傳遞。
-#+CAPTION: @Environment適用狀況
+以如下 app 為例，若 View A 裡有某些 data 要在未來與 View E 共用，若是使用@ObservedObject 來進行分享，則 View A 要依序將這些 data 傳給 View B、View C、View D，最後再傳到 View E 裡。
+然而，若使用@EnvironmentObject 的機制來進行分享 data，則可以在 View A 中將這些要分享的 data 置於 Swift environment 中，所有處於同一 environment 中的所有 View 都能與之共享，而不用依次傳遞。
+#+CAPTION: @Environment 適用狀況
 #+LABEL:fig:EnvironmentObject
 #+name: fig:EnvironmentObject
 #+ATTR_LATEX: :width 500
 #+ATTR_ORG: :width 500
 #+ATTR_HTML: :width 500
 [[file:images/environmentObject.png]]
-** EnvironmentObject設定方式
-*** 建立EnvironmentObject class
+** EnvironmentObject 設定方式
+*** 建立 EnvironmentObject class
 UserSettings.swift (ObservableObject)
 #+begin_src swift -r -n :eval no
 import SwiftUI
@@ -1929,9 +1972,9 @@ class UserSettings: ObservableObject {
     // use this ObservableObject as an environment object
 }
 #+end_src
-*** 設定app環境
+*** 設定 app 環境
 **** Xcode 11.X: SceneDeleate.swift
-加入變數宣告(x)及environmentObject(x)
+加入變數宣告(x)及 environmentObject(x)
 #+begin_src swift -r -n :eval no
 //....
 
@@ -1957,7 +2000,7 @@ struct bindingApp: App {
     }
 }
 #+end_src
-*** 設定Client View
+*** 設定 Client View
 **** Read
 UserSettingsView.swift
 #+begin_src swift -r -n :eval no
@@ -1986,7 +2029,7 @@ struct EditView: View {
 }
 #+end_src
 ** 範例
-建立environment物件(ShoppingCart)，由各View共享/編輯內容
+建立 environment 物件(ShoppingCart)，由各 View 共享/編輯內容
 *** ShoppingCart.swift
 情境說明：在 app 中建立一個 ShoppingCart 類別，並讓這個 class confirm ObservableObject protocol，於 class 中將要在各 View 中 share 的 property 以@Published 標示出來。
 #+begin_src swift -r -n :results output :exports nil
@@ -1998,7 +2041,7 @@ class ShoppingCart: ObservableObject {
 }
 #+end_src
 *** 環境設定 SceneDelegate.swift / xxxApp.swift
-環境變數由swift環境提供，故在SceneDelegate.swift檔案中宣告要共享的變數(程式第[[(decEnvObj)]]行)，並於UIHostingController function中將之加入起始View中，如下列程式第[[(attEnvObj)]]行。
+環境變數由 swift 環境提供，故在 SceneDelegate.swift 檔案中宣告要共享的變數(程式第[[(decEnvObj)]]行)，並於 UIHostingController function 中將之加入起始 View 中，如下列程式第[[(attEnvObj)]]行。
 **** 舊版: SceneDelegate.swift
 #+begin_src swift -r -n :results output :exports nil
 import UIKit
@@ -2025,9 +2068,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 }
 #+end_src
 **** 新版: xxxApp.swift
-在WWDC20之前，使用SwiftUI建立View必須將其包裝在UIHostingController，Controller被包裝在一個UIWindow，window在SceneDelegate中定義。在WWDC20之後，一個新的解決方案出現：App。
+在 WWDC20 之前，使用 SwiftUI 建立 View 必須將其包裝在 UIHostingController，Controller 被包裝在一個 UIWindow，window 在 SceneDelegate 中定義。在 WWDC20 之後，一個新的解決方案出現：App。
 
-在之前我們使用AppDelegate和SceneDelegate來管理生命週期，這樣很繁瑣。如今使用App Name App.swift文件來代替。
+在之前我們使用 AppDelegate 和 SceneDelegate 來管理生命週期，這樣很繁瑣。如今使用 App Name App.swift 文件來代替。
 #+begin_src swift -r -n :results output :exports nil
 import SwiftUI
 
@@ -2042,7 +2085,7 @@ struct bindingApp: App {
 }
 #+end_src
 *** ContentView.swift
-在每一個要使用到這個 EnvironmentObject 的 View 中以@EnvironmentObject 來建立該 class 的 instance(第[[(environmentObject)]]行)，同時，在 previews 中也要加入 environmentObject()的 modifier(第[[(emptyConstructor)]]行)，在需用到環境變數的View(如SecondView)被呼叫時加入environmentObject(第[[(envObj)]]行)。
+在每一個要使用到這個 EnvironmentObject 的 View 中以@EnvironmentObject 來建立該 class 的 instance(第[[(environmentObject)]]行)，同時，在 previews 中也要加入 environmentObject()的 modifier(第[[(emptyConstructor)]]行)，在需用到環境變數的 View(如 SecondView)被呼叫時加入 environmentObject(第[[(envObj)]]行)。
 
 #+begin_src swift -r -n :results output :exports nil
 import SwiftUI
@@ -2120,7 +2163,7 @@ struct SecondView_Previews: PreviewProvider {
 - Cloud: ClodKit, Firebase(下學期進度)
 - UserDefualts
 ** UserDefautls
-我們可以將UserDefaults視為 persistent dictionary。UserDefaults 可以儲存 Property List 類型的資料。Property List is not a protocol or a struct or anything tangible or Swift-like. It is any combination of String, Int, Bool, Floating point, Date, Array or Dictionary.
+我們可以將 UserDefaults 視為 persistent dictionary。UserDefaults 可以儲存 Property List 類型的資料。Property List is not a protocol or a struct or anything tangible or Swift-like. It is any combination of String, Int, Bool, Floating point, Date, Array or Dictionary.
 
 A powerful way to do this is using the *Codable* protocol inf Swift. Codable converts structs into Data objects.
 ** Using userDefaults
@@ -2381,16 +2424,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 All of these @Something statements are property wrappers. A property wrapper is actually a struct. These structs encapsulate some "template" behavior applied to the vars they wrap.
 
 The property wrapper feature adds *"syntactic sugar"* to make these structs easy to create/use." [fn:15]
-** SwiftUI的狀態管理
+** SwiftUI 的狀態管理
 [[https://onevcat.com/2020/06/stateobject/][資料來源:@StateObject 和 @ObservedObject 的区别和使用]]
-在2019年SwiftUI剛問世時，除去專門用來管理手勢的@GestureState以外，有三個常用的和狀態管理相關的property wrapper，它們分別是@State，@ObservedObject和@EnvironmentObject。根據職責和作用範圍不同，它們各自的適用場景也有區別[fn:16]。一般來說：
-- @State用於View中的私有狀態值，一般來說它所修飾的都應該是struct值，並且不應該被其他的view看到。它代表了SwiftUI中作用範圍最小，本身也最簡單的狀態，比如一個Bool，一個Int或者一個String。簡單說，如果一個狀態能夠被標記為private並且它是值類型，那麼@State是適合的。
-- 對於更複雜的一組狀態，我們可以將它組織在一個class中，並讓其實現ObservableObject協議。對於這樣的class類型，其中被標記為@Published的屬性，將會在變更時自動發出事件，通知對它有依賴的View進行更新。View中如果需要依賴這樣的ObservableObject對象，在聲明時則使用@ObservedObject來訂閱。
-- @EnvironmentObject針對那些需要傳遞到深層次的子View中的ObservableObject對象，我們可以在父層級的View上用.environmentObject修飾器來將它注入到環境中，這樣任意子View都可以通過@EnvironmentObject來獲取對應的對象。
+在 2019 年 SwiftUI 剛問世時，除去專門用來管理手勢的@GestureState 以外，有三個常用的和狀態管理相關的 property wrapper，它們分別是@State，@ObservedObject 和@EnvironmentObject。根據職責和作用範圍不同，它們各自的適用場景也有區別[fn:16]。一般來說：
+- @State 用於 View 中的私有狀態值，一般來說它所修飾的都應該是 struct 值，並且不應該被其他的 view 看到。它代表了 SwiftUI 中作用範圍最小，本身也最簡單的狀態，比如一個 Bool，一個 Int 或者一個 String。簡單說，如果一個狀態能夠被標記為 private 並且它是值類型，那麼@State 是適合的。
+- 對於更複雜的一組狀態，我們可以將它組織在一個 class 中，並讓其實現 ObservableObject 協議。對於這樣的 class 類型，其中被標記為@Published 的屬性，將會在變更時自動發出事件，通知對它有依賴的 View 進行更新。View 中如果需要依賴這樣的 ObservableObject 對象，在聲明時則使用@ObservedObject 來訂閱。
+- @EnvironmentObject 針對那些需要傳遞到深層次的子 View 中的 ObservableObject 對象，我們可以在父層級的 View 上用.environmentObject 修飾器來將它注入到環境中，這樣任意子 View 都可以通過@EnvironmentObject 來獲取對應的對象。
 
-這基本就是初版SwiftUI 狀態管理的全部了。看起來對於狀態管理，SwiftUI的覆蓋已經很全面了，那為什麼要新加一個@StateObjectproperty wrapper呢？
+這基本就是初版 SwiftUI 狀態管理的全部了。看起來對於狀態管理，SwiftUI 的覆蓋已經很全面了，那為什麼要新加一個@StateObjectproperty wrapper 呢？
 ** @StateObject v.s. @ObservedObject
-@ObservedObject不管存儲，會隨著View的創建被多次創建。而@StateObject保證對像只會被創建一次。因此，如果是在View裡自行創建的ObservableObjectmodel對象，大概率來說使用@StateObject會是更正確的選擇。@StateObject基本上來說就是一個針對class的@State升級版[fn:16]
+@ObservedObject 不管存儲，會隨著 View 的創建被多次創建。而@StateObject 保證對像只會被創建一次。因此，如果是在 View 裡自行創建的 ObservableObjectmodel 對象，大概率來說使用@StateObject 會是更正確的選擇。@StateObject 基本上來說就是一個針對 class 的@State 升級版[fn:16]
 *** 程式範例
 #+begin_src swift -r -n :results output :exports nil
 struct ContentView: View {
@@ -2451,11 +2494,11 @@ struct GradeText: View {
 #+ATTR_HTML: :width 300
 [[file:images/observeState.jpg]]
 
-上例中，按加分後，及格與等級的判斷都能正常運作，然而一旦切換學生姓名與學號，scoreModel的分數就會被重置為60分。原因在於按下「加分」button導致ContentView的狀態發生變化，ContentView.body被重新求值，連帶scoreBoard這個View也被重建，而其中的scoreModel也一起重新生成，於是之前所做的改變(狀態)就消失了。
+上例中，按加分後，及格與等級的判斷都能正常運作，然而一旦切換學生姓名與學號，scoreModel 的分數就會被重置為 60 分。原因在於按下「加分」button 導致 ContentView 的狀態發生變化，ContentView.body 被重新求值，連帶 scoreBoard 這個 View 也被重建，而其中的 scoreModel 也一起重新生成，於是之前所做的改變(狀態)就消失了。
 *** Create once
-只要理解了@ObservedObject存在的問題，@StateObject的意義也就很明顯了。@StateObject就是@State的升級版：@State是針對struct狀態所創建的存儲，@StateObject則是針對ObservableObjectclass的存儲。它保證這個class實例不會隨著View被重新創建。從而解決問題[fn:16]。
+只要理解了@ObservedObject 存在的問題，@StateObject 的意義也就很明顯了。@StateObject 就是@State 的升級版：@State 是針對 struct 狀態所創建的存儲，@StateObject 則是針對 ObservableObjectclass 的存儲。它保證這個 class 實例不會隨著 View 被重新創建。從而解決問題[fn:16]。
 
-解決方案：把scoreBoard中的@ObservedObject改為@StateObject
+解決方案：把 scoreBoard 中的@ObservedObject 改為@StateObject
 #+begin_src swift -r -n :results output :exports nil
 ...
 struct ScoreBoad: View {
@@ -2467,8 +2510,8 @@ struct ScoreBoad: View {
     }
 }
 #+end_src
-** 使用@EnvironmentObject保持狀態
-除了@StateObject外，另一種讓狀態object保持住的方式，是在更外層使用.environmentObject：
+** 使用@EnvironmentObject 保持狀態
+除了@StateObject 外，另一種讓狀態 object 保持住的方式，是在更外層使用.environmentObject：
 #+begin_src swift -r -n :results output :exports nil
 struct SwiftUINewApp: App {
     var body: some Scene {
@@ -2478,7 +2521,7 @@ struct SwiftUINewApp: App {
     }
 }
 #+end_src
-這樣，scoreModel對象將被注入到環境中，不再隨著ContentView的刷新而變更。在使用時，只需要遵循普通的environment方式，把Model聲明為@EnvironmentObject就行了：
+這樣，scoreModel 對象將被注入到環境中，不再隨著 ContentView 的刷新而變更。在使用時，只需要遵循普通的 environment 方式，把 Model 聲明為@EnvironmentObject 就行了：
 #+begin_src swift -r -n :results output :exports nil
 struct ScoreBoard: View {
     @EnvironmentObject var scoreModel: ScoreModel
@@ -2512,7 +2555,7 @@ var dice: Dice {
     set { _dice.wrappedValue = newValue }
 }
 #+end_src
-** 各種property wrapper比較
+** 各種 property wrapper 比較
 Three ways for sharing data in SwiftUI[fn:14]
 +------------------------------+------------------------------+------------------------------+
 |@State                        |@ObservedObject               |@EnvironmentObject            |
@@ -2538,7 +2581,7 @@ Three ways for sharing data in SwiftUI[fn:14]
 +------------------------------+------------------------------+------------------------------+
 #+latex:\newpage
 * Filtered List
-為Dynamic List加入顯示過濾功能
+為 Dynamic List 加入顯示過濾功能
 ** Model
 BookModel.swift
 #+begin_src swift -r -n :results output :exports nil
@@ -2572,7 +2615,7 @@ class Book: ObservableObject{
 #+end_src
 ** 主畫面
 ContentView.swift
-於List左上角加入一個Hide/Show的Button，以控制是否於書籍列表中加入Like
+於 List 左上角加入一個 Hide/Show 的 Button，以控制是否於書籍列表中加入 Like
 #+begin_src swift -r -n :results output :exports nil
 import SwiftUI
 
@@ -2635,7 +2678,7 @@ struct ContentView_Previews: PreviewProvider {
 :CUSTOM_ID: SW-MVVM
 :END:
 ** Design pattern
-MVVM的概念最早應該是在2005年由Microsoft的[[https://blogs.msdn.microsoft.com/johngossman/2005/10/08/introduction-to-modelviewviewmodel-pattern-for-building-wpf-apps/][John Gossman]]提出來的，它的概念是，整個Swift project會拆分成三個部份: View、ViewModel、Model，其中View的角色就是單純的視覺元件，像是按鈕、文字標籤等等，在View裡面不會有邏輯、狀態等等，單純就是個呈現資料的元件。而要讓View呈現資料，最直覺的方式，就是把View跟Model做綁定，讓View的元件跟著Model一起做變化。但這樣會有個問題，就是通常Model來的資料，並不是簡單就能轉換成View的樣式的，這時候就需要有個物件，介在View跟Model的中間，這個物件會掌管這些跟View高度相關的邏輯的操作，像是轉換Date物件變成人看得懂的文字格式等，稱之為ViewModel。上面的概念可以畫成這樣的資料流：
+MVVM 的概念最早應該是在 2005 年由 Microsoft的[[https://blogs.msdn.microsoft.com/johngossman/2005/10/08/introduction-to-modelviewviewmodel-pattern-for-building-wpf-apps/][John Gossman]]提出來的，它的概念是，整個 Swift project 會拆分成三個部份: View、ViewModel、Model，其中 View 的角色就是單純的視覺元件，像是按鈕、文字標籤等等，在 View 裡面不會有邏輯、狀態等等，單純就是個呈現資料的元件。而要讓 View 呈現資料，最直覺的方式，就是把 View 跟 Model 做綁定，讓 View 的元件跟著 Model 一起做變化。但這樣會有個問題，就是通常 Model 來的資料，並不是簡單就能轉換成 View 的樣式的，這時候就需要有個物件，介在 View 跟 Model 的中間，這個物件會掌管這些跟 View 高度相關的邏輯的操作，像是轉換 Date 物件變成人看得懂的文字格式等，稱之為 ViewModel。上面的概念可以畫成這樣的資料流：
 
 #+CAPTION: MVVM Architecture
 #+NAME: fig: MVVMPNG
@@ -2644,13 +2687,13 @@ MVVM的概念最早應該是在2005年由Microsoft的[[https://blogs.msdn.micros
 #+ATTR_HTML: :width 600
 [[file:images/MVVM-Basic.jpg]]
 
-在iOS開發上，依照上述MVVM的定義，ContentView變成一個單純的View，而我們會另外產生一個ViewModel來負責presentational logic跟部份的controller logic。所以在ContentView裡面，就只會有：
-1. View logic，所有跟呈現有關的Code
-1. 綁定ViewModel
-而在ViewModel裡面，則是負責兩個部份：
-1. Controller logic，如pagination, error handling,… etc
-1. Presentation logic，提供接口讓View綁定(binding)
-開發上，一旦View綁定好ViewModel的資料，在撰寫商業邏輯的時候，就可以不用管包括動畫、轉場、main thread等等跟View相關的問題，因為分工明確所以就不會有寫起來綁手綁腳的感覺。更棒的是，並且因為ViewModel是一個單純的、沒有相依於View的物件，所以要做測試簡單多了！
+在 iOS 開發上，依照上述 MVVM 的定義，ContentView 變成一個單純的 View，而我們會另外產生一個 ViewModel 來負責 presentational logic 跟部份的 controller logic。所以在 ContentView 裡面，就只會有：
+1. View logic，所有跟呈現有關的 Code
+1. 綁定 ViewModel
+而在 ViewModel 裡面，則是負責兩個部份：
+1. Controller logic，如 pagination, error handling,… etc
+1. Presentation logic，提供接口讓 View 綁定(binding)
+開發上，一旦 View 綁定好 ViewModel 的資料，在撰寫商業邏輯的時候，就可以不用管包括動畫、轉場、main thread 等等跟 View 相關的問題，因為分工明確所以就不會有寫起來綁手綁腳的感覺。更棒的是，並且因為 ViewModel 是一個單純的、沒有相依於 View 的物件，所以要做測試簡單多了！
 [[https://www.codementor.io/@koromiko/mvvm-app-cl1wvw2sh][資料來源: 歡迎來到真實世界 - 原來是那個傳說中的MVVM阿]]
 ** What is the idea behind MVVM
 *** Model
@@ -2717,10 +2760,10 @@ struct BookDetailViewModel {
     }
 }
   #+end_src
-  從Model中可以看到書籍的記錄欄位只有"出版社"(publishCamp)和"出版地點"(publishCity)，但若app對顯示結果的格式要求為"出版社(出版地點)"，則可以在ViewModel中來處理。
+  從 Model 中可以看到書籍的記錄欄位只有"出版社"(publishCamp)和"出版地點"(publishCity)，但若 app 對顯示結果的格式要求為"出版社(出版地點)"，則可以在 ViewModel 中來處理。
   此外，如果在 View 上有一個 Favorite Button，則當 user 點了 Favorite 後，ViewModel 應負責將 struct 中的 isFavorite 改存 True，並回存至 Model 中。Model 的資料只能透過 ViewModel 來新增刪除，View 無法直接染指。
   Model 與 UI 完全無關，單純用來儲存資料，ViewModel 為 Model 與 View 溝通的橋樑。
-** Model要用Struct或是Class
+** Model 要用 Struct 或是 Class
 [[https://www.appcoda.com.tw/swift-class/][資料來源:Swift Class vs Struct：設計 Model 時，該用 Struct 還是 Class 呢？]]
 *** Struct 與 Class 的不同性質
 首先，當我們指派 (assign) 一個實體給一個辨識符（identifier，也就是變數／常數名）的時候，如果該實體是 struct 的話，該辨識符所容納的會是該實體的所有內容；但如果它是 class 的話，這個辨識符就只會容納存放該實體的位址：
@@ -2760,7 +2803,7 @@ herCat.name = "Mumu"
 #+end_src
 怎麼會有這樣的差別呢？因為 herDog 儲存了所有的 Dog 實體內容，所以任何 Dog 實體的屬性的變動，就等於說 herDog 本身有變動。然而，herCat 並沒有儲存 Cat 實體的內容，所以 Cat 實體屬性的變動是在別的地方發生的，且 herCat 本身所儲存的 Cat 實體位址並沒有任何的改變。
 由圖[[fig: MVVMPNG]]可看出，
-*** MMVM中的Model
+*** MMVM 中的 Model
 ** DICE DEMO
 ** Further Reading Resources
 - [[https://www.youtube.com/watch?v=1IlUBHvgY8Q&t=29s][SwiftUI MVVM Programming with ObservableObject @Published @ObservedObject]]
@@ -2943,7 +2986,7 @@ class FetchFlow: ObservableObject {
 :CUSTOM_ID: SW-Protocols
 :END:
 - Protocols are a fundamental feature of Swift. They play a leading role in the structure of the Swift standard library and are a common method of abstraction. They provide a similar experience to interfaces that some other languages have. An advantage of protocols in Swift is that objects can conform to multiple protocols.[fn:17]
-- Protocol是一個只宣告不定義的型別，然而這個特性可以讓我們的程式更有彈性，像在IOS SDK裡面，耳熟能詳的Delegate，就大量的運用Potocol，方便我們客製化事件發生時要處理的事情。[fn:18]
+- Protocol 是一個只宣告不定義的型別，然而這個特性可以讓我們的程式更有彈性，像在 IOS SDK 裡面，耳熟能詳的 Delegate，就大量的運用 Potocol，方便我們客製化事件發生時要處理的事情。[fn:18]
 
 - 對任何程式開發來說，減少重覆的 code，把權責明確分開，讓 code 維護性變好，是非常重要的課題。而在現今的軟體開發模式中，有許多方法可以做到這點，最為人所知的一個模式，就是利用繼承 (Inheritance)，把會重覆利用的部份放在母類別，讓其它子類別去繼承。另外一種做法，則是利用 Composition Pattern，將功能做成組件分出來，讓需要的模組去組合取用。[fn:19]
 #+begin_verse
@@ -2956,7 +2999,7 @@ A protocol defines a blueprint of methods, properties, and other requirements th
 #+end_verse
 
 除了指定遵循類型必須實現的要求外，你可以擴展一個協定以實現其中的一些需求或實現一個符合類型的可以利用的附加功能。[fn:22]
-- 例如，你可能有一個名為str的變量，其類型為String。身為一個開發人員，你應該知道str代表String，如果我們定義了一個名為StringProtocol的協定，它具有所有的String的API，我們可以擴展任何類型去遵循StringProtocol（意思是滿足其所有要求），如此一來，即可以使用該對象，讓它就像是一個String，儘管我們不知道它是什麼！如果看起來像一隻鴨子，游泳像一隻鴨子，叫聲像一隻鴨子，那就是一隻鴨子。我們新的StringProtocol可以告訴那些遵守它協定的類型能夠做什麼，且不需要知道這些類型的資訊。[fn:21]
+- 例如，你可能有一個名為 str 的變量，其類型為 String。身為一個開發人員，你應該知道 str 代表 String，如果我們定義了一個名為 StringProtocol 的協定，它具有所有的 String 的 API，我們可以擴展任何類型去遵循 StringProtocol（意思是滿足其所有要求），如此一來，即可以使用該對象，讓它就像是一個 String，儘管我們不知道它是什麼！如果看起來像一隻鴨子，游泳像一隻鴨子，叫聲像一隻鴨子，那就是一隻鴨子。我們新的 StringProtocol 可以告訴那些遵守它協定的類型能夠做什麼，且不需要知道這些類型的資訊。[fn:21]
 ** Protocol Syntax
 *** Syntax
 #+begin_src swift -r -n :results output :exports nil
@@ -3394,7 +3437,7 @@ A simple bullet point list will make it a lot easier to decide.
 *** Try to go for a struct by default.
 Structs make your code easier to reason about and make it easier to work in multithreaded environments which we often have while developing in Swift.
 ** DEMO
-以下這個View可正常運作，於TextField中所做的編輯修改都會即時顯示於Text中。
+以下這個 View 可正常運作，於 TextField 中所做的編輯修改都會即時顯示於 Text 中。
 #+begin_src swift -r -n :results output :exports nil
 struct User {
     var firstName" = Bilbo"
@@ -3414,9 +3457,9 @@ struct ContentView: View {
     }
 }
 #+end_src
-但若將struct改為class，雖程式仍可執行，但Text中的姓名卻不再隨TextField的修改而連動。
+但若將 struct 改為 class，雖程式仍可執行，但 Text 中的姓名卻不再隨 TextField 的修改而連動。
 To fix this, we need to tell SwiftUI when interesting parts of our class have changed. By “interesting parts” I mean parts that should cause SwiftUI to reload any views that are watching our class – it’s possible you might have lots of properties inside your class, but only a few should be exposed to the wider world in this way.[fn:27]
-若要將struct改為class，則程式要改成：
+若要將 struct 改為 class，則程式要改成：
 #+begin_src swift -r -n :results output :exports nil
 class User: ObservableObject{
     @Published var firstName = "Bilbo"
