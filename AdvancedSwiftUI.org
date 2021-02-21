@@ -1,0 +1,1755 @@
+#+TITLE: Advanced Swift Ui
+
+#+INCLUDE: ../purpleweb.org
+
+#+latex:\newpage
+
+* Review
+- Functions: Tasks management project: task listing, adding, removing, editing
+- Technoloties: View navigation, variable sharing, data model
+** Data Model
+#+begin_src swift -r -n :results output :exports nil
+//
+//  Task.swift
+//  taskManagement
+//
+//  Created by yen yung chin on 2021/2/18.
+//
+
+import Foundation
+
+
+struct Task: Identifiable {
+    var id = UUID()
+    var title: String
+    var completed: Bool
+}
+
+#if DEBUG
+let testDataTasks = [
+    Task(title: "Implement UI", completed: true),
+    Task(title: "Share data", completed: false),
+    Task(title: "Create Chart", completed: false),
+    Task(title: "Connect to Firebase", completed: false),
+    Task(title: "PROFIT!!!", completed: false)
+]
+#endif
+#+end_src
+** Basic UI
+*** Change struct name (ContentView.swift)
+   1) right click on struct ContentView
+   2) Refactor
+   3) Rename...: to *TaskListView*
+   4) The file name on navigator (left panel in Xcode) will be renamed to *TaskListView.swift*
+*** classify files into the following group
+   - App
+   - View
+   - Model
+     #+CAPTION: Rename struct in Xcode
+#+LABEL:fig:RenameStructName
+#+name: fig:RenameStructName
+#+ATTR_LATEX: :width 400
+#+ATTR_ORG: :width 400
+#+ATTR_HTML: :width
+[[file:images/renameStruct.jpg]]
+*** Create basic UI
+**** TaskListView.swift
+#+begin_src swift -r -n :results output :exports nil
+//
+//  ContentView.swift
+//  taskManagement
+//
+//  Created by yen yung chin on 2021/2/16.
+//
+
+import SwiftUI
+
+struct TaskListView: View {
+    let tasks = testDataTasks
+    var body: some View {
+        NavigationView {
+            VStack(alignment: .leading, spacing: 10, content: {
+                List(tasks) { task in
+                    Image(systemName: "circle")
+                    Text(task.title)
+                }
+                HStack(alignment: .center, spacing: 10, content: {
+                    Image(systemName: "plus.circle.fill")
+                    Text("New Task")
+                }).padding()
+
+            }).navigationTitle("Tasks")
+        }
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        TaskListView()
+    }
+}
+
+#+end_src
+**** Extract the task cell
+1. Grouping the Image and Text with HStack
+2. cmd+click Htack
+3. Extract SubView
+4. Fix the compile error(inject needed variable)
+#+begin_src swift -r -n :results output :exports nil
+//
+//  ContentView.swift
+//  taskManagement
+//
+//  Created by yen yung chin on 2021/2/16.
+//
+
+import SwiftUI
+
+struct TaskListView: View {
+    let tasks = testDataTasks
+    var body: some View {
+        NavigationView {
+            VStack(alignment: .leading, spacing: 10, content: {
+                List(tasks) { task in
+                    TaskCell(task: task)
+                }
+                HStack(alignment: .center, spacing: 10, content: {
+                    Image(systemName: "plus.circle.fill")
+                    Text("New Task")
+                }).padding()
+
+            }).navigationTitle("Tasks")
+        }
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        TaskListView()
+    }
+}
+
+struct TaskCell: View {
+    var task: Task
+    var body: some View {
+        HStack {
+            Image(systemName: "circle")
+            Text(task.title)
+        }
+    }
+}
+
+#+end_src
+** MVVM
+以MVVM架構來開發project
+*** ViewModel
+**** TaskCellViewModel
+#+begin_src swift -r -n :results output :exports nil
+//
+//  TaskCellViewModel.swift
+//  taskManagement
+//
+//  Created by yen yung chin on 2021/2/20.
+//
+
+import Foundation
+import Combine
+
+class TaskCellViewModel: ObservableObject, Identifiable  {
+    @Published var task: Task
+
+    @Published var completionStateIconName = ""
+    private var cancellables = Set<AnyCancellable>()
+    init(task: Task) {
+        self.task = task
+        $task
+            .map { task in
+                return task.completed ? "checkmark.circle.fill" : "circle"
+            }
+            .assign(to: \.completionStateIconName, on: self)
+            .store(in: &cancellables)
+    }
+}
+
+#+end_src
+**** TaskListViewModel
+#+begin_src swift -r -n :results output :exports nil
+//
+//  TaskListViewModel.swift
+//  taskManagement
+//
+//  Created by yen yung chin on 2021/2/20.
+//
+
+import Foundation
+import Combine
+
+class TaskListMiewModel: ObservableObject {
+    @Published var taskCellViewModels = [TaskCellViewModel]()
+
+    init() {
+        self.taskCellViewModels = testDataTasks.map { task in
+            TaskCellViewModel(task: task)
+        }
+    }
+
+}
+
+#+end_src
+*** View
+TaskListView.swift
+#+begin_src swift -r -n :results output :exports nil
+//
+//  ContentView.swift
+//  taskManagement
+//
+//  Created by yen yung chin on 2021/2/16.
+//
+
+import SwiftUI
+
+struct TaskListView: View {
+    @ObservedObject var taskListVM = TaskListMiewModel()
+
+    var body: some View {
+        NavigationView {
+            VStack(alignment: .leading, spacing: 10, content: {
+                List(taskListVM.taskCellViewModels) { task in
+                    TaskCell(taskCellVM: task)
+                }
+                HStack(alignment: .center, spacing: 10, content: {
+                    Image(systemName: "plus.circle.fill")
+                    Text("New Task")
+                }).padding()
+
+            }).navigationTitle("Tasks")
+        }
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        TaskListView()
+    }
+}
+
+struct TaskCell: View {
+    @ObservedObject var taskCellVM: TaskCellViewModel
+
+    var body: some View {
+        HStack {
+            Image(systemName: taskCellVM.completionStateIconName)
+            Text(taskCellVM.task.title)
+        }
+    }
+}
+
+#+end_src
+** New task
+加入新增task功能，真正的新增功能由ViewModel實作，View負責界面及呼叫該功能
+*** View
+**** NewTaskView.swift
+#+begin_src swift -r -n :results output :exports nil
+//
+//  NewTaskView.swift
+//  taskManagement
+//
+//  Created by yen yung chin on 2021/2/20.
+//
+
+import SwiftUI
+
+struct NewTaskView: View {
+    @ObservedObject var taskListVM = TaskListMiewModel()
+    @State var taskTitle: String = ""
+
+    @Environment(\.presentationMode) var presentation
+
+    var body: some View {
+        VStack {
+            Text("New Task")
+                .font(.largeTitle)
+            TextField("Enter task name", text: self.$taskTitle)
+            Button(action: {
+                taskListVM.addTask(task: Task(title: self.taskTitle, completed: false))
+                self.presentation.wrappedValue.dismiss()
+            }, label: {
+                Text("Done")
+            })
+            Spacer()
+        }.padding()
+    }
+}
+
+struct NewTaskView_Previews: PreviewProvider {
+    static var previews: some View {
+        NewTaskView()
+    }
+}
+
+#+end_src
+**** TaskListView.swift
+#+begin_src swift -r -n :results output :exports nil
+//
+//  ContentView.swift
+//  taskManagement
+//
+//  Created by yen yung chin on 2021/2/16.
+//
+
+import SwiftUI
+
+struct TaskListView: View {
+    @ObservedObject var taskListVM = TaskListMiewModel()
+    var body: some View {
+        NavigationView {
+            VStack(alignment: .leading, spacing: 10, content: {
+                List(taskListVM.taskCellViewModels) { task in
+                    TaskCell(taskCellVM: task)
+                }
+
+
+                HStack(alignment: .center, spacing: 10, content: {
+                    Image(systemName: "plus.circle.fill")
+                    Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                        /*@START_MENU_TOKEN@*/Text("Button")/*@END_MENU_TOKEN@*/
+                    })
+                    Text("New Task")
+                }).padding()
+
+                .navigationBarTitle("Tasks", displayMode: .inline)
+
+                .navigationBarItems(trailing: NavigationLink(
+                                        destination: NewTaskView(taskListVM: taskListVM, taskTitle: ""),
+                                        label: {
+                                            Text("New Task")
+                                        }))
+
+            })
+        }
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        TaskListView()
+    }
+}
+
+struct TaskCell: View {
+    @ObservedObject var taskCellVM: TaskCellViewModel
+
+    var body: some View {
+        HStack {
+            Image(systemName: taskCellVM.completionStateIconName)
+            Text(taskCellVM.task.title)
+        }
+    }
+}
+
+#+end_src
+*** ViewModel
+**** TaskListViewModel.swift
+#+begin_src swift -r -n :results output :exports nil
+//
+//  TaskListViewModel.swift
+//  taskManagement
+//
+//  Created by yen yung chin on 2021/2/20.
+//
+
+import Foundation
+import Combine
+
+class TaskListMiewModel: ObservableObject {
+    @Published var taskCellViewModels = [TaskCellViewModel]()
+
+    init() {
+        self.taskCellViewModels = testDataTasks.map { task in
+            TaskCellViewModel(task: task)
+        }
+    }
+
+    func addTask(task: Task) {
+        let task = TaskCellViewModel(task: task)
+        self.taskCellViewModels.append(task)
+    }
+}
+
+#+end_src
+** Delete task
+加入swipe進行刪除的功能，真正刪除的功能由ViewModel實作，View負責呼叫
+*** View
+**** TaskListView.swift
+#+begin_src swift -r -n :results output :exports nil
+//
+//  ContentView.swift
+//  taskManagement
+//
+//  Created by yen yung chin on 2021/2/16.
+//
+
+import SwiftUI
+
+struct TaskListView: View {
+    @ObservedObject var taskListVM = TaskListMiewModel()
+    var body: some View {
+        NavigationView {
+            VStack(alignment: .leading, spacing: 10, content: {
+                List {
+                    ForEach(taskListVM.taskCellViewModels) { task in
+                        TaskCell(taskCellVM: task)
+
+                    }
+                    .onDelete(perform: { indexSet in
+                        taskListVM.deleteTask(indexSet: indexSet)
+                    })
+                }
+
+                HStack(alignment: .center, spacing: 10, content: {
+                    Image(systemName: "plus.circle.fill")
+                    Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                        /*@START_MENU_TOKEN@*/Text("Button")/*@END_MENU_TOKEN@*/
+                    })
+                    Text("New Task")
+                }).padding()
+
+                .navigationBarTitle("Tasks", displayMode: .inline)
+
+                .navigationBarItems(trailing: NavigationLink(
+                                        destination: NewTaskView(taskListVM: taskListVM, taskTitle: ""),
+                                        label: {
+                                            Text("New Task")
+                                        }))
+
+            })
+        }
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        TaskListView()
+    }
+}
+
+struct TaskCell: View {
+    @ObservedObject var taskCellVM: TaskCellViewModel
+
+    var body: some View {
+        HStack {
+            Image(systemName: taskCellVM.completionStateIconName)
+            Text(taskCellVM.task.title)
+        }
+    }
+}
+
+#+end_src
+*** ViewModel
+**** TaskListViewModel.swift
+#+begin_src swift -r -n :results output :exports nil
+
+#+end_src
+#+begin_src swift -r -n :results output :exports nil
+//
+//  TaskListViewModel.swift
+//  taskManagement
+//
+//  Created by yen yung chin on 2021/2/20.
+//
+
+import Foundation
+import Combine
+
+class TaskListMiewModel: ObservableObject {
+    @Published var taskCellViewModels = [TaskCellViewModel]()
+
+    init() {
+        self.taskCellViewModels = testDataTasks.map { task in
+            TaskCellViewModel(task: task)
+        }
+    }
+
+    func addTask(task: Task) {
+        let task = TaskCellViewModel(task: task)
+        self.taskCellViewModels.append(task)
+    }
+
+    func deleteTask(indexSet: IndexSet) {
+        self.taskCellViewModels.remove(atOffsets: indexSet)
+    }
+}
+
+#+end_src
+** enum v.s. picker
+加入task的priority類型
+*** Model
+以enum來表示task的不同優先權
+**** Model.swift
+#+begin_src swift -r -n :results output :exports nil
+//
+//  Task.swift
+//  taskManagement
+//
+//  Created by yen yung chin on 2021/2/18.
+//
+
+import Foundation
+
+enum TaskPriority: String, CaseIterable  {
+    case high
+    case medium
+    case low
+}
+
+struct Task: Identifiable {
+    var id = UUID()
+    var title: String
+    var priority: TaskPriority
+    var completed: Bool
+}
+
+#if DEBUG
+let testDataTasks = [
+    Task(title: "Implement UI", priority: .medium, completed: true),
+    Task(title: "Share data", priority: .high, completed: false),
+    Task(title: "Create Chart", priority: .medium, completed: false),
+    Task(title: "Connect to Firebase", priority: .high, completed: false),
+    Task(title: "PROFIT!!!", priority: .high, completed: false)
+]
+#endif
+
+#+end_src
+*** View
+以Picker來選取enum中的子類別[fn:14]
+**** TaskListView.swift
+#+begin_src swift -r -n :results output :exports nil
+//
+//  ContentView.swift
+//  taskManagement
+//
+//  Created by yen yung chin on 2021/2/16.
+//
+
+import SwiftUI
+
+struct TaskListView: View {
+    @ObservedObject var taskListVM = TaskListMiewModel()
+    var body: some View {
+        NavigationView {
+            VStack(alignment: .leading, spacing: 10, content: {
+                List {
+                    ForEach(taskListVM.taskCellViewModels) { task in
+                        TaskCell(taskCellVM: task)
+
+                    }
+                    .onDelete(perform: { indexSet in
+                        taskListVM.deleteTask(indexSet: indexSet)
+                    })
+                }
+
+                HStack(alignment: .center, spacing: 10, content: {
+                    Image(systemName: "plus.circle.fill")
+                    Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                        /*@START_MENU_TOKEN@*/Text("Button")/*@END_MENU_TOKEN@*/
+                    })
+                    Text("New Task")
+                }).padding()
+
+                .navigationBarTitle("Tasks", displayMode: .inline)
+
+                .navigationBarItems(trailing: NavigationLink(
+                                        destination: NewTaskView(taskListVM: taskListVM, taskTitle: "", priority: TaskPriority.low),
+                                        label: {
+                                            Text("New Task")
+                                        }))
+
+            })
+        }
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        TaskListView()
+    }
+}
+
+struct TaskCell: View {
+    @ObservedObject var taskCellVM: TaskCellViewModel
+
+    var body: some View {
+        HStack {
+            Image(systemName: taskCellVM.completionStateIconName)
+            Image(systemName: taskCellVM.priorityStateIconName)
+                .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+            Text(taskCellVM.task.title)
+        }
+    }
+}
+
+#+end_src
+*** ViewModel
+**** TaskCellViewModel.swift
+#+begin_src swift -r -n :results output :exports nil
+//
+//  TaskCellViewModel.swift
+//  taskManagement
+//
+//  Created by yen yung chin on 2021/2/20.
+//
+
+import Foundation
+import Combine
+
+class TaskCellViewModel: ObservableObject, Identifiable  {
+    @Published var task: Task
+
+    @Published var completionStateIconName = ""
+    @Published var priorityStateIconName = ""
+    private var cancellables = Set<AnyCancellable>()
+    init(task: Task) {
+        self.task = task
+        $task
+            .map { task in
+                return task.completed ? "checkmark.circle.fill" : "circle"
+            }
+            .assign(to: \.completionStateIconName, on: self)
+            .store(in: &cancellables)
+        $task
+            .map { task in
+                return self.priorityIconName(task: self.task)
+            }
+            .assign(to: \.priorityStateIconName, on: self)
+            .store(in: &cancellables)
+    }
+
+    func priorityIconName(task: Task) -> String {
+        switch task.priority {
+        case .low:
+            return "l.circle.fill"
+        case .medium:
+            return "m.circle.fill"
+        case .high:
+            return "h.circle.fill"
+        }
+    }
+}
+
+#+end_src
+
+Developing iOS App with Swift #1
+iOS-Swift-1
+31/08
+
+
+* Advance function
+** filter()
+filter() 宣告如下：
+#+begin_src swift -r -n :results output :exports nil
+func filter(includeElement: (T) -> Bool) -> Array<T>
+#+end_src
+- includeElement 表示傳入的 function 或 closure，用來判斷陣列個元素是否符合條件。
+- filter() 回傳結果為陣列。
+*** 在 closure 回傳每個元素使否符合判斷式的結果，決定最後 filter() 回傳的元素集合。[fn:14]
+#+begin_src swift -r -n :results output :exports nil
+var numbers = Array(1...8)
+
+var evenNumbers = numbers.filter { (x) -> Bool in
+    x % 2 == 0
+}
+
+var oddNumbers = numbers.filter { (x) -> Bool in
+    x % 2 != 0
+}
+
+numbers         //return: [1, 2, 3, 4, 5, 6, 7, 8]
+evenNumbers     //return: [2, 4, 6, 8]
+oddNumbers      //return: [1, 3, 5, 7]
+
+#+end_src
+*** 將一、三象限的點過濾出來[fn:14]
+#+begin_src swift -r -n :results output :exports nil
+struct Point {
+    var x: Int
+    var y: Int
+}
+
+var p1 = Point(x: 1, y: 1)
+var p2 = Point(x: -1, y: 1)
+var p3 = Point(x: -1, y: -1)
+var p4 = Point(x: 1, y: -1)
+var points = [p1, p2, p3, p4]
+
+var quadrant_1 = points.filter { (p) -> Bool in
+    return p.x > 0 && p.y > 0
+}
+
+var quadrant_3 = points.filter { (p) -> Bool in
+    return p.x < 0 && p.y < 0
+}
+
+points          //return: [{x 1, y 1}, {x -1, y 1}, {x -1, y -1}, {x 1, y -1}]
+quadrant_1      //return: [{x 1, y 1}]
+quadrant_3      //return: [{x -1, y -1}]
+
+#+end_src
+** map()
+map() 宣告如下：
+#+begin_src swift -r -n :results output :exports nil
+func map<U>(transform: (T) -> U) -> Array<U>
+#+end_src
+- transform 表示傳入的 function 或 closure，用來轉換每個陣列的元素。輸入參數與回傳結果型別可以不同。
+- map() 回傳結果為陣列。
+*** 透過map()將整數陣列轉化成兩倍數值與字串的陣列。[fn:14]
+#+begin_src swift -r -n :results output :exports nil
+var numbers = Array(1...8)
+
+var doubles = numbers.map { (n) -> Int in
+    return n*2
+}
+
+var strings = numbers.map { (n) -> String in
+    let digital = [0:"零", 1:"壹", 2:"貳", 3:"参", 4:"肆", 5:"伍", 6:"陸", 7:"柒", 8:"捌", 9:"玖"]
+    return digital[n] ?? "啥"
+}
+
+numbers     //return: [1, 2, 3, 4, 5, 6, 7, 8]
+doubles     //return: [2, 4, 6, 8, 10, 12, 14, 16]
+strings     //return: ["壹", "貳", "参", "肆", "伍", "陸", "柒", "捌"]
+
+#+end_src
+**** map()如何將一組二度空間的點對 X 軸與 Y 軸做鏡射。[fn:14]
+#+begin_src swift -r -n :results output :exports nil
+struct Point {
+    var x: Int
+    var y: Int
+}
+var points = [Point(x: 1, y: 2), Point(x: -2, y: -1)]
+
+var mirror_x = points.map { (p) -> Point in
+    return Point(x: -p.x, y: p.y)
+}
+
+var mirror_y = points.map { (p) -> Point in
+    return Point(x: p.x, y: -p.y)
+}
+
+points      //return: [{x 1, y 2}, {x -2, y -1}]
+mirror_x    //return: [{x -1, y 2}, {x 2, y -1}]
+mirror_y    //return: [{x 1, y -2}, {x -2, y 1}]
+
+#+end_src
+** debounce
+What is debounce? Its a function which forces the execution to wait a certain amount of time before running again.[fn:15]
+*** Example
+source: [[https://peterfriese.dev/swift-combine-love/][SwiftUI + Combine = ❤️]]
+**** UI
+#+begin_src swift -r -n :results output :exports nil
+struct ContentView: View {
+
+  @ObservedObject private var userViewModel = UserViewModel()
+
+  var body: some View {
+    Form {
+      Section {
+        TextField("Username", text: $userViewModel.username)
+          .autocapitalization(.none)
+        }
+        Section {
+          SecureField("Password", text: $userViewModel.password)
+          SecureField("Password again", text: $userViewModel.passwordAgain)
+       }
+       Section {
+         Button(action: { }) {
+           Text("Sign up")
+         }.disabled(!userViewModel.valid)
+       }
+     }
+  }
+}
+
+struct ContentView_Previews: PreviewProvider {
+  static var previews: some View {
+    ContentView()
+  }
+}
+#+end_src
+**** ViewModel
+#+begin_src swift -r -n :results output :exports nil
+class UserViewModel: ObservableObject {
+  // Input
+  @Published var username = ""
+  @Published var password = ""
+  @Published var passwordAgain = ""
+
+  // Output
+  @Published var isValid = false
+
+  $username
+  .debounce(for: 0.8, scheduler: RunLoop.main)
+  .removeDuplicates()
+  .map { input in
+    return input.count >= 3
+  }
+  .assign(to: \.valid, on: self)
+  .store(in: &cancellableSet)
+}
+#+end_src
+
+* MVVM
+:PROPERTIES:
+:CUSTOM_ID: SW-MVVM
+:END:
+** Design pattern
+MVVM 的概念最早應該是在 2005 年由 Microsoft的[[https://blogs.msdn.microsoft.com/johngossman/2005/10/08/introduction-to-modelviewviewmodel-pattern-for-building-wpf-apps/][John Gossman]]提出來的，它的概念是，整個 Swift project 會拆分成三個部份: View、ViewModel、Model，其中 View 的角色就是單純的視覺元件，像是按鈕、文字標籤等等，在 View 裡面不會有邏輯、狀態等等，單純就是個呈現資料的元件。而要讓 View 呈現資料，最直覺的方式，就是把 View 跟 Model 做綁定，讓 View 的元件跟著 Model 一起做變化。但這樣會有個問題，就是通常 Model 來的資料，並不是簡單就能轉換成 View 的樣式的，這時候就需要有個物件，介在 View 跟 Model 的中間，這個物件會掌管這些跟 View 高度相關的邏輯的操作，像是轉換 Date 物件變成人看得懂的文字格式等，稱之為 ViewModel。上面的概念可以畫成這樣的資料流：
+
+#+CAPTION: MVVM Architecture
+#+NAME: fig: MVVMPNG
+#+ATTR_LATEX: :width 500
+#+ATTR_ORG: :width 500
+#+ATTR_HTML: :width 600
+[[file:images/MVVM-Basic.jpg]]
+
+在 iOS 開發上，依照上述 MVVM 的定義，ContentView 變成一個單純的 View，而我們會另外產生一個 ViewModel 來負責 presentational logic 跟部份的 controller logic。所以在View裡面，就只會有：
+1. View logic，所有跟呈現有關的 Code
+1. 綁定 ViewModel
+而在 ViewModel 裡面，則是負責兩個部份：
+1. Controller logic，如 pagination, error handling,… etc
+1. Presentation logic，提供接口讓 View 綁定(binding)(提供適合在View中呈現的資料)
+開發上，一旦 View 綁定好 ViewModel 的資料，在撰寫商業邏輯的時候，就可以不用管包括動畫、轉場、main thread 等等跟 View 相關的問題，因為分工明確所以就不會有寫起來綁手綁腳的感覺。更棒的是，並且因為 ViewModel 是一個單純的、沒有相依於 View 的物件，所以要做測試簡單多了！
+[[https://www.codementor.io/@koromiko/mvvm-app-cl1wvw2sh][資料來源: 歡迎來到真實世界 - 原來是那個傳說中的MVVM阿]]
+** What is the idea behind MVVM
+*** Model
+- Business logic
+- UI Independent
+*** View
+- Presentation
+- User interaction
+*** ViewModel
+- Presentation logic
+- Glue between Model and View
+*** 為什麼要拆成三部份(What does it solve?)
+- MVC - Massive View Controller
+- Testability
+- Code organization
+- Code reusability
+*** Limitations / Cons
+- Requires binding
+- Potential for boilerplate code
+- Overkill for simple views and logic
+- Doesn't cover every case
+** DEMO
+以"推薦書單"的 APP 為例:
+- Model: 包含書名、作者、出版社....，而實際的資料來源可能是雲端資料庫(Firebase)、Web API、本機資料庫(Core data)。
+    #+begin_src swift -r -n :eval no
+struct Book {
+    let title: String
+    let author: String
+    let dateReleased: String
+    let publishCamp: String
+    let publishCity: String
+    let isFavorite: Bool
+}
+  #+end_src
+- View: 在 APP 畫面上呈現 Model 中資料的元件，如 Text, Image, Button, List.....
+- ViewModel: 將 Model 中的資料取出，供 View 呈現，或是接受 View 輸入的資料，存回 Model。以"推薦書單 APP"為例，其 ViewModel 可能包含如下 struct:
+  #+begin_src swift -r -n :eval no
+struct BookDetailViewModel {
+    var book: Book
+
+    var isFavorite: Bool
+
+    init(book: Book) {
+        self.book = book
+        self.isFavorite = false
+    }
+
+    var title: String {
+        return self.book.title
+    }
+
+    var author: String {
+        return self.book.author
+    }
+
+    var dateReleased: String {
+        return self.book.dateReleased
+    }
+
+    // 呈現時要求以 遠流出版社(台北市) 的格式來呈現
+    var publisher: String {
+        let output = self.book.publishCamp + "(" + self.book.publishCity + ")"
+        return output
+    }
+}
+  #+end_src
+  從 Model 中可以看到書籍的記錄欄位只有"出版社"(publishCamp)和"出版地點"(publishCity)，但若 app 對顯示結果的格式要求為"出版社(出版地點)"，則可以在 ViewModel 中來處理。
+  此外，如果在 View 上有一個 Favorite Button，則當 user 點了 Favorite 後，ViewModel 應負責將 struct 中的 isFavorite 改存 True，並回存至 Model 中。Model 的資料只能透過 ViewModel 來新增刪除，View 無法直接染指。
+  Model 與 UI 完全無關，單純用來儲存資料，ViewModel 為 Model 與 View 溝通的橋樑。
+** Model 要用 Struct 或是 Class
+[[https://www.appcoda.com.tw/swift-class/][資料來源:Swift Class vs Struct：設計 Model 時，該用 Struct 還是 Class 呢？]]
+*** Struct 與 Class 的不同性質
+首先，當我們指派 (assign) 一個實體給一個辨識符（identifier，也就是變數／常數名）的時候，如果該實體是 struct 的話，該辨識符所容納的會是該實體的所有內容；但如果它是 class 的話，這個辨識符就只會容納存放該實體的位址：
+#+begin_src swift -r -n :results output :exports nil
+// 用 struct 定義 Dog。
+struct Dog {
+    var name = "Bart"
+}
+// 整個 Dog 實體都會被存到 myDog 裡。
+var myDog = Dog()
+// 用 class 定義 Cat。
+class Cat {
+    var name = "Mimi"
+}
+// myCat 只會儲存 Cat 實體的位址。Cat 實體本身會被存到別的地方。
+var myCat = Cat()
+#+end_src
+也就是說，當我們使用辨識符的時候，如果它的型別是 struct 的話，我們在操作的實體都會是本地的。但是當我們在操作 class 型別的辨識符的話，那麼我們實際上是透過辨識符在操作一個遠端的實體。所以，當我們更改這些實體的屬性的時候，它們的行為就不太一樣了：
+#+begin_src swift -r -n :results output :exports nil
+// 使用 struct。
+var herDog = Dog() {
+    // 如果 herDog 有變動的話就顯示訊息。
+    didSet {
+        print("Her dog is changed!")
+    }
+}
+herDog.name = "Starlord"
+// Her dog is changed!
+// 使用 class。
+var herCat = Cat() {
+    didSet {
+        print("Her cat is changed!")
+    }
+}
+herCat.name = "Mumu"
+// 沒有訊息。
+#+end_src
+怎麼會有這樣的差別呢？因為 herDog 儲存了所有的 Dog 實體內容，所以任何 Dog 實體的屬性的變動，就等於說 herDog 本身有變動。然而，herCat 並沒有儲存 Cat 實體的內容，所以 Cat 實體屬性的變動是在別的地方發生的，且 herCat 本身所儲存的 Cat 實體位址並沒有任何的改變。
+由圖[[fig: MVVMPNG]]可看出，
+*** MVVM 中的 Model
+** DICE DEMO
+** Further Reading Resources
+- [[https://www.youtube.com/watch?v=1IlUBHvgY8Q&t=29s][SwiftUI MVVM Programming with ObservableObject @Published @ObservedObject]]
+- [[https://www.youtube.com/watch?v=LntH6moCuo0][SwiftUI 2.0: MVVM - A Practical Approach]]
+- [[https://www.youtube.com/watch?v=gkAV4D1nopA][SwiftUI Tip Calculator Using MVVM Design Pattern]]
+- [[https://www.youtube.com/watch?v=cbqMkIG6Qeg][Understanding MVVM Design Pattern]]: 講的超清楚
+- Video: [[https://www.youtube.com/watch?v=EhtK_H9LsYQ][MVVM SwiftUI - Model View ViewModel Pattern - Getting Started]]
+- Video: [[https://www.youtube.com/watch?v=LntH6moCuo0]]
+- Video: [[https://www.youtube.com/watch?v=sWx8TtRBOfk][MVVM in Practice - RWDevCon Session - raywenderlich.com]]
+- GitHub: https://github.com/rebeloper/SwiftUIMVVM.git
+#+latex:\newpage
+
+* Web API: URLSession v.s. JSONDecoder
+** Demo 1
+*** ContentView.swift
+#+begin_src swift -r -n :results output :exports nil
+import SwiftUI
+
+struct Todo: Codable, Identifiable {
+    public var id: Int
+    public var title: String
+    public var completed: Bool
+}
+
+class FetchToDo: ObservableObject {
+  // 1.
+  @Published var todos = [Todo]()
+
+    init() {
+        let url = URL(string: "https://jsonplaceholder.typicode.com/todos")!
+        // 2.
+        URLSession.shared.dataTask(with: url) {(data, response, error) in
+            do {
+                if let todoData = data {
+                    // 3.
+                    let decodedData = try JSONDecoder().decode([Todo].self, from: todoData)
+                    DispatchQueue.main.async {
+                        self.todos = decodedData
+                    }
+                } else {
+                    print("No data")
+                }
+            } catch {
+                print("Error")
+            }
+        }.resume()
+    }
+}
+
+struct ContentView: View {
+    // 1.
+    @ObservedObject var fetch = FetchToDo()
+    var body: some View {
+        VStack {
+            // 2.
+            List(fetch.todos) { todo in
+                VStack(alignment: .leading) {
+                    // 3.
+                    Text(todo.title)
+                    Text("\(todo.completed.description)") // print boolean
+                        .font(.system(size: 11))
+                        .foregroundColor(Color.gray)
+                }
+            }
+        }
+    }
+}
+#+end_src
+#+LABEL:fig:JSON-1
+#+name: fig:JSON-1
+#+ATTR_LATEX: :width 300
+#+ATTR_ORG: :width 300
+#+ATTR_HTML: :width 300
+[[file:images/json-1.jpg]]
+** Demo 2
+*** MVVM
+- Model: FlowModel.swift
+- View: ContentView.swift
+- ViewModel: Flow.swift
+*** FlowModel.swift
+#+begin_src swift -r -n :results output :exports nil
+import Foundation
+
+struct FlowModel: Decodable, Hashable {
+    var 年: Int? = nil
+    var 月: Int? = nil
+    var 總運量: Int? = nil
+    var 日均運量: Int? = nil
+    var 假日均運量: Int? = nil
+    var 月台上刷卡日均筆數: Double? = nil
+    var 車上刷卡日均筆數: Double? = nil
+    var 售票機日均筆數: Double? = nil
+    var 補票日均筆數: Double? = nil
+    var 團體票日均筆數: Double? = nil
+}
+#+end_src
+
+#+RESULTS:
+*** ContentView.swift
+#+begin_src swift -r -n :results output :exports nil
+import SwiftUI
+
+struct ContentView: View {
+    @ObservedObject var flow = FetchFlow()
+
+    var body: some View {
+        NavigationView {
+            List() {
+                ForEach(flow.flows, id: \.self) {(item) in
+                    NavigationLink(destination: Text("總運量: \(item.總運量!)")) {
+                        HStack {
+                            Text("\(item.年!)年\(item.月!)月")
+                            Text("\(item.日均運量!)")
+                        }
+                    }
+                }
+            }.navigationTitle("")
+        }
+    }
+}
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
+
+#+end_src
+*** Flow.swift
+#+begin_src swift -r -n :results output :exports nil
+import Foundation
+class FetchFlow: ObservableObject {
+    @Published var flows = [FlowModel]()
+    init() {
+        let urlstr = "https://data.kcg.gov.tw/dataset/6f29f6f4-2549-4473-aa90-bf60d10895dc/resource/30dfc2cf-17b5-4a40-8bb7-c511ea166bd3/download/lightrailtraffic.json"
+        guard let url = URL(string: urlstr) else {
+            print("Invalid json url")
+            return
+        }
+        URLSession.shared.dataTask(with: url) {(data, response, error) in
+            do {
+                if let flowData = data {
+                    let decodeData = try JSONDecoder().decode([FlowModel].self, from: flowData)
+
+                    DispatchQueue.main.async {
+                        self.flows = decodeData
+                    }
+                } else {
+                    print("No data")
+                }
+            } catch {
+                print("\(error)")
+            }
+        }.resume()
+    }
+}
+#+end_src
+*** Result
+#+LABEL:fig:JSON-2
+#+name: fig:JSON-2
+#+ATTR_LATEX: :width 500
+#+ATTR_ORG: :width 500
+#+ATTR_HTML: :width 600
+[[file:images/json-2.jpg]]
+** 公開資料平台
+- [[https://data.gov.tw/][政府資料開放平台]]
+- [[https://data.kcg.gov.tw/dataset][高雄市政府開放資料集]]
+- [[https://data.tainan.gov.tw/dataset][台南市政府開放資料集]]
+- [[https://ptx.transportdata.tw/PTX/Service][公共運輸整合資訊]]
+- [[https://kaleidosblog.s3-eu-west-1.amazonaws.com/json/tutorial.json][country/code JSON sample]]
+** Further Reading
+- [[https://www.youtube.com/watch?v=HvfE4G9PfeU][SwiftUI Tutorial - Using an API and Decoding JSON Data]]
+- [[https://www.youtube.com/watch?v=tdxKIPpPDAI][iOS Swift Tutorial: Use Web APIs and JSON Data with Swift 5]]- [[https://www.ioscreator.com/tutorials/swiftui-json-list-tutorial][SwiftUI Fetch JSON Data into List]]
+- [[https://programmingwithswift.com/parse-json-from-file-and-url-with-swift/][Parse JSON from file and URL with Swift]]
+- [[https://www.youtube.com/watch?v=1en4JyW3XSI][Making an API call and fetch JSON data in SwiftUI]]
+- [[https://benoitpasquier.com/encoding-decoding-json-swift4/][The best way to encode and decode JSON in Swift4 ]]
+- [[https://www.reddit.com/r/swift/comments/emw0i3/jsondecoder_fails_if_i_dont_have_an_id_for_each/][JSONDecoder fails if I don't have an "id" for each item... why doesn't UUID work?]]
+- [[https://medium.com/%E5%BD%BC%E5%BE%97%E6%BD%98%E7%9A%84-swift-ios-app-%E9%96%8B%E7%99%BC%E6%95%99%E5%AE%A4/%E8%A7%A3%E6%B1%BAjson-key%E4%B8%8D%E5%9B%BA%E5%AE%9A%E6%99%82%E5%87%BA%E7%8F%BE-no-value-associated-with-key-codingkeys-%E7%8B%80%E6%B3%81-720d7d09486a][解決Json Key不固定時出現“No value associated with key CodingKeys” 狀況]]
+#+latex: \newpage
+
+* Protocols
+:PROPERTIES:
+:CUSTOM_ID: SW-Protocols
+:END:
+- Protocols are a fundamental feature of Swift. They play a leading role in the structure of the Swift standard library and are a common method of abstraction. They provide a similar experience to interfaces that some other languages have. An advantage of protocols in Swift is that objects can conform to multiple protocols.[fn:1]
+- Protocol 是一個只宣告不定義的型別，然而這個特性可以讓我們的程式更有彈性，像在 IOS SDK 裡面，耳熟能詳的 Delegate，就大量的運用 Potocol，方便我們客製化事件發生時要處理的事情。[fn:2]
+
+- 對任何程式開發來說，減少重覆的 code，把權責明確分開，讓 code 維護性變好，是非常重要的課題。而在現今的軟體開發模式中，有許多方法可以做到這點，最為人所知的一個模式，就是利用繼承 (Inheritance)，把會重覆利用的部份放在母類別，讓其它子類別去繼承。另外一種做法，則是利用 Composition Pattern，將功能做成組件分出來，讓需要的模組去組合取用。[fn:3]
+#+begin_verse
+A protocol defines a blueprint of methods, properties, and other requirements that suit a particular task or piece of functionality. The protocol can then be adopted by a class, structure, or enumeration to provide an actual implementation of those requirements. Any type that satisfies the requirements of a protocol is said to conform to that protocol. [fn:4]
+#+end_verse
+
+- 協定提供類型可以做的資訊，Classes 和 structs 則提供物件的資訊，協定則提供物件將會執行的動作。[fn:5]
+#+begin_verse
+協定是 Swift 一個重要的特性，它會定義出為了完成某項任務或功能所需的方法、屬性，但是本身不會實作這些任務跟功能，而僅僅只是表達出該任務或功能的名稱。協定為方法、屬性、以及其他特定的任務需求或功能定義藍圖。協定可被 class、struct、或 enum 類型採納以提供所需功能的具體實現。滿足了協定中需求的任意類型都叫做遵循了該協定。
+#+end_verse
+
+除了指定遵循類型必須實現的要求外，你可以擴展一個協定以實現其中的一些需求或實現一個符合類型的可以利用的附加功能。[fn:6]
+- 例如，你可能有一個名為 str 的變量，其類型為 String。身為一個開發人員，你應該知道 str 代表 String，如果我們定義了一個名為 StringProtocol 的協定，它具有所有的 String 的 API，我們可以擴展任何類型去遵循 StringProtocol（意思是滿足其所有要求），如此一來，即可以使用該對象，讓它就像是一個 String，儘管我們不知道它是什麼！如果看起來像一隻鴨子，游泳像一隻鴨子，叫聲像一隻鴨子，那就是一隻鴨子。我們新的 StringProtocol 可以告訴那些遵守它協定的類型能夠做什麼，且不需要知道這些類型的資訊。[fn:5]
+** Protocol Syntax
+*** Syntax
+#+begin_src swift -r -n :results output :exports nil
+protocol SomeProtocol {
+    // protocol definition goes here
+}
+#+end_src
+Classes , structs, enums can adopt these protocol by placing protocol’s name after the type’s name, separated by a colon, as part of their definition. Multiple protocols can be listed, and are separated by commas:[fn:7]
+#+begin_src swift -r -n :results output :exports nil
+struct SomeStructure: FirstProtocol, AnotherProtocol {
+    //structure definition goes here
+}
+#+end_src
+*** DEMO
+#+begin_src swift -r -n :results output :exports nil
+protocol Polite {
+    func sayHello()
+}
+
+struct Teacher: Polite {
+    var name: String
+    func sayHello() {
+        print("同學好")
+    }
+}
+
+struct Student: Polite {
+    var name: String
+    func sayHEllo() {
+        print("老師好")
+    }
+}
+
+var aPolitePerson: Polite = Teacher()
+aPolitePerson.name = "Mr. Yen"
+aPolitePerson.sayHellow()
+aPolitePerson = Student()
+aPolitePerson.sayHello()
+#+end_src
+*** Adding property requirements
+source: [[https://abhimuralidharan.medium.com/all-about-protocols-in-swift-11a72d6ea354][All about protocols in swift]]
+- A protocol can have properties as well as methods that a class, enum or struct conforming to this protocol can implement.
+- A protocol declaration only specifies the required property name and type. It doesn’t say anything about whether the property should be a stored one or a computed one.
+- A protocol also specifies whether each property must be gettable or gettable and settable.
+- Property requirements are always declared as variable properties, prefixed with the var keyword.
+- Gettable and settable properties are indicated by writing { get set } after their type declaration, and gettable properties are indicated by writing { get }.
+#+begin_src swift -r -n :results output :exports nil
+protocol SomeProtocol {
+    var mustBeSettable: Int { get set }
+    var doesNotNeedToBeSettable: Int { get }
+}
+#+end_src
+*** Protocols with mutating methods
+Mutating methods are methods that we use on value types like structs and enums. These methods are allowed to modify the instance it belongs to and any properties of that instance. A small example:
+
+Consider a simple struct Rectangle:
+#+begin_src swift -r -n :results output :exports nil
+struct Rectangle {
+    var width = 1
+    var height = 1
+
+    func area() -> Int {
+        return width * height
+    }
+
+    mutating func scaleBy(value: Int) {
+        width *= value
+        height *= value
+    }
+}
+#+end_src
+The scaleBy(value:) method modifies the value of width and height. So it should be marked as mutating. Otherwise the compiler will throw error at you.
+
+#+begin_verse
+If you mark a protocol instance method requirement as mutating, you do not need to write the mutatingkeyword when writing an implementation of that method for a class. The mutating keyword is only used by structures and enumerations.
+#+end_verse
+Consider an enum and class implementing a protocol with mutating function:
+#+begin_src swift -r -n :results output :exports nil
+protocol Togglable {
+    mutating func toggle()
+}
+
+enum OnOffSwitch: Toggglable {
+    case off, on
+    mutating func toggle() {
+        switch self {
+        case .off:
+            self = .on
+        case .on:
+            self = .off
+        }
+    }
+}
+
+var lightSwitch = OnOffSwitch.off
+lightSwitch.toggle()
+
+class ToggleClass: Togglable {
+    var someBool = false
+    func toggle() {
+        someBool = true
+    }
+}
+
+let toggleClassObj = ToggleClass()
+toggleClassObj.toggle()
+#+end_src
+*** Initializer Requirements
+Protocols can have specific initializers like normal methods which the conforming types can implement.
+#+begin_src swift -r -n :results output :exports nil
+protocol SomeProtocol {
+    init(someParameter: Int)
+}
+#+end_src
+** DEMO
+#+begin_src swift -r -n :results output :exports nil
+protocol Sound {
+    func makeSound()
+}
+
+struct Dog: Sound {
+    func makeSound() {
+        print("Woof")
+    }
+}
+
+struct Tree: Sound {
+    func makeSound() {
+        print("Susrrate")
+    }
+}
+
+struct iPhone: Sound {
+    func makeSound() {
+        print("Ring")
+    }
+}
+#+end_src
+** 範例
+*** 版本 1
+本例中有兩個 struct: Song, Album 以及一個 class 用來播放 Song 或 Album，原本的 Player 要為不同的 struct 寫不同的 func，而且程式碼大多重複。
+#+begin_src swift -r -n :eval no
+import Cocoa
+import AVKit
+
+struct Song {
+    var name: String
+    var album: Album
+    var audioURL: URL
+    var isLiked: Bool
+}
+
+struct Album {
+    var name: String
+    var imageURL: URL
+    var audioURL: URL
+    var isLiked: Bool
+}
+
+class Player {
+    private let avPlayer = AVPlayer()
+
+    func play(_ song: Song) {
+        let item = AVPlayerItem(url: song.audioURL)
+        avPlayer.replaceCurrentItem(with: item)
+        avPlayer.play()
+    }
+
+    func play(_ album: Album) {
+        let item = AVPlayerItem(url: album.audioURL)
+        avPlayer.replaceCurrentItem(with: item)
+        avPlayer.play()
+    }
+}
+#+end_src
+*** 版本 2
+宣告一個 protocol，定義 audioURL 變數(read only)，然後令兩個 struct 皆遵循該 protocol(方式有二)，如此，原本的 Player class 中的 play func 就能只寫一次。
+#+begin_src swift -r -n :eval no
+import Cocoa
+import AVKit
+
+protocol Playable {
+    var audioURL: URL { get }
+}
+
+struct Song: Playable {
+    var name: String
+    var album: Album
+    var audioURL: URL
+    var isLiked: Bool
+}
+
+struct Album {
+    var name: String
+    var imageURL: URL
+    var audioURL: URL
+    var isLiked: Bool
+}
+
+extension Album: Playable {}
+class Player {
+    private let avPlayer = AVPlayer()
+
+    func play(_ resource: Playable) {
+        let item = AVPlayerItem(url: resource.audioURL)
+        avPlayer.replaceCurrentItem(with: item)
+        avPlayer.play()
+    }
+}
+#+end_src
+*** 版本 3
+原本 protocol 的真正意思其實只是在確定 audioURL 是否能正確轉換成 Audio，所以其實將 protocol name 由 Playable 改為 AudioURLConvertable 會更貼近事實。
+#+begin_src swift -r -n :eval no
+import Cocoa
+import AVKit
+
+protocol AudioURLConvertable {
+    var audioURL: URL { get }
+}
+
+struct Song: AudioURLConvertable {
+    var name: String
+    var album: Album
+    var audioURL: URL
+    var isLiked: Bool
+}
+
+struct Album: AudioURLConvertable {
+    var name: String
+    var imageURL: URL
+    var audioURL: URL
+    var isLiked: Bool
+}
+
+class Player {
+    private let avPlayer = AVPlayer()
+
+    func play(_ resource: AudioURLConvertable) {
+        let item = AVPlayerItem(url: resource.audioURL)
+        avPlayer.replaceCurrentItem(with: item)
+        avPlayer.play()
+    }
+}
+
+#+end_src
+** mutating
+protocol 除了可以提供傳回值型態的彈性，也可以用來變更 class/struct 中的屬性。如：
+#+begin_src swift -r -n :eval no
+import Cocoa
+import AVKit
+
+protocol Likeable {
+    mutating func markAsLiked()
+}
+
+struct Song {
+    var name: String
+    var album: Album
+    var audioURL: URL
+    var isLiked: Bool
+}
+
+struct Album {
+    var name: String
+    var imageURL: URL
+    var audioURL: URL
+    var isLiked: Bool
+}
+
+extension Song: Likeable {
+    mutating func markAsLiked() {
+        isLiked = true
+    }
+}
+#+end_src
+可以在不改變原 struct Album 的情況下，藉由 extension 來擴充 Song，使其遵循 Likeable protocol，提供變供屬性 isLiked 的值，*這在擴充 API 功能時特別有用*。
+** 擴充 protocol
+除了擴充現有 struct，protocol 也可以用來擴充 protocol，如：
+#+begin_src swift -r -n :eval no
+import Cocoa
+import AVKit
+
+protocol Likeable {
+    var isLiked: Bool {get set}
+}
+
+extension Likeable {
+    mutating func markAsLiked() {
+        isLiked = true
+    }
+}
+
+struct Song {
+    var name: String
+    var album: Album
+    var audioURL: URL
+    var isLiked: Bool
+}
+
+struct Album {
+    var name: String
+    var imageURL: URL
+    var audioURL: URL
+    var isLiked: Bool
+}
+
+extension Song: Likeable {}
+extension Album: Likeable {}
+#+end_src
+** Further Reading
+- [[https://docs.swift.org/swift-book/LanguageGuide/Protocols.html][Protocol]]
+- [[https://appcoda.com.tw/swift-protocol/][Swift開發指南：Protocols與Protocol Extensions的使用心法]]
+- [[https://abhimuralidharan.medium.com/all-about-protocols-in-swift-11a72d6ea354][All about protocols in SWIFT]]
+- [[https://blog.csdn.net/XunCiy/article/details/107367571][Swift5 14.Protocols]]
+
+#+latex:\newpage
+
+* Struct v.s. Class
+[[https://www.hackingwithswift.com/books/ios-swiftui/why-does-swiftui-use-structs-for-views][資料來源:Why does SwiftUI use structs for views?]]
+If you ever programmed for UIKit or AppKit (Apple’s original user interface frameworks for iOS and macOS) you’ll know that they use classes for views rather than structs. SwiftUI does not: we prefer to use structs for views across the board, and there are a couple of reasons why.[fn:8]
+- Structs are simpler and faster than classes.
+  In SwiftUI, all our views are trivial structs and are almost free to create. Think about it: if you make a struct that holds a single integer, the entire size of your struct is… that one integer. Nothing else. No surprise extra values inherited from parent classes, or grandparent classes, or great-grandparent classes, etc – they contain exactly what you can see and nothing more.
+
+- You can see this in action when you look at the kinds of things that can be a view. We already used Color.red and LinearGradient as views – trivial types that hold very little data. In fact, you can’t get a great deal simpler than using Color.red as a view: it holds no information other than “fill my space with red”.
+
+- In comparison, Apple’s documentation for UIView lists about 200 properties and methods that UIView has, all of which get passed on to its subclasses whether they need them or not.
+** What is in class/struct
+[[https://www.avanderlee.com/swift/struct-class-differences/][資料來源:Struct vs classes in Swift: The differences explained]]
+*** What is a class in Swift?
+A class in Swift is a reference type which can contain:
+- properties
+- methods
+- subscripts
+- initializers
+- protocol conformances
+- extensions
+
+It’s often described as a template definition of an object, like in the following Article instance definition:
+#+begin_src swift -r -n :results output :exports nil
+class ArticleClass {
+    let title: String
+    let url: URL
+    var readCount: Int = 0
+
+    init(title: String, url: URL) {
+        self.title = title
+        self.url = url
+    }
+}
+#+end_src
+*** What is a struct in Swift?
+A struct in Swift is a value type which, just like classes, can contain:
+- properties
+- methods
+- subscripts
+- initializers
+- protocol conformances
+- extensions
+
+It can also be seen as a template definition of an object, like in the following Article instance definition:
+#+begin_src swift -r -n :results output :exports nil
+struct ArticleStruct {
+    let title: String
+    let url: URL
+    var readCount: Int = 0
+}
+#+end_src
+*** What are the differences between a struct and a class?
+#+CAPTION: Difference between class and struct
+#+LABEL:fig:StructClass
+#+name: fig:StructClass
+#+ATTR_LATEX: :width 300
+#+ATTR_ORG: :width 300
+#+ATTR_HTML: :width 300
+[[file:images/coffee.gif]]
+When you pass a class object around your program, you are actually passing a reference to that object, so different parts of your program can share and modify your object. When you pass a structure [ or enum] around your program, what gets passes around is a copy of the structure. So modifications to structures don’t get shared.[fn:9]
+
+One of the major benefits of value types is that they are thread-safe not requiring any
+ synchronization.[fn:9] Structs always have unique owners, whereas with classes multiple things can point to the same value.[fn:10]
+
+Classes don’t need the *mutating* keyword before methods that change their properties, because you can change properties of constant classes.
+In practice, what this means is that if we have two SwiftUI views and we send them both the same struct to work with, they actually each have a unique copy of that struct; if one changes it, the other won’t see that change. On the other hand, if we create an instance of a class and send that to both views, they will share changes.[fn:10]
+Value vs reference types
+
+One of the most important differences is that a struct is a value type while a class is a reference type. References to a class instance share single data which means that any changes in that class will be available to each reference.
+
+#+begin_src swift -r -n :results output :exports nil
+let articleClass = ArticleClass(title: "Struct vs Class", url: URL(string: "www.avanderlee.com")!)
+let articleClassCopy = articleClass
+
+articleClass.readCount = 10
+print(articleClassCopy.readCount) // Prints: 10
+#+end_src
+
+A struct is a value type and will create a unique copy for each new reference.
+#+begin_src swift -r -n :results output :exports nil
+var articleStruct = ArticleStruct(title: "Struct vs Class", url: URL(string: "www.avanderlee.com")!, readCount: 0)
+var articleStructCopy = articleStruct
+
+articleStruct.readCount = 10
+print(articleStructCopy.readCount) // Prints: 0
+#+end_src
+**** The benefit of mutation in safety
+With this, structs have the benefit of mutation in safety as you can trust that no other part of your app is changing the data at the same time. This makes it easier to reason about your code and is especially helpful in multi-threaded environments where a different thread could alter your data at the same time.
+**** Structs get an initializer for free
+If you go back and compare the above code examples you can see that the ArticleClass has a defined initializer which is required for classes. Structs, however, get an initializer for free.
+#+begin_src swift -r -n :results output :exports nil
+// Before Swift 5.1 Memberwise initializers:
+// Generated memberwise init: init(title: String, url: URL, readCount: Int)
+let article = ArticleStruct(title: "", url: URL(string: "")!, readCount: 0)
+
+// After Swift 5.1 Memberwise initializers, using the default 0 for read count
+// Generated memberwise init: init(title: String, url: URL, readCount: Int = 0)
+let article = ArticleStruct(title: "", url: URL(string: "")!)
+#+end_src
+**** Classes allow inheritance
+Classes can inherit the characteristics of another class and with that, act like abstract classes. A common example is a custom view controller which inherit from UIViewController.
+
+With protocols in Swift, this is often no longer needed and replaceable with protocols. Protocols can be used with both classes and structs while inheritance is only possible with classes.
+Classes can be deinitialized
+
+A class allows executing code just before it gets destroyed by using a deinit method. When you define the same deinit method in a struct you’ll get the following error:
+#+begin_verse
+Deinitializers may only be declared within a class
+#+end_verse
+** 如何決擇? / When should I go for a struct and when for a class?
+A simple bullet point list will make it a lot easier to decide.
+*** You should use a class when:
+- Comparing instance identity is needed by using ===
+- Shared mutable state is required
+- Objective-C interoperability is required
+*** You should use a struct when:
+- Comparing instance data is needed by using ==
+- Unique copies with an independent state are required
+- The data is used in multiple threads
+*** Try to go for a struct by default.
+Structs make your code easier to reason about and make it easier to work in multithreaded environments which we often have while developing in Swift.
+** DEMO
+以下這個 View 可正常運作，於 TextField 中所做的編輯修改都會即時顯示於 Text 中。
+#+begin_src swift -r -n :results output :exports nil
+struct User {
+    var firstName" = Bilbo"
+    var lastName = "Baggins"
+}
+
+struct ContentView: View {
+    @State private var user = User()
+
+    var body: some View {
+        VStack {
+            Text("Your name is \(user.firstName) \(user.lastName).")
+
+            TextField("First name", text: $user.firstName)
+            TextField("Last name", text: $user.lastName)
+        }
+    }
+}
+#+end_src
+但若將 struct 改為 class，雖程式仍可執行，但 Text 中的姓名卻不再隨 TextField 的修改而連動。
+To fix this, we need to tell SwiftUI when interesting parts of our class have changed. By “interesting parts” I mean parts that should cause SwiftUI to reload any views that are watching our class – it’s possible you might have lots of properties inside your class, but only a few should be exposed to the wider world in this way.[fn:11]
+若要將 struct 改為 class，則程式要改成：
+#+begin_src swift -r -n :results output :exports nil
+class User: ObservableObject{
+    @Published var firstName = "Bilbo"
+    @Published var lastName = "Baggins"
+}
+
+struct ContentView: View {
+    @ObservedObject var user = User()
+
+    var body: some View {
+        VStack {
+            Text("Your name is \(user.firstName) \(user.lastName).")
+
+            TextField("First name", text: $user.firstName)
+            TextField("Last name", text: $user.lastName)
+        }
+    }
+}
+#+end_src
+Our User class has two properties: firstName and lastName. Whenever either of those two changes, we want to notify any views that are watching our class that a change has happened so they can be reloaded. We can do this using the @Published property observer.
+
+@Published is more or less half of @State: it tells Swift that whenever either of those two properties changes, it should send an announcement out to any SwiftUI views that are watching that they should reload.
+
+How do those views know which classes might send out these notifications? That’s another property wrapper, @ObservedObject, which is the other half of @State – it tells SwiftUI to watch a class for any change announcements.
+
+The @ObservedObject property wrapper can only be used on types that conform to the ObservableObject protocol. This protocol has no requirements, and really all it means is “we want other things to be able to monitor this for changes.”
+
+As you’ve seen, rather than just using @State to declare local state, we now take three steps:
+
+- Make a class that conforms to the ObservableObject protocol.
+- Mark some properties with @Published so that any views using the class get updated when they change.
+- Create an instance of our class using the @ObservedObject property wrapper.
+
+The end result is that we can have our state stored in an external object, and, even better, we can now use that object in multiple views and have them all point to the same values.
+#+latex: \newpage
+
+* TODO some
+:PROPERTIES:
+:CUSTOM_ID: some
+:END:
+#+begin_verse
+Adding the keyword some in front of a return type indicates that the return type is opaque. [fn:12]
+#+end_verse
+** Generics
+*** 問題
+Generics 允許開發者在不同類型中複用你的程式碼，用來解決下列問題：
+#+begin_src swift -r -n :eval no
+func swapInts(_ a: inout Int, _ b: inout Int) {
+    let temporaryB = b
+    b = a
+    a = temporaryB
+}
+
+var num1 = 10
+var num2 = 20
+
+swapInts(&num1, &num2)
+print(num1)   // 20
+print(num2)   // 10
+#+end_src
+但若想交換字串，則要寫成
+#+begin_src swift -r -n :eval no
+func swapStrings(_ a: inout String, _ b: inout String) {
+    let temporaryB = b
+    b = a
+    a = temporaryB
+}
+#+end_src
+可以發現除了參數之外，重複的 code 實在太多
+*** 解決方案
+將固定型態的參數轉為 Generic type
+#+begin_src swift -r -n :eval no
+import Cocoa
+
+func swapTwoValues<T>(_ a: inout T, _ b: inout T) {
+    let temporaryA = a
+    a = b
+    b = temporaryA
+}
+
+
+var num1 = 10
+var num2 = 20
+
+swapTwoValues(&num1, &num2)
+print(num1)   // 20
+print(num2)   // 10
+#+end_src
+另一個例子為 Stack 的實作：
+原本只能儲存 Int 的 Stack 如下，若要儲存字串則要再另行定義。
+#+begin_src swift -r -n :eval no
+struct IntStack {
+    var items = [Int]()
+    mutating func push(_ item: Int) {
+        items.append(item)
+    }
+    mutating func pop() -> Int {
+        return items.removeLast()
+    }
+}
+#+end_src
+改為 Generic type 後可動態變更為整數 stack 或字串 stack，如：
+#+begin_src swift -r -n :eval no
+struct Stack<Element> {
+    var items = [Element]()
+    mutating func push(_ item: Element) {
+        items.append(item)
+    }
+    mutating func pop() -> Element {
+        return items.removeLast()
+    }
+}
+
+var stackOfStrings = Stack<String>()
+stackOfStrings.push("uno")
+stackOfStrings.push("dos")
+stackOfStrings.push("tres")
+stackOfStrings.push("cuatro")
+// the stack now contains 4 strings
+
+#+end_src
+** opaque
+帶有不透明（opaque）返回類型的函數或方法，將會隱藏其返回值的類型[fn:13]
+#+latex:\newpage
+
+* TODO 進階主題
+:PROPERTIES:
+:CUSTOM_ID: advanced
+:END:
+- [[https://developer.apple.com/design/human-interface-guidelines/][Human Interface Guidelines]]: Apple 的人機設計界面指南
+- [[https://developer.apple.com/documentation][Apple Developer Documentation]]: Apple 開發者文件
+- [[https://www.appcoda.com.tw/protocol-extension/][利用 Protocol Extension 減少重覆的 Code　大大增強 Code 的維護性]]
+- [[https://appcoda.com.tw/mastering-swift/][精通Swift：列舉、閉包、泛型、Protocols和高階函數]]
+#+latex:\newpage
+
+* Footnotes
+
+[fn:15] [[https://medium.com/tarkalabs/all-about-debounce-4-ways-to-achieve-debounce-in-swift-e8f8ce22f544][All about debounce: 4 ways to achieve debounce in Swift]]
+
+[fn:14] [[https://hugolu.gitbooks.io/learn-swift/content/Advanced/HighOrderFunctions.html#map][ How to use Picker with enum in SwiftUI ]]
+
+[fn:1] [[https://www.raywenderlich.com/6742901-protocol-oriented-programming-tutorial-in-swift-5-1-getting-started][Protocol-Oriented Programming Tutorial in Swift 5.1: Getting Started]]
+
+[fn:2] [[https://medium.com/%E5%BD%BC%E5%BE%97%E6%BD%98%E7%9A%84-swift-ios-app-%E9%96%8B%E7%99%BC%E6%95%99%E5%AE%A4/%E7%B0%A1%E6%98%93%E8%AA%AA%E6%98%8Eswift-4-protocol-919b7f9cbaee][『簡易說明Swift 4』Protocol]]
+
+[fn:3] [[https://www.appcoda.com.tw/protocol-extension/][利用 Protocol Extension 減少重覆的 Code　大大增強 Code 的維護性]]
+
+[fn:4] [[https://docs.swift.org/swift-book/LanguageGuide/Protocols.html][Protocols]]
+
+[fn:5] [[https://www.appcoda.com.tw/swift-protocol/][Swift開發指南：Protocols與Protocol Extensions的使用心法]]
+
+[fn:6] [[https://ithelp.ithome.com.tw/articles/10197366][Day-29 Swift 語法(25) - 協定 Protocol]]
+
+[fn:7] [[https://abhimuralidharan.medium.com/all-about-protocols-in-swift-11a72d6ea354][All about protocols in swift]]
+
+[fn:8] [[https://www.hackingwithswift.com/books/ios-swiftui/why-does-swiftui-use-structs-for-views][Why does SwiftUI use structs for views?]]
+
+[fn:9] [[https://abhimuralidharan.medium.com/difference-between-a-struct-and-a-class-in-swift-53e08df73714][Difference between a struct and a class in Swift]]
+
+[fn:10] [[https://www.hackingwithswift.com/books/ios-swiftui/why-state-only-works-with-structs][Why @State only works with structs]]
+
+[fn:11] [[https://www.hackingwithswift.com/books/ios-swiftui/sharing-swiftui-state-with-observedobject][Sharing SwiftUI state with @ObservedObject]]
+
+[fn:12] [[https://medium.com/@PhiJay/whats-this-some-in-swiftui-34e2c126d4c4][What’s this “some” in SwiftUI?]]
+
+[fn:13] [[https://medium.com/jeremy-xue-s-blog/swift-%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80-opaque-types-600ad5758b91][Swift 程式語言 — Opaque Types]]

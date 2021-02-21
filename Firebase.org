@@ -9,6 +9,13 @@
 ** Firebase的歷史
 Firebase從Envolve演變而來。 Envolve是James Tamplin和Andrew Lee在2011年創立的一家早期創業公司。Envolve為開發人員提供了一個API,該API允許將在線聊天功能集成到他們的網站中。釋放聊天服務後,它發現envlove被用來傳遞不是聊天消息的應用程序數據。開發人員使用Envolve同步應用程序,以分離實時體系結構和為其提供動力的聊天系統。2011年9月,Tamplin和Lee單獨成立了Firebase。最後於2012年4月向公眾發佈。[fn:2]
 
+- [[https://medium.com/flawless-app-stories/how-to-build-a-firebase-app-with-swiftui-5919d2d8a396][How To Build A Firebase App With SwiftUI]]
+- [[https://benmcmahen.com/authentication-with-swiftui-and-firebase/][Using Firebase Authentication with SwiftUI]]
+- [[https://www.youtube.com/watch?v=4RUeW5rUcww][Building a to-do list app with SwiftUI and Firebase - Part 1 | Firebase Semi-live]]
+- https://www.youtube.com/watch?v=elhzkcoBl-A
+- https://www.youtube.com/watch?v=9VpaaJ3eLWk&list=PLY_qIufNHc292EYDwe3B6sGYO_vQ7pOLx&index=8
+- https://www.hackingwithswift.com/books/ios-swiftui/creating-a-form
+- https://www.youtube.com/watch?v=1QcekWFK2d8
 
 * Firebase console
 ** Web sites
@@ -22,7 +29,11 @@ Firebase從Envolve演變而來。 Envolve是James Tamplin和Andrew Lee在2011年
 4. Add Firebase SDKs to your app
 5. Initialize Firebase in your app
 **
+
 * Setting up Firebase project
+** Step by step
+[[https://1998design.medium.com/%E5%A6%82%E4%BD%95-%E5%B0%87firebase%E5%8A%A0%E5%85%A5ios-swiftui-2-2020-d4315d0173ca][如何：將Firebase加入iOS SwiftUI 2 (2020)]]
+
 * Videos
 - [[https://www.youtube.com/watch?v=4RUeW5rUcww][Building a to-do list app with SwiftUI and Firebase - Part 1]]
 - [[https://www.youtube.com/watch?v=2k6_Mi2ERWc][Building a Todo List App Using Firebase and SwiftUI - Part 2 ]]

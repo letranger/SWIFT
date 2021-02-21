@@ -82,7 +82,6 @@ numOfStudent = "fourty" // wrong
 :                Int()
 #+END_EXAMPLE
 
-
 ** 常數與變數的命名
 我們可以使用喜歡的字元作為常數和變數名，包括 Unicode 字元：
 #+begin_src swift -r -n :results output :exports both
@@ -494,6 +493,8 @@ Swift provides three primary collection types, known as arrays, sets, and dictio
 #+begin_src swift -r -n :results output :exports both
 var EnglishScores = [Int]()
 print(EnglishScores)
+// OR
+var NameArray = [String]()
 #+end_src
 
 #+RESULTS:

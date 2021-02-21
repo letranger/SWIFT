@@ -5,6 +5,7 @@
 * Recommending Reading
 這些都只是為了選修課臨時整理的教材，內容深度與廣度都有限，建議有學習野心的同學還是多多去讀其他的資料：
 - [[https://www.hackingwithswift.com/100/swiftui][100 Days of SwfitUI]]
+
 * iOS app 的開發界面: UIKit v.s. SwiftUI
 :PROPERTIES:
 :CUSTOM_ID: SW-UIKIT-SWIFTUI
@@ -52,13 +53,14 @@ SwiftUI 本身即支援 Dynamic Type、Dark Mode、 Localization 等等。這邊
 - There’s no AutoLayout or related problems. Instead, you use things like HStack, VStack, ZStack, Groups, Lists, and more. Unlike AutoLayout, SwiftUI always produces a valid layout. There’s no such thing as an ambiguous or unsatisfiable layout. SwiftUI replaces storyboards with code, making it easy to create a reusable view and avoid conflicts related with the simultaneous use of one project by the development team.
 
   #+latex:\newpage
-* AppDelegate v.s. SceneDelegate
+
+* AppDelegate v.s. SceneDelegate v.s. <AppName>App
 :PROPERTIES:
 :CUSTOM_ID: delegate
 :END:
-- AppDelegate 原來的職責為負責 App 的生命週期和 UI 生命週期，在 Xcode11 後，AppDelegate 將 UI 的生命週期(Scene Session)交給 SceneDelegate。原 Xcode10
-- 使用 Swift 為 User Interface 的專案 Launch 的生命週期為 AppDelegate → ViewController，而使用 SwiftUI 為 User Interface 的專案則變成為 AppDelegate → SceneDelegate → ContentView，原本應該出現在 AppDelegate 的 applicationWillEnterForeground(_:) 等相關 App 到前、背景等相關的生命週期邏輯也都移至 SceneDelegate 裡了，method 名稱 application 的前綴字也都更改為 scene 了。[fn:3]
-** SceneDelegate.swift
+** AppDelegate -> SceneDelegate
+AppDelegate 原來的職責為負責 App 的生命週期和 UI 生命週期，在 Xcode11 後，AppDelegate 將 UI 的生命週期(Scene Session)交給 SceneDelegate。原 Xcode10使用 Swift 為 User Interface 的專案 Launch 的生命週期為 AppDelegate → ViewController，而使用 SwiftUI 為 User Interface 的專案則變成為 AppDelegate → SceneDelegate → ContentView，原本應該出現在 AppDelegate 的 applicationWillEnterForeground(_:) 等相關 App 到前、背景等相關的生命週期邏輯也都移至 SceneDelegate 裡了，method 名稱 application 的前綴字也都更改為 scene 了。[fn:3]
+*** SceneDelegate.swift
 #+BEGIN_SRC swift -r -n
 import UIKit
 import SwiftUI
@@ -120,6 +122,43 @@ struct SceneDelegate_Previews: PreviewProvider {
 }
 #+END_SRC
 #+latex:\newpage
+** SceneDelegate -> <AppName>App
+從程式的簡潔與效能來看，整段SceneDelegate只為了定義一個View(第76行)這其實不太合理，Apple在[[https://developer.apple.com/wwdc20/][WWDC20]]中提出了一個新的solution: App.
+從Xcode 12 beta開始，開啟新專案時會多一個SwiftUI App的選項，原來的SceneDelegate.swiftx己消失，取而代之的是XXXApp.swift, XXX為專案名稱。
+#+CAPTION: Xcode 11 v.s. Xcode 12
+#+LABEL:fig:XcodeComparison
+#+name: fig:XcodeComparison
+#+ATTR_LATEX: :width 400
+#+ATTR_ORG: :width 400
+#+ATTR_HTML: :width 600
+[[file:images/XcodeComparison.png]]
+*** HelloApp.swift(專案名稱為Hello)
+#+begin_src swift -r -n :results output :exports nil
+//
+//  NewAppApp.swift
+//  NewApp
+//
+//  Created by yen yung chin on 2021/2/15.
+//
+
+import SwiftUI
+
+@main
+struct HelloApp: App {
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+        }
+    }
+}
+
+#+end_src
+- @main tells Xcode that the following struct, Hello, will be the entry point for the app. Only one struct can be marked with this attribute.
+- According to the documentation, App is a protocol that “represents the structure and behavior of an app.” HelloWorldApp conforms to this. It’s like the base view of your app — no, the app itself. You’re literally writing out what your app will look like in this struct.
+- Scene — The body of a SwiftUI View must be of type View. Similarly, the body of a SwiftUI App must be of type Scene…
+- WindowGroup is a Scene that wraps views. The view that we want to present, ContentView, is a View — not a scene. WindowGroup lets us wrap them up into a single Scene that SwiftUI can recognize and display.
+資料來源:[fn:4]
+
 * 建立 SwiftUI Project
 :PROPERTIES:
 :CUSTOM_ID: SW-SWIFTUI-INTRO
@@ -296,13 +335,15 @@ struct ContentView_Previews: PreviewProvider {
 #+ATTR_ORG: :width 300
 #+ATTR_HTML: :width 300
 [[file:images/hstack-1.jpg]]
-* Image
+
+* Basic Components
+** Image
 影像來源可以是 System Image 或自行下載/編修的影像(Customized Image)
-** 使用系統內建的圖
-*** [[https://developer.apple.com/design/human-interface-guidelines/sf-symbols/overview/][SF Symbols ]][fn:4]
-*** 從 iOS 13 開始，Apple 介紹了一個名為 SFSymbols 的新功能。SF Symbols 這功能由 Apple 所設計，當中集合了 1500 多個可以在 App 之中使用的符號。[fn:3]
-*** [[https://developer.apple.com/design/resources/][Download SF Symbols app]]
-*** code
+*** 使用系統內建的圖
+**** [[https://developer.apple.com/design/human-interface-guidelines/sf-symbols/overview/][SF Symbols ]][fn:5]
+**** 從 iOS 13 開始，Apple 介紹了一個名為 SFSymbols 的新功能。SF Symbols 這功能由 Apple 所設計，當中集合了 1500 多個可以在 App 之中使用的符號。[fn:3]
+**** [[https://developer.apple.com/design/resources/][Download SF Symbols app]]
+**** code
 #+begin_src swift -r -n :eval no
 import SwiftUI
 
@@ -326,7 +367,7 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 #+end_src
-*** Demo
+**** Demo
 #+CAPTION: Images-1
 #+LABEL:fig:Images-1
 #+name: fig:Images-1
@@ -334,7 +375,7 @@ struct ContentView_Previews: PreviewProvider {
 #+ATTR_ORG: :width 300
 #+ATTR_HTML: :width 300
 [[file:images/image-1.jpg]]
-** 使用自己的圖
+*** 使用自己的圖
 1) Drag image into Project folder *Assets.xcassets*
 2) Add following code
 #+begin_src swift -r -n :eval no
@@ -343,7 +384,7 @@ Image("ImageName") //file name in Assets.xcassets
   .scaledToFit()
   .frame(width: 200, height: 160, alignment: .center)
 #+end_src
-** Image Attributes
+*** Image Attributes
 #+begin_src swift -r -n :eval no
 import SwiftUI
 
@@ -377,12 +418,13 @@ struct ContentView_Previews: PreviewProvider {
 #+ATTR_ORG: :width 300
 #+ATTR_HTML: :width 300
 [[file:images/image-2.jpg]]
-** Using SF Symbols
+*** Using SF Symbols
 - SF Symbols app
 - [[https://sfsymbols.com/][sfsymbols.com]]
 - [[https://www.avanderlee.com/swift/sf-symbols-guide/][SF Symbols: The benefits and how to use them guide]]
-* Button
-** 語法
+
+** Button
+*** 語法
 #+begin_src swift -r -n :eval no
 //...
 Button("Title") {
@@ -392,7 +434,7 @@ Button("Title") {
 Button(action: <#T##() -> Void#>, label: <#T##() -> _#>)
 //...
 #+end_src
-** 將變數加入 View 中
+*** 將變數加入 View 中
 #+begin_src swift -r -n :eval no
 struct ContentView: View {
     var title = "Hello SWiftUI"
@@ -407,7 +449,7 @@ struct ContentView: View {
     }
 }
 #+end_src
-** 如何於程式中改變 title 的值來改變 View 的顯示內容?
+*** 如何於程式中改變 title 的值來改變 View 的顯示內容?
 解決方案: @State
 如以下範例:
 #+begin_src swift -r -n :eval no
@@ -424,14 +466,14 @@ struct ContentView: View {
     }
 }
 #+end_src
-View 為 struct，未加上 @State 的變數是不允許變更的(immutable)；加了 @State 後，SwiftUI 將認為這個變數(或，struct 的 property)代表某種影將 View 畫面或內容的狀態，並在背後另外產生空間儲存 property 的內容，它不再儲存在 ContentView 裡，因此我們可以修改它的內容[fn:5]。
+View 為 struct，未加上 @State 的變數是不允許變更的(immutable)；加了 @State 後，SwiftUI 將認為這個變數(或，struct 的 property)代表某種影將 View 畫面或內容的狀態，並在背後另外產生空間儲存 property 的內容，它不再儲存在 ContentView 裡，因此我們可以修改它的內容[fn:6]。
 
 以 @State 宣告的 property 有個重要的特性，只要它的內容改變，畫面也會立即更新。它帶來了以下兩個好處:
 - 不用另外寫 property 內容改變時更新畫面的程式。
 - 不用擔心畫面顯示的內容跟 property 的內容不同步，比方修改了 property，但卻忘了更新畫面。
 
 那麼，要在什麼地方去改變 title 的值?
-** 範例: 按下 Button，改變 Text title
+*** 範例: 按下 Button，改變 Text title
 #+begin_src swift -r -n :eval no
 struct ContentView: View {
     @State var title = "Hello SWiftUI"
@@ -449,7 +491,7 @@ struct ContentView: View {
     }
 }
 #+end_src
-** 以 Button 開啟一個新的 View
+*** 以 Button 開啟一個新的 View
 一個 app 當然不會只有一個 View，我們可以透過 NavigationLink 來控制一系列 View 的呈現，也可以簡單的以 Button 來控制。
 在下例中，按下 BUtton 後會秀出 SecondView，而 SwiftUI 控制一個新 View 的方式是透過 sheet(isPreseted)中 isPresented 的 true/false。
 ContentView.swift
@@ -500,7 +542,7 @@ struct SecondView_Previews: PreviewProvider {
 #+ATTR_ORG: :width 300
 #+ATTR_HTML: :width 300
 [[file:images/showSecondView.gif]]
-** 以 Button 關閉 View
+*** 以 Button 關閉 View
 在上例中，把 SecondView 關掉的方式為往下滑動螢幕，另一種關掉的方式是加上一個 Button:
 #+begin_src swift -r -n :results output :exports nil
 import SwiftUI
@@ -561,13 +603,15 @@ SecondView(showMe: self.$showSecondView)
 #+ATTR_ORG: :width 300
 #+ATTR_HTML: :width 300
 [[file:images/closeView.gif]]
-* TextField (with @State)
+
+* Passing data within View: TextField
 ** 語法
 #+begin_src swift -r -n :eval no
 @State private var 變數="值"
 TextField("提示文字", text: $變數)
 #+end_src
 ** 範例: 於 TextField 輸入資料，顯示於 Text 中
+即，利用@State宣告一個可以讓Text和TextField共享的變數
 #+begin_src swift -r -n :eval no
 import SwiftUI
 
@@ -624,20 +668,21 @@ That all works: SwiftUI is smart enough to understand that one object contains a
 ** What is @State
 用途:在同一 View 中給不同元件共享(變更)變數，而且這種共享是雙向的，即，任何一端變更了變數的值，另一端都會立即更新。@tate 的相關特性如下：
 - State is a value, or a set of values, that can change over time, and that affects a view’s behavior, content, or layout. You use a property with the @State attribute to add state to a view.
-- 通過使用 @State 修飾器我們可以關聯出 View 的狀態. SwiftUI 將會把使用過 @State 修飾器的屬性存儲到一個特殊的內存區域(heap)，並且這個區域和 View struct 是隔離的. 當 @State 裝飾過的屬性發生了變化，SwiftUI 會根據新的屬性值重新創建 View。[fn:10]
+- 通過使用 @State 修飾器我們可以關聯出 View 的狀態. SwiftUI 將會把使用過 @State 修飾器的屬性存儲到一個特殊的內存區域(heap)，並且這個區域和 View struct 是隔離的. 當 @State 裝飾過的屬性發生了變化，SwiftUI 會根據新的屬性值重新創建 View。[fn:7]
 - Simple properties like String or Int
 - Belongs to a specific view
 - Never used outside that view
 - The wrappedValue is: anything (but almost certainly a value type).
 - What it does: stores the wrappedValue in the heap; when it changes, invalidates the View.
 - Projected value (i.e. $): a Binding (to that value in the heap).
+
 * Customize UI Components
 :PROPERTIES:
 :CUSTOM_ID: SW-CUSTOMIZED-UI-COMPONENTS
 :END:
-SwiftUI 提供豐富的 modifier 幫助我們設計客製 UI 元件的樣式，諸如陰影，旋轉等效果皆可透過 modifier 實現，還可以搭配方便的拖曳加入相關程式碼。[fn:6]
+SwiftUI 提供豐富的 modifier 幫助我們設計客製 UI 元件的樣式，諸如陰影，旋轉等效果皆可透過 modifier 實現，還可以搭配方便的拖曳加入相關程式碼。[fn:8]
 ** Text
-*** Advanced Attributes [fn:6]
+*** Advanced Attributes [fn:8]
 #+begin_src swift -r -n :eval no
 struct ContentView: View {
     var body: some View {
@@ -663,7 +708,7 @@ struct ContentView: View {
 #+ATTR_HTML: :width 300
 [[file:images/adv-text-attributes.jpg]]
 ** Image
-*** Advanced Attributes s[fn:7]
+*** Advanced Attributes s[fn:9]
 #+begin_src swift -r -n :eval no
 import SwiftUI
 
@@ -710,7 +755,7 @@ struct ContentView_Previews: PreviewProvider {
 [[file:images/image-advanced-attributes.jpg]]
 ** Button II
 *** 外觀控制
-**** Advanced Attributes [fn:8]
+**** Advanced Attributes [fn:10]
 #+begin_src swift -r -n :eval no
 import SwiftUI
 
@@ -861,6 +906,7 @@ struct ContentView_Previews: PreviewProvider {
 [[file:images/background-1.jpg]]
 ** Further reading
 - [[https://www.simpleswiftguide.com/advanced-swiftui-button-styling-and-animation/][Advanced SwiftUI button styling and animation]]
+
 * List
 :PROPERTIES:
 :CUSTOM_ID: list
@@ -949,7 +995,7 @@ struct ContentView: View {
 [[file:images/list-2.jpg]]
 ** 建立 list 來源資料(動態 List) [fn:3]
 #+begin_verse
-In order to handle dynamic items, you must first tell SwiftUI how it can identify which item is which. This is done using the Identifiable protocol, which has only one requirement: some sort of id value that SwiftUI can use to see which item is which. [fn:9]
+In order to handle dynamic items, you must first tell SwiftUI how it can identify which item is which. This is done using the Identifiable protocol, which has only one requirement: some sort of id value that SwiftUI can use to see which item is which. [fn:11]
 #+end_verse
 #+begin_src swift -r -n :eval no
 import SwiftUI
@@ -1013,13 +1059,14 @@ var body: some View {
 - [[https://developer.apple.com/tutorials/swiftui/building-lists-and-navigation][Building Lists and Navigation]]
 
 #+latex:\newpage
+
 * Passing data between Views #1: @Binding
 :PROPERTIES:
 :CUSTOM_ID: StateBinding
 :END:
 用途:不同 View 間共享變數
-- @Binding is one of SwiftUI’s less used property wrappers, but it’s still hugely important: it lets us declare that one value actually comes from elsewhere, and should be shared in both places. This is not the same as @ObservedObject or @EnvironmentObject, both of which are designed for reference types to be shared across potentially many views.[fn:11]
-- 有時候我們會把一個視圖的屬性傳至子節點中，但是又不能直接的傳遞給子節點，因為在 Swift 中值的傳遞形式是值類型傳遞方式，也就是傳遞給子節點的是一個拷貝過的值。但是通過 @Binding 修飾器修飾後，屬性變成了一個引用類型，傳遞變成了引用傳遞，這樣父子視圖的狀態就能關聯起來了。[fn:10]
+- @Binding is one of SwiftUI’s less used property wrappers, but it’s still hugely important: it lets us declare that one value actually comes from elsewhere, and should be shared in both places. This is not the same as @ObservedObject or @EnvironmentObject, both of which are designed for reference types to be shared across potentially many views.[fn:12]
+- 有時候我們會把一個視圖的屬性傳至子節點中，但是又不能直接的傳遞給子節點，因為在 Swift 中值的傳遞形式是值類型傳遞方式，也就是傳遞給子節點的是一個拷貝過的值。但是通過 @Binding 修飾器修飾後，屬性變成了一個引用類型，傳遞變成了引用傳遞，這樣父子視圖的狀態就能關聯起來了。[fn:7]
 - The wrappedValue is: a value that is bound to something else.
 - What it does: gets/sets the value of the wrappedValue from some other source.
 - What it does: when the bound-to value changes, it invalidates the View.
@@ -1133,6 +1180,7 @@ struct EditUser_Previews: PreviewProvider {
     }
 }
 #+end_src
+
 * Alert
 :PROPERTIES:
 :CUSTOM_ID: Alert
@@ -1171,11 +1219,13 @@ struct SecondView: View {
 #+end_src
 
 #+LATEX: \newpage
-* Tabbed View
+
+* Navigation between Views
+** Tabbed View
 Tab bar 是在 App 螢幕底部出現的欄，提供了在不同的版面之間進行快速切換的途徑。Tab bar 的背景顏色是半透明，可以有調色。Tab bar 在所有螢幕尺寸都保持一樣的高度，並且在鍵盤時出現會隱藏起來。
 
-一個 tab bar 可以包含無數個 tab，但可以能容納的數量視乎根據手機/平板的大小，以及橫、豎屏模式都會有所影響。在空間的限制下，當某些 tab 無法被顯示時，最後一個 tab 會變成“更多”(More)， 通過這個 tab 可以到另一個獨立的列表頁面，那裡會列出所有無法被顯示的 tab。[fn:12]
-** Create subView
+一個 tab bar 可以包含無數個 tab，但可以能容納的數量視乎根據手機/平板的大小，以及橫、豎屏模式都會有所影響。在空間的限制下，當某些 tab 無法被顯示時，最後一個 tab 會變成“更多”(More)， 通過這個 tab 可以到另一個獨立的列表頁面，那裡會列出所有無法被顯示的 tab。[fn:13]
+*** Create subView
 #+begin_src swift -r -n :results output :exports nil
 import SwiftUI
 
@@ -1234,43 +1284,43 @@ struct tabView_Previews: PreviewProvider {
 #+ATTR_ORG: :width 300
 #+ATTR_HTML: :width 300
 [[file:images/tabbedView.gif]]
-** 自訂底下的主控 tab bar
-*** Change tabView font size
+*** 自訂底下的主控 tab bar
+**** Change tabView font size
 #+begin_src swift -r -n :results output :exports nil
 init() {
     UITabBarItem.appearance().setTitleTextAttributes([.font: UIFont.systemFont(ofSize: 14) ], for: .normal)
 }
 
 #+end_src
-*** the color of unselected tab bar
+**** the color of unselected tab bar
 #+begin_src swift -r -n :results output :exports nil
 init() {
     UITabBar.appearance().unselectedItemTintColor = UIColor.systemGray3
 }
 #+end_src
-*** the color of the tab bar item : .accentColor
+**** the color of the tab bar item : .accentColor
 #+begin_src swift -r -n :results output :exports nil
 TabView {
 
 }.accentColor(.pink)
 #+end_src
-*** the tab bar’s color: appearance()
+**** the tab bar’s color: appearance()
 兩種做法(尚未區分 backgroundColor 與 barTintColor 之差異)
-**** init()
+***** init()
 #+begin_src swift -r -n :results output :exports nil
 init() {
         UITabBar.appearance().barTintColor = UIColor.systemPink
     }
 #+end_src
-**** onAppear()
+***** onAppear()
 與 init()共用時，onAppear()優先
 #+begin_src swift -r -n :results output :exports nil
 .onAppear() {
     UITabBar.appearance().barTintColor = .white
 }
 #+end_src
-** 以程式控制 tabbed view 的 subview 的切換
-Users can tap the tab bar items to switch between tabs, which is automatically handled the TabView. In some use cases, you may want to switch to a specific tab programmatically. The TabView has another init method for this purpose. The method takes a state variable which associates with the tag value of the tabs.[fn:13]
+*** 以程式控制 tabbed view 的 subview 的切換
+Users can tap the tab bar items to switch between tabs, which is automatically handled the TabView. In some use cases, you may want to switch to a specific tab programmatically. The TabView has another init method for this purpose. The method takes a state variable which associates with the tag value of the tabs.[fn:14]
 #+begin_src swift -r -n :results output :exports nil
 TabView(selection: $selection)
 #+end_src
@@ -1339,7 +1389,7 @@ struct ContentView: View {
     }
 }
 #+end_src
-** 一個優秀的 Tab Bar 應該具備哪些特點？[fn:12]
+*** 一個優秀的 Tab Bar 應該具備哪些特點？[fn:13]
 1. 不會有太多的 tab
    每增加一個 tab 會減小了選擇各別的可觸區域，並增加 app 的複雜性，讓用戶更難找到所需的資料。即使“更多(More)”標籤可以展示額外的 tab，但這會需要額外的點擊步驟，而且沒有很好利用 tab bar 的有限空間。太少的 tab 也是問題，它會使你的界面感覺被分離。一般來說，在 iPhone 上應使用 3 至 5 個標籤，在 iPad 上則可稍微多幾個。
 1. 不會經常變動
@@ -1350,17 +1400,18 @@ struct ContentView: View {
    系統提供了一系列預先設定好、一般用途的 icon，我們也可以創建自己的 icon，確保 tab bar icon 在視覺上的風格統一和平衡。
 1. 應使用 badge 傳遞信息
    我們可以在 tab 上加上 badge (一個紅色橢圓上帶有白色數字或感嘆號的圖案) ，來暗示該 tab 或模式有新信息。
-** Further Reading
+*** Further Reading
 - [[https://www.appcoda.com/swiftui-tabview/][Customizing the Tab Bar Color]]
 - [[https://www.youtube.com/watch?v=tDyvkIe9RsA][Tabbed View SwiaftUI - TabBar Tutorial & Basic Customization - Xcode 11 - 2019]]
 - [[https://medium.com/@nwyyy/swift%E7%AD%86%E8%A8%98-tab-bar-2ddba7d56587][iOS筆記：Tab Bar]]
 - [[https://www.simpleswiftguide.com/][Simple Swift Guide]]
 #+latex:\newpage
-* Navigation Views
+
+** Navigation Views
 :PROPERTIES:
 :CUSTOM_ID: navigation
 :END:
-** Navigation bar
+*** Navigation bar
 - 於 body 中最外層的 component 之外加入 NavigationView
 - Title: navigationBarTitle()，title 置於 NavigationView {}內 attach 在 List 上，因為 NavigationView 主要負責於不同的 View 中切換，每個 View 都會有自己的 content 與 Title。
 - DisplayMode 有 三類：
@@ -1394,7 +1445,7 @@ struct ContentView: View {
 #+ATTR_HTML: :width 300
 [[file:images/navigation-1.jpg]]
 
-*** Hide Navigation Bar
+**** Hide Navigation Bar
 使用 Hide 與不設定 BarTitle 的差異在於：後者仍會佔掉 Bar 的空間
 #+begin_src swift -r -n :results output :exports nil
 import SwiftUI
@@ -1417,13 +1468,13 @@ struct ContentView: View {
 ...
 #+end_src
 
-**** NavigationLink
-***** Create
-***** 語法:
+***** NavigationLink
+****** Create
+****** 語法:
 #+begin_src swift -r -n :results output :exports both
 NavigationLink(<title: StringProtocol, destination:)
 #+end_src
-***** 方式
+****** 方式
 1. Attach link in NavigationLink()
  #+begin_src swift -r -n :results output :exports nil
 struct ContentView: View {
@@ -1474,10 +1525,10 @@ struct ContentView: View {
 }
 #+end_src
 
-**** Reading
+***** Reading
 - [[https://www.youtube.com/watch?v=nA6Jo6YnL9g][The Complete Guide to NavigationView in SwiftUI]]
-** Create New Views
-*** in same file
+*** Create New Views
+**** in same file
 #+begin_src swift -r -n :results output :exports nil
 import SwiftUI
 
@@ -1501,11 +1552,11 @@ struct ContentView: View {
     }
 }
 #+end_src
-**** class exercise
+***** class exercise
 為上述 NavigationView 加入另外兩個 subView: OrderView, AboutView
-*** in new file
+**** in new file
 將上述專案中的每個 subView 改為獨立 View
-** Passing parameter(單純參數傳遞)
+*** Passing parameter(單純參數傳遞)
 Single way, Just pass variable from A to B.
 #+begin_src swift -r -n :results output :exports nil
 struct BookDetailView: View {
@@ -1532,7 +1583,7 @@ struct ContentView: View {
     }
 }
 #+end_src
-** Version-1: Navigation v.s. List v.s. NavigationLink
+*** Version-1: Navigation v.s. List v.s. NavigationLink
 #+begin_src swift -r -n :eval no
 //
 //  ContentView.swift
@@ -1596,9 +1647,9 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 #+end_src
-** Version-2:
+*** Version-2:
 將記錄架構(Book.swift)、List(ContentView.swift)以及 Detail(DetailView.swift)各自以獨立檔案設計。
-*** Book.swift
+**** Book.swift
 #+begin_src swift -r -n :eval no
 // 不涉及使用者界面
 
@@ -1614,7 +1665,7 @@ struct Book: Identifiable {
     var image: String
 }
 #+end_src
-*** ContentView.swift
+**** ContentView.swift
 #+begin_src swift -r -n :eval no
 import SwiftUI
 
@@ -1657,7 +1708,7 @@ struct ContentView_Previews: PreviewProvider {
 #+ATTR_ORG: :width 300
 #+ATTR_HTML: :width 300
 [[file:images/Navi-List-1.png]]
-*** DetailView.swift
+**** DetailView.swift
 #+begin_src swift -r -n :eval no
 import SwiftUI
 
@@ -1691,6 +1742,7 @@ struct DetailView_Previews: PreviewProvider {
 [[file:images/Navi-List-2.png]]
 
 #+latex:\newpage
+
 * Dynamic List
 :PROPERTIES:
 :CUSTOM_ID: DynamicList
@@ -1855,11 +1907,13 @@ struct ContentView_Previews: PreviewProvider {
 #+ATTR_ORG: :width 300
 #+ATTR_HTML: :width 300
 [[file:images/FilteredList.gif]]
-* Passing data between Views #2: @ObservedObject
+
+* Passing data between Views
+** Passing data between Views #2: @ObservedObject
 :PROPERTIES:
 :CUSTOM_ID: ObservedObject
 :END:
-** ObservedObject 範例
+*** ObservedObject 範例
 前節的 Book.swift 中使用@Published 將書籍資料設定為可以其他 View 共享，與@State, @Binding 相同，@Published 為一種 Property wrapper(屬性包裝器)。SwiftUI 中幾個常見的 @ 開頭修飾，如 @State，@Binding，@Environment，@EnvironmentObject 等都是運用了 Property Wrappers 這個特性。
 
 當你以 @State 來標註一個屬性時，SwiftUI 會自動儲存它在你的應用程式的某處。還有，使用這些屬性的視圖會自動監聽屬性值的變更。在狀態改變時，SwiftUI 會重新計算那些視圖並更新應用程式的外觀。
@@ -1907,7 +1961,7 @@ struct ContentView: View {
 #+end_src
 
 不同於@State，在 ContentView 以及 AddNewBook.swift 中，我們以@ObservedObject 建立外部參考型態(external reference type)的變數(即之前以@Published 宣告的變數)，所有以@ObservedObject 包裝的變數都必須 conform @ObservableObject protocol(即 class Book)，透過此二者的連結，我們就能輕易的在不同的 View 間共享或編輯變數(如本例中的 book)
-** ObservedObject 特性
+*** ObservedObject 特性
 - Can be shared across views
 - More complex properties (e.g custom type)
 - External reference type that has to be managed (Create an instance of the class, create its own properties, ...)
@@ -1916,8 +1970,8 @@ struct ContentView: View {
 - The wrappedValue is: anything that implements the OvservableObject protocol (ViewModels basicly).
 - What is does: invalidates the View when wrappedValue does objectWillChange.send().
 - Projected value (i.e. %): a Binding (to the vars of the wrappedValue (a ViewModel)). You can bind a variable in your View to the variable in your ViewModel with @ObservedObject.
-- @ObservedObject 的用處和 @State 非常相似，從名字看來它是來修飾一個對象的，這個對象可以給多個獨立的 View 使用。如果你用 @ObservedObject 來修飾一個對象，那麼那個對象必須要實現 ObservableObject 協議，然後用 @Published 修飾對象裡屬性，表示這個屬性是需要被 SwiftUI 監聽的。[fn:10]
-** @ObservedObject v.s. @ObjectBinding
+- @ObservedObject 的用處和 @State 非常相似，從名字看來它是來修飾一個對象的，這個對象可以給多個獨立的 View 使用。如果你用 @ObservedObject 來修飾一個對象，那麼那個對象必須要實現 ObservableObject 協議，然後用 @Published 修飾對象裡屬性，表示這個屬性是需要被 SwiftUI 監聽的。[fn:7]
+*** @ObservedObject v.s. @ObjectBinding
 另一種與@ObservedObject 有點相似的 wrapper 為@ObjectBinding，但不同的是，使用@ObservedObject 的 object 必須要有@Published wrapper；而使用@ObjectBinding 則要自已加上 didChange。@ObjectBindin 的範例如下:
 #+begin_src swift -r -n :results output :exports nil
 import SwiftUI
@@ -1941,23 +1995,32 @@ struct ContentView:View {
 	}
 }
 #+end_src
-* Passing data between Views #3: @EnvironmentObject
+
+** Passing data between Views #3: @EnvironmentObject
 :PROPERTIES:
 :CUSTOM_ID: EnvironmentObject
 :END:
-適用時機: SwiftUI’s @EnvironmentObject property wrapper allows us to create views that rely on shared data, often across an entire SwiftUI app. For example, if you create a user that will be shared across many parts of your app, you should use @EnvironmentObject[fn:36]. 其相關特性如下:
+適用時機: SwiftUI’s @EnvironmentObject property wrapper allows us to create views that rely on shared data, often across an entire SwiftUI app. For example, if you create a user that will be shared across many parts of your app, you should use @EnvironmentObject[fn:15]. 其相關特性如下:
 - Similar to @ObservedObject
 - Possibility to make it available to all views through the application itself
 - If one view changes the model all views update
-** @EnvironmentObject 與@ObservedObject 的異同
-*** 相同
+*** @EnvironmentObject 與@ObservedObject 的異同
+**** 相同
 @EnvironmentObject has a lot in common with @ObservedObject
 - both must refer to a class that conforms to ObservableObject
 - both can be shared across many views,
 - and both will update any views that are watching when significant changes happen.
-*** 差異
-- However, @EnvironmentObject specifically means “this object will be provided from some outside entity, rather than being created by the current view or specifically passed in.[fn:36]
-*** 範例
+**** 差異
+- However, @EnvironmentObject specifically means “this object will be provided from some outside entity, rather than being created by the current view or specifically passed in.[fn:15]
+**** 比較
+| @State                                   | @ObservedObject                                                                                                  | @EnvironmentObject                                                           |
+|------------------------------------------+------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------|
+| Simple properties like *String* or *Int* | Can be shared across views                                                                                       | Similar to @ObservableObject                                                 |
+| Belongs to a specific view               | More complex properties (e.g. custom type)                                                                       | Possibility to make it available to all views through the application itself |
+| Never used outside that view             | External reference type that has to be managed (Create an instance of the class, create its own properties, ...) | If one view changes the model all views update                               |
+|                                          | Class should conform to *ObservableObject*                                                                       |                                                                              |
+|                                          | *Published* property wrapper used to make properties that should force a view to refresh                         |                                                                              |
+**** 範例
 以如下 app 為例，若 View A 裡有某些 data 要在未來與 View E 共用，若是使用@ObservedObject 來進行分享，則 View A 要依序將這些 data 傳給 View B、View C、View D，最後再傳到 View E 裡。
 然而，若使用@EnvironmentObject 的機制來進行分享 data，則可以在 View A 中將這些要分享的 data 置於 Swift environment 中，所有處於同一 environment 中的所有 View 都能與之共享，而不用依次傳遞。
 #+CAPTION: @Environment 適用狀況
@@ -1967,8 +2030,8 @@ struct ContentView:View {
 #+ATTR_ORG: :width 500
 #+ATTR_HTML: :width 500
 [[file:images/environmentObject.png]]
-** EnvironmentObject 設定方式
-*** 建立 EnvironmentObject class
+*** EnvironmentObject 設定方式
+**** 建立 EnvironmentObject class
 UserSettings.swift (ObservableObject)
 #+begin_src swift -r -n :eval no
 import SwiftUI
@@ -1978,8 +2041,8 @@ class UserSettings: ObservableObject {
     // use this ObservableObject as an environment object
 }
 #+end_src
-*** 設定 app 環境
-**** Xcode 11.X: SceneDeleate.swift
+**** 設定 app 環境
+***** Xcode 11.X: SceneDeleate.swift
 加入變數宣告(x)及 environmentObject(x)
 #+begin_src swift -r -n :eval no
 //....
@@ -1992,7 +2055,7 @@ func scene(.......) {
 }
 //....
 #+end_src
-**** Xcode 12.X: xxxApp.swift
+***** Xcode 12.X: xxxApp.swift
 #+begin_src swift -r -n :results output :exports nil
 import SwiftUI
 
@@ -2006,8 +2069,8 @@ struct bindingApp: App {
     }
 }
 #+end_src
-*** 設定 Client View
-**** Read
+**** 設定 Client View
+***** Read
 UserSettingsView.swift
 #+begin_src swift -r -n :eval no
 import SwiftUI
@@ -2022,7 +2085,7 @@ struct UserSettingsView: View {
     }
 }
 #+end_src
-**** Write
+***** Write
 EditView.swift
 #+begin_src swift -r -n :eval no
 import SwiftUI
@@ -2034,9 +2097,9 @@ struct EditView: View {
     }
 }
 #+end_src
-** 範例
+*** 範例
 建立 environment 物件(ShoppingCart)，由各 View 共享/編輯內容
-*** ShoppingCart.swift
+**** ShoppingCart.swift
 情境說明：在 app 中建立一個 ShoppingCart 類別，並讓這個 class confirm ObservableObject protocol，於 class 中將要在各 View 中 share 的 property 以@Published 標示出來。
 #+begin_src swift -r -n :results output :exports nil
 import Foundation
@@ -2046,9 +2109,9 @@ class ShoppingCart: ObservableObject {
     @Published var items = 0
 }
 #+end_src
-*** 環境設定 SceneDelegate.swift / xxxApp.swift
+**** 環境設定 SceneDelegate.swift / xxxApp.swift
 環境變數由 swift 環境提供，故在 SceneDelegate.swift 檔案中宣告要共享的變數(程式第[[(decEnvObj)]]行)，並於 UIHostingController function 中將之加入起始 View 中，如下列程式第[[(attEnvObj)]]行。
-**** 舊版: SceneDelegate.swift
+***** 舊版: SceneDelegate.swift
 #+begin_src swift -r -n :results output :exports nil
 import UIKit
 import SwiftUI
@@ -2073,7 +2136,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     //....
 }
 #+end_src
-**** 新版: xxxApp.swift
+***** 新版: xxxApp.swift
 在 WWDC20 之前，使用 SwiftUI 建立 View 必須將其包裝在 UIHostingController，Controller 被包裝在一個 UIWindow，window 在 SceneDelegate 中定義。在 WWDC20 之後，一個新的解決方案出現：App。
 
 在之前我們使用 AppDelegate 和 SceneDelegate 來管理生命週期，這樣很繁瑣。如今使用 App Name App.swift 文件來代替。
@@ -2090,7 +2153,7 @@ struct bindingApp: App {
     }
 }
 #+end_src
-*** ContentView.swift
+**** ContentView.swift
 在每一個要使用到這個 EnvironmentObject 的 View 中以@EnvironmentObject 來建立該 class 的 instance(第[[(environmentObject)]]行)，同時，在 previews 中也要加入 environmentObject()的 modifier(第[[(emptyConstructor)]]行)，在需用到環境變數的 View(如 SecondView)被呼叫時加入 environmentObject(第[[(envObj)]]行)。
 
 #+begin_src swift -r -n :results output :exports nil
@@ -2123,7 +2186,7 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 #+end_src
-*** SecondView
+**** SecondView
 同樣的，在 SecondView 中要使用到 environment object 也要以@EnvironmentObject 來宣告利用該 class 所建立的 instance(第[[(useEnv)]]行)，而 SecondView 的 preview 也要加上同樣的 modifier(傳入參數)。
 #+begin_src swift -r -n :results output :exports nil
 import SwiftUI
@@ -2153,12 +2216,177 @@ struct SecondView_Previews: PreviewProvider {
 這裡的 cart.items 在變更後，ContentView 的數量會即時更新，同樣的，ContentView 中被變更的 Title 也會即時在 SecondView 中看出結果。
 
 #+LATEX: \newpage
-** Further Reading
+*** Further Reading
 - [[https://www.youtube.com/watch?v=iH88uJcdzDM][SwiftUI Reactive Intro - Understanding State and Binding in SwiftUI in Xcode 11 (2019)]]
 - [[https://medium.com/%E5%BD%BC%E5%BE%97%E6%BD%98%E7%9A%84-swift-ios-app-%E9%96%8B%E7%99%BC%E5%95%8F%E9%A1%8C%E8%A7%A3%E7%AD%94%E9%9B%86/%E7%94%A8%E7%8B%80%E6%85%8B%E8%A8%AD%E8%A8%88-swiftui-%E7%95%AB%E9%9D%A2-%E8%AA%8D%E8%AD%98-state-property-binding-27fea6885ead][用狀態設計 SwiftUI 畫面 — 認識 @State property，binding & Toggle]]
 - [[https://www.youtube.com/watch?v=stSB04C4iS4][SwiftUI Tutorial: What's the difference between @State, @ObjectBinding, and @EnvironmentObject?]]
-
+- [[https://youtu.be/cc23YTGZVbQ][iOS 13 SwiftUI Tutorial: Interactively Transition and Share Data between Views with SwiftUI]]
 #+LATEX: \newpage
+
+** Passing data between Views #4: Property Wrappers
+:PROPERTIES:
+:CUSTOM_ID: Wrappers
+:END:
+All of these @Something statements are property wrappers. A property wrapper is actually a struct. These structs encapsulate some "template" behavior applied to the vars they wrap.
+
+The property wrapper feature adds *"syntactic sugar"* to make these structs easy to create/use." [fn:16]
+*** SwiftUI 的狀態管理
+[[https://onevcat.com/2020/06/stateobject/][資料來源:@StateObject 和 @ObservedObject 的区别和使用]]
+在 2019 年 SwiftUI 剛問世時，除去專門用來管理手勢的@GestureState 以外，有三個常用的和狀態管理相關的 property wrapper，它們分別是@State，@ObservedObject 和@EnvironmentObject。根據職責和作用範圍不同，它們各自的適用場景也有區別[fn:17]。一般來說：
+- @State 用於 View 中的私有狀態值，一般來說它所修飾的都應該是 struct 值，並且不應該被其他的 view 看到。它代表了 SwiftUI 中作用範圍最小，本身也最簡單的狀態，比如一個 Bool，一個 Int 或者一個 String。簡單說，如果一個狀態能夠被標記為 private 並且它是值類型，那麼@State 是適合的。
+- 對於更複雜的一組狀態，我們可以將它組織在一個 class 中，並讓其實現 ObservableObject 協議。對於這樣的 class 類型，其中被標記為@Published 的屬性，將會在變更時自動發出事件，通知對它有依賴的 View 進行更新。View 中如果需要依賴這樣的 ObservableObject 對象，在聲明時則使用@ObservedObject 來訂閱。
+- @EnvironmentObject 針對那些需要傳遞到深層次的子 View 中的 ObservableObject 對象，我們可以在父層級的 View 上用.environmentObject 修飾器來將它注入到環境中，這樣任意子 View 都可以通過@EnvironmentObject 來獲取對應的對象。
+
+這基本就是初版 SwiftUI 狀態管理的全部了。看起來對於狀態管理，SwiftUI 的覆蓋已經很全面了，那為什麼要新加一個@StateObjectproperty wrapper 呢？
+*** @StateObject v.s. @ObservedObject
+@ObservedObject 不管存儲，會隨著 View 的創建被多次創建。而@StateObject 保證對像只會被創建一次。因此，如果是在 View 裡自行創建的 ObservableObjectmodel 對象，大概率來說使用@StateObject 會是更正確的選擇。@StateObject 基本上來說就是一個針對 class 的@State 升級版[fn:17]
+**** 程式範例
+#+begin_src swift -r -n :results output :exports nil
+struct ContentView: View {
+    @State private var showRealName = false
+    var body: some View {
+        VStack {
+            Button("學號/姓名") {
+                showRealName.toggle()
+            }
+            Text("學生: \(showRealName ? "202010101" : "王小明")")
+            ScoreBoad().padding(.top, 10)
+        }
+    }
+}
+
+class ScoreModel: ObservableObject {
+    init() {print("ScoreModel Created")}
+    @Published var score: Int = 40
+}
+
+struct ScoreBoad: View {
+    @ObservedObject var scoreModel = ScoreModel()
+    @State private var pass = false
+
+    var body: some View {
+        VStack {
+            Button("加10分") {
+                scoreModel.score += 10
+                if scoreModel.score >= 60 {
+                    pass = true
+                }
+            }
+            Text("分數: \(scoreModel.score)")
+            Text("及格? \(pass ? "YES" : "NO")")
+            GradeText(scoreModel: scoreModel).padding(.top, 10)
+        }
+    }
+}
+
+struct GradeText: View {
+    @ObservedObject var scoreModel: ScoreModel
+
+    var body: some View {
+        if scoreModel.score >= 90 {
+            return Text("等級:A")
+        } else if scoreModel.score >= 80 {
+            return Text("等級:B")
+        } else {
+            return Text("等級:QQ")
+        }
+    }
+}
+#+end_src
+#+CAPTION: @ObservableObject v.s. @StateObject
+#+NAME: fig: ObserveState
+#+ATTR_LATEX: :width 300
+#+ATTR_ORG: :width 300
+#+ATTR_HTML: :width 300
+[[file:images/observeState.jpg]]
+
+上例中，按加分後，及格與等級的判斷都能正常運作，然而一旦切換學生姓名與學號，scoreModel 的分數就會被重置為 60 分。原因在於按下「加分」button 導致 ContentView 的狀態發生變化，ContentView.body 被重新求值，連帶 scoreBoard 這個 View 也被重建，而其中的 scoreModel 也一起重新生成，於是之前所做的改變(狀態)就消失了。
+**** Create once
+只要理解了@ObservedObject 存在的問題，@StateObject 的意義也就很明顯了。@StateObject 就是@State 的升級版：@State 是針對 struct 狀態所創建的存儲，@StateObject 則是針對 ObservableObjectclass 的存儲。它保證這個 class 實例不會隨著 View 被重新創建。從而解決問題[fn:17]。
+
+解決方案：把 scoreBoard 中的@ObservedObject 改為@StateObject
+#+begin_src swift -r -n :results output :exports nil
+...
+struct ScoreBoad: View {
+    @ObservedObject var scoreModel = ScoreModel()
+    @State private var pass = false
+
+    var body: some View {
+        ....
+    }
+}
+#+end_src
+*** 使用@EnvironmentObject 保持狀態
+除了@StateObject 外，另一種讓狀態 object 保持住的方式，是在更外層使用.environmentObject：
+#+begin_src swift -r -n :results output :exports nil
+struct SwiftUINewApp: App {
+    var body: some Scene {
+        WindowGroup {
+            ContentView().environmentObject(scoreModel())
+        }
+    }
+}
+#+end_src
+這樣，scoreModel 對象將被注入到環境中，不再隨著 ContentView 的刷新而變更。在使用時，只需要遵循普通的 environment 方式，把 Model 聲明為@EnvironmentObject 就行了：
+#+begin_src swift -r -n :results output :exports nil
+struct ScoreBoard: View {
+    @EnvironmentObject var scoreModel: ScoreModel
+    // ...
+
+    // ScoreText(model: model).padding(.top, 20)
+    ScoreText().padding(.top, 20)
+}
+
+struct GradeText: View {
+    @EnvironmentObject var scoreModel: ScofeModel
+    // ...
+}
+#+end_src
+*** Property wrapper syntactic Sugar
+#+begin_src swift -r -n :eval no
+@Published var dice: Dice = Dice()
+#+end_src
+上述宣告實際同以下 struct
+#+begin_src swift -r -n :eval no
+struct Published {
+    var wrappedValue: Dice
+    var projectedValue: Publisher<Dice, Never>
+}
+#+end_src
+接下來 Swift 產生以下變數
+#+begin_src swift -r -n :eval no
+var _dice: Published = Published(wrappedValue: Dice())
+var dice: Dice {
+    get { _dice.wrappedValue  }
+    set { _dice.wrappedValue = newValue }
+}
+#+end_src
+*** 各種 property wrapper 比較
+Three ways for sharing data in SwiftUI[fn:18]
++------------------------------+------------------------------+------------------------------+
+|@State                        |@ObservedObject               |@EnvironmentObject            |
++------------------------------+------------------------------+------------------------------+
+|Simple properties like String |Can be shared across views    |Similar to @ObservedObject    |
+|or Int                        |                              |                              |
++------------------------------+------------------------------+------------------------------+
+|Belongs to a specific view    |More complex properties (e.g. |Possiblity to make it         |
+|                              |custom type)                  |available to all views through|
+|                              |                              |the application itself        |
++------------------------------+------------------------------+------------------------------+
+|Never used outside that view  |External reference type that  |If one view changes the model |
+|                              |has to be managed (Create an  |all views update              |
+|                              |instance of the class, create |                              |
+|                              |its own properties, ...)      |                              |
++------------------------------+------------------------------+------------------------------+
+|                              |Class should conform to       |                              |
+|                              |ObservableObject              |                              |
++------------------------------+------------------------------+------------------------------+
+|                              |@Published property wrapper   |                              |
+|                              |used to mark properties that  |                              |
+|                              |should force a view to refresh|                              |
++------------------------------+------------------------------+------------------------------+
+#+latex:\newpage
+
 * UserDefaults
 :PROPERTIES:
 :CUSTOM_ID: UserDefaults
@@ -2423,169 +2651,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 - [[https://www.simpleswiftguide.com/how-to-use-userdefaults-in-swiftui/][How to use UserDefaults in SwiftUI]]
 
 #+latex:\newpage
-* Passing data between Views #4: Property Wrappers
-:PROPERTIES:
-:CUSTOM_ID: Wrappers
-:END:
-All of these @Something statements are property wrappers. A property wrapper is actually a struct. These structs encapsulate some "template" behavior applied to the vars they wrap.
 
-The property wrapper feature adds *"syntactic sugar"* to make these structs easy to create/use." [fn:15]
-** SwiftUI 的狀態管理
-[[https://onevcat.com/2020/06/stateobject/][資料來源:@StateObject 和 @ObservedObject 的区别和使用]]
-在 2019 年 SwiftUI 剛問世時，除去專門用來管理手勢的@GestureState 以外，有三個常用的和狀態管理相關的 property wrapper，它們分別是@State，@ObservedObject 和@EnvironmentObject。根據職責和作用範圍不同，它們各自的適用場景也有區別[fn:16]。一般來說：
-- @State 用於 View 中的私有狀態值，一般來說它所修飾的都應該是 struct 值，並且不應該被其他的 view 看到。它代表了 SwiftUI 中作用範圍最小，本身也最簡單的狀態，比如一個 Bool，一個 Int 或者一個 String。簡單說，如果一個狀態能夠被標記為 private 並且它是值類型，那麼@State 是適合的。
-- 對於更複雜的一組狀態，我們可以將它組織在一個 class 中，並讓其實現 ObservableObject 協議。對於這樣的 class 類型，其中被標記為@Published 的屬性，將會在變更時自動發出事件，通知對它有依賴的 View 進行更新。View 中如果需要依賴這樣的 ObservableObject 對象，在聲明時則使用@ObservedObject 來訂閱。
-- @EnvironmentObject 針對那些需要傳遞到深層次的子 View 中的 ObservableObject 對象，我們可以在父層級的 View 上用.environmentObject 修飾器來將它注入到環境中，這樣任意子 View 都可以通過@EnvironmentObject 來獲取對應的對象。
-
-這基本就是初版 SwiftUI 狀態管理的全部了。看起來對於狀態管理，SwiftUI 的覆蓋已經很全面了，那為什麼要新加一個@StateObjectproperty wrapper 呢？
-** @StateObject v.s. @ObservedObject
-@ObservedObject 不管存儲，會隨著 View 的創建被多次創建。而@StateObject 保證對像只會被創建一次。因此，如果是在 View 裡自行創建的 ObservableObjectmodel 對象，大概率來說使用@StateObject 會是更正確的選擇。@StateObject 基本上來說就是一個針對 class 的@State 升級版[fn:16]
-*** 程式範例
-#+begin_src swift -r -n :results output :exports nil
-struct ContentView: View {
-    @State private var showRealName = false
-    var body: some View {
-        VStack {
-            Button("學號/姓名") {
-                showRealName.toggle()
-            }
-            Text("學生: \(showRealName ? "202010101" : "王小明")")
-            ScoreBoad().padding(.top, 10)
-        }
-    }
-}
-
-class ScoreModel: ObservableObject {
-    init() {print("ScoreModel Created")}
-    @Published var score: Int = 40
-}
-
-struct ScoreBoad: View {
-    @ObservedObject var scoreModel = ScoreModel()
-    @State private var pass = false
-
-    var body: some View {
-        VStack {
-            Button("加10分") {
-                scoreModel.score += 10
-                if scoreModel.score >= 60 {
-                    pass = true
-                }
-            }
-            Text("分數: \(scoreModel.score)")
-            Text("及格? \(pass ? "YES" : "NO")")
-            GradeText(scoreModel: scoreModel).padding(.top, 10)
-        }
-    }
-}
-
-struct GradeText: View {
-    @ObservedObject var scoreModel: ScoreModel
-
-    var body: some View {
-        if scoreModel.score >= 90 {
-            return Text("等級:A")
-        } else if scoreModel.score >= 80 {
-            return Text("等級:B")
-        } else {
-            return Text("等級:QQ")
-        }
-    }
-}
-#+end_src
-#+CAPTION: @ObservableObject v.s. @StateObject
-#+NAME: fig: ObserveState
-#+ATTR_LATEX: :width 300
-#+ATTR_ORG: :width 300
-#+ATTR_HTML: :width 300
-[[file:images/observeState.jpg]]
-
-上例中，按加分後，及格與等級的判斷都能正常運作，然而一旦切換學生姓名與學號，scoreModel 的分數就會被重置為 60 分。原因在於按下「加分」button 導致 ContentView 的狀態發生變化，ContentView.body 被重新求值，連帶 scoreBoard 這個 View 也被重建，而其中的 scoreModel 也一起重新生成，於是之前所做的改變(狀態)就消失了。
-*** Create once
-只要理解了@ObservedObject 存在的問題，@StateObject 的意義也就很明顯了。@StateObject 就是@State 的升級版：@State 是針對 struct 狀態所創建的存儲，@StateObject 則是針對 ObservableObjectclass 的存儲。它保證這個 class 實例不會隨著 View 被重新創建。從而解決問題[fn:16]。
-
-解決方案：把 scoreBoard 中的@ObservedObject 改為@StateObject
-#+begin_src swift -r -n :results output :exports nil
-...
-struct ScoreBoad: View {
-    @ObservedObject var scoreModel = ScoreModel()
-    @State private var pass = false
-
-    var body: some View {
-        ....
-    }
-}
-#+end_src
-** 使用@EnvironmentObject 保持狀態
-除了@StateObject 外，另一種讓狀態 object 保持住的方式，是在更外層使用.environmentObject：
-#+begin_src swift -r -n :results output :exports nil
-struct SwiftUINewApp: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView().environmentObject(scoreModel())
-        }
-    }
-}
-#+end_src
-這樣，scoreModel 對象將被注入到環境中，不再隨著 ContentView 的刷新而變更。在使用時，只需要遵循普通的 environment 方式，把 Model 聲明為@EnvironmentObject 就行了：
-#+begin_src swift -r -n :results output :exports nil
-struct ScoreBoard: View {
-    @EnvironmentObject var scoreModel: ScoreModel
-    // ...
-
-    // ScoreText(model: model).padding(.top, 20)
-    ScoreText().padding(.top, 20)
-}
-
-struct GradeText: View {
-    @EnvironmentObject var scoreModel: ScofeModel
-    // ...
-}
-#+end_src
-** Property wrapper syntactic Sugar
-#+begin_src swift -r -n :eval no
-@Published var dice: Dice = Dice()
-#+end_src
-上述宣告實際同以下 struct
-#+begin_src swift -r -n :eval no
-struct Published {
-    var wrappedValue: Dice
-    var projectedValue: Publisher<Dice, Never>
-}
-#+end_src
-接下來 Swift 產生以下變數
-#+begin_src swift -r -n :eval no
-var _dice: Published = Published(wrappedValue: Dice())
-var dice: Dice {
-    get { _dice.wrappedValue  }
-    set { _dice.wrappedValue = newValue }
-}
-#+end_src
-** 各種 property wrapper 比較
-Three ways for sharing data in SwiftUI[fn:14]
-+------------------------------+------------------------------+------------------------------+
-|@State                        |@ObservedObject               |@EnvironmentObject            |
-+------------------------------+------------------------------+------------------------------+
-|Simple properties like String |Can be shared across views    |Similar to @ObservedObject    |
-|or Int                        |                              |                              |
-+------------------------------+------------------------------+------------------------------+
-|Belongs to a specific view    |More complex properties (e.g. |Possiblity to make it         |
-|                              |custom type)                  |available to all views through|
-|                              |                              |the application itself        |
-+------------------------------+------------------------------+------------------------------+
-|Never used outside that view  |External reference type that  |If one view changes the model |
-|                              |has to be managed (Create an  |all views update              |
-|                              |instance of the class, create |                              |
-|                              |its own properties, ...)      |                              |
-+------------------------------+------------------------------+------------------------------+
-|                              |Class should conform to       |                              |
-|                              |ObservableObject              |                              |
-+------------------------------+------------------------------+------------------------------+
-|                              |@Published property wrapper   |                              |
-|                              |used to mark properties that  |                              |
-|                              |should force a view to refresh|                              |
-+------------------------------+------------------------------+------------------------------+
-#+latex:\newpage
 * Filtered List
 為 Dynamic List 加入顯示過濾功能
 ** Model
@@ -2679,930 +2745,6 @@ struct ContentView_Previews: PreviewProvider {
 #+ATTR_ORG: :width 300
 #+ATTR_HTML: :width 300
 [[file:images/filterList.gif]]
-* MVVM
-:PROPERTIES:
-:CUSTOM_ID: SW-MVVM
-:END:
-** Design pattern
-MVVM 的概念最早應該是在 2005 年由 Microsoft的[[https://blogs.msdn.microsoft.com/johngossman/2005/10/08/introduction-to-modelviewviewmodel-pattern-for-building-wpf-apps/][John Gossman]]提出來的，它的概念是，整個 Swift project 會拆分成三個部份: View、ViewModel、Model，其中 View 的角色就是單純的視覺元件，像是按鈕、文字標籤等等，在 View 裡面不會有邏輯、狀態等等，單純就是個呈現資料的元件。而要讓 View 呈現資料，最直覺的方式，就是把 View 跟 Model 做綁定，讓 View 的元件跟著 Model 一起做變化。但這樣會有個問題，就是通常 Model 來的資料，並不是簡單就能轉換成 View 的樣式的，這時候就需要有個物件，介在 View 跟 Model 的中間，這個物件會掌管這些跟 View 高度相關的邏輯的操作，像是轉換 Date 物件變成人看得懂的文字格式等，稱之為 ViewModel。上面的概念可以畫成這樣的資料流：
-
-#+CAPTION: MVVM Architecture
-#+NAME: fig: MVVMPNG
-#+ATTR_LATEX: :width 500
-#+ATTR_ORG: :width 500
-#+ATTR_HTML: :width 600
-[[file:images/MVVM-Basic.jpg]]
-
-在 iOS 開發上，依照上述 MVVM 的定義，ContentView 變成一個單純的 View，而我們會另外產生一個 ViewModel 來負責 presentational logic 跟部份的 controller logic。所以在 ContentView 裡面，就只會有：
-1. View logic，所有跟呈現有關的 Code
-1. 綁定 ViewModel
-而在 ViewModel 裡面，則是負責兩個部份：
-1. Controller logic，如 pagination, error handling,… etc
-1. Presentation logic，提供接口讓 View 綁定(binding)
-開發上，一旦 View 綁定好 ViewModel 的資料，在撰寫商業邏輯的時候，就可以不用管包括動畫、轉場、main thread 等等跟 View 相關的問題，因為分工明確所以就不會有寫起來綁手綁腳的感覺。更棒的是，並且因為 ViewModel 是一個單純的、沒有相依於 View 的物件，所以要做測試簡單多了！
-[[https://www.codementor.io/@koromiko/mvvm-app-cl1wvw2sh][資料來源: 歡迎來到真實世界 - 原來是那個傳說中的MVVM阿]]
-** What is the idea behind MVVM
-*** Model
-- Business logic
-- UI Independent
-*** View
-- Presentation
-- User interaction
-*** ViewModel
-- Presentation logic
-- Glue between Model and View
-*** 為什麼要拆成三部份(What does it solve?)
-- MVC - Massive View Controller
-- Testability
-- Code organization
-- Code reusability
-*** Limitations / Cons
-- Requires binding
-- Potential for boilerplate code
-- Overkill for simple views and logic
-- Doesn't cover every case
-** DEMO
-以"推薦書單"的 APP 為例:
-- Model: 包含書名、作者、出版社....，而實際的資料來源可能是雲端資料庫(Firebase)、Web API、本機資料庫(Core data)。
-    #+begin_src swift -r -n :eval no
-struct Book {
-    let title: String
-    let author: String
-    let dateReleased: String
-    let publishCamp: String
-    let publishCity: String
-    let isFavorite: Bool
-}
-  #+end_src
-- View: 在 APP 畫面上呈現 Model 中資料的元件，如 Text, Image, Button, List.....
-- ViewModel: 將 Model 中的資料取出，供 View 呈現，或是接受 View 輸入的資料，存回 Model。以"推薦書單 APP"為例，其 ViewModel 可能包含如下 struct:
-  #+begin_src swift -r -n :eval no
-struct BookDetailViewModel {
-    var book: Book
-
-    var isFavorite: Bool
-
-    init(book: Book) {
-        self.book = book
-        self.isFavorite = false
-    }
-
-    var title: String {
-        return self.book.title
-    }
-
-    var author: String {
-        return self.book.author
-    }
-
-    var dateReleased: String {
-        return self.book.dateReleased
-    }
-
-    // 呈現時要求以 遠流出版社(台北市) 的格式來呈現
-    var publisher: String {
-        let output = self.book.publishCamp + "(" + self.book.publishCity + ")"
-        return output
-    }
-}
-  #+end_src
-  從 Model 中可以看到書籍的記錄欄位只有"出版社"(publishCamp)和"出版地點"(publishCity)，但若 app 對顯示結果的格式要求為"出版社(出版地點)"，則可以在 ViewModel 中來處理。
-  此外，如果在 View 上有一個 Favorite Button，則當 user 點了 Favorite 後，ViewModel 應負責將 struct 中的 isFavorite 改存 True，並回存至 Model 中。Model 的資料只能透過 ViewModel 來新增刪除，View 無法直接染指。
-  Model 與 UI 完全無關，單純用來儲存資料，ViewModel 為 Model 與 View 溝通的橋樑。
-** Model 要用 Struct 或是 Class
-[[https://www.appcoda.com.tw/swift-class/][資料來源:Swift Class vs Struct：設計 Model 時，該用 Struct 還是 Class 呢？]]
-*** Struct 與 Class 的不同性質
-首先，當我們指派 (assign) 一個實體給一個辨識符（identifier，也就是變數／常數名）的時候，如果該實體是 struct 的話，該辨識符所容納的會是該實體的所有內容；但如果它是 class 的話，這個辨識符就只會容納存放該實體的位址：
-#+begin_src swift -r -n :results output :exports nil
-// 用 struct 定義 Dog。
-struct Dog {
-    var name = "Bart"
-}
-// 整個 Dog 實體都會被存到 myDog 裡。
-var myDog = Dog()
-// 用 class 定義 Cat。
-class Cat {
-    var name = "Mimi"
-}
-// myCat 只會儲存 Cat 實體的位址。Cat 實體本身會被存到別的地方。
-var myCat = Cat()
-#+end_src
-也就是說，當我們使用辨識符的時候，如果它的型別是 struct 的話，我們在操作的實體都會是本地的。但是當我們在操作 class 型別的辨識符的話，那麼我們實際上是透過辨識符在操作一個遠端的實體。所以，當我們更改這些實體的屬性的時候，它們的行為就不太一樣了：
-#+begin_src swift -r -n :results output :exports nil
-// 使用 struct。
-var herDog = Dog() {
-    // 如果 herDog 有變動的話就顯示訊息。
-    didSet {
-        print("Her dog is changed!")
-    }
-}
-herDog.name = "Starlord"
-// Her dog is changed!
-// 使用 class。
-var herCat = Cat() {
-    didSet {
-        print("Her cat is changed!")
-    }
-}
-herCat.name = "Mumu"
-// 沒有訊息。
-#+end_src
-怎麼會有這樣的差別呢？因為 herDog 儲存了所有的 Dog 實體內容，所以任何 Dog 實體的屬性的變動，就等於說 herDog 本身有變動。然而，herCat 並沒有儲存 Cat 實體的內容，所以 Cat 實體屬性的變動是在別的地方發生的，且 herCat 本身所儲存的 Cat 實體位址並沒有任何的改變。
-由圖[[fig: MVVMPNG]]可看出，
-*** MMVM 中的 Model
-** DICE DEMO
-** Further Reading Resources
-- [[https://www.youtube.com/watch?v=1IlUBHvgY8Q&t=29s][SwiftUI MVVM Programming with ObservableObject @Published @ObservedObject]]
-- [[https://www.youtube.com/watch?v=LntH6moCuo0][SwiftUI 2.0: MVVM - A Practical Approach]]
-- [[https://www.youtube.com/watch?v=gkAV4D1nopA][SwiftUI Tip Calculator Using MVVM Design Pattern]]
-- [[https://www.youtube.com/watch?v=cbqMkIG6Qeg][Understanding MVVM Design Pattern]]: 講的超清楚
-- Video: [[https://www.youtube.com/watch?v=EhtK_H9LsYQ][MVVM SwiftUI - Model View ViewModel Pattern - Getting Started]]
-- Video: [[https://www.youtube.com/watch?v=LntH6moCuo0]]
-- Video: [[https://www.youtube.com/watch?v=sWx8TtRBOfk][MVVM in Practice - RWDevCon Session - raywenderlich.com]]
-- GitHub: https://github.com/rebeloper/SwiftUIMVVM.git
-#+latex:\newpage
-* Web API: URLSession v.s. JSONDecoder
-** Demo 1
-*** ContentView.swift
-#+begin_src swift -r -n :results output :exports nil
-import SwiftUI
-
-struct Todo: Codable, Identifiable {
-    public var id: Int
-    public var title: String
-    public var completed: Bool
-}
-
-class FetchToDo: ObservableObject {
-  // 1.
-  @Published var todos = [Todo]()
-
-    init() {
-        let url = URL(string: "https://jsonplaceholder.typicode.com/todos")!
-        // 2.
-        URLSession.shared.dataTask(with: url) {(data, response, error) in
-            do {
-                if let todoData = data {
-                    // 3.
-                    let decodedData = try JSONDecoder().decode([Todo].self, from: todoData)
-                    DispatchQueue.main.async {
-                        self.todos = decodedData
-                    }
-                } else {
-                    print("No data")
-                }
-            } catch {
-                print("Error")
-            }
-        }.resume()
-    }
-}
-
-struct ContentView: View {
-    // 1.
-    @ObservedObject var fetch = FetchToDo()
-    var body: some View {
-        VStack {
-            // 2.
-            List(fetch.todos) { todo in
-                VStack(alignment: .leading) {
-                    // 3.
-                    Text(todo.title)
-                    Text("\(todo.completed.description)") // print boolean
-                        .font(.system(size: 11))
-                        .foregroundColor(Color.gray)
-                }
-            }
-        }
-    }
-}
-#+end_src
-#+LABEL:fig:JSON-1
-#+name: fig:JSON-1
-#+ATTR_LATEX: :width 300
-#+ATTR_ORG: :width 300
-#+ATTR_HTML: :width 300
-[[file:images/json-1.jpg]]
-** Demo 2
-*** MVVM
-- Model: FlowModel.swift
-- View: ContentView.swift
-- ViewModel: Flow.swift
-*** FlowModel.swift
-#+begin_src swift -r -n :results output :exports nil
-import Foundation
-
-struct FlowModel: Decodable, Hashable {
-    var 年: Int? = nil
-    var 月: Int? = nil
-    var 總運量: Int? = nil
-    var 日均運量: Int? = nil
-    var 假日均運量: Int? = nil
-    var 月台上刷卡日均筆數: Double? = nil
-    var 車上刷卡日均筆數: Double? = nil
-    var 售票機日均筆數: Double? = nil
-    var 補票日均筆數: Double? = nil
-    var 團體票日均筆數: Double? = nil
-}
-#+end_src
-
-#+RESULTS:
-*** ContentView.swift
-#+begin_src swift -r -n :results output :exports nil
-import SwiftUI
-
-struct ContentView: View {
-    @ObservedObject var flow = FetchFlow()
-
-    var body: some View {
-        NavigationView {
-            List() {
-                ForEach(flow.flows, id: \.self) {(item) in
-                    NavigationLink(destination: Text("總運量: \(item.總運量!)")) {
-                        HStack {
-                            Text("\(item.年!)年\(item.月!)月")
-                            Text("\(item.日均運量!)")
-                        }
-                    }
-                }
-            }.navigationTitle("")
-        }
-    }
-}
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
-
-#+end_src
-*** Flow.swift
-#+begin_src swift -r -n :results output :exports nil
-import Foundation
-class FetchFlow: ObservableObject {
-    @Published var flows = [FlowModel]()
-    init() {
-        let urlstr = "https://data.kcg.gov.tw/dataset/6f29f6f4-2549-4473-aa90-bf60d10895dc/resource/30dfc2cf-17b5-4a40-8bb7-c511ea166bd3/download/lightrailtraffic.json"
-        guard let url = URL(string: urlstr) else {
-            print("Invalid json url")
-            return
-        }
-        URLSession.shared.dataTask(with: url) {(data, response, error) in
-            do {
-                if let flowData = data {
-                    let decodeData = try JSONDecoder().decode([FlowModel].self, from: flowData)
-
-                    DispatchQueue.main.async {
-                        self.flows = decodeData
-                    }
-                } else {
-                    print("No data")
-                }
-            } catch {
-                print("\(error)")
-            }
-        }.resume()
-    }
-}
-#+end_src
-*** Result
-#+LABEL:fig:JSON-2
-#+name: fig:JSON-2
-#+ATTR_LATEX: :width 500
-#+ATTR_ORG: :width 500
-#+ATTR_HTML: :width 600
-[[file:images/json-2.jpg]]
-** 公開資料平台
-- [[https://data.gov.tw/][政府資料開放平台]]
-- [[https://data.kcg.gov.tw/dataset][高雄市政府開放資料集]]
-- [[https://data.tainan.gov.tw/dataset][台南市政府開放資料集]]
-- [[https://ptx.transportdata.tw/PTX/Service][公共運輸整合資訊]]
-- [[https://kaleidosblog.s3-eu-west-1.amazonaws.com/json/tutorial.json][country/code JSON sample]]
-** Further Reading
-- [[https://www.youtube.com/watch?v=HvfE4G9PfeU][SwiftUI Tutorial - Using an API and Decoding JSON Data]]
-- [[https://www.youtube.com/watch?v=tdxKIPpPDAI][iOS Swift Tutorial: Use Web APIs and JSON Data with Swift 5]]- [[https://www.ioscreator.com/tutorials/swiftui-json-list-tutorial][SwiftUI Fetch JSON Data into List]]
-- [[https://programmingwithswift.com/parse-json-from-file-and-url-with-swift/][Parse JSON from file and URL with Swift]]
-- [[https://www.youtube.com/watch?v=1en4JyW3XSI][Making an API call and fetch JSON data in SwiftUI]]
-- [[https://benoitpasquier.com/encoding-decoding-json-swift4/][The best way to encode and decode JSON in Swift4 ]]
-- [[https://www.reddit.com/r/swift/comments/emw0i3/jsondecoder_fails_if_i_dont_have_an_id_for_each/][JSONDecoder fails if I don't have an "id" for each item... why doesn't UUID work?]]
-- [[https://medium.com/%E5%BD%BC%E5%BE%97%E6%BD%98%E7%9A%84-swift-ios-app-%E9%96%8B%E7%99%BC%E6%95%99%E5%AE%A4/%E8%A7%A3%E6%B1%BAjson-key%E4%B8%8D%E5%9B%BA%E5%AE%9A%E6%99%82%E5%87%BA%E7%8F%BE-no-value-associated-with-key-codingkeys-%E7%8B%80%E6%B3%81-720d7d09486a][解決Json Key不固定時出現“No value associated with key CodingKeys” 狀況]]
-#+latex: \newpage
-* STRT Protocols
-:PROPERTIES:
-:CUSTOM_ID: SW-Protocols
-:END:
-- Protocols are a fundamental feature of Swift. They play a leading role in the structure of the Swift standard library and are a common method of abstraction. They provide a similar experience to interfaces that some other languages have. An advantage of protocols in Swift is that objects can conform to multiple protocols.[fn:17]
-- Protocol 是一個只宣告不定義的型別，然而這個特性可以讓我們的程式更有彈性，像在 IOS SDK 裡面，耳熟能詳的 Delegate，就大量的運用 Potocol，方便我們客製化事件發生時要處理的事情。[fn:18]
-
-- 對任何程式開發來說，減少重覆的 code，把權責明確分開，讓 code 維護性變好，是非常重要的課題。而在現今的軟體開發模式中，有許多方法可以做到這點，最為人所知的一個模式，就是利用繼承 (Inheritance)，把會重覆利用的部份放在母類別，讓其它子類別去繼承。另外一種做法，則是利用 Composition Pattern，將功能做成組件分出來，讓需要的模組去組合取用。[fn:19]
-#+begin_verse
-A protocol defines a blueprint of methods, properties, and other requirements that suit a particular task or piece of functionality. The protocol can then be adopted by a class, structure, or enumeration to provide an actual implementation of those requirements. Any type that satisfies the requirements of a protocol is said to conform to that protocol. [fn:20]
-#+end_verse
-
-- 協定提供類型可以做的資訊，Classes 和 structs 則提供物件的資訊，協定則提供物件將會執行的動作。[fn:21]
-#+begin_verse
-協定是 Swift 一個重要的特性，它會定義出為了完成某項任務或功能所需的方法、屬性，但是本身不會實作這些任務跟功能，而僅僅只是表達出該任務或功能的名稱。協定為方法、屬性、以及其他特定的任務需求或功能定義藍圖。協定可被 class、struct、或 enum 類型採納以提供所需功能的具體實現。滿足了協定中需求的任意類型都叫做遵循了該協定。
-#+end_verse
-
-除了指定遵循類型必須實現的要求外，你可以擴展一個協定以實現其中的一些需求或實現一個符合類型的可以利用的附加功能。[fn:22]
-- 例如，你可能有一個名為 str 的變量，其類型為 String。身為一個開發人員，你應該知道 str 代表 String，如果我們定義了一個名為 StringProtocol 的協定，它具有所有的 String 的 API，我們可以擴展任何類型去遵循 StringProtocol（意思是滿足其所有要求），如此一來，即可以使用該對象，讓它就像是一個 String，儘管我們不知道它是什麼！如果看起來像一隻鴨子，游泳像一隻鴨子，叫聲像一隻鴨子，那就是一隻鴨子。我們新的 StringProtocol 可以告訴那些遵守它協定的類型能夠做什麼，且不需要知道這些類型的資訊。[fn:21]
-** Protocol Syntax
-*** Syntax
-#+begin_src swift -r -n :results output :exports nil
-protocol SomeProtocol {
-    // protocol definition goes here
-}
-#+end_src
-Classes , structs, enums can adopt these protocol by placing protocol’s name after the type’s name, separated by a colon, as part of their definition. Multiple protocols can be listed, and are separated by commas:[fn:23]
-#+begin_src swift -r -n :results output :exports nil
-struct SomeStructure: FirstProtocol, AnotherProtocol {
-    //structure definition goes here
-}
-#+end_src
-*** DEMO
-#+begin_src swift -r -n :results output :exports nil
-protocol Polite {
-    func sayHello()
-}
-
-struct Teacher: Polite {
-    var name: String
-    func sayHello() {
-        print("同學好")
-    }
-}
-
-struct Student: Polite {
-    var name: String
-    func sayHEllo() {
-        print("老師好")
-    }
-}
-
-var aPolitePerson: Polite = Teacher()
-aPolitePerson.name = "Mr. Yen"
-aPolitePerson.sayHellow()
-aPolitePerson = Student()
-aPolitePerson.sayHello()
-#+end_src
-*** Adding property requirements
-source: [[https://abhimuralidharan.medium.com/all-about-protocols-in-swift-11a72d6ea354][All about protocols in swift]]
-- A protocol can have properties as well as methods that a class, enum or struct conforming to this protocol can implement.
-- A protocol declaration only specifies the required property name and type. It doesn’t say anything about whether the property should be a stored one or a computed one.
-- A protocol also specifies whether each property must be gettable or gettable and settable.
-- Property requirements are always declared as variable properties, prefixed with the var keyword.
-- Gettable and settable properties are indicated by writing { get set } after their type declaration, and gettable properties are indicated by writing { get }.
-#+begin_src swift -r -n :results output :exports nil
-protocol SomeProtocol {
-    var mustBeSettable: Int { get set }
-    var doesNotNeedToBeSettable: Int { get }
-}
-#+end_src
-*** Protocols with mutating methods
-Mutating methods are methods that we use on value types like structs and enums. These methods are allowed to modify the instance it belongs to and any properties of that instance. A small example:
-
-Consider a simple struct Rectangle:
-#+begin_src swift -r -n :results output :exports nil
-struct Rectangle {
-    var width = 1
-    var height = 1
-
-    func area() -> Int {
-        return width * height
-    }
-
-    mutating func scaleBy(value: Int) {
-        width *= value
-        height *= value
-    }
-}
-#+end_src
-The scaleBy(value:) method modifies the value of width and height. So it should be marked as mutating. Otherwise the compiler will throw error at you.
-
-#+begin_verse
-If you mark a protocol instance method requirement as mutating, you do not need to write the mutatingkeyword when writing an implementation of that method for a class. The mutating keyword is only used by structures and enumerations.
-#+end_verse
-Consider an enum and class implementing a protocol with mutating function:
-#+begin_src swift -r -n :results output :exports nil
-protocol Togglable {
-    mutating func toggle()
-}
-
-enum OnOffSwitch: Toggglable {
-    case off, on
-    mutating func toggle() {
-        switch self {
-        case .off:
-            self = .on
-        case .on:
-            self = .off
-        }
-    }
-}
-
-var lightSwitch = OnOffSwitch.off
-lightSwitch.toggle()
-
-class ToggleClass: Togglable {
-    var someBool = false
-    func toggle() {
-        someBool = true
-    }
-}
-
-let toggleClassObj = ToggleClass()
-toggleClassObj.toggle()
-#+end_src
-*** Initializer Requirements
-Protocols can have specific initializers like normal methods which the conforming types can implement.
-#+begin_src swift -r -n :results output :exports nil
-protocol SomeProtocol {
-    init(someParameter: Int)
-}
-#+end_src
-** DEMO
-#+begin_src swift -r -n :results output :exports nil
-protocol Sound {
-    func makeSound()
-}
-
-struct Dog: Sound {
-    func makeSound() {
-        print("Woof")
-    }
-}
-
-struct Tree: Sound {
-    func makeSound() {
-        print("Susrrate")
-    }
-}
-
-struct iPhone: Sound {
-    func makeSound() {
-        print("Ring")
-    }
-}
-#+end_src
-** 範例
-*** 版本 1
-本例中有兩個 struct: Song, Album 以及一個 class 用來播放 Song 或 Album，原本的 Player 要為不同的 struct 寫不同的 func，而且程式碼大多重複。
-#+begin_src swift -r -n :eval no
-import Cocoa
-import AVKit
-
-struct Song {
-    var name: String
-    var album: Album
-    var audioURL: URL
-    var isLiked: Bool
-}
-
-struct Album {
-    var name: String
-    var imageURL: URL
-    var audioURL: URL
-    var isLiked: Bool
-}
-
-class Player {
-    private let avPlayer = AVPlayer()
-
-    func play(_ song: Song) {
-        let item = AVPlayerItem(url: song.audioURL)
-        avPlayer.replaceCurrentItem(with: item)
-        avPlayer.play()
-    }
-
-    func play(_ album: Album) {
-        let item = AVPlayerItem(url: album.audioURL)
-        avPlayer.replaceCurrentItem(with: item)
-        avPlayer.play()
-    }
-}
-#+end_src
-*** 版本 2
-宣告一個 protocol，定義 audioURL 變數(read only)，然後令兩個 struct 皆遵循該 protocol(方式有二)，如此，原本的 Player class 中的 play func 就能只寫一次。
-#+begin_src swift -r -n :eval no
-import Cocoa
-import AVKit
-
-protocol Playable {
-    var audioURL: URL { get }
-}
-
-struct Song: Playable {
-    var name: String
-    var album: Album
-    var audioURL: URL
-    var isLiked: Bool
-}
-
-struct Album {
-    var name: String
-    var imageURL: URL
-    var audioURL: URL
-    var isLiked: Bool
-}
-
-extension Album: Playable {}
-class Player {
-    private let avPlayer = AVPlayer()
-
-    func play(_ resource: Playable) {
-        let item = AVPlayerItem(url: resource.audioURL)
-        avPlayer.replaceCurrentItem(with: item)
-        avPlayer.play()
-    }
-}
-#+end_src
-*** 版本 3
-原本 protocol 的真正意思其實只是在確定 audioURL 是否能正確轉換成 Audio，所以其實將 protocol name 由 Playable 改為 AudioURLConvertable 會更貼近事實。
-#+begin_src swift -r -n :eval no
-import Cocoa
-import AVKit
-
-protocol AudioURLConvertable {
-    var audioURL: URL { get }
-}
-
-struct Song: AudioURLConvertable {
-    var name: String
-    var album: Album
-    var audioURL: URL
-    var isLiked: Bool
-}
-
-struct Album: AudioURLConvertable {
-    var name: String
-    var imageURL: URL
-    var audioURL: URL
-    var isLiked: Bool
-}
-
-class Player {
-    private let avPlayer = AVPlayer()
-
-    func play(_ resource: AudioURLConvertable) {
-        let item = AVPlayerItem(url: resource.audioURL)
-        avPlayer.replaceCurrentItem(with: item)
-        avPlayer.play()
-    }
-}
-
-#+end_src
-** mutating
-protocol 除了可以提供傳回值型態的彈性，也可以用來變更 class/struct 中的屬性。如：
-#+begin_src swift -r -n :eval no
-import Cocoa
-import AVKit
-
-protocol Likeable {
-    mutating func markAsLiked()
-}
-
-struct Song {
-    var name: String
-    var album: Album
-    var audioURL: URL
-    var isLiked: Bool
-}
-
-struct Album {
-    var name: String
-    var imageURL: URL
-    var audioURL: URL
-    var isLiked: Bool
-}
-
-extension Song: Likeable {
-    mutating func markAsLiked() {
-        isLiked = true
-    }
-}
-#+end_src
-可以在不改變原 struct Album 的情況下，藉由 extension 來擴充 Song，使其遵循 Likeable protocol，提供變供屬性 isLiked 的值，*這在擴充 API 功能時特別有用*。
-** 擴充 protocol
-除了擴充現有 struct，protocol 也可以用來擴充 protocol，如：
-#+begin_src swift -r -n :eval no
-import Cocoa
-import AVKit
-
-protocol Likeable {
-    var isLiked: Bool {get set}
-}
-
-extension Likeable {
-    mutating func markAsLiked() {
-        isLiked = true
-    }
-}
-
-struct Song {
-    var name: String
-    var album: Album
-    var audioURL: URL
-    var isLiked: Bool
-}
-
-struct Album {
-    var name: String
-    var imageURL: URL
-    var audioURL: URL
-    var isLiked: Bool
-}
-
-extension Song: Likeable {}
-extension Album: Likeable {}
-#+end_src
-** Further Reading
-- [[https://docs.swift.org/swift-book/LanguageGuide/Protocols.html][Protocol]]
-- [[https://appcoda.com.tw/swift-protocol/][Swift開發指南：Protocols與Protocol Extensions的使用心法]]
-- [[https://abhimuralidharan.medium.com/all-about-protocols-in-swift-11a72d6ea354][All about protocols in SWIFT]]
-- [[https://blog.csdn.net/XunCiy/article/details/107367571][Swift5 14.Protocols]]
-
-#+latex:\newpage
-* Struct v.s. Class
-[[https://www.hackingwithswift.com/books/ios-swiftui/why-does-swiftui-use-structs-for-views][資料來源:Why does SwiftUI use structs for views?]]
-If you ever programmed for UIKit or AppKit (Apple’s original user interface frameworks for iOS and macOS) you’ll know that they use classes for views rather than structs. SwiftUI does not: we prefer to use structs for views across the board, and there are a couple of reasons why.[fn:24]
-- Structs are simpler and faster than classes.
-  In SwiftUI, all our views are trivial structs and are almost free to create. Think about it: if you make a struct that holds a single integer, the entire size of your struct is… that one integer. Nothing else. No surprise extra values inherited from parent classes, or grandparent classes, or great-grandparent classes, etc – they contain exactly what you can see and nothing more.
-
-- You can see this in action when you look at the kinds of things that can be a view. We already used Color.red and LinearGradient as views – trivial types that hold very little data. In fact, you can’t get a great deal simpler than using Color.red as a view: it holds no information other than “fill my space with red”.
-
-- In comparison, Apple’s documentation for UIView lists about 200 properties and methods that UIView has, all of which get passed on to its subclasses whether they need them or not.
-** What is in class/struct
-[[https://www.avanderlee.com/swift/struct-class-differences/][資料來源:Struct vs classes in Swift: The differences explained]]
-*** What is a class in Swift?
-A class in Swift is a reference type which can contain:
-- properties
-- methods
-- subscripts
-- initializers
-- protocol conformances
-- extensions
-
-It’s often described as a template definition of an object, like in the following Article instance definition:
-#+begin_src swift -r -n :results output :exports nil
-class ArticleClass {
-    let title: String
-    let url: URL
-    var readCount: Int = 0
-
-    init(title: String, url: URL) {
-        self.title = title
-        self.url = url
-    }
-}
-#+end_src
-*** What is a struct in Swift?
-A struct in Swift is a value type which, just like classes, can contain:
-- properties
-- methods
-- subscripts
-- initializers
-- protocol conformances
-- extensions
-
-It can also be seen as a template definition of an object, like in the following Article instance definition:
-#+begin_src swift -r -n :results output :exports nil
-struct ArticleStruct {
-    let title: String
-    let url: URL
-    var readCount: Int = 0
-}
-#+end_src
-*** What are the differences between a struct and a class?
-#+CAPTION: Difference between class and struct
-#+LABEL:fig:StructClass
-#+name: fig:StructClass
-#+ATTR_LATEX: :width 300
-#+ATTR_ORG: :width 300
-#+ATTR_HTML: :width 300
-[[file:images/coffee.gif]]
-When you pass a class object around your program, you are actually passing a reference to that object, so different parts of your program can share and modify your object. When you pass a structure [ or enum] around your program, what gets passes around is a copy of the structure. So modifications to structures don’t get shared.[fn:25]
-
-One of the major benefits of value types is that they are thread-safe not requiring any
- synchronization.[fn:25] Structs always have unique owners, whereas with classes multiple things can point to the same value.[fn:26]
-
-Classes don’t need the *mutating* keyword before methods that change their properties, because you can change properties of constant classes.
-In practice, what this means is that if we have two SwiftUI views and we send them both the same struct to work with, they actually each have a unique copy of that struct; if one changes it, the other won’t see that change. On the other hand, if we create an instance of a class and send that to both views, they will share changes.[fn:26]
-Value vs reference types
-
-One of the most important differences is that a struct is a value type while a class is a reference type. References to a class instance share single data which means that any changes in that class will be available to each reference.
-
-#+begin_src swift -r -n :results output :exports nil
-let articleClass = ArticleClass(title: "Struct vs Class", url: URL(string: "www.avanderlee.com")!)
-let articleClassCopy = articleClass
-
-articleClass.readCount = 10
-print(articleClassCopy.readCount) // Prints: 10
-#+end_src
-
-A struct is a value type and will create a unique copy for each new reference.
-#+begin_src swift -r -n :results output :exports nil
-var articleStruct = ArticleStruct(title: "Struct vs Class", url: URL(string: "www.avanderlee.com")!, readCount: 0)
-var articleStructCopy = articleStruct
-
-articleStruct.readCount = 10
-print(articleStructCopy.readCount) // Prints: 0
-#+end_src
-**** The benefit of mutation in safety
-With this, structs have the benefit of mutation in safety as you can trust that no other part of your app is changing the data at the same time. This makes it easier to reason about your code and is especially helpful in multi-threaded environments where a different thread could alter your data at the same time.
-**** Structs get an initializer for free
-If you go back and compare the above code examples you can see that the ArticleClass has a defined initializer which is required for classes. Structs, however, get an initializer for free.
-#+begin_src swift -r -n :results output :exports nil
-// Before Swift 5.1 Memberwise initializers:
-// Generated memberwise init: init(title: String, url: URL, readCount: Int)
-let article = ArticleStruct(title: "", url: URL(string: "")!, readCount: 0)
-
-// After Swift 5.1 Memberwise initializers, using the default 0 for read count
-// Generated memberwise init: init(title: String, url: URL, readCount: Int = 0)
-let article = ArticleStruct(title: "", url: URL(string: "")!)
-#+end_src
-**** Classes allow inheritance
-Classes can inherit the characteristics of another class and with that, act like abstract classes. A common example is a custom view controller which inherit from UIViewController.
-
-With protocols in Swift, this is often no longer needed and replaceable with protocols. Protocols can be used with both classes and structs while inheritance is only possible with classes.
-Classes can be deinitialized
-
-A class allows executing code just before it gets destroyed by using a deinit method. When you define the same deinit method in a struct you’ll get the following error:
-#+begin_verse
-Deinitializers may only be declared within a class
-#+end_verse
-** 如何決擇? / When should I go for a struct and when for a class?
-A simple bullet point list will make it a lot easier to decide.
-*** You should use a class when:
-- Comparing instance identity is needed by using ===
-- Shared mutable state is required
-- Objective-C interoperability is required
-*** You should use a struct when:
-- Comparing instance data is needed by using ==
-- Unique copies with an independent state are required
-- The data is used in multiple threads
-*** Try to go for a struct by default.
-Structs make your code easier to reason about and make it easier to work in multithreaded environments which we often have while developing in Swift.
-** DEMO
-以下這個 View 可正常運作，於 TextField 中所做的編輯修改都會即時顯示於 Text 中。
-#+begin_src swift -r -n :results output :exports nil
-struct User {
-    var firstName" = Bilbo"
-    var lastName = "Baggins"
-}
-
-struct ContentView: View {
-    @State private var user = User()
-
-    var body: some View {
-        VStack {
-            Text("Your name is \(user.firstName) \(user.lastName).")
-
-            TextField("First name", text: $user.firstName)
-            TextField("Last name", text: $user.lastName)
-        }
-    }
-}
-#+end_src
-但若將 struct 改為 class，雖程式仍可執行，但 Text 中的姓名卻不再隨 TextField 的修改而連動。
-To fix this, we need to tell SwiftUI when interesting parts of our class have changed. By “interesting parts” I mean parts that should cause SwiftUI to reload any views that are watching our class – it’s possible you might have lots of properties inside your class, but only a few should be exposed to the wider world in this way.[fn:27]
-若要將 struct 改為 class，則程式要改成：
-#+begin_src swift -r -n :results output :exports nil
-class User: ObservableObject{
-    @Published var firstName = "Bilbo"
-    @Published var lastName = "Baggins"
-}
-
-struct ContentView: View {
-    @ObservedObject var user = User()
-
-    var body: some View {
-        VStack {
-            Text("Your name is \(user.firstName) \(user.lastName).")
-
-            TextField("First name", text: $user.firstName)
-            TextField("Last name", text: $user.lastName)
-        }
-    }
-}
-#+end_src
-Our User class has two properties: firstName and lastName. Whenever either of those two changes, we want to notify any views that are watching our class that a change has happened so they can be reloaded. We can do this using the @Published property observer.
-
-@Published is more or less half of @State: it tells Swift that whenever either of those two properties changes, it should send an announcement out to any SwiftUI views that are watching that they should reload.
-
-How do those views know which classes might send out these notifications? That’s another property wrapper, @ObservedObject, which is the other half of @State – it tells SwiftUI to watch a class for any change announcements.
-
-The @ObservedObject property wrapper can only be used on types that conform to the ObservableObject protocol. This protocol has no requirements, and really all it means is “we want other things to be able to monitor this for changes.”
-
-As you’ve seen, rather than just using @State to declare local state, we now take three steps:
-
-- Make a class that conforms to the ObservableObject protocol.
-- Mark some properties with @Published so that any views using the class get updated when they change.
-- Create an instance of our class using the @ObservedObject property wrapper.
-
-The end result is that we can have our state stored in an external object, and, even better, we can now use that object in multiple views and have them all point to the same values.
-#+latex: \newpage
-* TODO some
-:PROPERTIES:
-:CUSTOM_ID: some
-:END:
-#+begin_verse
-Adding the keyword some in front of a return type indicates that the return type is opaque. [fn:28]
-#+end_verse
-** Generics
-*** 問題
-Generics 允許開發者在不同類型中複用你的程式碼，用來解決下列問題：
-#+begin_src swift -r -n :eval no
-func swapInts(_ a: inout Int, _ b: inout Int) {
-    let temporaryB = b
-    b = a
-    a = temporaryB
-}
-
-var num1 = 10
-var num2 = 20
-
-swapInts(&num1, &num2)
-print(num1)   // 20
-print(num2)   // 10
-#+end_src
-但若想交換字串，則要寫成
-#+begin_src swift -r -n :eval no
-func swapStrings(_ a: inout String, _ b: inout String) {
-    let temporaryB = b
-    b = a
-    a = temporaryB
-}
-#+end_src
-可以發現除了參數之外，重複的 code 實在太多
-*** 解決方案
-將固定型態的參數轉為 Generic type
-#+begin_src swift -r -n :eval no
-import Cocoa
-
-func swapTwoValues<T>(_ a: inout T, _ b: inout T) {
-    let temporaryA = a
-    a = b
-    b = temporaryA
-}
-
-
-var num1 = 10
-var num2 = 20
-
-swapTwoValues(&num1, &num2)
-print(num1)   // 20
-print(num2)   // 10
-#+end_src
-另一個例子為 Stack 的實作：
-原本只能儲存 Int 的 Stack 如下，若要儲存字串則要再另行定義。
-#+begin_src swift -r -n :eval no
-struct IntStack {
-    var items = [Int]()
-    mutating func push(_ item: Int) {
-        items.append(item)
-    }
-    mutating func pop() -> Int {
-        return items.removeLast()
-    }
-}
-#+end_src
-改為 Generic type 後可動態變更為整數 stack 或字串 stack，如：
-#+begin_src swift -r -n :eval no
-struct Stack<Element> {
-    var items = [Element]()
-    mutating func push(_ item: Element) {
-        items.append(item)
-    }
-    mutating func pop() -> Element {
-        return items.removeLast()
-    }
-}
-
-var stackOfStrings = Stack<String>()
-stackOfStrings.push("uno")
-stackOfStrings.push("dos")
-stackOfStrings.push("tres")
-stackOfStrings.push("cuatro")
-// the stack now contains 4 strings
-
-#+end_src
-** opaque
-帶有不透明（opaque）返回類型的函數或方法，將會隱藏其返回值的類型[fn:29]
-#+latex:\newpage
-* TODO 進階主題
-:PROPERTIES:
-:CUSTOM_ID: advanced
-:END:
-- [[https://developer.apple.com/design/human-interface-guidelines/][Human Interface Guidelines]]: Apple 的人機設計界面指南
-- [[https://developer.apple.com/documentation][Apple Developer Documentation]]: Apple 開發者文件
-- [[https://www.appcoda.com.tw/protocol-extension/][利用 Protocol Extension 減少重覆的 Code　大大增強 Code 的維護性]]
-- [[https://appcoda.com.tw/mastering-swift/][精通Swift：列舉、閉包、泛型、Protocols和高階函數]]
-#+latex:\newpage
-* Firebase
-- [[https://medium.com/flawless-app-stories/how-to-build-a-firebase-app-with-swiftui-5919d2d8a396][How To Build A Firebase App With SwiftUI]]
-- [[https://benmcmahen.com/authentication-with-swiftui-and-firebase/][Using Firebase Authentication with SwiftUI]]
-- [[https://www.youtube.com/watch?v=4RUeW5rUcww][Building a to-do list app with SwiftUI and Firebase - Part 1 | Firebase Semi-live]]
-#+latex: \newpage
 
 * Footnotes
 
@@ -3612,68 +2754,33 @@ stackOfStrings.push("cuatro")
 
 [fn:3] [[https://www.appcoda.com.tw/swiftui-introduction/][SwiftUI 初體驗： 建構一個簡單 App　讓你了解 SwiftUI 有多強大！]]
 
-[fn:4] [[https://stackoverflow.com/questions/56514998/find-all-available-images-for-imagesystemname-in-swiftui][Find all available images for Image(systemName:) in SwiftUI]]
+[fn:4] [[https://medium.com/better-programming/say-goodbye-to-scenedelegate-in-swiftui-444173b23015][Say Goodbye to SceneDelegate in SwiftUI]]
 
-[fn:5] [[https://medium.com/%E5%BD%BC%E5%BE%97%E6%BD%98%E7%9A%84-swift-ios-app-%E9%96%8B%E7%99%BC%E5%95%8F%E9%A1%8C%E8%A7%A3%E7%AD%94%E9%9B%86/%E7%94%A8%E7%8B%80%E6%85%8B%E8%A8%AD%E8%A8%88-swiftui-%E7%95%AB%E9%9D%A2-%E8%AA%8D%E8%AD%98-state-property-binding-27fea6885ead][用狀態設計 SwiftUI 畫面 — 認識 @State property，binding & Toggle]]
+[fn:5] [[https://stackoverflow.com/questions/56514998/find-all-available-images-for-imagesystemname-in-swiftui][Find all available images for Image(systemName:) in SwiftUI]]
 
-[fn:10] [[https://juejin.cn/post/6844903924084768776][[譯]理解 SwiftUI 裡的屬性裝飾器]]
+[fn:6] [[https://medium.com/%E5%BD%BC%E5%BE%97%E6%BD%98%E7%9A%84-swift-ios-app-%E9%96%8B%E7%99%BC%E5%95%8F%E9%A1%8C%E8%A7%A3%E7%AD%94%E9%9B%86/%E7%94%A8%E7%8B%80%E6%85%8B%E8%A8%AD%E8%A8%88-swiftui-%E7%95%AB%E9%9D%A2-%E8%AA%8D%E8%AD%98-state-property-binding-27fea6885ead][用狀態設計 SwiftUI 畫面 — 認識 @State property，binding & Toggle]]
 
-[fn:6] [[https://medium.com/%E5%BD%BC%E5%BE%97%E6%BD%98%E7%9A%84-swift-ios-app-%E9%96%8B%E7%99%BC%E5%95%8F%E9%A1%8C%E8%A7%A3%E7%AD%94%E9%9B%86/%E5%AE%A2%E8%A3%BD-ui-%E5%85%83%E4%BB%B6%E6%A8%A3%E5%BC%8F%E7%9A%84-swiftui-modifier-b31ff65c1f0d][客製 UI 元件樣式的 SwiftUI modifier]]
+[fn:7] [[https://juejin.cn/post/6844903924084768776][[譯]理解 SwiftUI 裡的屬性裝飾器]]
 
-[fn:7] [[https://medium.com/%E5%BD%BC%E5%BE%97%E6%BD%98%E7%9A%84-swift-ios-app-%E9%96%8B%E7%99%BC%E5%95%8F%E9%A1%8C%E8%A7%A3%E7%AD%94%E9%9B%86/swiftui-%E8%A3%81%E5%88%87%E5%BD%A2%E7%8B%80%E7%9A%84-clipshape-mask-4fc49b34141][SwiftUI 裁切形狀的 clipShape & mask]]
+[fn:8] [[https://medium.com/%E5%BD%BC%E5%BE%97%E6%BD%98%E7%9A%84-swift-ios-app-%E9%96%8B%E7%99%BC%E5%95%8F%E9%A1%8C%E8%A7%A3%E7%AD%94%E9%9B%86/%E5%AE%A2%E8%A3%BD-ui-%E5%85%83%E4%BB%B6%E6%A8%A3%E5%BC%8F%E7%9A%84-swiftui-modifier-b31ff65c1f0d][客製 UI 元件樣式的 SwiftUI modifier]]
 
-[fn:8] [[https://www.appcoda.com.tw/swiftui-border/][SwiftUI 小技巧：利用 border 修飾符　輕鬆為按鈕或文本繪製邊框]]
+[fn:9] [[https://medium.com/%E5%BD%BC%E5%BE%97%E6%BD%98%E7%9A%84-swift-ios-app-%E9%96%8B%E7%99%BC%E5%95%8F%E9%A1%8C%E8%A7%A3%E7%AD%94%E9%9B%86/swiftui-%E8%A3%81%E5%88%87%E5%BD%A2%E7%8B%80%E7%9A%84-clipshape-mask-4fc49b34141][SwiftUI 裁切形狀的 clipShape & mask]]
 
-[fn:9] [[https://www.hackingwithswift.com/quick-start/swiftui/how-to-create-a-list-of-dynamic-items][How to create a list of dynamic items]]
+[fn:10] [[https://www.appcoda.com.tw/swiftui-border/][SwiftUI 小技巧：利用 border 修飾符　輕鬆為按鈕或文本繪製邊框]]
 
-[fn:11] [[https://www.hackingwithswift.com/quick-start/swiftui/what-is-the-binding-property-wrapper][What is the @Binding property wrapper?]]
+[fn:11] [[https://www.hackingwithswift.com/quick-start/swiftui/how-to-create-a-list-of-dynamic-items][How to create a list of dynamic items]]
 
-[fn:12] [[https://medium.com/@nwyyy/swift%E7%AD%86%E8%A8%98-tab-bar-2ddba7d56587][iOS筆記：Tab Bar]]
+[fn:12] [[https://www.hackingwithswift.com/quick-start/swiftui/what-is-the-binding-property-wrapper][What is the @Binding property wrapper?]]
 
-[fn:13] [[https://www.appcoda.com/swiftui-tabview/][Introducing SwiftUI TabView and Working with Tab Bar Customization]]
+[fn:13] [[https://medium.com/@nwyyy/swift%E7%AD%86%E8%A8%98-tab-bar-2ddba7d56587][iOS筆記：Tab Bar]]
 
-[fn:36] [[https://www.hackingwithswift.com/quick-start/swiftui/what-is-the-environmentobject-property-wrapper][What is the @EnvironmentObject property wrapper?]]
+[fn:14] [[https://www.appcoda.com/swiftui-tabview/][Introducing SwiftUI TabView and Working with Tab Bar Customization]]
 
-[fn:14] [[https://www.youtube.com/watch?v=cc23YTGZVbQ][iOS 13 SwiftUI Tutorial: Interactively Transition and Share Data between Views with SwiftUI]]
+[fn:15] [[https://www.hackingwithswift.com/quick-start/swiftui/what-is-the-environmentobject-property-wrapper][What is the @EnvironmentObject property wrapper?]]
 
-[fn:15] [[https://www.youtube.com/watch?v=0i152oA3T3s][Lecture 9: Data Flow]]
+[fn:16] [[https://www.youtube.com/watch?v=0i152oA3T3s][Lecture 9: Data Flow]]
 
-[fn:16] [[https://onevcat.com/2020/06/stateobject/][@StateObject 和 @ObservedObject 的区别和使用]]
+[fn:17] [[https://onevcat.com/2020/06/stateobject/][@StateObject 和 @ObservedObject 的区别和使用]]
 
-[fn:17] [[https://www.raywenderlich.com/6742901-protocol-oriented-programming-tutorial-in-swift-5-1-getting-started][Protocol-Oriented Programming Tutorial in Swift 5.1: Getting Started]]
+[fn:18] [[https://www.youtube.com/watch?v=cc23YTGZVbQ][iOS 13 SwiftUI Tutorial: Interactively Transition and Share Data between Views with SwiftUI]]
 
-[fn:18] [[https://medium.com/%E5%BD%BC%E5%BE%97%E6%BD%98%E7%9A%84-swift-ios-app-%E9%96%8B%E7%99%BC%E6%95%99%E5%AE%A4/%E7%B0%A1%E6%98%93%E8%AA%AA%E6%98%8Eswift-4-protocol-919b7f9cbaee][『簡易說明Swift 4』Protocol]]
-
-[fn:19] [[https://www.appcoda.com.tw/protocol-extension/][利用 Protocol Extension 減少重覆的 Code　大大增強 Code 的維護性]]
-
-[fn:20] [[https://docs.swift.org/swift-book/LanguageGuide/Protocols.html][Protocols]]
-
-[fn:21] [[https://www.appcoda.com.tw/swift-protocol/][Swift開發指南：Protocols與Protocol Extensions的使用心法]]
-
-[fn:22] [[https://ithelp.ithome.com.tw/articles/10197366][Day-29 Swift 語法(25) - 協定 Protocol]]
-
-[fn:23] [[https://abhimuralidharan.medium.com/all-about-protocols-in-swift-11a72d6ea354][All about protocols in swift]]
-
-[fn:24] [[https://www.hackingwithswift.com/books/ios-swiftui/why-does-swiftui-use-structs-for-views][Why does SwiftUI use structs for views?]]
-
-[fn:25] [[https://abhimuralidharan.medium.com/difference-between-a-struct-and-a-class-in-swift-53e08df73714][Difference between a struct and a class in Swift]]
-
-[fn:26] [[https://www.hackingwithswift.com/books/ios-swiftui/why-state-only-works-with-structs][Why @State only works with structs]]
-
-[fn:27] [[https://www.hackingwithswift.com/books/ios-swiftui/sharing-swiftui-state-with-observedobject][Sharing SwiftUI state with @ObservedObject]]
-
-[fn:28] [[https://medium.com/@PhiJay/whats-this-some-in-swiftui-34e2c126d4c4][What’s this “some” in SwiftUI?]]
-
-[fn:29] [[https://medium.com/jeremy-xue-s-blog/swift-%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80-opaque-types-600ad5758b91][Swift 程式語言 — Opaque Types]]
-
-[fn:34] [[https://stackoverflow.com/questions/56437335/go-to-a-new-view-using-swiftui][Go to a new view using SwiftUI]]
-
-[fn:33] [[https://www.appcoda.com.tw/swift-class/][Swift Class vs Struct：設計 Model 時，該用 Struct 還是 Class 呢？]]
-
-[fn:32] [[https://appcoda.com.tw/mastering-swift/][精通Swift：列舉、閉包、泛型、Protocols和高階函數]]
-
-[fn:31] [[https://ithelp.ithome.com.tw/articles/10220520][ Day 10: [Swift] 結構和類 (Struct and Class) ]]
-
-[fn:30] [[https://levelup.gitconnected.com/demystifying-struct-class-and-enum-in-swift-5-43dde089e96a][Demystifying Struct, Class, and Enum in Swift 5]]
-
-[fn:35] [[https://codertw.com/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/684510/][Swift5.1不得不知的PropertyWrappers特性]]

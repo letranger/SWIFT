@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-12-14 Mon 21:42 -->
+<!-- 2021-02-15 Mon 21:34 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>SwiftUI v.s. Firebase</title>
@@ -231,48 +231,57 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgdb1eddf">1. Introduction</a>
+<li><a href="#orgda24118">1. Introduction</a>
 <ul>
-<li><a href="#org2c10574">1.1. Firebase的歷史</a></li>
+<li><a href="#org7bd8a7a">1.1. Firebase的歷史</a></li>
 </ul>
 </li>
-<li><a href="#org399657b">2. Firebase console</a>
+<li><a href="#org19ee019">2. Firebase console</a>
 <ul>
-<li><a href="#org9086805">2.1. Web sites</a></li>
-<li><a href="#org21b6c56">2.2. Adding Firebase to your iOS project</a></li>
+<li><a href="#org51e41b8">2.1. Web sites</a></li>
+<li><a href="#org13ef289">2.2. Adding Firebase to your iOS project</a></li>
 </ul>
 </li>
-<li><a href="#orgc13a844">3. Setting up Firebase project</a></li>
-<li><a href="#orgdcdd65f">4. Videos</a></li>
+<li><a href="#org69515b2">3. Setting up Firebase project</a></li>
+<li><a href="#orgc48d0ea">4. Videos</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgdb1eddf" class="outline-2">
-<h2 id="orgdb1eddf"><span class="section-number-2">1</span> Introduction</h2>
+<div id="outline-container-orgda24118" class="outline-2">
+<h2 id="orgda24118"><span class="section-number-2">1</span> Introduction</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 什麼是Firebase？Firebase是由Google收購的子公司，所提供的是行動應用程式開發的平台服務，也就是BaaS(Backend as a Service)，它能夠幫助我們快速開發我們的應用程式，並且支援跨平台包括Android、iOS以及Web，幫我們整合大部分建立一個服務所需要的後台功能。主要像是提供雲端給使用者架起網頁、提供資料庫供使用者存取資料以及做後台分析等等。<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup><br />
 </p>
 </div>
 
-<div id="outline-container-org2c10574" class="outline-3">
-<h3 id="org2c10574"><span class="section-number-3">1.1</span> Firebase的歷史</h3>
+<div id="outline-container-org7bd8a7a" class="outline-3">
+<h3 id="org7bd8a7a"><span class="section-number-3">1.1</span> Firebase的歷史</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 Firebase從Envolve演變而來。 Envolve是James Tamplin和Andrew Lee在2011年創立的一家早期創業公司。Envolve為開發人員提供了一個API,該API允許將在線聊天功能集成到他們的網站中。釋放聊天服務後,它發現envlove被用來傳遞不是聊天消息的應用程序數據。開發人員使用Envolve同步應用程序,以分離實時體系結構和為其提供動力的聊天系統。2011年9月,Tamplin和Lee單獨成立了Firebase。最後於2012年4月向公眾發佈。<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup><br />
 </p>
+
+<ul class="org-ul">
+<li><a href="https://medium.com/flawless-app-stories/how-to-build-a-firebase-app-with-swiftui-5919d2d8a396">How To Build A Firebase App With SwiftUI</a><br /></li>
+<li><a href="https://benmcmahen.com/authentication-with-swiftui-and-firebase/">Using Firebase Authentication with SwiftUI</a><br /></li>
+<li><a href="https://www.youtube.com/watch?v=4RUeW5rUcww">Building a to-do list app with SwiftUI and Firebase - Part 1 | Firebase Semi-live</a><br /></li>
+<li><a href="https://www.youtube.com/watch?v=elhzkcoBl-A">https://www.youtube.com/watch?v=elhzkcoBl-A</a><br /></li>
+<li><a href="https://www.youtube.com/watch?v=9VpaaJ3eLWk&amp;list=PLY_qIufNHc292EYDwe3B6sGYO_vQ7pOLx&amp;index=8">https://www.youtube.com/watch?v=9VpaaJ3eLWk&amp;list=PLY_qIufNHc292EYDwe3B6sGYO_vQ7pOLx&amp;index=8</a><br /></li>
+<li><a href="https://www.hackingwithswift.com/books/ios-swiftui/creating-a-form">https://www.hackingwithswift.com/books/ios-swiftui/creating-a-form</a><br /></li>
+<li><a href="https://www.youtube.com/watch?v=1QcekWFK2d8">https://www.youtube.com/watch?v=1QcekWFK2d8</a><br /></li>
+</ul>
 </div>
 </div>
 </div>
 
-
-<div id="outline-container-org399657b" class="outline-2">
-<h2 id="org399657b"><span class="section-number-2">2</span> Firebase console</h2>
+<div id="outline-container-org19ee019" class="outline-2">
+<h2 id="org19ee019"><span class="section-number-2">2</span> Firebase console</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org9086805" class="outline-3">
-<h3 id="org9086805"><span class="section-number-3">2.1</span> Web sites</h3>
+<div id="outline-container-org51e41b8" class="outline-3">
+<h3 id="org51e41b8"><span class="section-number-3">2.1</span> Web sites</h3>
 <div class="outline-text-3" id="text-2-1">
 <ul class="org-ul">
 <li><a href="https://firebase.google.com/docs/ios/setup">Firebase Documentation</a><br /></li>
@@ -281,8 +290,8 @@ Firebase從Envolve演變而來。 Envolve是James Tamplin和Andrew Lee在2011年
 </ul>
 </div>
 </div>
-<div id="outline-container-org21b6c56" class="outline-3">
-<h3 id="org21b6c56"><span class="section-number-3">2.2</span> Adding Firebase to your iOS project</h3>
+<div id="outline-container-org13ef289" class="outline-3">
+<h3 id="org13ef289"><span class="section-number-3">2.2</span> Adding Firebase to your iOS project</h3>
 <div class="outline-text-3" id="text-2-2">
 <ol class="org-ol">
 <li>Create a FIrebase project<br /></li>
@@ -297,11 +306,11 @@ Firebase從Envolve演變而來。 Envolve是James Tamplin和Andrew Lee在2011年
 </div>
 </div>
 </div>
-<div id="outline-container-orgc13a844" class="outline-2">
-<h2 id="orgc13a844"><span class="section-number-2">3</span> Setting up Firebase project</h2>
+<div id="outline-container-org69515b2" class="outline-2">
+<h2 id="org69515b2"><span class="section-number-2">3</span> Setting up Firebase project</h2>
 </div>
-<div id="outline-container-orgdcdd65f" class="outline-2">
-<h2 id="orgdcdd65f"><span class="section-number-2">4</span> Videos</h2>
+<div id="outline-container-orgc48d0ea" class="outline-2">
+<h2 id="orgc48d0ea"><span class="section-number-2">4</span> Videos</h2>
 <div class="outline-text-2" id="text-4">
 <ul class="org-ul">
 <li><a href="https://www.youtube.com/watch?v=4RUeW5rUcww">Building a to-do list app with SwiftUI and Firebase - Part 1</a><br /></li>
@@ -326,7 +335,7 @@ Firebase從Envolve演變而來。 Envolve是James Tamplin和Andrew Lee在2011年
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Yung Chin, Yen</p>
-<p class="date">Created: 2020-12-14 Mon 21:42</p>
+<p class="date">Created: 2021-02-15 Mon 21:34</p>
 </div>
 </body>
 </html>
