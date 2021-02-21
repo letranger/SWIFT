@@ -548,14 +548,6 @@ struct TaskListView: View {
                     })
                 }
 
-                HStack(alignment: .center, spacing: 10, content: {
-                    Image(systemName: "plus.circle.fill")
-                    Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
-                        /*@START_MENU_TOKEN@*/Text("Button")/*@END_MENU_TOKEN@*/
-                    })
-                    Text("New Task")
-                }).padding()
-
                 .navigationBarTitle("Tasks", displayMode: .inline)
 
                 .navigationBarItems(trailing: NavigationLink(
@@ -587,7 +579,6 @@ struct TaskCell: View {
         }
     }
 }
-
 #+end_src
 *** ViewModel
 **** TaskCellViewModel.swift
