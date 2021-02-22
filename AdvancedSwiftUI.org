@@ -148,6 +148,9 @@ herCat.name = "Mumu"
 #+latex:\newpage
 
 * Review
+:PROPERTIES:
+:CUSTOM_ID: SW-Review
+:END:
 - Functions: Tasks management project: task listing, adding, removing, editing
 - Technoloties: View navigation, variable sharing, data model
 參考資料: [[https://medium.com/better-programming/replicating-the-ios-reminders-app-part1-44211a7b7029][Building a To-Do List App with SwiftUI, Combine, and Firebase]]
@@ -778,6 +781,9 @@ iOS-Swift-1
 31/08
 
 * Advance function
+:PROPERTIES:
+:CUSTOM_ID: SW-AdvFuncs
+:END:
 ** filter()
 filter() 宣告如下：
 #+begin_src swift -r -n :results output :exports nil
