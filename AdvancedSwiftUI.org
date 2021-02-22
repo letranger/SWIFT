@@ -4,9 +4,153 @@
 
 #+latex:\newpage
 
+* MVVM
+:PROPERTIES:
+:CUSTOM_ID: SW-MVVM
+:END:
+** Design pattern
+MVVM 的概念最早應該是在 2005 年由 Microsoft的[[https://blogs.msdn.microsoft.com/johngossman/2005/10/08/introduction-to-modelviewviewmodel-pattern-for-building-wpf-apps/][John Gossman]]提出來的，它的概念是，整個 Swift project 會拆分成三個部份: View、ViewModel、Model，其中 View 的角色就是單純的視覺元件，像是按鈕、文字標籤等等，在 View 裡面不會有邏輯、狀態等等，單純就是個呈現資料的元件。而要讓 View 呈現資料，最直覺的方式，就是把 View 跟 Model 做綁定，讓 View 的元件跟著 Model 一起做變化。但這樣會有個問題，就是通常 Model 來的資料，並不是簡單就能轉換成 View 的樣式的，這時候就需要有個物件，介在 View 跟 Model 的中間，這個物件會掌管這些跟 View 高度相關的邏輯的操作，像是轉換 Date 物件變成人看得懂的文字格式等，稱之為 ViewModel。上面的概念可以畫成這樣的資料流：
+
+#+CAPTION: MVVM Architecture
+#+NAME: fig: MVVMPNG
+#+ATTR_LATEX: :width 500
+#+ATTR_ORG: :width 500
+#+ATTR_HTML: :width 600
+[[file:images/MVVM-Basic.jpg]]
+
+在 iOS 開發上，依照上述 MVVM 的定義，ContentView 變成一個單純的 View，而我們會另外產生一個 ViewModel 來負責 presentational logic 跟部份的 controller logic。所以在View裡面，就只會有：
+1. View logic，所有跟呈現有關的 Code
+1. 綁定 ViewModel
+而在 ViewModel 裡面，則是負責兩個部份：
+1. Controller logic，如 pagination, error handling,… etc
+1. Presentation logic，提供接口讓 View 綁定(binding)(提供適合在View中呈現的資料)
+開發上，一旦 View 綁定好 ViewModel 的資料，在撰寫商業邏輯的時候，就可以不用管包括動畫、轉場、main thread 等等跟 View 相關的問題，因為分工明確所以就不會有寫起來綁手綁腳的感覺。更棒的是，並且因為 ViewModel 是一個單純的、沒有相依於 View 的物件，所以要做測試簡單多了！
+[[https://www.codementor.io/@koromiko/mvvm-app-cl1wvw2sh][資料來源: 歡迎來到真實世界 - 原來是那個傳說中的MVVM阿]]
+** What is the idea behind MVVM
+*** Model
+- Business logic
+- UI Independent
+*** View
+- Presentation
+- User interaction
+*** ViewModel
+- Presentation logic
+- Glue between Model and View
+*** 為什麼要拆成三部份(What does it solve?)
+- MVC - Massive View Controller
+- Testability
+- Code organization
+- Code reusability
+*** Limitations / Cons
+- Requires binding
+- Potential for boilerplate code
+- Overkill for simple views and logic
+- Doesn't cover every case
+** DEMO
+以"推薦書單"的 APP 為例:
+- Model: 包含書名、作者、出版社....，而實際的資料來源可能是雲端資料庫(Firebase)、Web API、本機資料庫(Core data)。
+    #+begin_src swift -r -n :eval no
+struct Book {
+    let title: String
+    let author: String
+    let dateReleased: String
+    let publishCamp: String
+    let publishCity: String
+    let isFavorite: Bool
+}
+  #+end_src
+- View: 在 APP 畫面上呈現 Model 中資料的元件，如 Text, Image, Button, List.....
+- ViewModel: 將 Model 中的資料取出，供 View 呈現，或是接受 View 輸入的資料，存回 Model。以"推薦書單 APP"為例，其 ViewModel 可能包含如下 struct:
+  #+begin_src swift -r -n :eval no
+struct BookDetailViewModel {
+    var book: Book
+
+    var isFavorite: Bool
+
+    init(book: Book) {
+        self.book = book
+        self.isFavorite = false
+    }
+
+    var title: String {
+        return self.book.title
+    }
+
+    var author: String {
+        return self.book.author
+    }
+
+    var dateReleased: String {
+        return self.book.dateReleased
+    }
+
+    // 呈現時要求以 遠流出版社(台北市) 的格式來呈現
+    var publisher: String {
+        let output = self.book.publishCamp + "(" + self.book.publishCity + ")"
+        return output
+    }
+}
+  #+end_src
+  從 Model 中可以看到書籍的記錄欄位只有"出版社"(publishCamp)和"出版地點"(publishCity)，但若 app 對顯示結果的格式要求為"出版社(出版地點)"，則可以在 ViewModel 中來處理。
+  此外，如果在 View 上有一個 Favorite Button，則當 user 點了 Favorite 後，ViewModel 應負責將 struct 中的 isFavorite 改存 True，並回存至 Model 中。Model 的資料只能透過 ViewModel 來新增刪除，View 無法直接染指。
+  Model 與 UI 完全無關，單純用來儲存資料，ViewModel 為 Model 與 View 溝通的橋樑。
+** Model 要用 Struct 或是 Class
+[[https://www.appcoda.com.tw/swift-class/][資料來源:Swift Class vs Struct：設計 Model 時，該用 Struct 還是 Class 呢？]]
+*** Struct 與 Class 的不同性質
+首先，當我們指派 (assign) 一個實體給一個辨識符（identifier，也就是變數／常數名）的時候，如果該實體是 struct 的話，該辨識符所容納的會是該實體的所有內容；但如果它是 class 的話，這個辨識符就只會容納存放該實體的位址：
+#+begin_src swift -r -n :results output :exports nil
+// 用 struct 定義 Dog。
+struct Dog {
+    var name = "Bart"
+}
+// 整個 Dog 實體都會被存到 myDog 裡。
+var myDog = Dog()
+// 用 class 定義 Cat。
+class Cat {
+    var name = "Mimi"
+}
+// myCat 只會儲存 Cat 實體的位址。Cat 實體本身會被存到別的地方。
+var myCat = Cat()
+#+end_src
+也就是說，當我們使用辨識符的時候，如果它的型別是 struct 的話，我們在操作的實體都會是本地的。但是當我們在操作 class 型別的辨識符的話，那麼我們實際上是透過辨識符在操作一個遠端的實體。所以，當我們更改這些實體的屬性的時候，它們的行為就不太一樣了：
+#+begin_src swift -r -n :results output :exports nil
+// 使用 struct。
+var herDog = Dog() {
+    // 如果 herDog 有變動的話就顯示訊息。
+    didSet {
+        print("Her dog is changed!")
+    }
+}
+herDog.name = "Starlord"
+// Her dog is changed!
+// 使用 class。
+var herCat = Cat() {
+    didSet {
+        print("Her cat is changed!")
+    }
+}
+herCat.name = "Mumu"
+// 沒有訊息。
+#+end_src
+怎麼會有這樣的差別呢？因為 herDog 儲存了所有的 Dog 實體內容，所以任何 Dog 實體的屬性的變動，就等於說 herDog 本身有變動。然而，herCat 並沒有儲存 Cat 實體的內容，所以 Cat 實體屬性的變動是在別的地方發生的，且 herCat 本身所儲存的 Cat 實體位址並沒有任何的改變。
+由圖[[fig: MVVMPNG]]可看出，
+*** MVVM 中的 Model
+** DICE DEMO
+** Further Reading Resources
+- [[https://www.youtube.com/watch?v=1IlUBHvgY8Q&t=29s][SwiftUI MVVM Programming with ObservableObject @Published @ObservedObject]]
+- [[https://www.youtube.com/watch?v=LntH6moCuo0][SwiftUI 2.0: MVVM - A Practical Approach]]
+- [[https://www.youtube.com/watch?v=gkAV4D1nopA][SwiftUI Tip Calculator Using MVVM Design Pattern]]
+- [[https://www.youtube.com/watch?v=cbqMkIG6Qeg][Understanding MVVM Design Pattern]]: 講的超清楚
+- Video: [[https://www.youtube.com/watch?v=EhtK_H9LsYQ][MVVM SwiftUI - Model View ViewModel Pattern - Getting Started]]
+- Video: [[https://www.youtube.com/watch?v=LntH6moCuo0]]
+- Video: [[https://www.youtube.com/watch?v=sWx8TtRBOfk][MVVM in Practice - RWDevCon Session - raywenderlich.com]]
+- GitHub: https://github.com/rebeloper/SwiftUIMVVM.git
+#+latex:\newpage
+
 * Review
 - Functions: Tasks management project: task listing, adding, removing, editing
 - Technoloties: View navigation, variable sharing, data model
+參考資料: [[https://medium.com/better-programming/replicating-the-ios-reminders-app-part1-44211a7b7029][Building a To-Do List App with SwiftUI, Combine, and Firebase]]
 ** Data Model
 #+begin_src swift -r -n :results output :exports nil
 //
@@ -633,7 +777,6 @@ Developing iOS App with Swift #1
 iOS-Swift-1
 31/08
 
-
 * Advance function
 ** filter()
 filter() 宣告如下：
@@ -787,149 +930,6 @@ class UserViewModel: ObservableObject {
   .store(in: &cancellableSet)
 }
 #+end_src
-
-* MVVM
-:PROPERTIES:
-:CUSTOM_ID: SW-MVVM
-:END:
-** Design pattern
-MVVM 的概念最早應該是在 2005 年由 Microsoft的[[https://blogs.msdn.microsoft.com/johngossman/2005/10/08/introduction-to-modelviewviewmodel-pattern-for-building-wpf-apps/][John Gossman]]提出來的，它的概念是，整個 Swift project 會拆分成三個部份: View、ViewModel、Model，其中 View 的角色就是單純的視覺元件，像是按鈕、文字標籤等等，在 View 裡面不會有邏輯、狀態等等，單純就是個呈現資料的元件。而要讓 View 呈現資料，最直覺的方式，就是把 View 跟 Model 做綁定，讓 View 的元件跟著 Model 一起做變化。但這樣會有個問題，就是通常 Model 來的資料，並不是簡單就能轉換成 View 的樣式的，這時候就需要有個物件，介在 View 跟 Model 的中間，這個物件會掌管這些跟 View 高度相關的邏輯的操作，像是轉換 Date 物件變成人看得懂的文字格式等，稱之為 ViewModel。上面的概念可以畫成這樣的資料流：
-
-#+CAPTION: MVVM Architecture
-#+NAME: fig: MVVMPNG
-#+ATTR_LATEX: :width 500
-#+ATTR_ORG: :width 500
-#+ATTR_HTML: :width 600
-[[file:images/MVVM-Basic.jpg]]
-
-在 iOS 開發上，依照上述 MVVM 的定義，ContentView 變成一個單純的 View，而我們會另外產生一個 ViewModel 來負責 presentational logic 跟部份的 controller logic。所以在View裡面，就只會有：
-1. View logic，所有跟呈現有關的 Code
-1. 綁定 ViewModel
-而在 ViewModel 裡面，則是負責兩個部份：
-1. Controller logic，如 pagination, error handling,… etc
-1. Presentation logic，提供接口讓 View 綁定(binding)(提供適合在View中呈現的資料)
-開發上，一旦 View 綁定好 ViewModel 的資料，在撰寫商業邏輯的時候，就可以不用管包括動畫、轉場、main thread 等等跟 View 相關的問題，因為分工明確所以就不會有寫起來綁手綁腳的感覺。更棒的是，並且因為 ViewModel 是一個單純的、沒有相依於 View 的物件，所以要做測試簡單多了！
-[[https://www.codementor.io/@koromiko/mvvm-app-cl1wvw2sh][資料來源: 歡迎來到真實世界 - 原來是那個傳說中的MVVM阿]]
-** What is the idea behind MVVM
-*** Model
-- Business logic
-- UI Independent
-*** View
-- Presentation
-- User interaction
-*** ViewModel
-- Presentation logic
-- Glue between Model and View
-*** 為什麼要拆成三部份(What does it solve?)
-- MVC - Massive View Controller
-- Testability
-- Code organization
-- Code reusability
-*** Limitations / Cons
-- Requires binding
-- Potential for boilerplate code
-- Overkill for simple views and logic
-- Doesn't cover every case
-** DEMO
-以"推薦書單"的 APP 為例:
-- Model: 包含書名、作者、出版社....，而實際的資料來源可能是雲端資料庫(Firebase)、Web API、本機資料庫(Core data)。
-    #+begin_src swift -r -n :eval no
-struct Book {
-    let title: String
-    let author: String
-    let dateReleased: String
-    let publishCamp: String
-    let publishCity: String
-    let isFavorite: Bool
-}
-  #+end_src
-- View: 在 APP 畫面上呈現 Model 中資料的元件，如 Text, Image, Button, List.....
-- ViewModel: 將 Model 中的資料取出，供 View 呈現，或是接受 View 輸入的資料，存回 Model。以"推薦書單 APP"為例，其 ViewModel 可能包含如下 struct:
-  #+begin_src swift -r -n :eval no
-struct BookDetailViewModel {
-    var book: Book
-
-    var isFavorite: Bool
-
-    init(book: Book) {
-        self.book = book
-        self.isFavorite = false
-    }
-
-    var title: String {
-        return self.book.title
-    }
-
-    var author: String {
-        return self.book.author
-    }
-
-    var dateReleased: String {
-        return self.book.dateReleased
-    }
-
-    // 呈現時要求以 遠流出版社(台北市) 的格式來呈現
-    var publisher: String {
-        let output = self.book.publishCamp + "(" + self.book.publishCity + ")"
-        return output
-    }
-}
-  #+end_src
-  從 Model 中可以看到書籍的記錄欄位只有"出版社"(publishCamp)和"出版地點"(publishCity)，但若 app 對顯示結果的格式要求為"出版社(出版地點)"，則可以在 ViewModel 中來處理。
-  此外，如果在 View 上有一個 Favorite Button，則當 user 點了 Favorite 後，ViewModel 應負責將 struct 中的 isFavorite 改存 True，並回存至 Model 中。Model 的資料只能透過 ViewModel 來新增刪除，View 無法直接染指。
-  Model 與 UI 完全無關，單純用來儲存資料，ViewModel 為 Model 與 View 溝通的橋樑。
-** Model 要用 Struct 或是 Class
-[[https://www.appcoda.com.tw/swift-class/][資料來源:Swift Class vs Struct：設計 Model 時，該用 Struct 還是 Class 呢？]]
-*** Struct 與 Class 的不同性質
-首先，當我們指派 (assign) 一個實體給一個辨識符（identifier，也就是變數／常數名）的時候，如果該實體是 struct 的話，該辨識符所容納的會是該實體的所有內容；但如果它是 class 的話，這個辨識符就只會容納存放該實體的位址：
-#+begin_src swift -r -n :results output :exports nil
-// 用 struct 定義 Dog。
-struct Dog {
-    var name = "Bart"
-}
-// 整個 Dog 實體都會被存到 myDog 裡。
-var myDog = Dog()
-// 用 class 定義 Cat。
-class Cat {
-    var name = "Mimi"
-}
-// myCat 只會儲存 Cat 實體的位址。Cat 實體本身會被存到別的地方。
-var myCat = Cat()
-#+end_src
-也就是說，當我們使用辨識符的時候，如果它的型別是 struct 的話，我們在操作的實體都會是本地的。但是當我們在操作 class 型別的辨識符的話，那麼我們實際上是透過辨識符在操作一個遠端的實體。所以，當我們更改這些實體的屬性的時候，它們的行為就不太一樣了：
-#+begin_src swift -r -n :results output :exports nil
-// 使用 struct。
-var herDog = Dog() {
-    // 如果 herDog 有變動的話就顯示訊息。
-    didSet {
-        print("Her dog is changed!")
-    }
-}
-herDog.name = "Starlord"
-// Her dog is changed!
-// 使用 class。
-var herCat = Cat() {
-    didSet {
-        print("Her cat is changed!")
-    }
-}
-herCat.name = "Mumu"
-// 沒有訊息。
-#+end_src
-怎麼會有這樣的差別呢？因為 herDog 儲存了所有的 Dog 實體內容，所以任何 Dog 實體的屬性的變動，就等於說 herDog 本身有變動。然而，herCat 並沒有儲存 Cat 實體的內容，所以 Cat 實體屬性的變動是在別的地方發生的，且 herCat 本身所儲存的 Cat 實體位址並沒有任何的改變。
-由圖[[fig: MVVMPNG]]可看出，
-*** MVVM 中的 Model
-** DICE DEMO
-** Further Reading Resources
-- [[https://www.youtube.com/watch?v=1IlUBHvgY8Q&t=29s][SwiftUI MVVM Programming with ObservableObject @Published @ObservedObject]]
-- [[https://www.youtube.com/watch?v=LntH6moCuo0][SwiftUI 2.0: MVVM - A Practical Approach]]
-- [[https://www.youtube.com/watch?v=gkAV4D1nopA][SwiftUI Tip Calculator Using MVVM Design Pattern]]
-- [[https://www.youtube.com/watch?v=cbqMkIG6Qeg][Understanding MVVM Design Pattern]]: 講的超清楚
-- Video: [[https://www.youtube.com/watch?v=EhtK_H9LsYQ][MVVM SwiftUI - Model View ViewModel Pattern - Getting Started]]
-- Video: [[https://www.youtube.com/watch?v=LntH6moCuo0]]
-- Video: [[https://www.youtube.com/watch?v=sWx8TtRBOfk][MVVM in Practice - RWDevCon Session - raywenderlich.com]]
-- GitHub: https://github.com/rebeloper/SwiftUIMVVM.git
-#+latex:\newpage
 
 * Web API: URLSession v.s. JSONDecoder
 ** Demo 1
