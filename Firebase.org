@@ -32,7 +32,45 @@ Firebase從Envolve演變而來。 Envolve是James Tamplin和Andrew Lee在2011年
 
 * Setting up Firebase project
 ** Step by step
-[[https://1998design.medium.com/%E5%A6%82%E4%BD%95-%E5%B0%87firebase%E5%8A%A0%E5%85%A5ios-swiftui-2-2020-d4315d0173ca][如何：將Firebase加入iOS SwiftUI 2 (2020)]]
+1. 打開Firebase Console: https://console.firebase.google.com/
+2. 開啟或新增專案
+3. 進入專案後，按新增應用程式
+4. 選取平台 iOS
+5. 下載 plist 文件 並且放入 Xcode 裏面
+6. 添加PodFile
+   1. 打開 Terminal
+   2. 前往 Xcode 檔案夾 (xcodeproj 位置)
+   3. 輸入指令(terminal)
+      #+BEGIN_SRC
+      pod init
+      #+END_SRC
+   4. 打開 PodFile 或 輸入指令(terminal)
+      #+BEGIN_SRC
+      open Podfile
+      #+END_SRC
+   5. 在target(iOS) 裡加入
+      #+BEGIN_SRC
+      pod 'Firebase/Analytics'
+      #+END_SRC
+1. 安裝pod (terminal)
+   #+BEGIN_SRC
+   pod install
+   #+END_SRC
+1. 開啟xcworkspace
+1. 在xxxApp.swift加入
+   #+begin_src swift -r -n :results output :exports nil
+   import Firebase
+   #+end_src
+   在@main加入
+   #+begin_src swift -r -n :results output :exports nil
+init() {
+    FirebaseApp.configure()
+}
+   #+end_src
+
+   #+RESULTS:
+
+資料來源：[[https://1998design.medium.com/%E5%A6%82%E4%BD%95-%E5%B0%87firebase%E5%8A%A0%E5%85%A5ios-swiftui-2-2020-d4315d0173ca][如何：將Firebase加入iOS SwiftUI 2 (2020)]]
 
 * Videos
 - [[https://www.youtube.com/watch?v=4RUeW5rUcww][Building a to-do list app with SwiftUI and Firebase - Part 1]]
