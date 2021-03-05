@@ -290,6 +290,47 @@ struct TaskCell: View {
 ** MVVM
 以MVVM架構來開發project
 *** ViewModel
+**** Diagram for now
+#+BEGIN_SRC ditaa :file images/mvvm-d1.png
+    +---------+                  +-------------+            +------------+
+    |         +-------uses------>|             |            |            |
+    |   View  |<-=-Configures-=--+  View Model +---owns---->|   Model    |
+    |         |                  |             |            |            |
+    +---------+                  +-------------+            +------------+
+#+END_SRC
+
+#+RESULTS:
+[[file:images/mvvm-d1.png]]
+
+**** Model for the future
+#+BEGIN_SRC ditaa :file images/mvvm-d2.png
+   +-----------+
+   |           |
+   |    View   |
+   |           |
+   +-+---------+
+     |     ^
+   uses    |
+     |     |
+     | configures
+     |     |
+     v     :
+   +-------+-----+                         +------------+               +-----------+
+   |             +-----request updates---->+            +-----store---->|           |
+   |  View Model |                         | Repository |               |  Storage  |
+   |             |<-=---publish updates-=--|            |<-=-retrieve-=-+           |
+   +------+------+                         +------+-----+               +-----------+
+          |                                       :
+         owns                +----------+       returns
+          |                  |          |         |
+          +----------------->|   Model  |<--------+
+                             |          |
+                             +----------+
+#+END_SRC
+
+#+RESULTS:
+[[file:images/mvvm-d2.png]]
+
 **** TaskCellViewModel
 #+begin_src swift -r -n :results output :exports nil
 //
