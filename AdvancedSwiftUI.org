@@ -1481,6 +1481,117 @@ extension Album: Likeable {}
 
 #+latex:\newpage
 
+* Enum
+:PROPERTIES:
+:CUSTOM_ID: SW-enum
+:END:
+enumerations(或稱為enums)是Swift中一種特殊類型，它允許你表示多個「情況」或可能性。Enums(列舉)類似於Bool，但Bool只能是true或false，enums可以由開發者自行定義各種情況[fn:16]
+
+** without enum
+假設我們要登錄學生的學習等第(A, B, C, D, E, F)，如下
+#+begin_src swift -r -n :results output :exports nil
+var Tom = "A"
+var John = "B"
+var James = "I" //Error
+print(James)
+#+end_src
+
+上述程式中的James其等第明顯超出合理範圍，對於後續要進行的判斷可能會出現很大問題，此時便是enum適用時機
+
+** with enum
+#+begin_src swift -r -n :results output :exports nil
+enum grade {
+    case A
+    case B
+    case C
+    case D
+    case E
+    case F
+}
+
+var Tome = grade.A
+var John = grade.B
+var James = grade.C
+#+end_src
+判斷檔案下載結果為另一項典型的enum適用情境:
+#+begin_src swift -r -n :results output :exports nil
+enum DownloadStatus {
+    case downloading
+    case finished
+    case failed
+    case cancelled
+}
+var currentStatus = DownloadStatus.downloading
+#+end_src
+** enum的rawValue
+
+配合rawValue定義enum的值，可以讓enum自帶有意義的資訊。[fn:17]
+#+begin_src swift -r -n :results output :exports nil
+enum Pet: String {
+    case Dog = "🐶"
+    case Cat = "🐱"
+    case Rabbit = "R"
+}
+
+var myPet = Pet.Rabbit
+print("my pet is a \(myPet.rawValue)")    //output: my pet is a 🐰
+#+end_src
+
+#+RESULTS:
+: my pet is a R
+** enum v.s. switch
+enum最大的用處就是搭配switch。
+#+begin_src swift -r -n :results output :exports nil
+let currentStatus = DownloadStatus.downloading
+
+switch currentStatus {
+case .downloading:
+    print("Downloading...")
+
+case .finished:
+    print("Just finished the download...")
+
+case .failed:
+    print("Failed to download the file...")
+
+case .cancelled:
+    print("The download is cancelled...")
+}
+#+end_src
+
+** Swift列舉中最強大的功能之一：associated values
+associated values。它允許我們在列舉中儲存額外的數據。我們宣告一個新的列舉，稱為WeatherCondition，它讓我們在每個天氣條件中可額外挾帶一些資訊：
+#+begin_src swift -r -n :results output :exports nil
+enum Cloud {
+    case cirrus
+    case cumulus
+    case altocumulus
+    case stratus
+    case cumulonimbus
+}
+
+enum WeatherCondition {
+    case sunny(temperature: Float)
+    case rainy(inchesPerHour: Float)
+    case cloudy(cloudType: Cloud, windSpeed: Float)
+}
+#+end_src
+WeatherCondition的宣告。我們提供三個情境，在enum每個情境中都存有附加資訊。在sunny情況下，儲存一個參數名稱為temperature的Float。在rainy情況下，附帶一個Float類型的參數，命名為inchesPerHour，另外在cloudy情況下，我們附帶兩個參數，分別為Cloud類型的cloudType和Float類型的windSpeed。
+#+begin_src swift -r -n :results output :exports nil
+let currentWeather = WeatherCondition.cloudy(cloudType: .cirrus, windSpeed: 4.2)
+
+switch currentWeather {
+case .sunny(let temperature):
+    print("It is sunny and the temperature is \(temperature).")
+
+case .rainy(let inchesPerHour):
+    print("It is raining at a rate of \(inchesPerHour) inches per hour.")
+
+case .cloudy(let cloudType, let windSpeed):
+    print("It is cloudy; there are \(cloudType) clouds in the sky, and the wind speed is \(windSpeed).")
+}
+#+end_src
+
 * Struct v.s. Class
 [[https://www.hackingwithswift.com/books/ios-swiftui/why-does-swiftui-use-structs-for-views][資料來源:Why does SwiftUI use structs for views?]]
 If you ever programmed for UIKit or AppKit (Apple’s original user interface frameworks for iOS and macOS) you’ll know that they use classes for views rather than structs. SwiftUI does not: we prefer to use structs for views across the board, and there are a couple of reasons why.[fn:8]
@@ -1761,6 +1872,10 @@ stackOfStrings.push("cuatro")
 #+latex:\newpage
 
 * Footnotes
+
+[fn:17] [[https://hugolu.gitbooks.io/learn-swift/content/Advanced/Enum.html][Swift學習筆記 ]]
+
+[fn:16] [[https://appcoda.com.tw/mastering-swift/][精通Swift：列舉、閉包、泛型、Protocols和高階函數]]
 
 [fn:15] [[https://medium.com/tarkalabs/all-about-debounce-4-ways-to-achieve-debounce-in-swift-e8f8ce22f544][All about debounce: 4 ways to achieve debounce in Swift]]
 
