@@ -1014,6 +1014,14 @@ class TaskCellViewModel: ObservableObject, Identifiable  {
     }
 }
 #+end_src
+**** 結果
+#+CAPTION: onTapGesture
+#+LABEL:fig:tapgesture
+#+name: fig:tapgesture
+#+ATTR_LATEX: :width 300
+#+ATTR_ORG: :width 300
+#+ATTR_HTML: :width 500
+[[file:images/tapgesture.gif]]
 
 * Advance function
 :PROPERTIES:
