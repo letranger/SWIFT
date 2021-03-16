@@ -207,8 +207,8 @@ By default, Cloud Firestore automatically maintains single-field indexes for eac
    1) If you haven't already, create a Firebase project: In the Firebase console, click *Add project*, then follow the on-screen instructions to create a Firebase project or to add Firebase services to an existing GCP project.
    2) Navigate to the *Cloud Firestore section* of the *Firebase console*. You'll be prompted to select an existing Firebase project. Follow the database creation workflow.
    3) Select a starting mode for your Cloud Firestore Security Rules:
-      - Test mode
-        *Good for getting* started with the mobile and web client libraries, but allows *anyone* to read and overwrite your data. *After testing, make sure to review the Secure your data section*.
+      - Locked mode
+        Denies all reads and writes from mobile and web clients. Your authenticated application servers (C#, Go, Java, Node.js, PHP, Python, or Ruby) can still access your database.
         #+begin_src swift -r -n :results output :exports nil
 rules_version = '2';
 service cloud.firestore {
@@ -219,9 +219,9 @@ service cloud.firestore {
   }
 }
         #+end_src
-        To get started with the web, iOS, or Android SDK, select test mode.
-      - Locked mode
-        Denies all reads and writes from mobile and web clients. Your authenticated application servers (C#, Go, Java, Node.js, PHP, Python, or Ruby) can still access your database.
+        To get started with the C#, Go, Java, Node.js, PHP, Python, or Ruby server client library, select locked mode.Select a location for you database.
+      - Test mode
+        *Good for getting* started with the mobile and web client libraries, but allows *anyone* to read and overwrite your data. *After testing, make sure to review the Secure your data section*.
         #+begin_src swift -r -n :results output :exports nil
 rules_version = '2';
 service cloud.firestore {
@@ -233,7 +233,7 @@ service cloud.firestore {
   }
 }
         #+end_src
-        To get started with the C#, Go, Java, Node.js, PHP, Python, or Ruby server client library, select locked mode.Select a location for you database.
+        To get started with the web, iOS, or Android SDK, select test mode.
    4) Select a location for your database.
       This location setting is your project's default Google Cloud Platform (GCP) resource location. Note that this location will be used for GCP services in your project that require a location setting, specifically, your default Cloud Storage bucket and your App Engine app (which is required if you use Cloud Scheduler).
       If you aren't able to select a location, then your project already has a default GCP resource location. It was set either during project creation or when setting up another service that requires a location setting.
