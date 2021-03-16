@@ -5,6 +5,9 @@
 #+latex:\newpage
 
 * Introduction
+:PROPERTIES:
+:CUSTOM_ID: SW-Firebase-Intro
+:END:
 什麼是Firebase？Firebase是由Google收購的子公司，所提供的是行動應用程式開發的平台服務，也就是BaaS(Backend as a Service)，它能夠幫助我們快速開發我們的應用程式，並且支援跨平台包括Android、iOS以及Web，幫我們整合大部分建立一個服務所需要的後台功能。主要像是提供雲端給使用者架起網頁、提供資料庫供使用者存取資料以及做後台分析等等。[fn:1]
 
 Firebase can power your app’s backend, including data storage, user authentication, static hosting, and more. With Firebase, you can easily build mobile and web apps that scale from one user to one million.
@@ -54,6 +57,9 @@ Firebase helps you grow to millions of users, simplifying user engagement and re
 8) App Indexing: gets your app into Google Search. If users have your app installed, they can launch your app and go directly to the content they’re searching for. App Indexing reengages your app users by helping them find both public and personal content right on their device, even offering query autocompletion to help them more quickly find what they need. If users don’t yet have your app, relevant queries trigger an install card for your app in Search results. It’s supporting for Android and iOS Platform.
 
 * Firebase database
+:PROPERTIES:
+:CUSTOM_ID: SW-Firebase-database
+:END:
 Firebase offers two cloud-based, client-accessible database solutions that support realtime data syncing:
 
 - Cloud Firestore is Firebase's *newest* database for mobile app development. It builds on the successes of the Realtime Database with a *new, more intuitive data model*. Cloud Firestore also features *richer, faster queries* and scales further than the Realtime Database.
@@ -73,6 +79,9 @@ Both Realtime Database and Cloud Firestore are NoSQL Databases[fn:4].
 |--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------|
 
 * Cloud Firestore Data model
+:PROPERTIES:
+:CUSTOM_ID: SW-Firebase-datamodel
+:END:
 Cloud Firestore is a NoSQL, document-oriented database. Unlike a SQL database, there are no tables or rows. Instead, you store data in *documents*, which are organized into *collections*.
 
 Each document contains a set of key-value pairs. Cloud Firestore is optimized for storing large collections of small documents.
@@ -186,20 +195,61 @@ By default, Cloud Firestore automatically maintains single-field indexes for eac
 - For each array field in a document, Cloud Firestore creates and maintains a collection-scope array-contains index.
 - Single-field indexes with collection group scope are not maintained by default.
 
-* Firebase
+* Create your own Cloud Firestore database
+1. Sign in https://firebase.google.com
+2. Click Get started
+3. Two mode of Firebase web navigation
+   - console
+   - docs: 讀官方文件破萬卷、寫code如有神
+4. Create project
+   You can create multiple database in one project
+5. Create a Cloud Firestore database
+   1) If you haven't already, create a Firebase project: In the Firebase console, click *Add project*, then follow the on-screen instructions to create a Firebase project or to add Firebase services to an existing GCP project.
+   2) Navigate to the *Cloud Firestore section* of the *Firebase console*. You'll be prompted to select an existing Firebase project. Follow the database creation workflow.
+   3) Select a starting mode for your Cloud Firestore Security Rules:
+      - Test mode
+        *Good for getting* started with the mobile and web client libraries, but allows *anyone* to read and overwrite your data. *After testing, make sure to review the Secure your data section*.
+        #+begin_src swift -r -n :results output :exports nil
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
+        #+end_src
+        To get started with the web, iOS, or Android SDK, select test mode.
+      - Locked mode
+        Denies all reads and writes from mobile and web clients. Your authenticated application servers (C#, Go, Java, Node.js, PHP, Python, or Ruby) can still access your database.
+        #+begin_src swift -r -n :results output :exports nil
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write: if
+          request.time < timestamp.date(2021, 4, 15);
+    }
+  }
+}
+        #+end_src
+        To get started with the C#, Go, Java, Node.js, PHP, Python, or Ruby server client library, select locked mode.Select a location for you database.
+   4) Select a location for your database.
+      This location setting is your project's default Google Cloud Platform (GCP) resource location. Note that this location will be used for GCP services in your project that require a location setting, specifically, your default Cloud Storage bucket and your App Engine app (which is required if you use Cloud Scheduler).
+      If you aren't able to select a location, then your project already has a default GCP resource location. It was set either during project creation or when setting up another service that requires a location setting.
+   5) done
+6. Create your own collection in your database
+   You can create multiple collections in one database
+7. Why you should switch to english mode when reading Firebase Web pages?
 
-* Firebase console
-** Web sites
-- [[https://firebase.google.com/docs/ios/setup][Firebase Documentation]]
-- [[https://github.com/firebase/firebase-ios-sdk/blob/master/SwiftPackageManager.md][Swift Package Manager for Firebase Beta]]
-- 
+* Accessing Firebase using SWIFT
 ** Adding Firebase to your iOS project
 1. Create a FIrebase project
 2. Register your app with Firebase
 3. Add a Firebase configuration file
 4. Add Firebase SDKs to your app
 5. Initialize Firebase in your app
-
+詳組說明參見[[https://firebase.google.com/docs/ios/setup][Firebase Documentation]]
 * Setting up Firebase project
 ** Step by step
 1. 打開Firebase Console: https://console.firebase.google.com/
@@ -208,26 +258,26 @@ By default, Cloud Firestore automatically maintains single-field indexes for eac
 4. 選取平台 iOS
 5. 下載 plist 文件 並且放入 Xcode 裏面
 6. 添加PodFile
-   1. 打開 Terminal
-   2. 前往 Xcode 檔案夾 (xcodeproj 位置)
-   3. 輸入指令(terminal)
+   1) 打開 Terminal
+   2) 前往 Xcode 檔案夾 (xcodeproj 位置)
+   3) 輸入指令(terminal)
       #+BEGIN_SRC
       pod init
       #+END_SRC
-   4. 打開 PodFile 或 輸入指令(terminal)
+   4) 打開 PodFile 或 輸入指令(terminal)
       #+BEGIN_SRC
       open Podfile
       #+END_SRC
-   5. 在target(iOS) 裡加入
+   5) 在target(iOS) 裡加入
       #+BEGIN_SRC
       pod 'Firebase/Analytics'
       #+END_SRC
-1. 安裝pod (terminal)
+7. 安裝pod (terminal)
    #+BEGIN_SRC
    pod install
    #+END_SRC
-1. 開啟xcworkspace
-1. 在xxxApp.swift加入
+8. 開啟xcworkspace
+9. 在xxxApp.swift加入
    #+begin_src swift -r -n :results output :exports nil
    import Firebase
    #+end_src

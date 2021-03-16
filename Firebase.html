@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-03-16 Tue 09:40 -->
+<!-- 2021-03-16 Tue 21:51 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>SwiftUI v.s. Firebase</title>
@@ -232,55 +232,62 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgcd9bce0">1. Introduction</a>
+<li><a href="#SW-Firebase-Intro">1. Introduction</a>
 <ul>
-<li><a href="#orgdc3d900">1.1. A Brief History</a></li>
-<li><a href="#org7661a27">1.2. With Firebase you can</a>
+<li><a href="#org73f6237">1.1. A Brief History</a></li>
+<li><a href="#org6033393">1.2. With Firebase you can</a>
 <ul>
-<li><a href="#orgbed9567">1.2.1. Build better apps</a></li>
-<li><a href="#orgb74f936">1.2.2. Improve app quality</a></li>
-<li><a href="#orgaa718ec">1.2.3. Grow your business</a></li>
+<li><a href="#orgc4487e0">1.2.1. Build better apps</a></li>
+<li><a href="#orgd92200f">1.2.2. Improve app quality</a></li>
+<li><a href="#org5eba2ec">1.2.3. Grow your business</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org49d9771">2. Firebase database</a>
+<li><a href="#SW-Firebase-database">2. Firebase database</a>
 <ul>
-<li><a href="#org84f8140">2.1. Data model</a></li>
+<li><a href="#orga8bb5fa">2.1. Data model</a></li>
 </ul>
 </li>
-<li><a href="#orgd7c650a">3. Cloud Firestore Data model</a>
+<li><a href="#SW-Firebase-datamodel">3. Cloud Firestore Data model</a>
 <ul>
-<li><a href="#org31c8766">3.1. Documents</a></li>
-<li><a href="#org525456a">3.2. Collections</a></li>
-<li><a href="#orge702bc1">3.3. References</a></li>
-<li><a href="#orged861c7">3.4. Supported data types</a></li>
+<li><a href="#orgc030bc8">3.1. Documents</a></li>
+<li><a href="#org8aee875">3.2. Collections</a></li>
+<li><a href="#orgb5d4cd1">3.3. References</a></li>
+<li><a href="#orge67fb55">3.4. Supported data types</a></li>
+<li><a href="#org7b4299e">3.5. Index types in Cloud Firestore</a>
+<ul>
+<li><a href="#org5f24787">3.5.1. An index behind every query</a></li>
+<li><a href="#org2324e32">3.5.2. Less index management, more app development</a></li>
+<li><a href="#orgff8da42">3.5.3. Automatic indexing</a></li>
 </ul>
 </li>
-<li><a href="#org4f07d25">4. Firebase console</a>
-<ul>
-<li><a href="#org609fc6d">4.1. Web sites</a></li>
-<li><a href="#org98b2083">4.2. Adding Firebase to your iOS project</a></li>
 </ul>
 </li>
-<li><a href="#orgf93d874">5. Setting up Firebase project</a>
+<li><a href="#org2627865">4. Create your own Cloud Firestore database</a></li>
+<li><a href="#orgb5886de">5. Accessing Firebase using SWIFT</a>
 <ul>
-<li><a href="#orgd1d4761">5.1. Step by step</a></li>
+<li><a href="#org96603ce">5.1. Adding Firebase to your iOS project</a></li>
 </ul>
 </li>
-<li><a href="#org8f0790e">6. Learning resources</a>
+<li><a href="#org767b260">6. Setting up Firebase project</a>
 <ul>
-<li><a href="#org07ecc4e">6.1. web</a></li>
-<li><a href="#org2d53b93">6.2. Videos</a></li>
+<li><a href="#orgd42700c">6.1. Step by step</a></li>
+</ul>
+</li>
+<li><a href="#org2e24264">7. Learning resources</a>
+<ul>
+<li><a href="#org9b5b02f">7.1. web</a></li>
+<li><a href="#org7003c79">7.2. Videos</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgcd9bce0" class="outline-2">
-<h2 id="orgcd9bce0"><span class="section-number-2">1</span> Introduction</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-SW-Firebase-Intro" class="outline-2">
+<h2 id="SW-Firebase-Intro"><span class="section-number-2">1</span> Introduction</h2>
+<div class="outline-text-2" id="text-SW-Firebase-Intro">
 <p>
 什麼是Firebase？Firebase是由Google收購的子公司，所提供的是行動應用程式開發的平台服務，也就是BaaS(Backend as a Service)，它能夠幫助我們快速開發我們的應用程式，並且支援跨平台包括Android、iOS以及Web，幫我們整合大部分建立一個服務所需要的後台功能。主要像是提供雲端給使用者架起網頁、提供資料庫供使用者存取資料以及做後台分析等等。<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup><br />
 </p>
@@ -290,8 +297,8 @@ Firebase can power your app’s backend, including data storage, user authentica
 </p>
 </div>
 
-<div id="outline-container-orgdc3d900" class="outline-3">
-<h3 id="orgdc3d900"><span class="section-number-3">1.1</span> A Brief History<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup></h3>
+<div id="outline-container-org73f6237" class="outline-3">
+<h3 id="org73f6237"><span class="section-number-3">1.1</span> A Brief History<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup></h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 Back in 2011, before Firebase was Firebase, it was a startup called <b>Envolve</b>. As Envolve, it provided developers with an API that enabled <b>the integration of online chat functionality into their website</b>.<br />
@@ -311,8 +318,8 @@ After it was acquired by Google in 2014, Firebase rapidly evolved into the multi
 </div>
 </div>
 
-<div id="outline-container-org7661a27" class="outline-3">
-<h3 id="org7661a27"><span class="section-number-3">1.2</span> With Firebase you can<sup><a id="fnr.2.100" class="footref" href="#fn.2">2</a></sup></h3>
+<div id="outline-container-org6033393" class="outline-3">
+<h3 id="org6033393"><span class="section-number-3">1.2</span> With Firebase you can<sup><a id="fnr.2.100" class="footref" href="#fn.2">2</a></sup></h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 Firebase helps mobile app teams succeed. With Firebase you can:<br />
@@ -323,8 +330,8 @@ Firebase helps mobile app teams succeed. With Firebase you can:<br />
 <li>Grow your business<br /></li>
 </ol>
 </div>
-<div id="outline-container-orgbed9567" class="outline-4">
-<h4 id="orgbed9567"><span class="section-number-4">1.2.1</span> Build better apps</h4>
+<div id="outline-container-orgc4487e0" class="outline-4">
+<h4 id="orgc4487e0"><span class="section-number-4">1.2.1</span> Build better apps</h4>
 <div class="outline-text-4" id="text-1-2-1">
 <p>
 Firebase lets you build more powerful, secure and scalable apps, using world-class infrastructure using:<br />
@@ -341,8 +348,8 @@ Firebase lets you build more powerful, secure and scalable apps, using world-cla
 </div>
 </div>
 
-<div id="outline-container-orgb74f936" class="outline-4">
-<h4 id="orgb74f936"><span class="section-number-4">1.2.2</span> Improve app quality</h4>
+<div id="outline-container-orgd92200f" class="outline-4">
+<h4 id="orgd92200f"><span class="section-number-4">1.2.2</span> Improve app quality</h4>
 <div class="outline-text-4" id="text-1-2-2">
 <p>
 Firebase gives you insights into app performance and stability, so you can channel your resources effectively using:<br />
@@ -356,8 +363,8 @@ Firebase gives you insights into app performance and stability, so you can chann
 </div>
 </div>
 
-<div id="outline-container-orgaa718ec" class="outline-4">
-<h4 id="orgaa718ec"><span class="section-number-4">1.2.3</span> Grow your business</h4>
+<div id="outline-container-org5eba2ec" class="outline-4">
+<h4 id="org5eba2ec"><span class="section-number-4">1.2.3</span> Grow your business</h4>
 <div class="outline-text-4" id="text-1-2-3">
 <p>
 Firebase helps you grow to millions of users, simplifying user engagement and retention using:<br />
@@ -378,9 +385,9 @@ Firebase helps you grow to millions of users, simplifying user engagement and re
 </div>
 </div>
 
-<div id="outline-container-org49d9771" class="outline-2">
-<h2 id="org49d9771"><span class="section-number-2">2</span> Firebase database</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-SW-Firebase-database" class="outline-2">
+<h2 id="SW-Firebase-database"><span class="section-number-2">2</span> Firebase database</h2>
+<div class="outline-text-2" id="text-SW-Firebase-database">
 <p>
 Firebase offers two cloud-based, client-accessible database solutions that support realtime data syncing:<br />
 </p>
@@ -391,13 +398,13 @@ Firebase offers two cloud-based, client-accessible database solutions that suppo
 </ul>
 </div>
 
-<div id="outline-container-org84f8140" class="outline-3">
-<h3 id="org84f8140"><span class="section-number-3">2.1</span> Data model</h3>
+<div id="outline-container-orga8bb5fa" class="outline-3">
+<h3 id="orga8bb5fa"><span class="section-number-3">2.1</span> Data model</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 Both Realtime Database and Cloud Firestore are NoSQL Databases<sup><a id="fnr.3" class="footref" href="#fn.3">3</a></sup>.<br />
 </p>
-<table id="orgd9af7a4" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org3de0f00" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
@@ -437,9 +444,9 @@ Both Realtime Database and Cloud Firestore are NoSQL Databases<sup><a id="fnr.3"
 </div>
 </div>
 
-<div id="outline-container-orgd7c650a" class="outline-2">
-<h2 id="orgd7c650a"><span class="section-number-2">3</span> Cloud Firestore Data model</h2>
-<div class="outline-text-2" id="text-3">
+<div id="outline-container-SW-Firebase-datamodel" class="outline-2">
+<h2 id="SW-Firebase-datamodel"><span class="section-number-2">3</span> Cloud Firestore Data model</h2>
+<div class="outline-text-2" id="text-SW-Firebase-datamodel">
 <p>
 Cloud Firestore is a NoSQL, document-oriented database. Unlike a SQL database, there are no tables or rows. Instead, you store data in <b>documents</b>, which are organized into <b>collections</b>.<br />
 </p>
@@ -457,8 +464,8 @@ Collections and documents are created implicitly in Cloud Firestore. Simply assi
 </p>
 </div>
 
-<div id="outline-container-org31c8766" class="outline-3">
-<h3 id="org31c8766"><span class="section-number-3">3.1</span> Documents</h3>
+<div id="outline-container-orgc030bc8" class="outline-3">
+<h3 id="orgc030bc8"><span class="section-number-3">3.1</span> Documents</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 In Cloud Firestore, the unit of storage is the document. A document is a lightweight record that contains fields, which map to values. Each document is identified by a name.<br />
@@ -490,8 +497,8 @@ You may notice that documents <b>look a lot like JSON</b>. In fact, <b>they basi
 </div>
 </div>
 
-<div id="outline-container-org525456a" class="outline-3">
-<h3 id="org525456a"><span class="section-number-3">3.2</span> Collections</h3>
+<div id="outline-container-org8aee875" class="outline-3">
+<h3 id="org8aee875"><span class="section-number-3">3.2</span> Collections</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 Documents live in collections, which are simply containers for documents.<br />
@@ -533,8 +540,8 @@ You do not need to &ldquo;create&rdquo; or &ldquo;delete&rdquo; collections. Aft
 </div>
 </div>
 
-<div id="outline-container-orge702bc1" class="outline-3">
-<h3 id="orge702bc1"><span class="section-number-3">3.3</span> References</h3>
+<div id="outline-container-orgb5d4cd1" class="outline-3">
+<h3 id="orgb5d4cd1"><span class="section-number-3">3.3</span> References</h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
 Every document in Cloud Firestore is <b>uniquely identified</b> by its location within the database. The previous example showed a document alovelace within the collection users. To refer to this location in your code, you can create a reference to it.<br />
@@ -558,8 +565,8 @@ You can also create references to collections:<br />
 </div>
 </div>
 
-<div id="outline-container-orged861c7" class="outline-3">
-<h3 id="orged861c7"><span class="section-number-3">3.4</span> Supported data types</h3>
+<div id="outline-container-orge67fb55" class="outline-3">
+<h3 id="orge67fb55"><span class="section-number-3">3.4</span> Supported data types</h3>
 <div class="outline-text-3" id="text-3-4">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -648,24 +655,130 @@ You can also create references to collections:<br />
 </table>
 </div>
 </div>
+
+<div id="outline-container-org7b4299e" class="outline-3">
+<h3 id="org7b4299e"><span class="section-number-3">3.5</span> Index types in Cloud Firestore</h3>
+<div class="outline-text-3" id="text-3-5">
+<p>
+Indexes are an important factor in the performance of a database. Much like the index of a book which maps topics in a book to page numbers, a database index maps the items in a database to their locations in the database. When you send a database a query, the database can use an index to quickly look up the locations of the items you requested.<br />
+</p>
+
+<p>
+This page describes the two types of indexes that Cloud Firestore uses, single-field indexes and composite indexes.<br />
+</p>
 </div>
-<div id="outline-container-org4f07d25" class="outline-2">
-<h2 id="org4f07d25"><span class="section-number-2">4</span> Firebase console</h2>
-<div class="outline-text-2" id="text-4">
+
+<div id="outline-container-org5f24787" class="outline-4">
+<h4 id="org5f24787"><span class="section-number-4">3.5.1</span> An index behind every query</h4>
+<div class="outline-text-4" id="text-3-5-1">
+<p>
+If no index exists for a query, most databases crawl through their contents item by item, a slow process that slows down even more as the database grows. Cloud Firestore guarantees high query performance by using indexes for all queries. As a result, query performance depends on the size of the result set and not on the number of items in the database.<br />
+</p>
 </div>
-<div id="outline-container-org609fc6d" class="outline-3">
-<h3 id="org609fc6d"><span class="section-number-3">4.1</span> Web sites</h3>
-<div class="outline-text-3" id="text-4-1">
+</div>
+
+<div id="outline-container-org2324e32" class="outline-4">
+<h4 id="org2324e32"><span class="section-number-4">3.5.2</span> Less index management, more app development</h4>
+<div class="outline-text-4" id="text-3-5-2">
+<p>
+Cloud Firestore includes features that reduce the amount of time you need to spend managing indexes. The indexes required for the most basic queries are automatically created for you. As you use and test your app, Cloud Firestore helps you identify and create additional indexes your app requires.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgff8da42" class="outline-4">
+<h4 id="orgff8da42"><span class="section-number-4">3.5.3</span> Automatic indexing</h4>
+<div class="outline-text-4" id="text-3-5-3">
+<p>
+By default, Cloud Firestore automatically maintains single-field indexes for each field in a document and each subfield in a map. Cloud Firestore uses the following default settings for single-field indexes:<br />
+</p>
 <ul class="org-ul">
-<li><a href="https://firebase.google.com/docs/ios/setup">Firebase Documentation</a><br /></li>
-<li><a href="https://github.com/firebase/firebase-ios-sdk/blob/master/SwiftPackageManager.md">Swift Package Manager for Firebase Beta</a><br /></li>
-<li></li>
+<li>For each non-array and non-map field, Cloud Firestore defines two collection-scope single-field indexes, one in ascending mode and one in descending mode.<br /></li>
+<li>For each map field, Cloud Firestore creates one collection-scope ascending index and one descending index for each non-array and non-map subfield in the map.<br /></li>
+<li>For each array field in a document, Cloud Firestore creates and maintains a collection-scope array-contains index.<br /></li>
+<li>Single-field indexes with collection group scope are not maintained by default.<br /></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org98b2083" class="outline-3">
-<h3 id="org98b2083"><span class="section-number-3">4.2</span> Adding Firebase to your iOS project</h3>
-<div class="outline-text-3" id="text-4-2">
+</div>
+</div>
+
+<div id="outline-container-org2627865" class="outline-2">
+<h2 id="org2627865"><span class="section-number-2">4</span> Create your own Cloud Firestore database</h2>
+<div class="outline-text-2" id="text-4">
+<ol class="org-ol">
+<li>Sign in <a href="https://firebase.google.com">https://firebase.google.com</a><br /></li>
+<li>Click Get started<br /></li>
+<li>Two mode of Firebase web navigation<br />
+<ul class="org-ul">
+<li>console<br /></li>
+<li>docs: 讀官方文件破萬卷、寫code如有神<br /></li>
+</ul></li>
+<li>Create project<br />
+You can create multiple database in one project<br /></li>
+<li>Create a Cloud Firestore database<br />
+<ol class="org-ol">
+<li>If you haven&rsquo;t already, create a Firebase project: In the Firebase console, click <b>Add project</b>, then follow the on-screen instructions to create a Firebase project or to add Firebase services to an existing GCP project.<br /></li>
+<li>Navigate to the <b>Cloud Firestore section</b> of the <b>Firebase console</b>. You&rsquo;ll be prompted to select an existing Firebase project. Follow the database creation workflow.<br /></li>
+<li>Select a starting mode for your Cloud Firestore Security Rules:<br />
+<ul class="org-ul">
+<li><p>
+Test mode<br />
+<b>Good for getting</b> started with the mobile and web client libraries, but allows <b>anyone</b> to read and overwrite your data. <b>After testing, make sure to review the Secure your data section</b>.<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span>rules_version = '<span style="color: #da8548; font-weight: bold;">2</span>';
+<span class="linenr">2: </span>service cloud.<span style="color: #dcaeea;">firestore</span> {
+<span class="linenr">3: </span>  match /databases/{database}/documents {
+<span class="linenr">4: </span>    match /{document=**} {
+<span class="linenr">5: </span>      allow read, write: <span style="color: #51afef;">if</span> <span style="color: #a9a1e1;">false</span>;
+<span class="linenr">6: </span>    }
+<span class="linenr">7: </span>  }
+<span class="linenr">8: </span>}
+</pre>
+</div>
+<p>
+To get started with the web, iOS, or Android SDK, select test mode.<br />
+</p></li>
+<li><p>
+Locked mode<br />
+Denies all reads and writes from mobile and web clients. Your authenticated application servers (C#, Go, Java, Node.js, PHP, Python, or Ruby) can still access your database.<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span>rules_version = '<span style="color: #da8548; font-weight: bold;">2</span>';
+<span class="linenr">2: </span>service cloud.<span style="color: #dcaeea;">firestore</span> {
+<span class="linenr">3: </span>  match /databases/{database}/documents {
+<span class="linenr">4: </span>    match /{document=**} {
+<span class="linenr">5: </span>      allow read, write: <span style="color: #51afef;">if</span>
+<span class="linenr">6: </span>          request.<span style="color: #dcaeea;">time</span> &lt; timestamp.<span style="color: #c678dd;">date</span>(<span style="color: #da8548; font-weight: bold;">2021</span>, <span style="color: #da8548; font-weight: bold;">4</span>, <span style="color: #da8548; font-weight: bold;">15</span>);
+<span class="linenr">7: </span>    }
+<span class="linenr">8: </span>  }
+<span class="linenr">9: </span>}
+</pre>
+</div>
+<p>
+To get started with the C#, Go, Java, Node.js, PHP, Python, or Ruby server client library, select locked mode.Select a location for you database.<br />
+</p></li>
+</ul></li>
+<li>Select a location for your database.<br />
+This location setting is your project&rsquo;s default Google Cloud Platform (GCP) resource location. Note that this location will be used for GCP services in your project that require a location setting, specifically, your default Cloud Storage bucket and your App Engine app (which is required if you use Cloud Scheduler).<br />
+If you aren&rsquo;t able to select a location, then your project already has a default GCP resource location. It was set either during project creation or when setting up another service that requires a location setting.<br /></li>
+<li>done<br /></li>
+</ol></li>
+<li>Create your own collection in your database<br />
+You can create multiple collections in one database<br /></li>
+<li>Why you should switch to english mode when reading Firebase Web pages?<br /></li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgb5886de" class="outline-2">
+<h2 id="orgb5886de"><span class="section-number-2">5</span> Accessing Firebase using SWIFT</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+<div id="outline-container-org96603ce" class="outline-3">
+<h3 id="org96603ce"><span class="section-number-3">5.1</span> Adding Firebase to your iOS project</h3>
+<div class="outline-text-3" id="text-5-1">
 <ol class="org-ol">
 <li>Create a FIrebase project<br /></li>
 <li>Register your app with Firebase<br /></li>
@@ -673,17 +786,19 @@ You can also create references to collections:<br />
 <li>Add Firebase SDKs to your app<br /></li>
 <li>Initialize Firebase in your app<br /></li>
 </ol>
+<p>
+詳組說明參見<a href="https://firebase.google.com/docs/ios/setup">Firebase Documentation</a><br />
+</p>
 </div>
 </div>
 </div>
-
-<div id="outline-container-orgf93d874" class="outline-2">
-<h2 id="orgf93d874"><span class="section-number-2">5</span> Setting up Firebase project</h2>
-<div class="outline-text-2" id="text-5">
+<div id="outline-container-org767b260" class="outline-2">
+<h2 id="org767b260"><span class="section-number-2">6</span> Setting up Firebase project</h2>
+<div class="outline-text-2" id="text-6">
 </div>
-<div id="outline-container-orgd1d4761" class="outline-3">
-<h3 id="orgd1d4761"><span class="section-number-3">5.1</span> Step by step</h3>
-<div class="outline-text-3" id="text-5-1">
+<div id="outline-container-orgd42700c" class="outline-3">
+<h3 id="orgd42700c"><span class="section-number-3">6.1</span> Step by step</h3>
+<div class="outline-text-3" id="text-6-1">
 <ol class="org-ol">
 <li>打開Firebase Console: <a href="https://console.firebase.google.com/">https://console.firebase.google.com/</a><br /></li>
 <li>開啟或新增專案<br /></li>
@@ -745,22 +860,22 @@ You can also create references to collections:<br />
 </div>
 </div>
 
-<div id="outline-container-org8f0790e" class="outline-2">
-<h2 id="org8f0790e"><span class="section-number-2">6</span> Learning resources</h2>
-<div class="outline-text-2" id="text-6">
+<div id="outline-container-org2e24264" class="outline-2">
+<h2 id="org2e24264"><span class="section-number-2">7</span> Learning resources</h2>
+<div class="outline-text-2" id="text-7">
 </div>
-<div id="outline-container-org07ecc4e" class="outline-3">
-<h3 id="org07ecc4e"><span class="section-number-3">6.1</span> web</h3>
-<div class="outline-text-3" id="text-6-1">
+<div id="outline-container-org9b5b02f" class="outline-3">
+<h3 id="org9b5b02f"><span class="section-number-3">7.1</span> web</h3>
+<div class="outline-text-3" id="text-7-1">
 <ul class="org-ul">
 <li><a href="https://medium.com/flawless-app-stories/how-to-build-a-firebase-app-with-swiftui-5919d2d8a396">How To Build A Firebase App With SwiftUI</a><br /></li>
 <li><a href="https://benmcmahen.com/authentication-with-swiftui-and-firebase/">Using Firebase Authentication with SwiftUI</a><br /></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org2d53b93" class="outline-3">
-<h3 id="org2d53b93"><span class="section-number-3">6.2</span> Videos</h3>
-<div class="outline-text-3" id="text-6-2">
+<div id="outline-container-org7003c79" class="outline-3">
+<h3 id="org7003c79"><span class="section-number-3">7.2</span> Videos</h3>
+<div class="outline-text-3" id="text-7-2">
 <ul class="org-ul">
 <li><a href="https://www.youtube.com/watch?v=4RUeW5rUcww">Building a to-do list app with SwiftUI and Firebase - Part 1</a><br /></li>
 <li><a href="https://www.youtube.com/watch?v=2k6_Mi2ERWc">Building a Todo List App Using Firebase and SwiftUI - Part 2 </a><br /></li>
@@ -793,7 +908,7 @@ You can also create references to collections:<br />
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Yung Chin, Yen</p>
-<p class="date">Created: 2021-03-16 Tue 09:40</p>
+<p class="date">Created: 2021-03-16 Tue 21:51</p>
 </div>
 </body>
 </html>
