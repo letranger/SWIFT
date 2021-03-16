@@ -874,6 +874,9 @@ class TaskCellViewModel: ObservableObject, Identifiable  {
 #+ATTR_HTML: :width 500
 [[file:images/picker.gif]]
 ** Tap on Icon to change completion and priority status
+:PROPERTIES:
+:CUSTOM_ID: SW-onTapGesture
+:END:
 *** View
 **** TaskListView.swift
 #+begin_src swift -r -n :results output :exports nil
