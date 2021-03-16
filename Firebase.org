@@ -1,21 +1,192 @@
 #+TITLE: SwiftUI v.s. Firebase
 #+INCLUDE: ../purpleweb.org
-
+#+HTML_HEAD_EXTRA: <style>*{font-family: Courier New !important}</style>
+#+OPTIONS: ^:nil
 #+latex:\newpage
 
 * Introduction
 什麼是Firebase？Firebase是由Google收購的子公司，所提供的是行動應用程式開發的平台服務，也就是BaaS(Backend as a Service)，它能夠幫助我們快速開發我們的應用程式，並且支援跨平台包括Android、iOS以及Web，幫我們整合大部分建立一個服務所需要的後台功能。主要像是提供雲端給使用者架起網頁、提供資料庫供使用者存取資料以及做後台分析等等。[fn:1]
 
-** Firebase的歷史
-Firebase從Envolve演變而來。 Envolve是James Tamplin和Andrew Lee在2011年創立的一家早期創業公司。Envolve為開發人員提供了一個API,該API允許將在線聊天功能集成到他們的網站中。釋放聊天服務後,它發現envlove被用來傳遞不是聊天消息的應用程序數據。開發人員使用Envolve同步應用程序,以分離實時體系結構和為其提供動力的聊天系統。2011年9月,Tamplin和Lee單獨成立了Firebase。最後於2012年4月向公眾發佈。[fn:2]
+Firebase can power your app’s backend, including data storage, user authentication, static hosting, and more. With Firebase, you can easily build mobile and web apps that scale from one user to one million.
 
-- [[https://medium.com/flawless-app-stories/how-to-build-a-firebase-app-with-swiftui-5919d2d8a396][How To Build A Firebase App With SwiftUI]]
-- [[https://benmcmahen.com/authentication-with-swiftui-and-firebase/][Using Firebase Authentication with SwiftUI]]
-- [[https://www.youtube.com/watch?v=4RUeW5rUcww][Building a to-do list app with SwiftUI and Firebase - Part 1 | Firebase Semi-live]]
-- https://www.youtube.com/watch?v=elhzkcoBl-A
-- https://www.youtube.com/watch?v=9VpaaJ3eLWk&list=PLY_qIufNHc292EYDwe3B6sGYO_vQ7pOLx&index=8
-- https://www.hackingwithswift.com/books/ios-swiftui/creating-a-form
-- https://www.youtube.com/watch?v=1QcekWFK2d8
+** A Brief History[fn:3]
+Back in 2011, before Firebase was Firebase, it was a startup called *Envolve*. As Envolve, it provided developers with an API that enabled *the integration of online chat functionality into their website*.
+
+What’s interesting is that people used Envolve to pass application data that was more than just chat messages. Developers were using Envolve to *sync application data* such as a game state in real time across their users.
+
+This led the founders of Envolve, James Tamplin and Andrew Lee, to separate the chat system and the real-time architecture. In April 2012, Firebase was created as a separate company that provided Backend-as-a-Service with real-time functionality.
+
+After it was acquired by Google in 2014, Firebase rapidly evolved into the multifunctional behemoth of a mobile and web platform that it is today.
+
+** With Firebase you can[fn:3]
+Firebase helps mobile app teams succeed. With Firebase you can:
+1. Build better apps
+2. Improve app quality
+3. Grow your business
+*** Build better apps
+Firebase lets you build more powerful, secure and scalable apps, using world-class infrastructure using:
+1) Cloud Firestore: is a flexible, scalable database for mobile, web, and server development from Firebase and Google Cloud Platform. It is a *NoSQL document database* that lets you easily *store, sync, and query data* for your mobile and web apps — at a global scale.It's supporting for Android, iOS and Web Platform.
+2) ML Kit: is a mobile SDK that brings *Google’s machine learning expertise to Android and iOS apps* in a powerful yet easy-to-use package. Whether you’re new or experienced in machine learning, you can implement the functionality you need in just a few lines of code. There’s no need to have deep knowledge of neural networks or model optimization to get started. On the other hand, if you are an experienced ML developer, ML Kit provides convenient APIs that help you use your custom TensorFlow Lite models in your mobile apps. It’s supporting for Android and iOS Platform.
+3) Cloud Functions: for Firebase lets you automatically run backend code in response to events *triggered* by Firebase features and HTTPS requests. Your code is stored in Google’s cloud and runs in a managed environment. There’s no need to manage and scale your own servers. It’s supporting for Android, iOS, C++, Unity and Web Platform.
+4) Authentication: provides backend services, easy-to-use SDKs, and ready-made UI libraries to *authenticate users to your app*. It supports authentication using passwords, phone numbers, popular federated identity providers like Google, Facebook and Twitter, and more. It’s supporting for Android, iOS and Web Platform.
+5) Hosting: is production-grade web content hosting for developers. *With a single command, you can quickly deploy web apps and serve both static and dynamic content to a global CDN* (content delivery network). You can also pair Firebase Hosting with Cloud Functions to build and host microservices on Firebase. It’s supporting only Web Platform.
+6) Cloud Storages: is for *object storage service* built for Google scale. The Firebase SDKs for Cloud Storage add Google security to file uploads and downloads for your Firebase apps, regardless of network quality. You can use our SDKs to store images, audio, video, or other user-generated content. On the server, you can use Google Cloud Storage, to access the same files. It’s supporting for Android, iOS, C++, Unity and Web Platform.
+7) Real-time Database: is a cloud-hosted NoSQL database that lets you *store and sync between your users in real-time*. The Real-time Database is really just *one big JSON object* that the developers can manage in real-time. It’s supporting for *Android, iOS, C++, Unity and Web Platform*.
+
+*** Improve app quality
+Firebase gives you insights into app performance and stability, so you can channel your resources effectively using:
+
+1) Crashlytics: is *a lightweight, real-time crash reporter* that helps you track, prioritize, and fix stability issues that erode your app quality. Crashlytics saves you troubleshooting time by intelligently grouping crashes and highlighting the circumstances that lead up to them. It’s supporting for Android and iOS Platform.
+2) Performance Monitoring: is a service that helps you *to gain insight into the performance characteristics of your iOS and Android apps*. You use the Performance Monitoring SDK to collect performance data from your app, and then review and analyze that data in the Firebase console. Performance Monitoring helps you to understand where and when the performance of your app can be improved so that you can use that information to fix performance issues. It’s supporting for Android and iOS Platform.
+3) Test Labs: is a cloud-based app-testing infrastructure. It provides *a large number of mobile test devices* to help you test your apps. It’s supporting for Android and iOS Platform.
+
+*** Grow your business
+
+Firebase helps you grow to millions of users, simplifying user engagement and retention using:
+
+1) In-App Messaging: helps you engage users who are actively using your app by *sending them targeted and contextual messages* that nudge them to complete key in-app actions — like beating a game level, buying an item, or subscribing to content. It’s supporting for Android and iOS Platform.
+2) Google Analytics: for Firebase is a free app measurement solution that provides insight on *app usage and user engagement*. At the heart of Firebase is Google Analytics for Firebase, a free and unlimited analytics solution. Analytics integrates across Firebase features and provides you with unlimited reporting for up to 500 distinct events that you can define using the Firebase SDK. Analytics reports help you understand clearly how your users behave, which enables you to make informed decisions regarding app marketing and performance optimizations. It’s supporting for Android, iOS, C++ and Unity Platform.
+3) Predictions: applies *machine learning* to your analytics data to create dynamic user segments based on the predicted behavior of users in your app. These predictions are automatically available for use with Firebase Remote Config, the Notifications composer, Firebase In-App Messaging, and A/B Testing. You can also link your app’s Predictions data to BigQuery so you can get daily exports that you can further analyze or push to third party tools. It’s supporting for Android, iOS, C++ and Unity Platform.
+4) A/B Testing: helps you optimize your app experience by making it easy to run, analyze, and scale product and marketing experiments. It gives you the power to test changes to your app’s UI, features, or engagement campaigns to see if they actually move the needle on your key metrics (like revenue and retention) before you roll them out widely. It’s supporting for Android, iOS, C++ and Unity Platform.
+5) Cloud Messaging(FCM): provides a reliable and battery-efficient connection between your server and devices that allows you to deliver and receive messages and notifications on iOS, Android, and the web at no cost.
+6) Remote Config: essentially allows us to publish updates to our users immediately. Whether we wish to change the color scheme for a screen, the layout for a particular section in our app or show promotional/seasonal options — this is completely doable using the server side parameters without the need to publish a new version. It’s supporting for Android, iOS, C++ and Unity Platform.
+7) Dynamic Links: With Dynamic Links, your users get the best available experience for the platform they open your link on. If a user opens a Dynamic Link on iOS or Android, they can be taken directly to the linked content in your native app. If a user opens the same Dynamic Link in a desktop browser, they can be taken to the equivalent content on your website. It’s supporting for Android, iOS, Web, C++ and Unity Platform.
+8) App Indexing: gets your app into Google Search. If users have your app installed, they can launch your app and go directly to the content they’re searching for. App Indexing reengages your app users by helping them find both public and personal content right on their device, even offering query autocompletion to help them more quickly find what they need. If users don’t yet have your app, relevant queries trigger an install card for your app in Search results. It’s supporting for Android and iOS Platform.
+
+* Firebase database
+Firebase offers two cloud-based, client-accessible database solutions that support realtime data syncing:
+
+- Cloud Firestore is Firebase's *newest* database for mobile app development. It builds on the successes of the Realtime Database with a *new, more intuitive data model*. Cloud Firestore also features *richer, faster queries* and scales further than the Realtime Database.
+- Realtime Database is Firebase's *original* database. It's an efficient, low-latency solution for mobile apps that require synced states across clients in realtime.
+
+** Data model
+Both Realtime Database and Cloud Firestore are NoSQL Databases[fn:4].
+#+NAME: Realtime Database v.s. Cloud Firestore
+|--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------|
+| Realtime Database                                            | Cloud Firestore                                                                                     |
+| <40>                                                         | <40>                                                                                                |
+|--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------|
+| Stores data as one large JSON tree.                          | Stores data as collections of documents.                                                            |
+| - Simple data is very easy to store.                         | - Simple data is easy to store in documents, which are very similar to JSON.                        |
+| - Complex, hierarchical data is harder to organize at scale. | - Complex, hierarchical data is easier to organize at scale, using subcollections within documents. |
+|                                                              | - Requires less denormalization and data flattening.
+|--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------|
+
+* Cloud Firestore Data model
+Cloud Firestore is a NoSQL, document-oriented database. Unlike a SQL database, there are no tables or rows. Instead, you store data in *documents*, which are organized into *collections*.
+
+Each document contains a set of key-value pairs. Cloud Firestore is optimized for storing large collections of small documents.
+
+All documents must be stored in collections. Documents can contain subcollections and nested objects, both of which can include primitive fields like strings or complex objects like lists.
+
+Collections and documents are created implicitly in Cloud Firestore. Simply assign data to a document within a collection. If either the collection or document does not exist, Cloud Firestore creates it.
+
+** Documents
+In Cloud Firestore, the unit of storage is the document. A document is a lightweight record that contains fields, which map to values. Each document is identified by a name.
+
+A document representing a user alovelace might look like this:
+#+BEGIN_SRC
+first : "Ada"
+last : "Lovelace"
+born : 1815
+#+END_SRC
+
+Complex, *nested objects in a document* are called *maps*. For example, you could structure the user's name from the example above with a map, like this:
+
+#+BEGIN_SRC
+name :
+    first : "Ada"
+    last : "Lovelace"
+born : 1815
+#+END_SRC
+
+You may notice that documents *look a lot like JSON*. In fact, *they basically are*. There are some differences (for example, documents support extra data types and are limited in size to 1 MB), but in general, you can treat documents as lightweight JSON records.
+
+** Collections
+Documents live in collections, which are simply containers for documents.
+#+CAPTION: Cloud Firestore data model
+#+LABEL:fig:FirestoreDatModel
+#+name: fig:FirestoreDatModel
+#+ATTR_LATEX: :width 400
+#+ATTR_ORG: :width 400
+#+ATTR_HTML: :width 400
+[[file:images/structure-data.png]]
+For example, you could have a users collection to contain your various users, each represented by a document:
+#+BEGIN_SRC
+collections_bookmark users
+
+    alovelace
+
+    first : "Ada"
+    last : "Lovelace"
+    born : 1815
+
+    aturing
+
+    first : "Alan"
+    last : "Turing"
+    born : 1912
+#+END_SRC
+Cloud Firestore is schemaless, so you have complete freedom over what fields you put in each document and what data types you store in those fields. Documents within the same collection can all contain different fields or store different types of data in those fields. However, it's a good idea to use the same fields and data types across multiple documents, so that you can query the documents more easily.
+
+A collection contains documents and nothing else. It can't directly contain raw fields with values, and it can't contain other collections. (See Hierarchical Data for an explanation of how to structure more complex data in Cloud Firestore.)
+
+The names of documents within a collection are unique. You can provide your own keys, such as user IDs, or you can let Cloud Firestore create random IDs for you automatically.
+
+You do not need to "create" or "delete" collections. After you create the first document in a collection, the collection exists. If you delete all of the documents in a collection, it no longer exists.
+
+** References
+Every document in Cloud Firestore is *uniquely identified* by its location within the database. The previous example showed a document alovelace within the collection users. To refer to this location in your code, you can create a reference to it.
+#+begin_src swift -r -n :results output :exports nil
+let alovelaceDocumentRef = db.collection("users").document("alovelace")
+#+end_src
+
+A reference is *a lightweight object that just points to a location in your database*. You can create a reference *whether or not data exists there*, and creating a reference does not perform any network operations.
+
+You can also create references to collections:
+#+begin_src swift -r -n :results output :exports nil
+let usersCollectionRef = db.collection("users")
+#+end_src
+
+** Supported data types
+|-----------------------+------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Data type             | Sort order                                                             | Notes                                                                                                                                                         |
+| <20>                  | <40>                                                                   | <40>                                                                                                                                                          |
+|-----------------------+------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Array                 | By element values                                                      | An array cannot contain another array value as one of its elements.                                                                                           |
+| Boolean               | false < true                                                           |                                                                                                                                                               |
+| Bytes                 | Byte order                                                             | Up to 1,048,487 bytes (1 MiB - 89 bytes). Only the first 1,500 bytes are considered by queries.                                                               |
+| Data and time         | Chronological                                                          | When stored in Cloud Firestore, precise only to microseconds; any additional precision is rounded down.                                                       |
+| Floating-point-number | Numeric                                                                | 64-bit double precision, IEEE 754.                                                                                                                            |
+| Geographical point    | By latitude, then longitude                                            |                                                                                                                                                               |
+| Integer               | Numeric                                                                | 64-bit, signed                                                                                                                                                |
+| Map                   | By keys, then by value                                                 | Key ordering is always sorted. For example, if you write {c: "foo", a: "bar", b: "qux"} the map is sorted by key and saved as {a: "bar", b: "qux", c: "foo"}. |
+| Null                  | None                                                                   |                                                                                                                                                               |
+| Reference             | By path elements (collection, document ID, collection, document ID...) | For example, projects/[PROJECT_ID]/databases/[DATABASE_ID]/documents/[DOCUMENT_PATH].                                                                         |
+| Text string           | UTF-8 encoded byte order                                               | Up to 1,048,487 bytes (1 MiB - 89 bytes). Only the first 1,500 bytes of the UTF-8 representation are considered by queries.                                   |
+|-----------------------+------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------|
+
+** Index types in Cloud Firestore
+Indexes are an important factor in the performance of a database. Much like the index of a book which maps topics in a book to page numbers, a database index maps the items in a database to their locations in the database. When you send a database a query, the database can use an index to quickly look up the locations of the items you requested.
+
+This page describes the two types of indexes that Cloud Firestore uses, single-field indexes and composite indexes.
+
+*** An index behind every query
+
+If no index exists for a query, most databases crawl through their contents item by item, a slow process that slows down even more as the database grows. Cloud Firestore guarantees high query performance by using indexes for all queries. As a result, query performance depends on the size of the result set and not on the number of items in the database.
+
+*** Less index management, more app development
+Cloud Firestore includes features that reduce the amount of time you need to spend managing indexes. The indexes required for the most basic queries are automatically created for you. As you use and test your app, Cloud Firestore helps you identify and create additional indexes your app requires.
+
+*** Automatic indexing
+
+By default, Cloud Firestore automatically maintains single-field indexes for each field in a document and each subfield in a map. Cloud Firestore uses the following default settings for single-field indexes:
+- For each non-array and non-map field, Cloud Firestore defines two collection-scope single-field indexes, one in ascending mode and one in descending mode.
+- For each map field, Cloud Firestore creates one collection-scope ascending index and one descending index for each non-array and non-map subfield in the map.
+- For each array field in a document, Cloud Firestore creates and maintains a collection-scope array-contains index.
+- Single-field indexes with collection group scope are not maintained by default.
+
+* Firebase
 
 * Firebase console
 ** Web sites
@@ -28,7 +199,6 @@ Firebase從Envolve演變而來。 Envolve是James Tamplin和Andrew Lee在2011年
 3. Add a Firebase configuration file
 4. Add Firebase SDKs to your app
 5. Initialize Firebase in your app
-**
 
 * Setting up Firebase project
 ** Step by step
@@ -72,12 +242,22 @@ init() {
 
 資料來源：[[https://1998design.medium.com/%E5%A6%82%E4%BD%95-%E5%B0%87firebase%E5%8A%A0%E5%85%A5ios-swiftui-2-2020-d4315d0173ca][如何：將Firebase加入iOS SwiftUI 2 (2020)]]
 
-* Videos
+* Learning resources
+** web
+- [[https://medium.com/flawless-app-stories/how-to-build-a-firebase-app-with-swiftui-5919d2d8a396][How To Build A Firebase App With SwiftUI]]
+- [[https://benmcmahen.com/authentication-with-swiftui-and-firebase/][Using Firebase Authentication with SwiftUI]]
+** Videos
 - [[https://www.youtube.com/watch?v=4RUeW5rUcww][Building a to-do list app with SwiftUI and Firebase - Part 1]]
 - [[https://www.youtube.com/watch?v=2k6_Mi2ERWc][Building a Todo List App Using Firebase and SwiftUI - Part 2 ]]
+- https://www.youtube.com/watch?v=elhzkcoBl-A
+- https://www.youtube.com/watch?v=9VpaaJ3eLWk&list=PLY_qIufNHc292EYDwe3B6sGYO_vQ7pOLx&index=8
+- https://www.hackingwithswift.com/books/ios-swiftui/creating-a-form
+- https://www.youtube.com/watch?v=1QcekWFK2d8
 
 * Footnotes
 
-[fn:2] [[http://www.srcmini.com/14739.html][Firebase介紹]]
+[fn:4] [[https://firebase.google.com/docs/firestore/rtdb-vs-firestore][Choose a database: Cloud Firestore or Realtime Database]]
+
+[fn:3] [[https://medium.com/codingurukul/introduction-to-firebase-f9f6ccc8a785][Introduction to Firebase]]
 
 [fn:1] [[https://medium.com/ho-japan/%E5%89%8D%E7%AB%AF%E4%BA%BA%E7%9A%84%E6%95%91%E6%98%9Ffirebase%E7%9A%84%E7%94%A8%E9%80%94%E8%88%87%E5%AF%A6%E4%BD%9Ctodolist-c7af49fe3104][前端工程師的救星，Firebase的簡介與實作TodoList]]

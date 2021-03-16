@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-03-11 Thu 13:44 -->
+<!-- 2021-03-16 Tue 19:21 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Advanced Swift Ui</title>
@@ -233,99 +233,115 @@
 <ul>
 <li><a href="#SW-MVVM">1. MVVM</a>
 <ul>
-<li><a href="#org40f483a">1.1. Design pattern</a></li>
-<li><a href="#org758f5e0">1.2. What is the idea behind MVVM</a>
+<li><a href="#org82dc20c">1.1. Design pattern</a></li>
+<li><a href="#org1ca0d1e">1.2. What is the idea behind MVVM</a>
 <ul>
-<li><a href="#org36b9f88">1.2.1. Model</a></li>
-<li><a href="#orgf4d4063">1.2.2. View</a></li>
-<li><a href="#org7c623e4">1.2.3. ViewModel</a></li>
-<li><a href="#org8f22c1a">1.2.4. 為什麼要拆成三部份(What does it solve?)</a></li>
-<li><a href="#orgc28373a">1.2.5. Limitations / Cons</a></li>
+<li><a href="#orgc0c0d69">1.2.1. Model</a></li>
+<li><a href="#orgfe12f9e">1.2.2. View</a></li>
+<li><a href="#org484e721">1.2.3. ViewModel</a></li>
+<li><a href="#org7a56659">1.2.4. 為什麼要拆成三部份(What does it solve?)</a></li>
+<li><a href="#orgd68da60">1.2.5. Limitations / Cons</a></li>
 </ul>
 </li>
-<li><a href="#org538b304">1.3. DEMO</a></li>
-<li><a href="#orgb35cce3">1.4. Model 要用 Struct 或是 Class</a>
+<li><a href="#orgec2591d">1.3. DEMO</a></li>
+<li><a href="#orgf21c534">1.4. Model 要用 Struct 或是 Class</a>
 <ul>
-<li><a href="#org9f93c12">1.4.1. Struct 與 Class 的不同性質</a></li>
-<li><a href="#org212b26d">1.4.2. MVVM 中的 Model</a></li>
+<li><a href="#orgdfa6d12">1.4.1. Struct 與 Class 的不同性質</a></li>
+<li><a href="#orga84d947">1.4.2. MVVM 中的 Model</a></li>
 </ul>
 </li>
-<li><a href="#org3fa4d4d">1.5. DICE DEMO</a></li>
-<li><a href="#org49a5a22">1.6. Further Reading Resources</a></li>
+<li><a href="#orgcab1343">1.5. DICE DEMO</a></li>
+<li><a href="#org199c0bf">1.6. Further Reading Resources</a></li>
 </ul>
 </li>
 <li><a href="#SW-Review">2. Review</a>
 <ul>
-<li><a href="#orgf224159">2.1. Data Model</a></li>
-<li><a href="#org0c440e9">2.2. Basic UI</a>
+<li><a href="#org6d92027">2.1. Data Model</a></li>
+<li><a href="#org0139180">2.2. Basic UI</a>
 <ul>
-<li><a href="#org6efaeef">2.2.1. Change struct name (ContentView.swift)</a></li>
-<li><a href="#orgb31c63e">2.2.2. classify files into the following group</a></li>
-<li><a href="#org8d00cc2">2.2.3. Create basic UI</a>
+<li><a href="#orgf68808f">2.2.1. Change struct name (ContentView.swift)</a></li>
+<li><a href="#orgc0564c2">2.2.2. classify files into the following group</a></li>
+<li><a href="#org850aa84">2.2.3. Create basic UI</a>
 <ul>
-<li><a href="#orgf07912a">2.2.3.1. TaskListView.swift</a></li>
-<li><a href="#org78d351a">2.2.3.2. Extract the task cell</a></li>
+<li><a href="#orgb538445">2.2.3.1. TaskListView.swift</a></li>
+<li><a href="#org1baeaac">2.2.3.2. Extract the task cell</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgcc3bef5">2.3. MVVM</a>
+<li><a href="#org1042c11">2.3. MVVM</a>
 <ul>
-<li><a href="#org7ab96ba">2.3.1. ViewModel</a>
+<li><a href="#org1b30f0e">2.3.1. ViewModel</a>
 <ul>
-<li><a href="#orgfecde85">2.3.1.1. Diagram for now</a></li>
-<li><a href="#orgb543f00">2.3.1.2. Model for the future</a></li>
-<li><a href="#org6807b68">2.3.1.3. TaskCellViewModel</a></li>
-<li><a href="#org36aeebe">2.3.1.4. TaskListViewModel</a></li>
+<li><a href="#org2bc55e4">2.3.1.1. Diagram for now</a></li>
+<li><a href="#orgc3c4aad">2.3.1.2. Model for the future</a></li>
+<li><a href="#org9fe3422">2.3.1.3. TaskCellViewModel</a></li>
+<li><a href="#org4782682">2.3.1.4. TaskListViewModel</a></li>
 </ul>
 </li>
-<li><a href="#org2b714b9">2.3.2. View</a></li>
+<li><a href="#orgaa103a7">2.3.2. View</a></li>
 </ul>
 </li>
-<li><a href="#org786a7c5">2.4. New task</a>
+<li><a href="#org83e5a38">2.4. New task</a>
 <ul>
-<li><a href="#org0faf31c">2.4.1. View</a>
+<li><a href="#orga8d7f47">2.4.1. View</a>
 <ul>
-<li><a href="#orgf99dfa3">2.4.1.1. NewTaskView.swift</a></li>
-<li><a href="#orgec4b455">2.4.1.2. TaskListView.swift</a></li>
+<li><a href="#orgf326eca">2.4.1.1. NewTaskView.swift</a></li>
+<li><a href="#org9223624">2.4.1.2. TaskListView.swift</a></li>
 </ul>
 </li>
-<li><a href="#orgb70bb44">2.4.2. ViewModel</a>
+<li><a href="#org03939cf">2.4.2. ViewModel</a>
 <ul>
-<li><a href="#org66ec928">2.4.2.1. TaskListViewModel.swift</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#org3c85319">2.5. Delete task</a>
-<ul>
-<li><a href="#org1982b26">2.5.1. View</a>
-<ul>
-<li><a href="#orge35c83a">2.5.1.1. TaskListView.swift</a></li>
-</ul>
-</li>
-<li><a href="#orga6ca564">2.5.2. ViewModel</a>
-<ul>
-<li><a href="#org90b8256">2.5.2.1. TaskListViewModel.swift</a></li>
+<li><a href="#orgda8a068">2.4.2.1. TaskListViewModel.swift</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org51d473d">2.6. enum v.s. picker</a>
+<li><a href="#orgb254860">2.5. Delete task</a>
 <ul>
-<li><a href="#orgb367919">2.6.1. Model</a>
+<li><a href="#org676f81c">2.5.1. View</a>
 <ul>
-<li><a href="#org5a9e8ea">2.6.1.1. Model.swift</a></li>
+<li><a href="#org6d00a45">2.5.1.1. TaskListView.swift</a></li>
 </ul>
 </li>
-<li><a href="#orge540793">2.6.2. View</a>
+<li><a href="#org671f7c7">2.5.2. ViewModel</a>
 <ul>
-<li><a href="#org4a85c6d">2.6.2.1. TaskListView.swift</a></li>
+<li><a href="#org52fd5c0">2.5.2.1. TaskListViewModel.swift</a></li>
 </ul>
 </li>
-<li><a href="#org94cd13c">2.6.3. ViewModel</a>
+</ul>
+</li>
+<li><a href="#org95423a3">2.6. enum v.s. picker</a>
 <ul>
-<li><a href="#org7320aba">2.6.3.1. TaskCellViewModel.swift</a></li>
+<li><a href="#org9e77e41">2.6.1. Model</a>
+<ul>
+<li><a href="#org0a87daa">2.6.1.1. Model.swift</a></li>
+</ul>
+</li>
+<li><a href="#org99491b6">2.6.2. View</a>
+<ul>
+<li><a href="#orgcf55ab0">2.6.2.1. TaskListView.swift</a></li>
+<li><a href="#orgc713ef5">2.6.2.2. NewTaskView.swift</a></li>
+</ul>
+</li>
+<li><a href="#orgd56a3ee">2.6.3. ViewModel</a>
+<ul>
+<li><a href="#org873829a">2.6.3.1. TaskCellViewModel.swift</a></li>
+</ul>
+</li>
+<li><a href="#org3ec30d1">2.6.4. 結果</a></li>
+</ul>
+</li>
+<li><a href="#org13883e1">2.7. Tap on Icon to change completion and priority status</a>
+<ul>
+<li><a href="#org9e03a8c">2.7.1. View</a>
+<ul>
+<li><a href="#org1c39308">2.7.1.1. TaskListView.swift</a></li>
+</ul>
+</li>
+<li><a href="#orgd39fdf3">2.7.2. ViewModel</a>
+<ul>
+<li><a href="#orgc4a86a9">2.7.2.1. TaskCellViewModel.swift</a></li>
 </ul>
 </li>
 </ul>
@@ -334,120 +350,120 @@
 </li>
 <li><a href="#SW-AdvFuncs">3. Advance function</a>
 <ul>
-<li><a href="#org0447ee5">3.1. filter()</a>
+<li><a href="#org12bd79e">3.1. filter()</a>
 <ul>
-<li><a href="#org1967142">3.1.1. 在 closure 回傳每個元素使否符合判斷式的結果，決定最後 filter() 回傳的元素集合。</a></li>
-<li><a href="#org7094b38">3.1.2. 將一、三象限的點過濾出來</a></li>
+<li><a href="#org9464a4e">3.1.1. 在 closure 回傳每個元素使否符合判斷式的結果，決定最後 filter() 回傳的元素集合。</a></li>
+<li><a href="#orgf3db650">3.1.2. 將一、三象限的點過濾出來</a></li>
 </ul>
 </li>
-<li><a href="#org5a05ab1">3.2. map()</a>
+<li><a href="#org7ed2583">3.2. map()</a>
 <ul>
-<li><a href="#orgfc594a3">3.2.1. 透過map()將整數陣列轉化成兩倍數值與字串的陣列。</a>
+<li><a href="#org2c85d20">3.2.1. 透過map()將整數陣列轉化成兩倍數值與字串的陣列。</a>
 <ul>
-<li><a href="#orgebc92e0">3.2.1.1. map()如何將一組二度空間的點對 X 軸與 Y 軸做鏡射。</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#org909133e">3.3. debounce</a>
-<ul>
-<li><a href="#orgaab1917">3.3.1. Example</a>
-<ul>
-<li><a href="#org8601bb2">3.3.1.1. UI</a></li>
-<li><a href="#orgc2a7054">3.3.1.2. ViewModel</a></li>
+<li><a href="#org026e6ad">3.2.1.1. map()如何將一組二度空間的點對 X 軸與 Y 軸做鏡射。</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li><a href="#org59aafc2">3.3. debounce</a>
+<ul>
+<li><a href="#org491c3b1">3.3.1. Example</a>
+<ul>
+<li><a href="#orgc64dae3">3.3.1.1. UI</a></li>
+<li><a href="#org788677a">3.3.1.2. ViewModel</a></li>
 </ul>
 </li>
-<li><a href="#org5eafeae">4. Web API: URLSession v.s. JSONDecoder</a>
-<ul>
-<li><a href="#orgca92397">4.1. Demo 1</a>
-<ul>
-<li><a href="#orgafbc789">4.1.1. ContentView.swift</a></li>
 </ul>
 </li>
-<li><a href="#org91afbbb">4.2. Demo 2</a>
-<ul>
-<li><a href="#org59286ef">4.2.1. MVVM</a></li>
-<li><a href="#org665c5a8">4.2.2. FlowModel.swift</a></li>
-<li><a href="#orga4a7341">4.2.3. ContentView.swift</a></li>
-<li><a href="#orgb6db70a">4.2.4. Flow.swift</a></li>
-<li><a href="#org9bee37d">4.2.5. Result</a></li>
 </ul>
 </li>
-<li><a href="#org66791b5">4.3. 公開資料平台</a></li>
-<li><a href="#orge5194dd">4.4. Further Reading</a></li>
+<li><a href="#org3e12375">4. Web API: URLSession v.s. JSONDecoder</a>
+<ul>
+<li><a href="#orgbfa4f7d">4.1. Demo 1</a>
+<ul>
+<li><a href="#org4efbce8">4.1.1. ContentView.swift</a></li>
+</ul>
+</li>
+<li><a href="#org6af4b6f">4.2. Demo 2</a>
+<ul>
+<li><a href="#org3f72b8d">4.2.1. MVVM</a></li>
+<li><a href="#org3eb7be0">4.2.2. FlowModel.swift</a></li>
+<li><a href="#org3b9121a">4.2.3. ContentView.swift</a></li>
+<li><a href="#orgd8e582a">4.2.4. Flow.swift</a></li>
+<li><a href="#orgb472bc8">4.2.5. Result</a></li>
+</ul>
+</li>
+<li><a href="#orgefb64ea">4.3. 公開資料平台</a></li>
+<li><a href="#orgeab131f">4.4. Further Reading</a></li>
 </ul>
 </li>
 <li><a href="#SW-Protocols">5. Protocols</a>
 <ul>
-<li><a href="#orgdb97be9">5.1. Protocol Syntax</a>
+<li><a href="#orgf337bc9">5.1. Protocol Syntax</a>
 <ul>
-<li><a href="#orgf7acea8">5.1.1. Syntax</a></li>
-<li><a href="#orgc56dc0c">5.1.2. DEMO</a></li>
-<li><a href="#org0cabfb3">5.1.3. Adding property requirements</a></li>
-<li><a href="#org6e53568">5.1.4. Protocols with mutating methods</a></li>
-<li><a href="#orga4c7690">5.1.5. Initializer Requirements</a></li>
+<li><a href="#orge389169">5.1.1. Syntax</a></li>
+<li><a href="#orgb838af0">5.1.2. DEMO</a></li>
+<li><a href="#org3168773">5.1.3. Adding property requirements</a></li>
+<li><a href="#orge0e2afc">5.1.4. Protocols with mutating methods</a></li>
+<li><a href="#org32a57d2">5.1.5. Initializer Requirements</a></li>
 </ul>
 </li>
-<li><a href="#orgba0b974">5.2. DEMO</a></li>
-<li><a href="#org38d6c8a">5.3. 範例</a>
+<li><a href="#org833adc0">5.2. DEMO</a></li>
+<li><a href="#org5d0eae6">5.3. 範例</a>
 <ul>
-<li><a href="#org82e7c7a">5.3.1. 版本 1</a></li>
-<li><a href="#orgf24bdf8">5.3.2. 版本 2</a></li>
-<li><a href="#org23a51b1">5.3.3. 版本 3</a></li>
+<li><a href="#orgb9c82c8">5.3.1. 版本 1</a></li>
+<li><a href="#org6a9c94c">5.3.2. 版本 2</a></li>
+<li><a href="#orgee324af">5.3.3. 版本 3</a></li>
 </ul>
 </li>
-<li><a href="#orgfb2973d">5.4. mutating</a></li>
-<li><a href="#org7a8899b">5.5. 擴充 protocol</a></li>
-<li><a href="#org418d54a">5.6. Further Reading</a></li>
+<li><a href="#org5fffb1f">5.4. mutating</a></li>
+<li><a href="#org613983e">5.5. 擴充 protocol</a></li>
+<li><a href="#orgb7d71a4">5.6. Further Reading</a></li>
 </ul>
 </li>
 <li><a href="#SW-enum">6. Enum</a>
 <ul>
-<li><a href="#org14cec8a">6.1. without enum</a></li>
-<li><a href="#org9751063">6.2. with enum</a></li>
-<li><a href="#org7e323e9">6.3. enum的rawValue</a></li>
-<li><a href="#orgc3068e4">6.4. enum v.s. switch</a></li>
-<li><a href="#orgf095eb6">6.5. Swift列舉中最強大的功能之一：associated values</a></li>
+<li><a href="#org47bcd83">6.1. without enum</a></li>
+<li><a href="#orge584177">6.2. with enum</a></li>
+<li><a href="#org7ce2e19">6.3. enum的rawValue</a></li>
+<li><a href="#org342c30d">6.4. enum v.s. switch</a></li>
+<li><a href="#orgd011c48">6.5. Swift列舉中最強大的功能之一：associated values</a></li>
 </ul>
 </li>
-<li><a href="#org9df9fd7">7. Struct v.s. Class</a>
+<li><a href="#org96e0ebb">7. Struct v.s. Class</a>
 <ul>
-<li><a href="#org393cc6a">7.1. What is in class/struct</a>
+<li><a href="#org5128251">7.1. What is in class/struct</a>
 <ul>
-<li><a href="#org2fc7af2">7.1.1. What is a class in Swift?</a></li>
-<li><a href="#orge9321a1">7.1.2. What is a struct in Swift?</a></li>
-<li><a href="#org7d07245">7.1.3. What are the differences between a struct and a class?</a>
+<li><a href="#org1e29943">7.1.1. What is a class in Swift?</a></li>
+<li><a href="#orgb74d962">7.1.2. What is a struct in Swift?</a></li>
+<li><a href="#org5e13d1a">7.1.3. What are the differences between a struct and a class?</a>
 <ul>
-<li><a href="#org952a2ee">7.1.3.1. The benefit of mutation in safety</a></li>
-<li><a href="#org9e96668">7.1.3.2. Structs get an initializer for free</a></li>
-<li><a href="#orgb0fed97">7.1.3.3. Classes allow inheritance</a></li>
+<li><a href="#orgf4edfbd">7.1.3.1. The benefit of mutation in safety</a></li>
+<li><a href="#orgc626532">7.1.3.2. Structs get an initializer for free</a></li>
+<li><a href="#org81e600c">7.1.3.3. Classes allow inheritance</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgd6b4af8">7.2. 如何決擇? / When should I go for a struct and when for a class?</a>
+<li><a href="#orgec055ea">7.2. 如何決擇? / When should I go for a struct and when for a class?</a>
 <ul>
-<li><a href="#org8446521">7.2.1. You should use a class when:</a></li>
-<li><a href="#org6a37589">7.2.2. You should use a struct when:</a></li>
-<li><a href="#org83c2843">7.2.3. Try to go for a struct by default.</a></li>
+<li><a href="#orgc3dd039">7.2.1. You should use a class when:</a></li>
+<li><a href="#org6ef3812">7.2.2. You should use a struct when:</a></li>
+<li><a href="#orgd2138fe">7.2.3. Try to go for a struct by default.</a></li>
 </ul>
 </li>
-<li><a href="#org608dff3">7.3. DEMO</a></li>
+<li><a href="#org3c83e9b">7.3. DEMO</a></li>
 </ul>
 </li>
 <li><a href="#some">8. <span class="todo TODO">TODO</span> some</a>
 <ul>
-<li><a href="#orgf5a7b77">8.1. Generics</a>
+<li><a href="#orgb5ae245">8.1. Generics</a>
 <ul>
-<li><a href="#orgb1a361f">8.1.1. 問題</a></li>
-<li><a href="#org0992653">8.1.2. 解決方案</a></li>
+<li><a href="#org9555bfe">8.1.1. 問題</a></li>
+<li><a href="#orgf424856">8.1.2. 解決方案</a></li>
 </ul>
 </li>
-<li><a href="#orgf4beb74">8.2. opaque</a></li>
+<li><a href="#orgc191236">8.2. opaque</a></li>
 </ul>
 </li>
 <li><a href="#advanced">9. <span class="todo TODO">TODO</span> 進階主題</a></li>
@@ -459,15 +475,15 @@
 <h2 id="SW-MVVM"><span class="section-number-2">1</span> MVVM</h2>
 <div class="outline-text-2" id="text-SW-MVVM">
 </div>
-<div id="outline-container-org40f483a" class="outline-3">
-<h3 id="org40f483a"><span class="section-number-3">1.1</span> Design pattern</h3>
+<div id="outline-container-org82dc20c" class="outline-3">
+<h3 id="org82dc20c"><span class="section-number-3">1.1</span> Design pattern</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 MVVM 的概念最早應該是在 2005 年由 Microsoft的<a href="https://blogs.msdn.microsoft.com/johngossman/2005/10/08/introduction-to-modelviewviewmodel-pattern-for-building-wpf-apps/">John Gossman</a>提出來的，它的概念是，整個 Swift project 會拆分成三個部份: View、ViewModel、Model，其中 View 的角色就是單純的視覺元件，像是按鈕、文字標籤等等，在 View 裡面不會有邏輯、狀態等等，單純就是個呈現資料的元件。而要讓 View 呈現資料，最直覺的方式，就是把 View 跟 Model 做綁定，讓 View 的元件跟著 Model 一起做變化。但這樣會有個問題，就是通常 Model 來的資料，並不是簡單就能轉換成 View 的樣式的，這時候就需要有個物件，介在 View 跟 Model 的中間，這個物件會掌管這些跟 View 高度相關的邏輯的操作，像是轉換 Date 物件變成人看得懂的文字格式等，稱之為 ViewModel。上面的概念可以畫成這樣的資料流：<br />
 </p>
 
 
-<div id="orgf37b75f" class="figure">
+<div id="org403c684" class="figure">
 <p><img src="images/MVVM-Basic.jpg" alt="MVVM-Basic.jpg" width="600" /><br />
 </p>
 <p><span class="figure-number">Figure 1: </span>MVVM Architecture</p>
@@ -493,12 +509,12 @@ MVVM 的概念最早應該是在 2005 年由 Microsoft的<a href="https://blogs.
 </p>
 </div>
 </div>
-<div id="outline-container-org758f5e0" class="outline-3">
-<h3 id="org758f5e0"><span class="section-number-3">1.2</span> What is the idea behind MVVM</h3>
+<div id="outline-container-org1ca0d1e" class="outline-3">
+<h3 id="org1ca0d1e"><span class="section-number-3">1.2</span> What is the idea behind MVVM</h3>
 <div class="outline-text-3" id="text-1-2">
 </div>
-<div id="outline-container-org36b9f88" class="outline-4">
-<h4 id="org36b9f88"><span class="section-number-4">1.2.1</span> Model</h4>
+<div id="outline-container-orgc0c0d69" class="outline-4">
+<h4 id="orgc0c0d69"><span class="section-number-4">1.2.1</span> Model</h4>
 <div class="outline-text-4" id="text-1-2-1">
 <ul class="org-ul">
 <li>Business logic<br /></li>
@@ -506,8 +522,8 @@ MVVM 的概念最早應該是在 2005 年由 Microsoft的<a href="https://blogs.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf4d4063" class="outline-4">
-<h4 id="orgf4d4063"><span class="section-number-4">1.2.2</span> View</h4>
+<div id="outline-container-orgfe12f9e" class="outline-4">
+<h4 id="orgfe12f9e"><span class="section-number-4">1.2.2</span> View</h4>
 <div class="outline-text-4" id="text-1-2-2">
 <ul class="org-ul">
 <li>Presentation<br /></li>
@@ -515,8 +531,8 @@ MVVM 的概念最早應該是在 2005 年由 Microsoft的<a href="https://blogs.
 </ul>
 </div>
 </div>
-<div id="outline-container-org7c623e4" class="outline-4">
-<h4 id="org7c623e4"><span class="section-number-4">1.2.3</span> ViewModel</h4>
+<div id="outline-container-org484e721" class="outline-4">
+<h4 id="org484e721"><span class="section-number-4">1.2.3</span> ViewModel</h4>
 <div class="outline-text-4" id="text-1-2-3">
 <ul class="org-ul">
 <li>Presentation logic<br /></li>
@@ -524,8 +540,8 @@ MVVM 的概念最早應該是在 2005 年由 Microsoft的<a href="https://blogs.
 </ul>
 </div>
 </div>
-<div id="outline-container-org8f22c1a" class="outline-4">
-<h4 id="org8f22c1a"><span class="section-number-4">1.2.4</span> 為什麼要拆成三部份(What does it solve?)</h4>
+<div id="outline-container-org7a56659" class="outline-4">
+<h4 id="org7a56659"><span class="section-number-4">1.2.4</span> 為什麼要拆成三部份(What does it solve?)</h4>
 <div class="outline-text-4" id="text-1-2-4">
 <ul class="org-ul">
 <li>MVC - Massive View Controller<br /></li>
@@ -535,8 +551,8 @@ MVVM 的概念最早應該是在 2005 年由 Microsoft的<a href="https://blogs.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc28373a" class="outline-4">
-<h4 id="orgc28373a"><span class="section-number-4">1.2.5</span> Limitations / Cons</h4>
+<div id="outline-container-orgd68da60" class="outline-4">
+<h4 id="orgd68da60"><span class="section-number-4">1.2.5</span> Limitations / Cons</h4>
 <div class="outline-text-4" id="text-1-2-5">
 <ul class="org-ul">
 <li>Requires binding<br /></li>
@@ -547,8 +563,8 @@ MVVM 的概念最早應該是在 2005 年由 Microsoft的<a href="https://blogs.
 </div>
 </div>
 </div>
-<div id="outline-container-org538b304" class="outline-3">
-<h3 id="org538b304"><span class="section-number-3">1.3</span> DEMO</h3>
+<div id="outline-container-orgec2591d" class="outline-3">
+<h3 id="orgec2591d"><span class="section-number-3">1.3</span> DEMO</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 以&ldquo;推薦書單&rdquo;的 APP 為例:<br />
@@ -611,15 +627,15 @@ Model 與 UI 完全無關，單純用來儲存資料，ViewModel 為 Model 與 V
 </ul>
 </div>
 </div>
-<div id="outline-container-orgb35cce3" class="outline-3">
-<h3 id="orgb35cce3"><span class="section-number-3">1.4</span> Model 要用 Struct 或是 Class</h3>
+<div id="outline-container-orgf21c534" class="outline-3">
+<h3 id="orgf21c534"><span class="section-number-3">1.4</span> Model 要用 Struct 或是 Class</h3>
 <div class="outline-text-3" id="text-1-4">
 <p>
 <a href="https://www.appcoda.com.tw/swift-class/">資料來源:Swift Class vs Struct：設計 Model 時，該用 Struct 還是 Class 呢？</a><br />
 </p>
 </div>
-<div id="outline-container-org9f93c12" class="outline-4">
-<h4 id="org9f93c12"><span class="section-number-4">1.4.1</span> Struct 與 Class 的不同性質</h4>
+<div id="outline-container-orgdfa6d12" class="outline-4">
+<h4 id="orgdfa6d12"><span class="section-number-4">1.4.1</span> Struct 與 Class 的不同性質</h4>
 <div class="outline-text-4" id="text-1-4-1">
 <p>
 首先，當我們指派 (assign) 一個實體給一個辨識符（identifier，也就是變數／常數名）的時候，如果該實體是 struct 的話，該辨識符所容納的會是該實體的所有內容；但如果它是 class 的話，這個辨識符就只會容納存放該實體的位址：<br />
@@ -664,19 +680,19 @@ Model 與 UI 完全無關，單純用來儲存資料，ViewModel 為 Model 與 V
 </div>
 <p>
 怎麼會有這樣的差別呢？因為 herDog 儲存了所有的 Dog 實體內容，所以任何 Dog 實體的屬性的變動，就等於說 herDog 本身有變動。然而，herCat 並沒有儲存 Cat 實體的內容，所以 Cat 實體屬性的變動是在別的地方發生的，且 herCat 本身所儲存的 Cat 實體位址並沒有任何的改變。<br />
-由圖<a href="#orgf37b75f">1</a>可看出，<br />
+由圖<a href="#org403c684">1</a>可看出，<br />
 </p>
 </div>
 </div>
-<div id="outline-container-org212b26d" class="outline-4">
-<h4 id="org212b26d"><span class="section-number-4">1.4.2</span> MVVM 中的 Model</h4>
+<div id="outline-container-orga84d947" class="outline-4">
+<h4 id="orga84d947"><span class="section-number-4">1.4.2</span> MVVM 中的 Model</h4>
 </div>
 </div>
-<div id="outline-container-org3fa4d4d" class="outline-3">
-<h3 id="org3fa4d4d"><span class="section-number-3">1.5</span> DICE DEMO</h3>
+<div id="outline-container-orgcab1343" class="outline-3">
+<h3 id="orgcab1343"><span class="section-number-3">1.5</span> DICE DEMO</h3>
 </div>
-<div id="outline-container-org49a5a22" class="outline-3">
-<h3 id="org49a5a22"><span class="section-number-3">1.6</span> Further Reading Resources</h3>
+<div id="outline-container-org199c0bf" class="outline-3">
+<h3 id="org199c0bf"><span class="section-number-3">1.6</span> Further Reading Resources</h3>
 <div class="outline-text-3" id="text-1-6">
 <ul class="org-ul">
 <li><a href="https://www.youtube.com/watch?v=1IlUBHvgY8Q&amp;t=29s">SwiftUI MVVM Programming with ObservableObject @Published @ObservedObject</a><br /></li>
@@ -703,8 +719,8 @@ Model 與 UI 完全無關，單純用來儲存資料，ViewModel 為 Model 與 V
 參考資料: <a href="https://medium.com/better-programming/replicating-the-ios-reminders-app-part1-44211a7b7029">Building a To-Do List App with SwiftUI, Combine, and Firebase</a><br />
 </p>
 </div>
-<div id="outline-container-orgf224159" class="outline-3">
-<h3 id="orgf224159"><span class="section-number-3">2.1</span> Data Model</h3>
+<div id="outline-container-org6d92027" class="outline-3">
+<h3 id="org6d92027"><span class="section-number-3">2.1</span> Data Model</h3>
 <div class="outline-text-3" id="text-2-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span style="color: #5B6268;">//</span>
@@ -736,12 +752,12 @@ Model 與 UI 完全無關，單純用來儲存資料，ViewModel 為 Model 與 V
 </div>
 </div>
 </div>
-<div id="outline-container-org0c440e9" class="outline-3">
-<h3 id="org0c440e9"><span class="section-number-3">2.2</span> Basic UI</h3>
+<div id="outline-container-org0139180" class="outline-3">
+<h3 id="org0139180"><span class="section-number-3">2.2</span> Basic UI</h3>
 <div class="outline-text-3" id="text-2-2">
 </div>
-<div id="outline-container-org6efaeef" class="outline-4">
-<h4 id="org6efaeef"><span class="section-number-4">2.2.1</span> Change struct name (ContentView.swift)</h4>
+<div id="outline-container-orgf68808f" class="outline-4">
+<h4 id="orgf68808f"><span class="section-number-4">2.2.1</span> Change struct name (ContentView.swift)</h4>
 <div class="outline-text-4" id="text-2-2-1">
 <ol class="org-ol">
 <li>right click on struct ContentView<br /></li>
@@ -751,8 +767,8 @@ Model 與 UI 完全無關，單純用來儲存資料，ViewModel 為 Model 與 V
 </ol>
 </div>
 </div>
-<div id="outline-container-orgb31c63e" class="outline-4">
-<h4 id="orgb31c63e"><span class="section-number-4">2.2.2</span> classify files into the following group</h4>
+<div id="outline-container-orgc0564c2" class="outline-4">
+<h4 id="orgc0564c2"><span class="section-number-4">2.2.2</span> classify files into the following group</h4>
 <div class="outline-text-4" id="text-2-2-2">
 <ul class="org-ul">
 <li>App<br /></li>
@@ -762,18 +778,18 @@ Model<br />
 </p></li>
 </ul>
 
-<div id="org679521d" class="figure">
+<div id="org6b1bb20" class="figure">
 <p><img src="images/renameStruct.jpg" alt="renameStruct.jpg" /><br />
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org8d00cc2" class="outline-4">
-<h4 id="org8d00cc2"><span class="section-number-4">2.2.3</span> Create basic UI</h4>
+<div id="outline-container-org850aa84" class="outline-4">
+<h4 id="org850aa84"><span class="section-number-4">2.2.3</span> Create basic UI</h4>
 <div class="outline-text-4" id="text-2-2-3">
 </div>
-<div id="outline-container-orgf07912a" class="outline-5">
-<h5 id="orgf07912a"><span class="section-number-5">2.2.3.1</span> TaskListView.swift</h5>
+<div id="outline-container-orgb538445" class="outline-5">
+<h5 id="orgb538445"><span class="section-number-5">2.2.3.1</span> TaskListView.swift</h5>
 <div class="outline-text-5" id="text-2-2-3-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #5B6268;">//</span>
@@ -814,8 +830,8 @@ Model<br />
 </div>
 </div>
 </div>
-<div id="outline-container-org78d351a" class="outline-5">
-<h5 id="org78d351a"><span class="section-number-5">2.2.3.2</span> Extract the task cell</h5>
+<div id="outline-container-org1baeaac" class="outline-5">
+<h5 id="org1baeaac"><span class="section-number-5">2.2.3.2</span> Extract the task cell</h5>
 <div class="outline-text-5" id="text-2-2-3-2">
 <ol class="org-ol">
 <li>Grouping the Image and Text with HStack<br /></li>
@@ -873,19 +889,19 @@ Model<br />
 </div>
 </div>
 </div>
-<div id="outline-container-orgcc3bef5" class="outline-3">
-<h3 id="orgcc3bef5"><span class="section-number-3">2.3</span> MVVM</h3>
+<div id="outline-container-org1042c11" class="outline-3">
+<h3 id="org1042c11"><span class="section-number-3">2.3</span> MVVM</h3>
 <div class="outline-text-3" id="text-2-3">
 <p>
 以MVVM架構來開發project<br />
 </p>
 </div>
-<div id="outline-container-org7ab96ba" class="outline-4">
-<h4 id="org7ab96ba"><span class="section-number-4">2.3.1</span> ViewModel</h4>
+<div id="outline-container-org1b30f0e" class="outline-4">
+<h4 id="org1b30f0e"><span class="section-number-4">2.3.1</span> ViewModel</h4>
 <div class="outline-text-4" id="text-2-3-1">
 </div>
-<div id="outline-container-orgfecde85" class="outline-5">
-<h5 id="orgfecde85"><span class="section-number-5">2.3.1.1</span> Diagram for now</h5>
+<div id="outline-container-org2bc55e4" class="outline-5">
+<h5 id="org2bc55e4"><span class="section-number-5">2.3.1.1</span> Diagram for now</h5>
 <div class="outline-text-5" id="text-2-3-1-1">
 
 <div class="figure">
@@ -895,8 +911,8 @@ Model<br />
 </div>
 </div>
 
-<div id="outline-container-orgb543f00" class="outline-5">
-<h5 id="orgb543f00"><span class="section-number-5">2.3.1.2</span> Model for the future</h5>
+<div id="outline-container-orgc3c4aad" class="outline-5">
+<h5 id="orgc3c4aad"><span class="section-number-5">2.3.1.2</span> Model for the future</h5>
 <div class="outline-text-5" id="text-2-3-1-2">
 
 <div class="figure">
@@ -906,8 +922,8 @@ Model<br />
 </div>
 </div>
 
-<div id="outline-container-org6807b68" class="outline-5">
-<h5 id="org6807b68"><span class="section-number-5">2.3.1.3</span> TaskCellViewModel</h5>
+<div id="outline-container-org9fe3422" class="outline-5">
+<h5 id="org9fe3422"><span class="section-number-5">2.3.1.3</span> TaskCellViewModel</h5>
 <div class="outline-text-5" id="text-2-3-1-3">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #5B6268;">//</span>
@@ -940,8 +956,8 @@ Model<br />
 </div>
 </div>
 </div>
-<div id="outline-container-org36aeebe" class="outline-5">
-<h5 id="org36aeebe"><span class="section-number-5">2.3.1.4</span> TaskListViewModel</h5>
+<div id="outline-container-org4782682" class="outline-5">
+<h5 id="org4782682"><span class="section-number-5">2.3.1.4</span> TaskListViewModel</h5>
 <div class="outline-text-5" id="text-2-3-1-4">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #5B6268;">//</span>
@@ -970,8 +986,8 @@ Model<br />
 </div>
 </div>
 </div>
-<div id="outline-container-org2b714b9" class="outline-4">
-<h4 id="org2b714b9"><span class="section-number-4">2.3.2</span> View</h4>
+<div id="outline-container-orgaa103a7" class="outline-4">
+<h4 id="orgaa103a7"><span class="section-number-4">2.3.2</span> View</h4>
 <div class="outline-text-4" id="text-2-3-2">
 <p>
 TaskListView.swift<br />
@@ -1027,19 +1043,19 @@ TaskListView.swift<br />
 </div>
 </div>
 </div>
-<div id="outline-container-org786a7c5" class="outline-3">
-<h3 id="org786a7c5"><span class="section-number-3">2.4</span> New task</h3>
+<div id="outline-container-org83e5a38" class="outline-3">
+<h3 id="org83e5a38"><span class="section-number-3">2.4</span> New task</h3>
 <div class="outline-text-3" id="text-2-4">
 <p>
 加入新增task功能，真正的新增功能由ViewModel實作，View負責界面及呼叫該功能<br />
 </p>
 </div>
-<div id="outline-container-org0faf31c" class="outline-4">
-<h4 id="org0faf31c"><span class="section-number-4">2.4.1</span> View</h4>
+<div id="outline-container-orga8d7f47" class="outline-4">
+<h4 id="orga8d7f47"><span class="section-number-4">2.4.1</span> View</h4>
 <div class="outline-text-4" id="text-2-4-1">
 </div>
-<div id="outline-container-orgf99dfa3" class="outline-5">
-<h5 id="orgf99dfa3"><span class="section-number-5">2.4.1.1</span> NewTaskView.swift</h5>
+<div id="outline-container-orgf326eca" class="outline-5">
+<h5 id="orgf326eca"><span class="section-number-5">2.4.1.1</span> NewTaskView.swift</h5>
 <div class="outline-text-5" id="text-2-4-1-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #5B6268;">//</span>
@@ -1083,8 +1099,8 @@ TaskListView.swift<br />
 </div>
 </div>
 </div>
-<div id="outline-container-orgec4b455" class="outline-5">
-<h5 id="orgec4b455"><span class="section-number-5">2.4.1.2</span> TaskListView.swift</h5>
+<div id="outline-container-org9223624" class="outline-5">
+<h5 id="org9223624"><span class="section-number-5">2.4.1.2</span> TaskListView.swift</h5>
 <div class="outline-text-5" id="text-2-4-1-2">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #5B6268;">//</span>
@@ -1149,12 +1165,12 @@ TaskListView.swift<br />
 </div>
 </div>
 </div>
-<div id="outline-container-orgb70bb44" class="outline-4">
-<h4 id="orgb70bb44"><span class="section-number-4">2.4.2</span> ViewModel</h4>
+<div id="outline-container-org03939cf" class="outline-4">
+<h4 id="org03939cf"><span class="section-number-4">2.4.2</span> ViewModel</h4>
 <div class="outline-text-4" id="text-2-4-2">
 </div>
-<div id="outline-container-org66ec928" class="outline-5">
-<h5 id="org66ec928"><span class="section-number-5">2.4.2.1</span> TaskListViewModel.swift</h5>
+<div id="outline-container-orgda8a068" class="outline-5">
+<h5 id="orgda8a068"><span class="section-number-5">2.4.2.1</span> TaskListViewModel.swift</h5>
 <div class="outline-text-5" id="text-2-4-2-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #5B6268;">//</span>
@@ -1188,19 +1204,19 @@ TaskListView.swift<br />
 </div>
 </div>
 </div>
-<div id="outline-container-org3c85319" class="outline-3">
-<h3 id="org3c85319"><span class="section-number-3">2.5</span> Delete task</h3>
+<div id="outline-container-orgb254860" class="outline-3">
+<h3 id="orgb254860"><span class="section-number-3">2.5</span> Delete task</h3>
 <div class="outline-text-3" id="text-2-5">
 <p>
 加入swipe進行刪除的功能，真正刪除的功能由ViewModel實作，View負責呼叫<br />
 </p>
 </div>
-<div id="outline-container-org1982b26" class="outline-4">
-<h4 id="org1982b26"><span class="section-number-4">2.5.1</span> View</h4>
+<div id="outline-container-org676f81c" class="outline-4">
+<h4 id="org676f81c"><span class="section-number-4">2.5.1</span> View</h4>
 <div class="outline-text-4" id="text-2-5-1">
 </div>
-<div id="outline-container-orge35c83a" class="outline-5">
-<h5 id="orge35c83a"><span class="section-number-5">2.5.1.1</span> TaskListView.swift</h5>
+<div id="outline-container-org6d00a45" class="outline-5">
+<h5 id="org6d00a45"><span class="section-number-5">2.5.1.1</span> TaskListView.swift</h5>
 <div class="outline-text-5" id="text-2-5-1-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #5B6268;">//</span>
@@ -1270,12 +1286,12 @@ TaskListView.swift<br />
 </div>
 </div>
 </div>
-<div id="outline-container-orga6ca564" class="outline-4">
-<h4 id="orga6ca564"><span class="section-number-4">2.5.2</span> ViewModel</h4>
+<div id="outline-container-org671f7c7" class="outline-4">
+<h4 id="org671f7c7"><span class="section-number-4">2.5.2</span> ViewModel</h4>
 <div class="outline-text-4" id="text-2-5-2">
 </div>
-<div id="outline-container-org90b8256" class="outline-5">
-<h5 id="org90b8256"><span class="section-number-5">2.5.2.1</span> TaskListViewModel.swift</h5>
+<div id="outline-container-org52fd5c0" class="outline-5">
+<h5 id="org52fd5c0"><span class="section-number-5">2.5.2.1</span> TaskListViewModel.swift</h5>
 <div class="outline-text-5" id="text-2-5-2-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span>
@@ -1317,22 +1333,22 @@ TaskListView.swift<br />
 </div>
 </div>
 </div>
-<div id="outline-container-org51d473d" class="outline-3">
-<h3 id="org51d473d"><span class="section-number-3">2.6</span> enum v.s. picker</h3>
+<div id="outline-container-org95423a3" class="outline-3">
+<h3 id="org95423a3"><span class="section-number-3">2.6</span> enum v.s. picker</h3>
 <div class="outline-text-3" id="text-2-6">
 <p>
-加入task的priority類型<br />
+加入task的priority欄位(enum)<br />
 </p>
 </div>
-<div id="outline-container-orgb367919" class="outline-4">
-<h4 id="orgb367919"><span class="section-number-4">2.6.1</span> Model</h4>
+<div id="outline-container-org9e77e41" class="outline-4">
+<h4 id="org9e77e41"><span class="section-number-4">2.6.1</span> Model</h4>
 <div class="outline-text-4" id="text-2-6-1">
 <p>
 以enum來表示task的不同優先權<br />
 </p>
 </div>
-<div id="outline-container-org5a9e8ea" class="outline-5">
-<h5 id="org5a9e8ea"><span class="section-number-5">2.6.1.1</span> Model.swift</h5>
+<div id="outline-container-org0a87daa" class="outline-5">
+<h5 id="org0a87daa"><span class="section-number-5">2.6.1.1</span> Model.swift</h5>
 <div class="outline-text-5" id="text-2-6-1-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #5B6268;">//</span>
@@ -1353,7 +1369,7 @@ TaskListView.swift<br />
 <span class="linenr">16: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">Task</span>: Identifiable {
 <span class="linenr">17: </span>    <span style="color: #51afef;">var</span> id = <span style="color: #c678dd;">UUID</span>()
 <span class="linenr">18: </span>    <span style="color: #51afef;">var</span> title: <span style="color: #c678dd;">String</span>
-<span class="linenr">19: </span>    <span style="color: #51afef;">var</span> priority: TaskPriority
+<span class="linenr">19: </span>    <span style="color: #51afef;">var</span> priority: TaskPriority  <span style="color: #5B6268;">//</span><span style="color: #5B6268;">&#21482;&#26377;&#19977;&#31278;&#21487;&#33021;&#24615;</span>
 <span class="linenr">20: </span>    <span style="color: #51afef;">var</span> completed: <span style="color: #c678dd;">Bool</span>
 <span class="linenr">21: </span>}
 <span class="linenr">22: </span>
@@ -1372,15 +1388,12 @@ TaskListView.swift<br />
 </div>
 </div>
 </div>
-<div id="outline-container-orge540793" class="outline-4">
-<h4 id="orge540793"><span class="section-number-4">2.6.2</span> View</h4>
+<div id="outline-container-org99491b6" class="outline-4">
+<h4 id="org99491b6"><span class="section-number-4">2.6.2</span> View</h4>
 <div class="outline-text-4" id="text-2-6-2">
-<p>
-以Picker來選取enum中的子類別<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup><br />
-</p>
 </div>
-<div id="outline-container-org4a85c6d" class="outline-5">
-<h5 id="org4a85c6d"><span class="section-number-5">2.6.2.1</span> TaskListView.swift</h5>
+<div id="outline-container-orgcf55ab0" class="outline-5">
+<h5 id="orgcf55ab0"><span class="section-number-5">2.6.2.1</span> TaskListView.swift</h5>
 <div class="outline-text-5" id="text-2-6-2-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #5B6268;">//</span>
@@ -1433,7 +1446,7 @@ TaskListView.swift<br />
 <span class="linenr">48: </span>        HStack {
 <span class="linenr">49: </span>            <span style="color: #c678dd;">Image</span>(systemName: taskCellVM.<span style="color: #dcaeea;">completionStateIconName</span>)
 <span class="linenr">50: </span>            <span style="color: #c678dd;">Image</span>(systemName: taskCellVM.<span style="color: #dcaeea;">priorityStateIconName</span>)
-<span class="linenr">51: </span>                .<span style="color: #c678dd;">foregroundColor</span>(<span style="color: #5B6268;">/*</span><span style="color: #5B6268;">@START_MENU_TOKEN@*/</span>.<span style="color: #dcaeea;">blue</span><span style="color: #5B6268;">/*</span><span style="color: #5B6268;">@END_MENU_TOKEN@*/</span>)
+<span class="linenr">51: </span>                .<span style="color: #c678dd;">foregroundColor</span>(Color.<span style="color: #dcaeea;">blue</span>)
 <span class="linenr">52: </span>            <span style="color: #c678dd;">Text</span>(taskCellVM.<span style="color: #c678dd;">task</span>.<span style="color: #c678dd;">title</span>)
 <span class="linenr">53: </span>        }
 <span class="linenr">54: </span>    }
@@ -1442,13 +1455,70 @@ TaskListView.swift<br />
 </div>
 </div>
 </div>
+<div id="outline-container-orgc713ef5" class="outline-5">
+<h5 id="orgc713ef5"><span class="section-number-5">2.6.2.2</span> NewTaskView.swift</h5>
+<div class="outline-text-5" id="text-2-6-2-2">
+<p>
+新增task時改以Picker來選取enum中的子類別<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup><br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #5B6268;">//</span>
+<span class="linenr"> 2: </span><span style="color: #5B6268;">//  </span><span style="color: #5B6268;">NewTaskView.swift</span>
+<span class="linenr"> 3: </span><span style="color: #5B6268;">//  </span><span style="color: #5B6268;">taskManagement</span>
+<span class="linenr"> 4: </span><span style="color: #5B6268;">//</span>
+<span class="linenr"> 5: </span><span style="color: #5B6268;">//  </span><span style="color: #5B6268;">Created by yen yung chin on 2021/2/20.</span>
+<span class="linenr"> 6: </span><span style="color: #5B6268;">//</span>
+<span class="linenr"> 7: </span>
+<span class="linenr"> 8: </span><span style="color: #51afef;">import</span> SwiftUI
+<span class="linenr"> 9: </span>
+<span class="linenr">10: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">NewTaskView</span>: View {
+<span class="linenr">11: </span>    <span style="color: #51afef;">@ObservedObject</span> <span style="color: #51afef;">var</span> taskListVM = <span style="color: #c678dd;">TaskListMiewModel</span>()
+<span class="linenr">12: </span>    <span style="color: #51afef;">@State</span> <span style="color: #51afef;">var</span> taskTitle: <span style="color: #c678dd;">String</span> = <span style="color: #98be65;">""</span>
+<span class="linenr">13: </span>    <span style="color: #51afef;">@State</span> <span style="color: #51afef;">var</span> priority : TaskPriority
+<span class="linenr">14: </span>    <span style="color: #51afef;">@Environment</span>(\.<span style="color: #dcaeea;">presentationMode</span>) <span style="color: #51afef;">var</span> presentation
+<span class="linenr">15: </span>
+<span class="linenr">16: </span>    <span style="color: #51afef;">var</span> body: <span style="color: #51afef;">some</span> View {
+<span class="linenr">17: </span>        Form {
+<span class="linenr">18: </span>            <span style="color: #c678dd;">Text</span>(<span style="color: #98be65;">"New Task"</span>)
+<span class="linenr">19: </span>                .<span style="color: #c678dd;">font</span>(.<span style="color: #dcaeea;">largeTitle</span>)
+<span class="linenr">20: </span>            <span style="color: #c678dd;">TextField</span>(<span style="color: #98be65;">"Enter task name"</span>, text: <span style="color: #51afef;">self</span>.$taskTitle)
+<span class="linenr">21: </span>            <span style="color: #5B6268;">// </span><span style="color: #5B6268;">&#20197;Picker&#20358;&#23384;&#21462;priority&#27396;&#20301;&#30340;&#36039;&#26009;</span>
+<span class="linenr">22: </span>            <span style="color: #c678dd;">Picker</span>(<span style="color: #98be65;">"Task Priority"</span>, selection: <span style="color: #51afef;">self</span>.$priority) {
+<span class="linenr">23: </span>                <span style="color: #c678dd;">ForEach</span>(TaskPriority.<span style="color: #c678dd;">allCases</span>, id: \.<span style="color: #51afef;">self</span>) {
+<span class="linenr">24: </span>                    <span style="color: #c678dd;">Text</span>($0.<span style="color: #c678dd;">rawValue</span>)
+<span class="linenr">25: </span>                }
+<span class="linenr">26: </span>            }
+<span class="linenr">27: </span>            <span style="color: #c678dd;">Button</span>(action: {
+<span class="linenr">28: </span>                taskListVM.<span style="color: #c678dd;">addTask</span>(task: <span style="color: #c678dd;">Task</span>(title: <span style="color: #51afef;">self</span>.<span style="color: #dcaeea;">taskTitle</span>, priority: priority,completed: <span style="color: #a9a1e1;">false</span>))
+<span class="linenr">29: </span>                <span style="color: #51afef;">self</span>.<span style="color: #dcaeea;">presentation</span>.<span style="color: #dcaeea;">wrappedValue</span>.<span style="color: #c678dd;">dismiss</span>()
+<span class="linenr">30: </span>            }, label: {
+<span class="linenr">31: </span>                <span style="color: #c678dd;">Text</span>(<span style="color: #98be65;">"Done"</span>)
+<span class="linenr">32: </span>            })
+<span class="linenr">33: </span>            <span style="color: #c678dd;">Spacer</span>()
+<span class="linenr">34: </span>        }.<span style="color: #c678dd;">padding</span>()
+<span class="linenr">35: </span>    }
+<span class="linenr">36: </span>}
+<span class="linenr">37: </span>
+<span class="linenr">38: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">NewTaskView_Previews</span>: PreviewProvider {
+<span class="linenr">39: </span>    <span style="color: #51afef;">static</span> <span style="color: #51afef;">var</span> previews: <span style="color: #51afef;">some</span> View {
+<span class="linenr">40: </span>        <span style="color: #c678dd;">NewTaskView</span>( priority: TaskPriority.<span style="color: #c678dd;">low</span>)
+<span class="linenr">41: </span>    }
+<span class="linenr">42: </span>}
+<span class="linenr">43: </span>
+</pre>
 </div>
-<div id="outline-container-org94cd13c" class="outline-4">
-<h4 id="org94cd13c"><span class="section-number-4">2.6.3</span> ViewModel</h4>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd56a3ee" class="outline-4">
+<h4 id="orgd56a3ee"><span class="section-number-4">2.6.3</span> ViewModel</h4>
 <div class="outline-text-4" id="text-2-6-3">
+<p>
+依priority高低傳回不同的Icon<br />
+</p>
 </div>
-<div id="outline-container-org7320aba" class="outline-5">
-<h5 id="org7320aba"><span class="section-number-5">2.6.3.1</span> TaskCellViewModel.swift</h5>
+<div id="outline-container-org873829a" class="outline-5">
+<h5 id="org873829a"><span class="section-number-5">2.6.3.1</span> TaskCellViewModel.swift</h5>
 <div class="outline-text-5" id="text-2-6-3-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #5B6268;">//</span>
@@ -1497,12 +1567,181 @@ TaskListView.swift<br />
 <span class="linenr">44: </span>
 </pre>
 </div>
+</div>
+</div>
+</div>
 
-<p>
-Developing iOS App with Swift #1<br />
-iOS-Swift-1<br />
-31/08<br />
+<div id="outline-container-org3ec30d1" class="outline-4">
+<h4 id="org3ec30d1"><span class="section-number-4">2.6.4</span> 結果</h4>
+<div class="outline-text-4" id="text-2-6-4">
+
+<div id="org148b872" class="figure">
+<p><img src="images/picker.gif" alt="picker.gif" width="500" /><br />
 </p>
+<p><span class="figure-number">Figure 5: </span>Picker v.s. enum</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org13883e1" class="outline-3">
+<h3 id="org13883e1"><span class="section-number-3">2.7</span> Tap on Icon to change completion and priority status</h3>
+<div class="outline-text-3" id="text-2-7">
+</div>
+<div id="outline-container-org9e03a8c" class="outline-4">
+<h4 id="org9e03a8c"><span class="section-number-4">2.7.1</span> View</h4>
+<div class="outline-text-4" id="text-2-7-1">
+</div>
+<div id="outline-container-org1c39308" class="outline-5">
+<h5 id="org1c39308"><span class="section-number-5">2.7.1.1</span> TaskListView.swift</h5>
+<div class="outline-text-5" id="text-2-7-1-1">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #5B6268;">//</span>
+<span class="linenr"> 2: </span><span style="color: #5B6268;">//  </span><span style="color: #5B6268;">ContentView.swift</span>
+<span class="linenr"> 3: </span><span style="color: #5B6268;">//  </span><span style="color: #5B6268;">taskManagement</span>
+<span class="linenr"> 4: </span><span style="color: #5B6268;">//</span>
+<span class="linenr"> 5: </span><span style="color: #5B6268;">//  </span><span style="color: #5B6268;">Created by yen yung chin on 2021/2/16.</span>
+<span class="linenr"> 6: </span><span style="color: #5B6268;">//</span>
+<span class="linenr"> 7: </span>
+<span class="linenr"> 8: </span><span style="color: #51afef;">import</span> SwiftUI
+<span class="linenr"> 9: </span>
+<span class="linenr">10: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">TaskListView</span>: View {
+<span class="linenr">11: </span>    <span style="color: #51afef;">@ObservedObject</span> <span style="color: #51afef;">var</span> taskListVM = <span style="color: #c678dd;">TaskListViewModel</span>()
+<span class="linenr">12: </span>    <span style="color: #51afef;">@State</span> <span style="color: #51afef;">var</span> showNewItem = <span style="color: #a9a1e1;">false</span>
+<span class="linenr">13: </span>    <span style="color: #51afef;">var</span> body: <span style="color: #51afef;">some</span> View {
+<span class="linenr">14: </span>        NavigationView {
+<span class="linenr">15: </span>            <span style="color: #c678dd;">VStack</span>(alignment: .<span style="color: #dcaeea;">leading</span>, spacing: <span style="color: #da8548; font-weight: bold;">10</span>, content: {
+<span class="linenr">16: </span>                List {
+<span class="linenr">17: </span>                    <span style="color: #c678dd;">ForEach</span>(taskListVM.<span style="color: #dcaeea;">taskCellViewModels</span>) { task <span style="color: #51afef;">in</span>
+<span class="linenr">18: </span>                        <span style="color: #c678dd;">TaskCell</span>(taskCellVM: task)
+<span class="linenr">19: </span>
+<span class="linenr">20: </span>                    }
+<span class="linenr">21: </span>                    .<span style="color: #c678dd;">onDelete</span>(perform: { indexSet <span style="color: #51afef;">in</span>
+<span class="linenr">22: </span>                        taskListVM.<span style="color: #c678dd;">deleteTask</span>(indexSet: indexSet)
+<span class="linenr">23: </span>                    })
+<span class="linenr">24: </span>                    <span style="color: #51afef;">if</span> <span style="color: #51afef;">self</span>.<span style="color: #dcaeea;">showNewItem</span> {
+<span class="linenr">25: </span>                        <span style="color: #c678dd;">TaskCell</span>(taskCellVM: <span style="color: #c678dd;">TaskCellViewModel</span>(task: <span style="color: #c678dd;">Task</span>(title: <span style="color: #98be65;">""</span>, priority: TaskPriority.<span style="color: #c678dd;">low</span>, completed: <span style="color: #a9a1e1;">false</span>)))
+<span class="linenr">26: </span>                    }
+<span class="linenr">27: </span>                }
+<span class="linenr">28: </span>                .<span style="color: #c678dd;">navigationBarTitle</span>(<span style="color: #98be65;">"Tasks"</span>, displayMode: .<span style="color: #c678dd;">inline</span>)
+<span class="linenr">29: </span>
+<span class="linenr">30: </span>                .<span style="color: #c678dd;">navigationBarItems</span>(trailing: <span style="color: #c678dd;">NavigationLink</span>(
+<span class="linenr">31: </span>                                        destination: <span style="color: #c678dd;">NewTaskView</span>(taskListVM: taskListVM, taskTitle: <span style="color: #98be65;">""</span>, priority: TaskPriority.<span style="color: #c678dd;">low</span>),
+<span class="linenr">32: </span>                                        label: {
+<span class="linenr">33: </span>                                            <span style="color: #c678dd;">Text</span>(<span style="color: #98be65;">"New Task"</span>)
+<span class="linenr">34: </span>                                        }))
+<span class="linenr">35: </span>                HStack {
+<span class="linenr">36: </span>                    <span style="color: #c678dd;">Image</span>(systemName: <span style="color: #98be65;">"plus.circle.fill"</span>)
+<span class="linenr">37: </span>                    <span style="color: #c678dd;">Button</span>(action: {
+<span class="linenr">38: </span>                        <span style="color: #51afef;">self</span>.<span style="color: #dcaeea;">showNewItem</span>.<span style="color: #c678dd;">toggle</span>()
+<span class="linenr">39: </span>                    }, label: {
+<span class="linenr">40: </span>                        <span style="color: #c678dd;">Text</span>(<span style="color: #98be65;">"New Task"</span>)
+<span class="linenr">41: </span>                    })
+<span class="linenr">42: </span>                }.<span style="color: #c678dd;">padding</span>()
+<span class="linenr">43: </span>            })
+<span class="linenr">44: </span>        }
+<span class="linenr">45: </span>    }
+<span class="linenr">46: </span>}
+<span class="linenr">47: </span>
+<span class="linenr">48: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">ContentView_Previews</span>: PreviewProvider {
+<span class="linenr">49: </span>    <span style="color: #51afef;">static</span> <span style="color: #51afef;">var</span> previews: <span style="color: #51afef;">some</span> View {
+<span class="linenr">50: </span>        <span style="color: #c678dd;">TaskListView</span>()
+<span class="linenr">51: </span>    }
+<span class="linenr">52: </span>}
+<span class="linenr">53: </span>
+<span class="linenr">54: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">TaskCell</span>: View {
+<span class="linenr">55: </span>    <span style="color: #51afef;">@ObservedObject</span> <span style="color: #51afef;">var</span> taskCellVM: TaskCellViewModel
+<span class="linenr">56: </span>
+<span class="linenr">57: </span>    <span style="color: #51afef;">var</span> body: <span style="color: #51afef;">some</span> View {
+<span class="linenr">58: </span>        HStack {
+<span class="linenr">59: </span>            <span style="color: #c678dd;">Image</span>(systemName: taskCellVM.<span style="color: #dcaeea;">completionStateIconName</span>)
+<span class="linenr">60: </span>                .<span style="color: #c678dd;">resizable</span>()
+<span class="linenr">61: </span>                .<span style="color: #c678dd;">frame</span>(width: <span style="color: #da8548; font-weight: bold;">20</span>, height: <span style="color: #da8548; font-weight: bold;">20</span>)
+<span class="linenr">62: </span>                .<span style="color: #dcaeea;">onTapGesture</span> {
+<span class="linenr">63: </span>                    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">&#35722;&#26356;&#23436;&#25104;&#29376;&#24907;</span>
+<span class="linenr">64: </span>                    taskCellVM.<span style="color: #c678dd;">task</span>.<span style="color: #c678dd;">completed</span>.<span style="color: #c678dd;">toggle</span>()
+<span class="linenr">65: </span>                }
+<span class="linenr">66: </span>            <span style="color: #c678dd;">Image</span>(systemName: taskCellVM.<span style="color: #dcaeea;">priorityStateIconName</span>)
+<span class="linenr">67: </span>                .<span style="color: #c678dd;">resizable</span>()
+<span class="linenr">68: </span>                .<span style="color: #c678dd;">frame</span>(width: <span style="color: #da8548; font-weight: bold;">20</span>, height: <span style="color: #da8548; font-weight: bold;">20</span>)
+<span class="linenr">69: </span>                .<span style="color: #c678dd;">foregroundColor</span>(Color.<span style="color: #dcaeea;">blue</span>)
+<span class="linenr">70: </span>                .<span style="color: #dcaeea;">onTapGesture</span> {
+<span class="linenr">71: </span>                    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">&#35722;&#26356;&#20778;&#20808;&#27402;&#29376;&#24907;</span>
+<span class="linenr">72: </span>                    <span style="color: #51afef;">self</span>.<span style="color: #dcaeea;">taskCellVM</span>.<span style="color: #c678dd;">changePriority</span>(task: taskCellVM.<span style="color: #c678dd;">task</span>)
+<span class="linenr">73: </span>                }
+<span class="linenr">74: </span>            <span style="color: #c678dd;">Text</span>(taskCellVM.<span style="color: #c678dd;">task</span>.<span style="color: #c678dd;">title</span>)
+<span class="linenr">75: </span>        }
+<span class="linenr">76: </span>    }
+<span class="linenr">77: </span>}
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd39fdf3" class="outline-4">
+<h4 id="orgd39fdf3"><span class="section-number-4">2.7.2</span> ViewModel</h4>
+<div class="outline-text-4" id="text-2-7-2">
+</div>
+<div id="outline-container-orgc4a86a9" class="outline-5">
+<h5 id="orgc4a86a9"><span class="section-number-5">2.7.2.1</span> TaskCellViewModel.swift</h5>
+<div class="outline-text-5" id="text-2-7-2-1">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #5B6268;">//</span>
+<span class="linenr"> 2: </span><span style="color: #5B6268;">//  </span><span style="color: #5B6268;">TaskCellViewModel.swift</span>
+<span class="linenr"> 3: </span><span style="color: #5B6268;">//  </span><span style="color: #5B6268;">taskManagement</span>
+<span class="linenr"> 4: </span><span style="color: #5B6268;">//</span>
+<span class="linenr"> 5: </span><span style="color: #5B6268;">//  </span><span style="color: #5B6268;">Created by yen yung chin on 2021/2/20.</span>
+<span class="linenr"> 6: </span><span style="color: #5B6268;">//</span>
+<span class="linenr"> 7: </span>
+<span class="linenr"> 8: </span><span style="color: #51afef;">import</span> Foundation
+<span class="linenr"> 9: </span><span style="color: #51afef;">import</span> Combine
+<span class="linenr">10: </span>
+<span class="linenr">11: </span><span style="color: #51afef;">class</span> <span style="color: #c678dd;">TaskCellViewModel</span>: <span style="color: #c678dd;">ObservableObject</span>, Identifiable  {
+<span class="linenr">12: </span>    <span style="color: #51afef;">@Published</span> <span style="color: #51afef;">var</span> task: Task
+<span class="linenr">13: </span>
+<span class="linenr">14: </span>    <span style="color: #51afef;">@Published</span> <span style="color: #51afef;">var</span> completionStateIconName = <span style="color: #98be65;">""</span>
+<span class="linenr">15: </span>    <span style="color: #51afef;">@Published</span> <span style="color: #51afef;">var</span> priorityStateIconName = <span style="color: #98be65;">""</span>
+<span class="linenr">16: </span>    <span style="color: #51afef;">@Published</span> <span style="color: #51afef;">var</span> nextTaskPriority: TaskPriority = .<span style="color: #c678dd;">low</span>
+<span class="linenr">17: </span>    <span style="color: #51afef;">private</span> <span style="color: #51afef;">var</span> cancellables = <span style="color: #c678dd;">Set</span>&lt;AnyCancellable&gt;()
+<span class="linenr">18: </span>    <span style="color: #51afef;">init</span>(task: Task) {
+<span class="linenr">19: </span>        <span style="color: #51afef;">self</span>.<span style="color: #c678dd;">task</span> = task
+<span class="linenr">20: </span>        $task
+<span class="linenr">21: </span>            .<span style="color: #c678dd;">map</span> { task <span style="color: #51afef;">in</span>
+<span class="linenr">22: </span>                <span style="color: #51afef;">return</span> task.<span style="color: #c678dd;">completed</span> ? <span style="color: #98be65;">"checkmark.circle.fill"</span> : <span style="color: #98be65;">"circle"</span>
+<span class="linenr">23: </span>            }
+<span class="linenr">24: </span>            .<span style="color: #c678dd;">assign</span>(to: \.<span style="color: #dcaeea;">completionStateIconName</span>, on: <span style="color: #51afef;">self</span>)
+<span class="linenr">25: </span>            .<span style="color: #c678dd;">store</span>(<span style="color: #51afef;">in</span>: &amp;cancellables)
+<span class="linenr">26: </span>        $task
+<span class="linenr">27: </span>            .<span style="color: #c678dd;">map</span> { task <span style="color: #51afef;">in</span>
+<span class="linenr">28: </span>                <span style="color: #51afef;">return</span> <span style="color: #51afef;">self</span>.<span style="color: #c678dd;">priorityIconName</span>(task: <span style="color: #51afef;">self</span>.<span style="color: #c678dd;">task</span>)
+<span class="linenr">29: </span>            }
+<span class="linenr">30: </span>            .<span style="color: #c678dd;">assign</span>(to: \.<span style="color: #dcaeea;">priorityStateIconName</span>, on: <span style="color: #51afef;">self</span>)
+<span class="linenr">31: </span>            .<span style="color: #c678dd;">store</span>(<span style="color: #51afef;">in</span>: &amp;cancellables)
+<span class="linenr">32: </span>    }
+<span class="linenr">33: </span>
+<span class="linenr">34: </span>    <span style="color: #51afef;">func</span> <span style="color: #c678dd;">priorityIconName</span>(task: Task) -&gt; <span style="color: #c678dd;">String</span> {
+<span class="linenr">35: </span>        <span style="color: #51afef;">switch</span> task.<span style="color: #c678dd;">priority</span> {
+<span class="linenr">36: </span>        <span style="color: #51afef;">case</span> .<span style="color: #c678dd;">low</span>:
+<span class="linenr">37: </span>            <span style="color: #51afef;">return</span> <span style="color: #98be65;">"l.circle.fill"</span>
+<span class="linenr">38: </span>        <span style="color: #51afef;">case</span> .<span style="color: #c678dd;">medium</span>:
+<span class="linenr">39: </span>            <span style="color: #51afef;">return</span> <span style="color: #98be65;">"m.circle.fill"</span>
+<span class="linenr">40: </span>        <span style="color: #51afef;">case</span> .<span style="color: #c678dd;">high</span>:
+<span class="linenr">41: </span>            <span style="color: #51afef;">return</span> <span style="color: #98be65;">"h.circle.fill"</span>
+<span class="linenr">42: </span>        }
+<span class="linenr">43: </span>    }
+<span class="linenr">44: </span>
+<span class="linenr">45: </span>    <span style="color: #51afef;">func</span> <span style="color: #c678dd;">changePriority</span>(task: Task) {
+<span class="linenr">46: </span>        <span style="color: #51afef;">switch</span> task.<span style="color: #c678dd;">priority</span> {
+<span class="linenr">47: </span>        <span style="color: #51afef;">case</span> .<span style="color: #c678dd;">low</span>:
+<span class="linenr">48: </span>            <span style="color: #51afef;">self</span>.<span style="color: #c678dd;">task</span>.<span style="color: #c678dd;">priority</span> = .<span style="color: #c678dd;">medium</span>
+<span class="linenr">49: </span>        <span style="color: #51afef;">case</span> .<span style="color: #c678dd;">medium</span>:
+<span class="linenr">50: </span>            <span style="color: #51afef;">self</span>.<span style="color: #c678dd;">task</span>.<span style="color: #c678dd;">priority</span> = .<span style="color: #c678dd;">high</span>
+<span class="linenr">51: </span>        <span style="color: #51afef;">case</span> .<span style="color: #c678dd;">high</span>:
+<span class="linenr">52: </span>            <span style="color: #51afef;">self</span>.<span style="color: #c678dd;">task</span>.<span style="color: #c678dd;">priority</span> = .<span style="color: #c678dd;">low</span>
+<span class="linenr">53: </span>        }
+<span class="linenr">54: </span>    }
+<span class="linenr">55: </span>}
+</pre>
+</div>
 </div>
 </div>
 </div>
@@ -1513,8 +1752,8 @@ iOS-Swift-1<br />
 <h2 id="SW-AdvFuncs"><span class="section-number-2">3</span> Advance function</h2>
 <div class="outline-text-2" id="text-SW-AdvFuncs">
 </div>
-<div id="outline-container-org0447ee5" class="outline-3">
-<h3 id="org0447ee5"><span class="section-number-3">3.1</span> filter()</h3>
+<div id="outline-container-org12bd79e" class="outline-3">
+<h3 id="org12bd79e"><span class="section-number-3">3.1</span> filter()</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 filter() 宣告如下：<br />
@@ -1528,8 +1767,8 @@ filter() 宣告如下：<br />
 <li>filter() 回傳結果為陣列。<br /></li>
 </ul>
 </div>
-<div id="outline-container-org1967142" class="outline-4">
-<h4 id="org1967142"><span class="section-number-4">3.1.1</span> 在 closure 回傳每個元素使否符合判斷式的結果，決定最後 filter() 回傳的元素集合。<sup><a id="fnr.1.100" class="footref" href="#fn.1">1</a></sup></h4>
+<div id="outline-container-org9464a4e" class="outline-4">
+<h4 id="org9464a4e"><span class="section-number-4">3.1.1</span> 在 closure 回傳每個元素使否符合判斷式的結果，決定最後 filter() 回傳的元素集合。<sup><a id="fnr.1.100" class="footref" href="#fn.1">1</a></sup></h4>
 <div class="outline-text-4" id="text-3-1-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">var</span> numbers = <span style="color: #c678dd;">Array</span>(<span style="color: #da8548; font-weight: bold;">1</span>...<span style="color: #da8548; font-weight: bold;">8</span>)
@@ -1550,8 +1789,8 @@ filter() 宣告如下：<br />
 </div>
 </div>
 </div>
-<div id="outline-container-org7094b38" class="outline-4">
-<h4 id="org7094b38"><span class="section-number-4">3.1.2</span> 將一、三象限的點過濾出來<sup><a id="fnr.1.100" class="footref" href="#fn.1">1</a></sup></h4>
+<div id="outline-container-orgf3db650" class="outline-4">
+<h4 id="orgf3db650"><span class="section-number-4">3.1.2</span> 將一、三象限的點過濾出來<sup><a id="fnr.1.100" class="footref" href="#fn.1">1</a></sup></h4>
 <div class="outline-text-4" id="text-3-1-2">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">Point</span> {
@@ -1582,8 +1821,8 @@ filter() 宣告如下：<br />
 </div>
 </div>
 </div>
-<div id="outline-container-org5a05ab1" class="outline-3">
-<h3 id="org5a05ab1"><span class="section-number-3">3.2</span> map()</h3>
+<div id="outline-container-org7ed2583" class="outline-3">
+<h3 id="org7ed2583"><span class="section-number-3">3.2</span> map()</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 map() 宣告如下：<br />
@@ -1597,8 +1836,8 @@ map() 宣告如下：<br />
 <li>map() 回傳結果為陣列。<br /></li>
 </ul>
 </div>
-<div id="outline-container-orgfc594a3" class="outline-4">
-<h4 id="orgfc594a3"><span class="section-number-4">3.2.1</span> 透過map()將整數陣列轉化成兩倍數值與字串的陣列。<sup><a id="fnr.1.100" class="footref" href="#fn.1">1</a></sup></h4>
+<div id="outline-container-org2c85d20" class="outline-4">
+<h4 id="org2c85d20"><span class="section-number-4">3.2.1</span> 透過map()將整數陣列轉化成兩倍數值與字串的陣列。<sup><a id="fnr.1.100" class="footref" href="#fn.1">1</a></sup></h4>
 <div class="outline-text-4" id="text-3-2-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">var</span> numbers = <span style="color: #c678dd;">Array</span>(<span style="color: #da8548; font-weight: bold;">1</span>...<span style="color: #da8548; font-weight: bold;">8</span>)
@@ -1619,8 +1858,8 @@ map() 宣告如下：<br />
 </pre>
 </div>
 </div>
-<div id="outline-container-orgebc92e0" class="outline-5">
-<h5 id="orgebc92e0"><span class="section-number-5">3.2.1.1</span> map()如何將一組二度空間的點對 X 軸與 Y 軸做鏡射。<sup><a id="fnr.1.100" class="footref" href="#fn.1">1</a></sup></h5>
+<div id="outline-container-org026e6ad" class="outline-5">
+<h5 id="org026e6ad"><span class="section-number-5">3.2.1.1</span> map()如何將一組二度空間的點對 X 軸與 Y 軸做鏡射。<sup><a id="fnr.1.100" class="footref" href="#fn.1">1</a></sup></h5>
 <div class="outline-text-5" id="text-3-2-1-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">Point</span> {
@@ -1647,22 +1886,22 @@ map() 宣告如下：<br />
 </div>
 </div>
 </div>
-<div id="outline-container-org909133e" class="outline-3">
-<h3 id="org909133e"><span class="section-number-3">3.3</span> debounce</h3>
+<div id="outline-container-org59aafc2" class="outline-3">
+<h3 id="org59aafc2"><span class="section-number-3">3.3</span> debounce</h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
 What is debounce? Its a function which forces the execution to wait a certain amount of time before running again.<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup><br />
 </p>
 </div>
-<div id="outline-container-orgaab1917" class="outline-4">
-<h4 id="orgaab1917"><span class="section-number-4">3.3.1</span> Example</h4>
+<div id="outline-container-org491c3b1" class="outline-4">
+<h4 id="org491c3b1"><span class="section-number-4">3.3.1</span> Example</h4>
 <div class="outline-text-4" id="text-3-3-1">
 <p>
 source: <a href="https://peterfriese.dev/swift-combine-love/">SwiftUI + Combine = ❤️</a><br />
 </p>
 </div>
-<div id="outline-container-org8601bb2" class="outline-5">
-<h5 id="org8601bb2"><span class="section-number-5">3.3.1.1</span> UI</h5>
+<div id="outline-container-orgc64dae3" class="outline-5">
+<h5 id="orgc64dae3"><span class="section-number-5">3.3.1.1</span> UI</h5>
 <div class="outline-text-5" id="text-3-3-1-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">ContentView</span>: View {
@@ -1697,8 +1936,8 @@ source: <a href="https://peterfriese.dev/swift-combine-love/">SwiftUI + Combine 
 </div>
 </div>
 </div>
-<div id="outline-container-orgc2a7054" class="outline-5">
-<h5 id="orgc2a7054"><span class="section-number-5">3.3.1.2</span> ViewModel</h5>
+<div id="outline-container-org788677a" class="outline-5">
+<h5 id="org788677a"><span class="section-number-5">3.3.1.2</span> ViewModel</h5>
 <div class="outline-text-5" id="text-3-3-1-2">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">class</span> <span style="color: #c678dd;">UserViewModel</span>: <span style="color: #c678dd;">ObservableObject</span> {
@@ -1727,16 +1966,16 @@ source: <a href="https://peterfriese.dev/swift-combine-love/">SwiftUI + Combine 
 </div>
 </div>
 
-<div id="outline-container-org5eafeae" class="outline-2">
-<h2 id="org5eafeae"><span class="section-number-2">4</span> Web API: URLSession v.s. JSONDecoder</h2>
+<div id="outline-container-org3e12375" class="outline-2">
+<h2 id="org3e12375"><span class="section-number-2">4</span> Web API: URLSession v.s. JSONDecoder</h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-orgca92397" class="outline-3">
-<h3 id="orgca92397"><span class="section-number-3">4.1</span> Demo 1</h3>
+<div id="outline-container-orgbfa4f7d" class="outline-3">
+<h3 id="orgbfa4f7d"><span class="section-number-3">4.1</span> Demo 1</h3>
 <div class="outline-text-3" id="text-4-1">
 </div>
-<div id="outline-container-orgafbc789" class="outline-4">
-<h4 id="orgafbc789"><span class="section-number-4">4.1.1</span> ContentView.swift</h4>
+<div id="outline-container-org4efbce8" class="outline-4">
+<h4 id="org4efbce8"><span class="section-number-4">4.1.1</span> ContentView.swift</h4>
 <div class="outline-text-4" id="text-4-1-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> SwiftUI
@@ -1793,19 +2032,19 @@ source: <a href="https://peterfriese.dev/swift-combine-love/">SwiftUI + Combine 
 </pre>
 </div>
 
-<div id="org8d1f693" class="figure">
+<div id="org247cbf5" class="figure">
 <p><img src="images/json-1.jpg" alt="json-1.jpg" width="300" /><br />
 </p>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org91afbbb" class="outline-3">
-<h3 id="org91afbbb"><span class="section-number-3">4.2</span> Demo 2</h3>
+<div id="outline-container-org6af4b6f" class="outline-3">
+<h3 id="org6af4b6f"><span class="section-number-3">4.2</span> Demo 2</h3>
 <div class="outline-text-3" id="text-4-2">
 </div>
-<div id="outline-container-org59286ef" class="outline-4">
-<h4 id="org59286ef"><span class="section-number-4">4.2.1</span> MVVM</h4>
+<div id="outline-container-org3f72b8d" class="outline-4">
+<h4 id="org3f72b8d"><span class="section-number-4">4.2.1</span> MVVM</h4>
 <div class="outline-text-4" id="text-4-2-1">
 <ul class="org-ul">
 <li>Model: FlowModel.swift<br /></li>
@@ -1814,8 +2053,8 @@ source: <a href="https://peterfriese.dev/swift-combine-love/">SwiftUI + Combine 
 </ul>
 </div>
 </div>
-<div id="outline-container-org665c5a8" class="outline-4">
-<h4 id="org665c5a8"><span class="section-number-4">4.2.2</span> FlowModel.swift</h4>
+<div id="outline-container-org3eb7be0" class="outline-4">
+<h4 id="org3eb7be0"><span class="section-number-4">4.2.2</span> FlowModel.swift</h4>
 <div class="outline-text-4" id="text-4-2-2">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> Foundation
@@ -1836,8 +2075,8 @@ source: <a href="https://peterfriese.dev/swift-combine-love/">SwiftUI + Combine 
 </div>
 </div>
 </div>
-<div id="outline-container-orga4a7341" class="outline-4">
-<h4 id="orga4a7341"><span class="section-number-4">4.2.3</span> ContentView.swift</h4>
+<div id="outline-container-org3b9121a" class="outline-4">
+<h4 id="org3b9121a"><span class="section-number-4">4.2.3</span> ContentView.swift</h4>
 <div class="outline-text-4" id="text-4-2-3">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> SwiftUI
@@ -1870,8 +2109,8 @@ source: <a href="https://peterfriese.dev/swift-combine-love/">SwiftUI + Combine 
 </div>
 </div>
 </div>
-<div id="outline-container-orgb6db70a" class="outline-4">
-<h4 id="orgb6db70a"><span class="section-number-4">4.2.4</span> Flow.swift</h4>
+<div id="outline-container-orgd8e582a" class="outline-4">
+<h4 id="orgd8e582a"><span class="section-number-4">4.2.4</span> Flow.swift</h4>
 <div class="outline-text-4" id="text-4-2-4">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> Foundation
@@ -1904,19 +2143,19 @@ source: <a href="https://peterfriese.dev/swift-combine-love/">SwiftUI + Combine 
 </div>
 </div>
 </div>
-<div id="outline-container-org9bee37d" class="outline-4">
-<h4 id="org9bee37d"><span class="section-number-4">4.2.5</span> Result</h4>
+<div id="outline-container-orgb472bc8" class="outline-4">
+<h4 id="orgb472bc8"><span class="section-number-4">4.2.5</span> Result</h4>
 <div class="outline-text-4" id="text-4-2-5">
 
-<div id="orgfd3fbd3" class="figure">
+<div id="orgcc0907e" class="figure">
 <p><img src="images/json-2.jpg" alt="json-2.jpg" width="600" /><br />
 </p>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org66791b5" class="outline-3">
-<h3 id="org66791b5"><span class="section-number-3">4.3</span> 公開資料平台</h3>
+<div id="outline-container-orgefb64ea" class="outline-3">
+<h3 id="orgefb64ea"><span class="section-number-3">4.3</span> 公開資料平台</h3>
 <div class="outline-text-3" id="text-4-3">
 <ul class="org-ul">
 <li><a href="https://data.gov.tw/">政府資料開放平台</a><br /></li>
@@ -1927,8 +2166,8 @@ source: <a href="https://peterfriese.dev/swift-combine-love/">SwiftUI + Combine 
 </ul>
 </div>
 </div>
-<div id="outline-container-orge5194dd" class="outline-3">
-<h3 id="orge5194dd"><span class="section-number-3">4.4</span> Further Reading</h3>
+<div id="outline-container-orgeab131f" class="outline-3">
+<h3 id="orgeab131f"><span class="section-number-3">4.4</span> Further Reading</h3>
 <div class="outline-text-3" id="text-4-4">
 <ul class="org-ul">
 <li><a href="https://www.youtube.com/watch?v=HvfE4G9PfeU">SwiftUI Tutorial - Using an API and Decoding JSON Data</a><br /></li>
@@ -1970,12 +2209,12 @@ A protocol defines a blueprint of methods, properties, and other requirements th
 <li>例如，你可能有一個名為 str 的變量，其類型為 String。身為一個開發人員，你應該知道 str 代表 String，如果我們定義了一個名為 StringProtocol 的協定，它具有所有的 String 的 API，我們可以擴展任何類型去遵循 StringProtocol（意思是滿足其所有要求），如此一來，即可以使用該對象，讓它就像是一個 String，儘管我們不知道它是什麼！如果看起來像一隻鴨子，游泳像一隻鴨子，叫聲像一隻鴨子，那就是一隻鴨子。我們新的 StringProtocol 可以告訴那些遵守它協定的類型能夠做什麼，且不需要知道這些類型的資訊。<sup><a id="fnr.7.100" class="footref" href="#fn.7">7</a></sup><br /></li>
 </ul>
 </div>
-<div id="outline-container-orgdb97be9" class="outline-3">
-<h3 id="orgdb97be9"><span class="section-number-3">5.1</span> Protocol Syntax</h3>
+<div id="outline-container-orgf337bc9" class="outline-3">
+<h3 id="orgf337bc9"><span class="section-number-3">5.1</span> Protocol Syntax</h3>
 <div class="outline-text-3" id="text-5-1">
 </div>
-<div id="outline-container-orgf7acea8" class="outline-4">
-<h4 id="orgf7acea8"><span class="section-number-4">5.1.1</span> Syntax</h4>
+<div id="outline-container-orge389169" class="outline-4">
+<h4 id="orge389169"><span class="section-number-4">5.1.1</span> Syntax</h4>
 <div class="outline-text-4" id="text-5-1-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">protocol</span> <span style="color: #c678dd;">SomeProtocol</span> {
@@ -1994,8 +2233,8 @@ Classes , structs, enums can adopt these protocol by placing protocol’s name a
 </div>
 </div>
 </div>
-<div id="outline-container-orgc56dc0c" class="outline-4">
-<h4 id="orgc56dc0c"><span class="section-number-4">5.1.2</span> DEMO</h4>
+<div id="outline-container-orgb838af0" class="outline-4">
+<h4 id="orgb838af0"><span class="section-number-4">5.1.2</span> DEMO</h4>
 <div class="outline-text-4" id="text-5-1-2">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">protocol</span> <span style="color: #c678dd;">Polite</span> {
@@ -2025,8 +2264,8 @@ Classes , structs, enums can adopt these protocol by placing protocol’s name a
 </div>
 </div>
 </div>
-<div id="outline-container-org0cabfb3" class="outline-4">
-<h4 id="org0cabfb3"><span class="section-number-4">5.1.3</span> Adding property requirements</h4>
+<div id="outline-container-org3168773" class="outline-4">
+<h4 id="org3168773"><span class="section-number-4">5.1.3</span> Adding property requirements</h4>
 <div class="outline-text-4" id="text-5-1-3">
 <p>
 source: <a href="https://abhimuralidharan.medium.com/all-about-protocols-in-swift-11a72d6ea354">All about protocols in swift</a><br />
@@ -2047,8 +2286,8 @@ source: <a href="https://abhimuralidharan.medium.com/all-about-protocols-in-swif
 </div>
 </div>
 </div>
-<div id="outline-container-org6e53568" class="outline-4">
-<h4 id="org6e53568"><span class="section-number-4">5.1.4</span> Protocols with mutating methods</h4>
+<div id="outline-container-orge0e2afc" class="outline-4">
+<h4 id="orge0e2afc"><span class="section-number-4">5.1.4</span> Protocols with mutating methods</h4>
 <div class="outline-text-4" id="text-5-1-4">
 <p>
 Mutating methods are methods that we use on value types like structs and enums. These methods are allowed to modify the instance it belongs to and any properties of that instance. A small example:<br />
@@ -2116,8 +2355,8 @@ Consider an enum and class implementing a protocol with mutating function:<br />
 </div>
 </div>
 </div>
-<div id="outline-container-orga4c7690" class="outline-4">
-<h4 id="orga4c7690"><span class="section-number-4">5.1.5</span> Initializer Requirements</h4>
+<div id="outline-container-org32a57d2" class="outline-4">
+<h4 id="org32a57d2"><span class="section-number-4">5.1.5</span> Initializer Requirements</h4>
 <div class="outline-text-4" id="text-5-1-5">
 <p>
 Protocols can have specific initializers like normal methods which the conforming types can implement.<br />
@@ -2131,8 +2370,8 @@ Protocols can have specific initializers like normal methods which the conformin
 </div>
 </div>
 </div>
-<div id="outline-container-orgba0b974" class="outline-3">
-<h3 id="orgba0b974"><span class="section-number-3">5.2</span> DEMO</h3>
+<div id="outline-container-org833adc0" class="outline-3">
+<h3 id="org833adc0"><span class="section-number-3">5.2</span> DEMO</h3>
 <div class="outline-text-3" id="text-5-2">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">protocol</span> <span style="color: #c678dd;">Sound</span> {
@@ -2160,12 +2399,12 @@ Protocols can have specific initializers like normal methods which the conformin
 </div>
 </div>
 </div>
-<div id="outline-container-org38d6c8a" class="outline-3">
-<h3 id="org38d6c8a"><span class="section-number-3">5.3</span> 範例</h3>
+<div id="outline-container-org5d0eae6" class="outline-3">
+<h3 id="org5d0eae6"><span class="section-number-3">5.3</span> 範例</h3>
 <div class="outline-text-3" id="text-5-3">
 </div>
-<div id="outline-container-org82e7c7a" class="outline-4">
-<h4 id="org82e7c7a"><span class="section-number-4">5.3.1</span> 版本 1</h4>
+<div id="outline-container-orgb9c82c8" class="outline-4">
+<h4 id="orgb9c82c8"><span class="section-number-4">5.3.1</span> 版本 1</h4>
 <div class="outline-text-4" id="text-5-3-1">
 <p>
 本例中有兩個 struct: Song, Album 以及一個 class 用來播放 Song 或 Album，原本的 Player 要為不同的 struct 寫不同的 func，而且程式碼大多重複。<br />
@@ -2207,8 +2446,8 @@ Protocols can have specific initializers like normal methods which the conformin
 </div>
 </div>
 </div>
-<div id="outline-container-orgf24bdf8" class="outline-4">
-<h4 id="orgf24bdf8"><span class="section-number-4">5.3.2</span> 版本 2</h4>
+<div id="outline-container-org6a9c94c" class="outline-4">
+<h4 id="org6a9c94c"><span class="section-number-4">5.3.2</span> 版本 2</h4>
 <div class="outline-text-4" id="text-5-3-2">
 <p>
 宣告一個 protocol，定義 audioURL 變數(read only)，然後令兩個 struct 皆遵循該 protocol(方式有二)，如此，原本的 Player class 中的 play func 就能只寫一次。<br />
@@ -2249,8 +2488,8 @@ Protocols can have specific initializers like normal methods which the conformin
 </div>
 </div>
 </div>
-<div id="outline-container-org23a51b1" class="outline-4">
-<h4 id="org23a51b1"><span class="section-number-4">5.3.3</span> 版本 3</h4>
+<div id="outline-container-orgee324af" class="outline-4">
+<h4 id="orgee324af"><span class="section-number-4">5.3.3</span> 版本 3</h4>
 <div class="outline-text-4" id="text-5-3-3">
 <p>
 原本 protocol 的真正意思其實只是在確定 audioURL 是否能正確轉換成 Audio，所以其實將 protocol name 由 Playable 改為 AudioURLConvertable 會更貼近事實。<br />
@@ -2292,8 +2531,8 @@ Protocols can have specific initializers like normal methods which the conformin
 </div>
 </div>
 </div>
-<div id="outline-container-orgfb2973d" class="outline-3">
-<h3 id="orgfb2973d"><span class="section-number-3">5.4</span> mutating</h3>
+<div id="outline-container-org5fffb1f" class="outline-3">
+<h3 id="org5fffb1f"><span class="section-number-3">5.4</span> mutating</h3>
 <div class="outline-text-3" id="text-5-4">
 <p>
 protocol 除了可以提供傳回值型態的彈性，也可以用來變更 class/struct 中的屬性。如：<br />
@@ -2332,8 +2571,8 @@ protocol 除了可以提供傳回值型態的彈性，也可以用來變更 clas
 </p>
 </div>
 </div>
-<div id="outline-container-org7a8899b" class="outline-3">
-<h3 id="org7a8899b"><span class="section-number-3">5.5</span> 擴充 protocol</h3>
+<div id="outline-container-org613983e" class="outline-3">
+<h3 id="org613983e"><span class="section-number-3">5.5</span> 擴充 protocol</h3>
 <div class="outline-text-3" id="text-5-5">
 <p>
 除了擴充現有 struct，protocol 也可以用來擴充 protocol，如：<br />
@@ -2372,8 +2611,8 @@ protocol 除了可以提供傳回值型態的彈性，也可以用來變更 clas
 </div>
 </div>
 </div>
-<div id="outline-container-org418d54a" class="outline-3">
-<h3 id="org418d54a"><span class="section-number-3">5.6</span> Further Reading</h3>
+<div id="outline-container-orgb7d71a4" class="outline-3">
+<h3 id="orgb7d71a4"><span class="section-number-3">5.6</span> Further Reading</h3>
 <div class="outline-text-3" id="text-5-6">
 <ul class="org-ul">
 <li><a href="https://docs.swift.org/swift-book/LanguageGuide/Protocols.html">Protocol</a><br /></li>
@@ -2393,8 +2632,8 @@ enumerations(或稱為enums)是Swift中一種特殊類型，它允許你表示�
 </p>
 </div>
 
-<div id="outline-container-org14cec8a" class="outline-3">
-<h3 id="org14cec8a"><span class="section-number-3">6.1</span> without enum</h3>
+<div id="outline-container-org47bcd83" class="outline-3">
+<h3 id="org47bcd83"><span class="section-number-3">6.1</span> without enum</h3>
 <div class="outline-text-3" id="text-6-1">
 <p>
 假設我們要登錄學生的學習等第(A, B, C, D, E, F)，如下<br />
@@ -2413,8 +2652,8 @@ enumerations(或稱為enums)是Swift中一種特殊類型，它允許你表示�
 </div>
 </div>
 
-<div id="outline-container-org9751063" class="outline-3">
-<h3 id="org9751063"><span class="section-number-3">6.2</span> with enum</h3>
+<div id="outline-container-orge584177" class="outline-3">
+<h3 id="orge584177"><span class="section-number-3">6.2</span> with enum</h3>
 <div class="outline-text-3" id="text-6-2">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">enum</span> <span style="color: #c678dd;">grade</span> {
@@ -2446,8 +2685,8 @@ enumerations(或稱為enums)是Swift中一種特殊類型，它允許你表示�
 </div>
 </div>
 </div>
-<div id="outline-container-org7e323e9" class="outline-3">
-<h3 id="org7e323e9"><span class="section-number-3">6.3</span> enum的rawValue</h3>
+<div id="outline-container-org7ce2e19" class="outline-3">
+<h3 id="org7ce2e19"><span class="section-number-3">6.3</span> enum的rawValue</h3>
 <div class="outline-text-3" id="text-6-3">
 <p>
 配合rawValue定義enum的值，可以讓enum自帶有意義的資訊。<sup><a id="fnr.11" class="footref" href="#fn.11">11</a></sup><br />
@@ -2469,8 +2708,8 @@ my pet is a R
 </pre>
 </div>
 </div>
-<div id="outline-container-orgc3068e4" class="outline-3">
-<h3 id="orgc3068e4"><span class="section-number-3">6.4</span> enum v.s. switch</h3>
+<div id="outline-container-org342c30d" class="outline-3">
+<h3 id="org342c30d"><span class="section-number-3">6.4</span> enum v.s. switch</h3>
 <div class="outline-text-3" id="text-6-4">
 <p>
 enum最大的用處就是搭配switch。<br />
@@ -2496,8 +2735,8 @@ enum最大的用處就是搭配switch。<br />
 </div>
 </div>
 
-<div id="outline-container-orgf095eb6" class="outline-3">
-<h3 id="orgf095eb6"><span class="section-number-3">6.5</span> Swift列舉中最強大的功能之一：associated values</h3>
+<div id="outline-container-orgd011c48" class="outline-3">
+<h3 id="orgd011c48"><span class="section-number-3">6.5</span> Swift列舉中最強大的功能之一：associated values</h3>
 <div class="outline-text-3" id="text-6-5">
 <p>
 associated values。它允許我們在列舉中儲存額外的數據。我們宣告一個新的列舉，稱為WeatherCondition，它讓我們在每個天氣條件中可額外挾帶一些資訊：<br />
@@ -2540,8 +2779,8 @@ WeatherCondition的宣告。我們提供三個情境，在enum每個情境中都
 </div>
 </div>
 
-<div id="outline-container-org9df9fd7" class="outline-2">
-<h2 id="org9df9fd7"><span class="section-number-2">7</span> Struct v.s. Class</h2>
+<div id="outline-container-org96e0ebb" class="outline-2">
+<h2 id="org96e0ebb"><span class="section-number-2">7</span> Struct v.s. Class</h2>
 <div class="outline-text-2" id="text-7">
 <p>
 <a href="https://www.hackingwithswift.com/books/ios-swiftui/why-does-swiftui-use-structs-for-views">資料來源:Why does SwiftUI use structs for views?</a><br />
@@ -2556,15 +2795,15 @@ In SwiftUI, all our views are trivial structs and are almost free to create. Thi
 <li>In comparison, Apple’s documentation for UIView lists about 200 properties and methods that UIView has, all of which get passed on to its subclasses whether they need them or not.<br /></li>
 </ul>
 </div>
-<div id="outline-container-org393cc6a" class="outline-3">
-<h3 id="org393cc6a"><span class="section-number-3">7.1</span> What is in class/struct</h3>
+<div id="outline-container-org5128251" class="outline-3">
+<h3 id="org5128251"><span class="section-number-3">7.1</span> What is in class/struct</h3>
 <div class="outline-text-3" id="text-7-1">
 <p>
 <a href="https://www.avanderlee.com/swift/struct-class-differences/">資料來源:Struct vs classes in Swift: The differences explained</a><br />
 </p>
 </div>
-<div id="outline-container-org2fc7af2" class="outline-4">
-<h4 id="org2fc7af2"><span class="section-number-4">7.1.1</span> What is a class in Swift?</h4>
+<div id="outline-container-org1e29943" class="outline-4">
+<h4 id="org1e29943"><span class="section-number-4">7.1.1</span> What is a class in Swift?</h4>
 <div class="outline-text-4" id="text-7-1-1">
 <p>
 A class in Swift is a reference type which can contain:<br />
@@ -2596,8 +2835,8 @@ It’s often described as a template definition of an object, like in the follow
 </div>
 </div>
 </div>
-<div id="outline-container-orge9321a1" class="outline-4">
-<h4 id="orge9321a1"><span class="section-number-4">7.1.2</span> What is a struct in Swift?</h4>
+<div id="outline-container-orgb74d962" class="outline-4">
+<h4 id="orgb74d962"><span class="section-number-4">7.1.2</span> What is a struct in Swift?</h4>
 <div class="outline-text-4" id="text-7-1-2">
 <p>
 A struct in Swift is a value type which, just like classes, can contain:<br />
@@ -2624,8 +2863,8 @@ It can also be seen as a template definition of an object, like in the following
 </div>
 </div>
 </div>
-<div id="outline-container-org7d07245" class="outline-4">
-<h4 id="org7d07245"><span class="section-number-4">7.1.3</span> What are the differences between a struct and a class?</h4>
+<div id="outline-container-org5e13d1a" class="outline-4">
+<h4 id="org5e13d1a"><span class="section-number-4">7.1.3</span> What are the differences between a struct and a class?</h4>
 <div class="outline-text-4" id="text-7-1-3">
 <p width="300">
 <img src="images/coffee.gif" alt="coffee.gif" width="300" /><br />
@@ -2668,16 +2907,16 @@ A struct is a value type and will create a unique copy for each new reference.<b
 </pre>
 </div>
 </div>
-<div id="outline-container-org952a2ee" class="outline-5">
-<h5 id="org952a2ee"><span class="section-number-5">7.1.3.1</span> The benefit of mutation in safety</h5>
+<div id="outline-container-orgf4edfbd" class="outline-5">
+<h5 id="orgf4edfbd"><span class="section-number-5">7.1.3.1</span> The benefit of mutation in safety</h5>
 <div class="outline-text-5" id="text-7-1-3-1">
 <p>
 With this, structs have the benefit of mutation in safety as you can trust that no other part of your app is changing the data at the same time. This makes it easier to reason about your code and is especially helpful in multi-threaded environments where a different thread could alter your data at the same time.<br />
 </p>
 </div>
 </div>
-<div id="outline-container-org9e96668" class="outline-5">
-<h5 id="org9e96668"><span class="section-number-5">7.1.3.2</span> Structs get an initializer for free</h5>
+<div id="outline-container-orgc626532" class="outline-5">
+<h5 id="orgc626532"><span class="section-number-5">7.1.3.2</span> Structs get an initializer for free</h5>
 <div class="outline-text-5" id="text-7-1-3-2">
 <p>
 If you go back and compare the above code examples you can see that the ArticleClass has a defined initializer which is required for classes. Structs, however, get an initializer for free.<br />
@@ -2694,8 +2933,8 @@ If you go back and compare the above code examples you can see that the ArticleC
 </div>
 </div>
 </div>
-<div id="outline-container-orgb0fed97" class="outline-5">
-<h5 id="orgb0fed97"><span class="section-number-5">7.1.3.3</span> Classes allow inheritance</h5>
+<div id="outline-container-org81e600c" class="outline-5">
+<h5 id="org81e600c"><span class="section-number-5">7.1.3.3</span> Classes allow inheritance</h5>
 <div class="outline-text-5" id="text-7-1-3-3">
 <p>
 Classes can inherit the characteristics of another class and with that, act like abstract classes. A common example is a custom view controller which inherit from UIViewController.<br />
@@ -2716,15 +2955,15 @@ Deinitializers may only be declared within a class<br />
 </div>
 </div>
 </div>
-<div id="outline-container-orgd6b4af8" class="outline-3">
-<h3 id="orgd6b4af8"><span class="section-number-3">7.2</span> 如何決擇? / When should I go for a struct and when for a class?</h3>
+<div id="outline-container-orgec055ea" class="outline-3">
+<h3 id="orgec055ea"><span class="section-number-3">7.2</span> 如何決擇? / When should I go for a struct and when for a class?</h3>
 <div class="outline-text-3" id="text-7-2">
 <p>
 A simple bullet point list will make it a lot easier to decide.<br />
 </p>
 </div>
-<div id="outline-container-org8446521" class="outline-4">
-<h4 id="org8446521"><span class="section-number-4">7.2.1</span> You should use a class when:</h4>
+<div id="outline-container-orgc3dd039" class="outline-4">
+<h4 id="orgc3dd039"><span class="section-number-4">7.2.1</span> You should use a class when:</h4>
 <div class="outline-text-4" id="text-7-2-1">
 <ul class="org-ul">
 <li>Comparing instance identity is needed by using <code>=</code><br /></li>
@@ -2733,8 +2972,8 @@ A simple bullet point list will make it a lot easier to decide.<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-org6a37589" class="outline-4">
-<h4 id="org6a37589"><span class="section-number-4">7.2.2</span> You should use a struct when:</h4>
+<div id="outline-container-org6ef3812" class="outline-4">
+<h4 id="org6ef3812"><span class="section-number-4">7.2.2</span> You should use a struct when:</h4>
 <div class="outline-text-4" id="text-7-2-2">
 <ul class="org-ul">
 <li>Comparing instance data is needed by using ==<br /></li>
@@ -2743,8 +2982,8 @@ A simple bullet point list will make it a lot easier to decide.<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-org83c2843" class="outline-4">
-<h4 id="org83c2843"><span class="section-number-4">7.2.3</span> Try to go for a struct by default.</h4>
+<div id="outline-container-orgd2138fe" class="outline-4">
+<h4 id="orgd2138fe"><span class="section-number-4">7.2.3</span> Try to go for a struct by default.</h4>
 <div class="outline-text-4" id="text-7-2-3">
 <p>
 Structs make your code easier to reason about and make it easier to work in multithreaded environments which we often have while developing in Swift.<br />
@@ -2752,8 +2991,8 @@ Structs make your code easier to reason about and make it easier to work in mult
 </div>
 </div>
 </div>
-<div id="outline-container-org608dff3" class="outline-3">
-<h3 id="org608dff3"><span class="section-number-3">7.3</span> DEMO</h3>
+<div id="outline-container-org3c83e9b" class="outline-3">
+<h3 id="org3c83e9b"><span class="section-number-3">7.3</span> DEMO</h3>
 <div class="outline-text-3" id="text-7-3">
 <p>
 以下這個 View 可正常運作，於 TextField 中所做的編輯修改都會即時顯示於 Text 中。<br />
@@ -2843,12 +3082,12 @@ The end result is that we can have our state stored in an external object, and, 
 Adding the keyword some in front of a return type indicates that the return type is opaque. <sup><a id="fnr.16" class="footref" href="#fn.16">16</a></sup><br />
 </p>
 </div>
-<div id="outline-container-orgf5a7b77" class="outline-3">
-<h3 id="orgf5a7b77"><span class="section-number-3">8.1</span> Generics</h3>
+<div id="outline-container-orgb5ae245" class="outline-3">
+<h3 id="orgb5ae245"><span class="section-number-3">8.1</span> Generics</h3>
 <div class="outline-text-3" id="text-8-1">
 </div>
-<div id="outline-container-orgb1a361f" class="outline-4">
-<h4 id="orgb1a361f"><span class="section-number-4">8.1.1</span> 問題</h4>
+<div id="outline-container-org9555bfe" class="outline-4">
+<h4 id="org9555bfe"><span class="section-number-4">8.1.1</span> 問題</h4>
 <div class="outline-text-4" id="text-8-1-1">
 <p>
 Generics 允許開發者在不同類型中複用你的程式碼，用來解決下列問題：<br />
@@ -2884,8 +3123,8 @@ Generics 允許開發者在不同類型中複用你的程式碼，用來解決�
 </p>
 </div>
 </div>
-<div id="outline-container-org0992653" class="outline-4">
-<h4 id="org0992653"><span class="section-number-4">8.1.2</span> 解決方案</h4>
+<div id="outline-container-orgf424856" class="outline-4">
+<h4 id="orgf424856"><span class="section-number-4">8.1.2</span> 解決方案</h4>
 <div class="outline-text-4" id="text-8-1-2">
 <p>
 將固定型態的參數轉為 Generic type<br />
@@ -2950,8 +3189,8 @@ Generics 允許開發者在不同類型中複用你的程式碼，用來解決�
 </div>
 </div>
 </div>
-<div id="outline-container-orgf4beb74" class="outline-3">
-<h3 id="orgf4beb74"><span class="section-number-3">8.2</span> opaque</h3>
+<div id="outline-container-orgc191236" class="outline-3">
+<h3 id="orgc191236"><span class="section-number-3">8.2</span> opaque</h3>
 <div class="outline-text-3" id="text-8-2">
 <p>
 帶有不透明（opaque）返回類型的函數或方法，將會隱藏其返回值的類型<sup><a id="fnr.17" class="footref" href="#fn.17">17</a></sup><br />
@@ -2976,7 +3215,7 @@ Generics 允許開發者在不同類型中複用你的程式碼，用來解決�
 <div id="text-footnotes">
 
 <div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
-<a href="https://hugolu.gitbooks.io/learn-swift/content/Advanced/HighOrderFunctions.html#map"> How to use Picker with enum in SwiftUI </a><br />
+<a href="https://github.com/onmyway133/blog/issues/611"> How to use Picker with enum in SwiftUI</a>心<br />
 </p></div></div>
 
 <div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2">2</a></sup> <div class="footpara"><p class="footpara">
@@ -3048,7 +3287,7 @@ Generics 允許開發者在不同類型中複用你的程式碼，用來解決�
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Yung Chin, Yen</p>
-<p class="date">Created: 2021-03-11 Thu 13:44</p>
+<p class="date">Created: 2021-03-16 Tue 19:21</p>
 </div>
 </body>
 </html>

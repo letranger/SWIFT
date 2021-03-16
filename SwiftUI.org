@@ -500,7 +500,8 @@ import SwiftUI
 
 struct ContentView: View {
     @State var showSecondView = false (ref:controlView)
-    var body: some View {
+    var body: some View
+    {
         Button(action: {
             self.showSecondView = true (ref:changeShow)
         }, label: {

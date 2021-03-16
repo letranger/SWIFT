@@ -670,7 +670,7 @@ class TaskListMiewModel: ObservableObject {
 
 #+end_src
 ** enum v.s. picker
-加入task的priority類型
+加入task的priority欄位(enum)
 *** Model
 以enum來表示task的不同優先權
 **** Model.swift
@@ -693,7 +693,7 @@ enum TaskPriority: String, CaseIterable  {
 struct Task: Identifiable {
     var id = UUID()
     var title: String
-    var priority: TaskPriority
+    var priority: TaskPriority  //只有三種可能性
     var completed: Bool
 }
 
@@ -709,7 +709,7 @@ let testDataTasks = [
 
 #+end_src
 *** View
-以Picker來選取enum中的子類別[fn:14]
+
 **** TaskListView.swift
 #+begin_src swift -r -n :results output :exports nil
 //
@@ -762,13 +762,61 @@ struct TaskCell: View {
         HStack {
             Image(systemName: taskCellVM.completionStateIconName)
             Image(systemName: taskCellVM.priorityStateIconName)
-                .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+                .foregroundColor(Color.blue)
             Text(taskCellVM.task.title)
         }
     }
 }
 #+end_src
+**** NewTaskView.swift
+新增task時改以Picker來選取enum中的子類別[fn:14]
+#+begin_src swift -r -n :results output :exports nil
+//
+//  NewTaskView.swift
+//  taskManagement
+//
+//  Created by yen yung chin on 2021/2/20.
+//
+
+import SwiftUI
+
+struct NewTaskView: View {
+    @ObservedObject var taskListVM = TaskListMiewModel()
+    @State var taskTitle: String = ""
+    @State var priority : TaskPriority
+    @Environment(\.presentationMode) var presentation
+
+    var body: some View {
+        Form {
+            Text("New Task")
+                .font(.largeTitle)
+            TextField("Enter task name", text: self.$taskTitle)
+            // 以Picker來存取priority欄位的資料
+            Picker("Task Priority", selection: self.$priority) {
+                ForEach(TaskPriority.allCases, id: \.self) {
+                    Text($0.rawValue)
+                }
+            }
+            Button(action: {
+                taskListVM.addTask(task: Task(title: self.taskTitle, priority: priority,completed: false))
+                self.presentation.wrappedValue.dismiss()
+            }, label: {
+                Text("Done")
+            })
+            Spacer()
+        }.padding()
+    }
+}
+
+struct NewTaskView_Previews: PreviewProvider {
+    static var previews: some View {
+        NewTaskView( priority: TaskPriority.low)
+    }
+}
+
+#+end_src
 *** ViewModel
+依priority高低傳回不同的Icon
 **** TaskCellViewModel.swift
 #+begin_src swift -r -n :results output :exports nil
 //
@@ -817,9 +865,155 @@ class TaskCellViewModel: ObservableObject, Identifiable  {
 
 #+end_src
 
-Developing iOS App with Swift #1
-iOS-Swift-1
-31/08
+*** 結果
+#+CAPTION: Picker v.s. enum
+#+LABEL:fig:picker-1
+#+name: fig:picker-1
+#+ATTR_LATEX: :width 300
+#+ATTR_ORG: :width 300
+#+ATTR_HTML: :width 500
+[[file:images/picker.gif]]
+** Tap on Icon to change completion and priority status
+*** View
+**** TaskListView.swift
+#+begin_src swift -r -n :results output :exports nil
+//
+//  ContentView.swift
+//  taskManagement
+//
+//  Created by yen yung chin on 2021/2/16.
+//
+
+import SwiftUI
+
+struct TaskListView: View {
+    @ObservedObject var taskListVM = TaskListViewModel()
+    @State var showNewItem = false
+    var body: some View {
+        NavigationView {
+            VStack(alignment: .leading, spacing: 10, content: {
+                List {
+                    ForEach(taskListVM.taskCellViewModels) { task in
+                        TaskCell(taskCellVM: task)
+
+                    }
+                    .onDelete(perform: { indexSet in
+                        taskListVM.deleteTask(indexSet: indexSet)
+                    })
+                    if self.showNewItem {
+                        TaskCell(taskCellVM: TaskCellViewModel(task: Task(title: "", priority: TaskPriority.low, completed: false)))
+                    }
+                }
+                .navigationBarTitle("Tasks", displayMode: .inline)
+
+                .navigationBarItems(trailing: NavigationLink(
+                                        destination: NewTaskView(taskListVM: taskListVM, taskTitle: "", priority: TaskPriority.low),
+                                        label: {
+                                            Text("New Task")
+                                        }))
+                HStack {
+                    Image(systemName: "plus.circle.fill")
+                    Button(action: {
+                        self.showNewItem.toggle()
+                    }, label: {
+                        Text("New Task")
+                    })
+                }.padding()
+            })
+        }
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        TaskListView()
+    }
+}
+
+struct TaskCell: View {
+    @ObservedObject var taskCellVM: TaskCellViewModel
+
+    var body: some View {
+        HStack {
+            Image(systemName: taskCellVM.completionStateIconName)
+                .resizable()
+                .frame(width: 20, height: 20)
+                .onTapGesture {
+                    // 變更完成狀態
+                    taskCellVM.task.completed.toggle()
+                }
+            Image(systemName: taskCellVM.priorityStateIconName)
+                .resizable()
+                .frame(width: 20, height: 20)
+                .foregroundColor(Color.blue)
+                .onTapGesture {
+                    // 變更優先權狀態
+                    self.taskCellVM.changePriority(task: taskCellVM.task)
+                }
+            Text(taskCellVM.task.title)
+        }
+    }
+}
+#+end_src
+*** ViewModel
+**** TaskCellViewModel.swift
+#+begin_src swift -r -n :results output :exports nil
+//
+//  TaskCellViewModel.swift
+//  taskManagement
+//
+//  Created by yen yung chin on 2021/2/20.
+//
+
+import Foundation
+import Combine
+
+class TaskCellViewModel: ObservableObject, Identifiable  {
+    @Published var task: Task
+
+    @Published var completionStateIconName = ""
+    @Published var priorityStateIconName = ""
+    @Published var nextTaskPriority: TaskPriority = .low
+    private var cancellables = Set<AnyCancellable>()
+    init(task: Task) {
+        self.task = task
+        $task
+            .map { task in
+                return task.completed ? "checkmark.circle.fill" : "circle"
+            }
+            .assign(to: \.completionStateIconName, on: self)
+            .store(in: &cancellables)
+        $task
+            .map { task in
+                return self.priorityIconName(task: self.task)
+            }
+            .assign(to: \.priorityStateIconName, on: self)
+            .store(in: &cancellables)
+    }
+
+    func priorityIconName(task: Task) -> String {
+        switch task.priority {
+        case .low:
+            return "l.circle.fill"
+        case .medium:
+            return "m.circle.fill"
+        case .high:
+            return "h.circle.fill"
+        }
+    }
+
+    func changePriority(task: Task) {
+        switch task.priority {
+        case .low:
+            self.task.priority = .medium
+        case .medium:
+            self.task.priority = .high
+        case .high:
+            self.task.priority = .low
+        }
+    }
+}
+#+end_src
 
 * Advance function
 :PROPERTIES:
@@ -1879,7 +2073,7 @@ stackOfStrings.push("cuatro")
 
 [fn:15] [[https://medium.com/tarkalabs/all-about-debounce-4-ways-to-achieve-debounce-in-swift-e8f8ce22f544][All about debounce: 4 ways to achieve debounce in Swift]]
 
-[fn:14] [[https://hugolu.gitbooks.io/learn-swift/content/Advanced/HighOrderFunctions.html#map][ How to use Picker with enum in SwiftUI ]]
+[fn:14] [[https://github.com/onmyway133/blog/issues/611][ How to use Picker with enum in SwiftUI]]心
 
 [fn:1] [[https://www.raywenderlich.com/6742901-protocol-oriented-programming-tutorial-in-swift-5-1-getting-started][Protocol-Oriented Programming Tutorial in Swift 5.1: Getting Started]]
 

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-02-25 Thu 13:53 -->
+<!-- 2021-03-16 Tue 09:40 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>SwiftUI v.s. Firebase</title>
@@ -199,6 +199,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<style>*{font-family: Courier New !important}</style>
 <script type="text/javascript">
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
 <!--/*--><![CDATA[/*><!--*/
@@ -231,62 +232,430 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org629d4ec">1. Introduction</a>
+<li><a href="#orgcd9bce0">1. Introduction</a>
 <ul>
-<li><a href="#orgeedef50">1.1. Firebase的歷史</a></li>
+<li><a href="#orgdc3d900">1.1. A Brief History</a></li>
+<li><a href="#org7661a27">1.2. With Firebase you can</a>
+<ul>
+<li><a href="#orgbed9567">1.2.1. Build better apps</a></li>
+<li><a href="#orgb74f936">1.2.2. Improve app quality</a></li>
+<li><a href="#orgaa718ec">1.2.3. Grow your business</a></li>
 </ul>
 </li>
-<li><a href="#orgb586b89">2. Firebase console</a>
-<ul>
-<li><a href="#orgef0256e">2.1. Web sites</a></li>
-<li><a href="#org80cdc99">2.2. Adding Firebase to your iOS project</a></li>
 </ul>
 </li>
-<li><a href="#orgb57427b">3. Setting up Firebase project</a>
+<li><a href="#org49d9771">2. Firebase database</a>
 <ul>
-<li><a href="#org542bcd9">3.1. Step by step</a></li>
+<li><a href="#org84f8140">2.1. Data model</a></li>
 </ul>
 </li>
-<li><a href="#org5cb18fa">4. Videos</a></li>
+<li><a href="#orgd7c650a">3. Cloud Firestore Data model</a>
+<ul>
+<li><a href="#org31c8766">3.1. Documents</a></li>
+<li><a href="#org525456a">3.2. Collections</a></li>
+<li><a href="#orge702bc1">3.3. References</a></li>
+<li><a href="#orged861c7">3.4. Supported data types</a></li>
+</ul>
+</li>
+<li><a href="#org4f07d25">4. Firebase console</a>
+<ul>
+<li><a href="#org609fc6d">4.1. Web sites</a></li>
+<li><a href="#org98b2083">4.2. Adding Firebase to your iOS project</a></li>
+</ul>
+</li>
+<li><a href="#orgf93d874">5. Setting up Firebase project</a>
+<ul>
+<li><a href="#orgd1d4761">5.1. Step by step</a></li>
+</ul>
+</li>
+<li><a href="#org8f0790e">6. Learning resources</a>
+<ul>
+<li><a href="#org07ecc4e">6.1. web</a></li>
+<li><a href="#org2d53b93">6.2. Videos</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org629d4ec" class="outline-2">
-<h2 id="org629d4ec"><span class="section-number-2">1</span> Introduction</h2>
+<div id="outline-container-orgcd9bce0" class="outline-2">
+<h2 id="orgcd9bce0"><span class="section-number-2">1</span> Introduction</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 什麼是Firebase？Firebase是由Google收購的子公司，所提供的是行動應用程式開發的平台服務，也就是BaaS(Backend as a Service)，它能夠幫助我們快速開發我們的應用程式，並且支援跨平台包括Android、iOS以及Web，幫我們整合大部分建立一個服務所需要的後台功能。主要像是提供雲端給使用者架起網頁、提供資料庫供使用者存取資料以及做後台分析等等。<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup><br />
 </p>
+
+<p>
+Firebase can power your app’s backend, including data storage, user authentication, static hosting, and more. With Firebase, you can easily build mobile and web apps that scale from one user to one million.<br />
+</p>
 </div>
 
-<div id="outline-container-orgeedef50" class="outline-3">
-<h3 id="orgeedef50"><span class="section-number-3">1.1</span> Firebase的歷史</h3>
+<div id="outline-container-orgdc3d900" class="outline-3">
+<h3 id="orgdc3d900"><span class="section-number-3">1.1</span> A Brief History<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup></h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
-Firebase從Envolve演變而來。 Envolve是James Tamplin和Andrew Lee在2011年創立的一家早期創業公司。Envolve為開發人員提供了一個API,該API允許將在線聊天功能集成到他們的網站中。釋放聊天服務後,它發現envlove被用來傳遞不是聊天消息的應用程序數據。開發人員使用Envolve同步應用程序,以分離實時體系結構和為其提供動力的聊天系統。2011年9月,Tamplin和Lee單獨成立了Firebase。最後於2012年4月向公眾發佈。<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup><br />
+Back in 2011, before Firebase was Firebase, it was a startup called <b>Envolve</b>. As Envolve, it provided developers with an API that enabled <b>the integration of online chat functionality into their website</b>.<br />
+</p>
+
+<p>
+What’s interesting is that people used Envolve to pass application data that was more than just chat messages. Developers were using Envolve to <b>sync application data</b> such as a game state in real time across their users.<br />
+</p>
+
+<p>
+This led the founders of Envolve, James Tamplin and Andrew Lee, to separate the chat system and the real-time architecture. In April 2012, Firebase was created as a separate company that provided Backend-as-a-Service with real-time functionality.<br />
+</p>
+
+<p>
+After it was acquired by Google in 2014, Firebase rapidly evolved into the multifunctional behemoth of a mobile and web platform that it is today.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7661a27" class="outline-3">
+<h3 id="org7661a27"><span class="section-number-3">1.2</span> With Firebase you can<sup><a id="fnr.2.100" class="footref" href="#fn.2">2</a></sup></h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+Firebase helps mobile app teams succeed. With Firebase you can:<br />
+</p>
+<ol class="org-ol">
+<li>Build better apps<br /></li>
+<li>Improve app quality<br /></li>
+<li>Grow your business<br /></li>
+</ol>
+</div>
+<div id="outline-container-orgbed9567" class="outline-4">
+<h4 id="orgbed9567"><span class="section-number-4">1.2.1</span> Build better apps</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<p>
+Firebase lets you build more powerful, secure and scalable apps, using world-class infrastructure using:<br />
+</p>
+<ol class="org-ol">
+<li>Cloud Firestore: is a flexible, scalable database for mobile, web, and server development from Firebase and Google Cloud Platform. It is a <b>NoSQL document database</b> that lets you easily <b>store, sync, and query data</b> for your mobile and web apps — at a global scale.It&rsquo;s supporting for Android, iOS and Web Platform.<br /></li>
+<li>ML Kit: is a mobile SDK that brings <b>Google’s machine learning expertise to Android and iOS apps</b> in a powerful yet easy-to-use package. Whether you’re new or experienced in machine learning, you can implement the functionality you need in just a few lines of code. There’s no need to have deep knowledge of neural networks or model optimization to get started. On the other hand, if you are an experienced ML developer, ML Kit provides convenient APIs that help you use your custom TensorFlow Lite models in your mobile apps. It’s supporting for Android and iOS Platform.<br /></li>
+<li>Cloud Functions: for Firebase lets you automatically run backend code in response to events <b>triggered</b> by Firebase features and HTTPS requests. Your code is stored in Google’s cloud and runs in a managed environment. There’s no need to manage and scale your own servers. It’s supporting for Android, iOS, C++, Unity and Web Platform.<br /></li>
+<li>Authentication: provides backend services, easy-to-use SDKs, and ready-made UI libraries to <b>authenticate users to your app</b>. It supports authentication using passwords, phone numbers, popular federated identity providers like Google, Facebook and Twitter, and more. It’s supporting for Android, iOS and Web Platform.<br /></li>
+<li>Hosting: is production-grade web content hosting for developers. <b>With a single command, you can quickly deploy web apps and serve both static and dynamic content to a global CDN</b> (content delivery network). You can also pair Firebase Hosting with Cloud Functions to build and host microservices on Firebase. It’s supporting only Web Platform.<br /></li>
+<li>Cloud Storages: is for <b>object storage service</b> built for Google scale. The Firebase SDKs for Cloud Storage add Google security to file uploads and downloads for your Firebase apps, regardless of network quality. You can use our SDKs to store images, audio, video, or other user-generated content. On the server, you can use Google Cloud Storage, to access the same files. It’s supporting for Android, iOS, C++, Unity and Web Platform.<br /></li>
+<li>Real-time Database: is a cloud-hosted NoSQL database that lets you <b>store and sync between your users in real-time</b>. The Real-time Database is really just <b>one big JSON object</b> that the developers can manage in real-time. It’s supporting for <b>Android, iOS, C++, Unity and Web Platform</b>.<br /></li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgb74f936" class="outline-4">
+<h4 id="orgb74f936"><span class="section-number-4">1.2.2</span> Improve app quality</h4>
+<div class="outline-text-4" id="text-1-2-2">
+<p>
+Firebase gives you insights into app performance and stability, so you can channel your resources effectively using:<br />
+</p>
+
+<ol class="org-ol">
+<li>Crashlytics: is <b>a lightweight, real-time crash reporter</b> that helps you track, prioritize, and fix stability issues that erode your app quality. Crashlytics saves you troubleshooting time by intelligently grouping crashes and highlighting the circumstances that lead up to them. It’s supporting for Android and iOS Platform.<br /></li>
+<li>Performance Monitoring: is a service that helps you <b>to gain insight into the performance characteristics of your iOS and Android apps</b>. You use the Performance Monitoring SDK to collect performance data from your app, and then review and analyze that data in the Firebase console. Performance Monitoring helps you to understand where and when the performance of your app can be improved so that you can use that information to fix performance issues. It’s supporting for Android and iOS Platform.<br /></li>
+<li>Test Labs: is a cloud-based app-testing infrastructure. It provides <b>a large number of mobile test devices</b> to help you test your apps. It’s supporting for Android and iOS Platform.<br /></li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgaa718ec" class="outline-4">
+<h4 id="orgaa718ec"><span class="section-number-4">1.2.3</span> Grow your business</h4>
+<div class="outline-text-4" id="text-1-2-3">
+<p>
+Firebase helps you grow to millions of users, simplifying user engagement and retention using:<br />
+</p>
+
+<ol class="org-ol">
+<li>In-App Messaging: helps you engage users who are actively using your app by <b>sending them targeted and contextual messages</b> that nudge them to complete key in-app actions — like beating a game level, buying an item, or subscribing to content. It’s supporting for Android and iOS Platform.<br /></li>
+<li>Google Analytics: for Firebase is a free app measurement solution that provides insight on <b>app usage and user engagement</b>. At the heart of Firebase is Google Analytics for Firebase, a free and unlimited analytics solution. Analytics integrates across Firebase features and provides you with unlimited reporting for up to 500 distinct events that you can define using the Firebase SDK. Analytics reports help you understand clearly how your users behave, which enables you to make informed decisions regarding app marketing and performance optimizations. It’s supporting for Android, iOS, C++ and Unity Platform.<br /></li>
+<li>Predictions: applies <b>machine learning</b> to your analytics data to create dynamic user segments based on the predicted behavior of users in your app. These predictions are automatically available for use with Firebase Remote Config, the Notifications composer, Firebase In-App Messaging, and A/B Testing. You can also link your app’s Predictions data to BigQuery so you can get daily exports that you can further analyze or push to third party tools. It’s supporting for Android, iOS, C++ and Unity Platform.<br /></li>
+<li>A/B Testing: helps you optimize your app experience by making it easy to run, analyze, and scale product and marketing experiments. It gives you the power to test changes to your app’s UI, features, or engagement campaigns to see if they actually move the needle on your key metrics (like revenue and retention) before you roll them out widely. It’s supporting for Android, iOS, C++ and Unity Platform.<br /></li>
+<li>Cloud Messaging(FCM): provides a reliable and battery-efficient connection between your server and devices that allows you to deliver and receive messages and notifications on iOS, Android, and the web at no cost.<br /></li>
+<li>Remote Config: essentially allows us to publish updates to our users immediately. Whether we wish to change the color scheme for a screen, the layout for a particular section in our app or show promotional/seasonal options — this is completely doable using the server side parameters without the need to publish a new version. It’s supporting for Android, iOS, C++ and Unity Platform.<br /></li>
+<li>Dynamic Links: With Dynamic Links, your users get the best available experience for the platform they open your link on. If a user opens a Dynamic Link on iOS or Android, they can be taken directly to the linked content in your native app. If a user opens the same Dynamic Link in a desktop browser, they can be taken to the equivalent content on your website. It’s supporting for Android, iOS, Web, C++ and Unity Platform.<br /></li>
+<li>App Indexing: gets your app into Google Search. If users have your app installed, they can launch your app and go directly to the content they’re searching for. App Indexing reengages your app users by helping them find both public and personal content right on their device, even offering query autocompletion to help them more quickly find what they need. If users don’t yet have your app, relevant queries trigger an install card for your app in Search results. It’s supporting for Android and iOS Platform.<br /></li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org49d9771" class="outline-2">
+<h2 id="org49d9771"><span class="section-number-2">2</span> Firebase database</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Firebase offers two cloud-based, client-accessible database solutions that support realtime data syncing:<br />
 </p>
 
 <ul class="org-ul">
-<li><a href="https://medium.com/flawless-app-stories/how-to-build-a-firebase-app-with-swiftui-5919d2d8a396">How To Build A Firebase App With SwiftUI</a><br /></li>
-<li><a href="https://benmcmahen.com/authentication-with-swiftui-and-firebase/">Using Firebase Authentication with SwiftUI</a><br /></li>
-<li><a href="https://www.youtube.com/watch?v=4RUeW5rUcww">Building a to-do list app with SwiftUI and Firebase - Part 1 | Firebase Semi-live</a><br /></li>
-<li><a href="https://www.youtube.com/watch?v=elhzkcoBl-A">https://www.youtube.com/watch?v=elhzkcoBl-A</a><br /></li>
-<li><a href="https://www.youtube.com/watch?v=9VpaaJ3eLWk&amp;list=PLY_qIufNHc292EYDwe3B6sGYO_vQ7pOLx&amp;index=8">https://www.youtube.com/watch?v=9VpaaJ3eLWk&amp;list=PLY_qIufNHc292EYDwe3B6sGYO_vQ7pOLx&amp;index=8</a><br /></li>
-<li><a href="https://www.hackingwithswift.com/books/ios-swiftui/creating-a-form">https://www.hackingwithswift.com/books/ios-swiftui/creating-a-form</a><br /></li>
-<li><a href="https://www.youtube.com/watch?v=1QcekWFK2d8">https://www.youtube.com/watch?v=1QcekWFK2d8</a><br /></li>
+<li>Cloud Firestore is Firebase&rsquo;s <b>newest</b> database for mobile app development. It builds on the successes of the Realtime Database with a <b>new, more intuitive data model</b>. Cloud Firestore also features <b>richer, faster queries</b> and scales further than the Realtime Database.<br /></li>
+<li>Realtime Database is Firebase&rsquo;s <b>original</b> database. It&rsquo;s an efficient, low-latency solution for mobile apps that require synced states across clients in realtime.<br /></li>
 </ul>
+</div>
+
+<div id="outline-container-org84f8140" class="outline-3">
+<h3 id="org84f8140"><span class="section-number-3">2.1</span> Data model</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+Both Realtime Database and Cloud Firestore are NoSQL Databases<sup><a id="fnr.3" class="footref" href="#fn.3">3</a></sup>.<br />
+</p>
+<table id="orgd9af7a4" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Realtime Database</th>
+<th scope="col" class="org-left">Cloud Firestore</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Stores data as one large JSON tree.</td>
+<td class="org-left">Stores data as collections of documents.</td>
+</tr>
+
+<tr>
+<td class="org-left">- Simple data is very easy to store.</td>
+<td class="org-left">- Simple data is easy to store in documents, which are very similar to JSON.</td>
+</tr>
+
+<tr>
+<td class="org-left">- Complex, hierarchical data is harder to organize at scale.</td>
+<td class="org-left">- Complex, hierarchical data is easier to organize at scale, using subcollections within documents.</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">- Requires less denormalization and data flattening.</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgb586b89" class="outline-2">
-<h2 id="orgb586b89"><span class="section-number-2">2</span> Firebase console</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-orgd7c650a" class="outline-2">
+<h2 id="orgd7c650a"><span class="section-number-2">3</span> Cloud Firestore Data model</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Cloud Firestore is a NoSQL, document-oriented database. Unlike a SQL database, there are no tables or rows. Instead, you store data in <b>documents</b>, which are organized into <b>collections</b>.<br />
+</p>
+
+<p>
+Each document contains a set of key-value pairs. Cloud Firestore is optimized for storing large collections of small documents.<br />
+</p>
+
+<p>
+All documents must be stored in collections. Documents can contain subcollections and nested objects, both of which can include primitive fields like strings or complex objects like lists.<br />
+</p>
+
+<p>
+Collections and documents are created implicitly in Cloud Firestore. Simply assign data to a document within a collection. If either the collection or document does not exist, Cloud Firestore creates it.<br />
+</p>
 </div>
-<div id="outline-container-orgef0256e" class="outline-3">
-<h3 id="orgef0256e"><span class="section-number-3">2.1</span> Web sites</h3>
-<div class="outline-text-3" id="text-2-1">
+
+<div id="outline-container-org31c8766" class="outline-3">
+<h3 id="org31c8766"><span class="section-number-3">3.1</span> Documents</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+In Cloud Firestore, the unit of storage is the document. A document is a lightweight record that contains fields, which map to values. Each document is identified by a name.<br />
+</p>
+
+<p>
+A document representing a user alovelace might look like this:<br />
+</p>
+<pre class="example">
+first : "Ada"
+last : "Lovelace"
+born : 1815
+</pre>
+
+<p>
+Complex, <b>nested objects in a document</b> are called <b>maps</b>. For example, you could structure the user&rsquo;s name from the example above with a map, like this:<br />
+</p>
+
+<pre class="example">
+name :
+    first : "Ada"
+    last : "Lovelace"
+born : 1815
+</pre>
+
+<p>
+You may notice that documents <b>look a lot like JSON</b>. In fact, <b>they basically are</b>. There are some differences (for example, documents support extra data types and are limited in size to 1 MB), but in general, you can treat documents as lightweight JSON records.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org525456a" class="outline-3">
+<h3 id="org525456a"><span class="section-number-3">3.2</span> Collections</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+Documents live in collections, which are simply containers for documents.<br />
+</p>
+<p width="400">
+<img src="images/structure-data.png" alt="structure-data.png" width="400" /><br />
+For example, you could have a users collection to contain your various users, each represented by a document:<br />
+</p>
+<pre class="example">
+collections_bookmark users
+
+    alovelace
+
+    first : "Ada"
+    last : "Lovelace"
+    born : 1815
+
+    aturing
+
+    first : "Alan"
+    last : "Turing"
+    born : 1912
+</pre>
+<p>
+Cloud Firestore is schemaless, so you have complete freedom over what fields you put in each document and what data types you store in those fields. Documents within the same collection can all contain different fields or store different types of data in those fields. However, it&rsquo;s a good idea to use the same fields and data types across multiple documents, so that you can query the documents more easily.<br />
+</p>
+
+<p>
+A collection contains documents and nothing else. It can&rsquo;t directly contain raw fields with values, and it can&rsquo;t contain other collections. (See Hierarchical Data for an explanation of how to structure more complex data in Cloud Firestore.)<br />
+</p>
+
+<p>
+The names of documents within a collection are unique. You can provide your own keys, such as user IDs, or you can let Cloud Firestore create random IDs for you automatically.<br />
+</p>
+
+<p>
+You do not need to &ldquo;create&rdquo; or &ldquo;delete&rdquo; collections. After you create the first document in a collection, the collection exists. If you delete all of the documents in a collection, it no longer exists.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge702bc1" class="outline-3">
+<h3 id="orge702bc1"><span class="section-number-3">3.3</span> References</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+Every document in Cloud Firestore is <b>uniquely identified</b> by its location within the database. The previous example showed a document alovelace within the collection users. To refer to this location in your code, you can create a reference to it.<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">let</span> alovelaceDocumentRef = db.<span style="color: #c678dd;">collection</span>(<span style="color: #98be65;">"users"</span>).<span style="color: #c678dd;">document</span>(<span style="color: #98be65;">"alovelace"</span>)
+</pre>
+</div>
+
+<p>
+A reference is <b>a lightweight object that just points to a location in your database</b>. You can create a reference <b>whether or not data exists there</b>, and creating a reference does not perform any network operations.<br />
+</p>
+
+<p>
+You can also create references to collections:<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">let</span> usersCollectionRef = db.<span style="color: #c678dd;">collection</span>(<span style="color: #98be65;">"users"</span>)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orged861c7" class="outline-3">
+<h3 id="orged861c7"><span class="section-number-3">3.4</span> Supported data types</h3>
+<div class="outline-text-3" id="text-3-4">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Data type</th>
+<th scope="col" class="org-left">Sort order</th>
+<th scope="col" class="org-left">Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Array</td>
+<td class="org-left">By element values</td>
+<td class="org-left">An array cannot contain another array value as one of its elements.</td>
+</tr>
+
+<tr>
+<td class="org-left">Boolean</td>
+<td class="org-left">false &lt; true</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Bytes</td>
+<td class="org-left">Byte order</td>
+<td class="org-left">Up to 1,048,487 bytes (1 MiB - 89 bytes). Only the first 1,500 bytes are considered by queries.</td>
+</tr>
+
+<tr>
+<td class="org-left">Data and time</td>
+<td class="org-left">Chronological</td>
+<td class="org-left">When stored in Cloud Firestore, precise only to microseconds; any additional precision is rounded down.</td>
+</tr>
+
+<tr>
+<td class="org-left">Floating-point-number</td>
+<td class="org-left">Numeric</td>
+<td class="org-left">64-bit double precision, IEEE 754.</td>
+</tr>
+
+<tr>
+<td class="org-left">Geographical point</td>
+<td class="org-left">By latitude, then longitude</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Integer</td>
+<td class="org-left">Numeric</td>
+<td class="org-left">64-bit, signed</td>
+</tr>
+
+<tr>
+<td class="org-left">Map</td>
+<td class="org-left">By keys, then by value</td>
+<td class="org-left">Key ordering is always sorted. For example, if you write {c: &ldquo;foo&rdquo;, a: &ldquo;bar&rdquo;, b: &ldquo;qux&rdquo;} the map is sorted by key and saved as {a: &ldquo;bar&rdquo;, b: &ldquo;qux&rdquo;, c: &ldquo;foo&rdquo;}.</td>
+</tr>
+
+<tr>
+<td class="org-left">Null</td>
+<td class="org-left">None</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Reference</td>
+<td class="org-left">By path elements (collection, document ID, collection, document ID&#x2026;)</td>
+<td class="org-left">For example, projects/[PROJECT_ID]/databases/[DATABASE_ID]/documents/[DOCUMENT_PATH].</td>
+</tr>
+
+<tr>
+<td class="org-left">Text string</td>
+<td class="org-left">UTF-8 encoded byte order</td>
+<td class="org-left">Up to 1,048,487 bytes (1 MiB - 89 bytes). Only the first 1,500 bytes of the UTF-8 representation are considered by queries.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="outline-container-org4f07d25" class="outline-2">
+<h2 id="org4f07d25"><span class="section-number-2">4</span> Firebase console</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-org609fc6d" class="outline-3">
+<h3 id="org609fc6d"><span class="section-number-3">4.1</span> Web sites</h3>
+<div class="outline-text-3" id="text-4-1">
 <ul class="org-ul">
 <li><a href="https://firebase.google.com/docs/ios/setup">Firebase Documentation</a><br /></li>
 <li><a href="https://github.com/firebase/firebase-ios-sdk/blob/master/SwiftPackageManager.md">Swift Package Manager for Firebase Beta</a><br /></li>
@@ -294,9 +663,9 @@ Firebase從Envolve演變而來。 Envolve是James Tamplin和Andrew Lee在2011年
 </ul>
 </div>
 </div>
-<div id="outline-container-org80cdc99" class="outline-3">
-<h3 id="org80cdc99"><span class="section-number-3">2.2</span> Adding Firebase to your iOS project</h3>
-<div class="outline-text-3" id="text-2-2">
+<div id="outline-container-org98b2083" class="outline-3">
+<h3 id="org98b2083"><span class="section-number-3">4.2</span> Adding Firebase to your iOS project</h3>
+<div class="outline-text-3" id="text-4-2">
 <ol class="org-ol">
 <li>Create a FIrebase project<br /></li>
 <li>Register your app with Firebase<br /></li>
@@ -304,20 +673,17 @@ Firebase從Envolve演變而來。 Envolve是James Tamplin和Andrew Lee在2011年
 <li>Add Firebase SDKs to your app<br /></li>
 <li>Initialize Firebase in your app<br /></li>
 </ol>
-<p>
-**<br />
-</p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgb57427b" class="outline-2">
-<h2 id="orgb57427b"><span class="section-number-2">3</span> Setting up Firebase project</h2>
-<div class="outline-text-2" id="text-3">
+<div id="outline-container-orgf93d874" class="outline-2">
+<h2 id="orgf93d874"><span class="section-number-2">5</span> Setting up Firebase project</h2>
+<div class="outline-text-2" id="text-5">
 </div>
-<div id="outline-container-org542bcd9" class="outline-3">
-<h3 id="org542bcd9"><span class="section-number-3">3.1</span> Step by step</h3>
-<div class="outline-text-3" id="text-3-1">
+<div id="outline-container-orgd1d4761" class="outline-3">
+<h3 id="orgd1d4761"><span class="section-number-3">5.1</span> Step by step</h3>
+<div class="outline-text-3" id="text-5-1">
 <ol class="org-ol">
 <li>打開Firebase Console: <a href="https://console.firebase.google.com/">https://console.firebase.google.com/</a><br /></li>
 <li>開啟或新增專案<br /></li>
@@ -329,16 +695,16 @@ Firebase從Envolve演變而來。 Envolve是James Tamplin和Andrew Lee在2011年
 <li>打開 Terminal<br /></li>
 <li>前往 Xcode 檔案夾 (xcodeproj 位置)<br /></li>
 <li><p>
-輸入指令: pod init<br />
+輸入指令(terminal)<br />
 </p>
 <pre class="example">
-       pod init
+      pod init
 </pre></li>
 <li><p>
-打開 PodFile 或 輸入指令<br />
+打開 PodFile 或 輸入指令(terminal)<br />
 </p>
 <pre class="example">
-        open Podfile
+      open Podfile
 </pre></li>
 <li><p>
 在target(iOS) 裡加入<br />
@@ -348,7 +714,7 @@ Firebase從Envolve演變而來。 Envolve是James Tamplin和Andrew Lee在2011年
 </pre></li>
 </ol></li>
 <li><p>
-安裝pod<br />
+安裝pod (terminal)<br />
 </p>
 <pre class="example">
    pod install
@@ -379,13 +745,31 @@ Firebase從Envolve演變而來。 Envolve是James Tamplin和Andrew Lee在2011年
 </div>
 </div>
 
-<div id="outline-container-org5cb18fa" class="outline-2">
-<h2 id="org5cb18fa"><span class="section-number-2">4</span> Videos</h2>
-<div class="outline-text-2" id="text-4">
+<div id="outline-container-org8f0790e" class="outline-2">
+<h2 id="org8f0790e"><span class="section-number-2">6</span> Learning resources</h2>
+<div class="outline-text-2" id="text-6">
+</div>
+<div id="outline-container-org07ecc4e" class="outline-3">
+<h3 id="org07ecc4e"><span class="section-number-3">6.1</span> web</h3>
+<div class="outline-text-3" id="text-6-1">
+<ul class="org-ul">
+<li><a href="https://medium.com/flawless-app-stories/how-to-build-a-firebase-app-with-swiftui-5919d2d8a396">How To Build A Firebase App With SwiftUI</a><br /></li>
+<li><a href="https://benmcmahen.com/authentication-with-swiftui-and-firebase/">Using Firebase Authentication with SwiftUI</a><br /></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org2d53b93" class="outline-3">
+<h3 id="org2d53b93"><span class="section-number-3">6.2</span> Videos</h3>
+<div class="outline-text-3" id="text-6-2">
 <ul class="org-ul">
 <li><a href="https://www.youtube.com/watch?v=4RUeW5rUcww">Building a to-do list app with SwiftUI and Firebase - Part 1</a><br /></li>
 <li><a href="https://www.youtube.com/watch?v=2k6_Mi2ERWc">Building a Todo List App Using Firebase and SwiftUI - Part 2 </a><br /></li>
+<li><a href="https://www.youtube.com/watch?v=elhzkcoBl-A">https://www.youtube.com/watch?v=elhzkcoBl-A</a><br /></li>
+<li><a href="https://www.youtube.com/watch?v=9VpaaJ3eLWk&amp;list=PLY_qIufNHc292EYDwe3B6sGYO_vQ7pOLx&amp;index=8">https://www.youtube.com/watch?v=9VpaaJ3eLWk&amp;list=PLY_qIufNHc292EYDwe3B6sGYO_vQ7pOLx&amp;index=8</a><br /></li>
+<li><a href="https://www.hackingwithswift.com/books/ios-swiftui/creating-a-form">https://www.hackingwithswift.com/books/ios-swiftui/creating-a-form</a><br /></li>
+<li><a href="https://www.youtube.com/watch?v=1QcekWFK2d8">https://www.youtube.com/watch?v=1QcekWFK2d8</a><br /></li>
 </ul>
+</div>
 </div>
 </div>
 <div id="footnotes">
@@ -397,7 +781,11 @@ Firebase從Envolve演變而來。 Envolve是James Tamplin和Andrew Lee在2011年
 </p></div></div>
 
 <div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2">2</a></sup> <div class="footpara"><p class="footpara">
-<a href="http://www.srcmini.com/14739.html">Firebase介紹</a><br />
+<a href="https://medium.com/codingurukul/introduction-to-firebase-f9f6ccc8a785">Introduction to Firebase</a><br />
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.3" class="footnum" href="#fnr.3">3</a></sup> <div class="footpara"><p class="footpara">
+<a href="https://firebase.google.com/docs/firestore/rtdb-vs-firestore">Choose a database: Cloud Firestore or Realtime Database</a><br />
 </p></div></div>
 
 
@@ -405,7 +793,7 @@ Firebase從Envolve演變而來。 Envolve是James Tamplin和Andrew Lee在2011年
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Yung Chin, Yen</p>
-<p class="date">Created: 2021-02-25 Thu 13:53</p>
+<p class="date">Created: 2021-03-16 Tue 09:40</p>
 </div>
 </body>
 </html>
