@@ -242,6 +242,9 @@ service cloud.firestore {
 7. Why you should switch to english mode when reading Firebase Web pages?
 
 * Adding Firebase to your iOS project
+:PROPERTIES:
+:CUSTOM_ID: SW-Firebase-AddFirebase
+:END:
 ** key process
 1. Create a FIrebase project [DONE]
 2. Register your app with Firebase
@@ -330,6 +333,9 @@ struct FirebaseTaskApp: App {
 - [[https://1998design.medium.com/%E5%A6%82%E4%BD%95-%E5%B0%87firebase%E5%8A%A0%E5%85%A5ios-swiftui-2-2020-d4315d0173ca][如何：將Firebase加入iOS SwiftUI 2 (2020)]]
 
 * Basic operations to Firebase with iOS
+:PROPERTIES:
+:CUSTOM_ID: SW-Firebase-BasicOperations
+:END:
 Create a button on View for trying the following function
 ** Add document
 *** create a document with specific document ID
@@ -527,6 +533,9 @@ struct ContentView: View {
 - [[https://cloud.google.com/firestore/docs/query-data/get-data][Getting data]]
 
 * Learning resources
+:PROPERTIES:
+:CUSTOM_ID: SW-Firebase-LearningResource
+:END:
 ** web
 - [[https://medium.com/flawless-app-stories/how-to-build-a-firebase-app-with-swiftui-5919d2d8a396][How To Build A Firebase App With SwiftUI]]
 - [[https://benmcmahen.com/authentication-with-swiftui-and-firebase/][Using Firebase Authentication with SwiftUI]]
