@@ -196,6 +196,9 @@ By default, Cloud Firestore automatically maintains single-field indexes for eac
 - Single-field indexes with collection group scope are not maintained by default.
 
 * Create your own Cloud Firestore database
+:PROPERTIES:
+:CUSTOM_ID: SW-Firebase-CreateDatabase
+:END:
 1. Sign in https://firebase.google.com
 2. Click Get started
 3. Two mode of Firebase web navigation
