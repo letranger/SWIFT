@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-03-16 Tue 22:09 -->
+<!-- 2021-03-17 Wed 16:46 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>SwiftUI v.s. Firebase</title>
@@ -234,51 +234,66 @@
 <ul>
 <li><a href="#SW-Firebase-Intro">1. Introduction</a>
 <ul>
-<li><a href="#org1491ee5">1.1. A Brief History</a></li>
-<li><a href="#org2726cf6">1.2. With Firebase you can</a>
+<li><a href="#orgb0f36d1">1.1. A Brief History</a></li>
+<li><a href="#org11203ec">1.2. With Firebase you can</a>
 <ul>
-<li><a href="#org2c7b143">1.2.1. Build better apps</a></li>
-<li><a href="#org36fb6ad">1.2.2. Improve app quality</a></li>
-<li><a href="#orgd668ed7">1.2.3. Grow your business</a></li>
+<li><a href="#orga1d78d2">1.2.1. Build better apps</a></li>
+<li><a href="#org87a1597">1.2.2. Improve app quality</a></li>
+<li><a href="#org87ca1cc">1.2.3. Grow your business</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><a href="#SW-Firebase-database">2. Firebase database</a>
 <ul>
-<li><a href="#org5e587f3">2.1. Data model</a></li>
+<li><a href="#orgfaf5a3b">2.1. Data model</a></li>
 </ul>
 </li>
 <li><a href="#SW-Firebase-datamodel">3. Cloud Firestore Data model</a>
 <ul>
-<li><a href="#orgb819a1a">3.1. Documents</a></li>
-<li><a href="#org6b47d23">3.2. Collections</a></li>
-<li><a href="#org7e0db79">3.3. References</a></li>
-<li><a href="#org885296e">3.4. Supported data types</a></li>
-<li><a href="#org435997c">3.5. Index types in Cloud Firestore</a>
+<li><a href="#org8de073d">3.1. Documents</a></li>
+<li><a href="#org8ef44a9">3.2. Collections</a></li>
+<li><a href="#org5a4d4e0">3.3. References</a></li>
+<li><a href="#org928fa6b">3.4. Supported data types</a></li>
+<li><a href="#org970fc4a">3.5. Index types in Cloud Firestore</a>
 <ul>
-<li><a href="#org78db874">3.5.1. An index behind every query</a></li>
-<li><a href="#orgb621eb1">3.5.2. Less index management, more app development</a></li>
-<li><a href="#org45dc7f1">3.5.3. Automatic indexing</a></li>
+<li><a href="#orgcd49410">3.5.1. An index behind every query</a></li>
+<li><a href="#org6d50f03">3.5.2. Less index management, more app development</a></li>
+<li><a href="#org49645c8">3.5.3. Automatic indexing</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orged4419e">4. Create your own Cloud Firestore database</a></li>
-<li><a href="#orgc9f5692">5. Accessing Firebase using SWIFT</a>
+<li><a href="#orgcdc377a">4. Create your own Cloud Firestore database</a></li>
+<li><a href="#org8b46ad5">5. Adding Firebase to your iOS project</a>
 <ul>
-<li><a href="#orgd68b86f">5.1. Adding Firebase to your iOS project</a></li>
+<li><a href="#org11568fd">5.1. key process</a></li>
+<li><a href="#orgb9c0cb8">5.2. Setting up Firebase project: Step by step</a></li>
+<li><a href="#orgb45994b">5.3. 資料來源</a></li>
 </ul>
 </li>
-<li><a href="#orgcff7a21">6. Setting up Firebase project</a>
+<li><a href="#org45bec75">6. Basic operations to Firebase with iOS</a>
 <ul>
-<li><a href="#org5a2d8c3">6.1. Step by step</a></li>
+<li><a href="#orgc92d44a">6.1. Add document</a>
+<ul>
+<li><a href="#orga08ef26">6.1.1. create a document with specific document ID</a></li>
+<li><a href="#orgd05e5dc">6.1.2. create a document with auto-generate document ID</a></li>
 </ul>
 </li>
-<li><a href="#org5b5af30">7. Learning resources</a>
+<li><a href="#org1a61f48">6.2. Get data from Cloud Firestore</a>
 <ul>
-<li><a href="#org7fa02e9">7.1. web</a></li>
-<li><a href="#orgb20a2b2">7.2. Videos</a></li>
+<li><a href="#orgd84dc59">6.2.1. Getting document</a></li>
+<li><a href="#org899324e">6.2.2. Getting collection</a></li>
+</ul>
+</li>
+<li><a href="#org84ef804">6.3. Retrieve document</a></li>
+<li><a href="#org4ff5250">6.4. 資料來源</a></li>
+</ul>
+</li>
+<li><a href="#orgb82aad0">7. Learning resources</a>
+<ul>
+<li><a href="#org9ce6115">7.1. web</a></li>
+<li><a href="#orgf1d4920">7.2. Videos</a></li>
 </ul>
 </li>
 </ul>
@@ -297,8 +312,8 @@ Firebase can power your app’s backend, including data storage, user authentica
 </p>
 </div>
 
-<div id="outline-container-org1491ee5" class="outline-3">
-<h3 id="org1491ee5"><span class="section-number-3">1.1</span> A Brief History<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup></h3>
+<div id="outline-container-orgb0f36d1" class="outline-3">
+<h3 id="orgb0f36d1"><span class="section-number-3">1.1</span> A Brief History<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup></h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 Back in 2011, before Firebase was Firebase, it was a startup called <b>Envolve</b>. As Envolve, it provided developers with an API that enabled <b>the integration of online chat functionality into their website</b>.<br />
@@ -318,8 +333,8 @@ After it was acquired by Google in 2014, Firebase rapidly evolved into the multi
 </div>
 </div>
 
-<div id="outline-container-org2726cf6" class="outline-3">
-<h3 id="org2726cf6"><span class="section-number-3">1.2</span> With Firebase you can<sup><a id="fnr.2.100" class="footref" href="#fn.2">2</a></sup></h3>
+<div id="outline-container-org11203ec" class="outline-3">
+<h3 id="org11203ec"><span class="section-number-3">1.2</span> With Firebase you can<sup><a id="fnr.2.100" class="footref" href="#fn.2">2</a></sup></h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 Firebase helps mobile app teams succeed. With Firebase you can:<br />
@@ -330,8 +345,8 @@ Firebase helps mobile app teams succeed. With Firebase you can:<br />
 <li>Grow your business<br /></li>
 </ol>
 </div>
-<div id="outline-container-org2c7b143" class="outline-4">
-<h4 id="org2c7b143"><span class="section-number-4">1.2.1</span> Build better apps</h4>
+<div id="outline-container-orga1d78d2" class="outline-4">
+<h4 id="orga1d78d2"><span class="section-number-4">1.2.1</span> Build better apps</h4>
 <div class="outline-text-4" id="text-1-2-1">
 <p>
 Firebase lets you build more powerful, secure and scalable apps, using world-class infrastructure using:<br />
@@ -348,8 +363,8 @@ Firebase lets you build more powerful, secure and scalable apps, using world-cla
 </div>
 </div>
 
-<div id="outline-container-org36fb6ad" class="outline-4">
-<h4 id="org36fb6ad"><span class="section-number-4">1.2.2</span> Improve app quality</h4>
+<div id="outline-container-org87a1597" class="outline-4">
+<h4 id="org87a1597"><span class="section-number-4">1.2.2</span> Improve app quality</h4>
 <div class="outline-text-4" id="text-1-2-2">
 <p>
 Firebase gives you insights into app performance and stability, so you can channel your resources effectively using:<br />
@@ -363,8 +378,8 @@ Firebase gives you insights into app performance and stability, so you can chann
 </div>
 </div>
 
-<div id="outline-container-orgd668ed7" class="outline-4">
-<h4 id="orgd668ed7"><span class="section-number-4">1.2.3</span> Grow your business</h4>
+<div id="outline-container-org87ca1cc" class="outline-4">
+<h4 id="org87ca1cc"><span class="section-number-4">1.2.3</span> Grow your business</h4>
 <div class="outline-text-4" id="text-1-2-3">
 <p>
 Firebase helps you grow to millions of users, simplifying user engagement and retention using:<br />
@@ -398,13 +413,13 @@ Firebase offers two cloud-based, client-accessible database solutions that suppo
 </ul>
 </div>
 
-<div id="outline-container-org5e587f3" class="outline-3">
-<h3 id="org5e587f3"><span class="section-number-3">2.1</span> Data model</h3>
+<div id="outline-container-orgfaf5a3b" class="outline-3">
+<h3 id="orgfaf5a3b"><span class="section-number-3">2.1</span> Data model</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 Both Realtime Database and Cloud Firestore are NoSQL Databases<sup><a id="fnr.3" class="footref" href="#fn.3">3</a></sup>.<br />
 </p>
-<table id="org5e7814d" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org08be88d" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
@@ -464,8 +479,8 @@ Collections and documents are created implicitly in Cloud Firestore. Simply assi
 </p>
 </div>
 
-<div id="outline-container-orgb819a1a" class="outline-3">
-<h3 id="orgb819a1a"><span class="section-number-3">3.1</span> Documents</h3>
+<div id="outline-container-org8de073d" class="outline-3">
+<h3 id="org8de073d"><span class="section-number-3">3.1</span> Documents</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 In Cloud Firestore, the unit of storage is the document. A document is a lightweight record that contains fields, which map to values. Each document is identified by a name.<br />
@@ -497,8 +512,8 @@ You may notice that documents <b>look a lot like JSON</b>. In fact, <b>they basi
 </div>
 </div>
 
-<div id="outline-container-org6b47d23" class="outline-3">
-<h3 id="org6b47d23"><span class="section-number-3">3.2</span> Collections</h3>
+<div id="outline-container-org8ef44a9" class="outline-3">
+<h3 id="org8ef44a9"><span class="section-number-3">3.2</span> Collections</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 Documents live in collections, which are simply containers for documents.<br />
@@ -540,8 +555,8 @@ You do not need to &ldquo;create&rdquo; or &ldquo;delete&rdquo; collections. Aft
 </div>
 </div>
 
-<div id="outline-container-org7e0db79" class="outline-3">
-<h3 id="org7e0db79"><span class="section-number-3">3.3</span> References</h3>
+<div id="outline-container-org5a4d4e0" class="outline-3">
+<h3 id="org5a4d4e0"><span class="section-number-3">3.3</span> References</h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
 Every document in Cloud Firestore is <b>uniquely identified</b> by its location within the database. The previous example showed a document alovelace within the collection users. To refer to this location in your code, you can create a reference to it.<br />
@@ -565,8 +580,8 @@ You can also create references to collections:<br />
 </div>
 </div>
 
-<div id="outline-container-org885296e" class="outline-3">
-<h3 id="org885296e"><span class="section-number-3">3.4</span> Supported data types</h3>
+<div id="outline-container-org928fa6b" class="outline-3">
+<h3 id="org928fa6b"><span class="section-number-3">3.4</span> Supported data types</h3>
 <div class="outline-text-3" id="text-3-4">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -656,8 +671,8 @@ You can also create references to collections:<br />
 </div>
 </div>
 
-<div id="outline-container-org435997c" class="outline-3">
-<h3 id="org435997c"><span class="section-number-3">3.5</span> Index types in Cloud Firestore</h3>
+<div id="outline-container-org970fc4a" class="outline-3">
+<h3 id="org970fc4a"><span class="section-number-3">3.5</span> Index types in Cloud Firestore</h3>
 <div class="outline-text-3" id="text-3-5">
 <p>
 Indexes are an important factor in the performance of a database. Much like the index of a book which maps topics in a book to page numbers, a database index maps the items in a database to their locations in the database. When you send a database a query, the database can use an index to quickly look up the locations of the items you requested.<br />
@@ -668,8 +683,8 @@ This page describes the two types of indexes that Cloud Firestore uses, single-f
 </p>
 </div>
 
-<div id="outline-container-org78db874" class="outline-4">
-<h4 id="org78db874"><span class="section-number-4">3.5.1</span> An index behind every query</h4>
+<div id="outline-container-orgcd49410" class="outline-4">
+<h4 id="orgcd49410"><span class="section-number-4">3.5.1</span> An index behind every query</h4>
 <div class="outline-text-4" id="text-3-5-1">
 <p>
 If no index exists for a query, most databases crawl through their contents item by item, a slow process that slows down even more as the database grows. Cloud Firestore guarantees high query performance by using indexes for all queries. As a result, query performance depends on the size of the result set and not on the number of items in the database.<br />
@@ -677,8 +692,8 @@ If no index exists for a query, most databases crawl through their contents item
 </div>
 </div>
 
-<div id="outline-container-orgb621eb1" class="outline-4">
-<h4 id="orgb621eb1"><span class="section-number-4">3.5.2</span> Less index management, more app development</h4>
+<div id="outline-container-org6d50f03" class="outline-4">
+<h4 id="org6d50f03"><span class="section-number-4">3.5.2</span> Less index management, more app development</h4>
 <div class="outline-text-4" id="text-3-5-2">
 <p>
 Cloud Firestore includes features that reduce the amount of time you need to spend managing indexes. The indexes required for the most basic queries are automatically created for you. As you use and test your app, Cloud Firestore helps you identify and create additional indexes your app requires.<br />
@@ -686,8 +701,8 @@ Cloud Firestore includes features that reduce the amount of time you need to spe
 </div>
 </div>
 
-<div id="outline-container-org45dc7f1" class="outline-4">
-<h4 id="org45dc7f1"><span class="section-number-4">3.5.3</span> Automatic indexing</h4>
+<div id="outline-container-org49645c8" class="outline-4">
+<h4 id="org49645c8"><span class="section-number-4">3.5.3</span> Automatic indexing</h4>
 <div class="outline-text-4" id="text-3-5-3">
 <p>
 By default, Cloud Firestore automatically maintains single-field indexes for each field in a document and each subfield in a map. Cloud Firestore uses the following default settings for single-field indexes:<br />
@@ -703,8 +718,8 @@ By default, Cloud Firestore automatically maintains single-field indexes for eac
 </div>
 </div>
 
-<div id="outline-container-orged4419e" class="outline-2">
-<h2 id="orged4419e"><span class="section-number-2">4</span> Create your own Cloud Firestore database</h2>
+<div id="outline-container-orgcdc377a" class="outline-2">
+<h2 id="orgcdc377a"><span class="section-number-2">4</span> Create your own Cloud Firestore database</h2>
 <div class="outline-text-2" id="text-4">
 <ol class="org-ol">
 <li>Sign in <a href="https://firebase.google.com">https://firebase.google.com</a><br /></li>
@@ -714,8 +729,7 @@ By default, Cloud Firestore automatically maintains single-field indexes for eac
 <li>console<br /></li>
 <li>docs: 讀官方文件破萬卷、寫code如有神<br /></li>
 </ul></li>
-<li>Create project<br />
-You can create multiple database in one project<br /></li>
+<li>Create project<br /></li>
 <li>Create a Cloud Firestore database<br />
 <ol class="org-ol">
 <li>If you haven&rsquo;t already, create a Firebase project: In the Firebase console, click <b>Add project</b>, then follow the on-screen instructions to create a Firebase project or to add Firebase services to an existing GCP project.<br /></li>
@@ -772,15 +786,15 @@ You can create multiple collections in one database<br /></li>
 </div>
 </div>
 
-<div id="outline-container-orgc9f5692" class="outline-2">
-<h2 id="orgc9f5692"><span class="section-number-2">5</span> Accessing Firebase using SWIFT</h2>
+<div id="outline-container-org8b46ad5" class="outline-2">
+<h2 id="org8b46ad5"><span class="section-number-2">5</span> Adding Firebase to your iOS project</h2>
 <div class="outline-text-2" id="text-5">
 </div>
-<div id="outline-container-orgd68b86f" class="outline-3">
-<h3 id="orgd68b86f"><span class="section-number-3">5.1</span> Adding Firebase to your iOS project</h3>
+<div id="outline-container-org11568fd" class="outline-3">
+<h3 id="org11568fd"><span class="section-number-3">5.1</span> key process</h3>
 <div class="outline-text-3" id="text-5-1">
 <ol class="org-ol">
-<li>Create a FIrebase project<br /></li>
+<li>Create a FIrebase project [DONE]<br /></li>
 <li>Register your app with Firebase<br /></li>
 <li>Add a Firebase configuration file<br /></li>
 <li>Add Firebase SDKs to your app<br /></li>
@@ -791,81 +805,302 @@ You can create multiple collections in one database<br /></li>
 </p>
 </div>
 </div>
-</div>
-<div id="outline-container-orgcff7a21" class="outline-2">
-<h2 id="orgcff7a21"><span class="section-number-2">6</span> Setting up Firebase project</h2>
-<div class="outline-text-2" id="text-6">
-</div>
-<div id="outline-container-org5a2d8c3" class="outline-3">
-<h3 id="org5a2d8c3"><span class="section-number-3">6.1</span> Step by step</h3>
-<div class="outline-text-3" id="text-6-1">
+<div id="outline-container-orgb9c0cb8" class="outline-3">
+<h3 id="orgb9c0cb8"><span class="section-number-3">5.2</span> Setting up Firebase project: Step by step</h3>
+<div class="outline-text-3" id="text-5-2">
 <ol class="org-ol">
-<li>打開Firebase Console: <a href="https://console.firebase.google.com/">https://console.firebase.google.com/</a><br /></li>
-<li>開啟或新增專案<br /></li>
-<li>進入專案後，按新增應用程式<br /></li>
-<li>選取平台 iOS<br /></li>
-<li>下載 plist 文件 並且放入 Xcode 裏面<br /></li>
-<li>添加PodFile<br />
+<li>Create or open a Firebase project<br />
+Firebase Console: <a href="https://console.firebase.google.com/">https://console.firebase.google.com/</a><br /></li>
+<li>Add Firebase to your iOS app<br />
 <ol class="org-ol">
-<li>打開 Terminal<br /></li>
-<li>前往 Xcode 檔案夾 (xcodeproj 位置)<br /></li>
-<li><p>
-輸入指令(terminal)<br />
-</p>
-<pre class="example">
-      pod init
-</pre></li>
-<li><p>
-打開 PodFile 或 輸入指令(terminal)<br />
-</p>
-<pre class="example">
-      open Podfile
-</pre></li>
-<li><p>
-在target(iOS) 裡加入<br />
-</p>
-<pre class="example">
-      pod 'Firebase/Analytics'
-</pre></li>
+<li>Register app<br />
+<ul class="org-ul">
+<li>iOS bundle ID<br /></li>
+<li>App nickname (optional)<br /></li>
+<li>App Store ID (optional)<br /></li>
+</ul></li>
+<li>Download config file<br />
+this config file (GoogleService-info.plist) will be added to your project<br /></li>
 </ol></li>
+<li>Add Firebase SDKs<br />
+<ol class="org-ol">
+<li>Create a Podfile<br />
+<ol class="org-ol">
+<li>open Terminal app<br /></li>
 <li><p>
-安裝pod (terminal)<br />
-</p>
-<pre class="example">
-   pod install
-</pre></li>
-<li>開啟xcworkspace<br /></li>
-<li><p>
-在xxxApp.swift加入<br />
+switch to Xcode folder (xcodeproj location)<br />
 </p>
 <div class="org-src-container">
-<pre class="src src-swift"><span class="linenr">1: </span>   <span style="color: #51afef;">import</span> Firebase
+<pre class="src src-bash"><span style="color: #ECBE7B;">cd</span> ~/Desktop/ProjectName
+</pre>
+</div></li>
+<li><p>
+Create Podfile (terminal command)<br />
+Create Podfile<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">pod init
+</pre>
+</div></li>
+</ol></li>
+<li>Edit Podfile<br />
+<ol class="org-ol">
+<li><p>
+Open your Podfile (terminal command)<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">open Podfile
 </pre>
 </div>
 <p>
-在@main加入<br />
+or use text editor to open Podfile<br />
+</p></li>
+<li><p>
+Add the following code to Podfile (target(iOS))<br />
 </p>
 <div class="org-src-container">
-<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">init</span>() {
-<span class="linenr">2: </span>    FirebaseApp.<span style="color: #c678dd;">configure</span>()
-<span class="linenr">3: </span>}
+<pre class="src src-bash"><span style="color: #5B6268;"># </span><span style="color: #5B6268;">Uncomment the next line to define a global platform for your project</span>
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">platform :ios, '9.0'</span>
+
+target <span style="color: #98be65;">'FirebaseTask'</span> do
+  <span style="color: #5B6268;"># </span><span style="color: #5B6268;">Comment the next line if you don't want to use dynamic frameworks</span>
+  use_frameworks!
+
+  <span style="color: #5B6268;"># </span><span style="color: #5B6268;">Pods for FirebaseTask</span>
+  <span style="color: #5B6268;"># </span><span style="color: #5B6268;">the Firebase module your project need</span>
+  pod <span style="color: #98be65;">'Firebase'</span>
+  pod <span style="color: #98be65;">'Firebase/Firestore'</span>
+  pod &#8216;Firebase/Analytics&#8217;
+end
+
+</pre>
+</div>
+<p>
+edit and save<br />
+</p></li>
+<li>save Podfile<br />
+cmd+S or via menu File/Save<br /></li>
+</ol></li>
+<li><p>
+Install Firebase SDK by pod install (terminal command)<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">pod install
+</pre>
+</div>
+<p>
+and then wait&#x2026;&#x2026;<br />
+</p></li>
+</ol></li>
+<li>Open your project (xcworkspace)<br /></li>
+<li>add config file (GoogleService-info.plist) to your project<br /></li>
+<li><p>
+Add initialization code<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">import</span> Firebase
+</pre>
+</div>
+<p>
+Initilize the App struct by adding the following code<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> SwiftUI
+<span class="linenr"> 2: </span><span style="color: #51afef;">import</span> Firebase
+<span class="linenr"> 3: </span><span style="color: #51afef;">@main</span>
+<span class="linenr"> 4: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">FirebaseTaskApp</span>: App {
+<span class="linenr"> 5: </span>    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">configure Firebase database</span>
+<span class="linenr"> 6: </span>    <span style="color: #51afef;">init</span>() {
+<span class="linenr"> 7: </span>        FirebaseApp.<span style="color: #c678dd;">configure</span>()
+<span class="linenr"> 8: </span>    }
+<span class="linenr"> 9: </span>    <span style="color: #51afef;">var</span> body: <span style="color: #51afef;">some</span> Scene {
+<span class="linenr">10: </span>        WindowGroup {
+<span class="linenr">11: </span>            <span style="color: #c678dd;">ContentView</span>()
+<span class="linenr">12: </span>        }
+<span class="linenr">13: </span>    }
+<span class="linenr">14: </span>}
 </pre>
 </div></li>
 </ol>
+</div>
+</div>
 
+<div id="outline-container-orgb45994b" class="outline-3">
+<h3 id="orgb45994b"><span class="section-number-3">5.3</span> 資料來源</h3>
+<div class="outline-text-3" id="text-5-3">
+<ul class="org-ul">
+<li><a href="https://1998design.medium.com/%E5%A6%82%E4%BD%95-%E5%B0%87firebase%E5%8A%A0%E5%85%A5ios-swiftui-2-2020-d4315d0173ca">如何：將Firebase加入iOS SwiftUI 2 (2020)</a><br /></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org45bec75" class="outline-2">
+<h2 id="org45bec75"><span class="section-number-2">6</span> Basic operations to Firebase with iOS</h2>
+<div class="outline-text-2" id="text-6">
 <p>
-資料來源：<a href="https://1998design.medium.com/%E5%A6%82%E4%BD%95-%E5%B0%87firebase%E5%8A%A0%E5%85%A5ios-swiftui-2-2020-d4315d0173ca">如何：將Firebase加入iOS SwiftUI 2 (2020)</a><br />
+Create a button on View for trying the following function<br />
 </p>
 </div>
+<div id="outline-container-orgc92d44a" class="outline-3">
+<h3 id="orgc92d44a"><span class="section-number-3">6.1</span> Add document</h3>
+<div class="outline-text-3" id="text-6-1">
+</div>
+<div id="outline-container-orga08ef26" class="outline-4">
+<h4 id="orga08ef26"><span class="section-number-4">6.1.1</span> create a document with specific document ID</h4>
+<div class="outline-text-4" id="text-6-1-1">
+<ul class="org-ul">
+<li><p>
+setData<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span>store.<span style="color: #c678dd;">collection</span>(<span style="color: #98be65;">"tasks"</span>).<span style="color: #c678dd;">document</span>().<span style="color: #c678dd;">setData</span>(documentData: [<span style="color: #c678dd;">String</span> : Any])
+</pre>
+</div></li>
+<li><p>
+setData and catch error<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span>store.<span style="color: #c678dd;">collection</span>(<span style="color: #98be65;">"tasks"</span>).<span style="color: #c678dd;">document</span>().<span style="color: #c678dd;">setData</span>(documentData: [<span style="color: #c678dd;">String</span> : Any]) {
+<span class="linenr">2: </span>    err <span style="color: #51afef;">in</span>
+<span class="linenr">3: </span>    <span style="color: #51afef;">if</span> <span style="color: #51afef;">let</span> err = err {
+<span class="linenr">4: </span>        <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"Error writing document: \(</span>err<span style="color: #98be65;">)"</span>)
+<span class="linenr">5: </span>    } <span style="color: #51afef;">else</span> {
+<span class="linenr">6: </span>        <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"Document successfully written!"</span>)
+<span class="linenr">7: </span>    }
+<span class="linenr">8: </span>}
+<span class="linenr">9: </span>
+</pre>
+</div></li>
+<li><p>
+範例<br />
+ContentView.swift<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #5B6268;">//  </span><span style="color: #5B6268;">Created by yen yung chin on 2021/3/17.</span>
+<span class="linenr"> 2: </span><span style="color: #51afef;">import</span> SwiftUI
+<span class="linenr"> 3: </span><span style="color: #51afef;">import</span> Firebase
+<span class="linenr"> 4: </span>
+<span class="linenr"> 5: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">ContentView</span>: View {
+<span class="linenr"> 6: </span>    <span style="color: #51afef;">var</span> body: <span style="color: #51afef;">some</span> View {
+<span class="linenr"> 7: </span>        <span style="color: #51afef;">let</span> store = Firestore.<span style="color: #c678dd;">firestore</span>()
+<span class="linenr"> 8: </span>        <span style="color: #c678dd;">Button</span>(action: {
+<span class="linenr"> 9: </span>            store.<span style="color: #c678dd;">collection</span>(<span style="color: #98be65;">"tasks"</span>).<span style="color: #c678dd;">document</span>(<span style="color: #98be65;">"new"</span>).<span style="color: #c678dd;">setData</span>([<span style="color: #98be65;">"title"</span> : <span style="color: #98be65;">"testing setData()"</span>, <span style="color: #98be65;">"completion"</span> : <span style="color: #a9a1e1;">true</span>])
+<span class="linenr">10: </span>        }, label: {
+<span class="linenr">11: </span>            <span style="color: #c678dd;">Text</span>(<span style="color: #98be65;">"New Task"</span>)
+<span class="linenr">12: </span>        })
+<span class="linenr">13: </span>    }
+<span class="linenr">14: </span>}
+</pre>
+</div></li>
+<li>Question: What happen if you try to repeat clicking button to add document with the same ID<br /></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd05e5dc" class="outline-4">
+<h4 id="orgd05e5dc"><span class="section-number-4">6.1.2</span> create a document with auto-generate document ID</h4>
+<div class="outline-text-4" id="text-6-1-2">
+<ul class="org-ul">
+<li><p>
+addDocument()<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span>store.<span style="color: #c678dd;">collection</span>(<span style="color: #98be65;">"tasks"</span>).<span style="color: #c678dd;">addDocument</span>(data: [<span style="color: #c678dd;">String</span> : Any]&gt;)
+</pre>
+</div></li>
+<li><p>
+add document and catch error<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #5B6268;">//  </span><span style="color: #5B6268;">Created by yen yung chin on 2021/3/17.</span>
+<span class="linenr">2: </span>store.<span style="color: #c678dd;">collection</span>().<span style="color: #c678dd;">addDocument</span>(data) { err <span style="color: #51afef;">in</span>
+<span class="linenr">3: </span>    <span style="color: #51afef;">if</span> <span style="color: #51afef;">let</span> err = err {
+<span class="linenr">4: </span>        <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"Error adding document: \(</span>err<span style="color: #98be65;">)."</span>)
+<span class="linenr">5: </span>    } <span style="color: #51afef;">else</span> {
+<span class="linenr">6: </span>        <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"Adding Document successfully."</span>)
+<span class="linenr">7: </span>    }
+<span class="linenr">8: </span>}
+</pre>
+</div></li>
+<li>範例<br />
+ContentView.swift<br /></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #5B6268;">//  </span><span style="color: #5B6268;">Created by yen yung chin on 2021/3/17.</span>
+<span class="linenr"> 2: </span><span style="color: #51afef;">import</span> SwiftUI
+<span class="linenr"> 3: </span><span style="color: #51afef;">import</span> Firebase
+<span class="linenr"> 4: </span>
+<span class="linenr"> 5: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">ContentView</span>: View {
+<span class="linenr"> 6: </span>    <span style="color: #51afef;">var</span> body: <span style="color: #51afef;">some</span> View {
+<span class="linenr"> 7: </span>        <span style="color: #51afef;">let</span> store = Firestore.<span style="color: #c678dd;">firestore</span>()
+<span class="linenr"> 8: </span>        <span style="color: #c678dd;">Button</span>(action: {
+<span class="linenr"> 9: </span>                store.<span style="color: #c678dd;">collection</span>(<span style="color: #98be65;">"tasks"</span>).<span style="color: #c678dd;">addDocument</span>(data: [<span style="color: #98be65;">"title"</span>: <span style="color: #98be65;">"222"</span>, <span style="color: #98be65;">"completion"</span> : <span style="color: #a9a1e1;">false</span>]) { err <span style="color: #51afef;">in</span>
+<span class="linenr">10: </span>                <span style="color: #51afef;">if</span> <span style="color: #51afef;">let</span> err = err {
+<span class="linenr">11: </span>                    <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"Error adding document: \(</span>err<span style="color: #98be65;">)."</span>)
+<span class="linenr">12: </span>                } <span style="color: #51afef;">else</span> {
+<span class="linenr">13: </span>                    <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"Adding Document successfully."</span>)
+<span class="linenr">14: </span>                }
+<span class="linenr">15: </span>            }
+<span class="linenr">16: </span>        }, label: {
+<span class="linenr">17: </span>            <span style="color: #c678dd;">Text</span>(<span style="color: #98be65;">"New Task"</span>)
+<span class="linenr">18: </span>        })
+<span class="linenr">19: </span>    }
+<span class="linenr">20: </span>}
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org1a61f48" class="outline-3">
+<h3 id="org1a61f48"><span class="section-number-3">6.2</span> Get data from Cloud Firestore</h3>
+<div class="outline-text-3" id="text-6-2">
+</div>
+<div id="outline-container-orgd84dc59" class="outline-4">
+<h4 id="orgd84dc59"><span class="section-number-4">6.2.1</span> Getting document</h4>
+<div class="outline-text-4" id="text-6-2-1">
+<p>
+語法<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">let</span> docRef = db.<span style="color: #c678dd;">collection</span>().<span style="color: #c678dd;">document</span>()
+<span class="linenr">2: </span>docRef.<span style="color: #c678dd;">getDocument</span>(source: .<span style="color: #dcaeea;">cache</span>) { (document, error) <span style="color: #51afef;">in</span>
+<span class="linenr">3: </span>    <span style="color: #51afef;">if</span> <span style="color: #51afef;">let</span> document = document {
+<span class="linenr">4: </span>        <span style="color: #51afef;">let</span> dataDescription = document.<span style="color: #c678dd;">data</span>().<span style="color: #c678dd;">map</span>(<span style="color: #c678dd;">String</span>.<span style="color: #51afef;">init</span>(describing:)) ?? <span style="color: #98be65;">"nil"</span>
+<span class="linenr">5: </span>        <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"Cached document data: \(</span>dataDescription<span style="color: #98be65;">)"</span>)
+<span class="linenr">6: </span>    } <span style="color: #51afef;">else</span> {
+<span class="linenr">7: </span>        <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"Document does not exist in cache"</span>)
+<span class="linenr">8: </span>    }
+<span class="linenr">9: </span>}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org899324e" class="outline-4">
+<h4 id="org899324e"><span class="section-number-4">6.2.2</span> Getting collection</h4>
 </div>
 </div>
 
-<div id="outline-container-org5b5af30" class="outline-2">
-<h2 id="org5b5af30"><span class="section-number-2">7</span> Learning resources</h2>
+<div id="outline-container-org84ef804" class="outline-3">
+<h3 id="org84ef804"><span class="section-number-3">6.3</span> Retrieve document</h3>
+</div>
+
+<div id="outline-container-org4ff5250" class="outline-3">
+<h3 id="org4ff5250"><span class="section-number-3">6.4</span> 資料來源</h3>
+<div class="outline-text-3" id="text-6-4">
+<ul class="org-ul">
+<li><a href="https://www.raywenderlich.com/11609977-getting-started-with-cloud-firestore-and-swiftui">Getting Started with Cloud Firestore and SwiftUI</a><br /></li>
+<li><a href="https://medium.com/%E5%BD%BC%E5%BE%97%E6%BD%98%E7%9A%84-swift-ios-app-%E9%96%8B%E7%99%BC%E5%95%8F%E9%A1%8C%E8%A7%A3%E7%AD%94%E9%9B%86/%E8%AE%80%E5%8F%96-cloud-firestore-%E7%9A%84-database-203bdcdb5661">讀取 Cloud Firestore 的 database</a><br /></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb82aad0" class="outline-2">
+<h2 id="orgb82aad0"><span class="section-number-2">7</span> Learning resources</h2>
 <div class="outline-text-2" id="text-7">
 </div>
-<div id="outline-container-org7fa02e9" class="outline-3">
-<h3 id="org7fa02e9"><span class="section-number-3">7.1</span> web</h3>
+<div id="outline-container-org9ce6115" class="outline-3">
+<h3 id="org9ce6115"><span class="section-number-3">7.1</span> web</h3>
 <div class="outline-text-3" id="text-7-1">
 <ul class="org-ul">
 <li><a href="https://medium.com/flawless-app-stories/how-to-build-a-firebase-app-with-swiftui-5919d2d8a396">How To Build A Firebase App With SwiftUI</a><br /></li>
@@ -873,8 +1108,8 @@ You can create multiple collections in one database<br /></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgb20a2b2" class="outline-3">
-<h3 id="orgb20a2b2"><span class="section-number-3">7.2</span> Videos</h3>
+<div id="outline-container-orgf1d4920" class="outline-3">
+<h3 id="orgf1d4920"><span class="section-number-3">7.2</span> Videos</h3>
 <div class="outline-text-3" id="text-7-2">
 <ul class="org-ul">
 <li><a href="https://www.youtube.com/watch?v=4RUeW5rUcww">Building a to-do list app with SwiftUI and Firebase - Part 1</a><br /></li>
@@ -908,7 +1143,7 @@ You can create multiple collections in one database<br /></li>
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Yung Chin, Yen</p>
-<p class="date">Created: 2021-03-16 Tue 22:09</p>
+<p class="date">Created: 2021-03-17 Wed 16:46</p>
 </div>
 </body>
 </html>

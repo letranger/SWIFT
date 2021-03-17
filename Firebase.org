@@ -202,7 +202,6 @@ By default, Cloud Firestore automatically maintains single-field indexes for eac
    - console
    - docs: 讀官方文件破萬卷、寫code如有神
 4. Create project
-   You can create multiple database in one project
 5. Create a Cloud Firestore database
    1) If you haven't already, create a Firebase project: In the Firebase console, click *Add project*, then follow the on-screen instructions to create a Firebase project or to add Firebase services to an existing GCP project.
    2) Navigate to the *Cloud Firestore section* of the *Firebase console*. You'll be prompted to select an existing Firebase project. Follow the database creation workflow.
@@ -242,55 +241,194 @@ service cloud.firestore {
    You can create multiple collections in one database
 7. Why you should switch to english mode when reading Firebase Web pages?
 
-* Accessing Firebase using SWIFT
-** Adding Firebase to your iOS project
-1. Create a FIrebase project
+* Adding Firebase to your iOS project
+** key process
+1. Create a FIrebase project [DONE]
 2. Register your app with Firebase
 3. Add a Firebase configuration file
 4. Add Firebase SDKs to your app
 5. Initialize Firebase in your app
 詳組說明參見[[https://firebase.google.com/docs/ios/setup][Firebase Documentation]]
-* Setting up Firebase project
-** Step by step
-1. 打開Firebase Console: https://console.firebase.google.com/
-2. 開啟或新增專案
-3. 進入專案後，按新增應用程式
-4. 選取平台 iOS
-5. 下載 plist 文件 並且放入 Xcode 裏面
-6. 添加PodFile
-   1) 打開 Terminal
-   2) 前往 Xcode 檔案夾 (xcodeproj 位置)
-   3) 輸入指令(terminal)
-      #+BEGIN_SRC
-      pod init
+** Setting up Firebase project: Step by step
+1. Create or open a Firebase project
+   Firebase Console: https://console.firebase.google.com/
+2. Add Firebase to your iOS app
+   1) Register app
+      - iOS bundle ID
+      - App nickname (optional)
+      - App Store ID (optional)
+   2) Download config file
+      this config file (GoogleService-info.plist) will be added to your project
+3. Add Firebase SDKs
+   1) Create a Podfile
+      a. open Terminal app
+      b. switch to Xcode folder (xcodeproj location)
+         #+BEGIN_SRC bash
+cd ~/Desktop/ProjectName
+         #+END_SRC
+      c. Create Podfile (terminal command)
+         Create Podfile
+         #+BEGIN_SRC bash
+pod init
+         #+END_SRC
+   2) Edit Podfile
+      a. Open your Podfile (terminal command)
+         #+BEGIN_SRC bash
+open Podfile
+         #+END_SRC
+         or use text editor to open Podfile
+      b. Add the following code to Podfile (target(iOS))
+         #+BEGIN_SRC bash
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'FirebaseTask' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for FirebaseTask
+  # the Firebase module your project need
+  pod 'Firebase'
+  pod 'Firebase/Firestore'
+  pod ‘Firebase/Analytics’
+end
+
+         #+END_SRC
+         edit and save
+      c. save Podfile
+         cmd+S or via menu File/Save
+   3) Install Firebase SDK by pod install (terminal command)
+      #+BEGIN_SRC bash
+pod install
       #+END_SRC
-   4) 打開 PodFile 或 輸入指令(terminal)
-      #+BEGIN_SRC
-      open Podfile
-      #+END_SRC
-   5) 在target(iOS) 裡加入
-      #+BEGIN_SRC
-      pod 'Firebase/Analytics'
-      #+END_SRC
-7. 安裝pod (terminal)
-   #+BEGIN_SRC
-   pod install
-   #+END_SRC
-8. 開啟xcworkspace
-9. 在xxxApp.swift加入
+      and then wait......
+4. Open your project (xcworkspace)
+5. add config file (GoogleService-info.plist) to your project
+6. Add initialization code
    #+begin_src swift -r -n :results output :exports nil
-   import Firebase
+import Firebase
    #+end_src
-   在@main加入
+   Initilize the App struct by adding the following code
    #+begin_src swift -r -n :results output :exports nil
-init() {
-    FirebaseApp.configure()
+import SwiftUI
+import Firebase
+@main
+struct FirebaseTaskApp: App {
+    // configure Firebase database
+    init() {
+        FirebaseApp.configure()
+    }
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+        }
+    }
 }
    #+end_src
 
-   #+RESULTS:
+** 資料來源
+- [[https://1998design.medium.com/%E5%A6%82%E4%BD%95-%E5%B0%87firebase%E5%8A%A0%E5%85%A5ios-swiftui-2-2020-d4315d0173ca][如何：將Firebase加入iOS SwiftUI 2 (2020)]]
 
-資料來源：[[https://1998design.medium.com/%E5%A6%82%E4%BD%95-%E5%B0%87firebase%E5%8A%A0%E5%85%A5ios-swiftui-2-2020-d4315d0173ca][如何：將Firebase加入iOS SwiftUI 2 (2020)]]
+* Basic operations to Firebase with iOS
+Create a button on View for trying the following function
+** Add document
+*** create a document with specific document ID
+- setData
+  #+begin_src swift -r -n :results output :exports nil
+store.collection("tasks").document().setData(documentData: [String : Any])
+  #+end_src
+- setData and catch error
+  #+begin_src swift -r -n :results output :exports nil
+store.collection("tasks").document().setData(documentData: [String : Any]) {
+    err in
+    if let err = err {
+        print("Error writing document: \(err)")
+    } else {
+        print("Document successfully written!")
+    }
+}
+
+  #+end_src
+- 範例
+  ContentView.swift
+  #+begin_src swift -r -n :results output :exports nil
+//  Created by yen yung chin on 2021/3/17.
+import SwiftUI
+import Firebase
+
+struct ContentView: View {
+    var body: some View {
+        let store = Firestore.firestore()
+        Button(action: {
+            store.collection("tasks").document("new").setData(["title" : "testing setData()", "completion" : true])
+        }, label: {
+            Text("New Task")
+        })
+    }
+}
+ #+end_src
+- Question: What happen if you try to repeat clicking button to add document with the same ID
+*** create a document with auto-generate document ID
+- addDocument()
+  #+begin_src swift -r -n :results output :exports nil
+store.collection("tasks").addDocument(data: [String : Any]>)
+  #+end_src
+- add document and catch error
+  #+begin_src swift -r -n :results output :exports nil
+//  Created by yen yung chin on 2021/3/17.
+store.collection().addDocument(data) { err in
+    if let err = err {
+        print("Error adding document: \(err).")
+    } else {
+        print("Adding Document successfully.")
+    }
+}
+  #+end_src
+- 範例
+  ContentView.swift
+#+begin_src swift -r -n :results output :exports nil
+//  Created by yen yung chin on 2021/3/17.
+import SwiftUI
+import Firebase
+
+struct ContentView: View {
+    var body: some View {
+        let store = Firestore.firestore()
+        Button(action: {
+                store.collection("tasks").addDocument(data: ["title": "222", "completion" : false]) { err in
+                if let err = err {
+                    print("Error adding document: \(err).")
+                } else {
+                    print("Adding Document successfully.")
+                }
+            }
+        }, label: {
+            Text("New Task")
+        })
+    }
+}
+#+end_src
+** Get data from Cloud Firestore
+*** Getting document
+語法
+#+begin_src swift -r -n :results output :exports nil
+let docRef = db.collection().document()
+docRef.getDocument(source: .cache) { (document, error) in
+    if let document = document {
+        let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+        print("Cached document data: \(dataDescription)")
+    } else {
+        print("Document does not exist in cache")
+    }
+}
+#+end_src
+*** Getting collection
+
+** Retrieve document
+
+** 資料來源
+- [[https://www.raywenderlich.com/11609977-getting-started-with-cloud-firestore-and-swiftui][Getting Started with Cloud Firestore and SwiftUI]]
+- [[https://medium.com/%E5%BD%BC%E5%BE%97%E6%BD%98%E7%9A%84-swift-ios-app-%E9%96%8B%E7%99%BC%E5%95%8F%E9%A1%8C%E8%A7%A3%E7%AD%94%E9%9B%86/%E8%AE%80%E5%8F%96-cloud-firestore-%E7%9A%84-database-203bdcdb5661][讀取 Cloud Firestore 的 database]]
 
 * Learning resources
 ** web
