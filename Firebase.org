@@ -200,7 +200,7 @@ By default, Cloud Firestore automatically maintains single-field indexes for eac
 2. Click Get started
 3. Two mode of Firebase web navigation
    - console
-   - docs: 讀官方文件破萬卷、寫code如有神
+   - docs: 讀doc破萬卷、寫code如有神
 4. Create project
 5. Create a Cloud Firestore database
    1) If you haven't already, create a Firebase project: In the Firebase console, click *Add project*, then follow the on-screen instructions to create a Firebase project or to add Firebase services to an existing GCP project.
@@ -409,9 +409,40 @@ struct ContentView: View {
 }
 #+end_src
 ** Get data from Cloud Firestore
+*** Getting collection
+- 語法
+  #+begin_src swift -r -n :results output :exports nil
+
+  #+end_src
+- 範例
+    ContentView.swift
+  #+begin_src swift -r -n :results output :exports nil
+//  Created by yen yung chin on 2021/3/17.
+//
+
+import SwiftUI
+import Firebase
+
+struct ContentView: View {
+    var body: some View {
+        let store = Firestore.firestore()
+        Button(action: {
+            store.collection("tasks").getDocuments { (querySnapshot, error) in
+                if let querySnapshot = querySnapshot {
+                    for document in querySnapshot.documents {
+                        print(document.data())
+                    }
+                }
+            }
+        }, label: {
+            Text("Button")
+        })
+    }
+}
+  #+end_src
 *** Getting document
-語法
-#+begin_src swift -r -n :results output :exports nil
+- 語法
+  #+begin_src swift -r -n :results output :exports nil
 let docRef = db.collection().document()
 docRef.getDocument(source: .cache) { (document, error) in
     if let document = document {
@@ -421,14 +452,79 @@ docRef.getDocument(source: .cache) { (document, error) in
         print("Document does not exist in cache")
     }
 }
-#+end_src
-*** Getting collection
+  #+end_src
+- 範例
+  ContentView.swift
+  #+begin_src swift -r -n :results output :exports nil
+//  Created by yen yung chin on 2021/3/17.
+//
 
-** Retrieve document
+import SwiftUI
+import Firebase
+
+struct ContentView: View {
+    var body: some View {
+        let store = Firestore.firestore()
+        Button(action: {
+            let docRef = store.collection("tasks").document("new")
+            docRef.getDocument { (document, error) in
+                if let document = document, document.exists {
+                    let dataDescription = document.data().map(String.init(describing: )) ?? "nil"
+                    print("Document data: \(dataDescription)")
+                } else {
+                    print("Document does not exist")
+                }
+            }
+        }, label: {
+            Text("Button")
+        })
+    }
+}
+  #+end_src
+***
+** UI with Firebase
+- UI for adding document
+  #+begin_src swift -r -n :results output :exports nil
+//  Created by yen yung chin on 2021/3/17.
+import SwiftUI
+import Firebase
+
+struct ContentView: View {
+    @State var title: String = ""
+    @State var completion: Bool = false
+    var body: some View {
+        let store = Firestore.firestore()
+
+
+        VStack {
+            TextField("Task title here...", text: self.$title)
+            Toggle("Completion", isOn: self.$completion)
+            Button(action: {
+                store.collection("tasks").addDocument(data: ["title": self.title, "completion" : self.completion]) { err in
+                    if let err = err {
+                        print("Error adding document: \(err).")
+                    } else {
+                        print("Adding Document successfully.")
+                    }
+                }
+                self.title = ""
+            }, label: {
+                Text("New Task")
+            })
+        }.padding()
+    }
+}
+  #+end_src
+- UI for getting document
+  #+begin_src swift -r -n :results output :exports nil
+
+  #+end_src
+** UI with Firebase [MVVM]
 
 ** 資料來源
 - [[https://www.raywenderlich.com/11609977-getting-started-with-cloud-firestore-and-swiftui][Getting Started with Cloud Firestore and SwiftUI]]
 - [[https://medium.com/%E5%BD%BC%E5%BE%97%E6%BD%98%E7%9A%84-swift-ios-app-%E9%96%8B%E7%99%BC%E5%95%8F%E9%A1%8C%E8%A7%A3%E7%AD%94%E9%9B%86/%E8%AE%80%E5%8F%96-cloud-firestore-%E7%9A%84-database-203bdcdb5661][讀取 Cloud Firestore 的 database]]
+- [[https://cloud.google.com/firestore/docs/query-data/get-data][Getting data]]
 
 * Learning resources
 ** web
