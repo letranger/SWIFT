@@ -255,6 +255,7 @@ service cloud.firestore {
 4. Add Firebase SDKs to your app
 5. Initialize Firebase in your app
 詳組說明參見[[https://firebase.google.com/docs/ios/setup][Firebase Documentation]]
+
 ** Setting up Firebase project: Step by step
 1. Create or open a Firebase project
    Firebase Console: https://console.firebase.google.com/
@@ -297,6 +298,7 @@ target 'FirebaseTask' do
   pod 'Firebase'
   pod 'Firebase/Firestore'
   pod ‘Firebase/Analytics’
+  pod 'FirebaseFirestoreSwift'
 end
 
          #+END_SRC
@@ -417,7 +419,8 @@ struct ContentView: View {
     }
 }
 #+end_src
-** Get data from Cloud Firestore
+
+** Get data from Cloud Firestore: Basic
 *** Getting collection
 - 語法
   #+begin_src swift -r -n :results output :exports nil
@@ -491,49 +494,135 @@ struct ContentView: View {
 }
   #+end_src
 ***
-** UI with Firebase
-- UI for adding document
-  #+begin_src swift -r -n :results output :exports nil
-//  Created by yen yung chin on 2021/3/17.
+
+* Get data from Cloud: UI with Firebase [MVVM]
+** MVVM architecture
+#+CAPTION: MVVM for FirebaseApp
+#+LABEL:fig:MVVM-d2
+#+name: fig:MVVM-d2
+#+ATTR_LATEX: :width 500
+#+ATTR_ORG: :width 500
+#+ATTR_HTML: :width 500
+[[file:images/mvvm-d2.png]]
+** Model
+Task.swift
+#+begin_src swift -r -n :results output :exports nil
+import Foundation
+import FirebaseFirestore
+import FirebaseFirestoreSwift
+
+struct Task: Identifiable, Codable {
+    @DocumentID var id: String?
+    var title: String
+    var completion: Bool
+}
+
+#+end_src
+** View
+TaskListView.swift
+#+begin_src swift -r -n :results output :exports nil
 import SwiftUI
-import Firebase
 
-struct ContentView: View {
-    @State var title: String = ""
-    @State var completion: Bool = false
+struct TaskListView: View {
+    @ObservedObject var taskListVM = TaskListViewModel()
     var body: some View {
-        let store = Firestore.firestore()
-
-
         VStack {
-            TextField("Task title here...", text: self.$title)
-            Toggle("Completion", isOn: self.$completion)
-            Button(action: {
-                store.collection("tasks").addDocument(data: ["title": self.title, "completion" : self.completion]) { err in
-                    if let err = err {
-                        print("Error adding document: \(err).")
-                    } else {
-                        print("Adding Document successfully.")
-                    }
-                }
-                self.title = ""
-            }, label: {
-                Text("New Task")
-            })
-        }.padding()
+            List(taskListVM.taskCellViewModels) { taskCellVM in
+                Text("\(taskCellVM.task.title)")
+            }
+        }
     }
 }
-  #+end_src
-- UI for getting document
+#+end_src
+** ViewModel
+- TaskCellViewModel.swift
   #+begin_src swift -r -n :results output :exports nil
+import Foundation
+import Combine
+
+class TaskCellViewModel: ObservableObject, Identifiable {
+    @Published var task: Task
+
+    private var cancellables = Set<AnyCancellable>()
+    var id = ""
+
+    init(task: Task) {
+        self.task = task
+        $task
+            .compactMap { $0.id }
+            .assign(to: \.id, on: self)
+            .store(in: &cancellables)
+    }
+
+}
 
   #+end_src
-** UI with Firebase [MVVM]
+- TaskListViewModel.swift
+  #+begin_src swift -r -n :results output :exports nil
+import Foundation
+import Combine
+
+class TaskListViewModel: ObservableObject {
+    @Published var taskRepository = TaskRepository()
+    @Published var taskCellViewModels = [TaskCellViewModel]()
+
+    private var cancellables = Set<AnyCancellable>()
+    init() {
+        taskRepository.loadData()
+
+        taskRepository.$tasks.map { tasks in
+            tasks.map(TaskCellViewModel.init)
+        }
+        .assign(to: \.taskCellViewModels, on: self)
+        .store(in: &cancellables)
+    }
+}
+
+  #+end_src
+** Repository
+TaskRepository.swift
+#+begin_src swift -r -n :results output :exports nil
+
+import Foundation
+import FirebaseFirestore
+import FirebaseFirestoreSwift
+import Combine
+
+class TaskRepository: ObservableObject {
+    private let db = Firestore.firestore()
+    @Published var tasks = [Task]()
+
+    func loadData() {
+        db.collection("tasks").addSnapshotListener { (querySanpshot, error) in
+
+            if let error = error {
+                print("錯誤: \(error.localizedDescription)")
+            }
+            // method #1
+            self.tasks = querySanpshot?.documents.compactMap { document in
+                try? document.data(as: Task.self)
+            } ?? []
+
+            // method #2
+            if let querySnapshot = querySanpshot {
+                self.tasks = querySnapshot.documents.compactMap({ (queryDocumentSnapshot) -> Task? in
+                    return try? queryDocumentSnapshot.data(as: Task.self)
+                })
+            }
+        }
+    }
+}
+
+
+#+end_src
 
 ** 資料來源
 - [[https://www.raywenderlich.com/11609977-getting-started-with-cloud-firestore-and-swiftui][Getting Started with Cloud Firestore and SwiftUI]]
 - [[https://medium.com/%E5%BD%BC%E5%BE%97%E6%BD%98%E7%9A%84-swift-ios-app-%E9%96%8B%E7%99%BC%E5%95%8F%E9%A1%8C%E8%A7%A3%E7%AD%94%E9%9B%86/%E8%AE%80%E5%8F%96-cloud-firestore-%E7%9A%84-database-203bdcdb5661][讀取 Cloud Firestore 的 database]]
 - [[https://cloud.google.com/firestore/docs/query-data/get-data][Getting data]]
+- [[https://medium.com/彼得潘的-swift-ios-app-開發問題解答集/利用-firebasefirestoreswift-將-firestore-的資料變成自訂型別-89f33c852018][利用 FirebaseFirestoreSwift 將 Firestore 的資料變成自訂型別]]
+- [[https://peterfriese.dev/swiftui-firebase-codable/][SwiftUI: Mapping Firestore Documents using Swift Codable]]
+- [[https://peterfriese.dev/swiftui-firebase-fetch-data/][SwiftUI: Fetching Data from Firestore in Real Time]]
 
 * Learning resources
 :PROPERTIES:
@@ -545,6 +634,7 @@ struct ContentView: View {
 ** Videos
 - [[https://www.youtube.com/watch?v=4RUeW5rUcww][Building a to-do list app with SwiftUI and Firebase - Part 1]]
 - [[https://www.youtube.com/watch?v=2k6_Mi2ERWc][Building a Todo List App Using Firebase and SwiftUI - Part 2 ]]
+- [[https://www.youtube.com/watch?v=HDde7TqKCpk][Build a to-do list app w/ SwiftUI & Firebase - Pt 2: Firestore & Anonymous Auth]]
 - https://www.youtube.com/watch?v=elhzkcoBl-A
 - https://www.youtube.com/watch?v=9VpaaJ3eLWk&list=PLY_qIufNHc292EYDwe3B6sGYO_vQ7pOLx&index=8
 - https://www.hackingwithswift.com/books/ios-swiftui/creating-a-form
