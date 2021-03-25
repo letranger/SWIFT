@@ -257,6 +257,7 @@ service cloud.firestore {
 詳組說明參見[[https://firebase.google.com/docs/ios/setup][Firebase Documentation]]
 
 ** Setting up Firebase project: Step by step
+*** Create/Register
 1. Create or open a Firebase project
    Firebase Console: https://console.firebase.google.com/
 2. Add Firebase to your iOS app
@@ -266,6 +267,8 @@ service cloud.firestore {
       - App Store ID (optional)
    2) Download config file
       this config file (GoogleService-info.plist) will be added to your project
+*** Install SDKs
+**** Method #1: CocoaPods
 3. Add Firebase SDKs
    1) Create a Podfile
       a. open Terminal app
@@ -310,9 +313,66 @@ end
 pod install
       #+END_SRC
       and then wait......
-4. Open your project (xcworkspace)
-5. add config file (GoogleService-info.plist) to your project
-6. Add initialization code
+**** Method #2: Swift Package Manager for Firebase
+1) If you've previously used CocoaPods, remove them from the project with pod deintegrate.
+2) Install Firebase via Swift Package Manager:
+   #+CAPTION: Install Firebase SDK #1
+   #+LABEL:fig:sdk-1
+   #+name: fig:sdk-1
+   #+ATTR_LATEX: :width 300
+   #+ATTR_ORG: :width 300
+   #+ATTR_HTML: :width 500
+   [[file:images/sdk-1.jpg]]
+3) Select the Firebase GitHub repository
+   ios sdk URL: https://github.com/firebase/firebase-ios-sdk.git:
+   #+CAPTION: Install Firebase SDK #2
+   #+LABEL:fig:sdk-2
+   #+name: fig:sdk-2
+   #+name: fig:FigName
+   #+ATTR_LATEX: :width 300
+   #+ATTR_ORG: :width 300
+   #+ATTR_HTML: :width 500
+   [[file:images/sdk-2.jpg]]
+4) Select the Branch: maser
+   #+CAPTION: Install Firebase SDK #3
+   #+LABEL:fig:sdk-3
+   #+name: fig:sdk-3
+   #+name: fig:FigName
+   #+ATTR_LATEX: :width 300
+   #+ATTR_ORG: :width 300
+   #+ATTR_HTML: :width 500
+   [[file:images/sdk-3.jpg]]
+5) Wait about 2000 years
+   #+CAPTION: Install Firebase SDK #3
+   #+LABEL:fig:sdk-3
+   #+name: fig:sdk-3
+   #+name: fig:FigName
+   #+ATTR_LATEX: :width 300
+   #+ATTR_ORG: :width 300
+   #+ATTR_HTML: :width 500
+   [[file:images/sdk-3.jpg]]
+6) Choose the Firebase products that you want installed in your app.
+   #+CAPTION: Install Firebase SDK #4
+   #+LABEL:fig:sdk-4
+   #+name: fig:sdk-4
+   #+name: fig:FigName
+   #+ATTR_LATEX: :width 300
+   #+ATTR_ORG: :width 300
+   #+ATTR_HTML: :width 500
+   [[file:images/sdk-4.jpg]]
+7) DEMO
+   #+CAPTION: Install Firebase SDK #DEMO
+   #+LABEL:fig:sdk-DEOM
+   #+name: fig:sdk-DEOM
+   #+name: fig:FigName
+   #+ATTR_LATEX: :width 300
+   #+ATTR_ORG: :width 300
+   #+ATTR_HTML: :width 500
+   [[file:images/sdk.gif]]
+**** Initialize Project
+1. Open your project (xcworkspace)
+2. add config file (GoogleService-info.plist) to your project
+3. Add initialization code
    #+begin_src swift -r -n :results output :exports nil
 import Firebase
    #+end_src
@@ -332,7 +392,7 @@ struct FirebaseTaskApp: App {
         }
     }
 }
-   #+end_src
+  #+end_src
 
 ** 資料來源
 - [[https://1998design.medium.com/%E5%A6%82%E4%BD%95-%E5%B0%87firebase%E5%8A%A0%E5%85%A5ios-swiftui-2-2020-d4315d0173ca][如何：將Firebase加入iOS SwiftUI 2 (2020)]]
@@ -341,6 +401,7 @@ struct FirebaseTaskApp: App {
 :PROPERTIES:
 :CUSTOM_ID: SW-Firebase-BasicOperations
 :END:
+- Important: Check/Edit the rules of your Cloud Firestore before connecting to it.
 Create a button on View for trying the following function
 ** Add document
 *** create a document with specific document ID
