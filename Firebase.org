@@ -499,6 +499,7 @@ import Firebase
 struct ContentView: View {
     var body: some View {
         let store = Firestore.firestore()
+        // 這個Firebase資料庫物件為日後存取、增刪Firebase資火木卜
         Button(action: {
             store.collection("tasks").getDocuments { (querySnapshot, error) in
                 if let querySnapshot = querySnapshot {
@@ -554,7 +555,6 @@ struct ContentView: View {
     }
 }
   #+end_src
-***
 
 * Get data from Cloud: UI with Firebase [MVVM]
 ** MVVM architecture
@@ -685,6 +685,111 @@ class TaskRepository: ObservableObject {
 - [[https://peterfriese.dev/swiftui-firebase-codable/][SwiftUI: Mapping Firestore Documents using Swift Codable]]
 - [[https://peterfriese.dev/swiftui-firebase-fetch-data/][SwiftUI: Fetching Data from Firestore in Real Time]]
 
+* Add/Delete data from Cloud: UI with Firebase [MVVM]
+** Repository
+TaskRepository.swift
+#+begin_src python -r -n :results output :exports both
+func add(task: Task) {
+        do {
+            _ = try db.collection("todo").addDocument(from: task)
+        } catch {
+            fatalError("Add a task failed")
+        }
+    }
+
+    func delete(indexset: IndexSet) {
+        for i in indexset {
+            print(i)
+        }
+        indexset.forEach { index in
+            let task = tasks[index]
+            db.collection("todo").document(task.id!).delete() { error in
+                if let error = error {
+                    fatalError("Deleting a task failed, \(error.localizedDescription)")
+                }
+
+            }
+        }
+    }
+#+end_src
+** View
+TaskListView.swift
+#+begin_src python -r -n :results output :exports both
+//
+//  ContentView.swift
+//  FireTask
+//
+//  Created by yen yung chin on 2021/3/31.
+//
+
+import SwiftUI
+
+struct TaskListView: View {
+    @ObservedObject var taskListVM = TaskListViewModel()
+    @State var title: String = ""
+    var body: some View {
+        NavigationView {
+            VStack {
+                TextField("Task Title", text: $title)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+
+                Button(action: {
+                    let task = Task(title: title, completed: false)
+                    taskListVM.add(task: task)
+                }, label: {
+                    Text("Add Task")
+                })
+                Form {
+                    ForEach(taskListVM.taskCellViewModels) { taskCellVM in
+                        Text("\(taskCellVM.task.title)")
+                    }
+                    .onDelete(perform: { indexSet in
+                        taskListVM.delete(indexset: indexSet)
+                    })
+                }
+                .navigationBarTitle(Text("Task Manager"), displayMode: .inline)
+            }
+        }.padding()
+    }
+}
+
+#+end_src
+** ViewModel
+TaskListViewModel.swift
+#+begin_src python -r -n :results output :exports both
+//
+//  TaskListViewModel.swift
+//  FireTask
+//
+//  Created by yen yung chin on 2021/4/1.
+//
+import Foundation
+import Combine
+
+class TaskListViewModel: ObservableObject {
+    @Published var taskRepository = TaskRepository()
+    @Published var taskCellViewModels = [TaskCellViewModel]()
+
+    private var cancellables = Set<AnyCancellable>()
+    init() {
+        taskRepository.loadData()
+        // 讀取Firebase docs後，轉換id，以taskCellViewModel陣列儲存
+        taskRepository.$tasks.map { tasks in
+            tasks.map(TaskCellViewModel.init)
+        }
+        .assign(to: \.taskCellViewModels, on: self)
+        .store(in: &cancellables)
+    }
+
+    func add(task: Task) {
+        taskRepository.add(task: task)
+    }
+
+    func delete(indexset: IndexSet) {
+        taskRepository.delete(indexset: indexset)
+    }
+}
+#+end_src
 * Learning resources
 :PROPERTIES:
 :CUSTOM_ID: SW-Firebase-LearningResource
