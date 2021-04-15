@@ -557,6 +557,9 @@ struct ContentView: View {
   #+end_src
 
 * Get data from Cloud: UI with Firebase [MVVM]
+:PROPERTIES:
+:CUSTOM_ID: SW-GetDataFromCloud
+:END:
 ** MVVM architecture
 #+CAPTION: MVVM for FirebaseApp
 #+LABEL:fig:MVVM-d2
@@ -685,7 +688,7 @@ class TaskRepository: ObservableObject {
 - [[https://peterfriese.dev/swiftui-firebase-codable/][SwiftUI: Mapping Firestore Documents using Swift Codable]]
 - [[https://peterfriese.dev/swiftui-firebase-fetch-data/][SwiftUI: Fetching Data from Firestore in Real Time]]
 
-* Add/Delete data from Cloud: UI with Firebase [MVVM]
+* Add, Delete #1 data from Cloud: UI with Firebase [MVVM]
 ** Repository
 TaskRepository.swift
 #+begin_src python -r -n :results output :exports both
@@ -698,6 +701,7 @@ func add(task: Task) {
     }
 
     func delete(indexset: IndexSet) {
+        // Just show what does indexset contain
         for i in indexset {
             print(i)
         }
@@ -738,7 +742,7 @@ struct TaskListView: View {
                     taskListVM.add(task: task)
                 }, label: {
                     Text("Add Task")
-                })
+                }).disabled(title == "") // trick 
                 Form {
                     ForEach(taskListVM.taskCellViewModels) { taskCellVM in
                         Text("\(taskCellVM.task.title)")
@@ -786,10 +790,492 @@ class TaskListViewModel: ObservableObject {
     }
 
     func delete(indexset: IndexSet) {
+        // pass indexSet
         taskRepository.delete(indexset: indexset)
     }
 }
 #+end_src
+
+* Delete #2 data from Cloud: UI with Firebase [MVVM]
+** Repository
+#+begin_src python -r -n :results output :exports both
+//
+//  TaskRepository.swift
+//  FireTask
+//
+//  Created by yen yung chin on 2021/4/1.
+//
+
+
+import Foundation
+import FirebaseFirestore
+import FirebaseFirestoreSwift
+import Combine
+
+class TaskRepository: ObservableObject {
+    private let db = Firestore.firestore()
+    @Published var tasks = [Task]()
+    func loadData() {
+
+        db.collection("todo").addSnapshotListener { (querySanpshot, error) in
+
+            if let error = error {
+                print("錯誤: \(error.localizedDescription)")
+            }
+            // method #1
+            self.tasks = querySanpshot?.documents.compactMap { document in
+                try? document.data(as: Task.self)
+            } ?? []
+
+            // method #2
+            if let querySnapshot = querySanpshot {
+                self.tasks = querySnapshot.documents.compactMap({ (queryDocumentSnapshot) -> Task? in
+                    return try? queryDocumentSnapshot.data(as: Task.self)
+                })
+            }
+        }
+    }
+
+    func add(task: Task) {
+        do {
+            _ = try db.collection("todo").addDocument(from: task)
+        } catch {
+            fatalError("Add a task failed")
+        }
+    }
+
+    func delete(indexset: IndexSet) {
+        // pass in IndexSet
+        for i in indexset {
+            print(i)
+        }
+        indexset.forEach { index in
+            let task = tasks[index]
+            db.collection("todo").document(task.id!).delete() { error in
+                if let error = error {
+                    fatalError("Deleting a task failed, \(error.localizedDescription)")
+                }
+
+            }
+        }
+    }
+
+    func delete(task: Task) {
+        // pass in Task
+        guard let documentID = task.id else { return }
+        db.collection("todo").document(documentID).delete { error in
+            if let error = error {
+                print("Deleteing a task failed, \(error.localizedDescription)")
+            }
+        }
+    }
+}
+
+
+#+end_src
+** View
+#+begin_src python -r -n :results output :exports both
+//
+//  ContentView.swift
+//  FireTask
+//
+//  Created by yen yung chin on 2021/3/31.
+//
+
+import SwiftUI
+
+struct TaskListView: View {
+    @ObservedObject var taskListVM = TaskListViewModel()
+    @State var title: String = ""
+    var body: some View {
+        NavigationView {
+            VStack {
+                TextField("Task Title", text: $title)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+
+                Button(action: {
+                    let task = Task(title: title, completed: false)
+                    taskListVM.add(task: task)
+                }, label: {
+                    Text("Add Task")
+                })
+                Form {
+                    ForEach(taskListVM.taskCellViewModels) { taskCellVM in
+                        Text("\(taskCellVM.task.title)")
+                    }
+                    .onDelete(perform: { indexSet in
+                        indexSet.map {
+                            taskListVM.taskCellViewModels[$0].task
+                        }.forEach(taskListVM.delete(task:))
+                    })
+                }
+                .navigationBarTitle(Text("Task Manager"), displayMode: .inline)
+            }
+        }.padding()
+    }
+}
+
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        TaskListView()
+    }
+}
+
+#+end_src
+** ViewModel
+#+begin_src python -r -n :results output :exports both
+//
+//  TaskListViewModel.swift
+//  FireTask
+//
+//  Created by yen yung chin on 2021/4/1.
+//
+import Foundation
+import Combine
+
+class TaskListViewModel: ObservableObject {
+    @Published var taskRepository = TaskRepository()
+    @Published var taskCellViewModels = [TaskCellViewModel]()
+
+    private var cancellables = Set<AnyCancellable>()
+    init() {
+        taskRepository.loadData()
+        // 讀取Firebase docs後，轉換id，以taskCellViewModel陣列儲存
+        taskRepository.$tasks.map { tasks in
+            tasks.map(TaskCellViewModel.init)
+        }
+        .assign(to: \.taskCellViewModels, on: self)
+        .store(in: &cancellables)
+    }
+
+    func add(task: Task) {
+        taskRepository.add(task: task)
+    }
+
+    func delete(indexset: IndexSet) {
+        taskRepository.delete(indexset: indexset)
+    }
+
+    func delete(task: Task) {
+        taskRepository.delete(task: task)
+    }
+}
+
+#+end_src
+
+* Detail/Edit data from Cloud: UI with Firebase [MVVM]
+** Repository
+TaskRepository.swift
+#+begin_src python -r -n :results output :exports both
+//
+//  TaskRepository.swift
+//  FireTask
+//
+//  Created by yen yung chin on 2021/4/1.
+//
+
+
+import Foundation
+import FirebaseFirestore
+import FirebaseFirestoreSwift
+import Combine
+
+class TaskRepository: ObservableObject {
+    private let db = Firestore.firestore()
+    @Published var tasks = [Task]()
+    func loadData() {
+
+        db.collection("todo").addSnapshotListener { (querySanpshot, error) in
+
+            if let error = error {
+                print("錯誤: \(error.localizedDescription)")
+            }
+            // method #1
+            self.tasks = querySanpshot?.documents.compactMap { document in
+                try? document.data(as: Task.self)
+            } ?? []
+
+            // method #2
+            if let querySnapshot = querySanpshot {
+                self.tasks = querySnapshot.documents.compactMap({ (queryDocumentSnapshot) -> Task? in
+                    return try? queryDocumentSnapshot.data(as: Task.self)
+                })
+            }
+        }
+    }
+
+    func add(task: Task) {
+        do {
+            _ = try db.collection("todo").addDocument(from: task)
+        } catch {
+            fatalError("Add a task failed")
+        }
+    }
+
+    func delete(indexset: IndexSet) {
+        // pass in IndexSet
+        for i in indexset {
+            print(i)
+        }
+        indexset.forEach { index in
+            let task = tasks[index]
+            db.collection("todo").document(task.id!).delete() { error in
+                if let error = error {
+                    fatalError("Deleting a task failed, \(error.localizedDescription)")
+                }
+
+            }
+        }
+    }
+
+    func delete(task: Task) {
+        // pass in Task
+        guard let documentID = task.id else { return }
+        db.collection("todo").document(documentID).delete { error in
+            if let error = error {
+                print("Deleteing a task failed, \(error.localizedDescription)")
+            }
+        }
+    }
+
+    func update(task: Task) {
+        guard let documentID = task.id else {return}
+        do {
+            try db.collection("todo").document(documentID).setData(from: task)
+        } catch {
+            fatalError("Update a task failed, \(error.localizedDescription)")
+        }
+    }
+}
+#+end_src
+** View
+*** TaskListView.swift
+#+begin_src python -r -n :results output :exports both
+//
+//  ContentView.swift
+//  FireTask
+//
+//  Created by yen yung chin on 2021/3/31.
+//
+
+import SwiftUI
+
+struct TaskListView: View {
+    @ObservedObject var taskListVM = TaskListViewModel()
+    @State var title: String = ""
+    var body: some View {
+        NavigationView {
+            VStack {
+                TextField("Task Title", text: $title)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+
+                Button(action: {
+                    let task = Task(title: title, completed: false)
+                    taskListVM.add(task: task)
+                }, label: {
+                    Text("Add Task")
+                }).disabled(title == "")
+                Form {
+                    ForEach(taskListVM.taskCellViewModels) { taskCellVM in
+                        NavigationLink(
+                            destination: TaskDetailView(taskCellVM: taskCellVM),
+                            label: {
+                                Text("\(taskCellVM.task.title)")
+                            })
+                    }
+                    .onDelete(perform: { indexSet in
+                        // taskListVM.delete(indexset: indexSet)
+                        indexSet.map {
+                            taskListVM.taskCellViewModels[$0].task
+                        }.forEach(taskListVM.delete(task:))
+                    })
+                }
+                .navigationBarTitle(Text("Task Manager"), displayMode: .inline)
+            }
+        }
+    }
+}
+
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        TaskListView()
+    }
+}
+
+#+end_src
+*** TaskDetailView.swift
+#+begin_src python -r -n :results output :exports both
+//
+//  TaskCellView.swift
+//  FireTask
+//
+//  Created by yen yung chin on 2021/4/3.
+//
+
+import SwiftUI
+
+struct TaskDetailView: View {
+    @ObservedObject var taskCellVM: TaskCellViewModel
+
+
+    var body: some View {
+        NavigationView {
+            Form {
+                Section(header: Text("Task")) {
+                    Text(taskCellVM.task.title)
+
+                }
+                Section(header: Text("Done")) {
+                    Text(taskCellVM.task.completed ? "Completed" : "Not Yet" )
+                }
+            }
+            .navigationBarTitle("Detail")
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarItems(trailing: NavigationLink(
+                                    destination: UpdateTaskView(taskCellVM: taskCellVM),
+                                    label: {
+                                        Text("Update")
+                                    }))
+        }
+    }
+}
+
+struct TaskCellView_Previews: PreviewProvider {
+
+    static var previews: some View {
+        TaskDetailView(taskCellVM: TaskCellViewModel(task: Task(id: "", title: "", completed: false)))
+    }
+}
+
+#+end_src
+*** UpdateListView.swift
+#+begin_src python -r -n :results output :exports both
+//
+//  UpdateTaskView.swift
+//  FireTask
+//
+//  Created by yen yung chin on 2021/4/3.
+//
+
+import SwiftUI
+
+struct UpdateTaskView: View {
+    @ObservedObject var taskCellVM: TaskCellViewModel
+    @Environment(\.presentationMode) var presentationMode
+    var body: some View {
+        Form {
+            Section(header: Text("Updage detail")) {
+                TextField("title", text: $taskCellVM.task.title)
+            }
+            Section(header: Text("Done")) {
+                Toggle("Task Completed", isOn: $taskCellVM.task.completed)
+            }
+            Button(action: {
+                taskCellVM.update(task: taskCellVM.task)
+                self.presentationMode.wrappedValue.dismiss()
+            }, label: {
+                Text("Update")
+            })
+        }
+        .navigationBarTitle("Updating")
+        .navigationBarTitleDisplayMode(.inline)
+    }
+}
+
+struct UpdateTaskView_Previews: PreviewProvider {
+    static var previews: some View {
+        UpdateTaskView(taskCellVM: TaskCellViewModel(task: Task(id: "", title: "", completed: false)))
+    }
+}
+
+#+end_src
+** ViewModel
+*** TaskListViewModel.swift
+#+begin_src python -r -n :results output :exports both
+//
+//  TaskListViewModel.swift
+//  FireTask
+//
+//  Created by yen yung chin on 2021/4/1.
+//
+import Foundation
+import Combine
+
+class TaskListViewModel: ObservableObject {
+    @Published var taskRepository = TaskRepository()
+    @Published var taskCellViewModels = [TaskCellViewModel]()
+
+    private var cancellables = Set<AnyCancellable>()
+    init() {
+        taskRepository.loadData()
+        // 讀取Firebase docs後，轉換id，以taskCellViewModel陣列儲存
+        taskRepository.$tasks.map { tasks in
+            tasks.map(TaskCellViewModel.init)
+        }
+        .assign(to: \.taskCellViewModels, on: self)
+        .store(in: &cancellables)
+    }
+
+    func add(task: Task) {
+        taskRepository.add(task: task)
+    }
+
+    func delete(indexset: IndexSet) {
+        taskRepository.delete(indexset: indexset)
+    }
+
+    func delete(task: Task) {
+        taskRepository.delete(task: task)
+    }
+
+    func update(task: Task) {
+        taskRepository.update(task: task)
+    }
+}
+#+end_src
+*** TaskCellViewModel.swift
+#+begin_src python -r -n :results output :exports both
+//
+//  TaskCellViewModel.swift
+//  FireTask
+//
+//  Created by yen yung chin on 2021/4/1.
+//
+
+import Foundation
+import Combine
+
+class TaskCellViewModel: ObservableObject, Identifiable {
+    @Published var task: Task
+    @Published var taskRepository = TaskRepository()
+    private var cancellables = Set<AnyCancellable>()
+    var id = ""
+    // 把Firestore document的id轉換成model struct的欄位
+    init(task: Task) {
+        self.task = task
+        $task
+            .compactMap { $0.id }
+            .assign(to: \.id, on: self)
+            .store(in: &cancellables)
+    }
+
+    func update(task: Task) {
+        taskRepository.update(task: task)
+    }
+}
+#+end_src
+*** DEMO
+#+CAPTION: Detail / Edit DEMO
+#+LABEL:fig:Detail-Edit-Demo
+#+name: fig:Detail-Edit-Demo
+#+ATTR_LATEX: :width 300
+#+ATTR_ORG: :width 300
+#+ATTR_HTML: :width 300
+[[file:images/Update-Edit.gif]]
+
+
 * Learning resources
 :PROPERTIES:
 :CUSTOM_ID: SW-Firebase-LearningResource
