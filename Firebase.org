@@ -499,7 +499,7 @@ import Firebase
 struct ContentView: View {
     var body: some View {
         let store = Firestore.firestore()
-        // 這個Firebase資料庫物件為日後存取、增刪Firebase資火木卜
+        // 這個Firebase資料庫物件為日後存取、增刪Firebase資料
         Button(action: {
             store.collection("tasks").getDocuments { (querySnapshot, error) in
                 if let querySnapshot = querySnapshot {
@@ -662,13 +662,9 @@ class TaskRepository: ObservableObject {
             if let error = error {
                 print("錯誤: \(error.localizedDescription)")
             }
-            // method #1
-            self.tasks = querySanpshot?.documents.compactMap { document in
-                try? document.data(as: Task.self)
-            } ?? []
 
-            // method #2
             if let querySnapshot = querySanpshot {
+                // 把Firebase傳回來的documents轉為程式所需的Model
                 self.tasks = querySnapshot.documents.compactMap({ (queryDocumentSnapshot) -> Task? in
                     return try? queryDocumentSnapshot.data(as: Task.self)
                 })
