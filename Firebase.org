@@ -685,6 +685,9 @@ class TaskRepository: ObservableObject {
 - [[https://peterfriese.dev/swiftui-firebase-fetch-data/][SwiftUI: Fetching Data from Firestore in Real Time]]
 
 * Add, Delete #1 data from Cloud: UI with Firebase [MVVM]
+:PROPERTIES:
+:CUSTOM_ID: SW-Delete
+:END:
 ** Repository
 TaskRepository.swift
 #+begin_src python -r -n :results output :exports both
@@ -961,6 +964,9 @@ class TaskListViewModel: ObservableObject {
 #+end_src
 
 * Detail/Edit data from Cloud: UI with Firebase [MVVM]
+:PROPERTIES:
+:CUSTOM_ID: SW-Detail
+:END:
 ** Repository
 TaskRepository.swift
 #+begin_src python -r -n :results output :exports both
@@ -1274,6 +1280,9 @@ class TaskCellViewModel: ObservableObject, Identifiable {
 [[file:images/Update-Edit.gif]]
 
 * Add Icon to App
+:PROPERTIES:
+:CUSTOM_ID: SW-Icon
+:END:
 ** ViewModel
 *** TaskCellViewModel.swift
 #+begin_src swift -r -n :results output :exports nil
@@ -1380,6 +1389,11 @@ struct ContentView_Previews: PreviewProvider {
 #+end_src
 
 * Storage
+** preparation
+1. Add Firebase/Strage Library
+2. Restart Xcode
+3. Check if you can import FirebaseStorage
+** 
 
 * Learning resources
 :PROPERTIES:
