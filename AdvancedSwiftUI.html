@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-03-16 Tue 19:31 -->
+<!-- 2021-04-26 Mon 15:53 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Advanced Swift Ui</title>
@@ -233,241 +233,95 @@
 <ul>
 <li><a href="#SW-MVVM">1. MVVM</a>
 <ul>
-<li><a href="#org05156d5">1.1. Design pattern</a></li>
-<li><a href="#org67f52bd">1.2. What is the idea behind MVVM</a>
-<ul>
-<li><a href="#org44d23da">1.2.1. Model</a></li>
-<li><a href="#org27f1756">1.2.2. View</a></li>
-<li><a href="#org83a4f30">1.2.3. ViewModel</a></li>
-<li><a href="#org09c05ba">1.2.4. 為什麼要拆成三部份(What does it solve?)</a></li>
-<li><a href="#org34c565e">1.2.5. Limitations / Cons</a></li>
-</ul>
-</li>
-<li><a href="#orgce8b3c5">1.3. DEMO</a></li>
-<li><a href="#org378a6ca">1.4. Model 要用 Struct 或是 Class</a>
-<ul>
-<li><a href="#org274057b">1.4.1. Struct 與 Class 的不同性質</a></li>
-<li><a href="#orgb0694ce">1.4.2. MVVM 中的 Model</a></li>
-</ul>
-</li>
-<li><a href="#orgcd47e2f">1.5. DICE DEMO</a></li>
-<li><a href="#org57bc863">1.6. Further Reading Resources</a></li>
+<li><a href="#org84e4910">1.1. Design pattern</a></li>
+<li><a href="#org258b8f7">1.2. What is the idea behind MVVM</a></li>
+<li><a href="#orgf9ad0c6">1.3. DEMO</a></li>
+<li><a href="#orgbdd58c6">1.4. Model 要用 Struct 或是 Class</a></li>
+<li><a href="#orgdb18d24">1.5. DICE DEMO</a></li>
+<li><a href="#org25efd2e">1.6. Further Reading Resources</a></li>
 </ul>
 </li>
 <li><a href="#SW-Review">2. Review</a>
 <ul>
-<li><a href="#orgc51f630">2.1. Data Model</a></li>
-<li><a href="#orge2ae554">2.2. Basic UI</a>
-<ul>
-<li><a href="#orgb6cf490">2.2.1. Change struct name (ContentView.swift)</a></li>
-<li><a href="#org746a60f">2.2.2. classify files into the following group</a></li>
-<li><a href="#org225e3f8">2.2.3. Create basic UI</a>
-<ul>
-<li><a href="#org1509572">2.2.3.1. TaskListView.swift</a></li>
-<li><a href="#org6a41690">2.2.3.2. Extract the task cell</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#org2cb836c">2.3. MVVM</a>
-<ul>
-<li><a href="#org78e6467">2.3.1. ViewModel</a>
-<ul>
-<li><a href="#orge692f83">2.3.1.1. Diagram for now</a></li>
-<li><a href="#orga357261">2.3.1.2. Model for the future</a></li>
-<li><a href="#org231757c">2.3.1.3. TaskCellViewModel</a></li>
-<li><a href="#orgc862966">2.3.1.4. TaskListViewModel</a></li>
-</ul>
-</li>
-<li><a href="#orgdb7b59e">2.3.2. View</a></li>
-</ul>
-</li>
-<li><a href="#orgc8fdd15">2.4. New task</a>
-<ul>
-<li><a href="#orgf41a45f">2.4.1. View</a>
-<ul>
-<li><a href="#org54afe28">2.4.1.1. NewTaskView.swift</a></li>
-<li><a href="#org708b98d">2.4.1.2. TaskListView.swift</a></li>
-</ul>
-</li>
-<li><a href="#org2cdbefb">2.4.2. ViewModel</a>
-<ul>
-<li><a href="#org14111b5">2.4.2.1. TaskListViewModel.swift</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#org7bd4c4d">2.5. Delete task</a>
-<ul>
-<li><a href="#org507b800">2.5.1. View</a>
-<ul>
-<li><a href="#orgbdbe361">2.5.1.1. TaskListView.swift</a></li>
-</ul>
-</li>
-<li><a href="#org93a9b5b">2.5.2. ViewModel</a>
-<ul>
-<li><a href="#org10fa0c3">2.5.2.1. TaskListViewModel.swift</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#org305fad7">2.6. enum v.s. picker</a>
-<ul>
-<li><a href="#org5ba70c8">2.6.1. Model</a>
-<ul>
-<li><a href="#org7041ef2">2.6.1.1. Model.swift</a></li>
-</ul>
-</li>
-<li><a href="#org34f83a8">2.6.2. View</a>
-<ul>
-<li><a href="#orgb090146">2.6.2.1. TaskListView.swift</a></li>
-<li><a href="#org4ec271d">2.6.2.2. NewTaskView.swift</a></li>
-</ul>
-</li>
-<li><a href="#org3b734ea">2.6.3. ViewModel</a>
-<ul>
-<li><a href="#org3d4a96b">2.6.3.1. TaskCellViewModel.swift</a></li>
-</ul>
-</li>
-<li><a href="#org9bd47fe">2.6.4. 結果</a></li>
-</ul>
-</li>
-<li><a href="#SW-onTapGesture">2.7. Tap on Icon to change completion and priority status</a>
-<ul>
-<li><a href="#orgfbcb934">2.7.1. View</a>
-<ul>
-<li><a href="#org643031a">2.7.1.1. TaskListView.swift</a></li>
-</ul>
-</li>
-<li><a href="#org5c08ba2">2.7.2. ViewModel</a>
-<ul>
-<li><a href="#orgac2b86b">2.7.2.1. TaskCellViewModel.swift</a></li>
-<li><a href="#org7c7f912">2.7.2.2. 結果</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li><a href="#org66f9116">2.1. Data Model</a></li>
+<li><a href="#org038c5d6">2.2. Basic UI</a></li>
+<li><a href="#orgc22d52f">2.3. MVVM</a></li>
+<li><a href="#orgba39b53">2.4. New task</a></li>
+<li><a href="#orgcbac35e">2.5. Delete task</a></li>
+<li><a href="#org4f37a48">2.6. enum v.s. picker</a></li>
+<li><a href="#SW-onTapGesture">2.7. Tap on Icon to change completion and priority status</a></li>
 </ul>
 </li>
 <li><a href="#SW-AdvFuncs">3. Advance function</a>
 <ul>
-<li><a href="#orgf8073f6">3.1. filter()</a>
-<ul>
-<li><a href="#org2cf975b">3.1.1. 在 closure 回傳每個元素使否符合判斷式的結果，決定最後 filter() 回傳的元素集合。</a></li>
-<li><a href="#org940ba75">3.1.2. 將一、三象限的點過濾出來</a></li>
+<li><a href="#org018c5d0">3.1. filter()</a></li>
+<li><a href="#org874fc10">3.2. map()</a></li>
+<li><a href="#orge6072e6">3.3. debounce</a></li>
 </ul>
 </li>
-<li><a href="#orgf3d4d1b">3.2. map()</a>
+<li><a href="#org2aa3978">4. Web API: URLSession v.s. JSONDecoder</a>
 <ul>
-<li><a href="#org1f216f3">3.2.1. 透過map()將整數陣列轉化成兩倍數值與字串的陣列。</a>
-<ul>
-<li><a href="#orgeb63e86">3.2.1.1. map()如何將一組二度空間的點對 X 軸與 Y 軸做鏡射。</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#org93d7d4a">3.3. debounce</a>
-<ul>
-<li><a href="#org2df6302">3.3.1. Example</a>
-<ul>
-<li><a href="#org9a82f1d">3.3.1.1. UI</a></li>
-<li><a href="#org4cf0ef8">3.3.1.2. ViewModel</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#org3901180">4. Web API: URLSession v.s. JSONDecoder</a>
-<ul>
-<li><a href="#orgfd768a0">4.1. Demo 1</a>
-<ul>
-<li><a href="#org2e9a1f7">4.1.1. ContentView.swift</a></li>
-</ul>
-</li>
-<li><a href="#org264c7dd">4.2. Demo 2</a>
-<ul>
-<li><a href="#org03378f3">4.2.1. MVVM</a></li>
-<li><a href="#orged62a76">4.2.2. FlowModel.swift</a></li>
-<li><a href="#org4ccb5d2">4.2.3. ContentView.swift</a></li>
-<li><a href="#org62a1a69">4.2.4. Flow.swift</a></li>
-<li><a href="#org6a19412">4.2.5. Result</a></li>
-</ul>
-</li>
-<li><a href="#orgac1d053">4.3. 公開資料平台</a></li>
-<li><a href="#org171ac75">4.4. Further Reading</a></li>
+<li><a href="#org352ec18">4.1. Demo 1</a></li>
+<li><a href="#org437427d">4.2. Demo 2</a></li>
+<li><a href="#orgcbb976b">4.3. 公開資料平台</a></li>
+<li><a href="#org2fdbaea">4.4. Further Reading</a></li>
 </ul>
 </li>
 <li><a href="#SW-Protocols">5. Protocols</a>
 <ul>
-<li><a href="#org8b2a78c">5.1. Protocol Syntax</a>
-<ul>
-<li><a href="#orgd26cc97">5.1.1. Syntax</a></li>
-<li><a href="#orgece199a">5.1.2. DEMO</a></li>
-<li><a href="#org20bb4a9">5.1.3. Adding property requirements</a></li>
-<li><a href="#orga606b35">5.1.4. Protocols with mutating methods</a></li>
-<li><a href="#orgd329e69">5.1.5. Initializer Requirements</a></li>
-</ul>
-</li>
-<li><a href="#orgd149143">5.2. DEMO</a></li>
-<li><a href="#org3e4a345">5.3. 範例</a>
-<ul>
-<li><a href="#org9d0e7b9">5.3.1. 版本 1</a></li>
-<li><a href="#orgb3f1622">5.3.2. 版本 2</a></li>
-<li><a href="#orgcc420d4">5.3.3. 版本 3</a></li>
-</ul>
-</li>
-<li><a href="#org2e919cc">5.4. mutating</a></li>
-<li><a href="#org0310af8">5.5. 擴充 protocol</a></li>
-<li><a href="#org34d9de7">5.6. Further Reading</a></li>
+<li><a href="#orgf44198f">5.1. Protocol Syntax</a></li>
+<li><a href="#org37e2424">5.2. DEMO</a></li>
+<li><a href="#org2681f46">5.3. 範例</a></li>
+<li><a href="#org4e755cc">5.4. mutating</a></li>
+<li><a href="#org5a01025">5.5. 擴充 protocol</a></li>
+<li><a href="#org3315b87">5.6. Further Reading</a></li>
 </ul>
 </li>
 <li><a href="#SW-enum">6. Enum</a>
 <ul>
-<li><a href="#org2c044bd">6.1. without enum</a></li>
-<li><a href="#org7ef3ce9">6.2. with enum</a></li>
-<li><a href="#org7cedde6">6.3. enum的rawValue</a></li>
-<li><a href="#org0f66a9a">6.4. enum v.s. switch</a></li>
-<li><a href="#org51a5c20">6.5. Swift列舉中最強大的功能之一：associated values</a></li>
+<li><a href="#orgdd0741c">6.1. without enum</a></li>
+<li><a href="#org622e8cc">6.2. with enum</a></li>
+<li><a href="#org59fed92">6.3. enum的rawValue</a></li>
+<li><a href="#orgb7ecc40">6.4. enum v.s. switch</a></li>
+<li><a href="#org95f51d8">6.5. Swift列舉中最強大的功能之一：associated values</a></li>
 </ul>
 </li>
-<li><a href="#orgf43c34e">7. Struct v.s. Class</a>
+<li><a href="#org0b92072">7. Struct v.s. Class</a>
 <ul>
-<li><a href="#org3f333bd">7.1. What is in class/struct</a>
+<li><a href="#orga1a4020">7.1. What is in class/struct</a></li>
+<li><a href="#org3b99653">7.2. 如何決擇? / When should I go for a struct and when for a class?</a></li>
+<li><a href="#org722a802">7.3. DEMO</a></li>
+</ul>
+</li>
+<li><a href="#orgf0f9a8e">8. Publihser and Subscriber</a>
 <ul>
-<li><a href="#org70a1543">7.1.1. What is a class in Swift?</a></li>
-<li><a href="#orgbe1f3cc">7.1.2. What is a struct in Swift?</a></li>
-<li><a href="#org24282a6">7.1.3. What are the differences between a struct and a class?</a>
+<li><a href="#org446a61a">8.1. Publisher</a></li>
+</ul>
+</li>
+<li><a href="#orga5527ac">9. Combine</a>
 <ul>
-<li><a href="#org5482141">7.1.3.1. The benefit of mutation in safety</a></li>
-<li><a href="#org6b57010">7.1.3.2. Structs get an initializer for free</a></li>
-<li><a href="#orgffe42f3">7.1.3.3. Classes allow inheritance</a></li>
+<li><a href="#org82df7df">9.1. Publisher</a></li>
+<li><a href="#org1b03900">9.2. Subscriber</a></li>
+<li><a href="#orgb441cfc">9.3. Subject</a></li>
+<li><a href="#org8e634d9">9.4. Operator</a></li>
+<li><a href="#orgb70b14f">9.5. sink(receiveCompletion:receiveValue:)</a></li>
+<li><a href="#org9fdef75">9.6. assign(tp:on:)</a></li>
+<li><a href="#org0d88cf5">9.7. Publisher &amp; Subsciber流程</a></li>
+<li><a href="#org1406be2">9.8. 發佈者和訂閱者的生命週期</a></li>
+<li><a href="#org6e6cf56">9.9. 典型的Publisher</a></li>
+<li><a href="#org3e42d65">9.10. Marble Diagram</a></li>
+<li><a href="#org949d4a4">9.11. Publisher的建立</a></li>
+<li><a href="#org3bd0ca6">9.12. Cancellable</a></li>
+<li><a href="#orgad868d1">9.13. Webs, Video</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li><a href="#orgf14535a">7.2. 如何決擇? / When should I go for a struct and when for a class?</a>
+<li><a href="#some">10. <span class="todo TODO">TODO</span> some</a>
 <ul>
-<li><a href="#org67f9234">7.2.1. You should use a class when:</a></li>
-<li><a href="#org11c03f1">7.2.2. You should use a struct when:</a></li>
-<li><a href="#org4a592f4">7.2.3. Try to go for a struct by default.</a></li>
+<li><a href="#org6c0292d">10.1. Generics</a></li>
+<li><a href="#orgc204fc2">10.2. opaque</a></li>
 </ul>
 </li>
-<li><a href="#orga4b7991">7.3. DEMO</a></li>
-</ul>
-</li>
-<li><a href="#some">8. <span class="todo TODO">TODO</span> some</a>
-<ul>
-<li><a href="#org696294e">8.1. Generics</a>
-<ul>
-<li><a href="#orgf21b2c6">8.1.1. 問題</a></li>
-<li><a href="#org5b5f552">8.1.2. 解決方案</a></li>
-</ul>
-</li>
-<li><a href="#orgc2e5bf4">8.2. opaque</a></li>
-</ul>
-</li>
-<li><a href="#advanced">9. <span class="todo TODO">TODO</span> 進階主題</a></li>
+<li><a href="#advanced">11. <span class="todo TODO">TODO</span> 進階主題</a></li>
 </ul>
 </div>
 </div>
@@ -476,15 +330,15 @@
 <h2 id="SW-MVVM"><span class="section-number-2">1</span> MVVM</h2>
 <div class="outline-text-2" id="text-SW-MVVM">
 </div>
-<div id="outline-container-org05156d5" class="outline-3">
-<h3 id="org05156d5"><span class="section-number-3">1.1</span> Design pattern</h3>
+<div id="outline-container-org84e4910" class="outline-3">
+<h3 id="org84e4910"><span class="section-number-3">1.1</span> Design pattern</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 MVVM 的概念最早應該是在 2005 年由 Microsoft的<a href="https://blogs.msdn.microsoft.com/johngossman/2005/10/08/introduction-to-modelviewviewmodel-pattern-for-building-wpf-apps/">John Gossman</a>提出來的，它的概念是，整個 Swift project 會拆分成三個部份: View、ViewModel、Model，其中 View 的角色就是單純的視覺元件，像是按鈕、文字標籤等等，在 View 裡面不會有邏輯、狀態等等，單純就是個呈現資料的元件。而要讓 View 呈現資料，最直覺的方式，就是把 View 跟 Model 做綁定，讓 View 的元件跟著 Model 一起做變化。但這樣會有個問題，就是通常 Model 來的資料，並不是簡單就能轉換成 View 的樣式的，這時候就需要有個物件，介在 View 跟 Model 的中間，這個物件會掌管這些跟 View 高度相關的邏輯的操作，像是轉換 Date 物件變成人看得懂的文字格式等，稱之為 ViewModel。上面的概念可以畫成這樣的資料流：<br />
 </p>
 
 
-<div id="org8fd1b02" class="figure">
+<div id="orgcc831af" class="figure">
 <p><img src="images/MVVM-Basic.jpg" alt="MVVM-Basic.jpg" width="600" /><br />
 </p>
 <p><span class="figure-number">Figure 1: </span>MVVM Architecture</p>
@@ -510,39 +364,36 @@ MVVM 的概念最早應該是在 2005 年由 Microsoft的<a href="https://blogs.
 </p>
 </div>
 </div>
-<div id="outline-container-org67f52bd" class="outline-3">
-<h3 id="org67f52bd"><span class="section-number-3">1.2</span> What is the idea behind MVVM</h3>
+<div id="outline-container-org258b8f7" class="outline-3">
+<h3 id="org258b8f7"><span class="section-number-3">1.2</span> What is the idea behind MVVM</h3>
 <div class="outline-text-3" id="text-1-2">
 </div>
-<div id="outline-container-org44d23da" class="outline-4">
-<h4 id="org44d23da"><span class="section-number-4">1.2.1</span> Model</h4>
+<ol class="org-ol">
+<li><a id="org0a6d769"></a>Model<br />
 <div class="outline-text-4" id="text-1-2-1">
 <ul class="org-ul">
 <li>Business logic<br /></li>
 <li>UI Independent<br /></li>
 </ul>
 </div>
-</div>
-<div id="outline-container-org27f1756" class="outline-4">
-<h4 id="org27f1756"><span class="section-number-4">1.2.2</span> View</h4>
+</li>
+<li><a id="org92be1e1"></a>View<br />
 <div class="outline-text-4" id="text-1-2-2">
 <ul class="org-ul">
 <li>Presentation<br /></li>
 <li>User interaction<br /></li>
 </ul>
 </div>
-</div>
-<div id="outline-container-org83a4f30" class="outline-4">
-<h4 id="org83a4f30"><span class="section-number-4">1.2.3</span> ViewModel</h4>
+</li>
+<li><a id="orgc41ae3a"></a>ViewModel<br />
 <div class="outline-text-4" id="text-1-2-3">
 <ul class="org-ul">
 <li>Presentation logic<br /></li>
 <li>Glue between Model and View<br /></li>
 </ul>
 </div>
-</div>
-<div id="outline-container-org09c05ba" class="outline-4">
-<h4 id="org09c05ba"><span class="section-number-4">1.2.4</span> 為什麼要拆成三部份(What does it solve?)</h4>
+</li>
+<li><a id="org081fa14"></a>為什麼要拆成三部份(What does it solve?)<br />
 <div class="outline-text-4" id="text-1-2-4">
 <ul class="org-ul">
 <li>MVC - Massive View Controller<br /></li>
@@ -551,9 +402,8 @@ MVVM 的概念最早應該是在 2005 年由 Microsoft的<a href="https://blogs.
 <li>Code reusability<br /></li>
 </ul>
 </div>
-</div>
-<div id="outline-container-org34c565e" class="outline-4">
-<h4 id="org34c565e"><span class="section-number-4">1.2.5</span> Limitations / Cons</h4>
+</li>
+<li><a id="orgf985048"></a>Limitations / Cons<br />
 <div class="outline-text-4" id="text-1-2-5">
 <ul class="org-ul">
 <li>Requires binding<br /></li>
@@ -562,10 +412,11 @@ MVVM 的概念最早應該是在 2005 年由 Microsoft的<a href="https://blogs.
 <li>Doesn&rsquo;t cover every case<br /></li>
 </ul>
 </div>
+</li>
+</ol>
 </div>
-</div>
-<div id="outline-container-orgce8b3c5" class="outline-3">
-<h3 id="orgce8b3c5"><span class="section-number-3">1.3</span> DEMO</h3>
+<div id="outline-container-orgf9ad0c6" class="outline-3">
+<h3 id="orgf9ad0c6"><span class="section-number-3">1.3</span> DEMO</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 以&ldquo;推薦書單&rdquo;的 APP 為例:<br />
@@ -628,15 +479,15 @@ Model 與 UI 完全無關，單純用來儲存資料，ViewModel 為 Model 與 V
 </ul>
 </div>
 </div>
-<div id="outline-container-org378a6ca" class="outline-3">
-<h3 id="org378a6ca"><span class="section-number-3">1.4</span> Model 要用 Struct 或是 Class</h3>
+<div id="outline-container-orgbdd58c6" class="outline-3">
+<h3 id="orgbdd58c6"><span class="section-number-3">1.4</span> Model 要用 Struct 或是 Class</h3>
 <div class="outline-text-3" id="text-1-4">
 <p>
 <a href="https://www.appcoda.com.tw/swift-class/">資料來源:Swift Class vs Struct：設計 Model 時，該用 Struct 還是 Class 呢？</a><br />
 </p>
 </div>
-<div id="outline-container-org274057b" class="outline-4">
-<h4 id="org274057b"><span class="section-number-4">1.4.1</span> Struct 與 Class 的不同性質</h4>
+<ol class="org-ol">
+<li><a id="org04ea80f"></a>Struct 與 Class 的不同性質<br />
 <div class="outline-text-4" id="text-1-4-1">
 <p>
 首先，當我們指派 (assign) 一個實體給一個辨識符（identifier，也就是變數／常數名）的時候，如果該實體是 struct 的話，該辨識符所容納的會是該實體的所有內容；但如果它是 class 的話，這個辨識符就只會容納存放該實體的位址：<br />
@@ -681,19 +532,18 @@ Model 與 UI 完全無關，單純用來儲存資料，ViewModel 為 Model 與 V
 </div>
 <p>
 怎麼會有這樣的差別呢？因為 herDog 儲存了所有的 Dog 實體內容，所以任何 Dog 實體的屬性的變動，就等於說 herDog 本身有變動。然而，herCat 並沒有儲存 Cat 實體的內容，所以 Cat 實體屬性的變動是在別的地方發生的，且 herCat 本身所儲存的 Cat 實體位址並沒有任何的改變。<br />
-由圖<a href="#org8fd1b02">1</a>可看出，<br />
+由圖<a href="#orgcc831af">1</a>可看出，<br />
 </p>
 </div>
+</li>
+<li><a id="org1ac0cbe"></a>MVVM 中的 Model<br /></li>
+</ol>
 </div>
-<div id="outline-container-orgb0694ce" class="outline-4">
-<h4 id="orgb0694ce"><span class="section-number-4">1.4.2</span> MVVM 中的 Model</h4>
+<div id="outline-container-orgdb18d24" class="outline-3">
+<h3 id="orgdb18d24"><span class="section-number-3">1.5</span> DICE DEMO</h3>
 </div>
-</div>
-<div id="outline-container-orgcd47e2f" class="outline-3">
-<h3 id="orgcd47e2f"><span class="section-number-3">1.5</span> DICE DEMO</h3>
-</div>
-<div id="outline-container-org57bc863" class="outline-3">
-<h3 id="org57bc863"><span class="section-number-3">1.6</span> Further Reading Resources</h3>
+<div id="outline-container-org25efd2e" class="outline-3">
+<h3 id="org25efd2e"><span class="section-number-3">1.6</span> Further Reading Resources</h3>
 <div class="outline-text-3" id="text-1-6">
 <ul class="org-ul">
 <li><a href="https://www.youtube.com/watch?v=1IlUBHvgY8Q&amp;t=29s">SwiftUI MVVM Programming with ObservableObject @Published @ObservedObject</a><br /></li>
@@ -720,8 +570,8 @@ Model 與 UI 完全無關，單純用來儲存資料，ViewModel 為 Model 與 V
 參考資料: <a href="https://medium.com/better-programming/replicating-the-ios-reminders-app-part1-44211a7b7029">Building a To-Do List App with SwiftUI, Combine, and Firebase</a><br />
 </p>
 </div>
-<div id="outline-container-orgc51f630" class="outline-3">
-<h3 id="orgc51f630"><span class="section-number-3">2.1</span> Data Model</h3>
+<div id="outline-container-org66f9116" class="outline-3">
+<h3 id="org66f9116"><span class="section-number-3">2.1</span> Data Model</h3>
 <div class="outline-text-3" id="text-2-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span style="color: #5B6268;">//</span>
@@ -753,12 +603,12 @@ Model 與 UI 完全無關，單純用來儲存資料，ViewModel 為 Model 與 V
 </div>
 </div>
 </div>
-<div id="outline-container-orge2ae554" class="outline-3">
-<h3 id="orge2ae554"><span class="section-number-3">2.2</span> Basic UI</h3>
+<div id="outline-container-org038c5d6" class="outline-3">
+<h3 id="org038c5d6"><span class="section-number-3">2.2</span> Basic UI</h3>
 <div class="outline-text-3" id="text-2-2">
 </div>
-<div id="outline-container-orgb6cf490" class="outline-4">
-<h4 id="orgb6cf490"><span class="section-number-4">2.2.1</span> Change struct name (ContentView.swift)</h4>
+<ol class="org-ol">
+<li><a id="org1e47e96"></a>Change struct name (ContentView.swift)<br />
 <div class="outline-text-4" id="text-2-2-1">
 <ol class="org-ol">
 <li>right click on struct ContentView<br /></li>
@@ -767,9 +617,8 @@ Model 與 UI 完全無關，單純用來儲存資料，ViewModel 為 Model 與 V
 <li>The file name on navigator (left panel in Xcode) will be renamed to <b>TaskListView.swift</b><br /></li>
 </ol>
 </div>
-</div>
-<div id="outline-container-org746a60f" class="outline-4">
-<h4 id="org746a60f"><span class="section-number-4">2.2.2</span> classify files into the following group</h4>
+</li>
+<li><a id="org91dabd3"></a>classify files into the following group<br />
 <div class="outline-text-4" id="text-2-2-2">
 <ul class="org-ul">
 <li>App<br /></li>
@@ -779,18 +628,15 @@ Model<br />
 </p></li>
 </ul>
 
-<div id="org2c41085" class="figure">
+<div id="orgdb718c6" class="figure">
 <p><img src="images/renameStruct.jpg" alt="renameStruct.jpg" /><br />
 </p>
 </div>
 </div>
-</div>
-<div id="outline-container-org225e3f8" class="outline-4">
-<h4 id="org225e3f8"><span class="section-number-4">2.2.3</span> Create basic UI</h4>
-<div class="outline-text-4" id="text-2-2-3">
-</div>
-<div id="outline-container-org1509572" class="outline-5">
-<h5 id="org1509572"><span class="section-number-5">2.2.3.1</span> TaskListView.swift</h5>
+</li>
+<li><a id="org964cd0e"></a>Create basic UI<br />
+<ol class="org-ol">
+<li><a id="orgc48f765"></a>TaskListView.swift<br />
 <div class="outline-text-5" id="text-2-2-3-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #5B6268;">//</span>
@@ -830,9 +676,8 @@ Model<br />
 </pre>
 </div>
 </div>
-</div>
-<div id="outline-container-org6a41690" class="outline-5">
-<h5 id="org6a41690"><span class="section-number-5">2.2.3.2</span> Extract the task cell</h5>
+</li>
+<li><a id="org38ece16"></a>Extract the task cell<br />
 <div class="outline-text-5" id="text-2-2-3-2">
 <ol class="org-ol">
 <li>Grouping the Image and Text with HStack<br /></li>
@@ -887,22 +732,22 @@ Model<br />
 </pre>
 </div>
 </div>
+</li>
+</ol>
+</li>
+</ol>
 </div>
-</div>
-</div>
-<div id="outline-container-org2cb836c" class="outline-3">
-<h3 id="org2cb836c"><span class="section-number-3">2.3</span> MVVM</h3>
+<div id="outline-container-orgc22d52f" class="outline-3">
+<h3 id="orgc22d52f"><span class="section-number-3">2.3</span> MVVM</h3>
 <div class="outline-text-3" id="text-2-3">
 <p>
 以MVVM架構來開發project<br />
 </p>
 </div>
-<div id="outline-container-org78e6467" class="outline-4">
-<h4 id="org78e6467"><span class="section-number-4">2.3.1</span> ViewModel</h4>
-<div class="outline-text-4" id="text-2-3-1">
-</div>
-<div id="outline-container-orge692f83" class="outline-5">
-<h5 id="orge692f83"><span class="section-number-5">2.3.1.1</span> Diagram for now</h5>
+<ol class="org-ol">
+<li><a id="org02b74e2"></a>ViewModel<br />
+<ol class="org-ol">
+<li><a id="org48daa7b"></a>Diagram for now<br />
 <div class="outline-text-5" id="text-2-3-1-1">
 
 <div class="figure">
@@ -910,10 +755,9 @@ Model<br />
 </p>
 </div>
 </div>
-</div>
+</li>
 
-<div id="outline-container-orga357261" class="outline-5">
-<h5 id="orga357261"><span class="section-number-5">2.3.1.2</span> Model for the future</h5>
+<li><a id="org4840719"></a>Model for the future<br />
 <div class="outline-text-5" id="text-2-3-1-2">
 
 <div class="figure">
@@ -921,10 +765,9 @@ Model<br />
 </p>
 </div>
 </div>
-</div>
+</li>
 
-<div id="outline-container-org231757c" class="outline-5">
-<h5 id="org231757c"><span class="section-number-5">2.3.1.3</span> TaskCellViewModel</h5>
+<li><a id="org61a750b"></a>TaskCellViewModel<br />
 <div class="outline-text-5" id="text-2-3-1-3">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #5B6268;">//</span>
@@ -956,9 +799,8 @@ Model<br />
 </pre>
 </div>
 </div>
-</div>
-<div id="outline-container-orgc862966" class="outline-5">
-<h5 id="orgc862966"><span class="section-number-5">2.3.1.4</span> TaskListViewModel</h5>
+</li>
+<li><a id="orgfb27db5"></a>TaskListViewModel<br />
 <div class="outline-text-5" id="text-2-3-1-4">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #5B6268;">//</span>
@@ -985,10 +827,10 @@ Model<br />
 </pre>
 </div>
 </div>
-</div>
-</div>
-<div id="outline-container-orgdb7b59e" class="outline-4">
-<h4 id="orgdb7b59e"><span class="section-number-4">2.3.2</span> View</h4>
+</li>
+</ol>
+</li>
+<li><a id="orgaa46ffa"></a>View<br />
 <div class="outline-text-4" id="text-2-3-2">
 <p>
 TaskListView.swift<br />
@@ -1042,21 +884,20 @@ TaskListView.swift<br />
 </pre>
 </div>
 </div>
+</li>
+</ol>
 </div>
-</div>
-<div id="outline-container-orgc8fdd15" class="outline-3">
-<h3 id="orgc8fdd15"><span class="section-number-3">2.4</span> New task</h3>
+<div id="outline-container-orgba39b53" class="outline-3">
+<h3 id="orgba39b53"><span class="section-number-3">2.4</span> New task</h3>
 <div class="outline-text-3" id="text-2-4">
 <p>
 加入新增task功能，真正的新增功能由ViewModel實作，View負責界面及呼叫該功能<br />
 </p>
 </div>
-<div id="outline-container-orgf41a45f" class="outline-4">
-<h4 id="orgf41a45f"><span class="section-number-4">2.4.1</span> View</h4>
-<div class="outline-text-4" id="text-2-4-1">
-</div>
-<div id="outline-container-org54afe28" class="outline-5">
-<h5 id="org54afe28"><span class="section-number-5">2.4.1.1</span> NewTaskView.swift</h5>
+<ol class="org-ol">
+<li><a id="orgcb32251"></a>View<br />
+<ol class="org-ol">
+<li><a id="org72db516"></a>NewTaskView.swift<br />
 <div class="outline-text-5" id="text-2-4-1-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #5B6268;">//</span>
@@ -1099,9 +940,8 @@ TaskListView.swift<br />
 </pre>
 </div>
 </div>
-</div>
-<div id="outline-container-org708b98d" class="outline-5">
-<h5 id="org708b98d"><span class="section-number-5">2.4.1.2</span> TaskListView.swift</h5>
+</li>
+<li><a id="org228205c"></a>TaskListView.swift<br />
 <div class="outline-text-5" id="text-2-4-1-2">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #5B6268;">//</span>
@@ -1164,14 +1004,12 @@ TaskListView.swift<br />
 </pre>
 </div>
 </div>
-</div>
-</div>
-<div id="outline-container-org2cdbefb" class="outline-4">
-<h4 id="org2cdbefb"><span class="section-number-4">2.4.2</span> ViewModel</h4>
-<div class="outline-text-4" id="text-2-4-2">
-</div>
-<div id="outline-container-org14111b5" class="outline-5">
-<h5 id="org14111b5"><span class="section-number-5">2.4.2.1</span> TaskListViewModel.swift</h5>
+</li>
+</ol>
+</li>
+<li><a id="orgcf0ef18"></a>ViewModel<br />
+<ol class="org-ol">
+<li><a id="org10cc101"></a>TaskListViewModel.swift<br />
 <div class="outline-text-5" id="text-2-4-2-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #5B6268;">//</span>
@@ -1202,22 +1040,22 @@ TaskListView.swift<br />
 </pre>
 </div>
 </div>
+</li>
+</ol>
+</li>
+</ol>
 </div>
-</div>
-</div>
-<div id="outline-container-org7bd4c4d" class="outline-3">
-<h3 id="org7bd4c4d"><span class="section-number-3">2.5</span> Delete task</h3>
+<div id="outline-container-orgcbac35e" class="outline-3">
+<h3 id="orgcbac35e"><span class="section-number-3">2.5</span> Delete task</h3>
 <div class="outline-text-3" id="text-2-5">
 <p>
 加入swipe進行刪除的功能，真正刪除的功能由ViewModel實作，View負責呼叫<br />
 </p>
 </div>
-<div id="outline-container-org507b800" class="outline-4">
-<h4 id="org507b800"><span class="section-number-4">2.5.1</span> View</h4>
-<div class="outline-text-4" id="text-2-5-1">
-</div>
-<div id="outline-container-orgbdbe361" class="outline-5">
-<h5 id="orgbdbe361"><span class="section-number-5">2.5.1.1</span> TaskListView.swift</h5>
+<ol class="org-ol">
+<li><a id="orgb76677f"></a>View<br />
+<ol class="org-ol">
+<li><a id="orgb568791"></a>TaskListView.swift<br />
 <div class="outline-text-5" id="text-2-5-1-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #5B6268;">//</span>
@@ -1285,14 +1123,12 @@ TaskListView.swift<br />
 </pre>
 </div>
 </div>
-</div>
-</div>
-<div id="outline-container-org93a9b5b" class="outline-4">
-<h4 id="org93a9b5b"><span class="section-number-4">2.5.2</span> ViewModel</h4>
-<div class="outline-text-4" id="text-2-5-2">
-</div>
-<div id="outline-container-org10fa0c3" class="outline-5">
-<h5 id="org10fa0c3"><span class="section-number-5">2.5.2.1</span> TaskListViewModel.swift</h5>
+</li>
+</ol>
+</li>
+<li><a id="org913b091"></a>ViewModel<br />
+<ol class="org-ol">
+<li><a id="org4416f84"></a>TaskListViewModel.swift<br />
 <div class="outline-text-5" id="text-2-5-2-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span>
@@ -1331,25 +1167,27 @@ TaskListView.swift<br />
 </pre>
 </div>
 </div>
+</li>
+</ol>
+</li>
+</ol>
 </div>
-</div>
-</div>
-<div id="outline-container-org305fad7" class="outline-3">
-<h3 id="org305fad7"><span class="section-number-3">2.6</span> enum v.s. picker</h3>
+<div id="outline-container-org4f37a48" class="outline-3">
+<h3 id="org4f37a48"><span class="section-number-3">2.6</span> enum v.s. picker</h3>
 <div class="outline-text-3" id="text-2-6">
 <p>
 加入task的priority欄位(enum)<br />
 </p>
 </div>
-<div id="outline-container-org5ba70c8" class="outline-4">
-<h4 id="org5ba70c8"><span class="section-number-4">2.6.1</span> Model</h4>
+<ol class="org-ol">
+<li><a id="org2c55660"></a>Model<br />
 <div class="outline-text-4" id="text-2-6-1">
 <p>
 以enum來表示task的不同優先權<br />
 </p>
 </div>
-<div id="outline-container-org7041ef2" class="outline-5">
-<h5 id="org7041ef2"><span class="section-number-5">2.6.1.1</span> Model.swift</h5>
+<ol class="org-ol">
+<li><a id="orgf8aae88"></a>Model.swift<br />
 <div class="outline-text-5" id="text-2-6-1-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #5B6268;">//</span>
@@ -1387,14 +1225,12 @@ TaskListView.swift<br />
 </pre>
 </div>
 </div>
-</div>
-</div>
-<div id="outline-container-org34f83a8" class="outline-4">
-<h4 id="org34f83a8"><span class="section-number-4">2.6.2</span> View</h4>
-<div class="outline-text-4" id="text-2-6-2">
-</div>
-<div id="outline-container-orgb090146" class="outline-5">
-<h5 id="orgb090146"><span class="section-number-5">2.6.2.1</span> TaskListView.swift</h5>
+</li>
+</ol>
+</li>
+<li><a id="org33ac44f"></a>View<br />
+<ol class="org-ol">
+<li><a id="org7a28145"></a>TaskListView.swift<br />
 <div class="outline-text-5" id="text-2-6-2-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #5B6268;">//</span>
@@ -1455,9 +1291,8 @@ TaskListView.swift<br />
 </pre>
 </div>
 </div>
-</div>
-<div id="outline-container-org4ec271d" class="outline-5">
-<h5 id="org4ec271d"><span class="section-number-5">2.6.2.2</span> NewTaskView.swift</h5>
+</li>
+<li><a id="org1d5c9af"></a>NewTaskView.swift<br />
 <div class="outline-text-5" id="text-2-6-2-2">
 <p>
 新增task時改以Picker來選取enum中的子類別<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup><br />
@@ -1509,17 +1344,17 @@ TaskListView.swift<br />
 </pre>
 </div>
 </div>
-</div>
-</div>
-<div id="outline-container-org3b734ea" class="outline-4">
-<h4 id="org3b734ea"><span class="section-number-4">2.6.3</span> ViewModel</h4>
+</li>
+</ol>
+</li>
+<li><a id="orgfdf39e5"></a>ViewModel<br />
 <div class="outline-text-4" id="text-2-6-3">
 <p>
 依priority高低傳回不同的Icon<br />
 </p>
 </div>
-<div id="outline-container-org3d4a96b" class="outline-5">
-<h5 id="org3d4a96b"><span class="section-number-5">2.6.3.1</span> TaskCellViewModel.swift</h5>
+<ol class="org-ol">
+<li><a id="org8c2bd8f"></a>TaskCellViewModel.swift<br />
 <div class="outline-text-5" id="text-2-6-3-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #5B6268;">//</span>
@@ -1569,31 +1404,30 @@ TaskListView.swift<br />
 </pre>
 </div>
 </div>
-</div>
-</div>
+</li>
+</ol>
+</li>
 
-<div id="outline-container-org9bd47fe" class="outline-4">
-<h4 id="org9bd47fe"><span class="section-number-4">2.6.4</span> 結果</h4>
+<li><a id="orgae1f696"></a>結果<br />
 <div class="outline-text-4" id="text-2-6-4">
 
-<div id="org79a4337" class="figure">
+<div id="orgd49f524" class="figure">
 <p><img src="images/picker.gif" alt="picker.gif" width="500" /><br />
 </p>
 <p><span class="figure-number">Figure 5: </span>Picker v.s. enum</p>
 </div>
 </div>
-</div>
+</li>
+</ol>
 </div>
 <div id="outline-container-SW-onTapGesture" class="outline-3">
 <h3 id="SW-onTapGesture"><span class="section-number-3">2.7</span> Tap on Icon to change completion and priority status</h3>
 <div class="outline-text-3" id="text-SW-onTapGesture">
 </div>
-<div id="outline-container-orgfbcb934" class="outline-4">
-<h4 id="orgfbcb934"><span class="section-number-4">2.7.1</span> View</h4>
-<div class="outline-text-4" id="text-2-7-1">
-</div>
-<div id="outline-container-org643031a" class="outline-5">
-<h5 id="org643031a"><span class="section-number-5">2.7.1.1</span> TaskListView.swift</h5>
+<ol class="org-ol">
+<li><a id="org3990d71"></a>View<br />
+<ol class="org-ol">
+<li><a id="org09c9959"></a>TaskListView.swift<br />
 <div class="outline-text-5" id="text-2-7-1-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #5B6268;">//</span>
@@ -1676,14 +1510,12 @@ TaskListView.swift<br />
 </pre>
 </div>
 </div>
-</div>
-</div>
-<div id="outline-container-org5c08ba2" class="outline-4">
-<h4 id="org5c08ba2"><span class="section-number-4">2.7.2</span> ViewModel</h4>
-<div class="outline-text-4" id="text-2-7-2">
-</div>
-<div id="outline-container-orgac2b86b" class="outline-5">
-<h5 id="orgac2b86b"><span class="section-number-5">2.7.2.1</span> TaskCellViewModel.swift</h5>
+</li>
+</ol>
+</li>
+<li><a id="orgf1e06ea"></a>ViewModel<br />
+<ol class="org-ol">
+<li><a id="orgb5bb014"></a>TaskCellViewModel.swift<br />
 <div class="outline-text-5" id="text-2-7-2-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #5B6268;">//</span>
@@ -1744,19 +1576,20 @@ TaskListView.swift<br />
 </pre>
 </div>
 </div>
-</div>
-<div id="outline-container-org7c7f912" class="outline-5">
-<h5 id="org7c7f912"><span class="section-number-5">2.7.2.2</span> 結果</h5>
+</li>
+<li><a id="org2bfc112"></a>結果<br />
 <div class="outline-text-5" id="text-2-7-2-2">
 
-<div id="org22b1afa" class="figure">
+<div id="orgb3f7915" class="figure">
 <p><img src="images/tapgesture.gif" alt="tapgesture.gif" width="500" /><br />
 </p>
 <p><span class="figure-number">Figure 6: </span>onTapGesture</p>
 </div>
 </div>
-</div>
-</div>
+</li>
+</ol>
+</li>
+</ol>
 </div>
 </div>
 
@@ -1764,8 +1597,8 @@ TaskListView.swift<br />
 <h2 id="SW-AdvFuncs"><span class="section-number-2">3</span> Advance function</h2>
 <div class="outline-text-2" id="text-SW-AdvFuncs">
 </div>
-<div id="outline-container-orgf8073f6" class="outline-3">
-<h3 id="orgf8073f6"><span class="section-number-3">3.1</span> filter()</h3>
+<div id="outline-container-org018c5d0" class="outline-3">
+<h3 id="org018c5d0"><span class="section-number-3">3.1</span> filter()</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 filter() 宣告如下：<br />
@@ -1779,8 +1612,8 @@ filter() 宣告如下：<br />
 <li>filter() 回傳結果為陣列。<br /></li>
 </ul>
 </div>
-<div id="outline-container-org2cf975b" class="outline-4">
-<h4 id="org2cf975b"><span class="section-number-4">3.1.1</span> 在 closure 回傳每個元素使否符合判斷式的結果，決定最後 filter() 回傳的元素集合。<sup><a id="fnr.1.100" class="footref" href="#fn.1">1</a></sup></h4>
+<ol class="org-ol">
+<li><a id="orgd7729c4"></a>在 closure 回傳每個元素使否符合判斷式的結果，決定最後 filter() 回傳的元素集合。<sup><a id="fnr.1.100" class="footref" href="#fn.1">1</a></sup><br />
 <div class="outline-text-4" id="text-3-1-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">var</span> numbers = <span style="color: #c678dd;">Array</span>(<span style="color: #da8548; font-weight: bold;">1</span>...<span style="color: #da8548; font-weight: bold;">8</span>)
@@ -1800,9 +1633,8 @@ filter() 宣告如下：<br />
 </pre>
 </div>
 </div>
-</div>
-<div id="outline-container-org940ba75" class="outline-4">
-<h4 id="org940ba75"><span class="section-number-4">3.1.2</span> 將一、三象限的點過濾出來<sup><a id="fnr.1.100" class="footref" href="#fn.1">1</a></sup></h4>
+</li>
+<li><a id="orgb7dc0ee"></a>將一、三象限的點過濾出來<sup><a id="fnr.1.100" class="footref" href="#fn.1">1</a></sup><br />
 <div class="outline-text-4" id="text-3-1-2">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">Point</span> {
@@ -1831,10 +1663,11 @@ filter() 宣告如下：<br />
 </pre>
 </div>
 </div>
+</li>
+</ol>
 </div>
-</div>
-<div id="outline-container-orgf3d4d1b" class="outline-3">
-<h3 id="orgf3d4d1b"><span class="section-number-3">3.2</span> map()</h3>
+<div id="outline-container-org874fc10" class="outline-3">
+<h3 id="org874fc10"><span class="section-number-3">3.2</span> map()</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 map() 宣告如下：<br />
@@ -1848,8 +1681,8 @@ map() 宣告如下：<br />
 <li>map() 回傳結果為陣列。<br /></li>
 </ul>
 </div>
-<div id="outline-container-org1f216f3" class="outline-4">
-<h4 id="org1f216f3"><span class="section-number-4">3.2.1</span> 透過map()將整數陣列轉化成兩倍數值與字串的陣列。<sup><a id="fnr.1.100" class="footref" href="#fn.1">1</a></sup></h4>
+<ol class="org-ol">
+<li><a id="org8a26d24"></a>透過map()將整數陣列轉化成兩倍數值與字串的陣列。<sup><a id="fnr.1.100" class="footref" href="#fn.1">1</a></sup><br />
 <div class="outline-text-4" id="text-3-2-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">var</span> numbers = <span style="color: #c678dd;">Array</span>(<span style="color: #da8548; font-weight: bold;">1</span>...<span style="color: #da8548; font-weight: bold;">8</span>)
@@ -1870,8 +1703,8 @@ map() 宣告如下：<br />
 </pre>
 </div>
 </div>
-<div id="outline-container-orgeb63e86" class="outline-5">
-<h5 id="orgeb63e86"><span class="section-number-5">3.2.1.1</span> map()如何將一組二度空間的點對 X 軸與 Y 軸做鏡射。<sup><a id="fnr.1.100" class="footref" href="#fn.1">1</a></sup></h5>
+<ol class="org-ol">
+<li><a id="orgc90fb39"></a>map()如何將一組二度空間的點對 X 軸與 Y 軸做鏡射。<sup><a id="fnr.1.100" class="footref" href="#fn.1">1</a></sup><br />
 <div class="outline-text-5" id="text-3-2-1-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">Point</span> {
@@ -1895,25 +1728,27 @@ map() 宣告如下：<br />
 </pre>
 </div>
 </div>
+</li>
+</ol>
+</li>
+</ol>
 </div>
-</div>
-</div>
-<div id="outline-container-org93d7d4a" class="outline-3">
-<h3 id="org93d7d4a"><span class="section-number-3">3.3</span> debounce</h3>
+<div id="outline-container-orge6072e6" class="outline-3">
+<h3 id="orge6072e6"><span class="section-number-3">3.3</span> debounce</h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
 What is debounce? Its a function which forces the execution to wait a certain amount of time before running again.<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup><br />
 </p>
 </div>
-<div id="outline-container-org2df6302" class="outline-4">
-<h4 id="org2df6302"><span class="section-number-4">3.3.1</span> Example</h4>
+<ol class="org-ol">
+<li><a id="orgf972141"></a>Example<br />
 <div class="outline-text-4" id="text-3-3-1">
 <p>
 source: <a href="https://peterfriese.dev/swift-combine-love/">SwiftUI + Combine = ❤️</a><br />
 </p>
 </div>
-<div id="outline-container-org9a82f1d" class="outline-5">
-<h5 id="org9a82f1d"><span class="section-number-5">3.3.1.1</span> UI</h5>
+<ol class="org-ol">
+<li><a id="orgb40aeb3"></a>UI<br />
 <div class="outline-text-5" id="text-3-3-1-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">ContentView</span>: View {
@@ -1947,9 +1782,8 @@ source: <a href="https://peterfriese.dev/swift-combine-love/">SwiftUI + Combine 
 </pre>
 </div>
 </div>
-</div>
-<div id="outline-container-org4cf0ef8" class="outline-5">
-<h5 id="org4cf0ef8"><span class="section-number-5">3.3.1.2</span> ViewModel</h5>
+</li>
+<li><a id="orga0c0e6f"></a>ViewModel<br />
 <div class="outline-text-5" id="text-3-3-1-2">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">class</span> <span style="color: #c678dd;">UserViewModel</span>: <span style="color: #c678dd;">ObservableObject</span> {
@@ -1973,21 +1807,23 @@ source: <a href="https://peterfriese.dev/swift-combine-love/">SwiftUI + Combine 
 </pre>
 </div>
 </div>
-</div>
-</div>
+</li>
+</ol>
+</li>
+</ol>
 </div>
 </div>
 
-<div id="outline-container-org3901180" class="outline-2">
-<h2 id="org3901180"><span class="section-number-2">4</span> Web API: URLSession v.s. JSONDecoder</h2>
+<div id="outline-container-org2aa3978" class="outline-2">
+<h2 id="org2aa3978"><span class="section-number-2">4</span> Web API: URLSession v.s. JSONDecoder</h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-orgfd768a0" class="outline-3">
-<h3 id="orgfd768a0"><span class="section-number-3">4.1</span> Demo 1</h3>
+<div id="outline-container-org352ec18" class="outline-3">
+<h3 id="org352ec18"><span class="section-number-3">4.1</span> Demo 1</h3>
 <div class="outline-text-3" id="text-4-1">
 </div>
-<div id="outline-container-org2e9a1f7" class="outline-4">
-<h4 id="org2e9a1f7"><span class="section-number-4">4.1.1</span> ContentView.swift</h4>
+<ol class="org-ol">
+<li><a id="org0afb889"></a>ContentView.swift<br />
 <div class="outline-text-4" id="text-4-1-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> SwiftUI
@@ -2044,19 +1880,20 @@ source: <a href="https://peterfriese.dev/swift-combine-love/">SwiftUI + Combine 
 </pre>
 </div>
 
-<div id="orgc98863f" class="figure">
+<div id="org4a9203c" class="figure">
 <p><img src="images/json-1.jpg" alt="json-1.jpg" width="300" /><br />
 </p>
 </div>
 </div>
+</li>
+</ol>
 </div>
-</div>
-<div id="outline-container-org264c7dd" class="outline-3">
-<h3 id="org264c7dd"><span class="section-number-3">4.2</span> Demo 2</h3>
+<div id="outline-container-org437427d" class="outline-3">
+<h3 id="org437427d"><span class="section-number-3">4.2</span> Demo 2</h3>
 <div class="outline-text-3" id="text-4-2">
 </div>
-<div id="outline-container-org03378f3" class="outline-4">
-<h4 id="org03378f3"><span class="section-number-4">4.2.1</span> MVVM</h4>
+<ol class="org-ol">
+<li><a id="orgb61508f"></a>MVVM<br />
 <div class="outline-text-4" id="text-4-2-1">
 <ul class="org-ul">
 <li>Model: FlowModel.swift<br /></li>
@@ -2064,9 +1901,8 @@ source: <a href="https://peterfriese.dev/swift-combine-love/">SwiftUI + Combine 
 <li>ViewModel: Flow.swift<br /></li>
 </ul>
 </div>
-</div>
-<div id="outline-container-orged62a76" class="outline-4">
-<h4 id="orged62a76"><span class="section-number-4">4.2.2</span> FlowModel.swift</h4>
+</li>
+<li><a id="org60bd6e5"></a>FlowModel.swift<br />
 <div class="outline-text-4" id="text-4-2-2">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> Foundation
@@ -2086,9 +1922,8 @@ source: <a href="https://peterfriese.dev/swift-combine-love/">SwiftUI + Combine 
 </pre>
 </div>
 </div>
-</div>
-<div id="outline-container-org4ccb5d2" class="outline-4">
-<h4 id="org4ccb5d2"><span class="section-number-4">4.2.3</span> ContentView.swift</h4>
+</li>
+<li><a id="org15194ef"></a>ContentView.swift<br />
 <div class="outline-text-4" id="text-4-2-3">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> SwiftUI
@@ -2120,9 +1955,8 @@ source: <a href="https://peterfriese.dev/swift-combine-love/">SwiftUI + Combine 
 </pre>
 </div>
 </div>
-</div>
-<div id="outline-container-org62a1a69" class="outline-4">
-<h4 id="org62a1a69"><span class="section-number-4">4.2.4</span> Flow.swift</h4>
+</li>
+<li><a id="org1500670"></a>Flow.swift<br />
 <div class="outline-text-4" id="text-4-2-4">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> Foundation
@@ -2154,20 +1988,20 @@ source: <a href="https://peterfriese.dev/swift-combine-love/">SwiftUI + Combine 
 </pre>
 </div>
 </div>
-</div>
-<div id="outline-container-org6a19412" class="outline-4">
-<h4 id="org6a19412"><span class="section-number-4">4.2.5</span> Result</h4>
+</li>
+<li><a id="org984da82"></a>Result<br />
 <div class="outline-text-4" id="text-4-2-5">
 
-<div id="org3d005d8" class="figure">
+<div id="orgd5fabe6" class="figure">
 <p><img src="images/json-2.jpg" alt="json-2.jpg" width="600" /><br />
 </p>
 </div>
 </div>
+</li>
+</ol>
 </div>
-</div>
-<div id="outline-container-orgac1d053" class="outline-3">
-<h3 id="orgac1d053"><span class="section-number-3">4.3</span> 公開資料平台</h3>
+<div id="outline-container-orgcbb976b" class="outline-3">
+<h3 id="orgcbb976b"><span class="section-number-3">4.3</span> 公開資料平台</h3>
 <div class="outline-text-3" id="text-4-3">
 <ul class="org-ul">
 <li><a href="https://data.gov.tw/">政府資料開放平台</a><br /></li>
@@ -2178,8 +2012,8 @@ source: <a href="https://peterfriese.dev/swift-combine-love/">SwiftUI + Combine 
 </ul>
 </div>
 </div>
-<div id="outline-container-org171ac75" class="outline-3">
-<h3 id="org171ac75"><span class="section-number-3">4.4</span> Further Reading</h3>
+<div id="outline-container-org2fdbaea" class="outline-3">
+<h3 id="org2fdbaea"><span class="section-number-3">4.4</span> Further Reading</h3>
 <div class="outline-text-3" id="text-4-4">
 <ul class="org-ul">
 <li><a href="https://www.youtube.com/watch?v=HvfE4G9PfeU">SwiftUI Tutorial - Using an API and Decoding JSON Data</a><br /></li>
@@ -2221,12 +2055,12 @@ A protocol defines a blueprint of methods, properties, and other requirements th
 <li>例如，你可能有一個名為 str 的變量，其類型為 String。身為一個開發人員，你應該知道 str 代表 String，如果我們定義了一個名為 StringProtocol 的協定，它具有所有的 String 的 API，我們可以擴展任何類型去遵循 StringProtocol（意思是滿足其所有要求），如此一來，即可以使用該對象，讓它就像是一個 String，儘管我們不知道它是什麼！如果看起來像一隻鴨子，游泳像一隻鴨子，叫聲像一隻鴨子，那就是一隻鴨子。我們新的 StringProtocol 可以告訴那些遵守它協定的類型能夠做什麼，且不需要知道這些類型的資訊。<sup><a id="fnr.7.100" class="footref" href="#fn.7">7</a></sup><br /></li>
 </ul>
 </div>
-<div id="outline-container-org8b2a78c" class="outline-3">
-<h3 id="org8b2a78c"><span class="section-number-3">5.1</span> Protocol Syntax</h3>
+<div id="outline-container-orgf44198f" class="outline-3">
+<h3 id="orgf44198f"><span class="section-number-3">5.1</span> Protocol Syntax</h3>
 <div class="outline-text-3" id="text-5-1">
 </div>
-<div id="outline-container-orgd26cc97" class="outline-4">
-<h4 id="orgd26cc97"><span class="section-number-4">5.1.1</span> Syntax</h4>
+<ol class="org-ol">
+<li><a id="orgbd6f16b"></a>Syntax<br />
 <div class="outline-text-4" id="text-5-1-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">protocol</span> <span style="color: #c678dd;">SomeProtocol</span> {
@@ -2244,9 +2078,8 @@ Classes , structs, enums can adopt these protocol by placing protocol’s name a
 </pre>
 </div>
 </div>
-</div>
-<div id="outline-container-orgece199a" class="outline-4">
-<h4 id="orgece199a"><span class="section-number-4">5.1.2</span> DEMO</h4>
+</li>
+<li><a id="orgbddd798"></a>DEMO<br />
 <div class="outline-text-4" id="text-5-1-2">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">protocol</span> <span style="color: #c678dd;">Polite</span> {
@@ -2275,9 +2108,8 @@ Classes , structs, enums can adopt these protocol by placing protocol’s name a
 </pre>
 </div>
 </div>
-</div>
-<div id="outline-container-org20bb4a9" class="outline-4">
-<h4 id="org20bb4a9"><span class="section-number-4">5.1.3</span> Adding property requirements</h4>
+</li>
+<li><a id="org130e197"></a>Adding property requirements<br />
 <div class="outline-text-4" id="text-5-1-3">
 <p>
 source: <a href="https://abhimuralidharan.medium.com/all-about-protocols-in-swift-11a72d6ea354">All about protocols in swift</a><br />
@@ -2297,9 +2129,8 @@ source: <a href="https://abhimuralidharan.medium.com/all-about-protocols-in-swif
 </pre>
 </div>
 </div>
-</div>
-<div id="outline-container-orga606b35" class="outline-4">
-<h4 id="orga606b35"><span class="section-number-4">5.1.4</span> Protocols with mutating methods</h4>
+</li>
+<li><a id="orgb04e506"></a>Protocols with mutating methods<br />
 <div class="outline-text-4" id="text-5-1-4">
 <p>
 Mutating methods are methods that we use on value types like structs and enums. These methods are allowed to modify the instance it belongs to and any properties of that instance. A small example:<br />
@@ -2366,9 +2197,8 @@ Consider an enum and class implementing a protocol with mutating function:<br />
 </pre>
 </div>
 </div>
-</div>
-<div id="outline-container-orgd329e69" class="outline-4">
-<h4 id="orgd329e69"><span class="section-number-4">5.1.5</span> Initializer Requirements</h4>
+</li>
+<li><a id="org9299c64"></a>Initializer Requirements<br />
 <div class="outline-text-4" id="text-5-1-5">
 <p>
 Protocols can have specific initializers like normal methods which the conforming types can implement.<br />
@@ -2380,10 +2210,11 @@ Protocols can have specific initializers like normal methods which the conformin
 </pre>
 </div>
 </div>
+</li>
+</ol>
 </div>
-</div>
-<div id="outline-container-orgd149143" class="outline-3">
-<h3 id="orgd149143"><span class="section-number-3">5.2</span> DEMO</h3>
+<div id="outline-container-org37e2424" class="outline-3">
+<h3 id="org37e2424"><span class="section-number-3">5.2</span> DEMO</h3>
 <div class="outline-text-3" id="text-5-2">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">protocol</span> <span style="color: #c678dd;">Sound</span> {
@@ -2411,12 +2242,12 @@ Protocols can have specific initializers like normal methods which the conformin
 </div>
 </div>
 </div>
-<div id="outline-container-org3e4a345" class="outline-3">
-<h3 id="org3e4a345"><span class="section-number-3">5.3</span> 範例</h3>
+<div id="outline-container-org2681f46" class="outline-3">
+<h3 id="org2681f46"><span class="section-number-3">5.3</span> 範例</h3>
 <div class="outline-text-3" id="text-5-3">
 </div>
-<div id="outline-container-org9d0e7b9" class="outline-4">
-<h4 id="org9d0e7b9"><span class="section-number-4">5.3.1</span> 版本 1</h4>
+<ol class="org-ol">
+<li><a id="orgce16b9b"></a>版本 1<br />
 <div class="outline-text-4" id="text-5-3-1">
 <p>
 本例中有兩個 struct: Song, Album 以及一個 class 用來播放 Song 或 Album，原本的 Player 要為不同的 struct 寫不同的 func，而且程式碼大多重複。<br />
@@ -2457,9 +2288,8 @@ Protocols can have specific initializers like normal methods which the conformin
 </pre>
 </div>
 </div>
-</div>
-<div id="outline-container-orgb3f1622" class="outline-4">
-<h4 id="orgb3f1622"><span class="section-number-4">5.3.2</span> 版本 2</h4>
+</li>
+<li><a id="org082fd92"></a>版本 2<br />
 <div class="outline-text-4" id="text-5-3-2">
 <p>
 宣告一個 protocol，定義 audioURL 變數(read only)，然後令兩個 struct 皆遵循該 protocol(方式有二)，如此，原本的 Player class 中的 play func 就能只寫一次。<br />
@@ -2499,9 +2329,8 @@ Protocols can have specific initializers like normal methods which the conformin
 </pre>
 </div>
 </div>
-</div>
-<div id="outline-container-orgcc420d4" class="outline-4">
-<h4 id="orgcc420d4"><span class="section-number-4">5.3.3</span> 版本 3</h4>
+</li>
+<li><a id="orgd5bc207"></a>版本 3<br />
 <div class="outline-text-4" id="text-5-3-3">
 <p>
 原本 protocol 的真正意思其實只是在確定 audioURL 是否能正確轉換成 Audio，所以其實將 protocol name 由 Playable 改為 AudioURLConvertable 會更貼近事實。<br />
@@ -2541,10 +2370,11 @@ Protocols can have specific initializers like normal methods which the conformin
 </pre>
 </div>
 </div>
+</li>
+</ol>
 </div>
-</div>
-<div id="outline-container-org2e919cc" class="outline-3">
-<h3 id="org2e919cc"><span class="section-number-3">5.4</span> mutating</h3>
+<div id="outline-container-org4e755cc" class="outline-3">
+<h3 id="org4e755cc"><span class="section-number-3">5.4</span> mutating</h3>
 <div class="outline-text-3" id="text-5-4">
 <p>
 protocol 除了可以提供傳回值型態的彈性，也可以用來變更 class/struct 中的屬性。如：<br />
@@ -2583,8 +2413,8 @@ protocol 除了可以提供傳回值型態的彈性，也可以用來變更 clas
 </p>
 </div>
 </div>
-<div id="outline-container-org0310af8" class="outline-3">
-<h3 id="org0310af8"><span class="section-number-3">5.5</span> 擴充 protocol</h3>
+<div id="outline-container-org5a01025" class="outline-3">
+<h3 id="org5a01025"><span class="section-number-3">5.5</span> 擴充 protocol</h3>
 <div class="outline-text-3" id="text-5-5">
 <p>
 除了擴充現有 struct，protocol 也可以用來擴充 protocol，如：<br />
@@ -2623,8 +2453,8 @@ protocol 除了可以提供傳回值型態的彈性，也可以用來變更 clas
 </div>
 </div>
 </div>
-<div id="outline-container-org34d9de7" class="outline-3">
-<h3 id="org34d9de7"><span class="section-number-3">5.6</span> Further Reading</h3>
+<div id="outline-container-org3315b87" class="outline-3">
+<h3 id="org3315b87"><span class="section-number-3">5.6</span> Further Reading</h3>
 <div class="outline-text-3" id="text-5-6">
 <ul class="org-ul">
 <li><a href="https://docs.swift.org/swift-book/LanguageGuide/Protocols.html">Protocol</a><br /></li>
@@ -2644,8 +2474,8 @@ enumerations(或稱為enums)是Swift中一種特殊類型，它允許你表示�
 </p>
 </div>
 
-<div id="outline-container-org2c044bd" class="outline-3">
-<h3 id="org2c044bd"><span class="section-number-3">6.1</span> without enum</h3>
+<div id="outline-container-orgdd0741c" class="outline-3">
+<h3 id="orgdd0741c"><span class="section-number-3">6.1</span> without enum</h3>
 <div class="outline-text-3" id="text-6-1">
 <p>
 假設我們要登錄學生的學習等第(A, B, C, D, E, F)，如下<br />
@@ -2664,8 +2494,8 @@ enumerations(或稱為enums)是Swift中一種特殊類型，它允許你表示�
 </div>
 </div>
 
-<div id="outline-container-org7ef3ce9" class="outline-3">
-<h3 id="org7ef3ce9"><span class="section-number-3">6.2</span> with enum</h3>
+<div id="outline-container-org622e8cc" class="outline-3">
+<h3 id="org622e8cc"><span class="section-number-3">6.2</span> with enum</h3>
 <div class="outline-text-3" id="text-6-2">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">enum</span> <span style="color: #c678dd;">grade</span> {
@@ -2697,8 +2527,8 @@ enumerations(或稱為enums)是Swift中一種特殊類型，它允許你表示�
 </div>
 </div>
 </div>
-<div id="outline-container-org7cedde6" class="outline-3">
-<h3 id="org7cedde6"><span class="section-number-3">6.3</span> enum的rawValue</h3>
+<div id="outline-container-org59fed92" class="outline-3">
+<h3 id="org59fed92"><span class="section-number-3">6.3</span> enum的rawValue</h3>
 <div class="outline-text-3" id="text-6-3">
 <p>
 配合rawValue定義enum的值，可以讓enum自帶有意義的資訊。<sup><a id="fnr.11" class="footref" href="#fn.11">11</a></sup><br />
@@ -2720,8 +2550,8 @@ my pet is a R
 </pre>
 </div>
 </div>
-<div id="outline-container-org0f66a9a" class="outline-3">
-<h3 id="org0f66a9a"><span class="section-number-3">6.4</span> enum v.s. switch</h3>
+<div id="outline-container-orgb7ecc40" class="outline-3">
+<h3 id="orgb7ecc40"><span class="section-number-3">6.4</span> enum v.s. switch</h3>
 <div class="outline-text-3" id="text-6-4">
 <p>
 enum最大的用處就是搭配switch。<br />
@@ -2747,8 +2577,8 @@ enum最大的用處就是搭配switch。<br />
 </div>
 </div>
 
-<div id="outline-container-org51a5c20" class="outline-3">
-<h3 id="org51a5c20"><span class="section-number-3">6.5</span> Swift列舉中最強大的功能之一：associated values</h3>
+<div id="outline-container-org95f51d8" class="outline-3">
+<h3 id="org95f51d8"><span class="section-number-3">6.5</span> Swift列舉中最強大的功能之一：associated values</h3>
 <div class="outline-text-3" id="text-6-5">
 <p>
 associated values。它允許我們在列舉中儲存額外的數據。我們宣告一個新的列舉，稱為WeatherCondition，它讓我們在每個天氣條件中可額外挾帶一些資訊：<br />
@@ -2791,8 +2621,8 @@ WeatherCondition的宣告。我們提供三個情境，在enum每個情境中都
 </div>
 </div>
 
-<div id="outline-container-orgf43c34e" class="outline-2">
-<h2 id="orgf43c34e"><span class="section-number-2">7</span> Struct v.s. Class</h2>
+<div id="outline-container-org0b92072" class="outline-2">
+<h2 id="org0b92072"><span class="section-number-2">7</span> Struct v.s. Class</h2>
 <div class="outline-text-2" id="text-7">
 <p>
 <a href="https://www.hackingwithswift.com/books/ios-swiftui/why-does-swiftui-use-structs-for-views">資料來源:Why does SwiftUI use structs for views?</a><br />
@@ -2807,15 +2637,15 @@ In SwiftUI, all our views are trivial structs and are almost free to create. Thi
 <li>In comparison, Apple’s documentation for UIView lists about 200 properties and methods that UIView has, all of which get passed on to its subclasses whether they need them or not.<br /></li>
 </ul>
 </div>
-<div id="outline-container-org3f333bd" class="outline-3">
-<h3 id="org3f333bd"><span class="section-number-3">7.1</span> What is in class/struct</h3>
+<div id="outline-container-orga1a4020" class="outline-3">
+<h3 id="orga1a4020"><span class="section-number-3">7.1</span> What is in class/struct</h3>
 <div class="outline-text-3" id="text-7-1">
 <p>
 <a href="https://www.avanderlee.com/swift/struct-class-differences/">資料來源:Struct vs classes in Swift: The differences explained</a><br />
 </p>
 </div>
-<div id="outline-container-org70a1543" class="outline-4">
-<h4 id="org70a1543"><span class="section-number-4">7.1.1</span> What is a class in Swift?</h4>
+<ol class="org-ol">
+<li><a id="orgdc5c36e"></a>What is a class in Swift?<br />
 <div class="outline-text-4" id="text-7-1-1">
 <p>
 A class in Swift is a reference type which can contain:<br />
@@ -2846,9 +2676,8 @@ It’s often described as a template definition of an object, like in the follow
 </pre>
 </div>
 </div>
-</div>
-<div id="outline-container-orgbe1f3cc" class="outline-4">
-<h4 id="orgbe1f3cc"><span class="section-number-4">7.1.2</span> What is a struct in Swift?</h4>
+</li>
+<li><a id="org0c1aa4c"></a>What is a struct in Swift?<br />
 <div class="outline-text-4" id="text-7-1-2">
 <p>
 A struct in Swift is a value type which, just like classes, can contain:<br />
@@ -2874,9 +2703,8 @@ It can also be seen as a template definition of an object, like in the following
 </pre>
 </div>
 </div>
-</div>
-<div id="outline-container-org24282a6" class="outline-4">
-<h4 id="org24282a6"><span class="section-number-4">7.1.3</span> What are the differences between a struct and a class?</h4>
+</li>
+<li><a id="org937bf6e"></a>What are the differences between a struct and a class?<br />
 <div class="outline-text-4" id="text-7-1-3">
 <p width="300">
 <img src="images/coffee.gif" alt="coffee.gif" width="300" /><br />
@@ -2919,16 +2747,15 @@ A struct is a value type and will create a unique copy for each new reference.<b
 </pre>
 </div>
 </div>
-<div id="outline-container-org5482141" class="outline-5">
-<h5 id="org5482141"><span class="section-number-5">7.1.3.1</span> The benefit of mutation in safety</h5>
+<ol class="org-ol">
+<li><a id="org04309b5"></a>The benefit of mutation in safety<br />
 <div class="outline-text-5" id="text-7-1-3-1">
 <p>
 With this, structs have the benefit of mutation in safety as you can trust that no other part of your app is changing the data at the same time. This makes it easier to reason about your code and is especially helpful in multi-threaded environments where a different thread could alter your data at the same time.<br />
 </p>
 </div>
-</div>
-<div id="outline-container-org6b57010" class="outline-5">
-<h5 id="org6b57010"><span class="section-number-5">7.1.3.2</span> Structs get an initializer for free</h5>
+</li>
+<li><a id="org6d5ec98"></a>Structs get an initializer for free<br />
 <div class="outline-text-5" id="text-7-1-3-2">
 <p>
 If you go back and compare the above code examples you can see that the ArticleClass has a defined initializer which is required for classes. Structs, however, get an initializer for free.<br />
@@ -2944,9 +2771,8 @@ If you go back and compare the above code examples you can see that the ArticleC
 </pre>
 </div>
 </div>
-</div>
-<div id="outline-container-orgffe42f3" class="outline-5">
-<h5 id="orgffe42f3"><span class="section-number-5">7.1.3.3</span> Classes allow inheritance</h5>
+</li>
+<li><a id="org73d37a9"></a>Classes allow inheritance<br />
 <div class="outline-text-5" id="text-7-1-3-3">
 <p>
 Classes can inherit the characteristics of another class and with that, act like abstract classes. A common example is a custom view controller which inherit from UIViewController.<br />
@@ -2964,18 +2790,20 @@ A class allows executing code just before it gets destroyed by using a deinit me
 Deinitializers may only be declared within a class<br />
 </p>
 </div>
+</li>
+</ol>
+</li>
+</ol>
 </div>
-</div>
-</div>
-<div id="outline-container-orgf14535a" class="outline-3">
-<h3 id="orgf14535a"><span class="section-number-3">7.2</span> 如何決擇? / When should I go for a struct and when for a class?</h3>
+<div id="outline-container-org3b99653" class="outline-3">
+<h3 id="org3b99653"><span class="section-number-3">7.2</span> 如何決擇? / When should I go for a struct and when for a class?</h3>
 <div class="outline-text-3" id="text-7-2">
 <p>
 A simple bullet point list will make it a lot easier to decide.<br />
 </p>
 </div>
-<div id="outline-container-org67f9234" class="outline-4">
-<h4 id="org67f9234"><span class="section-number-4">7.2.1</span> You should use a class when:</h4>
+<ol class="org-ol">
+<li><a id="org5554122"></a>You should use a class when:<br />
 <div class="outline-text-4" id="text-7-2-1">
 <ul class="org-ul">
 <li>Comparing instance identity is needed by using <code>=</code><br /></li>
@@ -2983,9 +2811,8 @@ A simple bullet point list will make it a lot easier to decide.<br />
 <li>Objective-C interoperability is required<br /></li>
 </ul>
 </div>
-</div>
-<div id="outline-container-org11c03f1" class="outline-4">
-<h4 id="org11c03f1"><span class="section-number-4">7.2.2</span> You should use a struct when:</h4>
+</li>
+<li><a id="org8be3a7f"></a>You should use a struct when:<br />
 <div class="outline-text-4" id="text-7-2-2">
 <ul class="org-ul">
 <li>Comparing instance data is needed by using ==<br /></li>
@@ -2993,18 +2820,18 @@ A simple bullet point list will make it a lot easier to decide.<br />
 <li>The data is used in multiple threads<br /></li>
 </ul>
 </div>
-</div>
-<div id="outline-container-org4a592f4" class="outline-4">
-<h4 id="org4a592f4"><span class="section-number-4">7.2.3</span> Try to go for a struct by default.</h4>
+</li>
+<li><a id="org3042ba7"></a>Try to go for a struct by default.<br />
 <div class="outline-text-4" id="text-7-2-3">
 <p>
 Structs make your code easier to reason about and make it easier to work in multithreaded environments which we often have while developing in Swift.<br />
 </p>
 </div>
+</li>
+</ol>
 </div>
-</div>
-<div id="outline-container-orga4b7991" class="outline-3">
-<h3 id="orga4b7991"><span class="section-number-3">7.3</span> DEMO</h3>
+<div id="outline-container-org722a802" class="outline-3">
+<h3 id="org722a802"><span class="section-number-3">7.3</span> DEMO</h3>
 <div class="outline-text-3" id="text-7-3">
 <p>
 以下這個 View 可正常運作，於 TextField 中所做的編輯修改都會即時顯示於 Text 中。<br />
@@ -3087,20 +2914,1299 @@ The end result is that we can have our state stored in an external object, and, 
 </div>
 </div>
 
-<div id="outline-container-some" class="outline-2">
-<h2 id="some"><span class="section-number-2">8</span> <span class="todo TODO">TODO</span> some</h2>
-<div class="outline-text-2" id="text-some">
-<p class="verse">
-Adding the keyword some in front of a return type indicates that the return type is opaque. <sup><a id="fnr.16" class="footref" href="#fn.16">16</a></sup><br />
+<div id="outline-container-orgf0f9a8e" class="outline-2">
+<h2 id="orgf0f9a8e"><span class="section-number-2">8</span> Publihser and Subscriber</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+發佈者（Publisher）的角色就是提供輸出（output），當有值或者被請求就輸出值，如果一個Publisher沒有任何請求則被優化不做任何處理，Combine中提供兩種基本輸出，正常輸出（output type）和失敗（Failure）<br />
+與發佈者(Publisher)對應的是訂閱者（Subscriber），訂閱者（Subscriber）訂閱發佈者的輸出並進行處理。發佈者（Publisher）和訂閱者（Subcriber）構成Combine的核心概念。和Publisher對應的，Subscriber有一個輸入類型（Input Type）和失敗(Failure),關係如下圖<sup><a id="fnr.16" class="footref" href="#fn.16">16</a></sup>：<br />
+</p>
+<p width="500">
+<img src="images/PS-2.png" alt="PS-2.png" width="500" /><br />
+僅僅是Publisher和Subcriber還不夠，我們可能需要對數據進行一定的處理再交給下一個，這就引入了另外一個概念，operator，operator同時支持了publisher和Subcriber協議，通過operator你可以訂閱一個Publisher，接受它的輸出處理後重新發佈給其他Subcriber，組合起來就是這樣：<br />
+</p>
+
+<div id="org4719903" class="figure">
+<p><img src="images/PS-3.png" alt="PS-3.png" width="500" /><br />
+</p>
+<p><span class="figure-number">Figure 9: </span>Publisher v.s. Operator v.s. Subscriber</p>
+</div>
+
+<p>
+操作者通常用來做數據類型變換，同時作用於輸出類型和失敗類型，操作者也可以用於分割輸出，複製輸出或者組合多個流。操作者的一個限制是輸入和輸出連接需要對齊，就像一個管道一樣，所有連接處都必須一致。我們稱這種組合方式為管道（Pipeline）<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> Combine
+<span class="linenr"> 2: </span><span style="color: #51afef;">let</span> _ = <span style="color: #c678dd;">Just</span>(<span style="color: #da8548; font-weight: bold;">5</span>) <span style="color: #5B6268;">//</span><span style="color: #5B6268;">&#31649;&#36947;&#36215;&#22987;&#26044;&#30332;&#20296;&#32773;Just&#65292;&#36664;&#20986;&#26159;5 &#39006;&#22411;, &#28961;&#22833;&#25943;&#39006;&#22411;</span>
+<span class="linenr"> 3: </span>.<span style="color: #c678dd;">map</span> { value -&gt; <span style="color: #c678dd;">String</span> <span style="color: #51afef;">in</span>
+<span class="linenr"> 4: </span>    <span style="color: #5B6268;">//</span><span style="color: #5B6268;">&#31649;&#36947;&#36890;&#36942;&#20102;map&#25805;&#20316;&#65292;&#36820;&#22238;&#20102;&#19968;&#20491;&#23383;&#31526;&#20018;</span>
+<span class="linenr"> 5: </span>    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">do something with the incoming value here</span>
+<span class="linenr"> 6: </span>    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">and return a string</span>
+<span class="linenr"> 7: </span>    <span style="color: #51afef;">return</span> <span style="color: #98be65;">"a string"</span>
+<span class="linenr"> 8: </span>}
+<span class="linenr"> 9: </span>.<span style="color: #c678dd;">sink</span> { receivedValue <span style="color: #51afef;">in</span>
+<span class="linenr">10: </span>    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">sink is the subscriber and terminates the pipeline</span>
+<span class="linenr">11: </span>    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">subcriber&#35330;&#38321;&#20102;map&#24460;&#30340;&#36664;&#20986;&#65292;&#20006;&#25171;&#21360;&#20102;result</span>
+<span class="linenr">12: </span>    <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"The end result was \(</span>receivedValue<span style="color: #98be65;">)"</span>)
+<span class="linenr">13: </span>}
+</pre>
+</div>
+
+<pre class="example">
+The end result was a string
+</pre>
+</div>
+
+<div id="outline-container-org446a61a" class="outline-3">
+<h3 id="org446a61a"><span class="section-number-3">8.1</span> Publisher</h3>
+<div class="outline-text-3" id="text-8-1">
+<p>
+Declares that a type can transmit a sequence of values over time.<br />
 </p>
 </div>
-<div id="outline-container-org696294e" class="outline-3">
-<h3 id="org696294e"><span class="section-number-3">8.1</span> Generics</h3>
-<div class="outline-text-3" id="text-8-1">
-</div>
-<div id="outline-container-orgf21b2c6" class="outline-4">
-<h4 id="orgf21b2c6"><span class="section-number-4">8.1.1</span> 問題</h4>
+<ol class="org-ol">
+<li><a id="orgb4706bb"></a>Declaration<br />
 <div class="outline-text-4" id="text-8-1-1">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">protocol</span> <span style="color: #c678dd;">Publisher</span>
+</pre>
+</div>
+</div>
+</li>
+<li><a id="orgeb9fdf8"></a>Overview<br />
+<div class="outline-text-4" id="text-8-1-2">
+<p>
+A publisher delivers elements to one or more <a href="https://developer.apple.com/documentation/combine/subscriber">Subscriber</a> instances. The subscriber’s Input and Failure associated types must match the Output and Failure types declared by the publisher. The publisher implements the receive (subscriber:) method to accept a subscriber.<br />
+You connect a subscriber to a publisher by calling the publisher’s subscribe(<span class="underline">:) method. After making this call, the publisher invokes the subscriber’s receive(subscription:) method. This gives the subscriber a Subscription instance, which it uses to demand elements from the publisher, and to optionally cancel the subscription. After the subscriber makes an initial demand, the publisher calls receive(</span>:), possibly asynchronously, to deliver newly-published elements. If the publisher stops publishing, it calls receive(completion:), using a parameter of type Subscribers.Completion to indicate whether publishing completes normally or with an error.<br />
+</p>
+
+<ul class="org-ul">
+<li>sink(receiveCompletion:receiveValue:) executes arbitrary closures when it receives a completion signal and each time it receives a new element.<br /></li>
+<li>assign(to:on:) writes each newly-received value to a property identified by a key path on a given instance.<br /></li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orga5527ac" class="outline-2">
+<h2 id="orga5527ac"><span class="section-number-2">9</span> Combine</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+在 2019 年時，Apple 推出了兩套強大的框架分別是 SwiftUI 以及 Combine，而這兩種全新的框架對於開發者來說是一個重大的改動，它也跟以往我們熟悉的編成方式不同，因此要能夠熟悉這兩個新推出的框架也算是一個大挑戰<sup><a id="fnr.17" class="footref" href="#fn.17">17</a></sup>。<br />
+</p>
+</div>
+<div id="outline-container-org82df7df" class="outline-3">
+<h3 id="org82df7df"><span class="section-number-3">9.1</span> Publisher<sup><a id="fnr.17.100" class="footref" href="#fn.17">17</a></sup></h3>
+<div class="outline-text-3" id="text-9-1">
+<p>
+Combine 框架提供了一個宣告性（declarative）的 Swift API，其用於隨時間推移的值處理，這些值可以表示多種異步事件。Combine 宣告發布者（Publishers）去暴露隨時間變化的值，而訂閱者（Subscribers）去從發布者那裡接收這些值:<br />
+</p>
+<ul class="org-ul">
+<li>Publisher 協議宣告了一個可以隨時間傳遞序列值的類型。發布者具有運算符（Operators）來從上游發布者那裡獲得的值採取行動，然後重新發布他們。<br /></li>
+<li>在發布者鏈的結尾，訂閱者在接收元素的時候對其進行操作。發布者只能在訂閱者明確要求時才發出值。如此一來，你的訂閱者程式碼就可以控制從連接的發布者那裡接受事件的速度<br /></li>
+</ul>
+
+<p>
+發布者傳遞元素到一個或多個訂閱者實例。訂閱者的 Input 以及 Failure 的關聯類型必須與發布者宣告的 Output 以及 Failure 的類型相匹配。發布者實現了 receive(subscriber:) 方法來接受訂閱者。<br />
+</p>
+
+<p>
+在這之後，發布者可以在訂閱者上調用以下方法：<br />
+</p>
+<ul class="org-ul">
+<li>receive(subscription:)： 確認訂閱請求並且返回一個 Subscription 實例。訂閱者使用訂閱來向發布者需求元素，並且可以使用它來取消發布。<br /></li>
+<li>receive(_:)：從發布者向訂閱者傳遞一個元素。<br /></li>
+<li>receive(completion:)：通知訂閱者發布已正常結束或發生錯誤。<br /></li>
+</ul>
+
+<p>
+每個 Publisher 必須遵守此約定，下游訂閱者才能正常運作。此外，@Published 特性受class約束。必須將它與class的屬性一起使用，而不是與非類類型（例如：struct）一起使用。<br />
+</p>
+</div>
+<ol class="org-ol">
+<li><a id="org511cc04"></a>Published<br />
+<div class="outline-text-4" id="text-9-1-1">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> Combine
+<span class="linenr"> 2: </span>
+<span class="linenr"> 3: </span><span style="color: #51afef;">class</span> <span style="color: #c678dd;">Weather</span> {
+<span class="linenr"> 4: </span>    <span style="color: #51afef;">@Published</span> <span style="color: #51afef;">var</span> temperature: <span style="color: #c678dd;">Double</span>
+<span class="linenr"> 5: </span>    <span style="color: #51afef;">init</span>(temperature: <span style="color: #c678dd;">Double</span>) {
+<span class="linenr"> 6: </span>        <span style="color: #51afef;">self</span>.<span style="color: #dcaeea;">temperature</span> = temperature
+<span class="linenr"> 7: </span>    }
+<span class="linenr"> 8: </span>}
+<span class="linenr"> 9: </span><span style="color: #51afef;">let</span> weather = <span style="color: #c678dd;">Weather</span>(temperature: <span style="color: #da8548; font-weight: bold;">20</span>)
+<span class="linenr">10: </span><span style="color: #51afef;">var</span> cancellable = weather.$temperature
+<span class="linenr">11: </span>  .<span style="color: #c678dd;">sink</span>() {
+<span class="linenr">12: </span>      <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"Temperatuer now: \(</span>$0<span style="color: #98be65;">)"</span>)
+<span class="linenr">13: </span>}
+<span class="linenr">14: </span>weather.<span style="color: #dcaeea;">temperature</span> = <span style="color: #da8548; font-weight: bold;">25</span>
+<span class="linenr">15: </span>weather.<span style="color: #dcaeea;">temperature</span> = <span style="color: #da8548; font-weight: bold;">30</span>
+</pre>
+</div>
+
+<pre class="example">
+Temperatuer now: 20.0
+Temperatuer now: 25.0
+Temperatuer now: 30.0
+</pre>
+</div>
+</li>
+</ol>
+</div>
+
+<div id="outline-container-org1b03900" class="outline-3">
+<h3 id="org1b03900"><span class="section-number-3">9.2</span> Subscriber<sup><a id="fnr.17.100" class="footref" href="#fn.17">17</a></sup></h3>
+<div class="outline-text-3" id="text-9-2">
+<p>
+Combine 內置的 Subscriber 有三種：<br />
+</p>
+<ul class="org-ul">
+<li>sink:  通用的closure方式處理Publisher的值<br /></li>
+<li>assign: 可以很方便地將接收到的值通過 KeyPath 設置到指定的 Class 上（不支持 Struct），很適合將已有的程序改造成Reactive。<br /></li>
+<li>Subject: 有些時候我們想隨時在 Publisher 插入值來通知訂閱者，在 Combine 中也提供了一個 Subject 類型來實現。Subject 通常是一個中間代理，即可以作為 Publisher，也可以作為 Observer。Subject要求實現一個send方法，允許向combine鏈條發送值。<br /></li>
+</ul>
+</div>
+<ol class="org-ol">
+<li><a id="org92e885a"></a>sink<br />
+<div class="outline-text-4" id="text-9-2-1">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">import</span> Combine
+<span class="linenr">2: </span><span style="color: #51afef;">private</span> <span style="color: #51afef;">var</span> cancellables = <span style="color: #c678dd;">Set</span>&lt;AnyCancellable&gt;()
+<span class="linenr">3: </span>
+<span class="linenr">4: </span>[<span style="color: #98be65;">"A"</span>, <span style="color: #98be65;">"B"</span>, <span style="color: #98be65;">"C"</span>, <span style="color: #98be65;">"D"</span>, <span style="color: #98be65;">"E"</span>].<span style="color: #c678dd;">publisher</span>
+<span class="linenr">5: </span>  .<span style="color: #c678dd;">sink</span>(receiveCompletion: { <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"completion: \(</span>$0<span style="color: #98be65;">)"</span>) },
+<span class="linenr">6: </span>        receiveValue: { <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"item:\(</span>$0<span style="color: #98be65;">)"</span>) })
+<span class="linenr">7: </span>  .<span style="color: #c678dd;">store</span>(<span style="color: #51afef;">in</span>: &amp;cancellables)
+</pre>
+</div>
+
+<pre class="example">
+item:A
+item:B
+item:C
+item:D
+item:E
+completion:finished
+</pre>
+
+<p>
+sink: 針對收到元素與結束通知時, 分別執行指定的指令<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> Combine
+<span class="linenr"> 2: </span>
+<span class="linenr"> 3: </span><span style="color: #51afef;">var</span> <span style="color: #51afef;">set</span> = <span style="color: #c678dd;">Set</span>&lt;AnyCancellable&gt;()
+<span class="linenr"> 4: </span><span style="color: #51afef;">let</span> pst = PassthroughSubject&lt;<span style="color: #c678dd;">String</span>,<span style="color: #c678dd;">Error</span>&gt;()
+<span class="linenr"> 5: </span>
+<span class="linenr"> 6: </span>pst.<span style="color: #c678dd;">sink</span>(receiveCompletion: { result <span style="color: #51afef;">in</span> <span style="color: #5B6268;">// </span><span style="color: #5B6268;">1</span>
+<span class="linenr"> 7: </span>    <span style="color: #51afef;">switch</span> result {  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">2</span>
+<span class="linenr"> 8: </span>    <span style="color: #51afef;">case</span> .<span style="color: #c678dd;">finished</span>:
+<span class="linenr"> 9: </span>        <span style="color: #51afef;">break</span>
+<span class="linenr">10: </span>    <span style="color: #51afef;">case</span> .<span style="color: #c678dd;">failure</span>(<span style="color: #51afef;">let</span> e):
+<span class="linenr">11: </span>        <span style="color: #c678dd;">print</span>(e)
+<span class="linenr">12: </span>    }
+<span class="linenr">13: </span>}, receiveValue: {<span style="color: #c678dd;">print</span>($0)})
+<span class="linenr">14: </span>.<span style="color: #c678dd;">store</span>(<span style="color: #51afef;">in</span>: &amp;<span style="color: #51afef;">set</span>)
+<span class="linenr">15: </span>pst.<span style="color: #c678dd;">send</span>(<span style="color: #98be65;">"123"</span>)
+<span class="linenr">16: </span>
+</pre>
+</div>
+
+<pre class="example">
+123
+</pre>
+
+<p>
+在這個例子中, 我們完成了一個簡單的 Combine 運作.<br />
+</p>
+<ol class="org-ol">
+<li>我們使用 sink, 取得分別可以應對收到結束與收到元素的執行閉包設定方式, 在這裡我習慣把這件事稱為 執行綁定.<br /></li>
+<li>透過 recevieCompletion 的設定, 我們可以用 Promise 的方式, 注入對應成功或失敗的方式.<br /></li>
+</ol>
+</div>
+</li>
+
+<li><a id="org625a952"></a>assign<br />
+<div class="outline-text-4" id="text-9-2-2">
+<p>
+sink 和 assign 兩種訂閱者都向其發布者請求無限數量的元素。想要控制接收元素的比率，請透過實現 Subscriber 協議來創建自己的訂閱者。<br />
+如要更改發布者的輸出類型，請添加一個 map(_:) 運算符，其閉包將返回不同的類型。在這種情況下，你可以將通知的對象獲取為一個 UITextFiled，然後獲取其 text。<br />
+在發布者產生所需的類型後，將 sink(receiveCompletion:receiveValue:) 替換為 assign(to:on:)。下面的範例獲取從發布者鏈接收到的字串，並將其分配給自定義的 ViewModel 對象的 fillterString ：<br />
+assign: 將元素直接付與到 Object 的屬性.<br />
+</p>
+
+<p>
+沒錯, 只能是 Object, 不能是 Struct/enum, 也不能是 static<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> Combine
+<span class="linenr"> 2: </span>
+<span class="linenr"> 3: </span><span style="color: #51afef;">class</span> <span style="color: #c678dd;">OBJECT</span> {
+<span class="linenr"> 4: </span>    <span style="color: #51afef;">static</span> <span style="color: #51afef;">let</span> shared = <span style="color: #c678dd;">OBJECT</span>()
+<span class="linenr"> 5: </span>    <span style="color: #51afef;">private</span> <span style="color: #51afef;">init</span>() {}
+<span class="linenr"> 6: </span>    <span style="color: #51afef;">var</span> str:<span style="color: #c678dd;">String</span> = <span style="color: #98be65;">""</span>
+<span class="linenr"> 7: </span>}
+<span class="linenr"> 8: </span>
+<span class="linenr"> 9: </span><span style="color: #51afef;">var</span> <span style="color: #51afef;">set</span> = <span style="color: #c678dd;">Set</span>&lt;AnyCancellable&gt;()
+<span class="linenr">10: </span><span style="color: #51afef;">let</span> pst = PassthroughSubject&lt;<span style="color: #c678dd;">String</span>, <span style="color: #c678dd;">Never</span>&gt;()
+<span class="linenr">11: </span>
+<span class="linenr">12: </span>pst
+<span class="linenr">13: </span>  .<span style="color: #c678dd;">assign</span>(to: \.<span style="color: #dcaeea;">str</span>, on: OBJECT.<span style="color: #c678dd;">shared</span>)
+<span class="linenr">14: </span>  .<span style="color: #c678dd;">store</span>(<span style="color: #51afef;">in</span>: &amp;<span style="color: #51afef;">set</span>)
+<span class="linenr">15: </span>pst.<span style="color: #c678dd;">send</span>(<span style="color: #98be65;">"123"</span>)
+<span class="linenr">16: </span>
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="org9a657a1"></a>Subject<br />
+<div class="outline-text-4" id="text-9-2-3">
+<p>
+有些時候我們想隨時在 Publisher 插入值來通知訂閱者，在 Combine 中也提供了一個 Subject 類型來實現。Subject 通常是一個中間代理，即可以作為 Publisher，也可以作為 Observer。Subject要求實現一個send方法，允許向combine鏈條發送值。<br />
+Combine有兩個內置的Subject類型 CurrentValueSubject和PassthroughSubject<br />
+CurrentValueSubject 的功能很簡單，就是包含一個初始值，並且會在每次值變化的時候發送一個消息，這個值會被保存，可以很方便的用來替代 Property Observer。<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> Combine
+<span class="linenr"> 2: </span>
+<span class="linenr"> 3: </span><span style="color: #5B6268;">// </span><span style="color: #5B6268;">Before</span>
+<span class="linenr"> 4: </span><span style="color: #51afef;">class</span> <span style="color: #c678dd;">ContentManager</span> {
+<span class="linenr"> 5: </span>    <span style="color: #51afef;">var</span> content: [<span style="color: #c678dd;">String</span>] {
+<span class="linenr"> 6: </span>        <span style="color: #51afef;">didSet</span> {
+<span class="linenr"> 7: </span>            delegate?.<span style="color: #c678dd;">contentDidChange</span>(content)
+<span class="linenr"> 8: </span>        }
+<span class="linenr"> 9: </span>    }
+<span class="linenr">10: </span>
+<span class="linenr">11: </span>    <span style="color: #51afef;">func</span> <span style="color: #c678dd;">changeContent</span>() {
+<span class="linenr">12: </span>        content = [<span style="color: #98be65;">"hello"</span>, <span style="color: #98be65;">"world"</span>]
+<span class="linenr">13: </span>    }
+<span class="linenr">14: </span>}
+<span class="linenr">15: </span>
+<span class="linenr">16: </span><span style="color: #5B6268;">// </span><span style="color: #5B6268;">After</span>
+<span class="linenr">17: </span><span style="color: #51afef;">class</span> <span style="color: #c678dd;">RxContentController</span> {
+<span class="linenr">18: </span>    <span style="color: #51afef;">var</span> content = CurrentValueSubject&lt;[<span style="color: #c678dd;">String</span>], <span style="color: #c678dd;">NSError</span>&gt;([])
+<span class="linenr">19: </span>
+<span class="linenr">20: </span>    <span style="color: #51afef;">func</span> <span style="color: #c678dd;">changeContent</span>() {
+<span class="linenr">21: </span>        content.<span style="color: #c678dd;">value</span> = [<span style="color: #98be65;">"hello"</span>, <span style="color: #98be65;">"world"</span>]
+<span class="linenr">22: </span>    }
+<span class="linenr">23: </span>}
+</pre>
+</div>
+</div>
+</li>
+<li><a id="org0785dda"></a>使用操作符自定義發布者<sup><a id="fnr.17.100" class="footref" href="#fn.17">17</a></sup><br />
+<div class="outline-text-4" id="text-9-2-4">
+<p>
+你可以使用執行某些行為的運算符來擴展 Publisher 實例，否則這些操作需要手動進行編碼。你可以使用以下三個方式來使運算符改善此事件處理鏈：<br />
+</p>
+<ul class="org-ul">
+<li>可以使用 filter(_:) 運算符來忽略特定長度下的輸入或是拒絕非字母數字的字，而不是使用在 text filed 中輸入任何內容時更新 ViewModel。<br /></li>
+<li>如果過濾運算很昂貴（例如：查詢大型數據庫），則可能要等待用戶停止輸入。為此，我們可以使用 debounce(for:scheduler:options:) 運算符可以設置發布者發出事件之前必須經過的最短時間。RunLoop 類為指定以秒或毫秒為單位的延遲時間提供了方便。<br /></li>
+<li>如果結果更新了 UI，則可以透過調用 receive(on:options:) 方法 callback 回主線程。透過將 RunLoop 類提供的 Scheduler 實例指定為第一個參數，可以告訴 Combine 在主運算循環上調用你的訂閱者。<br /></li>
+</ul>
+<p>
+結果發布者宣告如下：<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">let</span> sub = <span style="color: #c678dd;">NotificationCenter</span>.<span style="color: #51afef;">default</span>
+<span class="linenr">2: </span>  .<span style="color: #c678dd;">publisher</span>(<span style="color: #51afef;">for</span>: UITextField.<span style="color: #c678dd;">textDidChangeNotification</span>, object: filterField)
+<span class="linenr">3: </span>  .<span style="color: #c678dd;">map</span>( { ($0.<span style="color: #c678dd;">object</span> <span style="color: #51afef;">as</span>! UITextField).<span style="color: #c678dd;">text</span>!) })
+<span class="linenr">4: </span>  .<span style="color: #c678dd;">filter</span>( {$0.<span style="color: #c678dd;">unicodeScalars</span>.<span style="color: #c678dd;">allStatisfy</span>({<span style="color: #c678dd;">CharacterSet</span>.<span style="color: #c678dd;">alphanumerics</span>.<span style="color: #c678dd;">contains</span>($0)})} )
+<span class="linenr">5: </span>  .<span style="color: #c678dd;">debounce</span>(<span style="color: #51afef;">for</span>: .<span style="color: #c678dd;">milliseconds</span>(<span style="color: #da8548; font-weight: bold;">500</span>), scheduler: <span style="color: #c678dd;">RunLoop</span>.<span style="color: #c678dd;">main</span>)
+<span class="linenr">6: </span>  .<span style="color: #c678dd;">receive</span>(on: <span style="color: #c678dd;">RunLoop</span>.<span style="color: #c678dd;">main</span>)
+<span class="linenr">7: </span>  .<span style="color: #c678dd;">assign</span>(to: \MyViewModel.<span style="color: #dcaeea;">filterString</span>, on: myViewModel)
+</pre>
+</div>
+</div>
+</li>
+<li><a id="orge1909d8"></a>back pressure<br />
+<div class="outline-text-4" id="text-9-2-5">
+<p>
+透過發送信號通知訂閱者準備接收元素來控制流量的概念稱之為背壓（back pressure）<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> SwiftUI
+<span class="linenr"> 2: </span><span style="color: #51afef;">import</span> Combine
+<span class="linenr"> 3: </span><span style="color: #5B6268;">// </span><span style="color: #5B6268;">Publisher: Uses a timer to emit the date once per second</span>
+<span class="linenr"> 4: </span><span style="color: #51afef;">let</span> timerPub = <span style="color: #c678dd;">Timer</span>.<span style="color: #c678dd;">publish</span>(every: <span style="color: #da8548; font-weight: bold;">1</span>, on: .<span style="color: #c678dd;">main</span>, <span style="color: #51afef;">in</span>: .<span style="color: #51afef;">default</span>)
+<span class="linenr"> 5: </span><span style="color: #5B6268;">//</span><span style="color: #5B6268;">Subscriber: Waits 5 second after subscription, then request a maximum of 3 values.</span>
+<span class="linenr"> 6: </span><span style="color: #51afef;">class</span> <span style="color: #c678dd;">MySubscriber</span>: Subscriber {
+<span class="linenr"> 7: </span>    <span style="color: #51afef;">typealias</span> <span style="color: #c678dd;">Input</span> = <span style="color: #c678dd;">Date</span>
+<span class="linenr"> 8: </span>    <span style="color: #51afef;">typealias</span> <span style="color: #c678dd;">Failure</span> = <span style="color: #c678dd;">Never</span>
+<span class="linenr"> 9: </span>    <span style="color: #51afef;">var</span> subscription: Subscription?
+<span class="linenr">10: </span>
+<span class="linenr">11: </span>    <span style="color: #51afef;">func</span> <span style="color: #c678dd;">receive</span>(subscription: Subscription) {
+<span class="linenr">12: </span>        <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"published\t\treceived"</span>)
+<span class="linenr">13: </span>        <span style="color: #51afef;">self</span>.<span style="color: #dcaeea;">subscription</span> = subscription
+<span class="linenr">14: </span>        DispatchQueue.<span style="color: #c678dd;">main</span>.<span style="color: #c678dd;">asyncAfter</span>(deadline: .<span style="color: #c678dd;">now</span>() + <span style="color: #da8548; font-weight: bold;">3</span>) {
+<span class="linenr">15: </span>            subscription.<span style="color: #c678dd;">request</span>(.<span style="color: #c678dd;">max</span>(<span style="color: #da8548; font-weight: bold;">2</span>))
+<span class="linenr">16: </span>        }
+<span class="linenr">17: </span>    }
+<span class="linenr">18: </span>    <span style="color: #51afef;">func</span> <span style="color: #c678dd;">receive</span>(_ input: <span style="color: #c678dd;">Date</span>) -&gt; Subscribers.<span style="color: #dcaeea;">Demand</span> {
+<span class="linenr">19: </span>        <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"\(</span>input<span style="color: #98be65;">)\t\t\(</span><span style="color: #c678dd;">Date</span>()<span style="color: #98be65;">)"</span>)
+<span class="linenr">20: </span>        <span style="color: #51afef;">return</span> Subscribers.<span style="color: #dcaeea;">Demand</span>.<span style="color: #51afef;">none</span>
+<span class="linenr">21: </span>    }
+<span class="linenr">22: </span>    <span style="color: #51afef;">func</span> <span style="color: #c678dd;">receive</span>(completion: Subscribers.<span style="color: #dcaeea;">Completion</span>&lt;<span style="color: #c678dd;">Never</span>&gt;) {
+<span class="linenr">23: </span>        <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"--done--"</span>)
+<span class="linenr">24: </span>    }
+<span class="linenr">25: </span>}
+<span class="linenr">26: </span><span style="color: #5B6268;">//</span><span style="color: #5B6268;">Subscribe to timberPub.</span>
+<span class="linenr">27: </span><span style="color: #51afef;">let</span> mySub = <span style="color: #c678dd;">MySubscriber</span>()
+<span class="linenr">28: </span><span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"Subscribing at \(</span><span style="color: #c678dd;">Date</span>()<span style="color: #98be65;">)"</span>)
+<span class="linenr">29: </span>timerPub.<span style="color: #c678dd;">subscribe</span>(mySub)
+</pre>
+</div>
+
+<pre class="example">
+Subscribing at 2021-04-25 12:36:25 +0000
+published		received
+</pre>
+</div>
+</li>
+<li><a id="orgb793a70"></a>需要時取消發布<sup><a id="fnr.17.100" class="footref" href="#fn.17">17</a></sup><br />
+<div class="outline-text-4" id="text-9-2-6">
+<p>
+發布者持續發出元素，直到其正常完成或失敗為止。如果你不想再訂閱發布者，則可以取消訂閱。由 sink 和 assign 所創建的訂閱者都實現的 Cancellable 協議，該協議提供了 cancel() 方法：<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span>sub.<span style="color: #c678dd;">cancel</span>()
+</pre>
+</div>
+<p>
+如果創建自定義 Subscriber，則發布者在首次訂閱時會發送一個 Subscription 對象。存儲此訂閱，然後再要取消發布的時候調用其 cancel() 方法。當創建自定義訂閱者時，你應該要實現 Cancellable 協議，並讓你的 cancel() 實現將調用轉發給存儲的訂閱。<br />
+</p>
+</div>
+</li>
+</ol>
+</div>
+
+<div id="outline-container-orgb441cfc" class="outline-3">
+<h3 id="orgb441cfc"><span class="section-number-3">9.3</span> Subject</h3>
+<div class="outline-text-3" id="text-9-3">
+<p>
+Subject 是一種特殊的 Publisher, protocol Subject 是 protocol Publisher 的繼承類:<br />
+特別注意, 不同於 Publisher, Subject 透過 AnyObjcet, 限制了 Reference type.<br />
+</p>
+
+<p>
+如果 一個事件流要用特別的方式介入, Suject 就是這個 inject 的載體, 也因此可以快速的將原本的非 Combine 的程式改寫套用. 若是熟係設計模式, Subject 以實作觀察者模式來理解會比較直接.<br />
+</p>
+
+<p>
+Subject 在 Combine 有兩個實作類別:<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">final</span> <span style="color: #51afef;">class</span> <span style="color: #c678dd;">PassthroughSubject</span>&lt;<span style="color: #c678dd;">Output</span>, <span style="color: #c678dd;">Failure</span>&gt; <span style="color: #51afef;">where</span> <span style="color: #c678dd;">Failure</span> : <span style="color: #c678dd;">Error</span>
+<span class="linenr">2: </span><span style="color: #51afef;">final</span> <span style="color: #51afef;">class</span> <span style="color: #c678dd;">CurrentValueSubject</span>&lt;<span style="color: #c678dd;">Output</span>, <span style="color: #c678dd;">Failure</span>&gt; <span style="color: #51afef;">where</span> <span style="color: #c678dd;">Failure</span> : <span style="color: #c678dd;">Error</span>
+</pre>
+</div>
+
+<pre class="example">
+Unlike CurrentValueSubject, a PassthroughSubject doesn’t have an initial value or a buffer of the most recently-published element.
+PassthroughSubject 和 CurrentValueSubject 幾乎一樣，只是沒有初始值，也不會保存任何值。
+</pre>
+<p>
+Subject也可以理解成特殊的Publisher，不同于publisher，subject可以用.send()来想subscriber发送values。先介绍两种常用的subjects：<br />
+</p>
+<ul class="org-ul">
+<li>PassthroughSubject - 可以持续向subscriber传输值或者结束事件，可以没有初始值<br /></li>
+<li>CurrentValueSubject - 初始化时必须有初始值，可以通过subject.value来查看当前publisher发送的值<br /></li>
+</ul>
+</div>
+
+<ol class="org-ol">
+<li><a id="orgf48ffe1"></a>CurrentValueSubject<br />
+<div class="outline-text-4" id="text-9-3-1">
+<p>
+CurrentValueSubject 相對於 PassthroughSubject, 是沒有.send(), 取而代之的是一個真真確確的 value, 就像是 didSet 的方式, 就像 if then 的方式.<br />
+</p>
+
+<p>
+與 PassthroughSubject 不同，CurrentValueSubject 維護最近發布元素的緩衝區。在 CurrentValueSubject 上調用 send(_:) 也會更新當前值，使其等效於直接更新該值。<br />
+</p>
+</div>
+</li>
+<li><a id="org73cfbfd"></a>PassthroughSubject<br />
+<div class="outline-text-4" id="text-9-3-2">
+<p>
+PassthroughSubject 是一個相近於 NotificationCenter 的模式, 透過 .send() 可以控制結束或是發送 Value, 很容易入門且濫用.<br />
+</p>
+
+<p>
+作為 Subject 的具體實現，PassthroughSubject 提供了一種便利方式來使現有命令式程式碼適應 Combine 模型。<br />
+</p>
+
+<p>
+與 CurrentValueSubject 不同，PassthroughSubject 沒有初始值或最新發布元素元素的緩衝區。如果沒有訂閱者，或當前需求為零，則 PassthrougnSubject 會丟棄值。<br />
+</p>
+</div>
+</li>
+</ol>
+</div>
+
+<div id="outline-container-org8e634d9" class="outline-3">
+<h3 id="org8e634d9"><span class="section-number-3">9.4</span> Operator</h3>
+<div class="outline-text-3" id="text-9-4">
+<p>
+就像是物件導向的不同部分有不同的變形一樣，Operator 在 Combine 中扮演了舉足輕重的角色，沒有了他，Combine 只是 if then。<br />
+</p>
+
+<p>
+Operator 可以區分為幾大類<br />
+</p>
+<ol class="org-ol">
+<li>轉換類型 map, scan, flapMap<br /></li>
+<li>一般篩選類型 compactMap, filter, removeDuplicates<br /></li>
+<li>整併類型 reduce, collect<br /></li>
+<li>運算類型 count, comparison<br /></li>
+<li>符合篩選類型 contains, allSatisfy<br /></li>
+<li>序列篩選類型 first, last, drop, firstWhere,<br /></li>
+<li>上流整合類型 zip, merge, combineLatest<br /></li>
+<li>型別銜接類型 eraseToAnyPublisher, switchToLatest<br /></li>
+<li>失敗處理類型 catch, retry, mapError<br /></li>
+<li>時間控制類型 debounce, throttle, delay, timeout<br /></li>
+<li>格式解析類型 Encode, decode<br /></li>
+<li>Debugging類型 print, breakpoint, handleEvents<br /></li>
+</ol>
+</div>
+<ol class="org-ol">
+<li><a id="orgf89dc15"></a>collect()<br />
+<div class="outline-text-4" id="text-9-4-1">
+<p>
+collect就是把一个一个输出的value全都放在array里，然后等publisher结束后，输出这个array:<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">import</span> Combine
+<span class="linenr">2: </span><span style="color: #51afef;">private</span> <span style="color: #51afef;">var</span> cancellables = <span style="color: #c678dd;">Set</span>&lt;AnyCancellable&gt;()
+<span class="linenr">3: </span>
+<span class="linenr">4: </span>[<span style="color: #98be65;">"A"</span>, <span style="color: #98be65;">"B"</span>, <span style="color: #98be65;">"C"</span>, <span style="color: #98be65;">"D"</span>, <span style="color: #98be65;">"E"</span>].<span style="color: #c678dd;">publisher</span>
+<span class="linenr">5: </span>  .<span style="color: #c678dd;">collect</span>()
+<span class="linenr">6: </span>  .<span style="color: #c678dd;">sink</span>(receiveCompletion: { <span style="color: #c678dd;">print</span>($0) },
+<span class="linenr">7: </span>        receiveValue: { <span style="color: #c678dd;">print</span>($0) })
+<span class="linenr">8: </span>    .<span style="color: #c678dd;">store</span>(<span style="color: #51afef;">in</span>: &amp;cancellables)
+</pre>
+</div>
+
+<pre class="example">
+["A", "B", "C", "D", "E"]
+finished
+</pre>
+
+<p>
+通常我们会限制collect需要收集values的个数，不然无限等着可能浪费内存：<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">import</span> Combine
+<span class="linenr">2: </span><span style="color: #51afef;">private</span> <span style="color: #51afef;">var</span> cancellables = <span style="color: #c678dd;">Set</span>&lt;AnyCancellable&gt;()
+<span class="linenr">3: </span>
+<span class="linenr">4: </span>[<span style="color: #98be65;">"A"</span>, <span style="color: #98be65;">"B"</span>, <span style="color: #98be65;">"C"</span>, <span style="color: #98be65;">"D"</span>, <span style="color: #98be65;">"E"</span>].<span style="color: #c678dd;">publisher</span>
+<span class="linenr">5: </span>  .<span style="color: #c678dd;">collect</span>(<span style="color: #da8548; font-weight: bold;">3</span>)
+<span class="linenr">6: </span>  .<span style="color: #c678dd;">sink</span>(receiveCompletion: { <span style="color: #c678dd;">print</span>($0) },
+<span class="linenr">7: </span>        receiveValue: { <span style="color: #c678dd;">print</span>($0) })
+<span class="linenr">8: </span>    .<span style="color: #c678dd;">store</span>(<span style="color: #51afef;">in</span>: &amp;cancellables)
+<span class="linenr">9: </span>
+</pre>
+</div>
+
+<pre class="example">
+["A", "B", "C"]
+["D", "E"]
+finished
+</pre>
+</div>
+</li>
+
+<li><a id="orgf473e16"></a>map:<br />
+<div class="outline-text-4" id="text-9-4-2">
+<p>
+轉換上游元素為另一元素<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">import</span> Combine
+<span class="linenr">2: </span><span style="color: #51afef;">import</span> Foundation
+<span class="linenr">3: </span>
+<span class="linenr">4: </span><span style="color: #51afef;">private</span> <span style="color: #51afef;">var</span> cancellable: AnyCancellable?
+<span class="linenr">5: </span>
+<span class="linenr">6: </span>cancellable = [<span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #da8548; font-weight: bold;">2</span>, <span style="color: #da8548; font-weight: bold;">3</span>].<span style="color: #c678dd;">publisher</span>
+<span class="linenr">7: </span>.<span style="color: #c678dd;">map</span>{ int <span style="color: #51afef;">in</span> <span style="color: #98be65;">"Transfer to Number: \(</span>int<span style="color: #98be65;">)"</span> }
+<span class="linenr">8: </span>.<span style="color: #c678dd;">sink</span>(receiveValue: { int <span style="color: #51afef;">in</span>
+<span class="linenr">9: </span>      <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"Received: \(</span>int<span style="color: #98be65;">)"</span>)})
+</pre>
+</div>
+
+<pre class="example">
+Received: Transfer to Number: 1
+Received: Transfer to Number: 2
+Received: Transfer to Number: 3
+</pre>
+</div>
+</li>
+<li><a id="orgdb30968"></a>map key path<br />
+<div class="outline-text-4" id="text-9-4-3">
+<p>
+如果输出的value有多个属性，那么也可以用map和keypath来拆分：<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">import</span> Combine
+<span class="linenr">2: </span>
+<span class="linenr">3: </span><span style="color: #51afef;">private</span> <span style="color: #51afef;">var</span> cancellables = <span style="color: #c678dd;">Set</span>&lt;AnyCancellable&gt;()
+<span class="linenr">4: </span>
+<span class="linenr">5: </span>[(x: <span style="color: #da8548; font-weight: bold;">2</span>, y: <span style="color: #da8548; font-weight: bold;">3</span>), (x: <span style="color: #da8548; font-weight: bold;">1</span>, y: <span style="color: #da8548; font-weight: bold;">5</span>), (x: <span style="color: #da8548; font-weight: bold;">2</span>, y: <span style="color: #da8548; font-weight: bold;">6</span>)].<span style="color: #c678dd;">publisher</span>
+<span class="linenr">6: </span>    .<span style="color: #c678dd;">map</span>(\.<span style="color: #c678dd;">x</span>, \.<span style="color: #c678dd;">y</span>)
+<span class="linenr">7: </span>    .<span style="color: #c678dd;">sink</span>(receiveCompletion: { <span style="color: #c678dd;">print</span>($0) },
+<span class="linenr">8: </span>        receiveValue: { x, y <span style="color: #51afef;">in</span> <span style="color: #c678dd;">print</span>(x + y) })
+<span class="linenr">9: </span>    .<span style="color: #c678dd;">store</span>(<span style="color: #51afef;">in</span>: &amp;cancellables)
+</pre>
+</div>
+
+<pre class="example">
+5
+6
+8
+finished
+</pre>
+
+
+<p>
+The result of this chain of calls is a Cancellable, which we can use to cancel processing if required (useful for longer-running chains). We’ll store this (and all the others that we will create later on) into a Set&lt;AnyCancellable&gt;, so we can clean up upon deinit.<br />
+</p>
+</div>
+</li>
+<li><a id="org2db80ff"></a>tryMap<br />
+<div class="outline-text-4" id="text-9-4-4">
+<p>
+tryMap就是map的closure里有可能throw，throw的话就筛选掉这个value：<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> Combine
+<span class="linenr"> 2: </span><span style="color: #51afef;">import</span> Foundation
+<span class="linenr"> 3: </span>
+<span class="linenr"> 4: </span><span style="color: #51afef;">private</span> <span style="color: #51afef;">var</span> cancellables = <span style="color: #c678dd;">Set</span>&lt;AnyCancellable&gt;()
+<span class="linenr"> 5: </span>
+<span class="linenr"> 6: </span><span style="color: #c678dd;">Just</span>(<span style="color: #98be65;">"/fake"</span>)
+<span class="linenr"> 7: </span>    .<span style="color: #c678dd;">tryMap</span> { <span style="color: #51afef;">try</span> <span style="color: #c678dd;">FileManager</span>.<span style="color: #51afef;">default</span>.<span style="color: #c678dd;">contentsOfDirectory</span>(atPath: $0) }
+<span class="linenr"> 8: </span>    .<span style="color: #c678dd;">sink</span>(receiveCompletion: { <span style="color: #c678dd;">print</span>($0) },
+<span class="linenr"> 9: </span>        receiveValue: { <span style="color: #c678dd;">print</span>($0) })
+<span class="linenr">10: </span>    .<span style="color: #c678dd;">store</span>(<span style="color: #51afef;">in</span>: &amp;cancellables)
+</pre>
+</div>
+
+<pre class="example">
+failure(Error Domain=NSCocoaErrorDomain Code=260 "The folder “fake” doesn’t exist." UserInfo={NSFilePath=/fake, NSUserStringVariant=(
+    Folder
+), NSUnderlyingError=0x7fb53bfdf7c0 {Error Domain=NSOSStatusErrorDomain Code=-43 "fnfErr: File not found"}})
+</pre>
+</div>
+</li>
+<li><a id="org6b24593"></a>flatMap<br />
+<div class="outline-text-4" id="text-9-4-5">
+<p>
+如果你有一个publisher发送的value的某些属性也是publisher， 那sink只会receive外面这个publisher发出的value，属性publisher发出的value要是也想接收，那你就可以用flatMap<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> Combine
+<span class="linenr"> 2: </span><span style="color: #51afef;">private</span> <span style="color: #51afef;">var</span> cancellables = <span style="color: #c678dd;">Set</span>&lt;AnyCancellable&gt;()
+<span class="linenr"> 3: </span>
+<span class="linenr"> 4: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">Person</span> {
+<span class="linenr"> 5: </span>    <span style="color: #51afef;">let</span> name : <span style="color: #c678dd;">String</span>
+<span class="linenr"> 6: </span>    <span style="color: #51afef;">var</span> age: CurrentValueSubject&lt;<span style="color: #c678dd;">Int</span>, <span style="color: #c678dd;">Never</span>&gt;
+<span class="linenr"> 7: </span>
+<span class="linenr"> 8: </span>    <span style="color: #51afef;">init</span>(name: <span style="color: #c678dd;">String</span>, age: <span style="color: #c678dd;">Int</span>) {
+<span class="linenr"> 9: </span>        <span style="color: #51afef;">self</span>.<span style="color: #c678dd;">name</span> = name
+<span class="linenr">10: </span>        <span style="color: #51afef;">self</span>.<span style="color: #c678dd;">age</span> = <span style="color: #c678dd;">CurrentValueSubject</span>(age)
+<span class="linenr">11: </span>    }
+<span class="linenr">12: </span>}
+<span class="linenr">13: </span>
+<span class="linenr">14: </span><span style="color: #51afef;">var</span> me = <span style="color: #c678dd;">Person</span>(name: <span style="color: #98be65;">"Joshua"</span>, age: <span style="color: #da8548; font-weight: bold;">18</span>)
+<span class="linenr">15: </span><span style="color: #51afef;">var</span> you = <span style="color: #c678dd;">Person</span>(name: <span style="color: #98be65;">"Dog"</span>, age: <span style="color: #da8548; font-weight: bold;">28</span>)
+<span class="linenr">16: </span>
+<span class="linenr">17: </span><span style="color: #51afef;">let</span> people = PassthroughSubject&lt;Person, <span style="color: #c678dd;">Never</span>&gt;()
+<span class="linenr">18: </span>people
+<span class="linenr">19: </span>  .<span style="color: #c678dd;">flatMap</span>{ $0.<span style="color: #c678dd;">age</span> }
+<span class="linenr">20: </span>  .<span style="color: #c678dd;">sink</span>(receiveCompletion: { _ <span style="color: #51afef;">in</span>
+<span class="linenr">21: </span>            <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"people completed"</span>)
+<span class="linenr">22: </span>        }, receiveValue: { val <span style="color: #51afef;">in</span>
+<span class="linenr">23: </span>               <span style="color: #c678dd;">print</span>(val)
+<span class="linenr">24: </span>           })
+<span class="linenr">25: </span>  .<span style="color: #c678dd;">store</span>(<span style="color: #51afef;">in</span>: &amp;cancellables)
+<span class="linenr">26: </span>
+<span class="linenr">27: </span>people.<span style="color: #c678dd;">send</span>(me)
+<span class="linenr">28: </span>people.<span style="color: #c678dd;">send</span>(you)
+<span class="linenr">29: </span>me.<span style="color: #c678dd;">age</span>.<span style="color: #c678dd;">value</span> = <span style="color: #da8548; font-weight: bold;">19</span>
+<span class="linenr">30: </span>you.<span style="color: #c678dd;">age</span>.<span style="color: #c678dd;">value</span> = <span style="color: #da8548; font-weight: bold;">30</span>
+<span class="linenr">31: </span>
+</pre>
+</div>
+
+<pre class="example">
+18
+28
+19
+30
+</pre>
+
+<p>
+好好看一下这个例子，我觉得大家应该就都理解了吧，这属于比较复杂的一个operator了。flatMap还可以限制订阅publisher的个数：<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> Combine
+<span class="linenr"> 2: </span><span style="color: #51afef;">private</span> <span style="color: #51afef;">var</span> cancellables = <span style="color: #c678dd;">Set</span>&lt;AnyCancellable&gt;()
+<span class="linenr"> 3: </span>
+<span class="linenr"> 4: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">Person</span> {
+<span class="linenr"> 5: </span>    <span style="color: #51afef;">let</span> name : <span style="color: #c678dd;">String</span>
+<span class="linenr"> 6: </span>    <span style="color: #51afef;">var</span> age: CurrentValueSubject&lt;<span style="color: #c678dd;">Int</span>, <span style="color: #c678dd;">Never</span>&gt;
+<span class="linenr"> 7: </span>
+<span class="linenr"> 8: </span>    <span style="color: #51afef;">init</span>(name: <span style="color: #c678dd;">String</span>, age: <span style="color: #c678dd;">Int</span>) {
+<span class="linenr"> 9: </span>        <span style="color: #51afef;">self</span>.<span style="color: #c678dd;">name</span> = name
+<span class="linenr">10: </span>        <span style="color: #51afef;">self</span>.<span style="color: #c678dd;">age</span> = <span style="color: #c678dd;">CurrentValueSubject</span>(age)
+<span class="linenr">11: </span>    }
+<span class="linenr">12: </span>}
+<span class="linenr">13: </span>
+<span class="linenr">14: </span><span style="color: #51afef;">var</span> me = <span style="color: #c678dd;">Person</span>(name: <span style="color: #98be65;">"Joshua"</span>, age: <span style="color: #da8548; font-weight: bold;">18</span>)
+<span class="linenr">15: </span><span style="color: #51afef;">var</span> you = <span style="color: #c678dd;">Person</span>(name: <span style="color: #98be65;">"Dog"</span>, age: <span style="color: #da8548; font-weight: bold;">28</span>)
+<span class="linenr">16: </span><span style="color: #51afef;">var</span> she = <span style="color: #c678dd;">Person</span>(name: <span style="color: #98be65;">"SHE"</span>, age: <span style="color: #da8548; font-weight: bold;">16</span>)
+<span class="linenr">17: </span>
+<span class="linenr">18: </span><span style="color: #51afef;">let</span> people = PassthroughSubject&lt;Person, <span style="color: #c678dd;">Never</span>&gt;()
+<span class="linenr">19: </span>people
+<span class="linenr">20: </span>    .<span style="color: #c678dd;">flatMap</span>(maxPublishers: .<span style="color: #c678dd;">max</span>(<span style="color: #da8548; font-weight: bold;">1</span>)) { $0.<span style="color: #c678dd;">age</span> }
+<span class="linenr">21: </span>    .<span style="color: #c678dd;">sink</span>(receiveCompletion: { _ <span style="color: #51afef;">in</span>
+<span class="linenr">22: </span>        <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"people completed"</span>)
+<span class="linenr">23: </span>    }, receiveValue: { val <span style="color: #51afef;">in</span>
+<span class="linenr">24: </span>        <span style="color: #c678dd;">print</span>(val)
+<span class="linenr">25: </span>
+<span class="linenr">26: </span>    })
+<span class="linenr">27: </span>.<span style="color: #c678dd;">store</span>(<span style="color: #51afef;">in</span>: &amp;cancellables)
+<span class="linenr">28: </span>
+<span class="linenr">29: </span>people.<span style="color: #c678dd;">send</span>(me)
+<span class="linenr">30: </span>people.<span style="color: #c678dd;">send</span>(you)
+<span class="linenr">31: </span>people.<span style="color: #c678dd;">send</span>(she)
+<span class="linenr">32: </span>me.<span style="color: #c678dd;">age</span>.<span style="color: #c678dd;">value</span> = <span style="color: #da8548; font-weight: bold;">19</span>
+<span class="linenr">33: </span>you.<span style="color: #c678dd;">age</span>.<span style="color: #c678dd;">value</span> = <span style="color: #da8548; font-weight: bold;">30</span>
+<span class="linenr">34: </span>she.<span style="color: #c678dd;">age</span>.<span style="color: #c678dd;">value</span> = <span style="color: #da8548; font-weight: bold;">17</span>
+<span class="linenr">35: </span>
+<span class="linenr">36: </span><span style="color: #5B6268;">// </span><span style="color: #5B6268;">&#36755;&#20986;&#21644;&#20043;&#21069;&#37027;&#20010;&#19968;&#26679;</span>
+</pre>
+</div>
+
+<pre class="example">
+18
+19
+</pre>
+</div>
+</li>
+<li><a id="orgecd96da"></a>replaceNil(with:)<br />
+<div class="outline-text-4" id="text-9-4-6">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">import</span> Combine
+<span class="linenr">2: </span><span style="color: #51afef;">private</span> <span style="color: #51afef;">var</span> cancellables = <span style="color: #c678dd;">Set</span>&lt;AnyCancellable&gt;()
+<span class="linenr">3: </span>[<span style="color: #98be65;">"A"</span>, <span style="color: #a9a1e1;">nil</span>, <span style="color: #98be65;">"C"</span>].<span style="color: #c678dd;">publisher</span>
+<span class="linenr">4: </span>.<span style="color: #c678dd;">replaceNil</span>(with: <span style="color: #98be65;">"null"</span>)
+<span class="linenr">5: </span>.<span style="color: #c678dd;">map</span> { $0! }
+<span class="linenr">6: </span>.<span style="color: #c678dd;">sink</span>(receiveCompletion: { <span style="color: #c678dd;">print</span>($0) },
+<span class="linenr">7: </span>    receiveValue: { <span style="color: #c678dd;">print</span>($0) })
+<span class="linenr">8: </span>.<span style="color: #c678dd;">store</span>(<span style="color: #51afef;">in</span>: &amp;cancellables)
+</pre>
+</div>
+
+<pre class="example">
+A
+null
+C
+finished
+</pre>
+</div>
+</li>
+<li><a id="orgeb70fae"></a>replaceEnpty(with:)<br />
+<div class="outline-text-4" id="text-9-4-7">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">import</span> Combine
+<span class="linenr">2: </span><span style="color: #51afef;">private</span> <span style="color: #51afef;">var</span> cancellables = <span style="color: #c678dd;">Set</span>&lt;AnyCancellable&gt;()
+<span class="linenr">3: </span>
+<span class="linenr">4: </span><span style="color: #51afef;">let</span> empty = Empty&lt;<span style="color: #c678dd;">String</span>, <span style="color: #c678dd;">Never</span>&gt;()
+<span class="linenr">5: </span>empty
+<span class="linenr">6: </span>  .<span style="color: #c678dd;">replaceEmpty</span>(with: <span style="color: #98be65;">"Empty"</span>)
+<span class="linenr">7: </span>  .<span style="color: #c678dd;">sink</span>(receiveCompletion: { <span style="color: #c678dd;">print</span>($0) },
+<span class="linenr">8: </span>        receiveValue: { <span style="color: #c678dd;">print</span>($0) })
+<span class="linenr">9: </span>  .<span style="color: #c678dd;">store</span>(<span style="color: #51afef;">in</span>: &amp;cancellables)
+</pre>
+</div>
+
+<pre class="example">
+Empty
+finished
+</pre>
+
+<p>
+这个Empty一般就是用来测试或demo，直接发送.finish<br />
+</p>
+</div>
+</li>
+<li><a id="orga2115e5"></a>reduce(0)<br />
+<div class="outline-text-4" id="text-9-4-8">
+<p>
+这个和之前文章中介绍的reduce一样。publisher一定要结束才会输出最后值<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">import</span> Combine
+<span class="linenr">2: </span><span style="color: #51afef;">private</span> <span style="color: #51afef;">var</span> cancellables = <span style="color: #c678dd;">Set</span>&lt;AnyCancellable&gt;()
+<span class="linenr">3: </span>
+<span class="linenr">4: </span>[<span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #da8548; font-weight: bold;">2</span>, <span style="color: #da8548; font-weight: bold;">3</span>].<span style="color: #c678dd;">publisher</span>
+<span class="linenr">5: </span>    .<span style="color: #c678dd;">reduce</span>(<span style="color: #da8548; font-weight: bold;">0</span>, +)
+<span class="linenr">6: </span>    .<span style="color: #c678dd;">sink</span>(receiveCompletion: { <span style="color: #c678dd;">print</span>($0) },
+<span class="linenr">7: </span>        receiveValue: { <span style="color: #c678dd;">print</span>($0) })
+<span class="linenr">8: </span>    .<span style="color: #c678dd;">store</span>(<span style="color: #51afef;">in</span>: &amp;cancellables)
+</pre>
+</div>
+
+<pre class="example">
+6
+finished
+</pre>
+</div>
+</li>
+<li><a id="org63265f3"></a>scan<br />
+<div class="outline-text-4" id="text-9-4-9">
+<p>
+scan 對每個信號都進行處理類似 map，但是可以取得前一個上路元素。scan和reduce差不多，但是scan不是最后才输出值，每个都会输出<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">import</span> Combine
+<span class="linenr">2: </span>
+<span class="linenr">3: </span><span style="color: #51afef;">let</span> pub = (<span style="color: #da8548; font-weight: bold;">0</span>...<span style="color: #da8548; font-weight: bold;">5</span>)
+<span class="linenr">4: </span>  .<span style="color: #c678dd;">publisher</span>
+<span class="linenr">5: </span>  .<span style="color: #c678dd;">scan</span>(<span style="color: #da8548; font-weight: bold;">0</span>, { <span style="color: #51afef;">return</span> $0 + $1 })
+<span class="linenr">6: </span>  .<span style="color: #c678dd;">sink</span>(receiveValue: { <span style="color: #c678dd;">print</span> (<span style="color: #98be65;">"\(</span>$0<span style="color: #98be65;">)"</span>, terminator: <span style="color: #98be65;">"\n"</span>) })
+</pre>
+</div>
+
+<pre class="example">
+0
+1
+3
+6
+10
+15
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">import</span> Combine
+<span class="linenr">2: </span><span style="color: #51afef;">private</span> <span style="color: #51afef;">var</span> cancellables = <span style="color: #c678dd;">Set</span>&lt;AnyCancellable&gt;()
+<span class="linenr">3: </span>[<span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #da8548; font-weight: bold;">2</span>, <span style="color: #da8548; font-weight: bold;">3</span>].<span style="color: #c678dd;">publisher</span>
+<span class="linenr">4: </span>    .<span style="color: #c678dd;">scan</span>(<span style="color: #da8548; font-weight: bold;">0</span>, +)
+<span class="linenr">5: </span>    .<span style="color: #c678dd;">sink</span>(receiveCompletion: { <span style="color: #c678dd;">print</span>($0) },
+<span class="linenr">6: </span>        receiveValue: { <span style="color: #c678dd;">print</span>($0) })
+<span class="linenr">7: </span>    .<span style="color: #c678dd;">store</span>(<span style="color: #51afef;">in</span>: &amp;cancellables)
+</pre>
+</div>
+
+<pre class="example">
+1
+3
+6
+finished
+</pre>
+</div>
+</li>
+<li><a id="org78ba3bb"></a>tryScan<br />
+<div class="outline-text-4" id="text-9-4-10">
+<p>
+和上面類似，允許拋出錯誤<br />
+</p>
+</div>
+</li>
+<li><a id="orgfb6e5f7"></a>filter<br />
+<div class="outline-text-4" id="text-9-4-11">
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">import</span> Combine
+<span class="linenr">2: </span><span style="color: #51afef;">private</span> <span style="color: #51afef;">var</span> cancellables = <span style="color: #c678dd;">Set</span>&lt;AnyCancellable&gt;()
+<span class="linenr">3: </span>
+<span class="linenr">4: </span>[<span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #da8548; font-weight: bold;">2</span>, <span style="color: #da8548; font-weight: bold;">3</span>].<span style="color: #c678dd;">publisher</span>
+<span class="linenr">5: </span>    .<span style="color: #c678dd;">filter</span> { $0 &lt; <span style="color: #da8548; font-weight: bold;">3</span> }
+<span class="linenr">6: </span>    .<span style="color: #c678dd;">sink</span>(receiveCompletion: { <span style="color: #c678dd;">print</span>($0) },
+<span class="linenr">7: </span>        receiveValue: { <span style="color: #c678dd;">print</span>($0) })
+<span class="linenr">8: </span>    .<span style="color: #c678dd;">store</span>(<span style="color: #51afef;">in</span>: &amp;cancellables)
+</pre>
+</div>
+
+<pre class="example">
+1
+2
+finished
+</pre>
+</div>
+</li>
+<li><a id="orgdb9fe13"></a>removeDuplicates()<br />
+<div class="outline-text-4" id="text-9-4-12">
+<p>
+注意这个并不是所有重复的都去掉，只是publisher当前要发出的value和上个发出的一样的才会去掉。要让系统排重，那value一定是Equatable, 不然你就得自定义相等的条件：<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">import</span> Combine
+<span class="linenr">2: </span><span style="color: #51afef;">private</span> <span style="color: #51afef;">var</span> cancellables = <span style="color: #c678dd;">Set</span>&lt;AnyCancellable&gt;()
+<span class="linenr">3: </span>
+<span class="linenr">4: </span>[<span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #da8548; font-weight: bold;">2</span>, <span style="color: #da8548; font-weight: bold;">2</span>, <span style="color: #da8548; font-weight: bold;">2</span>, <span style="color: #da8548; font-weight: bold;">3</span>].<span style="color: #c678dd;">publisher</span>
+<span class="linenr">5: </span>    .<span style="color: #c678dd;">removeDuplicates</span>()
+<span class="linenr">6: </span>    .<span style="color: #c678dd;">sink</span>(receiveCompletion: { <span style="color: #c678dd;">print</span>($0) },
+<span class="linenr">7: </span>        receiveValue: { <span style="color: #c678dd;">print</span>($0) })
+<span class="linenr">8: </span>    .<span style="color: #c678dd;">store</span>(<span style="color: #51afef;">in</span>: &amp;cancellables)
+</pre>
+</div>
+
+<pre class="example">
+1
+2
+3
+finished
+</pre>
+</div>
+</li>
+<li><a id="org5ed7ff5"></a>first() 和 first(where:)<br />
+<div class="outline-text-4" id="text-9-4-13">
+<p>
+接收到第一个值就取消订阅，可以用where加条件<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">import</span> Combine
+<span class="linenr">2: </span><span style="color: #51afef;">private</span> <span style="color: #51afef;">var</span> cancellables = <span style="color: #c678dd;">Set</span>&lt;AnyCancellable&gt;()
+<span class="linenr">3: </span>[<span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #da8548; font-weight: bold;">2</span>, <span style="color: #da8548; font-weight: bold;">3</span>].<span style="color: #c678dd;">publisher</span>
+<span class="linenr">4: </span>    .<span style="color: #c678dd;">first</span> { $0 &gt; <span style="color: #da8548; font-weight: bold;">1</span> }
+<span class="linenr">5: </span>    .<span style="color: #c678dd;">sink</span>(receiveCompletion: { <span style="color: #c678dd;">print</span>($0) },
+<span class="linenr">6: </span>        receiveValue: { <span style="color: #c678dd;">print</span>($0) })
+<span class="linenr">7: </span>    .<span style="color: #c678dd;">store</span>(<span style="color: #51afef;">in</span>: &amp;cancellables)
+<span class="linenr">8: </span>
+</pre>
+</div>
+
+<pre class="example">
+2
+finished
+</pre>
+</div>
+</li>
+<li><a id="orge92b7c1"></a>last()和last(where:)<br />
+<div class="outline-text-4" id="text-9-4-14">
+<p>
+跟上一个一样，唯一区别是publisher必须结束才会输出<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">import</span> Combine
+<span class="linenr">2: </span><span style="color: #51afef;">private</span> <span style="color: #51afef;">var</span> cancellables = <span style="color: #c678dd;">Set</span>&lt;AnyCancellable&gt;()
+<span class="linenr">3: </span>[<span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #da8548; font-weight: bold;">2</span>, <span style="color: #da8548; font-weight: bold;">3</span>].<span style="color: #c678dd;">publisher</span>
+<span class="linenr">4: </span>    .<span style="color: #c678dd;">last</span> { $0 &gt; <span style="color: #da8548; font-weight: bold;">1</span> }
+<span class="linenr">5: </span>    .<span style="color: #c678dd;">sink</span>(receiveCompletion: { <span style="color: #c678dd;">print</span>($0) },
+<span class="linenr">6: </span>        receiveValue: { <span style="color: #c678dd;">print</span>($0) })
+<span class="linenr">7: </span>    .<span style="color: #c678dd;">store</span>(<span style="color: #51afef;">in</span>: &amp;cancellables)
+<span class="linenr">8: </span>
+</pre>
+</div>
+
+<pre class="example">
+3
+finished
+</pre>
+</div>
+</li>
+<li><a id="org3261e7b"></a>dropFirst()<br />
+<div class="outline-text-4" id="text-9-4-15">
+<p>
+.dropFirst(3)就是不要前3个<br />
+</p>
+</div>
+</li>
+<li><a id="org5878eb3"></a>last()和last(where:)<br />
+<div class="outline-text-4" id="text-9-4-16">
+<p>
+跟上一个一样，唯一区别是publisher必须结束才会输出<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">import</span> Combine
+<span class="linenr">2: </span><span style="color: #51afef;">private</span> <span style="color: #51afef;">var</span> cancellables = <span style="color: #c678dd;">Set</span>&lt;AnyCancellable&gt;()
+<span class="linenr">3: </span>[<span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #da8548; font-weight: bold;">2</span>, <span style="color: #da8548; font-weight: bold;">3</span>, <span style="color: #da8548; font-weight: bold;">4</span>, <span style="color: #da8548; font-weight: bold;">5</span>].<span style="color: #c678dd;">publisher</span>
+<span class="linenr">4: </span>    .<span style="color: #c678dd;">drop</span>(<span style="color: #51afef;">while</span>: { $0 &lt; <span style="color: #da8548; font-weight: bold;">3</span> })
+<span class="linenr">5: </span>    .<span style="color: #c678dd;">sink</span>(receiveCompletion: { <span style="color: #c678dd;">print</span>($0) },
+<span class="linenr">6: </span>        receiveValue: { <span style="color: #c678dd;">print</span>($0) })
+<span class="linenr">7: </span>    .<span style="color: #c678dd;">store</span>(<span style="color: #51afef;">in</span>: &amp;cancellables)
+<span class="linenr">8: </span>
+</pre>
+</div>
+
+<pre class="example">
+3
+4
+5
+finished
+</pre>
+</div>
+</li>
+<li><a id="org591f3e2"></a>drop(untilOutputFrom:)<br />
+<div class="outline-text-4" id="text-9-4-17">
+<p>
+这个其实也很简单理解，就是你有两个publisher，用这个operator的publisher必须要等另一个publisher输出才会输出，之前的都不要了<br />
+</p>
+</div>
+</li>
+<li><a id="org01a2846"></a>prefix()、prefix(while:)、prefix(untilOutputFrom:)<br />
+<div class="outline-text-4" id="text-9-4-18">
+<p>
+跟drop的三个正好相反，保留前几个values直到&#x2026;.唯一要注意的是，跟first一样，符合条件之后就cancel<br />
+</p>
+</div>
+</li>
+<li><a id="org1070f06"></a>prepend()<br />
+<div class="outline-text-4" id="text-9-4-19">
+<p>
+在publisher输出之前先输出prepend里面的同类型values<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">import</span> Combine
+<span class="linenr">2: </span><span style="color: #51afef;">private</span> <span style="color: #51afef;">var</span> cancellables = <span style="color: #c678dd;">Set</span>&lt;AnyCancellable&gt;()
+<span class="linenr">3: </span>[<span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #da8548; font-weight: bold;">2</span>, <span style="color: #da8548; font-weight: bold;">3</span>, <span style="color: #da8548; font-weight: bold;">4</span>, <span style="color: #da8548; font-weight: bold;">5</span>].<span style="color: #c678dd;">publisher</span>
+<span class="linenr">4: </span>    .<span style="color: #c678dd;">prepend</span>(<span style="color: #da8548; font-weight: bold;">9</span>, <span style="color: #da8548; font-weight: bold;">8</span>) <span style="color: #5B6268;">//</span><span style="color: #5B6268;">&#20063;&#21487;&#20197;prepend([9, 8])&#65292;&#32467;&#26524;&#19968;&#26679;</span>
+<span class="linenr">5: </span>    .<span style="color: #c678dd;">sink</span>(receiveCompletion: { <span style="color: #c678dd;">print</span>($0) },
+<span class="linenr">6: </span>        receiveValue: { <span style="color: #c678dd;">print</span>($0) })
+<span class="linenr">7: </span>    .<span style="color: #c678dd;">store</span>(<span style="color: #51afef;">in</span>: &amp;cancellables)
+</pre>
+</div>
+
+<pre class="example">
+9
+8
+1
+2
+3
+4
+5
+finished
+</pre>
+
+<p>
+还可以prepend(另一个publisher)，这样只有prepend的publisher完成输出，本来的publisher才开始输出<br />
+</p>
+</div>
+</li>
+</ol>
+</div>
+
+<div id="outline-container-orgb70b14f" class="outline-3">
+<h3 id="orgb70b14f"><span class="section-number-3">9.5</span> sink(receiveCompletion:receiveValue:)</h3>
+<div class="outline-text-3" id="text-9-5">
+</div>
+<ol class="org-ol">
+<li><a id="orgdaf8668"></a>參數：<br />
+<div class="outline-text-4" id="text-9-5-1">
+<ul class="org-ul">
+<li>receiveComplete: 在完成時執行的閉包。<br /></li>
+<li>receiveValue: 在收到值時執行的閉包。<br /></li>
+</ul>
+</div>
+</li>
+<li><a id="org54d0be9"></a>返回值：<br />
+<div class="outline-text-4" id="text-9-5-2">
+<p>
+為一個可取消實例，在結束分配接收值使用。結果的取消分配將拆除（tear down）訂閱數據流。<br />
+</p>
+
+<p>
+使用 sink(receiveCompletion:receiveValue:) 來觀察發布者收到的值，並且使用你指定的閉包對其進行處理。<br />
+</p>
+
+<p>
+在此範例中，Range 發布者將整數發布到 sink(receiveCompletion:receiveValue:) 運算符的 receiveValue 閉包中，該閉包將其打印到控制台中。完成接收器 sink(receiveCompletion:receiveValue:) 運算符的 receiveCompletion 閉包表示數據流成功終止。<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">import</span> Combine
+<span class="linenr">2: </span><span style="color: #51afef;">let</span> myRange = (<span style="color: #da8548; font-weight: bold;">0</span>...<span style="color: #da8548; font-weight: bold;">3</span>)
+<span class="linenr">3: </span><span style="color: #51afef;">var</span> cancellable = myRange.<span style="color: #c678dd;">publisher</span>
+<span class="linenr">4: </span>  .<span style="color: #c678dd;">sink</span>(receiveCompletion: { <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"completion: \(</span>$0<span style="color: #98be65;">)"</span>) },
+<span class="linenr">5: </span>        receiveValue: { <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"value: \(</span>$0<span style="color: #98be65;">)"</span>) })
+</pre>
+</div>
+
+<pre class="example">
+value: 0
+value: 1
+value: 2
+value: 3
+completion: finished
+</pre>
+
+<p>
+此方法創建訂閱者並且在返回訂閱者之前立即請求無限數量的值，返回值應該被保留，否則數據流將被取消。<br />
+</p>
+</div>
+</li>
+</ol>
+</div>
+
+<div id="outline-container-org9fdef75" class="outline-3">
+<h3 id="org9fdef75"><span class="section-number-3">9.6</span> assign(tp:on:)</h3>
+<div class="outline-text-3" id="text-9-6">
+</div>
+<ol class="org-ol">
+<li><a id="org989df93"></a>參數：<br />
+<div class="outline-text-4" id="text-9-6-1">
+<ul class="org-ul">
+<li>keyPath：表示要分配屬性的 keyPath。關於 Key-Path 表達式請參考此官方文章。<br /></li>
+<li>object：包含此屬性的對象。訂閱者在每次接收到新值時都會分配給該對象的屬性。<br /></li>
+</ul>
+</div>
+</li>
+
+<li><a id="orgf3d3dc7"></a>返回值：<br />
+<div class="outline-text-4" id="text-9-6-2">
+<p>
+一個 AnyCancellable 實例。當你不再想要發布者分配屬性時，請在此實例上調用 cancel()。返初始化此實例也將取消自動分配。<br />
+</p>
+
+<p>
+當你想要發布者每次產生值的時候都設置給給定的屬性時，請使用 assign(to:on:) 訂閱者。<br />
+</p>
+
+<p>
+在此範例中，assign(to:on:) 設置在 MyClass 實例上的 anInt 屬性：<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> Combine
+<span class="linenr"> 2: </span><span style="color: #51afef;">var</span> cancellable: AnyCancellable?
+<span class="linenr"> 3: </span><span style="color: #51afef;">class</span> <span style="color: #c678dd;">MyClass</span> {
+<span class="linenr"> 4: </span>    <span style="color: #51afef;">var</span> anInt: <span style="color: #c678dd;">Int</span> = <span style="color: #da8548; font-weight: bold;">0</span> {
+<span class="linenr"> 5: </span>        <span style="color: #51afef;">didSet</span> {
+<span class="linenr"> 6: </span>            <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"anInt was set to: \(</span>anInt<span style="color: #98be65;">)"</span>, terminator: <span style="color: #98be65;">";"</span>)
+<span class="linenr"> 7: </span>        }
+<span class="linenr"> 8: </span>    }
+<span class="linenr"> 9: </span>}
+<span class="linenr">10: </span><span style="color: #51afef;">var</span> myObject = <span style="color: #c678dd;">MyClass</span>()
+<span class="linenr">11: </span><span style="color: #51afef;">let</span> myRange = (<span style="color: #da8548; font-weight: bold;">0</span>...<span style="color: #da8548; font-weight: bold;">3</span>)
+<span class="linenr">12: </span>cancellable = myRange.<span style="color: #c678dd;">publisher</span>
+<span class="linenr">13: </span>  .<span style="color: #c678dd;">assign</span>(to: \.<span style="color: #dcaeea;">anInt</span>, on: myObject)
+</pre>
+</div>
+
+<pre class="example">
+anInt was set to: 0;anInt was set to: 1;anInt was set to: 2;anInt was set to: 3;
+</pre>
+</div>
+</li>
+</ol>
+</div>
+
+<div id="outline-container-org0d88cf5" class="outline-3">
+<h3 id="org0d88cf5"><span class="section-number-3">9.7</span> Publisher &amp; Subsciber流程<sup><a id="fnr.18" class="footref" href="#fn.18">18</a></sup></h3>
+<div class="outline-text-3" id="text-9-7">
+<p>
+基本上就是 Subscriber 會訂閱（附加 or 連接）在一個 Publisher，而這時 Publisher 會返回一個 Subscription 也就是所謂的訂閱，我們會藉由這個訂閱來保持兩者間的訂閱關係，我們也可以藉由移除它或是主動調用 cancel() 來取消訂閱關係。一旦有了這個訂閱關係後，Subscriber 會向 Publisher 要求值，而 Publisher 會向 Subscriber 發送值以及發送完成或是錯誤。<br />
+</p>
+<p>
+<img src="./images/PS-2.png" alt="PS-2.png" /><br />
+而 operator 則是 publisher 之間的轉換器(adoptor), 可以訂閱一個 publisher, 也可以讓任何 subscriber 要求數據.<br />
+甚至可以產出 publisher 鏈(chain).<br />
+</p>
+<p>
+<img src="./images/PS-3.png" alt="PS-3.png" /><br />
+這些組合完成的序列結構, 稱為 pipelines(管路).<br />
+</p>
+
+<p>
+Operators 可以轉換 publisher 與 subscriber 之間的數據, 分流或集合流.<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">import</span> Combine
+<span class="linenr">2: </span>
+<span class="linenr">3: </span><span style="color: #51afef;">let</span> publisher = <span style="color: #c678dd;">Just</span>(<span style="color: #da8548; font-weight: bold;">5</span>)
+<span class="linenr">4: </span><span style="color: #51afef;">let</span> publisherString = publisher.<span style="color: #c678dd;">map</span>{$0.<span style="color: #c678dd;">description</span>}
+<span class="linenr">5: </span><span style="color: #51afef;">let</span> publisherDouble = publisher.<span style="color: #c678dd;">map</span>{<span style="color: #c678dd;">Double</span>($0)}
+<span class="linenr">6: </span>
+<span class="linenr">7: </span><span style="color: #51afef;">let</span> subcriber = publisher.<span style="color: #c678dd;">sink</span>(receiveValue: {<span style="color: #c678dd;">print</span>($0)})        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">5</span>
+<span class="linenr">8: </span><span style="color: #51afef;">let</span> anotherScriber = publisherDouble.<span style="color: #c678dd;">sink</span>(receiveValue: {<span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"Another"</span>,$0)})         <span style="color: #5B6268;">//</span><span style="color: #5B6268;">Another 5.0</span>
+</pre>
+</div>
+
+<pre class="example">
+5
+Another 5.0
+</pre>
+
+<p>
+Combine 中的 operators 具備相對應的轉換功能來達成特殊的轉換. 例如 map 是單純轉換 Input, 而 tryMap 是同時間傳換 Input 與 Failure, 像是 Never 轉換成 Decode Error.<br />
+</p>
+
+<p>
+Combine 之中, Publisher 是資料來源, Subscriber 是控制資料流的操作員, Subscriber 可以限制接收的資料信息量, 透過 Demand (需求), 使 Subscriber 得以在連接 Publisher 之後, 得到透過 Pipeline 處理後的資料.<br />
+</p>
+
+<p>
+Combine 同時使 Subscriber 可以取消(cancel) Demand 的要求, 在 Combine 里, 所有的 Subscriber 都具備 Cancelable, 每個 Subscriber 都可以透過 Cancel() 函式, 取消 Publisher 或 pipeline 的 連接.<br />
+</p>
+
+<p>
+因此, 我們可以知道 Publisher 是事件產生資料的單元, Pipeline 是轉換資料的單元, Subscriber 是控制 Publisher 週期的單元.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1406be2" class="outline-3">
+<h3 id="org1406be2"><span class="section-number-3">9.8</span> 發佈者和訂閱者的生命週期</h3>
+<div class="outline-text-3" id="text-9-8">
+<p>
+Combine的設計是讓終端操作可以完全控制數據流和管道處理流程，這是一種 back-pressure設計（可以理解為末端控制整個流程），這也意味著subscriber驅動訂閱或者operator應該怎麼輸出數據。subscriber的請求通過通道（Pipeline）逐級向上鏈條傳遞。一個典型的例子就是cancel，當Subcriber要求取消的時候可中斷鏈條上的所有操作。<br />
+</p>
+<p width="500">
+<img src="images/PS.jpg" alt="PS.jpg" width="500" /><br />
+也就是subscriber控制整個鏈條的生命週期<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6e6cf56" class="outline-3">
+<h3 id="org6e6cf56"><span class="section-number-3">9.9</span> 典型的Publisher</h3>
+<div class="outline-text-3" id="text-9-9">
+<ul class="org-ul">
+<li>Just<br />
+返回單個值並立即結束Publisher<br /></li>
+<li>Future<br />
+創建一個異步的最終返回單個值或失敗Publisher<br /></li>
+<li>@Published<br />
+swift 語法糖，允許將任意屬性轉換為一個Publisher<br /></li>
+<li>Empty<br />
+不返回任何值，然後直接結束&lt;可選&gt;<br /></li>
+<li>Sequence<br />
+將容器類型轉變為值發佈<br /></li>
+<li>Fail<br />
+<ul class="org-ul">
+<li>發送一次值更新，然後立即因錯誤而終止<br /></li>
+<li>立即因錯誤而終止<br /></li>
+</ul></li>
+<li>Deferred<br />
+Deferred 初始化需要提供一個生成 Publisher 的 closure，只有在有 Subscriber 訂閱的時候才會生成指定的 Publisher，並且每個 Subscriber 獲得的 Publisher 都是全新的。<br /></li>
+<li>ObservableObjectPublisher<br /></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org3e42d65" class="outline-3">
+<h3 id="org3e42d65"><span class="section-number-3">9.10</span> Marble Diagram</h3>
+<div class="outline-text-3" id="text-9-10">
+<p>
+使用 Marble diagram 可以加快我們學習 Operator 的運作原理. 接下來介紹本篇主題所使用的符號:<br />
+</p>
+</div>
+<ol class="org-ol">
+<li><a id="org77e14f6"></a>格式<br />
+<div class="outline-text-4" id="text-9-10-1">
+<pre class="example">
+// 這是註解
+- //單位時間, 沒有特別寫會是 1 秒
+X //Error 發生
+| //代表 Complete normally
+source: //表示事件來源
+operat: //代表 operation 表示上流事件的轉換
+output: //表示最後結果, 只有在 operation 之後才會出現
+</pre>
+</div>
+</li>
+<li><a id="org3f9b888"></a>基本圖形範例<br />
+<div class="outline-text-4" id="text-9-10-2">
+<pre class="example">
+// Attach subscribtion then complete without notify
+-------------------|
+// Attach subscribtion then error occur before any notify
+-------------------X
+// Attach subscribtion then nothing happen yet
+--------------------
+</pre>
+</div>
+</li>
+<li><a id="org0e8efba"></a>經過 Operator 的圖形範例<br />
+<div class="outline-text-4" id="text-9-10-3">
+<pre class="example">
+1.
+source: ------1------2------3---|
+                map{$0 + 1}
+output: ------2------3------4---|
+
+2.
+source: ------1------2------3---|
+   filter{$0.isMultiple(of: 2)}
+output: -------------2----------|
+
+3.
+source: ------1------2------3---|
+                map{$0 + 1}
+operat: ------2------3------4---|
+   filter{$0.isMultiple(of: 2)}
+output: ------2-------------4---|
+</pre>
+</div>
+</li>
+</ol>
+</div>
+
+<div id="outline-container-org949d4a4" class="outline-3">
+<h3 id="org949d4a4"><span class="section-number-3">9.11</span> Publisher的建立</h3>
+<div class="outline-text-3" id="text-9-11">
+<p>
+Publisher 有許多方式可以建立, 有單獨的, 復合的, 組合的, 媒介的, 不同的 Publisher 分別有不同的型別.其中以 Just 與 Future 較為常見.<br />
+</p>
+
+<p>
+一般來說, Publisher 是 Value type, 每次 Subscriber 訂閱時, 都會將原本定義的 Publisher 流程重頭執行, 不論其他複製的 Publisher 是否曾經訂閱發佈過.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3bd0ca6" class="outline-3">
+<h3 id="org3bd0ca6"><span class="section-number-3">9.12</span> Cancellable</h3>
+<div class="outline-text-3" id="text-9-12">
+<p>
+雖然 Subscriber 感覺好像是 必須相依與 Publisher 的, 但是事實上是 Publisher 將事件源頭確立之後, 提供了一個建立 Subscriber 的工廠接口, 而這些接口都會回傳一個 AnyCancellable 的參考型別, 依照 AnyCancellable 文件, 其代表的是 cancellation token 作為取消事件流的途徑, 而由於 ARC 的記憶體管理, 這個 Token 若是沒有保持 ARC 的計數時, 將會在 function Scope 結束後自動解除訂閱.<br />
+</p>
+
+<p>
+因此, 在 AnyCancellable 只有 3 個 API 可以使用:<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span>AnyCancellable.<span style="color: #c678dd;">cancel</span>()
+<span class="linenr">2: </span>AnyCancellable.<span style="color: #dcaeea;">store</span>&lt;C&gt;(<span style="color: #51afef;">in</span>: <span style="color: #51afef;">inout</span> C) <span style="color: #51afef;">where</span> C : <span style="color: #c678dd;">RangeReplaceableCollection</span>, C.<span style="color: #c678dd;">Element</span> == AnyCancellable
+<span class="linenr">3: </span>AnyCancellable.<span style="color: #c678dd;">store</span>(<span style="color: #51afef;">in</span>: <span style="color: #51afef;">inout</span> <span style="color: #c678dd;">Set</span>&lt;AnyCancellable&gt;)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgad868d1" class="outline-3">
+<h3 id="orgad868d1"><span class="section-number-3">9.13</span> Webs, Video</h3>
+<div class="outline-text-3" id="text-9-13">
+<p>
+<a href="https://peterfriese.dev/swift-combine-love/">SwiftUI + Combine = ❤️</a>: validation of username and password<br />
+<a href="https://www.youtube.com/watch?v=r7ef2W3kevY">SwiftUI and Combine All The Things</a><br />
+<a href="https://www.youtube.com/watch?v=bRpFHqv0tRQ">SwiftUI 2.0 + Combine - Getting Started (2020)</a><br />
+<a href="https://www.youtube.com/watch?v=YJRApch2cc4">SwiftUI 2.0 &amp; Combine: Building a Form with Inline Error Validation</a><br />
+<a href="https://www.youtube.com/watch?v=IBelvWwZkJw">SwiftUI Binding</a> : @Binding, @StateObject, @ObservedObject, @EnvironmentObject<br />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-some" class="outline-2">
+<h2 id="some"><span class="section-number-2">10</span> <span class="todo TODO">TODO</span> some</h2>
+<div class="outline-text-2" id="text-some">
+<p class="verse">
+Adding the keyword some in front of a return type indicates that the return type is opaque. <sup><a id="fnr.19" class="footref" href="#fn.19">19</a></sup><br />
+</p>
+</div>
+<div id="outline-container-org6c0292d" class="outline-3">
+<h3 id="org6c0292d"><span class="section-number-3">10.1</span> Generics</h3>
+<div class="outline-text-3" id="text-10-1">
+</div>
+<ol class="org-ol">
+<li><a id="orgcd50c18"></a>問題<br />
+<div class="outline-text-4" id="text-10-1-1">
 <p>
 Generics 允許開發者在不同類型中複用你的程式碼，用來解決下列問題：<br />
 </p>
@@ -3134,10 +4240,9 @@ Generics 允許開發者在不同類型中複用你的程式碼，用來解決�
 可以發現除了參數之外，重複的 code 實在太多<br />
 </p>
 </div>
-</div>
-<div id="outline-container-org5b5f552" class="outline-4">
-<h4 id="org5b5f552"><span class="section-number-4">8.1.2</span> 解決方案</h4>
-<div class="outline-text-4" id="text-8-1-2">
+</li>
+<li><a id="org9329141"></a>解決方案<br />
+<div class="outline-text-4" id="text-10-1-2">
 <p>
 將固定型態的參數轉為 Generic type<br />
 </p>
@@ -3199,20 +4304,21 @@ Generics 允許開發者在不同類型中複用你的程式碼，用來解決�
 </pre>
 </div>
 </div>
+</li>
+</ol>
 </div>
-</div>
-<div id="outline-container-orgc2e5bf4" class="outline-3">
-<h3 id="orgc2e5bf4"><span class="section-number-3">8.2</span> opaque</h3>
-<div class="outline-text-3" id="text-8-2">
+<div id="outline-container-orgc204fc2" class="outline-3">
+<h3 id="orgc204fc2"><span class="section-number-3">10.2</span> opaque</h3>
+<div class="outline-text-3" id="text-10-2">
 <p>
-帶有不透明（opaque）返回類型的函數或方法，將會隱藏其返回值的類型<sup><a id="fnr.17" class="footref" href="#fn.17">17</a></sup><br />
+帶有不透明（opaque）返回類型的函數或方法，將會隱藏其返回值的類型<sup><a id="fnr.20" class="footref" href="#fn.20">20</a></sup><br />
 </p>
 </div>
 </div>
 </div>
 
 <div id="outline-container-advanced" class="outline-2">
-<h2 id="advanced"><span class="section-number-2">9</span> <span class="todo TODO">TODO</span> 進階主題</h2>
+<h2 id="advanced"><span class="section-number-2">11</span> <span class="todo TODO">TODO</span> 進階主題</h2>
 <div class="outline-text-2" id="text-advanced">
 <ul class="org-ul">
 <li><a href="https://developer.apple.com/design/human-interface-guidelines/">Human Interface Guidelines</a>: Apple 的人機設計界面指南<br /></li>
@@ -3287,10 +4393,22 @@ Generics 允許開發者在不同類型中複用你的程式碼，用來解決�
 </p></div></div>
 
 <div class="footdef"><sup><a id="fn.16" class="footnum" href="#fnr.16">16</a></sup> <div class="footpara"><p class="footpara">
-<a href="https://medium.com/@PhiJay/whats-this-some-in-swiftui-34e2c126d4c4">What’s this “some” in SwiftUI?</a><br />
+<a href="https://www.codenong.com/jse1bf39f39820/">Apple原生Rx框架Combine簡介</a><br />
 </p></div></div>
 
 <div class="footdef"><sup><a id="fn.17" class="footnum" href="#fnr.17">17</a></sup> <div class="footpara"><p class="footpara">
+<a href="https://medium.com/jeremy-xue-s-blog/swift-combine-%E5%85%A5%E9%96%80%E4%BB%8B%E7%B4%B9-333623e21d3d">Swift — Combine 入門介紹</a><br />
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.18" class="footnum" href="#fnr.18">18</a></sup> <div class="footpara"><p class="footpara">
+<a href="https://medium.com/jeremy-xue-s-blog/swift-%E7%8E%A9%E7%8E%A9-publishers-subscribers-3fc4e7542b3d">Swift — 玩玩 Publishers &amp; Subscribers</a><br />
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.19" class="footnum" href="#fnr.19">19</a></sup> <div class="footpara"><p class="footpara">
+<a href="https://medium.com/@PhiJay/whats-this-some-in-swiftui-34e2c126d4c4">What’s this “some” in SwiftUI?</a><br />
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.20" class="footnum" href="#fnr.20">20</a></sup> <div class="footpara"><p class="footpara">
 <a href="https://medium.com/jeremy-xue-s-blog/swift-%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80-opaque-types-600ad5758b91">Swift 程式語言 — Opaque Types</a><br />
 </p></div></div>
 
@@ -3299,7 +4417,7 @@ Generics 允許開發者在不同類型中複用你的程式碼，用來解決�
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Yung Chin, Yen</p>
-<p class="date">Created: 2021-03-16 Tue 19:31</p>
+<p class="date">Created: 2021-04-26 Mon 15:53</p>
 </div>
 </body>
 </html>

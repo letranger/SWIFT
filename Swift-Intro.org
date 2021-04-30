@@ -921,8 +921,68 @@ print(result2)
 
 程式中的第[[(fat)]]行中，令 operation 變數之型別為 square 這個 function，於是 operation 就可以如 function 般進行計算；也可以令 operation 為內建的 function(如 abs)
 
-*** Closures
+** Closures
 在將 function 視為參數傳遞時，也可以把 function 內容直接寫出來，這種 inlined function 就稱為 closure
+Closure(闭包) 就是没有名字的function，可以将它assign给variable或constant，也可以”现用现定义”。那么我们为什么要用Closure而不用function呢？怎么用Closure呢？往下看你就知道了！
+*** syntax
+#+begin_src swift -r -n :results output :exports nil
+import Foundation
+
+var simpleClosure: (Int, Int) -> Int (ref:dec1)
+simpleClosure = { (a: Int, b: Int) -> Int in (ref:dec2)
+    return a + b
+}
+print(simpleClosure(3, 4))
+#+end_src
+
+#+RESULTS:
+: 7
+因為第[[(dec1)]]行已宣告了參數與return type，故第[[(dec2)]]行也可以改寫成
+#+begin_src swift -r -n :results output :exports nil
+import Foundation
+
+var simpleClosure: (Int, Int) -> Int (ref:dec1)
+simpleClosure = { (a, b) in
+    return a + b
+}
+print(simpleClosure(3, 4))
+
+#+end_src
+
+#+RESULTS:
+: 7
+也可再簡化為:
+#+begin_src swift -r -n :results output :exports nil
+import Foundation
+
+var simpleClosure: (Int, Int) -> Int (ref:dec1)
+simpleClosure = {
+    return $0 + $1
+}
+print(simpleClosure(3, 4))
+#+end_src
+
+#+RESULTS:
+: 7
+*** closure as function parameter
+#+begin_src swift -r -n :results output :exports nil
+import Foundation
+
+var simpleClosure: (Int, Int) -> Int (ref:dec1)
+simpleClosure = {
+    return $0 + $1
+}
+
+func operation(_ a: Int, _ b: Int, op: (Int, Int) -> Int) -> Int {
+    return op(a, b)
+}
+
+print(operation(2, 3, op: simpleClosure))
+
+#+end_src
+
+#+RESULTS:
+: 5
 
 * Struct, Class, and Enum
 :PROPERTIES:
@@ -1013,7 +1073,119 @@ print("The width of someVideoMode is now \(someVideoMode.resolution.width)")
 // Prints "The width of someVideoMode is now 1280"
 #+end_src
 
-** Structures
+** Struct
+*** stored properties和computed properties
+#+begin_src swift -r -n :results output :exports nil
+struct Person {
+    let firstName: String
+    let lastName: String
+}
+
+struct Employee {
+    let identity: Person
+    var jobTitle: String
+    var salary: Double
+}
+
+let me = Person(firstName: "Letranger", lastName: "Yen")
+var letranger = Employee(identity: me, jobTitle: "CEO", salary: 3000)
+
+print(me.firstName)
+print(letranger.identity)
+print(letranger.jobTitle)
+#+end_src
+
+#+RESULTS:
+: Letranger
+: Person(firstName: "Letranger", lastName: "Yen")
+: CEO
+
+Person與Employee下的firstName, lastName, jobTitle都為stored property,也都存了值，會佔用memory，另竹種properties為計算所得，稱computed properties。
+#+begin_src swift -r -n :results output :exports nil
+struct Person {
+    let firstName: String
+    let lastName: String
+}
+
+struct Employee {
+    let identity: Person
+    var jobTitle: String
+    var salary: Double
+
+    var tax: Double {
+        return salary * 0.05
+    }
+}
+
+let me = Person(firstName: "Letranger", lastName: "Yen")
+var letranger = Employee(identity: me, jobTitle: "CEO", salary: 3000)
+
+print(letranger.tax)
+#+end_src
+
+#+RESULTS:
+: 150.0
+*** type properties
+computed property和stored property都是instance的属性，数据类型也有自己的属性，这就是type property。例如：
+#+begin_src swift -r -n :results output :exports nil
+struct Person {
+    let firstName: String
+    let lastName: String
+}
+struct Employee {
+  static var location = "高雄"
+  let identity: Person
+  var jobTitle: String
+  var salary: Double
+}
+print(Employee.location)
+#+end_src
+
+#+RESULTS:
+: 高雄
+
+location前面加了static，这就意味着location是Employee这个类型的属性，不用创建instance就可以读取。在实践中有时候会很有用。
+*** property observers
+store property是有observer观察者的，willSet会在属性即将更新的时候执行；didSet会在属性刚更新完的时候执行。
+#+begin_src swift -r -n :results output :exports nil
+struct Person {
+    let firstName: String
+    let lastName: String
+}
+
+struct Employee {
+    let identity: Person
+    static var location = "高雄"
+    var jobTitle: String
+    var salary: Double {
+        didSet {
+            if salary >= oldValue * 2 {
+                Employee.location = "國外"
+            }
+        }
+    }
+
+    var tax: Double {
+        return salary * 0.05
+    }
+}
+
+let me = Person(firstName: "Letranger", lastName: "Yen")
+var letranger = Employee(identity: me, jobTitle: "CEO", salary: 3000)
+
+print(letranger.tax)
+print(Employee.location)
+letranger.salary = 10000
+print(Employee.location)
+#+end_src
+
+#+RESULTS:
+: 150.0
+: 高雄
+: 國外
+*** Struct中的methods
+首先如果一个func定义在struct的外面，那他就是个function，如果定义在struct的里面那他就是method。但因为我们已经有了computed property, 我们在需要大量计算或者需要读写数据库的时候用methods，其他情况一般用computed property就可以了。
+
 #+begin_src swift -r -n :eval no
 struct Birthday {
   var day: Int = 12
@@ -1065,6 +1237,95 @@ counter.reset()           //reset to 0
 #+begin_verse
 Classes and structures are very similar, and both can be used to define properties and methods. [fn:5]
 #+end_verse
+#+begin_src swift -r -n :results output :exports nil
+class Person {
+  var firstName: String
+  var lastName: String
+
+  init(firstName: String, lastName: String) {
+    self.firstName = firstName
+    self.lastName = lastName
+  }
+
+  var fullName: String {
+    return "\(firstName) \(lastName)"
+  }
+}
+
+let me = Person(firstName: "Joshua", lastName: "Jiang")
+print(me.fullName)
+#+end_src
+
+#+RESULTS:
+: Joshua Jiang
+*** Struct v.s. Class
+**** init
+不像struct会自动生成一个init让你用，上述代码中的init是必须要写的，而且和struct一样，在init中所有stored property（不懂这个的去看上一篇struct哈）都必须赋初始值。
+**** reference type v.s. value type
+Struct是值类型，class是引用类型。分别是什么意思呢？
+#+begin_src swift -r -n :results output :exports nil
+class Person {
+  var firstName: String
+  var lastName: String
+
+  init(firstName: String, lastName: String) {
+    self.firstName = firstName
+    self.lastName = lastName
+  }
+
+  var fullName: String {
+    return "\(firstName) \(lastName)"
+  }
+}
+
+var me = Person(firstName: "Joshua", lastName: "Jiang")
+var prince = me (ref:copy)
+print("\(me.firstName), \(prince.firstName)") // Joshua, Joshua
+
+me.firstName = "coolboy"
+print("\(me.firstName), \(prince.firstName)") // coolboy, coolboy
+
+#+end_src
+
+#+RESULTS:
+: Joshua, Joshua
+: coolboy, coolboy
+上述程式第[[(copy)]]行將me assign給prince,并没有拷贝整个instance给prince，而是拷贝了指向instance的地址；所以当me的firstName变了，那么prince的自然也会变。
+**** 判定相等or not
+当你比较值类型时，不管是struct还是Int，用==即可
+当你比较引用类型时，需要用===，比较的是他们指向的地址是否相同
+**** constant or variable
+我们知道如果你把一个struct复制给constant的时候，你是不能修改他的属性的；但class确可以：
+#+begin_src swift -r -n :results output :exports nil
+class Person {
+  var firstName: String
+  var lastName: String
+
+  init(firstName: String, lastName: String) {
+    self.firstName = firstName
+    self.lastName = lastName
+  }
+
+  var fullName: String {
+    return "\(firstName) \(lastName)"
+  }
+}
+struct Employee {
+    var jobTitle: String
+}
+let employee = Employee(jobTitle: "CEO")
+employee.jobTitle = "CTO" // error: cannot assign to property
+
+let me = Person(firstName: "Letrange", lastName: "Yen")
+me.firstName = "TNFSH" // it's OK
+#+end_src
+
+#+RESULTS:
+**** 如何选择用Class还是Struct
+Struct是用来代表值的，比如距离、名称之类的，用的时候创建不用的时候毁掉，很快的这种，你要用struct；
+
+Class代表一个对象，像一个学生或者一个城市之类的，通常有超多的属性，一般长时间在内存里，不会随便就毁掉，这时候你当然要用class
+
 *** Inheritance & Override methods and properties
 #+begin_verse
 The biggest difference that structs do not have is hierarchical relations. Classes can have parent classes, that are called superclass, and child classes, that are called subclasses. [fn:5]
@@ -1374,7 +1635,60 @@ let currentStatus = downloadStatus[0]
 你可以這樣做沒錯，但是如此一來會有兩個缺點，首先，你可能會不知道 downloadStatus[0]代表什麼，除非你引用 downloadStatus array，若是比較 downloadStatus[0]與 DownloadStatus.downloading 這兩種表達方式，很明顯的是後者的可讀性比較高。
 
 其次，因為 currentStatus 是 String 類型，變量可以被賦予任何字符串值，無法將它限制為 “downloading”, “finished”, “failed” 以及 “cancelled”，除非執行一些額外的驗證。反之，如果使用 enum，我們可以將 myDirection 限制在 .downloading、.finished、.failed 或 .cancelled 等四種情境之一，不會出現其他意料之外的情況。 [fn:10]
+
 #+end_verse
+*** Raw Values
+Swift的enum可以加raw values，像上述例子，有了raw values，我们完全不需要getStatus这个func了。
+#+begin_src swift -r -n :results output :exports nil
+enum Status: String {
+  case pending = "审核中"
+  case approved = "审核通过"
+  case failed = "审核未通过"
+}
+print(Status.pending.rawValue) // 审核中
+#+end_src
+
+#+RESULTS:
+: 审核中
+
+a) 如果raw value的类型是Int的话，你要是不给他们赋值，swift会自动从0一个个赋值；你可以给第一个赋值一个int，那么swift也会把后面逐次加1；
+b) 像这个例子，如果我没有赋值，那么pending的rawValue就是"pending"
+c) 你还可以通过rawValue来获得case，比如let pending = Status(rawValue: "审核中")，但是pending会是个optional你要注意
+#+begin_src swift -r -n :results output :exports nil
+enum Status: String {
+  case pending
+  case approved
+  case failed(msg: String)
+}
+
+func review(_ name: String) -> Status {
+  if name.count > 10 {
+    return .failed(msg: "名字太长了")
+  }
+  return .pending
+}
+
+print(review("dsafs")) // pending
+review("dsafsdfsdfsd") // failed(msg: "名字太长了")
+#+end_src
+
+#+RESULTS:
+#+begin_example
+<stdin>:4:8: error: enum with raw type cannot have cases with arguments
+  case failed(msg: String)
+       ^
+<stdin>:1:14: note: declared raw type 'String' here
+enum Status: String {
+             ^
+<stdin>:1:14: error: 'Status' declares raw type 'String', but does not conform to RawRepresentable and conformance could not be synthesized
+enum Status: String {
+             ^
+Swift.RawRepresentable:2:20: note: protocol requires nested type 'RawValue'; do you want to add it?
+    associatedtype RawValue
+                   ^
+<stdin>:15:1: warning: result of call to 'review' is unused
+review("dsafsdfsdfsd") // failed(msg: "名字太长了")
+#+end_example
 
 ** 結構和類之間的選擇 (Choosing Between Structures and Classes)
 #+begin_verse
@@ -1398,10 +1712,119 @@ let currentStatus = downloadStatus[0]
 - Use Classes When You Need to Control Identity
 - Use Structures When You Don't Control Identity
 
-* 協定
+* Pattern Matching
 :PROPERTIES:
-:CUSTOM_ID: protocol
+:CUSTOM_ID: PatternMatching
 :END:
+** if case
+if case你可以当成switch(x) { case ...: }的简化版
+#+begin_src swift -r -n :results output :exports nil
+let point = (0, 1)
+// if case
+if case (0, 0) = point {
+  print("0, 0") // 不会运行
+}
+#+end_src
+
+#+RESULTS:
+** wildcard
+#+begin_src swift -r -n :results output :exports nil
+let point = (0, 3, 8)
+switch point {
+case (_, 0, _):
+    print("在y轴")
+case (0, _, _):
+    print("在x轴")
+case (_, _, 0):
+    print("在z轴")
+case (_, _, _):
+    print("不在xyz轴")
+}
+// 在x轴
+#+end_src
+
+#+RESULTS:
+: 在x轴
+
+** for case
+for后面也可以跟case，同时也可以赋值
+#+begin_src swift -r -n :results output :exports nil
+let groupSizes = [1, 5, 4, 6, 2, 1, 3]
+for case 1 in groupSizes {
+  print("我是1") // 2次
+}
+
+let names: [String?] = ["Joshua", nil, "Dog"]
+for case let name? in names {
+    print(name, terminator: " ")
+}
+// Joshua Dog
+
+#+end_src
+
+#+RESULTS:
+: 我是1
+: 我是1
+: Joshua Dog
+上面的例子第一个只有值是1的时候才会print；第二个是Optional的特殊用法，name？代表不是nil的值，只有在name不是nil的时候才会被print。
+
+** 检查数据类型
+#+begin_src swift -r -n :results output :exports nil
+let array: [Any] = [15, "George", 2.0]
+
+for element in array {
+    switch element {
+    case is String:
+        print("\(element)是String")
+    case let num as Int:
+        print("\(num)是Int")
+    default:
+        print("\(element)是个啥？？")
+    }
+}
+// 15是Int
+// George是String
+// 2.0是个啥？？
+#+end_src
+
+#+RESULTS:
+: 15是Int
+: George是String
+: 2.0是个啥？？
+
+** case...where...
+case后面还可以再加where进一步的筛选：
+#+begin_src swift -r -n :results output :exports nil
+for number in 1...9 {
+    switch number {
+    case let x where x % 2 == 0:
+        print("偶数")
+    case _ where number % 2 > 0:
+        print("奇数")
+    default:
+        print("QQ")
+    }
+}
+#+end_src
+
+#+RESULTS:
+: 奇数
+: 偶数
+: 奇数
+: 偶数
+: 奇数
+: 偶数
+: 奇数
+: 偶数
+: 奇数
+
+** if多个条件
+#+begin_src swift -r -n :results output :exports nil
+var a: Int? = 6
+if let a = a, a > 5, case 1...9 = a {
+    print("yes")
+}
+#+end_src
 
 * Footnotes
 

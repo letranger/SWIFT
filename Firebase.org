@@ -1045,6 +1045,7 @@ class TaskRepository: ObservableObject {
     }
 }
 #+end_src
+
 ** View
 *** TaskListView.swift
 #+begin_src python -r -n :results output :exports both
@@ -1187,6 +1188,7 @@ struct UpdateTaskView_Previews: PreviewProvider {
 }
 
 #+end_src
+
 ** ViewModel
 *** TaskListViewModel.swift
 #+begin_src python -r -n :results output :exports both
@@ -1271,6 +1273,113 @@ class TaskCellViewModel: ObservableObject, Identifiable {
 #+ATTR_HTML: :width 300
 [[file:images/Update-Edit.gif]]
 
+* Add Icon to App
+** ViewModel
+*** TaskCellViewModel.swift
+#+begin_src swift -r -n :results output :exports nil
+//
+//  TaskCellViewModel.swift
+//  FireTask
+//
+//  Created by yen yung chin on 2021/4/1.
+//
+
+import Foundation
+import Combine
+
+class TaskCellViewModel: ObservableObject, Identifiable {
+    @Published var task: Task
+    @Published var taskRepository = TaskRepository()
+    @Published var completionStateIconName = ""
+    private var cancellables = Set<AnyCancellable>()
+    var id = ""
+    // 把Firestore document的id轉換成model struct的欄位
+    init(task: Task) {
+        self.task = task
+        // 轉換id
+        $task
+            .compactMap { $0.id }
+            .assign(to: \.id, on: self)
+            .store(in: &cancellables)
+        $task
+            .map { task in
+                return task.completed ? "checkmark.circle.fill" : "circle"
+            }
+            .assign(to: \.completionStateIconName, on: self)
+            .store(in: &cancellables)
+    }
+
+    func update(task: Task) {
+        taskRepository.update(task: task)
+    }
+}
+
+
+#+end_src
+** View
+*** TaskListView.swift
+#+begin_src swift -r -n :results output :exports nil
+//
+//  ContentView.swift
+//  FireTask
+//
+//  Created by yen yung chin on 2021/3/31.
+//
+
+import SwiftUI
+
+struct TaskListView: View {
+    @ObservedObject var taskListVM = TaskListViewModel()
+    @State var title: String = ""
+
+    var body: some View {
+        NavigationView {
+            VStack {
+                TextField("Task Title", text: $title)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+
+                Button(action: {
+                    let task = Task(title: title, completed: false)
+                    taskListVM.add(task: task)
+                    self.title = ""
+                }, label: {
+                    Text("Add Task")
+                }).disabled(title == "")
+                Form {
+                    ForEach(taskListVM.taskCellViewModels) { taskCellVM in
+                        HStack {
+                            Image(systemName: taskCellVM.completionStateIconName)
+                            NavigationLink(
+                                destination: TaskDetailView(taskCellVM: taskCellVM),
+                                label: {
+                                    Text("\(taskCellVM.task.title)")
+                                })
+                        }
+
+                    }
+                    .onDelete(perform: { indexSet in
+                        // taskListVM.delete(indexset: indexSet)
+                        indexSet.map {
+                            taskListVM.taskCellViewModels[$0].task
+                        }.forEach(taskListVM.delete(task:))
+                    })
+                }
+                .navigationBarTitle(Text("Task Manager"), displayMode: .inline)
+            }
+        }
+    }
+}
+
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        TaskListView()
+    }
+}
+
+#+end_src
+
+* Storage
 
 * Learning resources
 :PROPERTIES:

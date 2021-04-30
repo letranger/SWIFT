@@ -1,7 +1,7 @@
 #+TITLE: Advanced Swift Ui
 
 #+INCLUDE: ../purpleweb.org
-
+#+INClude: ../pdf.org
 #+latex:\newpage
 
 * MVVM
@@ -769,7 +769,7 @@ struct TaskCell: View {
 }
 #+end_src
 **** NewTaskView.swift
-新增task時改以Picker來選取enum中的子類別[fn:14]
+新增task時改以Picker來選取enum中的子類別[fn:1]
 #+begin_src swift -r -n :results output :exports nil
 //
 //  NewTaskView.swift
@@ -1037,7 +1037,7 @@ func filter(includeElement: (T) -> Bool) -> Array<T>
 #+end_src
 - includeElement 表示傳入的 function 或 closure，用來判斷陣列個元素是否符合條件。
 - filter() 回傳結果為陣列。
-*** 在 closure 回傳每個元素使否符合判斷式的結果，決定最後 filter() 回傳的元素集合。[fn:14]
+*** 在 closure 回傳每個元素使否符合判斷式的結果，決定最後 filter() 回傳的元素集合。[fn:1]
 #+begin_src swift -r -n :results output :exports nil
 var numbers = Array(1...8)
 
@@ -1054,7 +1054,7 @@ evenNumbers     //return: [2, 4, 6, 8]
 oddNumbers      //return: [1, 3, 5, 7]
 
 #+end_src
-*** 將一、三象限的點過濾出來[fn:14]
+*** 將一、三象限的點過濾出來[fn:1]
 #+begin_src swift -r -n :results output :exports nil
 struct Point {
     var x: Int
@@ -1087,7 +1087,7 @@ func map<U>(transform: (T) -> U) -> Array<U>
 #+end_src
 - transform 表示傳入的 function 或 closure，用來轉換每個陣列的元素。輸入參數與回傳結果型別可以不同。
 - map() 回傳結果為陣列。
-*** 透過map()將整數陣列轉化成兩倍數值與字串的陣列。[fn:14]
+*** 透過map()將整數陣列轉化成兩倍數值與字串的陣列。[fn:1]
 #+begin_src swift -r -n :results output :exports nil
 var numbers = Array(1...8)
 
@@ -1105,7 +1105,7 @@ doubles     //return: [2, 4, 6, 8, 10, 12, 14, 16]
 strings     //return: ["壹", "貳", "参", "肆", "伍", "陸", "柒", "捌"]
 
 #+end_src
-**** map()如何將一組二度空間的點對 X 軸與 Y 軸做鏡射。[fn:14]
+**** map()如何將一組二度空間的點對 X 軸與 Y 軸做鏡射。[fn:1]
 #+begin_src swift -r -n :results output :exports nil
 struct Point {
     var x: Int
@@ -1127,7 +1127,7 @@ mirror_y    //return: [{x 1, y -2}, {x -2, y 1}]
 
 #+end_src
 ** debounce
-What is debounce? Its a function which forces the execution to wait a certain amount of time before running again.[fn:15]
+What is debounce? Its a function which forces the execution to wait a certain amount of time before running again.[fn:2]
 *** Example
 source: [[https://peterfriese.dev/swift-combine-love/][SwiftUI + Combine = ❤️]]
 **** UI
@@ -1354,21 +1354,21 @@ class FetchFlow: ObservableObject {
 :PROPERTIES:
 :CUSTOM_ID: SW-Protocols
 :END:
-- Protocols are a fundamental feature of Swift. They play a leading role in the structure of the Swift standard library and are a common method of abstraction. They provide a similar experience to interfaces that some other languages have. An advantage of protocols in Swift is that objects can conform to multiple protocols.[fn:1]
-- Protocol 是一個只宣告不定義的型別，然而這個特性可以讓我們的程式更有彈性，像在 IOS SDK 裡面，耳熟能詳的 Delegate，就大量的運用 Potocol，方便我們客製化事件發生時要處理的事情。[fn:2]
+- Protocols are a fundamental feature of Swift. They play a leading role in the structure of the Swift standard library and are a common method of abstraction. They provide a similar experience to interfaces that some other languages have. An advantage of protocols in Swift is that objects can conform to multiple protocols.[fn:3]
+- Protocol 是一個只宣告不定義的型別，然而這個特性可以讓我們的程式更有彈性，像在 IOS SDK 裡面，耳熟能詳的 Delegate，就大量的運用 Potocol，方便我們客製化事件發生時要處理的事情。[fn:4]
 
-- 對任何程式開發來說，減少重覆的 code，把權責明確分開，讓 code 維護性變好，是非常重要的課題。而在現今的軟體開發模式中，有許多方法可以做到這點，最為人所知的一個模式，就是利用繼承 (Inheritance)，把會重覆利用的部份放在母類別，讓其它子類別去繼承。另外一種做法，則是利用 Composition Pattern，將功能做成組件分出來，讓需要的模組去組合取用。[fn:3]
+- 對任何程式開發來說，減少重覆的 code，把權責明確分開，讓 code 維護性變好，是非常重要的課題。而在現今的軟體開發模式中，有許多方法可以做到這點，最為人所知的一個模式，就是利用繼承 (Inheritance)，把會重覆利用的部份放在母類別，讓其它子類別去繼承。另外一種做法，則是利用 Composition Pattern，將功能做成組件分出來，讓需要的模組去組合取用。[fn:5]
 #+begin_verse
-A protocol defines a blueprint of methods, properties, and other requirements that suit a particular task or piece of functionality. The protocol can then be adopted by a class, structure, or enumeration to provide an actual implementation of those requirements. Any type that satisfies the requirements of a protocol is said to conform to that protocol. [fn:4]
+A protocol defines a blueprint of methods, properties, and other requirements that suit a particular task or piece of functionality. The protocol can then be adopted by a class, structure, or enumeration to provide an actual implementation of those requirements. Any type that satisfies the requirements of a protocol is said to conform to that protocol. [fn:6]
 #+end_verse
 
-- 協定提供類型可以做的資訊，Classes 和 structs 則提供物件的資訊，協定則提供物件將會執行的動作。[fn:5]
+- 協定提供類型可以做的資訊，Classes 和 structs 則提供物件的資訊，協定則提供物件將會執行的動作。[fn:7]
 #+begin_verse
 協定是 Swift 一個重要的特性，它會定義出為了完成某項任務或功能所需的方法、屬性，但是本身不會實作這些任務跟功能，而僅僅只是表達出該任務或功能的名稱。協定為方法、屬性、以及其他特定的任務需求或功能定義藍圖。協定可被 class、struct、或 enum 類型採納以提供所需功能的具體實現。滿足了協定中需求的任意類型都叫做遵循了該協定。
 #+end_verse
 
-除了指定遵循類型必須實現的要求外，你可以擴展一個協定以實現其中的一些需求或實現一個符合類型的可以利用的附加功能。[fn:6]
-- 例如，你可能有一個名為 str 的變量，其類型為 String。身為一個開發人員，你應該知道 str 代表 String，如果我們定義了一個名為 StringProtocol 的協定，它具有所有的 String 的 API，我們可以擴展任何類型去遵循 StringProtocol（意思是滿足其所有要求），如此一來，即可以使用該對象，讓它就像是一個 String，儘管我們不知道它是什麼！如果看起來像一隻鴨子，游泳像一隻鴨子，叫聲像一隻鴨子，那就是一隻鴨子。我們新的 StringProtocol 可以告訴那些遵守它協定的類型能夠做什麼，且不需要知道這些類型的資訊。[fn:5]
+除了指定遵循類型必須實現的要求外，你可以擴展一個協定以實現其中的一些需求或實現一個符合類型的可以利用的附加功能。[fn:8]
+- 例如，你可能有一個名為 str 的變量，其類型為 String。身為一個開發人員，你應該知道 str 代表 String，如果我們定義了一個名為 StringProtocol 的協定，它具有所有的 String 的 API，我們可以擴展任何類型去遵循 StringProtocol（意思是滿足其所有要求），如此一來，即可以使用該對象，讓它就像是一個 String，儘管我們不知道它是什麼！如果看起來像一隻鴨子，游泳像一隻鴨子，叫聲像一隻鴨子，那就是一隻鴨子。我們新的 StringProtocol 可以告訴那些遵守它協定的類型能夠做什麼，且不需要知道這些類型的資訊。[fn:7]
 ** Protocol Syntax
 *** Syntax
 #+begin_src swift -r -n :results output :exports nil
@@ -1376,7 +1376,7 @@ protocol SomeProtocol {
     // protocol definition goes here
 }
 #+end_src
-Classes , structs, enums can adopt these protocol by placing protocol’s name after the type’s name, separated by a colon, as part of their definition. Multiple protocols can be listed, and are separated by commas:[fn:7]
+Classes , structs, enums can adopt these protocol by placing protocol’s name after the type’s name, separated by a colon, as part of their definition. Multiple protocols can be listed, and are separated by commas:[fn:9]
 #+begin_src swift -r -n :results output :exports nil
 struct SomeStructure: FirstProtocol, AnotherProtocol {
     //structure definition goes here
@@ -1690,7 +1690,7 @@ extension Album: Likeable {}
 :PROPERTIES:
 :CUSTOM_ID: SW-enum
 :END:
-enumerations(或稱為enums)是Swift中一種特殊類型，它允許你表示多個「情況」或可能性。Enums(列舉)類似於Bool，但Bool只能是true或false，enums可以由開發者自行定義各種情況[fn:16]
+enumerations(或稱為enums)是Swift中一種特殊類型，它允許你表示多個「情況」或可能性。Enums(列舉)類似於Bool，但Bool只能是true或false，enums可以由開發者自行定義各種情況[fn:10]
 
 ** without enum
 假設我們要登錄學生的學習等第(A, B, C, D, E, F)，如下
@@ -1730,7 +1730,7 @@ var currentStatus = DownloadStatus.downloading
 #+end_src
 ** enum的rawValue
 
-配合rawValue定義enum的值，可以讓enum自帶有意義的資訊。[fn:17]
+配合rawValue定義enum的值，可以讓enum自帶有意義的資訊。[fn:11]
 #+begin_src swift -r -n :results output :exports nil
 enum Pet: String {
     case Dog = "🐶"
@@ -1799,7 +1799,7 @@ case .cloudy(let cloudType, let windSpeed):
 
 * Struct v.s. Class
 [[https://www.hackingwithswift.com/books/ios-swiftui/why-does-swiftui-use-structs-for-views][資料來源:Why does SwiftUI use structs for views?]]
-If you ever programmed for UIKit or AppKit (Apple’s original user interface frameworks for iOS and macOS) you’ll know that they use classes for views rather than structs. SwiftUI does not: we prefer to use structs for views across the board, and there are a couple of reasons why.[fn:8]
+If you ever programmed for UIKit or AppKit (Apple’s original user interface frameworks for iOS and macOS) you’ll know that they use classes for views rather than structs. SwiftUI does not: we prefer to use structs for views across the board, and there are a couple of reasons why.[fn:12]
 - Structs are simpler and faster than classes.
   In SwiftUI, all our views are trivial structs and are almost free to create. Think about it: if you make a struct that holds a single integer, the entire size of your struct is… that one integer. Nothing else. No surprise extra values inherited from parent classes, or grandparent classes, or great-grandparent classes, etc – they contain exactly what you can see and nothing more.
 
@@ -1855,13 +1855,13 @@ struct ArticleStruct {
 #+ATTR_ORG: :width 300
 #+ATTR_HTML: :width 300
 [[file:images/coffee.gif]]
-When you pass a class object around your program, you are actually passing a reference to that object, so different parts of your program can share and modify your object. When you pass a structure [ or enum] around your program, what gets passes around is a copy of the structure. So modifications to structures don’t get shared.[fn:9]
+When you pass a class object around your program, you are actually passing a reference to that object, so different parts of your program can share and modify your object. When you pass a structure [ or enum] around your program, what gets passes around is a copy of the structure. So modifications to structures don’t get shared.[fn:13]
 
 One of the major benefits of value types is that they are thread-safe not requiring any
- synchronization.[fn:9] Structs always have unique owners, whereas with classes multiple things can point to the same value.[fn:10]
+ synchronization.[fn:13] Structs always have unique owners, whereas with classes multiple things can point to the same value.[fn:14]
 
 Classes don’t need the *mutating* keyword before methods that change their properties, because you can change properties of constant classes.
-In practice, what this means is that if we have two SwiftUI views and we send them both the same struct to work with, they actually each have a unique copy of that struct; if one changes it, the other won’t see that change. On the other hand, if we create an instance of a class and send that to both views, they will share changes.[fn:10]
+In practice, what this means is that if we have two SwiftUI views and we send them both the same struct to work with, they actually each have a unique copy of that struct; if one changes it, the other won’t see that change. On the other hand, if we create an instance of a class and send that to both views, they will share changes.[fn:14]
 Value vs reference types
 
 One of the most important differences is that a struct is a value type while a class is a reference type. References to a class instance share single data which means that any changes in that class will be available to each reference.
@@ -1939,7 +1939,7 @@ struct ContentView: View {
 }
 #+end_src
 但若將 struct 改為 class，雖程式仍可執行，但 Text 中的姓名卻不再隨 TextField 的修改而連動。
-To fix this, we need to tell SwiftUI when interesting parts of our class have changed. By “interesting parts” I mean parts that should cause SwiftUI to reload any views that are watching our class – it’s possible you might have lots of properties inside your class, but only a few should be exposed to the wider world in this way.[fn:11]
+To fix this, we need to tell SwiftUI when interesting parts of our class have changed. By “interesting parts” I mean parts that should cause SwiftUI to reload any views that are watching our class – it’s possible you might have lots of properties inside your class, but only a few should be exposed to the wider world in this way.[fn:15]
 若要將 struct 改為 class，則程式要改成：
 #+begin_src swift -r -n :results output :exports nil
 class User: ObservableObject{
@@ -1977,12 +1977,986 @@ As you’ve seen, rather than just using @State to declare local state, we now t
 The end result is that we can have our state stored in an external object, and, even better, we can now use that object in multiple views and have them all point to the same values.
 #+latex: \newpage
 
+* Publihser and Subscriber
+發佈者（Publisher）的角色就是提供輸出（output），當有值或者被請求就輸出值，如果一個Publisher沒有任何請求則被優化不做任何處理，Combine中提供兩種基本輸出，正常輸出（output type）和失敗（Failure）
+與發佈者(Publisher)對應的是訂閱者（Subscriber），訂閱者（Subscriber）訂閱發佈者的輸出並進行處理。發佈者（Publisher）和訂閱者（Subcriber）構成Combine的核心概念。和Publisher對應的，Subscriber有一個輸入類型（Input Type）和失敗(Failure),關係如下圖[fn:20]：
+#+CAPTION: Publisher v.s. Subscriber
+#+LABEL:fig:PS-2
+#+name: fig:PS-2
+#+ATTR_LATEX: :width 400
+#+ATTR_ORG: :width 300
+#+ATTR_HTML: :width 500
+[[file:images/PS-2.png]]
+僅僅是Publisher和Subcriber還不夠，我們可能需要對數據進行一定的處理再交給下一個，這就引入了另外一個概念，operator，operator同時支持了publisher和Subcriber協議，通過operator你可以訂閱一個Publisher，接受它的輸出處理後重新發佈給其他Subcriber，組合起來就是這樣：
+#+CAPTION: Publisher v.s. Operator v.s. Subscriber
+#+LABEL:fig:PS-3
+#+name: fig:PS-3
+#+ATTR_LATEX: :width 500
+#+ATTR_ORG: :width 300
+#+ATTR_HTML: :width 500
+[[file:images/PS-3.png]]
+
+操作者通常用來做數據類型變換，同時作用於輸出類型和失敗類型，操作者也可以用於分割輸出，複製輸出或者組合多個流。操作者的一個限制是輸入和輸出連接需要對齊，就像一個管道一樣，所有連接處都必須一致。我們稱這種組合方式為管道（Pipeline）
+#+begin_src swift -r -n :results output :exports nil
+import Combine
+let _ = Just(5) //管道起始於發佈者Just，輸出是5 類型, 無失敗類型
+.map { value -> String in
+    //管道通過了map操作，返回了一個字符串
+    // do something with the incoming value here
+    // and return a string
+    return "a string"
+}
+.sink { receivedValue in
+    // sink is the subscriber and terminates the pipeline
+    // subcriber訂閱了map後的輸出，並打印了result
+    print("The end result was \(receivedValue)")
+}
+#+end_src
+
+#+RESULTS:
+: The end result was a string
+
+** Publisher
+Declares that a type can transmit a sequence of values over time.
+*** Declaration
+#+begin_src swift -r -n :results output :exports nil
+protocol Publisher
+#+end_src
+*** Overview
+A publisher delivers elements to one or more [[https://developer.apple.com/documentation/combine/subscriber][Subscriber]] instances. The subscriber’s Input and Failure associated types must match the Output and Failure types declared by the publisher. The publisher implements the receive (subscriber:) method to accept a subscriber.
+You connect a subscriber to a publisher by calling the publisher’s subscribe(_:) method. After making this call, the publisher invokes the subscriber’s receive(subscription:) method. This gives the subscriber a Subscription instance, which it uses to demand elements from the publisher, and to optionally cancel the subscription. After the subscriber makes an initial demand, the publisher calls receive(_:), possibly asynchronously, to deliver newly-published elements. If the publisher stops publishing, it calls receive(completion:), using a parameter of type Subscribers.Completion to indicate whether publishing completes normally or with an error.
+
+- sink(receiveCompletion:receiveValue:) executes arbitrary closures when it receives a completion signal and each time it receives a new element.
+- assign(to:on:) writes each newly-received value to a property identified by a key path on a given instance.
+
+* Combine
+在 2019 年時，Apple 推出了兩套強大的框架分別是 SwiftUI 以及 Combine，而這兩種全新的框架對於開發者來說是一個重大的改動，它也跟以往我們熟悉的編成方式不同，因此要能夠熟悉這兩個新推出的框架也算是一個大挑戰[fn:16]。
+** Publisher[fn:16]
+Combine 框架提供了一個宣告性（declarative）的 Swift API，其用於隨時間推移的值處理，這些值可以表示多種異步事件。Combine 宣告發布者（Publishers）去暴露隨時間變化的值，而訂閱者（Subscribers）去從發布者那裡接收這些值:
+- Publisher 協議宣告了一個可以隨時間傳遞序列值的類型。發布者具有運算符（Operators）來從上游發布者那裡獲得的值採取行動，然後重新發布他們。
+- 在發布者鏈的結尾，訂閱者在接收元素的時候對其進行操作。發布者只能在訂閱者明確要求時才發出值。如此一來，你的訂閱者程式碼就可以控制從連接的發布者那裡接受事件的速度
+
+發布者傳遞元素到一個或多個訂閱者實例。訂閱者的 Input 以及 Failure 的關聯類型必須與發布者宣告的 Output 以及 Failure 的類型相匹配。發布者實現了 receive(subscriber:) 方法來接受訂閱者。
+
+在這之後，發布者可以在訂閱者上調用以下方法：
+- receive(subscription:)： 確認訂閱請求並且返回一個 Subscription 實例。訂閱者使用訂閱來向發布者需求元素，並且可以使用它來取消發布。
+- receive(_:)：從發布者向訂閱者傳遞一個元素。
+- receive(completion:)：通知訂閱者發布已正常結束或發生錯誤。
+
+每個 Publisher 必須遵守此約定，下游訂閱者才能正常運作。此外，@Published 特性受class約束。必須將它與class的屬性一起使用，而不是與非類類型（例如：struct）一起使用。
+
+The publisher is the provider of data. The publisher protocol has a strict contract returning values when asked from subscribers, and possibly terminating with an explicit completion enumeration.
+
+Combine provides a number of additional convenience publishers:
+| Just             | Future   | Deferred  |
+| Empty            | Sequence | Fail      |
+| Record           | Share    | multicast |
+| ObservableObject | @Published |           |
+
+
+A number of Apple API outside of Combine provide publishers as well.
+
+- SwiftUI uses the @Published and @ObservedObject property wrappers, provided by Combine, to implicitly create a publisher and support its declarative view mechanisms.
+- Foundation
+  + URLSession.dataTaskPublisher
+  + .publisher on KVO instance
+  + NotificationCenter
+  + Timer
+  + Result
+
+
+*** Published
+
+#+begin_src swift -r -n :results output :exports nil
+import Combine
+
+class Weather {
+    @Published var temperature: Double
+    init(temperature: Double) {
+        self.temperature = temperature
+    }
+}
+let weather = Weather(temperature: 20)
+var cancellable = weather.$temperature
+  .sink() {
+      print("Temperatuer now: \($0)")
+}
+weather.temperature = 25
+weather.temperature = 30
+#+end_src
+
+#+RESULTS:
+: Temperatuer now: 20.0
+: Temperatuer now: 25.0
+: Temperatuer now: 30.0
+
+** Subscriber[fn:16]
+Combine 內置的 Subscriber 有三種：
+- sink:  通用的closure方式處理Publisher的值
+- assign: 可以很方便地將接收到的值通過 KeyPath 設置到指定的 Class 上（不支持 Struct），很適合將已有的程序改造成Reactive。
+- Subject: 有些時候我們想隨時在 Publisher 插入值來通知訂閱者，在 Combine 中也提供了一個 Subject 類型來實現。Subject 通常是一個中間代理，即可以作為 Publisher，也可以作為 Observer。Subject要求實現一個send方法，允許向combine鏈條發送值。
+*** sink
+
+#+begin_src swift -r -n :results output :exports nil
+import Combine
+private var cancellables = Set<AnyCancellable>()
+
+["A", "B", "C", "D", "E"].publisher
+  .sink(receiveCompletion: { print("completion: \($0)") },
+        receiveValue: { print("item:\($0)") })
+  .store(in: &cancellables)
+#+end_src
+
+#+RESULTS:
+: item:A
+: item:B
+: item:C
+: item:D
+: item:E
+: completion:finished
+sink: 針對收到元素與結束通知時, 分別執行指定的指令
+#+begin_src swift -r -n :results output :exports nil
+import Combine
+
+var set = Set<AnyCancellable>()
+let pst = PassthroughSubject<String,Error>()
+
+pst.sink(receiveCompletion: { result in // 1
+    switch result {  // 2
+    case .finished:
+        break
+    case .failure(let e):
+        print(e)
+    }
+}, receiveValue: {print($0)})
+.store(in: &set)
+pst.send("123")
+
+#+end_src
+
+#+RESULTS:
+: 123
+在這個例子中, 我們完成了一個簡單的 Combine 運作.
+1. 我們使用 sink, 取得分別可以應對收到結束與收到元素的執行閉包設定方式, 在這裡我習慣把這件事稱為 執行綁定.
+2. 透過 recevieCompletion 的設定, 我們可以用 Promise 的方式, 注入對應成功或失敗的方式.
+
+*** assign
+Assign applies values passed down from the publisher to an object defined by a keypath. The keypath is set when the pipeline is created. An example of this in Swift might look like:
+#+begin_src swift -r -n :results output :exports nil
+.assign(to: \.isEnabled, on: signupButton)
+#+end_src
+sink 和 assign 兩種訂閱者都向其發布者請求無限數量的元素。想要控制接收元素的比率，請透過實現 Subscriber 協議來創建自己的訂閱者。
+如要更改發布者的輸出類型，請添加一個 map(_:) 運算符，其閉包將返回不同的類型。在這種情況下，你可以將通知的對象獲取為一個 UITextFiled，然後獲取其 text。
+在發布者產生所需的類型後，將 sink(receiveCompletion:receiveValue:) 替換為 assign(to:on:)。下面的範例獲取從發布者鏈接收到的字串，並將其分配給自定義的 ViewModel 對象的 fillterString ：
+assign: 將元素直接付與到 Object 的屬性.
+
+沒錯, 只能是 Object, 不能是 Struct/enum, 也不能是 static
+#+begin_src swift -r -n :results output :exports nil
+import Combine
+
+class OBJECT {
+    static let shared = OBJECT()
+    private init() {}
+    var str:String = ""
+}
+
+var set = Set<AnyCancellable>()
+let pst = PassthroughSubject<String, Never>()
+
+pst
+  .assign(to: \.str, on: OBJECT.shared)
+  .store(in: &set)
+pst.send("123")
+
+#+end_src
+
+**** 應用assign到SwiftUI
+Other subscribers are part of other Apple frameworks. For example, nearly every control in SwiftUI can act as a subscriber. The View protocol in SwiftUI defines an .onReceive(publisher) function to use views as a subscriber. The onReceive function takes a closure akin to sink that can manipulate @State or @Bindings within SwiftUI.
+
+An example of that in SwiftUI might look like:
+
+#+begin_src swift -r -n :results output :exports nil
+struct MyView : View {
+
+    @State private var currentStatusValue = "ok"
+    var body: some View {
+        Text("Current status: \(currentStatusValue)")
+            .onReceive(MyPublisher.currentStatusPublisher) { newStatus in
+                self.currentStatusValue = newStatus
+            }
+    }
+}
+#+end_src
+For any type of UI object (UIKit, AppKit, or SwiftUI), Assign can be used with pipelines to update properties.
+*** Subject
+有些時候我們想隨時在 Publisher 插入值來通知訂閱者，在 Combine 中也提供了一個 Subject 類型來實現。Subject 通常是一個中間代理，即可以作為 Publisher，也可以作為 Observer。Subject要求實現一個send方法，允許向combine鏈條發送值。
+Combine有兩個內置的Subject類型 CurrentValueSubject和PassthroughSubject
+CurrentValueSubject 的功能很簡單，就是包含一個初始值，並且會在每次值變化的時候發送一個消息，這個值會被保存，可以很方便的用來替代 Property Observer。
+#+begin_src swift -r -n :results output :exports nil
+import Combine
+
+// Before
+class ContentManager {
+    var content: [String] {
+        didSet {
+            delegate?.contentDidChange(content)
+        }
+    }
+
+    func changeContent() {
+        content = ["hello", "world"]
+    }
+}
+
+// After
+class RxContentController {
+    var content = CurrentValueSubject<[String], NSError>([])
+
+    func changeContent() {
+        content.value = ["hello", "world"]
+    }
+}
+#+end_src
+*** 使用操作符自定義發布者[fn:16]
+你可以使用執行某些行為的運算符來擴展 Publisher 實例，否則這些操作需要手動進行編碼。你可以使用以下三個方式來使運算符改善此事件處理鏈：
+- 可以使用 filter(_:) 運算符來忽略特定長度下的輸入或是拒絕非字母數字的字，而不是使用在 text filed 中輸入任何內容時更新 ViewModel。
+- 如果過濾運算很昂貴（例如：查詢大型數據庫），則可能要等待用戶停止輸入。為此，我們可以使用 debounce(for:scheduler:options:) 運算符可以設置發布者發出事件之前必須經過的最短時間。RunLoop 類為指定以秒或毫秒為單位的延遲時間提供了方便。
+- 如果結果更新了 UI，則可以透過調用 receive(on:options:) 方法 callback 回主線程。透過將 RunLoop 類提供的 Scheduler 實例指定為第一個參數，可以告訴 Combine 在主運算循環上調用你的訂閱者。
+結果發布者宣告如下：
+#+begin_src swift -r -n :results output :exports nil
+let sub = NotificationCenter.default
+  .publisher(for: UITextField.textDidChangeNotification, object: filterField)
+  .map( { ($0.object as! UITextField).text!) })
+  .filter( {$0.unicodeScalars.allStatisfy({CharacterSet.alphanumerics.contains($0)})} )
+  .debounce(for: .milliseconds(500), scheduler: RunLoop.main)
+  .receive(on: RunLoop.main)
+  .assign(to: \MyViewModel.filterString, on: myViewModel)
+#+end_src
+*** Cancellable protocol
+With the subscriber driving the subscription process, it allows Combine to support cancellation. Subscribers all conform to the Cancellable protocol. This means they all have a function cancel() that can be invoked to terminate a pipeline and stop all related processing.
+#+begin_verse
+When a pipeline has been cancelled, the pipeline is not expected to be restarted. Rather than restarting a cancelled pipeline, the developer is expected to create a new pipeline.
+#+end_verse
+*** back pressure
+Combine is designed such that the subscriber controls the flow of data, and because of that it also controls what and when processing happens in the pipeline. This is a feature of Combine called back-pressure.
+透過發送信號通知訂閱者準備接收元素來控制流量的概念稱之為背壓（back pressure）
+#+begin_src swift -r -n :results output :exports nil
+import SwiftUI
+import Combine
+// Publisher: Uses a timer to emit the date once per second
+let timerPub = Timer.publish(every: 1, on: .main, in: .default)
+//Subscriber: Waits 5 second after subscription, then request a maximum of 3 values.
+class MySubscriber: Subscriber {
+    typealias Input = Date
+    typealias Failure = Never
+    var subscription: Subscription?
+
+    func receive(subscription: Subscription) {
+        print("published\t\treceived")
+        self.subscription = subscription
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            subscription.request(.max(2))
+        }
+    }
+    func receive(_ input: Date) -> Subscribers.Demand {
+        print("\(input)\t\t\(Date())")
+        return Subscribers.Demand.none
+    }
+    func receive(completion: Subscribers.Completion<Never>) {
+        print("--done--")
+    }
+}
+//Subscribe to timberPub.
+let mySub = MySubscriber()
+print("Subscribing at \(Date())")
+timerPub.subscribe(mySub)
+#+end_src
+
+#+RESULTS:
+: Subscribing at 2021-04-25 12:36:25 +0000
+: published		received
+*** 需要時取消發布[fn:16]
+發布者持續發出元素，直到其正常完成或失敗為止。如果你不想再訂閱發布者，則可以取消訂閱。由 sink 和 assign 所創建的訂閱者都實現的 Cancellable 協議，該協議提供了 cancel() 方法：
+#+begin_src swift -r -n :results output :exports nil
+sub.cancel()
+#+end_src
+如果創建自定義 Subscriber，則發布者在首次訂閱時會發送一個 Subscription 對象。存儲此訂閱，然後再要取消發布的時候調用其 cancel() 方法。當創建自定義訂閱者時，你應該要實現 Cancellable 協議，並讓你的 cancel() 實現將調用轉發給存儲的訂閱。
+
+** Subject
+Subject 是一種特殊的 Publisher, protocol Subject 是 protocol Publisher 的繼承類:
+特別注意, 不同於 Publisher, Subject 透過 AnyObjcet, 限制了 Reference type.
+
+如果 一個事件流要用特別的方式介入, Suject 就是這個 inject 的載體, 也因此可以快速的將原本的非 Combine 的程式改寫套用. 若是熟係設計模式, Subject 以實作觀察者模式來理解會比較直接.
+
+Subject 在 Combine 有兩個實作類別:
+#+begin_src swift -r -n :results output :exports nil
+final class PassthroughSubject<Output, Failure> where Failure : Error
+final class CurrentValueSubject<Output, Failure> where Failure : Error
+#+end_src
+There are two types of built-in subjects with Combine: CurrentValueSubject and PassthroughSubject. They act similarly, the difference being CurrentValueSubject remembers and requires an initial state, where PassthroughSubject does not. Both will provide updated values to any subscribers when .send() is invoked.
+#+BEGIN_EXAMPLE
+Unlike CurrentValueSubject, a PassthroughSubject doesn’t have an initial value or a buffer of the most recently-published element.
+PassthroughSubject 和 CurrentValueSubject 幾乎一樣，只是沒有初始值，也不會保存任何值。
+#+END_EXAMPLE
+Subject也可以理解成特殊的Publisher，不同于publisher，subject可以用.send()来想subscriber发送values。先介绍两种常用的subjects：
+- PassthroughSubject - 可以持续向subscriber传输值或者结束事件，可以没有初始值
+- CurrentValueSubject - 初始化时必须有初始值，可以通过subject.value来查看当前publisher发送的值
+
+*** CurrentValueSubject
+CurrentValueSubject 相對於 PassthroughSubject, 是沒有.send(), 取而代之的是一個真真確確的 value, 就像是 didSet 的方式, 就像 if then 的方式.
+
+與 PassthroughSubject 不同，CurrentValueSubject 維護最近發布元素的緩衝區。在 CurrentValueSubject 上調用 send(_:) 也會更新當前值，使其等效於直接更新該值。
+*** PassthroughSubject
+PassthroughSubject 是一個相近於 NotificationCenter 的模式, 透過 .send() 可以控制結束或是發送 Value, 很容易入門且濫用.
+
+作為 Subject 的具體實現，PassthroughSubject 提供了一種便利方式來使現有命令式程式碼適應 Combine 模型。
+
+與 CurrentValueSubject 不同，PassthroughSubject 沒有初始值或最新發布元素元素的緩衝區。如果沒有訂閱者，或當前需求為零，則 PassthrougnSubject 會丟棄值。
+
+** Operator
+就像是物件導向的不同部分有不同的變形一樣，Operator 在 Combine 中扮演了舉足輕重的角色，沒有了他，Combine 只是 if then。
+
+Operator 可以區分為幾大類
+1. 轉換類型 map, scan, flapMap
+2. 一般篩選類型 compactMap, filter, removeDuplicates
+3. 整併類型 reduce, collect
+4. 運算類型 count, comparison
+5. 符合篩選類型 contains, allSatisfy
+6. 序列篩選類型 first, last, drop, firstWhere,
+7. 上流整合類型 zip, merge, combineLatest
+8. 型別銜接類型 eraseToAnyPublisher, switchToLatest
+9. 失敗處理類型 catch, retry, mapError
+10. 時間控制類型 debounce, throttle, delay, timeout
+11. 格式解析類型 Encode, decode
+12. Debugging類型 print, breakpoint, handleEvents
+*** collect()
+collect就是把一个一个输出的value全都放在array里，然后等publisher结束后，输出这个array:
+#+begin_src swift -r -n :results output :exports nil
+import Combine
+private var cancellables = Set<AnyCancellable>()
+
+["A", "B", "C", "D", "E"].publisher
+  .collect()
+  .sink(receiveCompletion: { print($0) },
+        receiveValue: { print($0) })
+    .store(in: &cancellables)
+#+end_src
+
+#+RESULTS:
+: ["A", "B", "C", "D", "E"]
+: finished
+通常我们会限制collect需要收集values的个数，不然无限等着可能浪费内存：
+#+begin_src swift -r -n :results output :exports nil
+import Combine
+private var cancellables = Set<AnyCancellable>()
+
+["A", "B", "C", "D", "E"].publisher
+  .collect(3)
+  .sink(receiveCompletion: { print($0) },
+        receiveValue: { print($0) })
+    .store(in: &cancellables)
+
+#+end_src
+
+#+RESULTS:
+: ["A", "B", "C"]
+: ["D", "E"]
+: finished
+
+*** map:
+轉換上游元素為另一元素
+#+begin_src swift -r -n :results output :exports nil
+import Combine
+import Foundation
+
+private var cancellable: AnyCancellable?
+
+cancellable = [1, 2, 3].publisher
+.map{ int in "Transfer to Number: \(int)" }
+.sink(receiveValue: { int in
+      print("Received: \(int)")})
+#+end_src
+
+#+RESULTS:
+: Received: Transfer to Number: 1
+: Received: Transfer to Number: 2
+: Received: Transfer to Number: 3
+*** map key path
+如果输出的value有多个属性，那么也可以用map和keypath来拆分：
+
+#+begin_src swift -r -n :results output :exports nil
+import Combine
+
+private var cancellables = Set<AnyCancellable>()
+
+[(x: 2, y: 3), (x: 1, y: 5), (x: 2, y: 6)].publisher
+    .map(\.x, \.y)
+    .sink(receiveCompletion: { print($0) },
+        receiveValue: { x, y in print(x + y) })
+    .store(in: &cancellables)
+#+end_src
+
+#+RESULTS:
+: 5
+: 6
+: 8
+: finished
+
+The result of this chain of calls is a Cancellable, which we can use to cancel processing if required (useful for longer-running chains). We’ll store this (and all the others that we will create later on) into a Set<AnyCancellable>, so we can clean up upon deinit.
+*** tryMap
+tryMap就是map的closure里有可能throw，throw的话就筛选掉这个value：
+#+begin_src swift -r -n :results output :exports nil
+import Combine
+import Foundation
+
+private var cancellables = Set<AnyCancellable>()
+
+Just("/fake")
+    .tryMap { try FileManager.default.contentsOfDirectory(atPath: $0) }
+    .sink(receiveCompletion: { print($0) },
+        receiveValue: { print($0) })
+    .store(in: &cancellables)
+#+end_src
+
+#+RESULTS:
+: failure(Error Domain=NSCocoaErrorDomain Code=260 "The folder “fake” doesn’t exist." UserInfo={NSFilePath=/fake, NSUserStringVariant=(
+:     Folder
+: ), NSUnderlyingError=0x7fb53bfdf7c0 {Error Domain=NSOSStatusErrorDomain Code=-43 "fnfErr: File not found"}})
+*** flatMap
+如果你有一个publisher发送的value的某些属性也是publisher， 那sink只会receive外面这个publisher发出的value，属性publisher发出的value要是也想接收，那你就可以用flatMap
+#+begin_src swift -r -n :results output :exports nil
+import Combine
+private var cancellables = Set<AnyCancellable>()
+
+struct Person {
+    let name : String
+    var age: CurrentValueSubject<Int, Never>
+
+    init(name: String, age: Int) {
+        self.name = name
+        self.age = CurrentValueSubject(age)
+    }
+}
+
+var me = Person(name: "Joshua", age: 18)
+var you = Person(name: "Dog", age: 28)
+
+let people = PassthroughSubject<Person, Never>()
+people
+  .flatMap{ $0.age }
+  .sink(receiveCompletion: { _ in
+            print("people completed")
+        }, receiveValue: { val in
+               print(val)
+           })
+  .store(in: &cancellables)
+
+people.send(me)
+people.send(you)
+me.age.value = 19
+you.age.value = 30
+
+#+end_src
+
+#+RESULTS:
+: 18
+: 28
+: 19
+: 30
+好好看一下这个例子，我觉得大家应该就都理解了吧，这属于比较复杂的一个operator了。flatMap还可以限制订阅publisher的个数：
+#+begin_src swift -r -n :results output :exports nil
+import Combine
+private var cancellables = Set<AnyCancellable>()
+
+struct Person {
+    let name : String
+    var age: CurrentValueSubject<Int, Never>
+
+    init(name: String, age: Int) {
+        self.name = name
+        self.age = CurrentValueSubject(age)
+    }
+}
+
+var me = Person(name: "Joshua", age: 18)
+var you = Person(name: "Dog", age: 28)
+var she = Person(name: "SHE", age: 16)
+
+let people = PassthroughSubject<Person, Never>()
+people
+    .flatMap(maxPublishers: .max(1)) { $0.age }
+    .sink(receiveCompletion: { _ in
+        print("people completed")
+    }, receiveValue: { val in
+        print(val)
+
+    })
+.store(in: &cancellables)
+
+people.send(me)
+people.send(you)
+people.send(she)
+me.age.value = 19
+you.age.value = 30
+she.age.value = 17
+
+// 输出和之前那个一样
+#+end_src
+
+#+RESULTS:
+: 18
+: 19
+*** replaceNil(with:)
+#+begin_src swift -r -n :results output :exports nil
+import Combine
+private var cancellables = Set<AnyCancellable>()
+["A", nil, "C"].publisher
+.replaceNil(with: "null")
+.map { $0! }
+.sink(receiveCompletion: { print($0) },
+    receiveValue: { print($0) })
+.store(in: &cancellables)
+#+end_src
+
+#+RESULTS:
+: A
+: null
+: C
+: finished
+*** replaceEnpty(with:)
+#+begin_src swift -r -n :results output :exports nil
+import Combine
+private var cancellables = Set<AnyCancellable>()
+
+let empty = Empty<String, Never>()
+empty
+  .replaceEmpty(with: "Empty")
+  .sink(receiveCompletion: { print($0) },
+        receiveValue: { print($0) })
+  .store(in: &cancellables)
+#+end_src
+
+#+RESULTS:
+: Empty
+: finished
+这个Empty一般就是用来测试或demo，直接发送.finish
+*** reduce(0)
+这个和之前文章中介绍的reduce一样。publisher一定要结束才会输出最后值
+#+begin_src swift -r -n :results output :exports nil
+import Combine
+private var cancellables = Set<AnyCancellable>()
+
+[1, 2, 3].publisher
+    .reduce(0, +)
+    .sink(receiveCompletion: { print($0) },
+        receiveValue: { print($0) })
+    .store(in: &cancellables)
+#+end_src
+
+#+RESULTS:
+: 6
+: finished
+*** scan
+ scan 對每個信號都進行處理類似 map，但是可以取得前一個上路元素。scan和reduce差不多，但是scan不是最后才输出值，每个都会输出
+
+#+begin_src swift -r -n :results output :exports nil
+import Combine
+
+let pub = (0...5)
+  .publisher
+  .scan(0, { return $0 + $1 })
+  .sink(receiveValue: { print ("\($0)", terminator: "\n") })
+#+end_src
+
+#+RESULTS:
+: 0
+: 1
+: 3
+: 6
+: 10
+: 15
+#+begin_src swift -r -n :results output :exports nil
+import Combine
+private var cancellables = Set<AnyCancellable>()
+[1, 2, 3].publisher
+    .scan(0, +)
+    .sink(receiveCompletion: { print($0) },
+        receiveValue: { print($0) })
+    .store(in: &cancellables)
+#+end_src
+
+#+RESULTS:
+: 1
+: 3
+: 6
+: finished
+*** tryScan
+和上面類似，允許拋出錯誤
+*** filter
+#+begin_src swift -r -n :results output :exports nil
+import Combine
+private var cancellables = Set<AnyCancellable>()
+
+[1, 2, 3].publisher
+    .filter { $0 < 3 }
+    .sink(receiveCompletion: { print($0) },
+        receiveValue: { print($0) })
+    .store(in: &cancellables)
+#+end_src
+
+#+RESULTS:
+: 1
+: 2
+: finished
+*** removeDuplicates()
+注意这个并不是所有重复的都去掉，只是publisher当前要发出的value和上个发出的一样的才会去掉。要让系统排重，那value一定是Equatable, 不然你就得自定义相等的条件：
+#+begin_src swift -r -n :results output :exports nil
+import Combine
+private var cancellables = Set<AnyCancellable>()
+
+[1, 1, 2, 2, 2, 3].publisher
+    .removeDuplicates()
+    .sink(receiveCompletion: { print($0) },
+        receiveValue: { print($0) })
+    .store(in: &cancellables)
+#+end_src
+
+#+RESULTS:
+: 1
+: 2
+: 3
+: finished
+*** first() 和 first(where:)
+接收到第一个值就取消订阅，可以用where加条件
+#+begin_src swift -r -n :results output :exports nil
+import Combine
+private var cancellables = Set<AnyCancellable>()
+[1, 2, 3].publisher
+    .first { $0 > 1 }
+    .sink(receiveCompletion: { print($0) },
+        receiveValue: { print($0) })
+    .store(in: &cancellables)
+
+#+end_src
+
+#+RESULTS:
+: 2
+: finished
+*** last()和last(where:)
+跟上一个一样，唯一区别是publisher必须结束才会输出
+#+begin_src swift -r -n :results output :exports nil
+import Combine
+private var cancellables = Set<AnyCancellable>()
+[1, 2, 3].publisher
+    .last { $0 > 1 }
+    .sink(receiveCompletion: { print($0) },
+        receiveValue: { print($0) })
+    .store(in: &cancellables)
+
+#+end_src
+
+#+RESULTS:
+: 3
+: finished
+*** dropFirst()
+.dropFirst(3)就是不要前3个
+*** last()和last(where:)
+跟上一个一样，唯一区别是publisher必须结束才会输出
+#+begin_src swift -r -n :results output :exports nil
+import Combine
+private var cancellables = Set<AnyCancellable>()
+[1, 2, 3, 4, 5].publisher
+    .drop(while: { $0 < 3 })
+    .sink(receiveCompletion: { print($0) },
+        receiveValue: { print($0) })
+    .store(in: &cancellables)
+
+#+end_src
+
+#+RESULTS:
+: 3
+: 4
+: 5
+: finished
+*** drop(untilOutputFrom:)
+这个其实也很简单理解，就是你有两个publisher，用这个operator的publisher必须要等另一个publisher输出才会输出，之前的都不要了
+*** prefix()、prefix(while:)、prefix(untilOutputFrom:)
+跟drop的三个正好相反，保留前几个values直到....唯一要注意的是，跟first一样，符合条件之后就cancel
+*** prepend()
+在publisher输出之前先输出prepend里面的同类型values
+#+begin_src swift -r -n :results output :exports nil
+import Combine
+private var cancellables = Set<AnyCancellable>()
+[1, 2, 3, 4, 5].publisher
+    .prepend(9, 8) //也可以prepend([9, 8])，结果一样
+    .sink(receiveCompletion: { print($0) },
+        receiveValue: { print($0) })
+    .store(in: &cancellables)
+#+end_src
+
+#+RESULTS:
+: 9
+: 8
+: 1
+: 2
+: 3
+: 4
+: 5
+: finished
+还可以prepend(另一个publisher)，这样只有prepend的publisher完成输出，本来的publisher才开始输出
+*** zip
+等待不同的上游發佈, 只有指定的所有上游發佈後, 再一次發佈組合後的元素, 當任一上游發佈結束時, 會立即發佈結束.
+#+begin_src swift -r -n :results output :exports nil
+import Combine
+private var cancellables = Set<AnyCancellable>()
+Publishers.Zip(
+  (1...5).publisher,
+  (6...10).publisher)
+  .sink{print("get value:", $0)}
+  .store(in: &cancellables)
+#+end_src
+
+#+RESULTS:
+: get value: (1, 6)
+: get value: (2, 7)
+: get value: (3, 8)
+: get value: (4, 9)
+: get value: (5, 10)
+*** eraseToAnyPublisher: 不是運作類型的 Operator, 是型別類型的(可能是唯一一個)
+用在封裝 Publisher 並 函式化的目的, 使用型別抹除的方式, 將 中間的 Operator 抹除, 但是仍保留 Operator 的功能.
+#+begin_src swift -r -n :results output :exports nil
+func makeTimerPublisher(time:TimeInterval) -> AnyPublisher<Date,Never> {
+      return Timer.publish(every: 1, on: RunLoop.main, in: .common)
+            .print()
+            .eraseToAnyPublisher()
+}
+#+end_src
+*** debounce: 限制連續發佈的間隔, 唯有間隔超過制定時間才會轉發元素.
+#+begin_src swift -r -n :results output :exports nil
+import Combine
+import Foundation
+import SwiftUI
+var set = Set<AnyCancellable>()
+@State var name: String = ""
+func SOMESETUP() {
+    TextField(s$name)
+    .publisher(for: \.text)
+    .debounce(for: .microseconds(500),
+              scheduler: RunLoop.main)
+    .sink{print($0)}
+    .store(in: &set)
+}
+#+end_src
+
+** sink(receiveCompletion:receiveValue:)
+*** 參數：
+- receiveComplete: 在完成時執行的閉包。
+- receiveValue: 在收到值時執行的閉包。
+*** 返回值：
+
+為一個可取消實例，在結束分配接收值使用。結果的取消分配將拆除（tear down）訂閱數據流。
+
+使用 sink(receiveCompletion:receiveValue:) 來觀察發布者收到的值，並且使用你指定的閉包對其進行處理。
+
+在此範例中，Range 發布者將整數發布到 sink(receiveCompletion:receiveValue:) 運算符的 receiveValue 閉包中，該閉包將其打印到控制台中。完成接收器 sink(receiveCompletion:receiveValue:) 運算符的 receiveCompletion 閉包表示數據流成功終止。
+#+begin_src swift -r -n :results output :exports nil
+import Combine
+let myRange = (0...3)
+var cancellable = myRange.publisher
+  .sink(receiveCompletion: { print("completion: \($0)") },
+        receiveValue: { print("value: \($0)") })
+#+end_src
+
+#+RESULTS:
+: value: 0
+: value: 1
+: value: 2
+: value: 3
+: completion: finished
+此方法創建訂閱者並且在返回訂閱者之前立即請求無限數量的值，返回值應該被保留，否則數據流將被取消。
+
+** assign(to:on:)
+*** 參數：
+- keyPath：表示要分配屬性的 keyPath。關於 Key-Path 表達式請參考此官方文章。
+- object：包含此屬性的對象。訂閱者在每次接收到新值時都會分配給該對象的屬性。
+*** 返回值：
+一個 AnyCancellable 實例。當你不再想要發布者分配屬性時，請在此實例上調用 cancel()。返初始化此實例也將取消自動分配。
+
+當你想要發布者每次產生值的時候都設置給給定的屬性時，請使用 assign(to:on:) 訂閱者。
+
+在此範例中，assign(to:on:) 設置在 MyClass 實例上的 anInt 屬性：
+#+begin_src swift -r -n :results output :exports nil
+import Combine
+var cancellable: AnyCancellable?
+class MyClass {
+    var anInt: Int = 0 {
+        didSet {
+            print("anInt was set to: \(anInt)", terminator: ";")
+        }
+    }
+}
+var myObject = MyClass()
+let myRange = (0...3)
+cancellable = myRange.publisher
+  .assign(to: \.anInt, on: myObject)
+#+end_src
+
+#+RESULTS:
+: anInt was set to: 0;anInt was set to: 1;anInt was set to: 2;anInt was set to: 3;
+
+** Publisher & Subsciber流程[fn:19]
+基本上就是 Subscriber 會訂閱（附加 or 連接）在一個 Publisher，而這時 Publisher 會返回一個 Subscription 也就是所謂的訂閱，我們會藉由這個訂閱來保持兩者間的訂閱關係，我們也可以藉由移除它或是主動調用 cancel() 來取消訂閱關係。一旦有了這個訂閱關係後，Subscriber 會向 Publisher 要求值，而 Publisher 會向 Subscriber 發送值以及發送完成或是錯誤。
+#+BEGIN_SRC ditaa :file ./images/PS-2.png
+Publisher source       Subscriber
++--------------+     +-------------+
+|    Output    |---->|   Input     |
++--------------+     +-------------+
++--------------+     +-------------+
+|    Failure   |---->|   Failure   |
++--------------+     +-------------+
+#+END_SRC
+
+#+RESULTS:
+[[file:./images/PS-2.png]]
+而 operator 則是 publisher 之間的轉換器(adoptor), 可以訂閱一個 publisher, 也可以讓任何 subscriber 要求數據.
+甚至可以產出 publisher 鏈(chain).
+#+BEGIN_SRC ditaa :file ./images/PS-3.png
+Publisher source   +------------ Operator-----------+    Subsciber
++--------------+   | +-----------+    +-----------+ |  +-----------+
+|    Output    |---->|  Input    |--->|  Input    |--->|  Input    |
++--------------+   | +-----------+    +-----------+ |  +-----------+
++--------------+   | +-----------+    +-----------+ |  +-----------+
+|    Failure   |---->|  Failure  |--->|  Failure  |--->|  Failure  |
++--------------+   | +-----------+    +-----------+ |  +-----------+
+                   +--------------------------------+
+#+END_SRC
+
+#+RESULTS:
+[[file:./images/PS-3.png]]
+這些組合完成的序列結構, 稱為 pipelines(管路).
+
+Operators 可以轉換 publisher 與 subscriber 之間的數據, 分流或集合流.
+#+begin_src swift -r -n :results output :exports nil
+import Combine
+
+let publisher = Just(5)
+let publisherString = publisher.map{$0.description}
+let publisherDouble = publisher.map{Double($0)}
+
+let subcriber = publisher.sink(receiveValue: {print($0)})        // 5
+let anotherScriber = publisherDouble.sink(receiveValue: {print("Another",$0)})         //Another 5.0
+#+end_src
+
+#+RESULTS:
+: 5
+: Another 5.0
+Combine 中的 operators 具備相對應的轉換功能來達成特殊的轉換. 例如 map 是單純轉換 Input, 而 tryMap 是同時間傳換 Input 與 Failure, 像是 Never 轉換成 Decode Error.
+
+Combine 之中, Publisher 是資料來源, Subscriber 是控制資料流的操作員, Subscriber 可以限制接收的資料信息量, 透過 Demand (需求), 使 Subscriber 得以在連接 Publisher 之後, 得到透過 Pipeline 處理後的資料.
+
+Combine 同時使 Subscriber 可以取消(cancel) Demand 的要求, 在 Combine 里, 所有的 Subscriber 都具備 Cancelable, 每個 Subscriber 都可以透過 Cancel() 函式, 取消 Publisher 或 pipeline 的 連接.
+
+因此, 我們可以知道 Publisher 是事件產生資料的單元, Pipeline 是轉換資料的單元, Subscriber 是控制 Publisher 週期的單元.
+
+** 發佈者和訂閱者的生命週期
+Combine的設計是讓終端操作可以完全控制數據流和管道處理流程，這是一種 back-pressure設計（可以理解為末端控制整個流程），這也意味著subscriber驅動訂閱或者operator應該怎麼輸出數據。subscriber的請求通過通道（Pipeline）逐級向上鏈條傳遞。一個典型的例子就是cancel，當Subcriber要求取消的時候可中斷鏈條上的所有操作。
+#+CAPTION: Publisher & Subscriber 流程
+#+LABEL:fig:PS-1
+#+name: fig:PS-1
+#+ATTR_LATEX: :width 500
+#+ATTR_ORG: :width 300
+#+ATTR_HTML: :width 500
+[[file:images/PS.jpg]]
+也就是subscriber控制整個鏈條的生命週期
+
+** 典型的Publisher
+- Just
+  返回單個值並立即結束Publisher
+- Future
+  創建一個異步的最終返回單個值或失敗Publisher
+- @Published
+  swift 語法糖，允許將任意屬性轉換為一個Publisher
+- Empty
+  不返回任何值，然後直接結束<可選>
+- Sequence
+  將容器類型轉變為值發佈
+- Fail
+  - 發送一次值更新，然後立即因錯誤而終止
+  - 立即因錯誤而終止
+- Deferred
+  Deferred 初始化需要提供一個生成 Publisher 的 closure，只有在有 Subscriber 訂閱的時候才會生成指定的 Publisher，並且每個 Subscriber 獲得的 Publisher 都是全新的。
+- ObservableObjectPublisher
+
+** Marble Diagram
+使用 Marble diagram 可以加快我們學習 Operator 的運作原理. 接下來介紹本篇主題所使用的符號:
+*** 格式
+#+BEGIN_EXAMPLE
+// 這是註解
+- //單位時間, 沒有特別寫會是 1 秒
+X //Error 發生
+| //代表 Complete normally
+source: //表示事件來源
+operat: //代表 operation 表示上流事件的轉換
+output: //表示最後結果, 只有在 operation 之後才會出現
+#+END_EXAMPLE
+*** 基本圖形範例
+#+BEGIN_EXAMPLE
+// Attach subscribtion then complete without notify
+-------------------|
+// Attach subscribtion then error occur before any notify
+-------------------X
+// Attach subscribtion then nothing happen yet
+--------------------
+#+END_EXAMPLE
+*** 經過 Operator 的圖形範例
+#+BEGIN_EXAMPLE
+1.
+source: ------1------2------3---|
+                map{$0 + 1}
+output: ------2------3------4---|
+
+2.
+source: ------1------2------3---|
+   filter{$0.isMultiple(of: 2)}
+output: -------------2----------|
+
+3.
+source: ------1------2------3---|
+                map{$0 + 1}
+operat: ------2------3------4---|
+   filter{$0.isMultiple(of: 2)}
+output: ------2-------------4---|
+#+END_EXAMPLE
+
+** Publisher的建立
+Publisher 有許多方式可以建立, 有單獨的, 復合的, 組合的, 媒介的, 不同的 Publisher 分別有不同的型別.其中以 Just 與 Future 較為常見.
+
+一般來說, Publisher 是 Value type, 每次 Subscriber 訂閱時, 都會將原本定義的 Publisher 流程重頭執行, 不論其他複製的 Publisher 是否曾經訂閱發佈過.
+
+** Cancellable
+雖然 Subscriber 感覺好像是 必須相依與 Publisher 的, 但是事實上是 Publisher 將事件源頭確立之後, 提供了一個建立 Subscriber 的工廠接口, 而這些接口都會回傳一個 AnyCancellable 的參考型別, 依照 AnyCancellable 文件, 其代表的是 cancellation token 作為取消事件流的途徑, 而由於 ARC 的記憶體管理, 這個 Token 若是沒有保持 ARC 的計數時, 將會在 function Scope 結束後自動解除訂閱.
+
+因此, 在 AnyCancellable 只有 3 個 API 可以使用:
+#+begin_src swift -r -n :results output :exports nil
+AnyCancellable.cancel()
+AnyCancellable.store<C>(in: inout C) where C : RangeReplaceableCollection, C.Element == AnyCancellable
+AnyCancellable.store(in: inout Set<AnyCancellable>)
+#+end_src
+
+** Webs, Video
+[[https://heckj.github.io/swiftui-notes/#coreconcepts-publisher-subscriber][Using Combine]]: Combine Book, very good
+[[https://peterfriese.dev/swift-combine-love/][SwiftUI + Combine = ❤️]]: validation of username and password
+[[https://www.youtube.com/watch?v=r7ef2W3kevY][SwiftUI and Combine All The Things]]
+[[https://www.youtube.com/watch?v=bRpFHqv0tRQ][SwiftUI 2.0 + Combine - Getting Started (2020)]]
+[[https://www.youtube.com/watch?v=YJRApch2cc4][SwiftUI 2.0 & Combine: Building a Form with Inline Error Validation]]
+[[https://www.youtube.com/watch?v=IBelvWwZkJw][SwiftUI Binding]] : @Binding, @StateObject, @ObservedObject, @EnvironmentObject
+
 * TODO some
 :PROPERTIES:
 :CUSTOM_ID: some
 :END:
 #+begin_verse
-Adding the keyword some in front of a return type indicates that the return type is opaque. [fn:12]
+Adding the keyword some in front of a return type indicates that the return type is opaque. [fn:17]
 #+end_verse
 ** Generics
 *** 問題
@@ -2063,7 +3037,7 @@ stackOfStrings.push("cuatro")
 
 #+end_src
 ** opaque
-帶有不透明（opaque）返回類型的函數或方法，將會隱藏其返回值的類型[fn:13]
+帶有不透明（opaque）返回類型的函數或方法，將會隱藏其返回值的類型[fn:18]
 #+latex:\newpage
 
 * TODO 進階主題
@@ -2078,36 +3052,42 @@ stackOfStrings.push("cuatro")
 
 * Footnotes
 
-[fn:17] [[https://hugolu.gitbooks.io/learn-swift/content/Advanced/Enum.html][Swift學習筆記 ]]
+[fn:20] [[https://www.codenong.com/jse1bf39f39820/][Apple原生Rx框架Combine簡介]]
 
-[fn:16] [[https://appcoda.com.tw/mastering-swift/][精通Swift：列舉、閉包、泛型、Protocols和高階函數]]
+[fn:19] [[https://medium.com/jeremy-xue-s-blog/swift-%E7%8E%A9%E7%8E%A9-publishers-subscribers-3fc4e7542b3d][Swift — 玩玩 Publishers & Subscribers]]
 
-[fn:15] [[https://medium.com/tarkalabs/all-about-debounce-4-ways-to-achieve-debounce-in-swift-e8f8ce22f544][All about debounce: 4 ways to achieve debounce in Swift]]
+[fn:1] [[https://github.com/onmyway133/blog/issues/611][ How to use Picker with enum in SwiftUI]]心
 
-[fn:14] [[https://github.com/onmyway133/blog/issues/611][ How to use Picker with enum in SwiftUI]]心
+[fn:2] [[https://medium.com/tarkalabs/all-about-debounce-4-ways-to-achieve-debounce-in-swift-e8f8ce22f544][All about debounce: 4 ways to achieve debounce in Swift]]
 
-[fn:1] [[https://www.raywenderlich.com/6742901-protocol-oriented-programming-tutorial-in-swift-5-1-getting-started][Protocol-Oriented Programming Tutorial in Swift 5.1: Getting Started]]
+[fn:3] [[https://www.raywenderlich.com/6742901-protocol-oriented-programming-tutorial-in-swift-5-1-getting-started][Protocol-Oriented Programming Tutorial in Swift 5.1: Getting Started]]
 
-[fn:2] [[https://medium.com/%E5%BD%BC%E5%BE%97%E6%BD%98%E7%9A%84-swift-ios-app-%E9%96%8B%E7%99%BC%E6%95%99%E5%AE%A4/%E7%B0%A1%E6%98%93%E8%AA%AA%E6%98%8Eswift-4-protocol-919b7f9cbaee][『簡易說明Swift 4』Protocol]]
+[fn:4] [[https://medium.com/%E5%BD%BC%E5%BE%97%E6%BD%98%E7%9A%84-swift-ios-app-%E9%96%8B%E7%99%BC%E6%95%99%E5%AE%A4/%E7%B0%A1%E6%98%93%E8%AA%AA%E6%98%8Eswift-4-protocol-919b7f9cbaee][『簡易說明Swift 4』Protocol]]
 
-[fn:3] [[https://www.appcoda.com.tw/protocol-extension/][利用 Protocol Extension 減少重覆的 Code　大大增強 Code 的維護性]]
+[fn:5] [[https://www.appcoda.com.tw/protocol-extension/][利用 Protocol Extension 減少重覆的 Code　大大增強 Code 的維護性]]
 
-[fn:4] [[https://docs.swift.org/swift-book/LanguageGuide/Protocols.html][Protocols]]
+[fn:6] [[https://docs.swift.org/swift-book/LanguageGuide/Protocols.html][Protocols]]
 
-[fn:5] [[https://www.appcoda.com.tw/swift-protocol/][Swift開發指南：Protocols與Protocol Extensions的使用心法]]
+[fn:7] [[https://www.appcoda.com.tw/swift-protocol/][Swift開發指南：Protocols與Protocol Extensions的使用心法]]
 
-[fn:6] [[https://ithelp.ithome.com.tw/articles/10197366][Day-29 Swift 語法(25) - 協定 Protocol]]
+[fn:8] [[https://ithelp.ithome.com.tw/articles/10197366][Day-29 Swift 語法(25) - 協定 Protocol]]
 
-[fn:7] [[https://abhimuralidharan.medium.com/all-about-protocols-in-swift-11a72d6ea354][All about protocols in swift]]
+[fn:9] [[https://abhimuralidharan.medium.com/all-about-protocols-in-swift-11a72d6ea354][All about protocols in swift]]
 
-[fn:8] [[https://www.hackingwithswift.com/books/ios-swiftui/why-does-swiftui-use-structs-for-views][Why does SwiftUI use structs for views?]]
+[fn:10] [[https://appcoda.com.tw/mastering-swift/][精通Swift：列舉、閉包、泛型、Protocols和高階函數]]
 
-[fn:9] [[https://abhimuralidharan.medium.com/difference-between-a-struct-and-a-class-in-swift-53e08df73714][Difference between a struct and a class in Swift]]
+[fn:11] [[https://hugolu.gitbooks.io/learn-swift/content/Advanced/Enum.html][Swift學習筆記 ]]
 
-[fn:10] [[https://www.hackingwithswift.com/books/ios-swiftui/why-state-only-works-with-structs][Why @State only works with structs]]
+[fn:12] [[https://www.hackingwithswift.com/books/ios-swiftui/why-does-swiftui-use-structs-for-views][Why does SwiftUI use structs for views?]]
 
-[fn:11] [[https://www.hackingwithswift.com/books/ios-swiftui/sharing-swiftui-state-with-observedobject][Sharing SwiftUI state with @ObservedObject]]
+[fn:13] [[https://abhimuralidharan.medium.com/difference-between-a-struct-and-a-class-in-swift-53e08df73714][Difference between a struct and a class in Swift]]
 
-[fn:12] [[https://medium.com/@PhiJay/whats-this-some-in-swiftui-34e2c126d4c4][What’s this “some” in SwiftUI?]]
+[fn:14] [[https://www.hackingwithswift.com/books/ios-swiftui/why-state-only-works-with-structs][Why @State only works with structs]]
 
-[fn:13] [[https://medium.com/jeremy-xue-s-blog/swift-%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80-opaque-types-600ad5758b91][Swift 程式語言 — Opaque Types]]
+[fn:15] [[https://www.hackingwithswift.com/books/ios-swiftui/sharing-swiftui-state-with-observedobject][Sharing SwiftUI state with @ObservedObject]]
+
+[fn:16] [[https://medium.com/jeremy-xue-s-blog/swift-combine-%E5%85%A5%E9%96%80%E4%BB%8B%E7%B4%B9-333623e21d3d][Swift — Combine 入門介紹]]
+
+[fn:17] [[https://medium.com/@PhiJay/whats-this-some-in-swiftui-34e2c126d4c4][What’s this “some” in SwiftUI?]]
+
+[fn:18] [[https://medium.com/jeremy-xue-s-blog/swift-%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80-opaque-types-600ad5758b91][Swift 程式語言 — Opaque Types]]
