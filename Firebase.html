@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-05-07 Fri 08:20 -->
+<!-- 2021-05-08 Sat 01:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>SwiftUI v.s. Firebase</title>
@@ -193,12 +193,9 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
-<link rel="stylesheet" type="text/css" href="https://letranger.github.io/org-html-themes/styles/purplereadtheorg/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="https://letranger.github.io/org-html-themes/styles/purplereadtheorg/css/readtheorg.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<style type="text/css">
+html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block}audio:not([controls]){display:none;height:0}progress{vertical-align:baseline}[hidden],template{display:none}a{background-color:transparent;-webkit-text-decoration-skip:objects}a:active,a:hover{outline-width:0}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:inherit;font-weight:bolder}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background-color:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}svg:not(:root){overflow:hidden}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}figure{margin:1em 40px}hr{box-sizing:content-box;height:0;overflow:visible}button,input,optgroup,select,textarea{font:inherit;margin:0}optgroup{font-weight:700}button,input{overflow:visible}button,select{text-transform:none}[type=reset],[type=submit],button,html [type=button]{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-cancel-button,[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-input-placeholder{color:inherit;opacity:.54}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}body{color:#000;background-color:#fff}.org-alert-high{color:#ff8c00;font-weight:700}.org-alert-low{color:#00008b}.org-alert-moderate{color:gold;font-weight:700}.org-alert-saved-fringe{background-color:#f2f2f2}.org-alert-trivial{color:Dark purple}.org-alert-urgent{color:red;font-weight:700}.org-anzu-match-1{color:#000;background-color:#7fffd4}.org-anzu-match-2{color:#000;background-color:#00ff7f}.org-anzu-match-3{color:#000;background-color:#ff0}.org-anzu-mode-line,.org-anzu-mode-line-no-match{color:#008b00;font-weight:700}.org-anzu-replace-highlight{color:#b0e2ff;background-color:#cd00cd}.org-anzu-replace-to{color:red}.org-bbdb-field-name{color:sienna}.org-bbdb-name{color:#00f}.org-bbdb-organization{color:#b22222}.org-beacon-fallback-background{background-color:#000}.org-biblio-results-header{color:#483d8b;font-size:150%;font-weight:700}.org-bold{font-weight:700}.org-bold-italic{font-weight:700;font-style:italic}.org-bookmark-menu-bookmark{font-weight:700}.org-bookmark-menu-heading{color:#228b22}.org-buffer-menu-buffer{font-weight:700}.org-builtin{color:#483d8b}.org-button{color:#3a5fcd;text-decoration:underline}.org-c-annotation{color:#008b8b}.org-cal-china-x-general-holiday{background-color:#228b22}.org-cal-china-x-important-holiday{background-color:#8b0000}.org-calendar-iso-week{color:pink;font-weight:700}.org-calendar-iso-week-header{color:#0ff}.org-calendar-month-header{color:#00f}.org-calendar-today{text-decoration:underline}.org-calendar-weekday-header{color:#008b8b}.org-calendar-weekend-header{color:#b22222}.org-comint-highlight-input{font-weight:700}.org-comint-highlight-prompt{color:#0000cd}.org-comment,.org-comment-delimiter{color:#b22222}.org-compilation-column-number{color:#8b2252}.org-compilation-error{color:red;font-weight:700}.org-compilation-info{color:#228b22;font-weight:700}.org-compilation-line-number{color:#a020f0}.org-compilation-mode-line-exit{color:#228b22;font-weight:700}.org-compilation-mode-line-fail{color:red;font-weight:700}.org-compilation-mode-line-run,.org-compilation-warning{color:#ff8c00;font-weight:700}.org-completions-annotations{font-style:italic}.org-completions-first-difference{font-weight:700}.org-constant{color:#008b8b}.org-cursor{background-color:#eead0e}.org-custom-button{color:#000;background-color:#d3d3d3}.org-custom-button-mouse{color:#000;background-color:#e5e5e5}.org-custom-button-pressed{color:#000;background-color:#d3d3d3}.org-custom-button-pressed-unraised{color:#8b008b;text-decoration:underline}.org-custom-button-unraised{text-decoration:underline}.org-custom-changed{color:#fff;background-color:#00f}.org-custom-comment{background-color:#d9d9d9}.org-custom-comment-tag{color:#00008b}.org-custom-face-tag{color:#00f;font-weight:700}.org-custom-group-subtitle{font-weight:700}.org-custom-group-tag{color:#00f;font-size:120%;font-weight:700}.org-custom-group-tag-1{color:red;font-size:120%;font-weight:700}.org-custom-invalid{color:#ff0;background-color:red}.org-custom-link{color:#3a5fcd;text-decoration:underline}.org-custom-modified{color:#fff;background-color:#00f}.org-custom-rogue{color:pink;background-color:#000}.org-custom-saved{text-decoration:underline}.org-custom-set{color:#00f;background-color:#fff}.org-custom-state{color:#006400}.org-custom-themed{color:#fff;background-color:#00f}.org-custom-variable-button{font-weight:700;text-decoration:underline}.org-custom-variable-tag{color:#00f;font-weight:700}.org-custom-visibility{color:#3a5fcd;font-size:80%;text-decoration:underline}.org-diary{color:red}.org-diary-anniversary{color:#a020f0}.org-diary-time{color:sienna}.org-dired-async-failures{color:red}.org-dired-async-message{color:#ff0}.org-dired-async-mode-message{color:gold}.org-dired-directory{color:#00f}.org-dired-flagged{color:red;font-weight:700}.org-dired-header{color:#228b22}.org-dired-ignored{color:#7f7f7f}.org-dired-mark{color:#008b8b}.org-dired-marked{color:#ff8c00;font-weight:700}.org-dired-perm-write{color:#b22222}.org-dired-symlink{color:#a020f0}.org-dired-warning{color:red;font-weight:700}.org-doc{color:#8b2252}.org-eldoc-highlight-function-argument{font-weight:700}.org-epa-field-body{font-style:italic}.org-epa-field-name,.org-epa-mark{font-weight:700}.org-epa-mark{color:red}.org-epa-string{color:#00008b}.org-epa-validity-disabled{font-style:italic}.org-epa-validity-high{font-weight:700}.org-epa-validity-low,.org-epa-validity-medium{font-style:italic}.org-error{color:red;font-weight:700}.org-escape-glyph{color:brown}.org-evil-ex-commands{font-style:italic;text-decoration:underline}.org-evil-ex-info{color:red;font-style:italic}.org-evil-ex-lazy-highlight{background-color:#afeeee}.org-evil-ex-search{color:#b0e2ff;background-color:#cd00cd}.org-evil-ex-substitute-matches{background-color:#afeeee}.org-evil-ex-substitute-replacement{color:red;text-decoration:underline}.org-ffap{background-color:#b4eeb4}.org-file-name-shadow{color:#7f7f7f}.org-flycheck-error{text-decoration:underline}.org-flycheck-error-list-checker-name{color:#00f}.org-flycheck-error-list-column-number{color:#008b8b}.org-flycheck-error-list-error{color:red;font-weight:700}.org-flycheck-error-list-filename{color:sienna}.org-flycheck-error-list-highlight{background-color:#b4eeb4}.org-flycheck-error-list-id,.org-flycheck-error-list-id-with-explainer{color:#228b22}.org-flycheck-error-list-info{color:#228b22;font-weight:700}.org-flycheck-error-list-line-number{color:#008b8b}.org-flycheck-error-list-warning{color:#ff8c00;font-weight:700}.org-flycheck-fringe-error{color:red;font-weight:700}.org-flycheck-fringe-info{color:#228b22;font-weight:700}.org-flycheck-fringe-warning{color:#ff8c00;font-weight:700}.org-flycheck-info,.org-flycheck-warning,.org-flyspell-duplicate,.org-flyspell-incorrect{text-decoration:underline}.org-fringe{background-color:#f2f2f2}.org-function-name{color:#00f}.org-glyphless-char{font-size:60%}.org-golden-ratio-scroll-highlight-line{color:#fff;background-color:#53868b;font-weight:700}.org-header-line{color:#333;background-color:#e5e5e5}.org-helm-action{text-decoration:underline}.org-helm-bookmark-addressbook{color:tomato}.org-helm-bookmark-directory{color:#8b0000;background-color:#d3d3d3}.org-helm-bookmark-file{color:#00b2ee}.org-helm-bookmark-file-not-found{color:#6c7b8b}.org-helm-bookmark-gnus{color:#f0f}.org-helm-bookmark-info{color:#0f0}.org-helm-bookmark-man{color:#8b5a00}.org-helm-bookmark-w3m{color:#ff0}.org-helm-buffer-archive{color:gold}.org-helm-buffer-directory{color:#8b0000;background-color:#d3d3d3}.org-helm-buffer-file{color:#483d8b}.org-helm-buffer-modified{color:#b22222}.org-helm-buffer-not-saved{color:#ee6363}.org-helm-buffer-process{color:#cd6839}.org-helm-buffer-saved-out{color:red;background-color:#000}.org-helm-buffer-size{color:#708090}.org-helm-candidate-number,.org-helm-candidate-number-suspended{color:#000;background-color:#faffb5}.org-helm-delete-async-message{color:#ff0}.org-helm-etags-file{color:#8b814c;text-decoration:underline}.org-helm-ff-denied{color:red;background-color:#000}.org-helm-ff-directory{color:#8b0000;background-color:#d3d3d3}.org-helm-ff-dirs{color:#00f}.org-helm-ff-dotted-directory{color:#000;background-color:#696969}.org-helm-ff-dotted-symlink-directory{color:#ff8c00;background-color:#696969}.org-helm-ff-executable{color:#0f0}.org-helm-ff-file{color:#483d8b}.org-helm-ff-invalid-symlink{color:#000;background-color:red}.org-helm-ff-pipe{color:#ff0;background-color:#000}.org-helm-ff-prefix{color:#000;background-color:#ff0}.org-helm-ff-socket{color:#ff1493}.org-helm-ff-suid{color:#fff;background-color:red}.org-helm-ff-symlink{color:#b22222}.org-helm-ff-truename{color:#8b2252}.org-helm-grep-cmd-line{color:#228b22}.org-helm-grep-file{color:#8a2be2;text-decoration:underline}.org-helm-grep-finish{color:#0f0}.org-helm-grep-lineno{color:#ff7f00}.org-helm-grep-match{color:#b00000}.org-helm-header{color:#333;background-color:#e5e5e5}.org-helm-header-line-left-margin{color:#000;background-color:#ff0}.org-helm-helper{color:#333;background-color:#e5e5e5}.org-helm-history-deleted{color:#000;background-color:red}.org-helm-history-remote{color:#ff6a6a}.org-helm-lisp-completion-info{color:red}.org-helm-lisp-show-completion{background-color:#2f4f4f}.org-helm-locate-finish{color:#0f0}.org-helm-m-x-key{color:orange;text-decoration:underline}.org-helm-match{color:#b00000}.org-helm-match-item{color:#b0e2ff;background-color:#cd00cd}.org-helm-minibuffer-prompt{color:#0000cd}.org-helm-moccur-buffer{color:#00ced1;text-decoration:underline}.org-helm-non-file-buffer{font-style:italic}.org-helm-prefarg{color:red}.org-helm-resume-need-update{background-color:red}.org-helm-selection{background-color:#097209}.org-helm-selection-line{background-color:#b4eeb4}.org-helm-separator{color:#ffbfb5}.org-helm-source-header{color:#000;background-color:#abd7f0;font-size:130%;font-weight:700}.org-helm-visible-mark{background-color:#d1f5ea}.org-help-argument-name{font-style:italic}.org-highlight{background-color:#b4eeb4}.org-highlight-indent-guides-character{color:#e6e6e6}.org-highlight-indent-guides-even{background-color:#e6e6e6}.org-highlight-indent-guides-odd{background-color:#f3f3f3}.org-highlight-indent-guides-stack-character{color:#ccc}.org-highlight-indent-guides-stack-even{background-color:#ccc}.org-highlight-indent-guides-stack-odd{background-color:#d9d9d9}.org-highlight-indent-guides-top-character{color:#b3b3b3}.org-highlight-indent-guides-top-even{background-color:#b3b3b3}.org-highlight-indent-guides-top-odd{background-color:silver}.org-highlight-numbers-number{color:#008b8b}.org-hl-line{background-color:#b4eeb4}.org-holiday{background-color:pink}.org-hydra-face-amaranth{color:#e52b50;font-weight:700}.org-hydra-face-blue{color:#00f;font-weight:700}.org-hydra-face-pink{color:#ff6eb4;font-weight:700}.org-hydra-face-red{color:red;font-weight:700}.org-hydra-face-teal{color:#367588;font-weight:700}.org-ido-first-match{font-weight:700}.org-ido-incomplete-regexp{color:red;font-weight:700}.org-ido-indicator{color:#ff0;background-color:red}.org-ido-only-match{color:#228b22}.org-ido-subdir{color:red}.org-ido-virtual{color:#483d8b}.org-info-header-node{color:brown;font-weight:700;font-style:italic}.org-info-header-xref{color:#3a5fcd;text-decoration:underline}.org-info-index-match{background-color:#ff0}.org-info-menu-header{font-weight:700}.org-info-menu-star{color:red}.org-info-node{color:brown;font-weight:700;font-style:italic}.org-info-title-1{font-size:172%;font-weight:700}.org-info-title-2{font-size:144%;font-weight:700}.org-info-title-3{font-size:120%;font-weight:700}.org-info-title-4{font-weight:700}.org-info-xref{color:#3a5fcd;text-decoration:underline}.org-isearch{color:#b0e2ff;background-color:#cd00cd}.org-isearch-fail{background-color:#ffc1c1}.org-italic{font-style:italic}.org-keyword{color:#a020f0}.org-lazy-highlight{background-color:#afeeee}.org-link{color:#3a5fcd;text-decoration:underline}.org-link-visited{color:#8b008b;text-decoration:underline}.org-lv-separator{background-color:#ccc}.org-match{background-color:#ff0}.org-mcXcursor-bar{background-color:#000}.org-mcXregion{background-color:gtk_selection_bg_color}.org-me-dired-dim-0{color:#b3b3b3}.org-me-dired-dim-1{color:#7f7f7f}.org-me-dired-executable{color:#0f0}.org-message-cited-text{color:red}.org-message-header-cc{color:#191970}.org-message-header-name{color:#6495ed}.org-message-header-newsgroups{color:#00008b;font-weight:700;font-style:italic}.org-message-header-other{color:#4682b4}.org-message-header-subject{color:navy;font-weight:700}.org-message-header-to{color:#191970;font-weight:700}.org-message-header-xheader{color:#00f}.org-message-mml{color:#228b22}.org-message-separator{color:brown}.org-minibuffer-prompt{color:#0000cd}.org-mm-command-output{color:#cd0000}.org-mode-line{color:#000;background-color:#bfbfbf}.org-mode-line-buffer-id,.org-mode-line-buffer-id-inactive,.org-mode-line-emphasis{font-weight:700}.org-mode-line-inactive{color:#333;background-color:#e5e5e5}.org-mu4e-attach-number{color:sienna;font-weight:700}.org-mu4e-cited-1{color:#483d8b;font-style:italic}.org-mu4e-cited-2{color:#5cacee;font-style:italic}.org-mu4e-cited-3{color:sienna;font-style:italic}.org-mu4e-cited-4{color:#a020f0;font-style:italic}.org-mu4e-cited-5,.org-mu4e-cited-6{color:#b22222;font-style:italic}.org-mu4e-cited-7{color:#228b22;font-style:italic}.org-mu4e-compose-header,.org-mu4e-compose-separator{color:brown;font-style:italic}.org-mu4e-contact{color:sienna}.org-mu4e-context{color:#006400;font-weight:700}.org-mu4e-draft{color:#8b2252}.org-mu4e-flagged{color:#008b8b;font-weight:700}.org-mu4e-footer{color:#b22222}.org-mu4e-forwarded{color:#483d8b}.org-mu4e-header{color:#000;background-color:#fff}.org-mu4e-header-highlight{background-color:#000;font-weight:700;text-decoration:underline}.org-mu4e-header-key{color:#6495ed;font-weight:700}.org-mu4e-header-marks{color:#483d8b}.org-mu4e-header-title,.org-mu4e-header-value{color:#228b22}.org-mu4e-highlight{background-color:#b4eeb4}.org-mu4e-link{color:#3a5fcd;text-decoration:underline}.org-mu4e-modeline{color:#8b4500;font-weight:700}.org-mu4e-moved{color:#b22222;font-style:italic}.org-mu4e-ok{color:#b22222;font-weight:700}.org-mu4e-region-code{background-color:#2f4f4f}.org-mu4e-replied,.org-mu4e-special-header-value{color:#483d8b}.org-mu4e-system{color:#b22222;font-style:italic}.org-mu4e-title{color:#228b22;font-weight:700}.org-mu4e-trashed{color:#b22222;text-decoration:line-through}.org-mu4e-unread{color:#a020f0;font-weight:700}.org-mu4e-url-number{color:#008b8b;font-weight:700}.org-mu4e-view-body{color:#000;background-color:#fff}.org-mu4e-warning{color:red;font-weight:700}.org-next-error{background-color:gtk_selection_bg_color}.org-nobreak-space{color:brown;text-decoration:underline}.org-org-agenda-calendar-event,.org-org-agenda-calendar-sexp{color:#000;background-color:#fff}.org-org-agenda-clocking{background-color:#ff0}.org-org-agenda-column-dateline{background-color:#e5e5e5}.org-org-agenda-current-time{color:#b8860b}.org-org-agenda-date{color:#00f}.org-org-agenda-date-today{color:#00f;font-weight:700;font-style:italic}.org-org-agenda-date-weekend{color:#00f;font-weight:700}.org-org-agenda-diary{color:#000;background-color:#fff}.org-org-agenda-dimmed-todo{color:#7f7f7f}.org-org-agenda-done{color:#228b22}.org-org-agenda-filter-category,.org-org-agenda-filter-effort,.org-org-agenda-filter-regexp,.org-org-agenda-filter-tags{color:#000;background-color:#bfbfbf}.org-org-agenda-restriction-lock{background-color:#eee}.org-org-agenda-structure{color:#00f}.org-org-archived{color:#7f7f7f}.org-org-block{color:#7f7f7f}.org-org-block-begin-line,.org-org-block-end-line{color:#b22222}.org-org-checkbox{font-weight:700}.org-org-checkbox-statistics-done{color:#228b22;font-weight:700}.org-org-checkbox-statistics-todo{color:red;font-weight:700}.org-org-clock-overlay{color:#000;background-color:#d3d3d3}.org-org-code{color:#7f7f7f}.org-org-column,.org-org-column-title{background-color:#e5e5e5}.org-org-column-title{font-weight:700;text-decoration:underline}.org-org-date{color:#bfaf87;text-decoration:underline}.org-org-date-selected{color:red}.org-org-default{color:#000;background-color:#fff}.org-org-document-info{color:#191970}.org-org-document-info-keyword{color:#7f7f7f}.org-org-document-title{color:#191970;font-weight:700}.org-org-done{color:#228b22;font-weight:700}.org-org-drawer{color:#00f}.org-org-ellipsis{color:#b8860b;text-decoration:underline}.org-org-footnote{color:#96b4cd;text-decoration:underline}.org-org-formula{color:#b22222}.org-org-habit-alert{background-color:#f5f946}.org-org-habit-alert-future{background-color:#fafca9}.org-org-habit-clear{background-color:#8270f9}.org-org-habit-clear-future{background-color:#d6e4fc}.org-org-habit-overdue{background-color:#f9372d}.org-org-habit-overdue-future{background-color:#fc9590}.org-org-habit-ready{background-color:#4df946}.org-org-habit-ready-future{background-color:#acfca9}.org-org-headline-done{color:#bc8f8f}.org-org-hide{color:#fff}.org-org-latex-and-related{color:#8b4513}.org-org-level-1{color:#edd1c5}.org-org-level-2{color:#ebebb7}.org-org-level-3{color:#cce8cc}.org-org-level-4{color:#c9deec}.org-org-level-5{color:#dce3e8}.org-org-level-6{color:#dde6dd}.org-org-level-7{color:#e8e8ce}.org-org-level-8{color:#e8dedb}.org-org-link{color:#c5d2dc;text-decoration:underline}.org-org-list-dt{font-weight:700}.org-org-macro{color:#8b4513}.org-org-meta-line{color:#b22222}.org-org-mode-line-clock{color:#000;background-color:#bfbfbf}.org-org-mode-line-clock-overrun{color:#000;background-color:red}.org-org-priority{color:#a020f0}.org-org-quote{color:#7f7f7f}.org-org-ref-acronym{color:#ee7600;text-decoration:underline}.org-org-ref-cite{color:#c3d5c3;text-decoration:underline}.org-org-ref-glossary{color:#8968cd;text-decoration:underline}.org-org-ref-label{color:#8b008b;text-decoration:underline}.org-org-ref-ref{color:#e1cc96;text-decoration:underline}.org-org-scheduled{color:#006400}.org-org-scheduled-previously{color:#b22222}.org-org-scheduled-today{color:#006400}.org-org-sexp-date{color:#a020f0}.org-org-special-keyword{color:#88949f}.org-org-table{color:#00f}.org-org-tag,.org-org-tag-group{font-weight:700}.org-org-target{text-decoration:underline}.org-org-time-grid{color:#b8860b}.org-org-todo{color:red;font-weight:700}.org-org-upcoming-deadline{color:#b22222}.org-org-verbatim,.org-org-verse{color:#7f7f7f}.org-org-warning{color:red;font-weight:700}.org-outline-1{color:#00f}.org-outline-2{color:sienna}.org-outline-3{color:#a020f0}.org-outline-4{color:#b22222}.org-outline-5{color:#228b22}.org-outline-6{color:#008b8b}.org-outline-7{color:#483d8b}.org-outline-8{color:#8b2252}.org-package-description{color:#000;background-color:#fff}.org-package-name{color:#3a5fcd;text-decoration:underline}.org-package-status-avail-obso{color:#b22222}.org-package-status-available{color:#000;background-color:#fff}.org-package-status-built-in{color:#483d8b}.org-package-status-dependency{color:#b22222}.org-package-status-disabled{color:red;font-weight:700}.org-package-status-external{color:#483d8b}.org-package-status-held{color:#008b8b}.org-package-status-incompat,.org-package-status-installed{color:#b22222}.org-package-status-unsigned{color:red;font-weight:700}.org-pdf-isearch-batch{background-color:#ff0}.org-pdf-isearch-lazy{background-color:#afeeee}.org-pdf-isearch-match{color:#b0e2ff;background-color:#cd00cd}.org-pdf-occur-document{color:#8b2252}.org-pdf-occur-page{color:#228b22}.org-pdf-view-rectangle{background-color:#b4eeb4}.org-pdf-view-region{background-color:gtk_selection_bg_color}.org-powerline-active0{color:#000;background-color:#bfbfbf}.org-powerline-active1{color:#fff;background-color:#2b2b2b}.org-powerline-active2{color:#fff;background-color:#666}.org-powerline-inactive0{color:#333;background-color:#e5e5e5}.org-powerline-inactive1{color:#333;background-color:#1c1c1c}.org-powerline-inactive2{color:#333;background-color:#333}.org-preprocessor{color:#483d8b}.org-query-replace{color:#b0e2ff;background-color:#cd00cd}.org-rainbow-delimiters-depth-1{color:#ffdead}.org-rainbow-delimiters-depth-2{color:#00bfff}.org-rainbow-delimiters-depth-3{color:#ffdead}.org-rainbow-delimiters-depth-4{color:#00bfff}.org-rainbow-delimiters-depth-5{color:#ffdead}.org-rainbow-delimiters-depth-6{color:#00bfff}.org-rainbow-delimiters-depth-7{color:#ffdead}.org-rainbow-delimiters-depth-8{color:#00bfff}.org-rainbow-delimiters-depth-9{color:#ffdead}.org-rainbow-delimiters-unmatched{color:#88090b}.org-reb-match-0{background-color:#add8e6}.org-reb-match-1{background-color:#7fffd4}.org-reb-match-2{background-color:#00ff7f}.org-reb-match-3{background-color:#ff0}.org-rectangle-preview{background-color:gtk_selection_bg_color}.org-regexp-grouping-backslash,.org-regexp-grouping-construct{font-weight:700}.org-region{background-color:gtk_selection_bg_color}.org-secondary-selection{background-color:#ff0}.org-semantic-highlight-edits,.org-semantic-highlight-func-current-tag{background-color:#e5e5e5}.org-semantic-unmatched-syntax{text-decoration:underline}.org-sgml-namespace{color:#483d8b}.org-sh-escaped-newline{color:#8b2252}.org-sh-heredoc{color:#ee0}.org-sh-quoted-exec{color:#f0f}.org-shadow{color:#7f7f7f}.org-show-paren-match{background-color:#40e0d0}.org-show-paren-mismatch{color:#fff;background-color:#a020f0}.org-sp-pair-overlay,.org-sp-show-pair-enclosing{background-color:#b4eeb4}.org-sp-show-pair-match{background-color:#40e0d0}.org-sp-show-pair-mismatch{color:#fff;background-color:#a020f0}.org-sp-wrap-overlay{background-color:#b4eeb4}.org-sp-wrap-overlay-closing-pair{color:red;background-color:#b4eeb4}.org-sp-wrap-overlay-opening-pair{color:#0f0;background-color:#b4eeb4}.org-sp-wrap-tag-overlay{background-color:#b4eeb4}.org-spaceline-flycheck-error{color:#fc5c94;background-color:#333}.org-spaceline-flycheck-info{color:#8de6f7;background-color:#333}.org-spaceline-flycheck-warning{color:#f3ea98;background-color:#333}.org-spaceline-python-venv{color:#fbf}.org-speedbar-button{color:#008b00}.org-speedbar-directory{color:#00008b}.org-speedbar-file{color:#008b8b}.org-speedbar-highlight{background-color:#0f0}.org-speedbar-selected{color:red;text-decoration:underline}.org-speedbar-separator{color:#fff;background-color:#00f;text-decoration:overline}.org-speedbar-tag{color:brown}.org-string{color:#8b2252}.org-success{color:#228b22;font-weight:700}.org-table-cell{color:#e5e5e5;background-color:#00f}.org-tex-math{color:#8b2252}.org-tool-bar{color:#000;background-color:#bfbfbf}.org-tooltip{color:#000;background-color:#ffffe0}.org-trailing-whitespace{background-color:red}.org-tty-menu-disabled{color:#d3d3d3;background-color:#00f}.org-tty-menu-enabled{color:#ff0;background-color:#00f;font-weight:700}.org-tty-menu-selected{background-color:red}.org-type{color:#228b22}.org-underline{text-decoration:underline}.org-undo-tree-visualizer-active-branch{color:#000;font-weight:700}.org-undo-tree-visualizer-current{color:red}.org-undo-tree-visualizer-default{color:#bebebe}.org-undo-tree-visualizer-register{color:#ff0}.org-undo-tree-visualizer-unmodified{color:#0ff}.org-variable-name{color:sienna}.org-vhlXdefault{background-color:#ff0}.org-warning{color:#ff8c00;font-weight:700}.org-warning-1{color:red;font-weight:700}.org-wgrep{color:#fff;background-color:#228b22}.org-wgrep-delete{color:pink;background-color:#228b22}.org-wgrep-done{color:#00f}.org-wgrep-file{color:#fff;background-color:#228b22}.org-wgrep-reject{color:red;font-weight:700}.org-which-key-command-description{color:#00f}.org-which-key-docstring{color:#b22222}.org-which-key-group-description{color:#a020f0}.org-which-key-highlighted-command{color:#00f;text-decoration:underline}.org-which-key-key{color:#008b8b}.org-which-key-local-map-description{color:#00f}.org-which-key-note,.org-which-key-separator{color:#b22222}.org-which-key-special-key{color:#008b8b;font-weight:700}.org-whitespace-big-indent{color:#b22222;background-color:red}.org-whitespace-empty{color:#b22222;background-color:#ff0}.org-whitespace-hspace{color:#d3d3d3;background-color:#cdc9a5}.org-whitespace-indentation{color:#b22222;background-color:#ff0}.org-whitespace-line{color:violet;background-color:#333}.org-whitespace-newline{color:#d3d3d3}.org-whitespace-space{color:#d3d3d3;background-color:#ffffe0}.org-whitespace-space-after-tab{color:#b22222;background-color:#ff0}.org-whitespace-space-before-tab{color:#b22222;background-color:#ff8c00}.org-whitespace-tab{color:#d3d3d3;background-color:beige}.org-whitespace-trailing{color:#ff0;background-color:red;font-weight:700}.org-widget-button{font-weight:700}.org-widget-button-pressed{color:red}.org-widget-documentation{color:#006400}.org-widget-field{background-color:#d9d9d9}.org-widget-inactive{color:#7f7f7f}.org-widget-single-line-field{background-color:#d9d9d9}.org-window-divider{color:#999}.org-window-divider-first-pixel{color:#ccc}.org-window-divider-last-pixel{color:#666}a{color:inherit;background-color:inherit;font:inherit;text-decoration:inherit}a:hover{text-decoration:underline}body{width:95%;margin:2% auto;font-size:14px;line-height:1.4em;font-family:Georgia,serif;color:#333}@media screen and (min-width:600px){body{font-size:18px}}@media screen and (min-width:910px){body{width:900px}}::selection{background:#d6edff}p{margin:1em auto}dl,ol,ul{margin:0 auto}.title{text-align:center;margin:.8em auto;color:#000}.subtitle{text-align:center;font-size:1.1em;line-height:1.4;font-weight:700;margin:1em auto}.abstract{margin:auto;width:80%;font-style:italic}.abstract p:last-of-type:before{content:"    ";white-space:pre}.status{font-size:90%;margin:2em auto}[class^=section-number-]{margin-right:.5em}[id^=orgheadline]{clear:both}#footnotes{font-size:90%}.footpara{display:inline;margin:.2em auto}.footdef{margin-bottom:1em}.footdef sup{padding-right:.5em}a{color:#527d9a;text-decoration:none}a:hover{color:#035;border-bottom:1px dotted}figure{padding:0;margin:1em auto;text-align:center}img{max-width:100%;vertical-align:middle}.MathJax_Display{margin:0!important;width:90%!important}h1,h2,h3,h4,h5,h6{color:#a5573e;line-height:1em;font-family:Helvetica,sans-serif}h1,h2,h3{line-height:1.4em}h4,h5,h6{font-size:1em}@media screen and (min-width:600px){h1{font-size:2em}h2{font-size:1.5em}h3{font-size:1.3em}h1,h2,h3{line-height:1.4em}h4,h5,h6{font-size:1.1em}}dt{font-weight:700}table{margin:1em auto;border-top:2px solid;border-bottom:2px solid;border-collapse:collapse}thead{border-bottom:2px solid}table td+td,table th+th{border-left:1px solid grey}table tr{border-top:1px solid #d3d3d3}td,th{padding:.3em .6em;vertical-align:middle}caption.t-above{caption-side:top}caption.t-bottom{caption-side:bottom}caption{margin-bottom:.3em}figcaption{margin-top:.3em}th.org-center,th.org-left,th.org-right{text-align:center}td.org-right{text-align:right}td.org-left{text-align:left}td.org-center{text-align:center}blockquote{margin:1em 2em;padding-left:1em;border-left:3px solid #ccc}kbd{background-color:#f7f7f7;font-size:80%;margin:0 .1em;padding:.1em .6em}.todo{background-color:red;color:#fff;padding:.1em .3em;border-radius:3px;background-clip:padding-box;font-size:80%;font-family:Lucida Console,monospace;line-height:1}.done{background-color:green;color:#fff;padding:.1em .3em;border-radius:3px;background-clip:padding-box;font-size:80%;font-family:Lucida Console,monospace;line-height:1}.priority{color:orange;font-family:Lucida Console,monospace}#table-of-contents li{clear:both}.tag{font-family:Lucida Console,monospace;font-size:.7em;font-weight:400}.tag span{padding:.3em;float:right;margin-right:.5em;border:1px solid #bbb;border-radius:3px;background-clip:padding-box;color:#333;background-color:#eee;line-height:1}.timestamp{color:#bebebe;font-size:90%}.timestamp-kwd{color:#5f9ea0}.org-right{margin-left:auto;margin-right:0;text-align:right}.org-left{margin-left:0;margin-right:auto;text-align:left}.org-center{margin-left:auto;margin-right:auto;text-align:center}.underline{text-decoration:underline}#postamble p,#preamble p{font-size:90%;margin:.2em}p.verse{margin-left:3%}:not(pre)>code{padding:2px 5px;margin:auto 1px;border:1px solid #ddd;border-radius:3px;background-clip:padding-box;color:#333;font-size:80%}.org-src-container{border:1px solid #ccc;box-shadow:3px 3px 3px #eee;font-family:Lucida Console,monospace;font-size:80%;margin:1em auto;padding:.1em .5em;position:relative}.org-src-container>pre{overflow:auto}.org-src-container>pre:before{display:block;position:absolute;background-color:#b3b3b3;top:0;right:0;padding:0 .5em;border-bottom-left-radius:8px;border:0;color:#fff;font-size:80%}.org-src-container>pre.src-sh:before{content:"sh"}.org-src-container>pre.src-bash:before{content:"bash"}.org-src-container>pre.src-emacs-lisp:before{content:"Emacs Lisp"}.org-src-container>pre.src-R:before{content:"R"}.org-src-container>pre.src-cpp:before{content:"C++"}.org-src-container>pre.src-c:before{content:"C"}.org-src-container>pre.src-html:before{content:"HTML"}.org-src-container>pre.src-javascript:before,.org-src-container>pre.src-js:before{content:"Javascript"}// More languages 0% http://orgmode.org/worg/org-contrib/babel/languages.html .org-src-container>pre.src-abc:before{content:"ABC"}.org-src-container>pre.src-asymptote:before{content:"Asymptote"}.org-src-container>pre.src-awk:before{content:"Awk"}.org-src-container>pre.src-C:before{content:"C"}.org-src-container>pre.src-calc:before{content:"Calc"}.org-src-container>pre.src-clojure:before{content:"Clojure"}.org-src-container>pre.src-comint:before{content:"comint"}.org-src-container>pre.src-css:before{content:"CSS"}.org-src-container>pre.src-D:before{content:"D"}.org-src-container>pre.src-ditaa:before{content:"Ditaa"}.org-src-container>pre.src-dot:before{content:"Dot"}.org-src-container>pre.src-ebnf:before{content:"ebnf"}.org-src-container>pre.src-forth:before{content:"Forth"}.org-src-container>pre.src-F90:before{content:"Fortran"}.org-src-container>pre.src-gnuplot:before{content:"Gnuplot"}.org-src-container>pre.src-haskell:before{content:"Haskell"}.org-src-container>pre.src-io:before{content:"Io"}.org-src-container>pre.src-java:before{content:"Java"}.org-src-container>pre.src-latex:before{content:"LaTeX"}.org-src-container>pre.src-ledger:before{content:"Ledger"}.org-src-container>pre.src-ly:before{content:"Lilypond"}.org-src-container>pre.src-lisp:before{content:"Lisp"}.org-src-container>pre.src-makefile:before{content:"Make"}.org-src-container>pre.src-matlab:before{content:"Matlab"}.org-src-container>pre.src-max:before{content:"Maxima"}.org-src-container>pre.src-mscgen:before{content:"Mscgen"}.org-src-container>pre.src-Caml:before{content:"Objective"}.org-src-container>pre.src-octave:before{content:"Octave"}.org-src-container>pre.src-org:before{content:"Org"}.org-src-container>pre.src-perl:before{content:"Perl"}.org-src-container>pre.src-picolisp:before{content:"Picolisp"}.org-src-container>pre.src-plantuml:before{content:"PlantUML"}.org-src-container>pre.src-python:before{content:"Python"}.org-src-container>pre.src-ruby:before{content:"Ruby"}.org-src-container>pre.src-sass:before{content:"Sass"}.org-src-container>pre.src-scala:before{content:"Scala"}.org-src-container>pre.src-scheme:before{content:"Scheme"}.org-src-container>pre.src-screen:before{content:"Screen"}.org-src-container>pre.src-sed:before{content:"Sed"}.org-src-container>pre.src-shell:before{content:"shell"}.org-src-container>pre.src-shen:before{content:"Shen"}.org-src-container>pre.src-sql:before{content:"SQL"}.org-src-container>pre.src-sqlite:before{content:"SQLite"}.org-src-container>pre.src-stan:before{content:"Stan"}.org-src-container>pre.src-vala:before{content:"Vala"}.org-src-container>pre.src-axiom:before{content:"Axiom"}.org-src-container>pre.src-browser:before{content:"HTML"}.org-src-container>pre.src-cypher:before{content:"Neo4j"}.org-src-container>pre.src-elixir:before{content:"Elixir"}.org-src-container>pre.src-request:before{content:"http"}.org-src-container>pre.src-ipython:before{content:"iPython"}.org-src-container>pre.src-kotlin:before{content:"Kotlin"}.org-src-container>pre.src-Flavored Erlang lfe:before{content:"Lisp"}.org-src-container>pre.src-mongo:before{content:"MongoDB"}.org-src-container>pre.src-prolog:before{content:"Prolog"}.org-src-container>pre.src-rec:before{content:"rec"}.org-src-container>pre.src-ML sml:before{content:"Standard"}.org-src-container>pre.src-Translate translate:before{content:"Google"}.org-src-container>pre.src-typescript:before{content:"Typescript"}.org-src-container>pre.src-rust:before{content:"Rust"}.inlinetask{background:#ffc;border:2px solid grey;margin:10px;padding:10px}#org-div-home-and-up{font-size:70%;text-align:right;white-space:nowrap}.linenr{font-size:90%}.code-highlighted{background-color:#ff0}#bibliography{font-size:90%}#bibliography table{width:100%}.creator{display:block}@media screen and (min-width:600px){.creator{display:inline;float:right}}
+</style>
 <style>*{font-family: Courier New !important}</style>
 <script type="text/javascript">
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
@@ -234,32 +231,32 @@
 <ul>
 <li><a href="#SW-Firebase-Intro">1. Introduction</a>
 <ul>
-<li><a href="#org2c31426">1.1. A Brief History</a></li>
-<li><a href="#org6e6ee9c">1.2. With Firebase you can</a>
+<li><a href="#org0c5a21f">1.1. A Brief History</a></li>
+<li><a href="#org25f3522">1.2. With Firebase you can</a>
 <ul>
-<li><a href="#orgc308203">1.2.1. Build better apps</a></li>
-<li><a href="#orgac497c5">1.2.2. Improve app quality</a></li>
-<li><a href="#org4ea1a1e">1.2.3. Grow your business</a></li>
+<li><a href="#orge379702">1.2.1. Build better apps</a></li>
+<li><a href="#orge127879">1.2.2. Improve app quality</a></li>
+<li><a href="#org25f2ca0">1.2.3. Grow your business</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><a href="#SW-Firebase-database">2. Firebase database</a>
 <ul>
-<li><a href="#org3b60cb3">2.1. Data model</a></li>
+<li><a href="#org9b1bacf">2.1. Data model</a></li>
 </ul>
 </li>
 <li><a href="#SW-Firebase-datamodel">3. Cloud Firestore Data model</a>
 <ul>
-<li><a href="#org6cd5319">3.1. Documents</a></li>
-<li><a href="#orgd0ef465">3.2. Collections</a></li>
-<li><a href="#orgdf2020e">3.3. References</a></li>
-<li><a href="#org184bdbf">3.4. Supported data types</a></li>
-<li><a href="#orgaf50bec">3.5. Index types in Cloud Firestore</a>
+<li><a href="#org8576747">3.1. Documents</a></li>
+<li><a href="#org52609ad">3.2. Collections</a></li>
+<li><a href="#org7b4793b">3.3. References</a></li>
+<li><a href="#orgd5173c1">3.4. Supported data types</a></li>
+<li><a href="#orga824571">3.5. Index types in Cloud Firestore</a>
 <ul>
-<li><a href="#org266ffe4">3.5.1. An index behind every query</a></li>
-<li><a href="#org8b1b505">3.5.2. Less index management, more app development</a></li>
-<li><a href="#orgafe51a7">3.5.3. Automatic indexing</a></li>
+<li><a href="#org88c6562">3.5.1. An index behind every query</a></li>
+<li><a href="#org72f86b2">3.5.2. Less index management, more app development</a></li>
+<li><a href="#org17af254">3.5.3. Automatic indexing</a></li>
 </ul>
 </li>
 </ul>
@@ -267,106 +264,112 @@
 <li><a href="#SW-Firebase-CreateDatabase">4. Create your own Cloud Firestore database</a></li>
 <li><a href="#SW-Firebase-AddFirebase">5. Adding Firebase to your iOS project</a>
 <ul>
-<li><a href="#org94baf04">5.1. key process</a></li>
-<li><a href="#org4266206">5.2. Setting up Firebase project: Step by step</a>
+<li><a href="#org2df4ff5">5.1. key process</a></li>
+<li><a href="#org6ce42b3">5.2. Setting up Firebase project: Step by step</a>
 <ul>
-<li><a href="#org0e86906">5.2.1. Create/Register</a></li>
-<li><a href="#org57299e3">5.2.2. Install SDKs</a>
-<ul>
-<li><a href="#orgae4e085">5.2.2.1. Method #1: CocoaPods</a></li>
-<li><a href="#org9f6c918">5.2.2.2. Method #2: Swift Package Manager for Firebase</a></li>
-<li><a href="#org98a5399">5.2.2.3. Initialize Project</a></li>
+<li><a href="#org4647704">5.2.1. Create/Register</a></li>
+<li><a href="#org94a1617">5.2.2. Install SDKs</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li><a href="#org8728b85">5.3. 資料來源</a></li>
+<li><a href="#org3b17e6b">5.3. 資料來源</a></li>
 </ul>
 </li>
 <li><a href="#SW-Firebase-BasicOperations">6. Basic operations to Firebase with iOS</a>
 <ul>
-<li><a href="#org956acc6">6.1. Add document</a>
+<li><a href="#org5720e86">6.1. Add document</a>
 <ul>
-<li><a href="#orgd607fbd">6.1.1. create a document with specific document ID</a></li>
-<li><a href="#orgd4d60c0">6.1.2. create a document with auto-generate document ID</a></li>
+<li><a href="#org4694dc9">6.1.1. create a document with specific document ID</a></li>
+<li><a href="#org9a48ae7">6.1.2. create a document with auto-generate document ID</a></li>
 </ul>
 </li>
-<li><a href="#org84921e2">6.2. Get data from Cloud Firestore: Basic</a>
+<li><a href="#org21a2f32">6.2. Get data from Cloud Firestore: Basic</a>
 <ul>
-<li><a href="#org62093a2">6.2.1. Getting collection</a></li>
-<li><a href="#orgfc0c508">6.2.2. Getting document</a></li>
+<li><a href="#org25df4fa">6.2.1. Getting collection</a></li>
+<li><a href="#org68ce47f">6.2.2. Getting document</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><a href="#SW-GetDataFromCloud">7. Get data from Cloud: UI with Firebase [MVVM]</a>
 <ul>
-<li><a href="#org8ba1589">7.1. MVVM architecture</a></li>
-<li><a href="#org351b90a">7.2. Model</a></li>
-<li><a href="#orgc722cf9">7.3. View</a></li>
-<li><a href="#orgd411c90">7.4. ViewModel</a></li>
-<li><a href="#orgd408001">7.5. Repository</a></li>
-<li><a href="#org8e6d1e2">7.6. 資料來源</a></li>
+<li><a href="#orgdde8036">7.1. MVVM architecture</a></li>
+<li><a href="#orge3d96b1">7.2. Model</a></li>
+<li><a href="#org1ac469a">7.3. View</a></li>
+<li><a href="#org32b313e">7.4. ViewModel</a></li>
+<li><a href="#orgf26c326">7.5. Repository</a></li>
+<li><a href="#org86401cc">7.6. 資料來源</a></li>
 </ul>
 </li>
 <li><a href="#SW-Delete">8. Add, Delete #1 data from Cloud: UI with Firebase [MVVM]</a>
 <ul>
-<li><a href="#org67c0446">8.1. Repository</a></li>
-<li><a href="#org10e6082">8.2. View</a></li>
-<li><a href="#orgee60ac6">8.3. ViewModel</a></li>
+<li><a href="#orga8aa3ba">8.1. Repository</a></li>
+<li><a href="#org273ef08">8.2. View</a></li>
+<li><a href="#org577bfe0">8.3. ViewModel</a></li>
 </ul>
 </li>
-<li><a href="#org8f89a0f">9. Delete #2 data from Cloud: UI with Firebase [MVVM]</a>
+<li><a href="#orgb89355e">9. Delete #2 data from Cloud: UI with Firebase [MVVM]</a>
 <ul>
-<li><a href="#orga88044f">9.1. Repository</a></li>
-<li><a href="#org91924bd">9.2. View</a></li>
-<li><a href="#org2ba1a27">9.3. ViewModel</a></li>
+<li><a href="#orge3a7e4c">9.1. Repository</a></li>
+<li><a href="#org782d73e">9.2. View</a></li>
+<li><a href="#org9d245f4">9.3. ViewModel</a></li>
 </ul>
 </li>
 <li><a href="#SW-Detail">10. Detail/Edit data from Cloud: UI with Firebase [MVVM]</a>
 <ul>
-<li><a href="#org7b24bba">10.1. Repository</a></li>
-<li><a href="#org9474bc8">10.2. View</a>
+<li><a href="#org5b28909">10.1. Repository</a></li>
+<li><a href="#org538f0e7">10.2. View</a>
 <ul>
-<li><a href="#orgb26332e">10.2.1. TaskListView.swift</a></li>
-<li><a href="#orge655a99">10.2.2. TaskDetailView.swift</a></li>
-<li><a href="#orgfa0d18c">10.2.3. UpdateListView.swift</a></li>
+<li><a href="#org54fde8e">10.2.1. TaskListView.swift</a></li>
+<li><a href="#org6103f7a">10.2.2. TaskDetailView.swift</a></li>
+<li><a href="#org6f56af6">10.2.3. UpdateListView.swift</a></li>
 </ul>
 </li>
-<li><a href="#org25b8e6f">10.3. ViewModel</a>
+<li><a href="#org1df1c8c">10.3. ViewModel</a>
 <ul>
-<li><a href="#orge858e05">10.3.1. TaskListViewModel.swift</a></li>
-<li><a href="#org024a6ee">10.3.2. TaskCellViewModel.swift</a></li>
-<li><a href="#org03da2a4">10.3.3. DEMO</a></li>
+<li><a href="#org4ccad4d">10.3.1. TaskListViewModel.swift</a></li>
+<li><a href="#org106c538">10.3.2. TaskCellViewModel.swift</a></li>
+<li><a href="#orgb3a85ae">10.3.3. DEMO</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><a href="#SW-Icon">11. Add Icon to App</a>
 <ul>
-<li><a href="#orgee57f3a">11.1. ViewModel</a>
+<li><a href="#org837a2e1">11.1. ViewModel</a>
 <ul>
-<li><a href="#orgad58e12">11.1.1. TaskCellViewModel.swift</a></li>
+<li><a href="#org16f63bf">11.1.1. TaskCellViewModel.swift</a></li>
 </ul>
 </li>
-<li><a href="#org65bc294">11.2. View</a>
+<li><a href="#org9c6180e">11.2. View</a>
 <ul>
-<li><a href="#org282a3d4">11.2.1. TaskListView.swift</a></li>
+<li><a href="#orgc33b580">11.2.1. TaskListView.swift</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org22f5367">12. Create a URLImage</a></li>
-<li><a href="#orgcd4d2d9">13. Storage</a>
+<li><a href="#SW-Firebase-Storage">12. Storage</a>
 <ul>
-<li><a href="#orgbcddf7d">13.1. preparation</a></li>
-<li><a href="#orgf4a6c67">13.2. tips</a></li>
+<li><a href="#org0a2e916">12.1. preparation</a></li>
+<li><a href="#org5f58ac9">12.2. tips</a></li>
+<li><a href="#org6892ff5">12.3. How to pick image in iOS</a>
+<ul>
+<li><a href="#orge2fa5c6">12.3.1. Utility: ImagePicker</a></li>
+<li><a href="#orgdaf55f7">12.3.2. How to call ImagePicker in SwiftUI</a></li>
 </ul>
 </li>
-<li><a href="#SW-Firebase-LearningResource">14. Learning resources</a>
+<li><a href="#org1f86e01">12.4. How to upload image to Firebase storage</a></li>
+<li><a href="#org9309e85">12.5. How to show online image: Kingfisher</a>
 <ul>
-<li><a href="#org3f587cf">14.1. web</a></li>
-<li><a href="#orgb5bfad5">14.2. Videos</a></li>
+<li><a href="#org4652b82">12.5.1. Install 3rd party swift library</a></li>
+<li><a href="#orgc13fe33">12.5.2. Show online image</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#SW-Firebase-LearningResource">13. Learning resources</a>
+<ul>
+<li><a href="#org57fbbd9">13.1. web</a></li>
+<li><a href="#org58a3331">13.2. Videos</a></li>
 </ul>
 </li>
 </ul>
@@ -377,96 +380,96 @@
 <h2 id="SW-Firebase-Intro"><span class="section-number-2">1</span> Introduction</h2>
 <div class="outline-text-2" id="text-SW-Firebase-Intro">
 <p>
-什麼是Firebase？Firebase是由Google收購的子公司，所提供的是行動應用程式開發的平台服務，也就是BaaS(Backend as a Service)，它能夠幫助我們快速開發我們的應用程式，並且支援跨平台包括Android、iOS以及Web，幫我們整合大部分建立一個服務所需要的後台功能。主要像是提供雲端給使用者架起網頁、提供資料庫供使用者存取資料以及做後台分析等等。<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup><br />
+什麼是Firebase？Firebase是由Google收購的子公司，所提供的是行動應用程式開發的平台服務，也就是BaaS(Backend as a Service)，它能夠幫助我們快速開發我們的應用程式，並且支援跨平台包括Android、iOS以及Web，幫我們整合大部分建立一個服務所需要的後台功能。主要像是提供雲端給使用者架起網頁、提供資料庫供使用者存取資料以及做後台分析等等。<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>
 </p>
 
 <p>
-Firebase can power your app’s backend, including data storage, user authentication, static hosting, and more. With Firebase, you can easily build mobile and web apps that scale from one user to one million.<br />
+Firebase can power your app’s backend, including data storage, user authentication, static hosting, and more. With Firebase, you can easily build mobile and web apps that scale from one user to one million.
 </p>
 </div>
 
-<div id="outline-container-org2c31426" class="outline-3">
-<h3 id="org2c31426"><span class="section-number-3">1.1</span> A Brief History<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup></h3>
+<div id="outline-container-org0c5a21f" class="outline-3">
+<h3 id="org0c5a21f"><span class="section-number-3">1.1</span> A Brief History<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup></h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
-Back in 2011, before Firebase was Firebase, it was a startup called <b>Envolve</b>. As Envolve, it provided developers with an API that enabled <b>the integration of online chat functionality into their website</b>.<br />
+Back in 2011, before Firebase was Firebase, it was a startup called <b>Envolve</b>. As Envolve, it provided developers with an API that enabled <b>the integration of online chat functionality into their website</b>.
 </p>
 
 <p>
-What’s interesting is that people used Envolve to pass application data that was more than just chat messages. Developers were using Envolve to <b>sync application data</b> such as a game state in real time across their users.<br />
+What’s interesting is that people used Envolve to pass application data that was more than just chat messages. Developers were using Envolve to <b>sync application data</b> such as a game state in real time across their users.
 </p>
 
 <p>
-This led the founders of Envolve, James Tamplin and Andrew Lee, to separate the chat system and the real-time architecture. In April 2012, Firebase was created as a separate company that provided Backend-as-a-Service with real-time functionality.<br />
+This led the founders of Envolve, James Tamplin and Andrew Lee, to separate the chat system and the real-time architecture. In April 2012, Firebase was created as a separate company that provided Backend-as-a-Service with real-time functionality.
 </p>
 
 <p>
-After it was acquired by Google in 2014, Firebase rapidly evolved into the multifunctional behemoth of a mobile and web platform that it is today.<br />
+After it was acquired by Google in 2014, Firebase rapidly evolved into the multifunctional behemoth of a mobile and web platform that it is today.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org6e6ee9c" class="outline-3">
-<h3 id="org6e6ee9c"><span class="section-number-3">1.2</span> With Firebase you can<sup><a id="fnr.2.100" class="footref" href="#fn.2">2</a></sup></h3>
+<div id="outline-container-org25f3522" class="outline-3">
+<h3 id="org25f3522"><span class="section-number-3">1.2</span> With Firebase you can<sup><a id="fnr.2.100" class="footref" href="#fn.2">2</a></sup></h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
-Firebase helps mobile app teams succeed. With Firebase you can:<br />
+Firebase helps mobile app teams succeed. With Firebase you can:
 </p>
 <ol class="org-ol">
-<li>Build better apps<br /></li>
-<li>Improve app quality<br /></li>
-<li>Grow your business<br /></li>
+<li>Build better apps</li>
+<li>Improve app quality</li>
+<li>Grow your business</li>
 </ol>
 </div>
-<div id="outline-container-orgc308203" class="outline-4">
-<h4 id="orgc308203"><span class="section-number-4">1.2.1</span> Build better apps</h4>
+<div id="outline-container-orge379702" class="outline-4">
+<h4 id="orge379702"><span class="section-number-4">1.2.1</span> Build better apps</h4>
 <div class="outline-text-4" id="text-1-2-1">
 <p>
-Firebase lets you build more powerful, secure and scalable apps, using world-class infrastructure using:<br />
+Firebase lets you build more powerful, secure and scalable apps, using world-class infrastructure using:
 </p>
 <ol class="org-ol">
-<li>Cloud Firestore: is a flexible, scalable database for mobile, web, and server development from Firebase and Google Cloud Platform. It is a <b>NoSQL document database</b> that lets you easily <b>store, sync, and query data</b> for your mobile and web apps — at a global scale.It&rsquo;s supporting for Android, iOS and Web Platform.<br /></li>
-<li>ML Kit: is a mobile SDK that brings <b>Google’s machine learning expertise to Android and iOS apps</b> in a powerful yet easy-to-use package. Whether you’re new or experienced in machine learning, you can implement the functionality you need in just a few lines of code. There’s no need to have deep knowledge of neural networks or model optimization to get started. On the other hand, if you are an experienced ML developer, ML Kit provides convenient APIs that help you use your custom TensorFlow Lite models in your mobile apps. It’s supporting for Android and iOS Platform.<br /></li>
-<li>Cloud Functions: for Firebase lets you automatically run backend code in response to events <b>triggered</b> by Firebase features and HTTPS requests. Your code is stored in Google’s cloud and runs in a managed environment. There’s no need to manage and scale your own servers. It’s supporting for Android, iOS, C++, Unity and Web Platform.<br /></li>
-<li>Authentication: provides backend services, easy-to-use SDKs, and ready-made UI libraries to <b>authenticate users to your app</b>. It supports authentication using passwords, phone numbers, popular federated identity providers like Google, Facebook and Twitter, and more. It’s supporting for Android, iOS and Web Platform.<br /></li>
-<li>Hosting: is production-grade web content hosting for developers. <b>With a single command, you can quickly deploy web apps and serve both static and dynamic content to a global CDN</b> (content delivery network). You can also pair Firebase Hosting with Cloud Functions to build and host microservices on Firebase. It’s supporting only Web Platform.<br /></li>
-<li>Cloud Storages: is for <b>object storage service</b> built for Google scale. The Firebase SDKs for Cloud Storage add Google security to file uploads and downloads for your Firebase apps, regardless of network quality. You can use our SDKs to store images, audio, video, or other user-generated content. On the server, you can use Google Cloud Storage, to access the same files. It’s supporting for Android, iOS, C++, Unity and Web Platform.<br /></li>
-<li>Real-time Database: is a cloud-hosted NoSQL database that lets you <b>store and sync between your users in real-time</b>. The Real-time Database is really just <b>one big JSON object</b> that the developers can manage in real-time. It’s supporting for <b>Android, iOS, C++, Unity and Web Platform</b>.<br /></li>
+<li>Cloud Firestore: is a flexible, scalable database for mobile, web, and server development from Firebase and Google Cloud Platform. It is a <b>NoSQL document database</b> that lets you easily <b>store, sync, and query data</b> for your mobile and web apps — at a global scale.It&rsquo;s supporting for Android, iOS and Web Platform.</li>
+<li>ML Kit: is a mobile SDK that brings <b>Google’s machine learning expertise to Android and iOS apps</b> in a powerful yet easy-to-use package. Whether you’re new or experienced in machine learning, you can implement the functionality you need in just a few lines of code. There’s no need to have deep knowledge of neural networks or model optimization to get started. On the other hand, if you are an experienced ML developer, ML Kit provides convenient APIs that help you use your custom TensorFlow Lite models in your mobile apps. It’s supporting for Android and iOS Platform.</li>
+<li>Cloud Functions: for Firebase lets you automatically run backend code in response to events <b>triggered</b> by Firebase features and HTTPS requests. Your code is stored in Google’s cloud and runs in a managed environment. There’s no need to manage and scale your own servers. It’s supporting for Android, iOS, C++, Unity and Web Platform.</li>
+<li>Authentication: provides backend services, easy-to-use SDKs, and ready-made UI libraries to <b>authenticate users to your app</b>. It supports authentication using passwords, phone numbers, popular federated identity providers like Google, Facebook and Twitter, and more. It’s supporting for Android, iOS and Web Platform.</li>
+<li>Hosting: is production-grade web content hosting for developers. <b>With a single command, you can quickly deploy web apps and serve both static and dynamic content to a global CDN</b> (content delivery network). You can also pair Firebase Hosting with Cloud Functions to build and host microservices on Firebase. It’s supporting only Web Platform.</li>
+<li>Cloud Storages: is for <b>object storage service</b> built for Google scale. The Firebase SDKs for Cloud Storage add Google security to file uploads and downloads for your Firebase apps, regardless of network quality. You can use our SDKs to store images, audio, video, or other user-generated content. On the server, you can use Google Cloud Storage, to access the same files. It’s supporting for Android, iOS, C++, Unity and Web Platform.</li>
+<li>Real-time Database: is a cloud-hosted NoSQL database that lets you <b>store and sync between your users in real-time</b>. The Real-time Database is really just <b>one big JSON object</b> that the developers can manage in real-time. It’s supporting for <b>Android, iOS, C++, Unity and Web Platform</b>.</li>
 </ol>
 </div>
 </div>
 
-<div id="outline-container-orgac497c5" class="outline-4">
-<h4 id="orgac497c5"><span class="section-number-4">1.2.2</span> Improve app quality</h4>
+<div id="outline-container-orge127879" class="outline-4">
+<h4 id="orge127879"><span class="section-number-4">1.2.2</span> Improve app quality</h4>
 <div class="outline-text-4" id="text-1-2-2">
 <p>
-Firebase gives you insights into app performance and stability, so you can channel your resources effectively using:<br />
+Firebase gives you insights into app performance and stability, so you can channel your resources effectively using:
 </p>
 
 <ol class="org-ol">
-<li>Crashlytics: is <b>a lightweight, real-time crash reporter</b> that helps you track, prioritize, and fix stability issues that erode your app quality. Crashlytics saves you troubleshooting time by intelligently grouping crashes and highlighting the circumstances that lead up to them. It’s supporting for Android and iOS Platform.<br /></li>
-<li>Performance Monitoring: is a service that helps you <b>to gain insight into the performance characteristics of your iOS and Android apps</b>. You use the Performance Monitoring SDK to collect performance data from your app, and then review and analyze that data in the Firebase console. Performance Monitoring helps you to understand where and when the performance of your app can be improved so that you can use that information to fix performance issues. It’s supporting for Android and iOS Platform.<br /></li>
-<li>Test Labs: is a cloud-based app-testing infrastructure. It provides <b>a large number of mobile test devices</b> to help you test your apps. It’s supporting for Android and iOS Platform.<br /></li>
+<li>Crashlytics: is <b>a lightweight, real-time crash reporter</b> that helps you track, prioritize, and fix stability issues that erode your app quality. Crashlytics saves you troubleshooting time by intelligently grouping crashes and highlighting the circumstances that lead up to them. It’s supporting for Android and iOS Platform.</li>
+<li>Performance Monitoring: is a service that helps you <b>to gain insight into the performance characteristics of your iOS and Android apps</b>. You use the Performance Monitoring SDK to collect performance data from your app, and then review and analyze that data in the Firebase console. Performance Monitoring helps you to understand where and when the performance of your app can be improved so that you can use that information to fix performance issues. It’s supporting for Android and iOS Platform.</li>
+<li>Test Labs: is a cloud-based app-testing infrastructure. It provides <b>a large number of mobile test devices</b> to help you test your apps. It’s supporting for Android and iOS Platform.</li>
 </ol>
 </div>
 </div>
 
-<div id="outline-container-org4ea1a1e" class="outline-4">
-<h4 id="org4ea1a1e"><span class="section-number-4">1.2.3</span> Grow your business</h4>
+<div id="outline-container-org25f2ca0" class="outline-4">
+<h4 id="org25f2ca0"><span class="section-number-4">1.2.3</span> Grow your business</h4>
 <div class="outline-text-4" id="text-1-2-3">
 <p>
-Firebase helps you grow to millions of users, simplifying user engagement and retention using:<br />
+Firebase helps you grow to millions of users, simplifying user engagement and retention using:
 </p>
 
 <ol class="org-ol">
-<li>In-App Messaging: helps you engage users who are actively using your app by <b>sending them targeted and contextual messages</b> that nudge them to complete key in-app actions — like beating a game level, buying an item, or subscribing to content. It’s supporting for Android and iOS Platform.<br /></li>
-<li>Google Analytics: for Firebase is a free app measurement solution that provides insight on <b>app usage and user engagement</b>. At the heart of Firebase is Google Analytics for Firebase, a free and unlimited analytics solution. Analytics integrates across Firebase features and provides you with unlimited reporting for up to 500 distinct events that you can define using the Firebase SDK. Analytics reports help you understand clearly how your users behave, which enables you to make informed decisions regarding app marketing and performance optimizations. It’s supporting for Android, iOS, C++ and Unity Platform.<br /></li>
-<li>Predictions: applies <b>machine learning</b> to your analytics data to create dynamic user segments based on the predicted behavior of users in your app. These predictions are automatically available for use with Firebase Remote Config, the Notifications composer, Firebase In-App Messaging, and A/B Testing. You can also link your app’s Predictions data to BigQuery so you can get daily exports that you can further analyze or push to third party tools. It’s supporting for Android, iOS, C++ and Unity Platform.<br /></li>
-<li>A/B Testing: helps you optimize your app experience by making it easy to run, analyze, and scale product and marketing experiments. It gives you the power to test changes to your app’s UI, features, or engagement campaigns to see if they actually move the needle on your key metrics (like revenue and retention) before you roll them out widely. It’s supporting for Android, iOS, C++ and Unity Platform.<br /></li>
-<li>Cloud Messaging(FCM): provides a reliable and battery-efficient connection between your server and devices that allows you to deliver and receive messages and notifications on iOS, Android, and the web at no cost.<br /></li>
-<li>Remote Config: essentially allows us to publish updates to our users immediately. Whether we wish to change the color scheme for a screen, the layout for a particular section in our app or show promotional/seasonal options — this is completely doable using the server side parameters without the need to publish a new version. It’s supporting for Android, iOS, C++ and Unity Platform.<br /></li>
-<li>Dynamic Links: With Dynamic Links, your users get the best available experience for the platform they open your link on. If a user opens a Dynamic Link on iOS or Android, they can be taken directly to the linked content in your native app. If a user opens the same Dynamic Link in a desktop browser, they can be taken to the equivalent content on your website. It’s supporting for Android, iOS, Web, C++ and Unity Platform.<br /></li>
-<li>App Indexing: gets your app into Google Search. If users have your app installed, they can launch your app and go directly to the content they’re searching for. App Indexing reengages your app users by helping them find both public and personal content right on their device, even offering query autocompletion to help them more quickly find what they need. If users don’t yet have your app, relevant queries trigger an install card for your app in Search results. It’s supporting for Android and iOS Platform.<br /></li>
+<li>In-App Messaging: helps you engage users who are actively using your app by <b>sending them targeted and contextual messages</b> that nudge them to complete key in-app actions — like beating a game level, buying an item, or subscribing to content. It’s supporting for Android and iOS Platform.</li>
+<li>Google Analytics: for Firebase is a free app measurement solution that provides insight on <b>app usage and user engagement</b>. At the heart of Firebase is Google Analytics for Firebase, a free and unlimited analytics solution. Analytics integrates across Firebase features and provides you with unlimited reporting for up to 500 distinct events that you can define using the Firebase SDK. Analytics reports help you understand clearly how your users behave, which enables you to make informed decisions regarding app marketing and performance optimizations. It’s supporting for Android, iOS, C++ and Unity Platform.</li>
+<li>Predictions: applies <b>machine learning</b> to your analytics data to create dynamic user segments based on the predicted behavior of users in your app. These predictions are automatically available for use with Firebase Remote Config, the Notifications composer, Firebase In-App Messaging, and A/B Testing. You can also link your app’s Predictions data to BigQuery so you can get daily exports that you can further analyze or push to third party tools. It’s supporting for Android, iOS, C++ and Unity Platform.</li>
+<li>A/B Testing: helps you optimize your app experience by making it easy to run, analyze, and scale product and marketing experiments. It gives you the power to test changes to your app’s UI, features, or engagement campaigns to see if they actually move the needle on your key metrics (like revenue and retention) before you roll them out widely. It’s supporting for Android, iOS, C++ and Unity Platform.</li>
+<li>Cloud Messaging(FCM): provides a reliable and battery-efficient connection between your server and devices that allows you to deliver and receive messages and notifications on iOS, Android, and the web at no cost.</li>
+<li>Remote Config: essentially allows us to publish updates to our users immediately. Whether we wish to change the color scheme for a screen, the layout for a particular section in our app or show promotional/seasonal options — this is completely doable using the server side parameters without the need to publish a new version. It’s supporting for Android, iOS, C++ and Unity Platform.</li>
+<li>Dynamic Links: With Dynamic Links, your users get the best available experience for the platform they open your link on. If a user opens a Dynamic Link on iOS or Android, they can be taken directly to the linked content in your native app. If a user opens the same Dynamic Link in a desktop browser, they can be taken to the equivalent content on your website. It’s supporting for Android, iOS, Web, C++ and Unity Platform.</li>
+<li>App Indexing: gets your app into Google Search. If users have your app installed, they can launch your app and go directly to the content they’re searching for. App Indexing reengages your app users by helping them find both public and personal content right on their device, even offering query autocompletion to help them more quickly find what they need. If users don’t yet have your app, relevant queries trigger an install card for your app in Search results. It’s supporting for Android and iOS Platform.</li>
 </ol>
 </div>
 </div>
@@ -477,22 +480,22 @@ Firebase helps you grow to millions of users, simplifying user engagement and re
 <h2 id="SW-Firebase-database"><span class="section-number-2">2</span> Firebase database</h2>
 <div class="outline-text-2" id="text-SW-Firebase-database">
 <p>
-Firebase offers two cloud-based, client-accessible database solutions that support realtime data syncing:<br />
+Firebase offers two cloud-based, client-accessible database solutions that support realtime data syncing:
 </p>
 
 <ul class="org-ul">
-<li>Cloud Firestore is Firebase&rsquo;s <b>newest</b> database for mobile app development. It builds on the successes of the Realtime Database with a <b>new, more intuitive data model</b>. Cloud Firestore also features <b>richer, faster queries</b> and scales further than the Realtime Database.<br /></li>
-<li>Realtime Database is Firebase&rsquo;s <b>original</b> database. It&rsquo;s an efficient, low-latency solution for mobile apps that require synced states across clients in realtime.<br /></li>
+<li>Cloud Firestore is Firebase&rsquo;s <b>newest</b> database for mobile app development. It builds on the successes of the Realtime Database with a <b>new, more intuitive data model</b>. Cloud Firestore also features <b>richer, faster queries</b> and scales further than the Realtime Database.</li>
+<li>Realtime Database is Firebase&rsquo;s <b>original</b> database. It&rsquo;s an efficient, low-latency solution for mobile apps that require synced states across clients in realtime.</li>
 </ul>
 </div>
 
-<div id="outline-container-org3b60cb3" class="outline-3">
-<h3 id="org3b60cb3"><span class="section-number-3">2.1</span> Data model</h3>
+<div id="outline-container-org9b1bacf" class="outline-3">
+<h3 id="org9b1bacf"><span class="section-number-3">2.1</span> Data model</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
-Both Realtime Database and Cloud Firestore are NoSQL Databases<sup><a id="fnr.3" class="footref" href="#fn.3">3</a></sup>.<br />
+Both Realtime Database and Cloud Firestore are NoSQL Databases<sup><a id="fnr.3" class="footref" href="#fn.3">3</a></sup>.
 </p>
-<table id="org609ee4f" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org50450d0" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
@@ -536,31 +539,31 @@ Both Realtime Database and Cloud Firestore are NoSQL Databases<sup><a id="fnr.3"
 <h2 id="SW-Firebase-datamodel"><span class="section-number-2">3</span> Cloud Firestore Data model</h2>
 <div class="outline-text-2" id="text-SW-Firebase-datamodel">
 <p>
-Cloud Firestore is a NoSQL, document-oriented database. Unlike a SQL database, there are no tables or rows. Instead, you store data in <b>documents</b>, which are organized into <b>collections</b>.<br />
+Cloud Firestore is a NoSQL, document-oriented database. Unlike a SQL database, there are no tables or rows. Instead, you store data in <b>documents</b>, which are organized into <b>collections</b>.
 </p>
 
 <p>
-Each document contains a set of key-value pairs. Cloud Firestore is optimized for storing large collections of small documents.<br />
+Each document contains a set of key-value pairs. Cloud Firestore is optimized for storing large collections of small documents.
 </p>
 
 <p>
-All documents must be stored in collections. Documents can contain subcollections and nested objects, both of which can include primitive fields like strings or complex objects like lists.<br />
+All documents must be stored in collections. Documents can contain subcollections and nested objects, both of which can include primitive fields like strings or complex objects like lists.
 </p>
 
 <p>
-Collections and documents are created implicitly in Cloud Firestore. Simply assign data to a document within a collection. If either the collection or document does not exist, Cloud Firestore creates it.<br />
+Collections and documents are created implicitly in Cloud Firestore. Simply assign data to a document within a collection. If either the collection or document does not exist, Cloud Firestore creates it.
 </p>
 </div>
 
-<div id="outline-container-org6cd5319" class="outline-3">
-<h3 id="org6cd5319"><span class="section-number-3">3.1</span> Documents</h3>
+<div id="outline-container-org8576747" class="outline-3">
+<h3 id="org8576747"><span class="section-number-3">3.1</span> Documents</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
-In Cloud Firestore, the unit of storage is the document. A document is a lightweight record that contains fields, which map to values. Each document is identified by a name.<br />
+In Cloud Firestore, the unit of storage is the document. A document is a lightweight record that contains fields, which map to values. Each document is identified by a name.
 </p>
 
 <p>
-A document representing a user alovelace might look like this:<br />
+A document representing a user alovelace might look like this:
 </p>
 <pre class="example">
 first : "Ada"
@@ -569,7 +572,7 @@ born : 1815
 </pre>
 
 <p>
-Complex, <b>nested objects in a document</b> are called <b>maps</b>. For example, you could structure the user&rsquo;s name from the example above with a map, like this:<br />
+Complex, <b>nested objects in a document</b> are called <b>maps</b>. For example, you could structure the user&rsquo;s name from the example above with a map, like this:
 </p>
 
 <pre class="example">
@@ -580,20 +583,20 @@ born : 1815
 </pre>
 
 <p>
-You may notice that documents <b>look a lot like JSON</b>. In fact, <b>they basically are</b>. There are some differences (for example, documents support extra data types and are limited in size to 1 MB), but in general, you can treat documents as lightweight JSON records.<br />
+You may notice that documents <b>look a lot like JSON</b>. In fact, <b>they basically are</b>. There are some differences (for example, documents support extra data types and are limited in size to 1 MB), but in general, you can treat documents as lightweight JSON records.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgd0ef465" class="outline-3">
-<h3 id="orgd0ef465"><span class="section-number-3">3.2</span> Collections</h3>
+<div id="outline-container-org52609ad" class="outline-3">
+<h3 id="org52609ad"><span class="section-number-3">3.2</span> Collections</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
-Documents live in collections, which are simply containers for documents.<br />
+Documents live in collections, which are simply containers for documents.
 </p>
 <p width="400">
-<img src="images/structure-data.png" alt="structure-data.png" width="400" /><br />
-For example, you could have a users collection to contain your various users, each represented by a document:<br />
+<img src="images/structure-data.png" alt="structure-data.png" width="400" />
+For example, you could have a users collection to contain your various users, each represented by a document:
 </p>
 <pre class="example">
 collections_bookmark users
@@ -611,28 +614,28 @@ collections_bookmark users
     born : 1912
 </pre>
 <p>
-Cloud Firestore is schemaless, so you have complete freedom over what fields you put in each document and what data types you store in those fields. Documents within the same collection can all contain different fields or store different types of data in those fields. However, it&rsquo;s a good idea to use the same fields and data types across multiple documents, so that you can query the documents more easily.<br />
+Cloud Firestore is schemaless, so you have complete freedom over what fields you put in each document and what data types you store in those fields. Documents within the same collection can all contain different fields or store different types of data in those fields. However, it&rsquo;s a good idea to use the same fields and data types across multiple documents, so that you can query the documents more easily.
 </p>
 
 <p>
-A collection contains documents and nothing else. It can&rsquo;t directly contain raw fields with values, and it can&rsquo;t contain other collections. (See Hierarchical Data for an explanation of how to structure more complex data in Cloud Firestore.)<br />
+A collection contains documents and nothing else. It can&rsquo;t directly contain raw fields with values, and it can&rsquo;t contain other collections. (See Hierarchical Data for an explanation of how to structure more complex data in Cloud Firestore.)
 </p>
 
 <p>
-The names of documents within a collection are unique. You can provide your own keys, such as user IDs, or you can let Cloud Firestore create random IDs for you automatically.<br />
+The names of documents within a collection are unique. You can provide your own keys, such as user IDs, or you can let Cloud Firestore create random IDs for you automatically.
 </p>
 
 <p>
-You do not need to &ldquo;create&rdquo; or &ldquo;delete&rdquo; collections. After you create the first document in a collection, the collection exists. If you delete all of the documents in a collection, it no longer exists.<br />
+You do not need to &ldquo;create&rdquo; or &ldquo;delete&rdquo; collections. After you create the first document in a collection, the collection exists. If you delete all of the documents in a collection, it no longer exists.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgdf2020e" class="outline-3">
-<h3 id="orgdf2020e"><span class="section-number-3">3.3</span> References</h3>
+<div id="outline-container-org7b4793b" class="outline-3">
+<h3 id="org7b4793b"><span class="section-number-3">3.3</span> References</h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
-Every document in Cloud Firestore is <b>uniquely identified</b> by its location within the database. The previous example showed a document alovelace within the collection users. To refer to this location in your code, you can create a reference to it.<br />
+Every document in Cloud Firestore is <b>uniquely identified</b> by its location within the database. The previous example showed a document alovelace within the collection users. To refer to this location in your code, you can create a reference to it.
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">let</span> alovelaceDocumentRef = db.<span style="color: #c678dd;">collection</span>(<span style="color: #98be65;">"users"</span>).<span style="color: #c678dd;">document</span>(<span style="color: #98be65;">"alovelace"</span>)
@@ -640,11 +643,11 @@ Every document in Cloud Firestore is <b>uniquely identified</b> by its location 
 </div>
 
 <p>
-A reference is <b>a lightweight object that just points to a location in your database</b>. You can create a reference <b>whether or not data exists there</b>, and creating a reference does not perform any network operations.<br />
+A reference is <b>a lightweight object that just points to a location in your database</b>. You can create a reference <b>whether or not data exists there</b>, and creating a reference does not perform any network operations.
 </p>
 
 <p>
-You can also create references to collections:<br />
+You can also create references to collections:
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">let</span> usersCollectionRef = db.<span style="color: #c678dd;">collection</span>(<span style="color: #98be65;">"users"</span>)
@@ -653,8 +656,8 @@ You can also create references to collections:<br />
 </div>
 </div>
 
-<div id="outline-container-org184bdbf" class="outline-3">
-<h3 id="org184bdbf"><span class="section-number-3">3.4</span> Supported data types</h3>
+<div id="outline-container-orgd5173c1" class="outline-3">
+<h3 id="orgd5173c1"><span class="section-number-3">3.4</span> Supported data types</h3>
 <div class="outline-text-3" id="text-3-4">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -744,47 +747,47 @@ You can also create references to collections:<br />
 </div>
 </div>
 
-<div id="outline-container-orgaf50bec" class="outline-3">
-<h3 id="orgaf50bec"><span class="section-number-3">3.5</span> Index types in Cloud Firestore</h3>
+<div id="outline-container-orga824571" class="outline-3">
+<h3 id="orga824571"><span class="section-number-3">3.5</span> Index types in Cloud Firestore</h3>
 <div class="outline-text-3" id="text-3-5">
 <p>
-Indexes are an important factor in the performance of a database. Much like the index of a book which maps topics in a book to page numbers, a database index maps the items in a database to their locations in the database. When you send a database a query, the database can use an index to quickly look up the locations of the items you requested.<br />
+Indexes are an important factor in the performance of a database. Much like the index of a book which maps topics in a book to page numbers, a database index maps the items in a database to their locations in the database. When you send a database a query, the database can use an index to quickly look up the locations of the items you requested.
 </p>
 
 <p>
-This page describes the two types of indexes that Cloud Firestore uses, single-field indexes and composite indexes.<br />
+This page describes the two types of indexes that Cloud Firestore uses, single-field indexes and composite indexes.
 </p>
 </div>
 
-<div id="outline-container-org266ffe4" class="outline-4">
-<h4 id="org266ffe4"><span class="section-number-4">3.5.1</span> An index behind every query</h4>
+<div id="outline-container-org88c6562" class="outline-4">
+<h4 id="org88c6562"><span class="section-number-4">3.5.1</span> An index behind every query</h4>
 <div class="outline-text-4" id="text-3-5-1">
 <p>
-If no index exists for a query, most databases crawl through their contents item by item, a slow process that slows down even more as the database grows. Cloud Firestore guarantees high query performance by using indexes for all queries. As a result, query performance depends on the size of the result set and not on the number of items in the database.<br />
+If no index exists for a query, most databases crawl through their contents item by item, a slow process that slows down even more as the database grows. Cloud Firestore guarantees high query performance by using indexes for all queries. As a result, query performance depends on the size of the result set and not on the number of items in the database.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org8b1b505" class="outline-4">
-<h4 id="org8b1b505"><span class="section-number-4">3.5.2</span> Less index management, more app development</h4>
+<div id="outline-container-org72f86b2" class="outline-4">
+<h4 id="org72f86b2"><span class="section-number-4">3.5.2</span> Less index management, more app development</h4>
 <div class="outline-text-4" id="text-3-5-2">
 <p>
-Cloud Firestore includes features that reduce the amount of time you need to spend managing indexes. The indexes required for the most basic queries are automatically created for you. As you use and test your app, Cloud Firestore helps you identify and create additional indexes your app requires.<br />
+Cloud Firestore includes features that reduce the amount of time you need to spend managing indexes. The indexes required for the most basic queries are automatically created for you. As you use and test your app, Cloud Firestore helps you identify and create additional indexes your app requires.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgafe51a7" class="outline-4">
-<h4 id="orgafe51a7"><span class="section-number-4">3.5.3</span> Automatic indexing</h4>
+<div id="outline-container-org17af254" class="outline-4">
+<h4 id="org17af254"><span class="section-number-4">3.5.3</span> Automatic indexing</h4>
 <div class="outline-text-4" id="text-3-5-3">
 <p>
-By default, Cloud Firestore automatically maintains single-field indexes for each field in a document and each subfield in a map. Cloud Firestore uses the following default settings for single-field indexes:<br />
+By default, Cloud Firestore automatically maintains single-field indexes for each field in a document and each subfield in a map. Cloud Firestore uses the following default settings for single-field indexes:
 </p>
 <ul class="org-ul">
-<li>For each non-array and non-map field, Cloud Firestore defines two collection-scope single-field indexes, one in ascending mode and one in descending mode.<br /></li>
-<li>For each map field, Cloud Firestore creates one collection-scope ascending index and one descending index for each non-array and non-map subfield in the map.<br /></li>
-<li>For each array field in a document, Cloud Firestore creates and maintains a collection-scope array-contains index.<br /></li>
-<li>Single-field indexes with collection group scope are not maintained by default.<br /></li>
+<li>For each non-array and non-map field, Cloud Firestore defines two collection-scope single-field indexes, one in ascending mode and one in descending mode.</li>
+<li>For each map field, Cloud Firestore creates one collection-scope ascending index and one descending index for each non-array and non-map subfield in the map.</li>
+<li>For each array field in a document, Cloud Firestore creates and maintains a collection-scope array-contains index.</li>
+<li>Single-field indexes with collection group scope are not maintained by default.</li>
 </ul>
 </div>
 </div>
@@ -795,23 +798,23 @@ By default, Cloud Firestore automatically maintains single-field indexes for eac
 <h2 id="SW-Firebase-CreateDatabase"><span class="section-number-2">4</span> Create your own Cloud Firestore database</h2>
 <div class="outline-text-2" id="text-SW-Firebase-CreateDatabase">
 <ol class="org-ol">
-<li>Sign in <a href="https://firebase.google.com">https://firebase.google.com</a><br /></li>
-<li>Click Get started<br /></li>
-<li>Two mode of Firebase web navigation<br />
+<li>Sign in <a href="https://firebase.google.com">https://firebase.google.com</a></li>
+<li>Click Get started</li>
+<li>Two mode of Firebase web navigation
 <ul class="org-ul">
-<li>console<br /></li>
-<li>docs: 讀doc破萬卷、寫code如有神<br /></li>
+<li>console</li>
+<li>docs: 讀doc破萬卷、寫code如有神</li>
 </ul></li>
-<li>Create project<br /></li>
-<li>Create a Cloud Firestore database<br />
+<li>Create project</li>
+<li>Create a Cloud Firestore database
 <ol class="org-ol">
-<li>If you haven&rsquo;t already, create a Firebase project: In the Firebase console, click <b>Add project</b>, then follow the on-screen instructions to create a Firebase project or to add Firebase services to an existing GCP project.<br /></li>
-<li>Navigate to the <b>Cloud Firestore section</b> of the <b>Firebase console</b>. You&rsquo;ll be prompted to select an existing Firebase project. Follow the database creation workflow.<br /></li>
-<li>Select a starting mode for your Cloud Firestore Security Rules:<br />
+<li>If you haven&rsquo;t already, create a Firebase project: In the Firebase console, click <b>Add project</b>, then follow the on-screen instructions to create a Firebase project or to add Firebase services to an existing GCP project.</li>
+<li>Navigate to the <b>Cloud Firestore section</b> of the <b>Firebase console</b>. You&rsquo;ll be prompted to select an existing Firebase project. Follow the database creation workflow.</li>
+<li>Select a starting mode for your Cloud Firestore Security Rules:
 <ul class="org-ul">
 <li><p>
-Locked mode<br />
-Denies all reads and writes from mobile and web clients. Your authenticated application servers (C#, Go, Java, Node.js, PHP, Python, or Ruby) can still access your database.<br />
+Locked mode
+Denies all reads and writes from mobile and web clients. Your authenticated application servers (C#, Go, Java, Node.js, PHP, Python, or Ruby) can still access your database.
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span>rules_version = '<span style="color: #da8548; font-weight: bold;">2</span>';
@@ -825,11 +828,11 @@ Denies all reads and writes from mobile and web clients. Your authenticated appl
 </pre>
 </div>
 <p>
-To get started with the C#, Go, Java, Node.js, PHP, Python, or Ruby server client library, select locked mode.Select a location for you database.<br />
+To get started with the C#, Go, Java, Node.js, PHP, Python, or Ruby server client library, select locked mode.Select a location for you database.
 </p></li>
 <li><p>
-Test mode<br />
-<b>Good for getting</b> started with the mobile and web client libraries, but allows <b>anyone</b> to read and overwrite your data. <b>After testing, make sure to review the Secure your data section</b>.<br />
+Test mode
+<b>Good for getting</b> started with the mobile and web client libraries, but allows <b>anyone</b> to read and overwrite your data. <b>After testing, make sure to review the Secure your data section</b>.
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span>rules_version = '<span style="color: #da8548; font-weight: bold;">2</span>';
@@ -844,17 +847,17 @@ Test mode<br />
 </pre>
 </div>
 <p>
-To get started with the web, iOS, or Android SDK, select test mode.<br />
+To get started with the web, iOS, or Android SDK, select test mode.
 </p></li>
 </ul></li>
-<li>Select a location for your database.<br />
-This location setting is your project&rsquo;s default Google Cloud Platform (GCP) resource location. Note that this location will be used for GCP services in your project that require a location setting, specifically, your default Cloud Storage bucket and your App Engine app (which is required if you use Cloud Scheduler).<br />
-If you aren&rsquo;t able to select a location, then your project already has a default GCP resource location. It was set either during project creation or when setting up another service that requires a location setting.<br /></li>
-<li>done<br /></li>
+<li>Select a location for your database.
+This location setting is your project&rsquo;s default Google Cloud Platform (GCP) resource location. Note that this location will be used for GCP services in your project that require a location setting, specifically, your default Cloud Storage bucket and your App Engine app (which is required if you use Cloud Scheduler).
+If you aren&rsquo;t able to select a location, then your project already has a default GCP resource location. It was set either during project creation or when setting up another service that requires a location setting.</li>
+<li>done</li>
 </ol></li>
-<li>Create your own collection in your database<br />
-You can create multiple collections in one database<br /></li>
-<li>Why you should switch to english mode when reading Firebase Web pages?<br /></li>
+<li>Create your own collection in your database
+You can create multiple collections in one database</li>
+<li>Why you should switch to english mode when reading Firebase Web pages?</li>
 </ol>
 </div>
 </div>
@@ -863,89 +866,89 @@ You can create multiple collections in one database<br /></li>
 <h2 id="SW-Firebase-AddFirebase"><span class="section-number-2">5</span> Adding Firebase to your iOS project</h2>
 <div class="outline-text-2" id="text-SW-Firebase-AddFirebase">
 </div>
-<div id="outline-container-org94baf04" class="outline-3">
-<h3 id="org94baf04"><span class="section-number-3">5.1</span> key process</h3>
+<div id="outline-container-org2df4ff5" class="outline-3">
+<h3 id="org2df4ff5"><span class="section-number-3">5.1</span> key process</h3>
 <div class="outline-text-3" id="text-5-1">
 <ol class="org-ol">
-<li>Create a FIrebase project [DONE]<br /></li>
-<li>Register your app with Firebase<br /></li>
-<li>Add a Firebase configuration file<br /></li>
-<li>Add Firebase SDKs to your app<br /></li>
-<li>Initialize Firebase in your app<br /></li>
+<li>Create a FIrebase project [DONE]</li>
+<li>Register your app with Firebase</li>
+<li>Add a Firebase configuration file</li>
+<li>Add Firebase SDKs to your app</li>
+<li>Initialize Firebase in your app</li>
 </ol>
 <p>
-詳組說明參見<a href="https://firebase.google.com/docs/ios/setup">Firebase Documentation</a><br />
+詳組說明參見<a href="https://firebase.google.com/docs/ios/setup">Firebase Documentation</a>
 </p>
 </div>
 </div>
 
-<div id="outline-container-org4266206" class="outline-3">
-<h3 id="org4266206"><span class="section-number-3">5.2</span> Setting up Firebase project: Step by step</h3>
+<div id="outline-container-org6ce42b3" class="outline-3">
+<h3 id="org6ce42b3"><span class="section-number-3">5.2</span> Setting up Firebase project: Step by step</h3>
 <div class="outline-text-3" id="text-5-2">
 </div>
-<div id="outline-container-org0e86906" class="outline-4">
-<h4 id="org0e86906"><span class="section-number-4">5.2.1</span> Create/Register</h4>
+<div id="outline-container-org4647704" class="outline-4">
+<h4 id="org4647704"><span class="section-number-4">5.2.1</span> Create/Register</h4>
 <div class="outline-text-4" id="text-5-2-1">
 <ol class="org-ol">
-<li>Create or open a Firebase project<br />
-Firebase Console: <a href="https://console.firebase.google.com/">https://console.firebase.google.com/</a><br /></li>
-<li>Add Firebase to your iOS app<br />
+<li>Create or open a Firebase project
+Firebase Console: <a href="https://console.firebase.google.com/">https://console.firebase.google.com/</a></li>
+<li>Add Firebase to your iOS app
 <ol class="org-ol">
-<li>Register app<br />
+<li>Register app
 <ul class="org-ul">
-<li>iOS bundle ID<br /></li>
-<li>App nickname (optional)<br /></li>
-<li>App Store ID (optional)<br /></li>
+<li>iOS bundle ID</li>
+<li>App nickname (optional)</li>
+<li>App Store ID (optional)</li>
 </ul></li>
-<li>Download config file<br />
-this config file (GoogleService-info.plist) will be added to your project<br /></li>
+<li>Download config file
+this config file (GoogleService-info.plist) will be added to your project</li>
 </ol></li>
 </ol>
 </div>
 </div>
-<div id="outline-container-org57299e3" class="outline-4">
-<h4 id="org57299e3"><span class="section-number-4">5.2.2</span> Install SDKs</h4>
+<div id="outline-container-org94a1617" class="outline-4">
+<h4 id="org94a1617"><span class="section-number-4">5.2.2</span> Install SDKs</h4>
 <div class="outline-text-4" id="text-5-2-2">
 </div>
-<div id="outline-container-orgae4e085" class="outline-5">
-<h5 id="orgae4e085"><span class="section-number-5">5.2.2.1</span> Method #1: CocoaPods</h5>
+<ol class="org-ol">
+<li><a id="org4bcaa1a"></a>Method #1: CocoaPods<br />
 <div class="outline-text-5" id="text-5-2-2-1">
 <ol class="org-ol">
-<li>Add Firebase SDKs<br />
+<li>Add Firebase SDKs
 <ol class="org-ol">
-<li>Create a Podfile<br />
+<li>Create a Podfile
 <ol class="org-ol">
-<li>open Terminal app<br /></li>
+<li>open Terminal app</li>
 <li><p>
-switch to Xcode folder (xcodeproj location)<br />
+switch to Xcode folder (xcodeproj location)
 </p>
 <div class="org-src-container">
 <pre class="src src-bash"><span style="color: #ECBE7B;">cd</span> ~/Desktop/ProjectName
 </pre>
 </div></li>
 <li><p>
-Create Podfile (terminal command)<br />
-Create Podfile<br />
+Create Podfile (terminal command)
+Create Podfile
 </p>
 <div class="org-src-container">
 <pre class="src src-bash">pod init
 </pre>
 </div></li>
 </ol></li>
-<li>Edit Podfile<br />
+<li>Edit Podfile
 <ol class="org-ol">
 <li><p>
-Open your Podfile (terminal command)<br />
+Open your Podfile (terminal command)
 </p>
 <div class="org-src-container">
 <pre class="src src-bash">open Podfile
 </pre>
 </div>
 <p>
-or use text editor to open Podfile<br />
+or use text editor to open Podfile
 </p></li>
 <li><p>
-Add the following code to Podfile (target(iOS))<br />
+Add the following code to Podfile (target(iOS))
 </p>
 <div class="org-src-container">
 <pre class="src src-bash"><span style="color: #5B6268;"># </span><span style="color: #5B6268;">Uncomment the next line to define a global platform for your project</span>
@@ -966,103 +969,101 @@ end
 </pre>
 </div>
 <p>
-edit and save<br />
+edit and save
 </p></li>
-<li>save Podfile<br />
-cmd+S or via menu File/Save<br /></li>
+<li>save Podfile
+cmd+S or via menu File/Save</li>
 </ol></li>
 <li><p>
-Install Firebase SDK by pod install (terminal command)<br />
+Install Firebase SDK by pod install (terminal command)
 </p>
 <div class="org-src-container">
 <pre class="src src-bash">pod install
 </pre>
 </div>
 <p>
-and then wait&#x2026;&#x2026;<br />
+and then wait&#x2026;&#x2026;
 </p></li>
 </ol></li>
 </ol>
 </div>
-</div>
-<div id="outline-container-org9f6c918" class="outline-5">
-<h5 id="org9f6c918"><span class="section-number-5">5.2.2.2</span> Method #2: Swift Package Manager for Firebase</h5>
+</li>
+<li><a id="org78cb846"></a>Method #2: Swift Package Manager for Firebase<br />
 <div class="outline-text-5" id="text-5-2-2-2">
 <ol class="org-ol">
-<li>If you&rsquo;ve previously used CocoaPods, remove them from the project with pod deintegrate.<br /></li>
+<li>If you&rsquo;ve previously used CocoaPods, remove them from the project with pod deintegrate.</li>
 <li><p>
-Install Firebase via Swift Package Manager:<br />
+Install Firebase via Swift Package Manager:
 </p>
 
-<div id="orgebfe770" class="figure">
-<p><img src="images/sdk-1.jpg" alt="sdk-1.jpg" width="500" /><br />
+<div id="org6764211" class="figure">
+<p><img src="images/sdk-1.jpg" alt="sdk-1.jpg" width="500" />
 </p>
 <p><span class="figure-number">Figure 1: </span>Install Firebase SDK #1</p>
 </div></li>
 <li><p>
-Select the Firebase GitHub repository<br />
-ios sdk URL: <a href="https://github.com/firebase/firebase-ios-sdk.git">https://github.com/firebase/firebase-ios-sdk.git</a>:<br />
+Select the Firebase GitHub repository
+ios sdk URL: <a href="https://github.com/firebase/firebase-ios-sdk.git">https://github.com/firebase/firebase-ios-sdk.git</a>:
 </p>
 
-<div id="org01945e7" class="figure">
-<p><img src="images/sdk-2.jpg" alt="sdk-2.jpg" width="500" /><br />
+<div id="org0298e4a" class="figure">
+<p><img src="images/sdk-2.jpg" alt="sdk-2.jpg" width="500" />
 </p>
 <p><span class="figure-number">Figure 2: </span>Install Firebase SDK #2</p>
 </div></li>
 <li><p>
-Select the Branch: maser<br />
+Select the Branch: maser
 </p>
 
-<div id="org19d5ded" class="figure">
-<p><img src="images/sdk-3.jpg" alt="sdk-3.jpg" width="500" /><br />
+<div id="orgae63da5" class="figure">
+<p><img src="images/sdk-3.jpg" alt="sdk-3.jpg" width="500" />
 </p>
 <p><span class="figure-number">Figure 3: </span>Install Firebase SDK #3</p>
 </div></li>
 <li><p>
-Wait about 2000 years<br />
+Wait about 2000 years
 </p>
 
-<div id="org180803d" class="figure">
-<p><img src="images/sdk-3.jpg" alt="sdk-3.jpg" width="500" /><br />
+<div id="org01f6256" class="figure">
+<p><img src="images/sdk-3.jpg" alt="sdk-3.jpg" width="500" />
 </p>
 <p><span class="figure-number">Figure 4: </span>Install Firebase SDK #3</p>
 </div></li>
 <li><p>
-Choose the Firebase products that you want installed in your app.<br />
+Choose the Firebase products that you want installed in your app.
 </p>
 
-<div id="orgf1557fd" class="figure">
-<p><img src="images/sdk-4.jpg" alt="sdk-4.jpg" width="500" /><br />
+<div id="org741ec1a" class="figure">
+<p><img src="images/sdk-4.jpg" alt="sdk-4.jpg" width="500" />
 </p>
 <p><span class="figure-number">Figure 5: </span>Install Firebase SDK #4</p>
 </div></li>
 <li><p>
-DEMO<br />
+DEMO
 </p>
 
-<div id="org6019d86" class="figure">
-<p><img src="images/sdk.gif" alt="sdk.gif" width="500" /><br />
+<div id="org221a9c3" class="figure">
+<p><img src="images/sdk.gif" alt="sdk.gif" width="500" />
 </p>
 <p><span class="figure-number">Figure 6: </span>Install Firebase SDK #DEMO</p>
 </div></li>
 </ol>
 </div>
-</div>
-<div id="outline-container-org98a5399" class="outline-5">
-<h5 id="org98a5399"><span class="section-number-5">5.2.2.3</span> Initialize Project</h5>
+</li>
+<li><a id="org176263d"></a>Initialize Project<br />
 <div class="outline-text-5" id="text-5-2-2-3">
 <ol class="org-ol">
-<li>Open your project (xcworkspace)<br /></li>
-<li>add config file (GoogleService-info.plist) to your project<br /></li>
+<li>Open your project (xcworkspace)</li>
+<li>add config file (GoogleService-info.plist) to your project</li>
 <li><p>
-Add initialization code<br />
+Add initialization code
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">import</span> Firebase
 </pre>
 </div>
 <p>
-Initilize the App struct by adding the following code<br />
+Initilize the App struct by adding the following code
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> SwiftUI
@@ -1083,15 +1084,16 @@ Initilize the App struct by adding the following code<br />
 </div></li>
 </ol>
 </div>
-</div>
+</li>
+</ol>
 </div>
 </div>
 
-<div id="outline-container-org8728b85" class="outline-3">
-<h3 id="org8728b85"><span class="section-number-3">5.3</span> 資料來源</h3>
+<div id="outline-container-org3b17e6b" class="outline-3">
+<h3 id="org3b17e6b"><span class="section-number-3">5.3</span> 資料來源</h3>
 <div class="outline-text-3" id="text-5-3">
 <ul class="org-ul">
-<li><a href="https://1998design.medium.com/%E5%A6%82%E4%BD%95-%E5%B0%87firebase%E5%8A%A0%E5%85%A5ios-swiftui-2-2020-d4315d0173ca">如何：將Firebase加入iOS SwiftUI 2 (2020)</a><br /></li>
+<li><a href="https://1998design.medium.com/%E5%A6%82%E4%BD%95-%E5%B0%87firebase%E5%8A%A0%E5%85%A5ios-swiftui-2-2020-d4315d0173ca">如何：將Firebase加入iOS SwiftUI 2 (2020)</a></li>
 </ul>
 </div>
 </div>
@@ -1101,29 +1103,29 @@ Initilize the App struct by adding the following code<br />
 <h2 id="SW-Firebase-BasicOperations"><span class="section-number-2">6</span> Basic operations to Firebase with iOS</h2>
 <div class="outline-text-2" id="text-SW-Firebase-BasicOperations">
 <ul class="org-ul">
-<li>Important: Check/Edit the rules of your Cloud Firestore before connecting to it.<br /></li>
+<li>Important: Check/Edit the rules of your Cloud Firestore before connecting to it.</li>
 </ul>
 <p>
-Create a button on View for trying the following function<br />
+Create a button on View for trying the following function
 </p>
 </div>
-<div id="outline-container-org956acc6" class="outline-3">
-<h3 id="org956acc6"><span class="section-number-3">6.1</span> Add document</h3>
+<div id="outline-container-org5720e86" class="outline-3">
+<h3 id="org5720e86"><span class="section-number-3">6.1</span> Add document</h3>
 <div class="outline-text-3" id="text-6-1">
 </div>
-<div id="outline-container-orgd607fbd" class="outline-4">
-<h4 id="orgd607fbd"><span class="section-number-4">6.1.1</span> create a document with specific document ID</h4>
+<div id="outline-container-org4694dc9" class="outline-4">
+<h4 id="org4694dc9"><span class="section-number-4">6.1.1</span> create a document with specific document ID</h4>
 <div class="outline-text-4" id="text-6-1-1">
 <ul class="org-ul">
 <li><p>
-setData<br />
+setData
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span>store.<span style="color: #c678dd;">collection</span>(<span style="color: #98be65;">"tasks"</span>).<span style="color: #c678dd;">document</span>().<span style="color: #c678dd;">setData</span>(documentData: [<span style="color: #c678dd;">String</span> : Any])
 </pre>
 </div></li>
 <li><p>
-setData and catch error<br />
+setData and catch error
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span>store.<span style="color: #c678dd;">collection</span>(<span style="color: #98be65;">"tasks"</span>).<span style="color: #c678dd;">document</span>().<span style="color: #c678dd;">setData</span>(documentData: [<span style="color: #c678dd;">String</span> : Any]) {
@@ -1138,8 +1140,8 @@ setData and catch error<br />
 </pre>
 </div></li>
 <li><p>
-範例<br />
-ContentView.swift<br />
+範例
+ContentView.swift
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #5B6268;">//  </span><span style="color: #5B6268;">Created by yen yung chin on 2021/3/17.</span>
@@ -1158,23 +1160,23 @@ ContentView.swift<br />
 <span class="linenr">14: </span>}
 </pre>
 </div></li>
-<li>Question: What happen if you try to repeat clicking button to add document with the same ID<br /></li>
+<li>Question: What happen if you try to repeat clicking button to add document with the same ID</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd4d60c0" class="outline-4">
-<h4 id="orgd4d60c0"><span class="section-number-4">6.1.2</span> create a document with auto-generate document ID</h4>
+<div id="outline-container-org9a48ae7" class="outline-4">
+<h4 id="org9a48ae7"><span class="section-number-4">6.1.2</span> create a document with auto-generate document ID</h4>
 <div class="outline-text-4" id="text-6-1-2">
 <ul class="org-ul">
 <li><p>
-addDocument()<br />
+addDocument()
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span>store.<span style="color: #c678dd;">collection</span>(<span style="color: #98be65;">"tasks"</span>).<span style="color: #c678dd;">addDocument</span>(data: [<span style="color: #c678dd;">String</span> : Any]&gt;)
 </pre>
 </div></li>
 <li><p>
-add document and catch error<br />
+add document and catch error
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #5B6268;">//  </span><span style="color: #5B6268;">Created by yen yung chin on 2021/3/17.</span>
@@ -1187,8 +1189,8 @@ add document and catch error<br />
 <span class="linenr">8: </span>}
 </pre>
 </div></li>
-<li>範例<br />
-ContentView.swift<br /></li>
+<li>範例
+ContentView.swift</li>
 </ul>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #5B6268;">//  </span><span style="color: #5B6268;">Created by yen yung chin on 2021/3/17.</span>
@@ -1217,24 +1219,24 @@ ContentView.swift<br /></li>
 </div>
 </div>
 
-<div id="outline-container-org84921e2" class="outline-3">
-<h3 id="org84921e2"><span class="section-number-3">6.2</span> Get data from Cloud Firestore: Basic</h3>
+<div id="outline-container-org21a2f32" class="outline-3">
+<h3 id="org21a2f32"><span class="section-number-3">6.2</span> Get data from Cloud Firestore: Basic</h3>
 <div class="outline-text-3" id="text-6-2">
 </div>
-<div id="outline-container-org62093a2" class="outline-4">
-<h4 id="org62093a2"><span class="section-number-4">6.2.1</span> Getting collection</h4>
+<div id="outline-container-org25df4fa" class="outline-4">
+<h4 id="org25df4fa"><span class="section-number-4">6.2.1</span> Getting collection</h4>
 <div class="outline-text-4" id="text-6-2-1">
 <ul class="org-ul">
 <li><p>
-語法<br />
+語法
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span>
 </pre>
 </div></li>
 <li><p>
-範例<br />
-ContentView.swift<br />
+範例
+ContentView.swift
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #5B6268;">//  </span><span style="color: #5B6268;">Created by yen yung chin on 2021/3/17.</span>
@@ -1265,12 +1267,12 @@ ContentView.swift<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-orgfc0c508" class="outline-4">
-<h4 id="orgfc0c508"><span class="section-number-4">6.2.2</span> Getting document</h4>
+<div id="outline-container-org68ce47f" class="outline-4">
+<h4 id="org68ce47f"><span class="section-number-4">6.2.2</span> Getting document</h4>
 <div class="outline-text-4" id="text-6-2-2">
 <ul class="org-ul">
 <li><p>
-語法<br />
+語法
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">let</span> docRef = db.<span style="color: #c678dd;">collection</span>().<span style="color: #c678dd;">document</span>()
@@ -1285,8 +1287,8 @@ ContentView.swift<br />
 </pre>
 </div></li>
 <li><p>
-範例<br />
-ContentView.swift<br />
+範例
+ContentView.swift
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #5B6268;">//  </span><span style="color: #5B6268;">Created by yen yung chin on 2021/3/17.</span>
@@ -1325,22 +1327,22 @@ ContentView.swift<br />
 <h2 id="SW-GetDataFromCloud"><span class="section-number-2">7</span> Get data from Cloud: UI with Firebase [MVVM]</h2>
 <div class="outline-text-2" id="text-SW-GetDataFromCloud">
 </div>
-<div id="outline-container-org8ba1589" class="outline-3">
-<h3 id="org8ba1589"><span class="section-number-3">7.1</span> MVVM architecture</h3>
+<div id="outline-container-orgdde8036" class="outline-3">
+<h3 id="orgdde8036"><span class="section-number-3">7.1</span> MVVM architecture</h3>
 <div class="outline-text-3" id="text-7-1">
 
-<div id="orgf34190f" class="figure">
-<p><img src="images/mvvm-d2.png" alt="mvvm-d2.png" width="500" /><br />
+<div id="org84ae69a" class="figure">
+<p><img src="images/mvvm-d2.png" alt="mvvm-d2.png" width="500" />
 </p>
 <p><span class="figure-number">Figure 7: </span>MVVM for FirebaseApp</p>
 </div>
 </div>
 </div>
-<div id="outline-container-org351b90a" class="outline-3">
-<h3 id="org351b90a"><span class="section-number-3">7.2</span> Model</h3>
+<div id="outline-container-orge3d96b1" class="outline-3">
+<h3 id="orge3d96b1"><span class="section-number-3">7.2</span> Model</h3>
 <div class="outline-text-3" id="text-7-2">
 <p>
-Task.swift<br />
+Task.swift
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> Foundation
@@ -1357,11 +1359,11 @@ Task.swift<br />
 </div>
 </div>
 </div>
-<div id="outline-container-orgc722cf9" class="outline-3">
-<h3 id="orgc722cf9"><span class="section-number-3">7.3</span> View</h3>
+<div id="outline-container-org1ac469a" class="outline-3">
+<h3 id="org1ac469a"><span class="section-number-3">7.3</span> View</h3>
 <div class="outline-text-3" id="text-7-3">
 <p>
-TaskListView.swift<br />
+TaskListView.swift
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> SwiftUI
@@ -1380,12 +1382,12 @@ TaskListView.swift<br />
 </div>
 </div>
 </div>
-<div id="outline-container-orgd411c90" class="outline-3">
-<h3 id="orgd411c90"><span class="section-number-3">7.4</span> ViewModel</h3>
+<div id="outline-container-org32b313e" class="outline-3">
+<h3 id="org32b313e"><span class="section-number-3">7.4</span> ViewModel</h3>
 <div class="outline-text-3" id="text-7-4">
 <ul class="org-ul">
 <li><p>
-TaskCellViewModel.swift<br />
+TaskCellViewModel.swift
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> Foundation
@@ -1410,7 +1412,7 @@ TaskCellViewModel.swift<br />
 </pre>
 </div></li>
 <li><p>
-TaskListViewModel.swift<br />
+TaskListViewModel.swift
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> Foundation
@@ -1437,11 +1439,11 @@ TaskListViewModel.swift<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd408001" class="outline-3">
-<h3 id="orgd408001"><span class="section-number-3">7.5</span> Repository</h3>
+<div id="outline-container-orgf26c326" class="outline-3">
+<h3 id="orgf26c326"><span class="section-number-3">7.5</span> Repository</h3>
 <div class="outline-text-3" id="text-7-5">
 <p>
-TaskRepository.swift<br />
+TaskRepository.swift
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span>
@@ -1477,16 +1479,16 @@ TaskRepository.swift<br />
 </div>
 </div>
 
-<div id="outline-container-org8e6d1e2" class="outline-3">
-<h3 id="org8e6d1e2"><span class="section-number-3">7.6</span> 資料來源</h3>
+<div id="outline-container-org86401cc" class="outline-3">
+<h3 id="org86401cc"><span class="section-number-3">7.6</span> 資料來源</h3>
 <div class="outline-text-3" id="text-7-6">
 <ul class="org-ul">
-<li><a href="https://www.raywenderlich.com/11609977-getting-started-with-cloud-firestore-and-swiftui">Getting Started with Cloud Firestore and SwiftUI</a><br /></li>
-<li><a href="https://medium.com/%E5%BD%BC%E5%BE%97%E6%BD%98%E7%9A%84-swift-ios-app-%E9%96%8B%E7%99%BC%E5%95%8F%E9%A1%8C%E8%A7%A3%E7%AD%94%E9%9B%86/%E8%AE%80%E5%8F%96-cloud-firestore-%E7%9A%84-database-203bdcdb5661">讀取 Cloud Firestore 的 database</a><br /></li>
-<li><a href="https://cloud.google.com/firestore/docs/query-data/get-data">Getting data</a><br /></li>
-<li><a href="https://medium.com/%E5%BD%BC%E5%BE%97%E6%BD%98%E7%9A%84-swift-ios-app-%E9%96%8B%E7%99%BC%E5%95%8F%E9%A1%8C%E8%A7%A3%E7%AD%94%E9%9B%86/%E5%88%A9%E7%94%A8-firebasefirestoreswift-%E5%B0%87-firestore-%E7%9A%84%E8%B3%87%E6%96%99%E8%AE%8A%E6%88%90%E8%87%AA%E8%A8%82%E5%9E%8B%E5%88%A5-89f33c852018">利用 FirebaseFirestoreSwift 將 Firestore 的資料變成自訂型別</a><br /></li>
-<li><a href="https://peterfriese.dev/swiftui-firebase-codable/">SwiftUI: Mapping Firestore Documents using Swift Codable</a><br /></li>
-<li><a href="https://peterfriese.dev/swiftui-firebase-fetch-data/">SwiftUI: Fetching Data from Firestore in Real Time</a><br /></li>
+<li><a href="https://www.raywenderlich.com/11609977-getting-started-with-cloud-firestore-and-swiftui">Getting Started with Cloud Firestore and SwiftUI</a></li>
+<li><a href="https://medium.com/%E5%BD%BC%E5%BE%97%E6%BD%98%E7%9A%84-swift-ios-app-%E9%96%8B%E7%99%BC%E5%95%8F%E9%A1%8C%E8%A7%A3%E7%AD%94%E9%9B%86/%E8%AE%80%E5%8F%96-cloud-firestore-%E7%9A%84-database-203bdcdb5661">讀取 Cloud Firestore 的 database</a></li>
+<li><a href="https://cloud.google.com/firestore/docs/query-data/get-data">Getting data</a></li>
+<li><a href="https://medium.com/%E5%BD%BC%E5%BE%97%E6%BD%98%E7%9A%84-swift-ios-app-%E9%96%8B%E7%99%BC%E5%95%8F%E9%A1%8C%E8%A7%A3%E7%AD%94%E9%9B%86/%E5%88%A9%E7%94%A8-firebasefirestoreswift-%E5%B0%87-firestore-%E7%9A%84%E8%B3%87%E6%96%99%E8%AE%8A%E6%88%90%E8%87%AA%E8%A8%82%E5%9E%8B%E5%88%A5-89f33c852018">利用 FirebaseFirestoreSwift 將 Firestore 的資料變成自訂型別</a></li>
+<li><a href="https://peterfriese.dev/swiftui-firebase-codable/">SwiftUI: Mapping Firestore Documents using Swift Codable</a></li>
+<li><a href="https://peterfriese.dev/swiftui-firebase-fetch-data/">SwiftUI: Fetching Data from Firestore in Real Time</a></li>
 </ul>
 </div>
 </div>
@@ -1496,11 +1498,11 @@ TaskRepository.swift<br />
 <h2 id="SW-Delete"><span class="section-number-2">8</span> Add, Delete #1 data from Cloud: UI with Firebase [MVVM]</h2>
 <div class="outline-text-2" id="text-SW-Delete">
 </div>
-<div id="outline-container-org67c0446" class="outline-3">
-<h3 id="org67c0446"><span class="section-number-3">8.1</span> Repository</h3>
+<div id="outline-container-orga8aa3ba" class="outline-3">
+<h3 id="orga8aa3ba"><span class="section-number-3">8.1</span> Repository</h3>
 <div class="outline-text-3" id="text-8-1">
 <p>
-TaskRepository.swift<br />
+TaskRepository.swift
 </p>
 <div class="org-src-container">
 <pre class="src src-python"><span class="linenr"> 1: </span>func add(task: Task) {
@@ -1530,11 +1532,12 @@ TaskRepository.swift<br />
 </div>
 </div>
 </div>
-<div id="outline-container-org10e6082" class="outline-3">
-<h3 id="org10e6082"><span class="section-number-3">8.2</span> View</h3>
+
+<div id="outline-container-org273ef08" class="outline-3">
+<h3 id="org273ef08"><span class="section-number-3">8.2</span> View</h3>
 <div class="outline-text-3" id="text-8-2">
 <p>
-TaskListView.swift<br />
+TaskListView.swift
 </p>
 <div class="org-src-container">
 <pre class="src src-python"><span class="linenr"> 1: </span>//
@@ -1579,11 +1582,12 @@ TaskListView.swift<br />
 </div>
 </div>
 </div>
-<div id="outline-container-orgee60ac6" class="outline-3">
-<h3 id="orgee60ac6"><span class="section-number-3">8.3</span> ViewModel</h3>
+
+<div id="outline-container-org577bfe0" class="outline-3">
+<h3 id="org577bfe0"><span class="section-number-3">8.3</span> ViewModel</h3>
 <div class="outline-text-3" id="text-8-3">
 <p>
-TaskListViewModel.swift<br />
+TaskListViewModel.swift
 </p>
 <div class="org-src-container">
 <pre class="src src-python"><span class="linenr"> 1: </span>//
@@ -1625,12 +1629,12 @@ TaskListViewModel.swift<br />
 </div>
 </div>
 
-<div id="outline-container-org8f89a0f" class="outline-2">
-<h2 id="org8f89a0f"><span class="section-number-2">9</span> Delete #2 data from Cloud: UI with Firebase [MVVM]</h2>
+<div id="outline-container-orgb89355e" class="outline-2">
+<h2 id="orgb89355e"><span class="section-number-2">9</span> Delete #2 data from Cloud: UI with Firebase [MVVM]</h2>
 <div class="outline-text-2" id="text-9">
 </div>
-<div id="outline-container-orga88044f" class="outline-3">
-<h3 id="orga88044f"><span class="section-number-3">9.1</span> Repository</h3>
+<div id="outline-container-orge3a7e4c" class="outline-3">
+<h3 id="orge3a7e4c"><span class="section-number-3">9.1</span> Repository</h3>
 <div class="outline-text-3" id="text-9-1">
 <div class="org-src-container">
 <pre class="src src-python"><span class="linenr"> 1: </span>//
@@ -1710,8 +1714,9 @@ TaskListViewModel.swift<br />
 </div>
 </div>
 </div>
-<div id="outline-container-org91924bd" class="outline-3">
-<h3 id="org91924bd"><span class="section-number-3">9.2</span> View</h3>
+
+<div id="outline-container-org782d73e" class="outline-3">
+<h3 id="org782d73e"><span class="section-number-3">9.2</span> View</h3>
 <div class="outline-text-3" id="text-9-2">
 <div class="org-src-container">
 <pre class="src src-python"><span class="linenr"> 1: </span>//
@@ -1765,8 +1770,9 @@ TaskListViewModel.swift<br />
 </div>
 </div>
 </div>
-<div id="outline-container-org2ba1a27" class="outline-3">
-<h3 id="org2ba1a27"><span class="section-number-3">9.3</span> ViewModel</h3>
+
+<div id="outline-container-org9d245f4" class="outline-3">
+<h3 id="org9d245f4"><span class="section-number-3">9.3</span> ViewModel</h3>
 <div class="outline-text-3" id="text-9-3">
 <div class="org-src-container">
 <pre class="src src-python"><span class="linenr"> 1: </span>//
@@ -1816,11 +1822,11 @@ TaskListViewModel.swift<br />
 <h2 id="SW-Detail"><span class="section-number-2">10</span> Detail/Edit data from Cloud: UI with Firebase [MVVM]</h2>
 <div class="outline-text-2" id="text-SW-Detail">
 </div>
-<div id="outline-container-org7b24bba" class="outline-3">
-<h3 id="org7b24bba"><span class="section-number-3">10.1</span> Repository</h3>
+<div id="outline-container-org5b28909" class="outline-3">
+<h3 id="org5b28909"><span class="section-number-3">10.1</span> Repository</h3>
 <div class="outline-text-3" id="text-10-1">
 <p>
-TaskRepository.swift<br />
+TaskRepository.swift
 </p>
 <div class="org-src-container">
 <pre class="src src-python"><span class="linenr"> 1: </span>//
@@ -1908,12 +1914,12 @@ TaskRepository.swift<br />
 </div>
 </div>
 
-<div id="outline-container-org9474bc8" class="outline-3">
-<h3 id="org9474bc8"><span class="section-number-3">10.2</span> View</h3>
+<div id="outline-container-org538f0e7" class="outline-3">
+<h3 id="org538f0e7"><span class="section-number-3">10.2</span> View</h3>
 <div class="outline-text-3" id="text-10-2">
 </div>
-<div id="outline-container-orgb26332e" class="outline-4">
-<h4 id="orgb26332e"><span class="section-number-4">10.2.1</span> TaskListView.swift</h4>
+<div id="outline-container-org54fde8e" class="outline-4">
+<h4 id="org54fde8e"><span class="section-number-4">10.2.1</span> TaskListView.swift</h4>
 <div class="outline-text-4" id="text-10-2-1">
 <div class="org-src-container">
 <pre class="src src-python"><span class="linenr"> 1: </span>//
@@ -1972,8 +1978,9 @@ TaskRepository.swift<br />
 </div>
 </div>
 </div>
-<div id="outline-container-orge655a99" class="outline-4">
-<h4 id="orge655a99"><span class="section-number-4">10.2.2</span> TaskDetailView.swift</h4>
+
+<div id="outline-container-org6103f7a" class="outline-4">
+<h4 id="org6103f7a"><span class="section-number-4">10.2.2</span> TaskDetailView.swift</h4>
 <div class="outline-text-4" id="text-10-2-2">
 <div class="org-src-container">
 <pre class="src src-python"><span class="linenr"> 1: </span>//
@@ -2022,8 +2029,9 @@ TaskRepository.swift<br />
 </div>
 </div>
 </div>
-<div id="outline-container-orgfa0d18c" class="outline-4">
-<h4 id="orgfa0d18c"><span class="section-number-4">10.2.3</span> UpdateListView.swift</h4>
+
+<div id="outline-container-org6f56af6" class="outline-4">
+<h4 id="org6f56af6"><span class="section-number-4">10.2.3</span> UpdateListView.swift</h4>
 <div class="outline-text-4" id="text-10-2-3">
 <div class="org-src-container">
 <pre class="src src-python"><span class="linenr"> 1: </span>//
@@ -2070,12 +2078,12 @@ TaskRepository.swift<br />
 </div>
 </div>
 
-<div id="outline-container-org25b8e6f" class="outline-3">
-<h3 id="org25b8e6f"><span class="section-number-3">10.3</span> ViewModel</h3>
+<div id="outline-container-org1df1c8c" class="outline-3">
+<h3 id="org1df1c8c"><span class="section-number-3">10.3</span> ViewModel</h3>
 <div class="outline-text-3" id="text-10-3">
 </div>
-<div id="outline-container-orge858e05" class="outline-4">
-<h4 id="orge858e05"><span class="section-number-4">10.3.1</span> TaskListViewModel.swift</h4>
+<div id="outline-container-org4ccad4d" class="outline-4">
+<h4 id="org4ccad4d"><span class="section-number-4">10.3.1</span> TaskListViewModel.swift</h4>
 <div class="outline-text-4" id="text-10-3-1">
 <div class="org-src-container">
 <pre class="src src-python"><span class="linenr"> 1: </span>//
@@ -2122,8 +2130,9 @@ TaskRepository.swift<br />
 </div>
 </div>
 </div>
-<div id="outline-container-org024a6ee" class="outline-4">
-<h4 id="org024a6ee"><span class="section-number-4">10.3.2</span> TaskCellViewModel.swift</h4>
+
+<div id="outline-container-org106c538" class="outline-4">
+<h4 id="org106c538"><span class="section-number-4">10.3.2</span> TaskCellViewModel.swift</h4>
 <div class="outline-text-4" id="text-10-3-2">
 <div class="org-src-container">
 <pre class="src src-python"><span class="linenr"> 1: </span>//
@@ -2158,12 +2167,13 @@ TaskRepository.swift<br />
 </div>
 </div>
 </div>
-<div id="outline-container-org03da2a4" class="outline-4">
-<h4 id="org03da2a4"><span class="section-number-4">10.3.3</span> DEMO</h4>
+
+<div id="outline-container-orgb3a85ae" class="outline-4">
+<h4 id="orgb3a85ae"><span class="section-number-4">10.3.3</span> DEMO</h4>
 <div class="outline-text-4" id="text-10-3-3">
 
-<div id="org64ce274" class="figure">
-<p><img src="images/Update-Edit.gif" alt="Update-Edit.gif" width="300" /><br />
+<div id="org9549800" class="figure">
+<p><img src="images/Update-Edit.gif" alt="Update-Edit.gif" width="300" />
 </p>
 <p><span class="figure-number">Figure 8: </span>Detail / Edit DEMO</p>
 </div>
@@ -2176,12 +2186,12 @@ TaskRepository.swift<br />
 <h2 id="SW-Icon"><span class="section-number-2">11</span> Add Icon to App</h2>
 <div class="outline-text-2" id="text-SW-Icon">
 </div>
-<div id="outline-container-orgee57f3a" class="outline-3">
-<h3 id="orgee57f3a"><span class="section-number-3">11.1</span> ViewModel</h3>
+<div id="outline-container-org837a2e1" class="outline-3">
+<h3 id="org837a2e1"><span class="section-number-3">11.1</span> ViewModel</h3>
 <div class="outline-text-3" id="text-11-1">
 </div>
-<div id="outline-container-orgad58e12" class="outline-4">
-<h4 id="orgad58e12"><span class="section-number-4">11.1.1</span> TaskCellViewModel.swift</h4>
+<div id="outline-container-org16f63bf" class="outline-4">
+<h4 id="org16f63bf"><span class="section-number-4">11.1.1</span> TaskCellViewModel.swift</h4>
 <div class="outline-text-4" id="text-11-1-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #5B6268;">//</span>
@@ -2227,12 +2237,12 @@ TaskRepository.swift<br />
 </div>
 </div>
 </div>
-<div id="outline-container-org65bc294" class="outline-3">
-<h3 id="org65bc294"><span class="section-number-3">11.2</span> View</h3>
+<div id="outline-container-org9c6180e" class="outline-3">
+<h3 id="org9c6180e"><span class="section-number-3">11.2</span> View</h3>
 <div class="outline-text-3" id="text-11-2">
 </div>
-<div id="outline-container-org282a3d4" class="outline-4">
-<h4 id="org282a3d4"><span class="section-number-4">11.2.1</span> TaskListView.swift</h4>
+<div id="outline-container-orgc33b580" class="outline-4">
+<h4 id="orgc33b580"><span class="section-number-4">11.2.1</span> TaskListView.swift</h4>
 <div class="outline-text-4" id="text-11-2-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #5B6268;">//</span>
@@ -2300,45 +2310,36 @@ TaskRepository.swift<br />
 </div>
 </div>
 
-<div id="outline-container-org22f5367" class="outline-2">
-<h2 id="org22f5367"><span class="section-number-2">12</span> Create a URLImage</h2>
-<div class="outline-text-2" id="text-12">
-<ul class="org-ul">
-<li><a href="https://www.youtube.com/watch?v=GGp-wT693IY">Downloading Images in SwiftUI</a><br /></li>
-<li><a href="https://www.youtube.com/watch?v=1HN7usMROt8">Firebase Authentication Tutorial 2020 - Custom iOS Login Page (Swift)</a><br /></li>
-</ul>
+<div id="outline-container-SW-Firebase-Storage" class="outline-2">
+<h2 id="SW-Firebase-Storage"><span class="section-number-2">12</span> Storage</h2>
+<div class="outline-text-2" id="text-SW-Firebase-Storage">
 </div>
-</div>
-
-<div id="outline-container-orgcd4d2d9" class="outline-2">
-<h2 id="orgcd4d2d9"><span class="section-number-2">13</span> Storage</h2>
-<div class="outline-text-2" id="text-13">
-</div>
-<div id="outline-container-orgbcddf7d" class="outline-3">
-<h3 id="orgbcddf7d"><span class="section-number-3">13.1</span> preparation</h3>
-<div class="outline-text-3" id="text-13-1">
+<div id="outline-container-org0a2e916" class="outline-3">
+<h3 id="org0a2e916"><span class="section-number-3">12.1</span> preparation</h3>
+<div class="outline-text-3" id="text-12-1">
 <ol class="org-ol">
-<li>Add Firebase/Strage Library<br /></li>
-<li>Restart Xcode<br /></li>
-<li>Check if you can import FirebaseStorage<br /></li>
-<li>Enable Firebase/Storage on console<br /></li>
-<li>Change Storage Rules<br /></li>
+<li>Add Firebase/Strage Library</li>
+<li>Restart Xcode</li>
+<li>Check if you can import FirebaseStorage</li>
+<li>Enable Firebase/Storage on console</li>
+<li>Change Storage Rules</li>
 </ol>
 </div>
 </div>
-<div id="outline-container-orgf4a6c67" class="outline-3">
-<h3 id="orgf4a6c67"><span class="section-number-3">13.2</span> tips</h3>
-<div class="outline-text-3" id="text-13-2">
+
+<div id="outline-container-org5f58ac9" class="outline-3">
+<h3 id="org5f58ac9"><span class="section-number-3">12.2</span> tips</h3>
+<div class="outline-text-3" id="text-12-2">
 <ol class="org-ol">
 <li><p>
-References point to files<br />
+References point to files
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">let</span> storageRef = FIRStorage.<span style="color: #c678dd;">reference</span>().<span style="color: #c678dd;">child</span>(<span style="color: #98be65;">"folderName/file.jpg"</span>)
 </pre>
 </div></li>
 <li><p>
-Upload files with one method<br />
+Upload files with one method
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">let</span> storageRef = FIRStorage.<span style="color: #c678dd;">reference</span>().<span style="color: #c678dd;">child</span>(<span style="color: #98be65;">"folderName/file.jpg"</span>);
@@ -2349,7 +2350,7 @@ Upload files with one method<br />
 </pre>
 </div></li>
 <li><p>
-Monitor progress with Tasks<br />
+Monitor progress with Tasks
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">let</span> storageRef = FIRStorage.<span style="color: #c678dd;">reference</span>().<span style="color: #c678dd;">child</span>(<span style="color: #98be65;">"folderName/file.jpg"</span>);
@@ -2364,7 +2365,7 @@ Monitor progress with Tasks<br />
 </pre>
 </div></li>
 <li><p>
-Download files with one method<br />
+Download files with one method
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">let</span> storageRef = FIRStorage.<span style="color: #c678dd;">reference</span>().<span style="color: #c678dd;">child</span>(<span style="color: #98be65;">"folderName/file.jpg"</span>);
@@ -2378,7 +2379,7 @@ Download files with one method<br />
 </pre>
 </div></li>
 <li><p>
-User based security with Storage Security Rules<br />
+User based security with Storage Security Rules
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #5B6268;">// </span><span style="color: #5B6268;">Only a user can upload their profile picture, but anyone can view it</span>
@@ -2395,43 +2396,399 @@ User based security with Storage Security Rules<br />
 </div></li>
 </ol>
 <p>
-<a href="https://firebase.googleblog.com/2016/07/5-tips-for-firebase-storage.html">5 tips for Firebase Storage </a><br />
+<a href="https://firebase.googleblog.com/2016/07/5-tips-for-firebase-storage.html">5 tips for Firebase Storage </a>
 </p>
+</div>
+</div>
+
+<div id="outline-container-org6892ff5" class="outline-3">
+<h3 id="org6892ff5"><span class="section-number-3">12.3</span> How to pick image in iOS</h3>
+<div class="outline-text-3" id="text-12-3">
+</div>
+<div id="outline-container-orge2fa5c6" class="outline-4">
+<h4 id="orge2fa5c6"><span class="section-number-4">12.3.1</span> Utility: ImagePicker</h4>
+<div class="outline-text-4" id="text-12-3-1">
+<p>
+ImagePicker.swift
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> SwiftUI
+<span class="linenr"> 2: </span>
+<span class="linenr"> 3: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">ImagePicker</span>: UIViewControllerRepresentable {
+<span class="linenr"> 4: </span>
+<span class="linenr"> 5: </span>  <span style="color: #51afef;">@Binding</span> <span style="color: #51afef;">var</span> image: UIImage?
+<span class="linenr"> 6: </span>  <span style="color: #51afef;">@Binding</span> <span style="color: #51afef;">var</span> isShown: <span style="color: #c678dd;">Bool</span>
+<span class="linenr"> 7: </span>
+<span class="linenr"> 8: </span>  <span style="color: #51afef;">func</span> <span style="color: #c678dd;">makeCoordinator</span>() -&gt; Coordinator {
+<span class="linenr"> 9: </span>    <span style="color: #51afef;">return</span> <span style="color: #c678dd;">Coordinator</span>(isShown: $isShown, image: $image)
+<span class="linenr">10: </span>  }
+<span class="linenr">11: </span>
+<span class="linenr">12: </span>  <span style="color: #51afef;">func</span> <span style="color: #c678dd;">makeUIViewController</span>(context: UIViewControllerRepresentableContext&lt;ImagePicker&gt;) -&gt; UIImagePickerController {
+<span class="linenr">13: </span>    <span style="color: #51afef;">let</span> picker = <span style="color: #c678dd;">UIImagePickerController</span>()
+<span class="linenr">14: </span>    picker.<span style="color: #c678dd;">delegate</span> = context.<span style="color: #dcaeea;">coordinator</span>
+<span class="linenr">15: </span>    <span style="color: #51afef;">return</span> picker
+<span class="linenr">16: </span>  }
+<span class="linenr">17: </span>
+<span class="linenr">18: </span>  <span style="color: #51afef;">func</span> <span style="color: #c678dd;">updateUIViewController</span>(_ uiViewController: UIImagePickerController,
+<span class="linenr">19: </span>                              context: UIViewControllerRepresentableContext&lt;ImagePicker&gt;) {
+<span class="linenr">20: </span>
+<span class="linenr">21: </span>  }
+<span class="linenr">22: </span>
+<span class="linenr">23: </span>  <span style="color: #51afef;">class</span> <span style="color: #c678dd;">Coordinator</span>: <span style="color: #c678dd;">NSObject</span>, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+<span class="linenr">24: </span>
+<span class="linenr">25: </span>    <span style="color: #51afef;">@Binding</span> <span style="color: #51afef;">var</span> image: UIImage?
+<span class="linenr">26: </span>    <span style="color: #51afef;">@Binding</span> <span style="color: #51afef;">var</span> isShown: <span style="color: #c678dd;">Bool</span>
+<span class="linenr">27: </span>
+<span class="linenr">28: </span>    <span style="color: #51afef;">init</span>(isShown: Binding&lt;<span style="color: #c678dd;">Bool</span>&gt;, image: Binding&lt;UIImage?&gt;) {
+<span class="linenr">29: </span>      _isShown = isShown
+<span class="linenr">30: </span>      _image = image
+<span class="linenr">31: </span>    }
+<span class="linenr">32: </span>
+<span class="linenr">33: </span>    <span style="color: #51afef;">func</span> <span style="color: #c678dd;">imagePickerController</span>(_ picker: UIImagePickerController,
+<span class="linenr">34: </span>                               didFinishPickingMediaWithInfo info: [UIImagePickerController.<span style="color: #dcaeea;">InfoKey</span> : Any]) {
+<span class="linenr">35: </span>      image = info[UIImagePickerController.<span style="color: #dcaeea;">InfoKey</span>.<span style="color: #dcaeea;">originalImage</span>] <span style="color: #51afef;">as</span>? UIImage
+<span class="linenr">36: </span>      isShown.<span style="color: #c678dd;">toggle</span>()
+<span class="linenr">37: </span>    }
+<span class="linenr">38: </span>
+<span class="linenr">39: </span>    <span style="color: #51afef;">func</span> <span style="color: #c678dd;">imagePickerControllerDidCancel</span>(_ picker: UIImagePickerController) {
+<span class="linenr">40: </span>      isShown.<span style="color: #c678dd;">toggle</span>()
+<span class="linenr">41: </span>    }
+<span class="linenr">42: </span>  }
+<span class="linenr">43: </span>}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgdaf55f7" class="outline-4">
+<h4 id="orgdaf55f7"><span class="section-number-4">12.3.2</span> How to call ImagePicker in SwiftUI</h4>
+<div class="outline-text-4" id="text-12-3-2">
+<p>
+TaskNewView.swift
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span class="linenr"> 1: </span>//
+<span class="linenr"> 2: </span>//  TaskNewView.swift
+<span class="linenr"> 3: </span>//  FireTask
+<span class="linenr"> 4: </span>//
+<span class="linenr"> 5: </span>//  Created by yen yung chin on <span style="color: #da8548; font-weight: bold;">2021</span>/<span style="color: #da8548; font-weight: bold;">5</span>/<span style="color: #da8548; font-weight: bold;">3</span>.
+<span class="linenr"> 6: </span>//
+<span class="linenr"> 7: </span>
+<span class="linenr"> 8: </span><span style="color: #51afef;">import</span> SwiftUI
+<span class="linenr"> 9: </span><span style="color: #51afef;">import</span> FirebaseStorage
+<span class="linenr">10: </span>
+<span class="linenr">11: </span>struct TaskNewView: View {
+<span class="linenr">12: </span>    <span style="color: #ECBE7B;">@Environment</span>(\.presentationMode) var presentationMode
+<span class="linenr">13: </span>
+<span class="linenr">14: </span>    <span style="color: #ECBE7B;">@ObservedObject</span> var taskListVM = TaskListViewModel()
+<span class="linenr">15: </span>    <span style="color: #ECBE7B;">@State</span> private var title: String = <span style="color: #98be65;">""</span>
+<span class="linenr">16: </span>    <span style="color: #ECBE7B;">@State</span> private var showPhotoLibrary = false
+<span class="linenr">17: </span>    <span style="color: #ECBE7B;">@State</span> var pickedImage: UIImage? = nil
+<span class="linenr">18: </span>    <span style="color: #ECBE7B;">@State</span> private var urlString: String = <span style="color: #98be65;">""</span>
+<span class="linenr">19: </span>
+<span class="linenr">20: </span>    var body: some View {
+<span class="linenr">21: </span>        VStack {
+<span class="linenr">22: </span>            Image(uiImage: ((pickedImage ?? UIImage(systemName: <span style="color: #98be65;">"camera"</span>))!))
+<span class="linenr">23: </span>                .resizable()
+<span class="linenr">24: </span>                .aspectRatio(contentMode: .fill)
+<span class="linenr">25: </span>                .frame(width: <span style="color: #da8548; font-weight: bold;">200</span>, height: <span style="color: #da8548; font-weight: bold;">180</span>, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+<span class="linenr">26: </span>                .clipped()
+<span class="linenr">27: </span>                .aspectRatio(contentMode: .fit)
+<span class="linenr">28: </span>
+<span class="linenr">29: </span>                .onTapGesture {
+<span class="linenr">30: </span>                    <span style="color: #51afef;">self</span>.showPhotoLibrary.toggle()
+<span class="linenr">31: </span>                }
+<span class="linenr">32: </span>            TextField(<span style="color: #98be65;">"Task Title"</span>, text: <span style="color: #51afef;">self</span>.$title)
+<span class="linenr">33: </span>                .textFieldStyle(RoundedBorderTextFieldStyle())
+<span class="linenr">34: </span>
+<span class="linenr">35: </span>            Button(<span style="color: #98be65;">"Add Task"</span>) {
+<span class="linenr">36: </span>                // Upload image <span style="color: #51afef;">and</span> <span style="color: #51afef;">return</span> URL
+<span class="linenr">37: </span>                let task = Task(title: <span style="color: #51afef;">self</span>.title, imageRefStr: <span style="color: #98be65;">""</span>, imageUrlStr: <span style="color: #98be65;">""</span>, completed: false)
+<span class="linenr">38: </span>                taskListVM.add(task: task, image: pickedImage!)
+<span class="linenr">39: </span>                <span style="color: #51afef;">self</span>.presentationMode.wrappedValue.dismiss()
+<span class="linenr">40: </span>            }.disabled(title == <span style="color: #98be65;">""</span> || pickedImage==nil)
+<span class="linenr">41: </span>
+<span class="linenr">42: </span>        }
+<span class="linenr">43: </span>        .padding()
+<span class="linenr">44: </span>        .sheet(isPresented: $showPhotoLibrary, onDismiss: {
+<span class="linenr">45: </span>            <span style="color: #51afef;">self</span>.showPhotoLibrary = false
+<span class="linenr">46: </span>        }, content: {
+<span class="linenr">47: </span>            ImagePicker(image: <span style="color: #51afef;">self</span>.$pickedImage, isShown: <span style="color: #51afef;">self</span>.$showPhotoLibrary)
+<span class="linenr">48: </span>        })
+<span class="linenr">49: </span>    }
+<span class="linenr">50: </span>}
+<span class="linenr">51: </span>
+<span class="linenr">52: </span>struct TaskNewView_Previews: PreviewProvider {
+<span class="linenr">53: </span>    static var previews: some View {
+<span class="linenr">54: </span>        TaskNewView()
+<span class="linenr">55: </span>    }
+<span class="linenr">56: </span>}
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1f86e01" class="outline-3">
+<h3 id="org1f86e01"><span class="section-number-3">12.4</span> How to upload image to Firebase storage</h3>
+<div class="outline-text-3" id="text-12-4">
+<p>
+TaskRepository.swift: Upload image and get image URL
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">  1: </span><span style="color: #5B6268;">//</span>
+<span class="linenr">  2: </span><span style="color: #5B6268;">//  </span><span style="color: #5B6268;">TaskRepository.swift</span>
+<span class="linenr">  3: </span><span style="color: #5B6268;">//  </span><span style="color: #5B6268;">FireTask</span>
+<span class="linenr">  4: </span><span style="color: #5B6268;">//</span>
+<span class="linenr">  5: </span><span style="color: #5B6268;">//  </span><span style="color: #5B6268;">Created by yen yung chin on 2021/4/1.</span>
+<span class="linenr">  6: </span><span style="color: #5B6268;">//</span>
+<span class="linenr">  7: </span>
+<span class="linenr">  8: </span>
+<span class="linenr">  9: </span><span style="color: #51afef;">import</span> Foundation
+<span class="linenr"> 10: </span><span style="color: #51afef;">import</span> FirebaseFirestore
+<span class="linenr"> 11: </span><span style="color: #51afef;">import</span> FirebaseFirestoreSwift
+<span class="linenr"> 12: </span><span style="color: #51afef;">import</span> Combine
+<span class="linenr"> 13: </span><span style="color: #51afef;">import</span> FirebaseStorage
+<span class="linenr"> 14: </span><span style="color: #51afef;">import</span> SwiftUI
+<span class="linenr"> 15: </span>
+<span class="linenr"> 16: </span><span style="color: #51afef;">class</span> <span style="color: #c678dd;">TaskRepository</span>: <span style="color: #c678dd;">ObservableObject</span> {
+<span class="linenr"> 17: </span>    <span style="color: #51afef;">private</span> <span style="color: #51afef;">let</span> db = Firestore.<span style="color: #c678dd;">firestore</span>()
+<span class="linenr"> 18: </span>    <span style="color: #51afef;">@Published</span> <span style="color: #51afef;">var</span> tasks = [Task]()
+<span class="linenr"> 19: </span>
+<span class="linenr"> 20: </span>    <span style="color: #51afef;">init</span>() {
+<span class="linenr"> 21: </span>        <span style="color: #c678dd;">loadData</span>()
+<span class="linenr"> 22: </span>    }
+<span class="linenr"> 23: </span>
+<span class="linenr"> 24: </span>    <span style="color: #51afef;">func</span> <span style="color: #c678dd;">loadData</span>() {
+<span class="linenr"> 25: </span>
+<span class="linenr"> 26: </span>        db.<span style="color: #c678dd;">collection</span>(<span style="color: #98be65;">"todo"</span>).<span style="color: #dcaeea;">addSnapshotListener</span> { (querySanpshot, error) <span style="color: #51afef;">in</span>
+<span class="linenr"> 27: </span>
+<span class="linenr"> 28: </span>            <span style="color: #51afef;">if</span> <span style="color: #51afef;">let</span> error = error {
+<span class="linenr"> 29: </span>                <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"&#37679;&#35492;: \(</span>error.<span style="color: #c678dd;">localizedDescription</span><span style="color: #98be65;">)"</span>)
+<span class="linenr"> 30: </span>            }
+<span class="linenr"> 31: </span>            <span style="color: #5B6268;">// </span><span style="color: #5B6268;">method #1</span>
+<span class="linenr"> 32: </span>            <span style="color: #51afef;">self</span>.<span style="color: #dcaeea;">tasks</span> = querySanpshot?.<span style="color: #dcaeea;">documents</span>.<span style="color: #c678dd;">compactMap</span> { document <span style="color: #51afef;">in</span>
+<span class="linenr"> 33: </span>                <span style="color: #51afef;">try</span>? document.<span style="color: #c678dd;">data</span>(<span style="color: #51afef;">as</span>: Task.<span style="color: #51afef;">self</span>)
+<span class="linenr"> 34: </span>            } ?? []
+<span class="linenr"> 35: </span>
+<span class="linenr"> 36: </span>            <span style="color: #5B6268;">// </span><span style="color: #5B6268;">method #2</span>
+<span class="linenr"> 37: </span>            <span style="color: #51afef;">if</span> <span style="color: #51afef;">let</span> querySnapshot = querySanpshot {
+<span class="linenr"> 38: </span>                <span style="color: #51afef;">self</span>.<span style="color: #dcaeea;">tasks</span> = querySnapshot.<span style="color: #dcaeea;">documents</span>.<span style="color: #c678dd;">compactMap</span>({ (queryDocumentSnapshot) -&gt; Task? <span style="color: #51afef;">in</span>
+<span class="linenr"> 39: </span>                    <span style="color: #51afef;">return</span> <span style="color: #51afef;">try</span>? queryDocumentSnapshot.<span style="color: #c678dd;">data</span>(<span style="color: #51afef;">as</span>: Task.<span style="color: #51afef;">self</span>)
+<span class="linenr"> 40: </span>                })
+<span class="linenr"> 41: </span>            }
+<span class="linenr"> 42: </span>        }
+<span class="linenr"> 43: </span>    }
+<span class="linenr"> 44: </span>
+<span class="linenr"> 45: </span>    <span style="color: #51afef;">func</span> <span style="color: #c678dd;">add</span>(task: Task, image: UIImage) {
+<span class="linenr"> 46: </span>        <span style="color: #51afef;">let</span> imageRefStr = <span style="color: #98be65;">"images/\(</span><span style="color: #c678dd;">UUID</span>().<span style="color: #c678dd;">uuidString</span><span style="color: #98be65;">).jpg"</span>
+<span class="linenr"> 47: </span>        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Upload image and return URL and add task</span>
+<span class="linenr"> 48: </span>        <span style="color: #51afef;">let</span> imageRef = Storage.<span style="color: #c678dd;">storage</span>().<span style="color: #c678dd;">reference</span>().<span style="color: #c678dd;">child</span>(imageRefStr)
+<span class="linenr"> 49: </span>        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">we create an upload task using our reference and upload the</span>
+<span class="linenr"> 50: </span>        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">data using the metadata object</span>
+<span class="linenr"> 51: </span>        <span style="color: #51afef;">guard</span> <span style="color: #51afef;">let</span> imageData = image.<span style="color: #c678dd;">jpegData</span>(compressionQuality: <span style="color: #da8548; font-weight: bold;">1</span>) <span style="color: #51afef;">else</span> {
+<span class="linenr"> 52: </span>            <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"compress jpg failed"</span>)
+<span class="linenr"> 53: </span>            <span style="color: #51afef;">return</span>
+<span class="linenr"> 54: </span>        }
+<span class="linenr"> 55: </span>        imageRef.<span style="color: #c678dd;">putData</span>(imageData, metadata: <span style="color: #a9a1e1;">nil</span>, completion: { (metadata, error) <span style="color: #51afef;">in</span>
+<span class="linenr"> 56: </span>            <span style="color: #5B6268;">// </span><span style="color: #5B6268;">first we check if the error is nil</span>
+<span class="linenr"> 57: </span>            <span style="color: #51afef;">if</span> <span style="color: #51afef;">let</span> error = error {
+<span class="linenr"> 58: </span>                <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"putData Errir: \(</span>error<span style="color: #98be65;">)"</span>)
+<span class="linenr"> 59: </span>                <span style="color: #51afef;">return</span>
+<span class="linenr"> 60: </span>            }
+<span class="linenr"> 61: </span>            <span style="color: #5B6268;">// </span><span style="color: #5B6268;">get downloadURL</span>
+<span class="linenr"> 62: </span>            imageRef.<span style="color: #c678dd;">downloadURL</span>(completion: { (url, error) <span style="color: #51afef;">in</span>
+<span class="linenr"> 63: </span>                <span style="color: #51afef;">if</span> <span style="color: #51afef;">let</span> error = error {
+<span class="linenr"> 64: </span>                    <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"getting downloadURL Errir: \(</span>error<span style="color: #98be65;">)"</span>)
+<span class="linenr"> 65: </span>                    <span style="color: #51afef;">return</span>
+<span class="linenr"> 66: </span>                }
+<span class="linenr"> 67: </span>                <span style="color: #5B6268;">// </span><span style="color: #5B6268;">OK, add task</span>
+<span class="linenr"> 68: </span>                <span style="color: #51afef;">guard</span> <span style="color: #51afef;">let</span> imageURL = url <span style="color: #51afef;">else</span> {
+<span class="linenr"> 69: </span>                    <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"Error while uploading image"</span>)
+<span class="linenr"> 70: </span>                    <span style="color: #51afef;">return</span>
+<span class="linenr"> 71: </span>                }
+<span class="linenr"> 72: </span>
+<span class="linenr"> 73: </span>                <span style="color: #51afef;">let</span> urlString = imageURL.<span style="color: #c678dd;">absoluteString</span>
+<span class="linenr"> 74: </span>                <span style="color: #51afef;">let</span> newTask = <span style="color: #c678dd;">Task</span>(title: task.<span style="color: #c678dd;">title</span>, imageRefStr: imageRefStr, imageUrlStr: urlString, completed: task.<span style="color: #c678dd;">completed</span>)
+<span class="linenr"> 75: </span>
+<span class="linenr"> 76: </span>                <span style="color: #51afef;">do</span> {
+<span class="linenr"> 77: </span>                    _ = <span style="color: #51afef;">try</span> <span style="color: #51afef;">self</span>.<span style="color: #dcaeea;">db</span>.<span style="color: #c678dd;">collection</span>(<span style="color: #98be65;">"todo"</span>).<span style="color: #c678dd;">addDocument</span>(from: newTask)
+<span class="linenr"> 78: </span>                } <span style="color: #51afef;">catch</span> {
+<span class="linenr"> 79: </span>                    <span style="color: #c678dd;">fatalError</span>(<span style="color: #98be65;">"Add a task failed"</span>)
+<span class="linenr"> 80: </span>                }
+<span class="linenr"> 81: </span>            })
+<span class="linenr"> 82: </span>        })
+<span class="linenr"> 83: </span>
+<span class="linenr"> 84: </span>    }
+<span class="linenr"> 85: </span>
+<span class="linenr"> 86: </span>    <span style="color: #51afef;">func</span> <span style="color: #c678dd;">delete</span>(indexset: <span style="color: #c678dd;">IndexSet</span>) {
+<span class="linenr"> 87: </span>        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">pass in IndexSet</span>
+<span class="linenr"> 88: </span>        <span style="color: #51afef;">for</span> i <span style="color: #51afef;">in</span> indexset {
+<span class="linenr"> 89: </span>            <span style="color: #c678dd;">print</span>(i)
+<span class="linenr"> 90: </span>        }
+<span class="linenr"> 91: </span>        indexset.<span style="color: #c678dd;">forEach</span> { index <span style="color: #51afef;">in</span>
+<span class="linenr"> 92: </span>            <span style="color: #51afef;">let</span> task = tasks[index]
+<span class="linenr"> 93: </span>            db.<span style="color: #c678dd;">collection</span>(<span style="color: #98be65;">"todo"</span>).<span style="color: #c678dd;">document</span>(task.<span style="color: #dcaeea;">id</span>!).<span style="color: #c678dd;">delete</span>() { error <span style="color: #51afef;">in</span>
+<span class="linenr"> 94: </span>                <span style="color: #51afef;">if</span> <span style="color: #51afef;">let</span> error = error {
+<span class="linenr"> 95: </span>                    <span style="color: #c678dd;">fatalError</span>(<span style="color: #98be65;">"Deleting a task failed, \(</span>error.<span style="color: #c678dd;">localizedDescription</span><span style="color: #98be65;">)"</span>)
+<span class="linenr"> 96: </span>                }
+<span class="linenr"> 97: </span>
+<span class="linenr"> 98: </span>            }
+<span class="linenr"> 99: </span>        }
+<span class="linenr">100: </span>    }
+<span class="linenr">101: </span>    <span style="color: #51afef;">func</span> <span style="color: #c678dd;">delete</span>(task: Task) {
+<span class="linenr">102: </span>        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">pass in Task</span>
+<span class="linenr">103: </span>        <span style="color: #51afef;">guard</span> <span style="color: #51afef;">let</span> documentID = task.<span style="color: #dcaeea;">id</span> <span style="color: #51afef;">else</span> { <span style="color: #51afef;">return</span> }
+<span class="linenr">104: </span>        <span style="color: #51afef;">let</span> imageRef = Storage.<span style="color: #c678dd;">storage</span>().<span style="color: #c678dd;">reference</span>().<span style="color: #c678dd;">child</span>(task.<span style="color: #dcaeea;">imageRefStr</span>)
+<span class="linenr">105: </span>
+<span class="linenr">106: </span>        imageRef.<span style="color: #dcaeea;">delete</span> { error <span style="color: #51afef;">in</span>
+<span class="linenr">107: </span>            <span style="color: #51afef;">if</span> <span style="color: #51afef;">let</span> error = error {
+<span class="linenr">108: </span>                <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Uh-oh, an error occurred!</span>
+<span class="linenr">109: </span>                <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"Unable to delete image, error: \(</span>error<span style="color: #98be65;">)"</span>)
+<span class="linenr">110: </span>            } <span style="color: #51afef;">else</span> {
+<span class="linenr">111: </span>                <span style="color: #5B6268;">// </span><span style="color: #5B6268;">File deleted successfully</span>
+<span class="linenr">112: </span>                <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Now Delete Task</span>
+<span class="linenr">113: </span>
+<span class="linenr">114: </span>                <span style="color: #51afef;">self</span>.<span style="color: #dcaeea;">db</span>.<span style="color: #c678dd;">collection</span>(<span style="color: #98be65;">"todo"</span>).<span style="color: #c678dd;">document</span>(documentID).<span style="color: #dcaeea;">delete</span> { error <span style="color: #51afef;">in</span>
+<span class="linenr">115: </span>                    <span style="color: #51afef;">if</span> <span style="color: #51afef;">let</span> error = error {
+<span class="linenr">116: </span>                        <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"Deleteing a task failed, \(</span>error.<span style="color: #c678dd;">localizedDescription</span><span style="color: #98be65;">)"</span>)
+<span class="linenr">117: </span>                    }
+<span class="linenr">118: </span>                }
+<span class="linenr">119: </span>            }
+<span class="linenr">120: </span>        }
+<span class="linenr">121: </span>
+<span class="linenr">122: </span>        <span style="color: #5B6268;">/*</span>
+<span class="linenr">123: </span><span style="color: #5B6268;">         db.collection("todo").document(documentID).delete { error in</span>
+<span class="linenr">124: </span><span style="color: #5B6268;">         if let error = error {</span>
+<span class="linenr">125: </span><span style="color: #5B6268;">         print("Deleteing a task failed, \(error.localizedDescription)")</span>
+<span class="linenr">126: </span><span style="color: #5B6268;">         }</span>
+<span class="linenr">127: </span><span style="color: #5B6268;">         }</span>
+<span class="linenr">128: </span><span style="color: #5B6268;">         */</span>
+<span class="linenr">129: </span>    }
+<span class="linenr">130: </span>
+<span class="linenr">131: </span>    <span style="color: #51afef;">func</span> <span style="color: #c678dd;">update</span>(task: Task) {
+<span class="linenr">132: </span>        <span style="color: #51afef;">guard</span> <span style="color: #51afef;">let</span> documentID = task.<span style="color: #dcaeea;">id</span> <span style="color: #51afef;">else</span> {<span style="color: #51afef;">return</span>}
+<span class="linenr">133: </span>        <span style="color: #51afef;">do</span> {
+<span class="linenr">134: </span>            <span style="color: #51afef;">try</span> db.<span style="color: #c678dd;">collection</span>(<span style="color: #98be65;">"todo"</span>).<span style="color: #c678dd;">document</span>(documentID).<span style="color: #c678dd;">setData</span>(from: task)
+<span class="linenr">135: </span>        } <span style="color: #51afef;">catch</span> {
+<span class="linenr">136: </span>            <span style="color: #c678dd;">fatalError</span>(<span style="color: #98be65;">"Update a task failed, \(</span>error.<span style="color: #c678dd;">localizedDescription</span><span style="color: #98be65;">)"</span>)
+<span class="linenr">137: </span>        }
+<span class="linenr">138: </span>    }
+<span class="linenr">139: </span>}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9309e85" class="outline-3">
+<h3 id="org9309e85"><span class="section-number-3">12.5</span> How to show online image: Kingfisher</h3>
+<div class="outline-text-3" id="text-12-5">
+</div>
+<div id="outline-container-org4652b82" class="outline-4">
+<h4 id="org4652b82"><span class="section-number-4">12.5.1</span> Install 3rd party swift library</h4>
+<div class="outline-text-4" id="text-12-5-1">
+<p>
+Kingfisher (a powerful, pure-Swift library for downloading and caching images from the web.)
+</p>
+</div>
+</div>
+<div id="outline-container-orgc13fe33" class="outline-4">
+<h4 id="orgc13fe33"><span class="section-number-4">12.5.2</span> Show online image</h4>
+<div class="outline-text-4" id="text-12-5-2">
+<p>
+TaskDetailView.swift
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #5B6268;">//</span>
+<span class="linenr"> 2: </span><span style="color: #5B6268;">//  </span><span style="color: #5B6268;">TaskCellView.swift</span>
+<span class="linenr"> 3: </span><span style="color: #5B6268;">//  </span><span style="color: #5B6268;">FireTask</span>
+<span class="linenr"> 4: </span><span style="color: #5B6268;">//</span>
+<span class="linenr"> 5: </span><span style="color: #5B6268;">//  </span><span style="color: #5B6268;">Created by yen yung chin on 2021/4/3.</span>
+<span class="linenr"> 6: </span><span style="color: #5B6268;">//</span>
+<span class="linenr"> 7: </span>
+<span class="linenr"> 8: </span><span style="color: #51afef;">import</span> SwiftUI
+<span class="linenr"> 9: </span><span style="color: #51afef;">import</span> Kingfisher
+<span class="linenr">10: </span>
+<span class="linenr">11: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">TaskDetailView</span>: View {
+<span class="linenr">12: </span>    <span style="color: #51afef;">@ObservedObject</span> <span style="color: #51afef;">var</span> taskCellVM: TaskCellViewModel
+<span class="linenr">13: </span>
+<span class="linenr">14: </span>    <span style="color: #51afef;">var</span> body: <span style="color: #51afef;">some</span> View {
+<span class="linenr">15: </span>        NavigationView {
+<span class="linenr">16: </span>            Form {
+<span class="linenr">17: </span>                <span style="color: #c678dd;">Section</span>(header: <span style="color: #c678dd;">Text</span>(<span style="color: #98be65;">"Task"</span>)) {
+<span class="linenr">18: </span>                    VStack {
+<span class="linenr">19: </span>                        <span style="color: #c678dd;">Text</span>(taskCellVM.<span style="color: #c678dd;">task</span>.<span style="color: #c678dd;">title</span>)
+<span class="linenr">20: </span>                        <span style="color: #c678dd;">KFImage</span>(<span style="color: #c678dd;">URL</span>(string: taskCellVM.<span style="color: #dcaeea;">imageURLString</span>))
+<span class="linenr">21: </span>                            .<span style="color: #c678dd;">resizable</span>()
+<span class="linenr">22: </span>                            .<span style="color: #c678dd;">aspectRatio</span>(contentMode: .<span style="color: #dcaeea;">fit</span>)
+<span class="linenr">23: </span>                            .<span style="color: #c678dd;">frame</span>(height: <span style="color: #da8548; font-weight: bold;">300</span>, alignment: .<span style="color: #c678dd;">center</span>)
+<span class="linenr">24: </span>                            .<span style="color: #c678dd;">clipped</span>()
+<span class="linenr">25: </span>                            .<span style="color: #c678dd;">cornerRadius</span>(<span style="color: #da8548; font-weight: bold;">20.0</span>)
+<span class="linenr">26: </span>                            .<span style="color: #c678dd;">animation</span>(.<span style="color: #51afef;">default</span>)
+<span class="linenr">27: </span>                            .<span style="color: #c678dd;">progressViewStyle</span>(<span style="color: #c678dd;">LinearProgressViewStyle</span>())
+<span class="linenr">28: </span>                    }
+<span class="linenr">29: </span>                }
+<span class="linenr">30: </span>                <span style="color: #c678dd;">Section</span>(header: <span style="color: #c678dd;">Text</span>(<span style="color: #98be65;">"Done"</span>)) {
+<span class="linenr">31: </span>                    <span style="color: #c678dd;">Text</span>(taskCellVM.<span style="color: #c678dd;">task</span>.<span style="color: #c678dd;">completed</span> ? <span style="color: #98be65;">"Completed"</span> : <span style="color: #98be65;">"Not Yet"</span> )
+<span class="linenr">32: </span>                }
+<span class="linenr">33: </span>            }
+<span class="linenr">34: </span>            .<span style="color: #c678dd;">navigationBarTitle</span>(<span style="color: #98be65;">"Detail"</span>)
+<span class="linenr">35: </span>            .<span style="color: #c678dd;">navigationBarTitleDisplayMode</span>(.<span style="color: #c678dd;">inline</span>)
+<span class="linenr">36: </span>            .<span style="color: #c678dd;">navigationBarItems</span>(trailing: <span style="color: #c678dd;">NavigationLink</span>(
+<span class="linenr">37: </span>                                    destination: <span style="color: #c678dd;">UpdateTaskView</span>(taskCellVM: taskCellVM),
+<span class="linenr">38: </span>                                    label: {
+<span class="linenr">39: </span>                                        <span style="color: #c678dd;">Text</span>(<span style="color: #98be65;">"Update"</span>)
+<span class="linenr">40: </span>                                    }))
+<span class="linenr">41: </span>        }
+<span class="linenr">42: </span>    }
+<span class="linenr">43: </span>}
+<span class="linenr">44: </span>
+<span class="linenr">45: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">TaskDetailView_Previews</span>: PreviewProvider {
+<span class="linenr">46: </span>
+<span class="linenr">47: </span>    <span style="color: #51afef;">static</span> <span style="color: #51afef;">var</span> previews: <span style="color: #51afef;">some</span> View {
+<span class="linenr">48: </span>        <span style="color: #c678dd;">TaskDetailView</span>(taskCellVM: <span style="color: #c678dd;">TaskCellViewModel</span>(task: <span style="color: #c678dd;">Task</span>(id: <span style="color: #98be65;">""</span>, title: <span style="color: #98be65;">""</span>, imageRefStr: <span style="color: #98be65;">""</span>, imageUrlStr: <span style="color: #98be65;">""</span>,  completed: <span style="color: #a9a1e1;">false</span>)))
+<span class="linenr">49: </span>    }
+<span class="linenr">50: </span>}
+<span class="linenr">51: </span>
+</pre>
+</div>
+</div>
 </div>
 </div>
 </div>
 
 <div id="outline-container-SW-Firebase-LearningResource" class="outline-2">
-<h2 id="SW-Firebase-LearningResource"><span class="section-number-2">14</span> Learning resources</h2>
+<h2 id="SW-Firebase-LearningResource"><span class="section-number-2">13</span> Learning resources</h2>
 <div class="outline-text-2" id="text-SW-Firebase-LearningResource">
 </div>
-<div id="outline-container-org3f587cf" class="outline-3">
-<h3 id="org3f587cf"><span class="section-number-3">14.1</span> web</h3>
-<div class="outline-text-3" id="text-14-1">
+<div id="outline-container-org57fbbd9" class="outline-3">
+<h3 id="org57fbbd9"><span class="section-number-3">13.1</span> web</h3>
+<div class="outline-text-3" id="text-13-1">
 <ul class="org-ul">
-<li><a href="https://medium.com/flawless-app-stories/how-to-build-a-firebase-app-with-swiftui-5919d2d8a396">How To Build A Firebase App With SwiftUI</a><br /></li>
-<li><a href="https://benmcmahen.com/authentication-with-swiftui-and-firebase/">Using Firebase Authentication with SwiftUI</a><br /></li>
+<li><a href="https://medium.com/flawless-app-stories/how-to-build-a-firebase-app-with-swiftui-5919d2d8a396">How To Build A Firebase App With SwiftUI</a></li>
+<li><a href="https://benmcmahen.com/authentication-with-swiftui-and-firebase/">Using Firebase Authentication with SwiftUI</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgb5bfad5" class="outline-3">
-<h3 id="orgb5bfad5"><span class="section-number-3">14.2</span> Videos</h3>
-<div class="outline-text-3" id="text-14-2">
+<div id="outline-container-org58a3331" class="outline-3">
+<h3 id="org58a3331"><span class="section-number-3">13.2</span> Videos</h3>
+<div class="outline-text-3" id="text-13-2">
 <ul class="org-ul">
-<li><a href="https://www.youtube.com/watch?v=4RUeW5rUcww">Building a to-do list app with SwiftUI and Firebase - Part 1</a><br /></li>
-<li><a href="https://www.youtube.com/watch?v=2k6_Mi2ERWc">Building a Todo List App Using Firebase and SwiftUI - Part 2 </a><br /></li>
-<li><a href="https://www.youtube.com/watch?v=HDde7TqKCpk">Build a to-do list app w/ SwiftUI &amp; Firebase - Pt 2: Firestore &amp; Anonymous Auth</a><br /></li>
-<li><a href="https://www.youtube.com/watch?v=elhzkcoBl-A">https://www.youtube.com/watch?v=elhzkcoBl-A</a><br /></li>
-<li><a href="https://www.youtube.com/watch?v=9VpaaJ3eLWk&amp;list=PLY_qIufNHc292EYDwe3B6sGYO_vQ7pOLx&amp;index=8">https://www.youtube.com/watch?v=9VpaaJ3eLWk&amp;list=PLY_qIufNHc292EYDwe3B6sGYO_vQ7pOLx&amp;index=8</a><br /></li>
-<li><a href="https://www.hackingwithswift.com/books/ios-swiftui/creating-a-form">https://www.hackingwithswift.com/books/ios-swiftui/creating-a-form</a><br /></li>
-<li><a href="https://www.youtube.com/watch?v=1QcekWFK2d8">https://www.youtube.com/watch?v=1QcekWFK2d8</a><br /></li>
-<li><a href="https://www.youtube.com/watch?v=ZCFz9Mj4gkU">#1 Grocery App - Setting Up Firebase with Xcode 12</a><br /></li>
-<li><a href="https://www.youtube.com/watch?v=dxgQZWIdRC0&amp;t=339s">#2 Grocery App - Saving Grocery Store to Firestore Database</a><br /></li>
-<li><a href="https://www.youtube.com/watch?v=XXcrBVViFv4">#3 Grocery App - Fetching and Displaying Stores</a><br /></li>
-<li><a href="https://www.youtube.com/watch?v=4d3ctNyKNbE">#4 Grocery App - Deleting Store from Firestore Database Using SwiftUI</a><br /></li>
-<li><a href="https://www.youtube.com/watch?v=nYSqDY-dqT4">#5 Grocery App - Updating Store in Firestore Database Using SwiftUI</a><br /></li>
-<li><a href="https://www.youtube.com/watch?v=1HN7usMROt8">Firebase Authentication Tutorial 2020 - Custom iOS Login Page (Swift)</a><br /></li>
-<li><a href="https://www.youtube.com/watch?v=tdyT_v4lwos">Storing Custom Objects in @AppStorage in SwiftUI for iOS 14</a><br /></li>
+<li><a href="https://www.youtube.com/watch?v=GGp-wT693IY">Downloading Images in SwiftUI</a></li>
+<li><a href="https://www.youtube.com/watch?v=1HN7usMROt8">Firebase Authentication Tutorial 2020 - Custom iOS Login Page (Swift)</a></li>
+<li><a href="https://www.youtube.com/watch?v=4RUeW5rUcww">Building a to-do list app with SwiftUI and Firebase - Part 1</a></li>
+<li><a href="https://www.youtube.com/watch?v=2k6_Mi2ERWc">Building a Todo List App Using Firebase and SwiftUI - Part 2 </a></li>
+<li><a href="https://www.youtube.com/watch?v=HDde7TqKCpk">Build a to-do list app w/ SwiftUI &amp; Firebase - Pt 2: Firestore &amp; Anonymous Auth</a></li>
+<li><a href="https://www.youtube.com/watch?v=elhzkcoBl-A">https://www.youtube.com/watch?v=elhzkcoBl-A</a></li>
+<li><a href="https://www.youtube.com/watch?v=9VpaaJ3eLWk&amp;list=PLY_qIufNHc292EYDwe3B6sGYO_vQ7pOLx&amp;index=8">https://www.youtube.com/watch?v=9VpaaJ3eLWk&amp;list=PLY_qIufNHc292EYDwe3B6sGYO_vQ7pOLx&amp;index=8</a></li>
+<li><a href="https://www.hackingwithswift.com/books/ios-swiftui/creating-a-form">https://www.hackingwithswift.com/books/ios-swiftui/creating-a-form</a></li>
+<li><a href="https://www.youtube.com/watch?v=1QcekWFK2d8">https://www.youtube.com/watch?v=1QcekWFK2d8</a></li>
+<li><a href="https://www.youtube.com/watch?v=ZCFz9Mj4gkU">#1 Grocery App - Setting Up Firebase with Xcode 12</a></li>
+<li><a href="https://www.youtube.com/watch?v=dxgQZWIdRC0&amp;t=339s">#2 Grocery App - Saving Grocery Store to Firestore Database</a></li>
+<li><a href="https://www.youtube.com/watch?v=XXcrBVViFv4">#3 Grocery App - Fetching and Displaying Stores</a></li>
+<li><a href="https://www.youtube.com/watch?v=4d3ctNyKNbE">#4 Grocery App - Deleting Store from Firestore Database Using SwiftUI</a></li>
+<li><a href="https://www.youtube.com/watch?v=nYSqDY-dqT4">#5 Grocery App - Updating Store in Firestore Database Using SwiftUI</a></li>
+<li><a href="https://www.youtube.com/watch?v=1HN7usMROt8">Firebase Authentication Tutorial 2020 - Custom iOS Login Page (Swift)</a></li>
+<li><a href="https://www.youtube.com/watch?v=tdyT_v4lwos">Storing Custom Objects in @AppStorage in SwiftUI for iOS 14</a></li>
 </ul>
 </div>
 </div>
@@ -2441,15 +2798,15 @@ User based security with Storage Security Rules<br />
 <div id="text-footnotes">
 
 <div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
-<a href="https://medium.com/ho-japan/%E5%89%8D%E7%AB%AF%E4%BA%BA%E7%9A%84%E6%95%91%E6%98%9Ffirebase%E7%9A%84%E7%94%A8%E9%80%94%E8%88%87%E5%AF%A6%E4%BD%9Ctodolist-c7af49fe3104">前端工程師的救星，Firebase的簡介與實作TodoList</a><br />
+<a href="https://medium.com/ho-japan/%E5%89%8D%E7%AB%AF%E4%BA%BA%E7%9A%84%E6%95%91%E6%98%9Ffirebase%E7%9A%84%E7%94%A8%E9%80%94%E8%88%87%E5%AF%A6%E4%BD%9Ctodolist-c7af49fe3104">前端工程師的救星，Firebase的簡介與實作TodoList</a>
 </p></div></div>
 
 <div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2">2</a></sup> <div class="footpara"><p class="footpara">
-<a href="https://medium.com/codingurukul/introduction-to-firebase-f9f6ccc8a785">Introduction to Firebase</a><br />
+<a href="https://medium.com/codingurukul/introduction-to-firebase-f9f6ccc8a785">Introduction to Firebase</a>
 </p></div></div>
 
 <div class="footdef"><sup><a id="fn.3" class="footnum" href="#fnr.3">3</a></sup> <div class="footpara"><p class="footpara">
-<a href="https://firebase.google.com/docs/firestore/rtdb-vs-firestore">Choose a database: Cloud Firestore or Realtime Database</a><br />
+<a href="https://firebase.google.com/docs/firestore/rtdb-vs-firestore">Choose a database: Cloud Firestore or Realtime Database</a>
 </p></div></div>
 
 
@@ -2457,7 +2814,7 @@ User based security with Storage Security Rules<br />
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Yung Chin, Yen</p>
-<p class="date">Created: 2021-05-07 Fri 08:20</p>
+<p class="date">Created: 2021-05-08 Sat 01:41</p>
 </div>
 </body>
 </html>

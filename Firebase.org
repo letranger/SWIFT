@@ -1,5 +1,5 @@
 #+TITLE: SwiftUI v.s. Firebase
-#+INCLUDE: ../purpleweb.org
+#+INCLUDE: ../themes/comfy_inline/comfy_inline.theme
 #+HTML_HEAD_EXTRA: <style>*{font-family: Courier New !important}</style>
 #+OPTIONS: ^:nil
 #+latex:\newpage
@@ -1388,17 +1388,17 @@ struct ContentView_Previews: PreviewProvider {
 
 #+end_src
 
-* Create a URLImage
-- [[https://www.youtube.com/watch?v=GGp-wT693IY][Downloading Images in SwiftUI]]
-- [[https://www.youtube.com/watch?v=1HN7usMROt8][Firebase Authentication Tutorial 2020 - Custom iOS Login Page (Swift)]]
-
 * Storage
+:PROPERTIES:
+:CUSTOM_ID: SW-Firebase-Storage
+:END:
 ** preparation
 1. Add Firebase/Strage Library
 2. Restart Xcode
 3. Check if you can import FirebaseStorage
 4. Enable Firebase/Storage on console
 5. Change Storage Rules
+
 ** tips
 1. References point to files
    #+begin_src swift -r -n :results output :exports nil
@@ -1450,6 +1450,318 @@ service firebase.storage {
    #+end_src
 [[https://firebase.googleblog.com/2016/07/5-tips-for-firebase-storage.html][5 tips for Firebase Storage ]]
 
+** How to pick image in iOS
+*** Utility: ImagePicker
+ImagePicker.swift
+#+begin_src swift -r -n :results output :exports nil
+import SwiftUI
+
+struct ImagePicker: UIViewControllerRepresentable {
+
+  @Binding var image: UIImage?
+  @Binding var isShown: Bool
+
+  func makeCoordinator() -> Coordinator {
+    return Coordinator(isShown: $isShown, image: $image)
+  }
+
+  func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePicker>) -> UIImagePickerController {
+    let picker = UIImagePickerController()
+    picker.delegate = context.coordinator
+    return picker
+  }
+
+  func updateUIViewController(_ uiViewController: UIImagePickerController,
+                              context: UIViewControllerRepresentableContext<ImagePicker>) {
+
+  }
+
+  class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+
+    @Binding var image: UIImage?
+    @Binding var isShown: Bool
+
+    init(isShown: Binding<Bool>, image: Binding<UIImage?>) {
+      _isShown = isShown
+      _image = image
+    }
+
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+      image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+      isShown.toggle()
+    }
+
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+      isShown.toggle()
+    }
+  }
+}
+#+end_src
+*** How to call ImagePicker in SwiftUI
+TaskNewView.swift
+#+begin_src python -r -n :results output :exports both
+//
+//  TaskNewView.swift
+//  FireTask
+//
+//  Created by yen yung chin on 2021/5/3.
+//
+
+import SwiftUI
+import FirebaseStorage
+
+struct TaskNewView: View {
+    @Environment(\.presentationMode) var presentationMode
+
+    @ObservedObject var taskListVM = TaskListViewModel()
+    @State private var title: String = ""
+    @State private var showPhotoLibrary = false
+    @State var pickedImage: UIImage? = nil
+    @State private var urlString: String = ""
+
+    var body: some View {
+        VStack {
+            Image(uiImage: ((pickedImage ?? UIImage(systemName: "camera"))!))
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 200, height: 180, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                .clipped()
+                .aspectRatio(contentMode: .fit)
+
+                .onTapGesture {
+                    self.showPhotoLibrary.toggle()
+                }
+            TextField("Task Title", text: self.$title)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+
+            Button("Add Task") {
+                // Upload image and return URL
+                let task = Task(title: self.title, imageRefStr: "", imageUrlStr: "", completed: false)
+                taskListVM.add(task: task, image: pickedImage!)
+                self.presentationMode.wrappedValue.dismiss()
+            }.disabled(title == "" || pickedImage==nil)
+
+        }
+        .padding()
+        .sheet(isPresented: $showPhotoLibrary, onDismiss: {
+            self.showPhotoLibrary = false
+        }, content: {
+            ImagePicker(image: self.$pickedImage, isShown: self.$showPhotoLibrary)
+        })
+    }
+}
+
+struct TaskNewView_Previews: PreviewProvider {
+    static var previews: some View {
+        TaskNewView()
+    }
+}
+#+end_src
+
+** How to upload image to Firebase storage
+TaskRepository.swift: Upload image and get image URL
+#+begin_src swift -r -n :results output :exports nil
+//
+//  TaskRepository.swift
+//  FireTask
+//
+//  Created by yen yung chin on 2021/4/1.
+//
+
+
+import Foundation
+import FirebaseFirestore
+import FirebaseFirestoreSwift
+import Combine
+import FirebaseStorage
+import SwiftUI
+
+class TaskRepository: ObservableObject {
+    private let db = Firestore.firestore()
+    @Published var tasks = [Task]()
+
+    init() {
+        loadData()
+    }
+
+    func loadData() {
+
+        db.collection("todo").addSnapshotListener { (querySanpshot, error) in
+
+            if let error = error {
+                print("錯誤: \(error.localizedDescription)")
+            }
+            // method #1
+            self.tasks = querySanpshot?.documents.compactMap { document in
+                try? document.data(as: Task.self)
+            } ?? []
+
+            // method #2
+            if let querySnapshot = querySanpshot {
+                self.tasks = querySnapshot.documents.compactMap({ (queryDocumentSnapshot) -> Task? in
+                    return try? queryDocumentSnapshot.data(as: Task.self)
+                })
+            }
+        }
+    }
+
+    func add(task: Task, image: UIImage) {
+        let imageRefStr = "images/\(UUID().uuidString).jpg"
+        // Upload image and return URL and add task
+        let imageRef = Storage.storage().reference().child(imageRefStr)
+        // we create an upload task using our reference and upload the
+        // data using the metadata object
+        guard let imageData = image.jpegData(compressionQuality: 1) else {
+            print("compress jpg failed")
+            return
+        }
+        imageRef.putData(imageData, metadata: nil, completion: { (metadata, error) in
+            // first we check if the error is nil
+            if let error = error {
+                print("putData Errir: \(error)")
+                return
+            }
+            // get downloadURL
+            imageRef.downloadURL(completion: { (url, error) in
+                if let error = error {
+                    print("getting downloadURL Errir: \(error)")
+                    return
+                }
+                // OK, add task
+                guard let imageURL = url else {
+                    print("Error while uploading image")
+                    return
+                }
+
+                let urlString = imageURL.absoluteString
+                let newTask = Task(title: task.title, imageRefStr: imageRefStr, imageUrlStr: urlString, completed: task.completed)
+
+                do {
+                    _ = try self.db.collection("todo").addDocument(from: newTask)
+                } catch {
+                    fatalError("Add a task failed")
+                }
+            })
+        })
+
+    }
+
+    func delete(indexset: IndexSet) {
+        // pass in IndexSet
+        for i in indexset {
+            print(i)
+        }
+        indexset.forEach { index in
+            let task = tasks[index]
+            db.collection("todo").document(task.id!).delete() { error in
+                if let error = error {
+                    fatalError("Deleting a task failed, \(error.localizedDescription)")
+                }
+
+            }
+        }
+    }
+    func delete(task: Task) {
+        // pass in Task
+        guard let documentID = task.id else { return }
+        let imageRef = Storage.storage().reference().child(task.imageRefStr)
+
+        imageRef.delete { error in
+            if let error = error {
+                // Uh-oh, an error occurred!
+                print("Unable to delete image, error: \(error)")
+            } else {
+                // File deleted successfully
+                // Now Delete Task
+
+                self.db.collection("todo").document(documentID).delete { error in
+                    if let error = error {
+                        print("Deleteing a task failed, \(error.localizedDescription)")
+                    }
+                }
+            }
+        }
+
+        /*
+         db.collection("todo").document(documentID).delete { error in
+         if let error = error {
+         print("Deleteing a task failed, \(error.localizedDescription)")
+         }
+         }
+         */
+    }
+
+    func update(task: Task) {
+        guard let documentID = task.id else {return}
+        do {
+            try db.collection("todo").document(documentID).setData(from: task)
+        } catch {
+            fatalError("Update a task failed, \(error.localizedDescription)")
+        }
+    }
+}
+#+end_src
+
+** How to show online image: Kingfisher
+*** Install 3rd party swift library
+Kingfisher (a powerful, pure-Swift library for downloading and caching images from the web.)
+*** Show online image
+TaskDetailView.swift
+#+begin_src swift -r -n :results output :exports nil
+//
+//  TaskCellView.swift
+//  FireTask
+//
+//  Created by yen yung chin on 2021/4/3.
+//
+
+import SwiftUI
+import Kingfisher
+
+struct TaskDetailView: View {
+    @ObservedObject var taskCellVM: TaskCellViewModel
+
+    var body: some View {
+        NavigationView {
+            Form {
+                Section(header: Text("Task")) {
+                    VStack {
+                        Text(taskCellVM.task.title)
+                        KFImage(URL(string: taskCellVM.imageURLString))
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(height: 300, alignment: .center)
+                            .clipped()
+                            .cornerRadius(20.0)
+                            .animation(.default)
+                            .progressViewStyle(LinearProgressViewStyle())
+                    }
+                }
+                Section(header: Text("Done")) {
+                    Text(taskCellVM.task.completed ? "Completed" : "Not Yet" )
+                }
+            }
+            .navigationBarTitle("Detail")
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarItems(trailing: NavigationLink(
+                                    destination: UpdateTaskView(taskCellVM: taskCellVM),
+                                    label: {
+                                        Text("Update")
+                                    }))
+        }
+    }
+}
+
+struct TaskDetailView_Previews: PreviewProvider {
+
+    static var previews: some View {
+        TaskDetailView(taskCellVM: TaskCellViewModel(task: Task(id: "", title: "", imageRefStr: "", imageUrlStr: "",  completed: false)))
+    }
+}
+
+#+end_src
+
 * Learning resources
 :PROPERTIES:
 :CUSTOM_ID: SW-Firebase-LearningResource
@@ -1458,6 +1770,8 @@ service firebase.storage {
 - [[https://medium.com/flawless-app-stories/how-to-build-a-firebase-app-with-swiftui-5919d2d8a396][How To Build A Firebase App With SwiftUI]]
 - [[https://benmcmahen.com/authentication-with-swiftui-and-firebase/][Using Firebase Authentication with SwiftUI]]
 ** Videos
+- [[https://www.youtube.com/watch?v=GGp-wT693IY][Downloading Images in SwiftUI]]
+- [[https://www.youtube.com/watch?v=1HN7usMROt8][Firebase Authentication Tutorial 2020 - Custom iOS Login Page (Swift)]]
 - [[https://www.youtube.com/watch?v=4RUeW5rUcww][Building a to-do list app with SwiftUI and Firebase - Part 1]]
 - [[https://www.youtube.com/watch?v=2k6_Mi2ERWc][Building a Todo List App Using Firebase and SwiftUI - Part 2 ]]
 - [[https://www.youtube.com/watch?v=HDde7TqKCpk][Build a to-do list app w/ SwiftUI & Firebase - Pt 2: Firestore & Anonymous Auth]]
