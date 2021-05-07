@@ -1388,12 +1388,67 @@ struct ContentView_Previews: PreviewProvider {
 
 #+end_src
 
+* Create a URLImage
+- [[https://www.youtube.com/watch?v=GGp-wT693IY][Downloading Images in SwiftUI]]
+- [[https://www.youtube.com/watch?v=1HN7usMROt8][Firebase Authentication Tutorial 2020 - Custom iOS Login Page (Swift)]]
+
 * Storage
 ** preparation
 1. Add Firebase/Strage Library
 2. Restart Xcode
 3. Check if you can import FirebaseStorage
-** 
+4. Enable Firebase/Storage on console
+5. Change Storage Rules
+** tips
+1. References point to files
+   #+begin_src swift -r -n :results output :exports nil
+let storageRef = FIRStorage.reference().child("folderName/file.jpg")
+   #+end_src
+2. Upload files with one method
+   #+begin_src swift -r -n :results output :exports nil
+let storageRef = FIRStorage.reference().child("folderName/file.jpg");
+let localFile: NSURL = // get a file;
+
+// Upload the file to the path "folderName/file.jpg"
+let uploadTask = storageRef.putFile(localFile, metadata: nil)
+   #+end_src
+3. Monitor progress with Tasks
+   #+begin_src swift -r -n :results output :exports nil
+let storageRef = FIRStorage.reference().child("folderName/file.jpg");
+let localFile: NSURL = // get a file;
+
+// Upload the file to the path "folderName/file.jpg"
+let uploadTask = storageRef.putFile(localFile, metadata: nil)
+
+let observer = uploadTask.observeStatus(.Progress) { snapshot in
+  print(snapshot.progress) // NSProgress object
+}
+   #+end_src
+4. Download files with one method
+   #+begin_src swift -r -n :results output :exports nil
+let storageRef = FIRStorage.reference().child("folderName/file.jpg");
+storageRef.downloadURLWithCompletion { (URL, error) -> Void in
+  if (error != nil) {
+    // Handle any errors
+  } else {
+    // Get the download URL for 'images/stars.jpg'
+  }
+}
+   #+end_src
+5. User based security with Storage Security Rules
+   #+begin_src swift -r -n :results output :exports nil
+// Only a user can upload their profile picture, but anyone can view it
+service firebase.storage {
+  match /b/<bucket>/o {
+    match /users/{userId}/profilePicture.png {
+      allow read;
+      allow write: if request.auth.uid == userId;
+    }
+  }
+}
+
+   #+end_src
+[[https://firebase.googleblog.com/2016/07/5-tips-for-firebase-storage.html][5 tips for Firebase Storage ]]
 
 * Learning resources
 :PROPERTIES:
@@ -1410,6 +1465,13 @@ struct ContentView_Previews: PreviewProvider {
 - https://www.youtube.com/watch?v=9VpaaJ3eLWk&list=PLY_qIufNHc292EYDwe3B6sGYO_vQ7pOLx&index=8
 - https://www.hackingwithswift.com/books/ios-swiftui/creating-a-form
 - https://www.youtube.com/watch?v=1QcekWFK2d8
+- [[https://www.youtube.com/watch?v=ZCFz9Mj4gkU][#1 Grocery App - Setting Up Firebase with Xcode 12]]
+- [[https://www.youtube.com/watch?v=dxgQZWIdRC0&t=339s][#2 Grocery App - Saving Grocery Store to Firestore Database]]
+- [[https://www.youtube.com/watch?v=XXcrBVViFv4][#3 Grocery App - Fetching and Displaying Stores]]
+- [[https://www.youtube.com/watch?v=4d3ctNyKNbE][#4 Grocery App - Deleting Store from Firestore Database Using SwiftUI]]
+- [[https://www.youtube.com/watch?v=nYSqDY-dqT4][#5 Grocery App - Updating Store in Firestore Database Using SwiftUI]]
+- [[https://www.youtube.com/watch?v=1HN7usMROt8][Firebase Authentication Tutorial 2020 - Custom iOS Login Page (Swift)]]
+- [[https://www.youtube.com/watch?v=tdyT_v4lwos][Storing Custom Objects in @AppStorage in SwiftUI for iOS 14]]
 
 * Footnotes
 
