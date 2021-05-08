@@ -1453,7 +1453,7 @@ service firebase.storage {
 ** How to pick image in iOS
 *** Utility: ImagePicker
 ImagePicker.swift
-#+begin_src swift -r -n :results output :exports nil
+#+begin_src swift :noevl
 import SwiftUI
 
 struct ImagePicker: UIViewControllerRepresentable {
