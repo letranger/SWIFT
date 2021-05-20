@@ -1,0 +1,56 @@
+#+TITLE: VNC遠端連線
+#+OPTION: num:2
+#+LATEX:\newpage
+#+SETUPFILE: ../themes/solarized_light/solarized_light.theme
+
+* 學生/MAC分配
+|----------+---------------+--------|
+| 班級座號 |        內部IP | 外部IP |
+|----------+---------------+--------|
+|    10209 |  192.168.16.3 |        |
+|    10237 |  192.168.16.5 |        |
+|    10531 |  192.168.16.7 |        |
+|    10135 |  192.168.16.9 |        |
+|    11626 | 192.168.16.11 |        |
+|    10721 | 192.168.16.15 |        |
+|    11020 | 192.168.16.19 |        |
+|    10818 | 192.168.16.21 |        |
+|    10823 | 192.168.16.23 |        |
+|    11102 | 192.168.16.27 |        |
+|    11412 | 192.168.16.29 |        |
+|    11401 | 192.168.16.31 |        |
+|----------+---------------+--------|
+port: 5900 tcp
+* 遠端登入設定
+** 工具: VNC遠端連線
+- 下載VNC Viewer: [[https://www.realvnc.com/en/connect/download/viewer/windows/]]
+- 安裝
+** 執行vnc
+- 新增連線
+  #+CAPTION: Caption
+  #+LABEL:fig:Labl
+  #+name: fig:Name
+  #+ATTR_LATEX: :width 400
+  #+ATTR_ORG: :width 400
+  #+ATTR_HTML: :width 600
+  [[file:images/2021-05-20_23-57-03.jpg]]
+- 在VNC Server欄填入你分配到的外部IP，然後按 OK
+  #+CAPTION: Caption
+  #+LABEL:fig:Labl
+  #+name: fig:Name
+  #+ATTR_LATEX: :width 400
+  #+ATTR_ORG: :width 400
+  #+ATTR_HTML: :width 600
+  [[file:images/2021-05-21_00-00-54.jpg]]
+- Double Click你新增的連線，Username欄填入student，然後按 OK
+  #+CAPTION: Caption
+  #+LABEL:fig:Labl
+  #+name: fig:Name
+  #+ATTR_LATEX: :width 400
+  #+ATTR_ORG: :width 400
+  #+ATTR_HTML: :width 600
+  [[file:images/2021-05-21_00-02-37.jpg]]
+** 帳號資訊
+- 以student登入
+- 密碼留空白
+- 依上述分配表格使用你相對應的外部IP
