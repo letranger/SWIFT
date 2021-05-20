@@ -231,7 +231,7 @@
 *** 執行修正程式
 **** 設定修正程式
 原本的修正程式長的像這樣，但是這裡有地方要做修正，就是所有的 Youur Virtual Machine Name 都要改成我們在上述2.2中命名的虛擬機名稱: macOS
-#+begin_verse
+#+begin_src shell -r -n :results output :exports both :eval no
 cd "C:\Program Files\Oracle\VirtualBox\"
 VBoxManage.exe modifyvm "Your Virtual Machine Name" --cpuidset 00000001 000106e5 00100800 0098e3fd bfebfbff
 VBoxManage setextradata "Your Virtual Machine Name" "VBoxInternal/Devices/efi/0/Config/DmiSystemProduct" "iMac11,3"
@@ -239,9 +239,9 @@ VBoxManage setextradata "Your Virtual Machine Name" "VBoxInternal/Devices/efi/0/
 VBoxManage setextradata "Your Virtual Machine Name" "VBoxInternal/Devices/efi/0/Config/DmiBoardProduct" "Iloveapple"
 VBoxManage setextradata "Your Virtual Machine Name" "VBoxInternal/Devices/smc/0/Config/DeviceKey" "ourhardworkbythesewordsguardedpleasedontsteal(c)AppleComputerInc"
 VBoxManage setextradata "Your Virtual Machine Name" "VBoxInternal/Devices/smc/0/Config/GetKeyFromRealSMC" 1
-#+end_verse
+#+end_src
 如果你之前是依這裡的建議一樣命名為 macOS，那你可以直接參考底下的修正碼，否則就要逐一更改(你可以把它貼進文字編輯器裡去做搜尋/取代)
-#+begin_verse
+#+begin_src shell -r -n :results output :exports both :eval no
 cd "C:\Program Files\Oracle\VirtualBox\"
 VBoxManage.exe modifyvm "macOS" --cpuidset 00000001 000106e5 00100800 0098e3fd bfebfbff
 VBoxManage setextradata "macOS" "VBoxInternal/Devices/efi/0/Config/DmiSystemProduct" "iMac11,3"
@@ -249,6 +249,6 @@ VBoxManage setextradata "macOS" "VBoxInternal/Devices/efi/0/Config/DmiSystemVers
 VBoxManage setextradata "macOS" "VBoxInternal/Devices/efi/0/Config/DmiBoardProduct" "Iloveapple"
 VBoxManage setextradata "macOS" "VBoxInternal/Devices/smc/0/Config/DeviceKey" "ourhardworkbythesewordsguardedpleasedontsteal(c)AppleComputerInc"
 VBoxManage setextradata "macOS" "VBoxInternal/Devices/smc/0/Config/GetKeyFromRealSMC" 1
-#+end_verse
+#+end_src
 **** 執行上述修正指令
 將上面的修正指令 *逐行* 複製下來，貼到命令提示字元，然後按Enter執行。例如
