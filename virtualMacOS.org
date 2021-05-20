@@ -1,0 +1,254 @@
+#+TITLE: Creating virtual macOS environment
+#+OPTION: num:2
+#+LATEX:\newpage
+#+SETUPFILE: ../themes/solarized_light/solarized_light.theme
+
+這裡簡單介紹兩個重點：在windows安裝VirtualBox、在VirtualBox新增macOS的虛擬機
+
+* 安裝VirtualBox
+** [#C] 下載 :TNFSH:
+1. 點選[[https://www.virtualbox.org/wiki/Downloads]]進入下載頁面
+2. 點選Windows hosts
+   #+CAPTION: Caption
+   #+LABEL:fig:Labl
+   #+name: fig:Name
+   #+ATTR_LATEX: :width 400
+   #+ATTR_ORG: :width 400
+   #+ATTR_HTML: :width 600
+   [[file:images/2021-05-20_10-33-07.jpg]]
+3. 點選 儲存檔案 下載安裝檔
+   #+CAPTION: Caption
+   #+LABEL:fig:Labl
+   #+name: fig:Name
+   #+ATTR_LATEX: :width 400
+   #+ATTR_ORG: :width 400
+   #+ATTR_HTML: :width 600
+   [[file:images/2021-05-20_10-35-26.jpg]]
+4. 找到下載的安裝檔，準備安裝
+   #+CAPTION: Caption
+   #+LABEL:fig:Labl
+   #+name: fig:Name
+   #+ATTR_LATEX: :width 400
+   #+ATTR_ORG: :width 400
+   #+ATTR_HTML: :width 600
+   [[file:images/2021-05-20_10-35-58.jpg]]
+
+** 安裝
+1. 執行VirtualBox-6.1.22-144080-Win
+   預設安裝目錄為: C:\Program Files\Oracle\VirtualBox\
+   #+CAPTION: Caption
+   #+LABEL:fig:Labl
+   #+name: fig:Name
+   #+ATTR_LATEX: :width 400
+   #+ATTR_ORG: :width 400
+   #+ATTR_HTML: :width 600
+   [[file:images/2021-05-20_10-43-58.jpg]]
+2. 無腦下一步....
+   #+CAPTION: Caption
+   #+LABEL:fig:Labl
+   #+name: fig:Name
+   #+ATTR_LATEX: :width 400
+   #+ATTR_ORG: :width 400
+   #+ATTR_HTML: :width 600
+   [[file:images/2021-05-20_10-45-23.jpg]]
+3. 無腦允許/同意/是....
+   #+CAPTION: Caption
+   #+LABEL:fig:Labl
+   #+name: fig:Name
+   #+ATTR_LATEX: :width 400
+   #+ATTR_ORG: :width 400
+   #+ATTR_HTML: :width 600
+   [[file:images/2021-05-20_10-47-27.jpg]]
+4. 無腦完成
+
+** 安裝VirtualBox Extenstion Pack
+1. 打開剛才的VirtualBox下載網頁: https://www.virtualbox.org/wiki/Downloads
+   #+CAPTION: Caption
+   #+LABEL:fig:Labl
+   #+name: fig:Name
+   #+ATTR_LATEX: :width 400
+   #+ATTR_ORG: :width 400
+   #+ATTR_HTML: :width 600
+   [[file:images/2021-05-20_11-05-35.jpg]]
+2. 找到VirtualBox 6.1.22 Oracle VM VirtualBox Extension Pack、點選All supported platforms、 以VirtualBox Manager打開下載的檔案
+   #+CAPTION: Caption
+   #+LABEL:fig:Labl
+   #+name: fig:Name
+   #+ATTR_LATEX: :width 400
+   #+ATTR_ORG: :width 400
+   #+ATTR_HTML: :width 600
+   [[file:images/2021-05-20_11-17-17.jpg]]
+3. 安裝
+   #+CAPTION: Caption
+   #+LABEL:fig:Labl
+   #+name: fig:Name
+   #+ATTR_LATEX: :width 400
+   #+ATTR_ORG: :width 400
+   #+ATTR_HTML: :width 600
+   [[file:images/2021-05-20_11-18-49.jpg]]
+4. 讀完授權說明後無腦同意
+   #+CAPTION: Caption
+   #+LABEL:fig:Labl
+   #+name: fig:Name
+   #+ATTR_LATEX: :width 400
+   #+ATTR_ORG: :width 400
+   #+ATTR_HTML: :width 600
+   [[file:images/2021-05-20_11-19-23.jpg]]
+5. 無腦允許
+   #+CAPTION: Caption
+   #+LABEL:fig:Labl
+   #+name: fig:Name
+   #+ATTR_LATEX: :width 400
+   #+ATTR_ORG: :width 400
+   #+ATTR_HTML: :width 600
+   [[file:images/2021-05-20_11-19-31.jpg]]
+6. 無腦安裝
+   #+CAPTION: Caption
+   #+LABEL:fig:Labl
+   #+name: fig:Name
+   #+ATTR_LATEX: :width 400
+   #+ATTR_ORG: :width 400
+   #+ATTR_HTML: :width 600
+   [[file:images/2021-05-20_11-19-41.jpg]]
+7. 無腦完成
+   #+CAPTION: Caption
+   #+LABEL:fig:Labl
+   #+name: fig:Name
+   #+ATTR_LATEX: :width 400
+   #+ATTR_ORG: :width 400
+   #+ATTR_HTML: :width 600
+   [[file:images/2021-05-20_11-19-48.jpg]]
+
+
+* 新增macOS虛擬機
+** 下載macOS虛擬機映像檔
+- [[https://moodle.tnfsh.tn.edu.tw/downloads/macOS/macOS-Catalina-Virtual-Disk-Image.vmdk][點選這裡可以下載映像檔]]，檔案有6G，下載時間視你的網路速度而定，反正應該夠去煮杯咖啡
+- 我花了三分鐘下載完畢(不過我在同一區網內下載，算是作弊)，大家可以分享一下共花了多少時間才下載完
+- 記得你下載的檔案位置
+
+** 新增空白虛擬機
+1. 開啟VirtualBox，點選新增、點選專家模式
+   #+CAPTION: Caption
+   #+LABEL:fig:Labl
+   #+name: fig:Name
+   #+ATTR_LATEX: :width 400
+   #+ATTR_ORG: :width 400
+   #+ATTR_HTML: :width 600
+   [[file:images/2021-05-20_13-17-47.jpg]]
+2. 輸入名稱，這裡就統一定為  macOS  ，等一下比較好說明
+   #+CAPTION: Caption
+   #+LABEL:fig:Labl
+   #+name: fig:Name
+   #+ATTR_LATEX: :width 400
+   #+ATTR_ORG: :width 400
+   #+ATTR_HTML: :width 600
+   [[file:images/2021-05-20_13-20-01.jpg]]
+3. 確定類型為 Mac OS X,版本為 Mac OS X (64-bit)
+   #+CAPTION: Caption
+   #+LABEL:fig:Labl
+   #+name: fig:Name
+   #+ATTR_LATEX: :width 400
+   #+ATTR_ORG: :width 400
+   #+ATTR_HTML: :width 600
+   [[file:images/2021-05-20_13-20-02.jpg]]
+4. 分一半的計憶體給這台虛擬機
+   #+CAPTION: Caption
+   #+LABEL:fig:Labl
+   #+name: fig:Name
+   #+ATTR_LATEX: :width 400
+   #+ATTR_ORG: :width 400
+   #+ATTR_HTML: :width 600
+   [[file:images/2021-05-20_13-20-02.jpg]]
+5. 建立硬碟
+   1. 點選「使用現有虛擬硬碟檔案」
+   2. 點選開啟資料夾icon
+      #+CAPTION: Caption
+      #+LABEL:fig:Labl
+      #+name: fig:Name
+      #+ATTR_LATEX: :width 400
+      #+ATTR_ORG: :width 400
+      #+ATTR_HTML: :width 600
+      [[file:images/2021-05-20_13-20-03.jpg]]
+   3. 點選 加入(A)
+      #+CAPTION: Caption
+      #+LABEL:fig:Labl
+      #+name: fig:Name
+      #+ATTR_LATEX: :width 400
+      #+ATTR_ORG: :width 400
+      #+ATTR_HTML: :width 600
+      [[file:images/2021-05-20_13-30-35.jpg]]
+   4. 找到下載完的macOS虛擬機映像檔(應該在下載資料夾)，選取該檔案，點選開啟
+      #+CAPTION: Caption
+      #+LABEL:fig:Labl
+      #+name: fig:Name
+      #+ATTR_LATEX: :width 400
+      #+ATTR_ORG: :width 400
+      #+ATTR_HTML: :width 600
+      [[file:images/2021-05-20_13-30-50.jpg]]
+   5. 點選「選擇」按鈕
+      #+CAPTION: Caption
+      #+LABEL:fig:Labl
+      #+name: fig:Name
+      #+ATTR_LATEX: :width 400
+      #+ATTR_ORG: :width 400
+      #+ATTR_HTML: :width 600
+      [[file:images/2021-05-20_13-31-07.jpg]]
+   6. 此時應該會出現一個硬碟檔案，按建立
+      #+CAPTION: Caption
+      #+LABEL:fig:Labl
+      #+name: fig:Name
+      #+ATTR_LATEX: :width 400
+      #+ATTR_ORG: :width 400
+      #+ATTR_HTML: :width 600
+      [[file:images/2021-05-20_13-31-18.jpg]]
+   7. 終於設定完成，可以喘口氣了，但是現在還不能啟動，後面大概還有幾十個步驟......
+      #+CAPTION: Caption
+      #+LABEL:fig:Labl
+      #+name: fig:Name
+      #+ATTR_LATEX: :width 400
+      #+ATTR_ORG: :width 400
+      #+ATTR_HTML: :width 600
+      [[file:images/2021-05-20_13-31-33.jpg]]
+
+** 執行修正程式
+*** 以系統管理員身份執行 命令提示字元
+1. 在工作列搜尋欄中輸入 cmd
+   #+CAPTION: Caption
+   #+LABEL:fig:Labl
+   #+name: fig:Name
+   #+ATTR_LATEX: :width 400
+   #+ATTR_ORG: :width 400
+   #+ATTR_HTML: :width 600
+   [[file:images/2021-05-20_13-45-10.jpg]]
+2. 在上方 命令提示字元 按 右鍵 ，選擇 以系統管理員身份執行
+   #+CAPTION: Caption
+   #+LABEL:fig:Labl
+   #+name: fig:Name
+   #+ATTR_LATEX: :width 400
+   #+ATTR_ORG: :width 400
+   #+ATTR_HTML: :width 600
+   [[file:images/2021-05-20_13-45-10.jpg]]
+*** 執行修正程式
+**** 設定修正程式
+原本的修正程式長的像這樣，但是這裡有地方要做修正，就是所有的 Youur Virtual Machine Name 都要改成我們在上述2.2中命名的虛擬機名稱: macOS
+#+begin_verse
+cd "C:\Program Files\Oracle\VirtualBox\"
+VBoxManage.exe modifyvm "Your Virtual Machine Name" --cpuidset 00000001 000106e5 00100800 0098e3fd bfebfbff
+VBoxManage setextradata "Your Virtual Machine Name" "VBoxInternal/Devices/efi/0/Config/DmiSystemProduct" "iMac11,3"
+VBoxManage setextradata "Your Virtual Machine Name" "VBoxInternal/Devices/efi/0/Config/DmiSystemVersion" "1.0"
+VBoxManage setextradata "Your Virtual Machine Name" "VBoxInternal/Devices/efi/0/Config/DmiBoardProduct" "Iloveapple"
+VBoxManage setextradata "Your Virtual Machine Name" "VBoxInternal/Devices/smc/0/Config/DeviceKey" "ourhardworkbythesewordsguardedpleasedontsteal(c)AppleComputerInc"
+VBoxManage setextradata "Your Virtual Machine Name" "VBoxInternal/Devices/smc/0/Config/GetKeyFromRealSMC" 1
+#+end_verse
+如果你之前是依這裡的建議一樣命名為 macOS，那你可以直接參考底下的修正碼，否則就要逐一更改(你可以把它貼進文字編輯器裡去做搜尋/取代)
+#+begin_verse
+cd "C:\Program Files\Oracle\VirtualBox\"
+VBoxManage.exe modifyvm "macOS" --cpuidset 00000001 000106e5 00100800 0098e3fd bfebfbff
+VBoxManage setextradata "macOS" "VBoxInternal/Devices/efi/0/Config/DmiSystemProduct" "iMac11,3"
+VBoxManage setextradata "macOS" "VBoxInternal/Devices/efi/0/Config/DmiSystemVersion" "1.0"
+VBoxManage setextradata "macOS" "VBoxInternal/Devices/efi/0/Config/DmiBoardProduct" "Iloveapple"
+VBoxManage setextradata "macOS" "VBoxInternal/Devices/smc/0/Config/DeviceKey" "ourhardworkbythesewordsguardedpleasedontsteal(c)AppleComputerInc"
+VBoxManage setextradata "macOS" "VBoxInternal/Devices/smc/0/Config/GetKeyFromRealSMC" 1
+#+end_verse
+**** 執行上述修正指令
+將上面的修正指令 *逐行* 複製下來，貼到命令提示字元，然後按Enter執行。例如

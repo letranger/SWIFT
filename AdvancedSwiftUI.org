@@ -1977,7 +1977,7 @@ As you’ve seen, rather than just using @State to declare local state, we now t
 The end result is that we can have our state stored in an external object, and, even better, we can now use that object in multiple views and have them all point to the same values.
 #+latex: \newpage
 
-* Publihser and Subscriber
+* Publisher and Subscriber
 發佈者（Publisher）的角色就是提供輸出（output），當有值或者被請求就輸出值，如果一個Publisher沒有任何請求則被優化不做任何處理，Combine中提供兩種基本輸出，正常輸出（output type）和失敗（Failure）
 與發佈者(Publisher)對應的是訂閱者（Subscriber），訂閱者（Subscriber）訂閱發佈者的輸出並進行處理。發佈者（Publisher）和訂閱者（Subcriber）構成Combine的核心概念。和Publisher對應的，Subscriber有一個輸入類型（Input Type）和失敗(Failure),關係如下圖[fn:20]：
 #+CAPTION: Publisher v.s. Subscriber
@@ -2028,6 +2028,34 @@ You connect a subscriber to a publisher by calling the publisher’s subscribe(_
 
 - sink(receiveCompletion:receiveValue:) executes arbitrary closures when it receives a completion signal and each time it receives a new element.
 - assign(to:on:) writes each newly-received value to a property identified by a key path on a given instance.
+*** EXAMPLE
+#+begin_src swift -r -n :results output :exports nil
+import Combine
+
+class Weather {
+    @Published var temperature: Double
+    init(temperature: Double) {
+        self.temperature = temperature
+    }
+}
+
+let weather = Weather(temperature: 20)
+let cancellable = weather.$temperature
+  .sink() {
+      print("Temperature now: \($0)")
+  }
+
+weather.temperature = 25
+cancellable.cancel()
+weather.temperature = 30
+#+end_src
+
+#+RESULTS:
+: Temperature now: 20.0
+: Temperature now: 25.0
+
+Calcellable為一個表示活動或動作支持取消的protocol，調用 cancel() 釋放任何分配的資源。它還可以停止副作用，像是計時器、網路訪問或硬碟 I/O。
+
 
 * Combine
 在 2019 年時，Apple 推出了兩套強大的框架分別是 SwiftUI 以及 Combine，而這兩種全新的框架對於開發者來說是一個重大的改動，它也跟以往我們熟悉的編成方式不同，因此要能夠熟悉這兩個新推出的框架也算是一個大挑戰[fn:16]。

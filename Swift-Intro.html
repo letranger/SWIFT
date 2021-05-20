@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-04-26 Mon 15:52 -->
+<!-- 2021-05-12 Wed 09:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Swift Introduction</title>
@@ -193,13 +193,9 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
-<link rel="stylesheet" type="text/css" href="https://letranger.github.io/org-html-themes/styles/readtheorg/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="https://letranger.github.io/org-html-themes/styles/readtheorg/css/readtheorg.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
-<style>pre.src{background:#a569bd;color:white;}</style>
+<style type="text/css">
+html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block}audio:not([controls]){display:none;height:0}progress{vertical-align:baseline}[hidden],template{display:none}a{background-color:transparent;-webkit-text-decoration-skip:objects}a:active,a:hover{outline-width:0}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:inherit;font-weight:bolder}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background-color:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}svg:not(:root){overflow:hidden}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}figure{margin:1em 40px}hr{box-sizing:content-box;height:0;overflow:visible}button,input,optgroup,select,textarea{font:inherit;margin:0}optgroup{font-weight:700}button,input{overflow:visible}button,select{text-transform:none}[type=reset],[type=submit],button,html [type=button]{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-cancel-button,[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-input-placeholder{color:inherit;opacity:.54}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}body{color:#000;background-color:#fff}.org-alert-high{color:#ff8c00;font-weight:700}.org-alert-low{color:#00008b}.org-alert-moderate{color:gold;font-weight:700}.org-alert-saved-fringe{background-color:#f2f2f2}.org-alert-trivial{color:Dark purple}.org-alert-urgent{color:red;font-weight:700}.org-anzu-match-1{color:#000;background-color:#7fffd4}.org-anzu-match-2{color:#000;background-color:#00ff7f}.org-anzu-match-3{color:#000;background-color:#ff0}.org-anzu-mode-line,.org-anzu-mode-line-no-match{color:#008b00;font-weight:700}.org-anzu-replace-highlight{color:#b0e2ff;background-color:#cd00cd}.org-anzu-replace-to{color:red}.org-bbdb-field-name{color:sienna}.org-bbdb-name{color:#00f}.org-bbdb-organization{color:#b22222}.org-beacon-fallback-background{background-color:#000}.org-biblio-results-header{color:#483d8b;font-size:150%;font-weight:700}.org-bold{font-weight:700}.org-bold-italic{font-weight:700;font-style:italic}.org-bookmark-menu-bookmark{font-weight:700}.org-bookmark-menu-heading{color:#228b22}.org-buffer-menu-buffer{font-weight:700}.org-builtin{color:#483d8b}.org-button{color:#3a5fcd;text-decoration:underline}.org-c-annotation{color:#008b8b}.org-cal-china-x-general-holiday{background-color:#228b22}.org-cal-china-x-important-holiday{background-color:#8b0000}.org-calendar-iso-week{color:pink;font-weight:700}.org-calendar-iso-week-header{color:#0ff}.org-calendar-month-header{color:#00f}.org-calendar-today{text-decoration:underline}.org-calendar-weekday-header{color:#008b8b}.org-calendar-weekend-header{color:#b22222}.org-comint-highlight-input{font-weight:700}.org-comint-highlight-prompt{color:#0000cd}.org-comment,.org-comment-delimiter{color:#b22222}.org-compilation-column-number{color:#8b2252}.org-compilation-error{color:red;font-weight:700}.org-compilation-info{color:#228b22;font-weight:700}.org-compilation-line-number{color:#a020f0}.org-compilation-mode-line-exit{color:#228b22;font-weight:700}.org-compilation-mode-line-fail{color:red;font-weight:700}.org-compilation-mode-line-run,.org-compilation-warning{color:#ff8c00;font-weight:700}.org-completions-annotations{font-style:italic}.org-completions-first-difference{font-weight:700}.org-constant{color:#008b8b}.org-cursor{background-color:#eead0e}.org-custom-button{color:#000;background-color:#d3d3d3}.org-custom-button-mouse{color:#000;background-color:#e5e5e5}.org-custom-button-pressed{color:#000;background-color:#d3d3d3}.org-custom-button-pressed-unraised{color:#8b008b;text-decoration:underline}.org-custom-button-unraised{text-decoration:underline}.org-custom-changed{color:#fff;background-color:#00f}.org-custom-comment{background-color:#d9d9d9}.org-custom-comment-tag{color:#00008b}.org-custom-face-tag{color:#00f;font-weight:700}.org-custom-group-subtitle{font-weight:700}.org-custom-group-tag{color:#00f;font-size:120%;font-weight:700}.org-custom-group-tag-1{color:red;font-size:120%;font-weight:700}.org-custom-invalid{color:#ff0;background-color:red}.org-custom-link{color:#3a5fcd;text-decoration:underline}.org-custom-modified{color:#fff;background-color:#00f}.org-custom-rogue{color:pink;background-color:#000}.org-custom-saved{text-decoration:underline}.org-custom-set{color:#00f;background-color:#fff}.org-custom-state{color:#006400}.org-custom-themed{color:#fff;background-color:#00f}.org-custom-variable-button{font-weight:700;text-decoration:underline}.org-custom-variable-tag{color:#00f;font-weight:700}.org-custom-visibility{color:#3a5fcd;font-size:80%;text-decoration:underline}.org-diary{color:red}.org-diary-anniversary{color:#a020f0}.org-diary-time{color:sienna}.org-dired-async-failures{color:red}.org-dired-async-message{color:#ff0}.org-dired-async-mode-message{color:gold}.org-dired-directory{color:#00f}.org-dired-flagged{color:red;font-weight:700}.org-dired-header{color:#228b22}.org-dired-ignored{color:#7f7f7f}.org-dired-mark{color:#008b8b}.org-dired-marked{color:#ff8c00;font-weight:700}.org-dired-perm-write{color:#b22222}.org-dired-symlink{color:#a020f0}.org-dired-warning{color:red;font-weight:700}.org-doc{color:#8b2252}.org-eldoc-highlight-function-argument{font-weight:700}.org-epa-field-body{font-style:italic}.org-epa-field-name,.org-epa-mark{font-weight:700}.org-epa-mark{color:red}.org-epa-string{color:#00008b}.org-epa-validity-disabled{font-style:italic}.org-epa-validity-high{font-weight:700}.org-epa-validity-low,.org-epa-validity-medium{font-style:italic}.org-error{color:red;font-weight:700}.org-escape-glyph{color:brown}.org-evil-ex-commands{font-style:italic;text-decoration:underline}.org-evil-ex-info{color:red;font-style:italic}.org-evil-ex-lazy-highlight{background-color:#afeeee}.org-evil-ex-search{color:#b0e2ff;background-color:#cd00cd}.org-evil-ex-substitute-matches{background-color:#afeeee}.org-evil-ex-substitute-replacement{color:red;text-decoration:underline}.org-ffap{background-color:#b4eeb4}.org-file-name-shadow{color:#7f7f7f}.org-flycheck-error{text-decoration:underline}.org-flycheck-error-list-checker-name{color:#00f}.org-flycheck-error-list-column-number{color:#008b8b}.org-flycheck-error-list-error{color:red;font-weight:700}.org-flycheck-error-list-filename{color:sienna}.org-flycheck-error-list-highlight{background-color:#b4eeb4}.org-flycheck-error-list-id,.org-flycheck-error-list-id-with-explainer{color:#228b22}.org-flycheck-error-list-info{color:#228b22;font-weight:700}.org-flycheck-error-list-line-number{color:#008b8b}.org-flycheck-error-list-warning{color:#ff8c00;font-weight:700}.org-flycheck-fringe-error{color:red;font-weight:700}.org-flycheck-fringe-info{color:#228b22;font-weight:700}.org-flycheck-fringe-warning{color:#ff8c00;font-weight:700}.org-flycheck-info,.org-flycheck-warning,.org-flyspell-duplicate,.org-flyspell-incorrect{text-decoration:underline}.org-fringe{background-color:#f2f2f2}.org-function-name{color:#00f}.org-glyphless-char{font-size:60%}.org-golden-ratio-scroll-highlight-line{color:#fff;background-color:#53868b;font-weight:700}.org-header-line{color:#333;background-color:#e5e5e5}.org-helm-action{text-decoration:underline}.org-helm-bookmark-addressbook{color:tomato}.org-helm-bookmark-directory{color:#8b0000;background-color:#d3d3d3}.org-helm-bookmark-file{color:#00b2ee}.org-helm-bookmark-file-not-found{color:#6c7b8b}.org-helm-bookmark-gnus{color:#f0f}.org-helm-bookmark-info{color:#0f0}.org-helm-bookmark-man{color:#8b5a00}.org-helm-bookmark-w3m{color:#ff0}.org-helm-buffer-archive{color:gold}.org-helm-buffer-directory{color:#8b0000;background-color:#d3d3d3}.org-helm-buffer-file{color:#483d8b}.org-helm-buffer-modified{color:#b22222}.org-helm-buffer-not-saved{color:#ee6363}.org-helm-buffer-process{color:#cd6839}.org-helm-buffer-saved-out{color:red;background-color:#000}.org-helm-buffer-size{color:#708090}.org-helm-candidate-number,.org-helm-candidate-number-suspended{color:#000;background-color:#faffb5}.org-helm-delete-async-message{color:#ff0}.org-helm-etags-file{color:#8b814c;text-decoration:underline}.org-helm-ff-denied{color:red;background-color:#000}.org-helm-ff-directory{color:#8b0000;background-color:#d3d3d3}.org-helm-ff-dirs{color:#00f}.org-helm-ff-dotted-directory{color:#000;background-color:#696969}.org-helm-ff-dotted-symlink-directory{color:#ff8c00;background-color:#696969}.org-helm-ff-executable{color:#0f0}.org-helm-ff-file{color:#483d8b}.org-helm-ff-invalid-symlink{color:#000;background-color:red}.org-helm-ff-pipe{color:#ff0;background-color:#000}.org-helm-ff-prefix{color:#000;background-color:#ff0}.org-helm-ff-socket{color:#ff1493}.org-helm-ff-suid{color:#fff;background-color:red}.org-helm-ff-symlink{color:#b22222}.org-helm-ff-truename{color:#8b2252}.org-helm-grep-cmd-line{color:#228b22}.org-helm-grep-file{color:#8a2be2;text-decoration:underline}.org-helm-grep-finish{color:#0f0}.org-helm-grep-lineno{color:#ff7f00}.org-helm-grep-match{color:#b00000}.org-helm-header{color:#333;background-color:#e5e5e5}.org-helm-header-line-left-margin{color:#000;background-color:#ff0}.org-helm-helper{color:#333;background-color:#e5e5e5}.org-helm-history-deleted{color:#000;background-color:red}.org-helm-history-remote{color:#ff6a6a}.org-helm-lisp-completion-info{color:red}.org-helm-lisp-show-completion{background-color:#2f4f4f}.org-helm-locate-finish{color:#0f0}.org-helm-m-x-key{color:orange;text-decoration:underline}.org-helm-match{color:#b00000}.org-helm-match-item{color:#b0e2ff;background-color:#cd00cd}.org-helm-minibuffer-prompt{color:#0000cd}.org-helm-moccur-buffer{color:#00ced1;text-decoration:underline}.org-helm-non-file-buffer{font-style:italic}.org-helm-prefarg{color:red}.org-helm-resume-need-update{background-color:red}.org-helm-selection{background-color:#097209}.org-helm-selection-line{background-color:#b4eeb4}.org-helm-separator{color:#ffbfb5}.org-helm-source-header{color:#000;background-color:#abd7f0;font-size:130%;font-weight:700}.org-helm-visible-mark{background-color:#d1f5ea}.org-help-argument-name{font-style:italic}.org-highlight{background-color:#b4eeb4}.org-highlight-indent-guides-character{color:#e6e6e6}.org-highlight-indent-guides-even{background-color:#e6e6e6}.org-highlight-indent-guides-odd{background-color:#f3f3f3}.org-highlight-indent-guides-stack-character{color:#ccc}.org-highlight-indent-guides-stack-even{background-color:#ccc}.org-highlight-indent-guides-stack-odd{background-color:#d9d9d9}.org-highlight-indent-guides-top-character{color:#b3b3b3}.org-highlight-indent-guides-top-even{background-color:#b3b3b3}.org-highlight-indent-guides-top-odd{background-color:silver}.org-highlight-numbers-number{color:#008b8b}.org-hl-line{background-color:#b4eeb4}.org-holiday{background-color:pink}.org-hydra-face-amaranth{color:#e52b50;font-weight:700}.org-hydra-face-blue{color:#00f;font-weight:700}.org-hydra-face-pink{color:#ff6eb4;font-weight:700}.org-hydra-face-red{color:red;font-weight:700}.org-hydra-face-teal{color:#367588;font-weight:700}.org-ido-first-match{font-weight:700}.org-ido-incomplete-regexp{color:red;font-weight:700}.org-ido-indicator{color:#ff0;background-color:red}.org-ido-only-match{color:#228b22}.org-ido-subdir{color:red}.org-ido-virtual{color:#483d8b}.org-info-header-node{color:brown;font-weight:700;font-style:italic}.org-info-header-xref{color:#3a5fcd;text-decoration:underline}.org-info-index-match{background-color:#ff0}.org-info-menu-header{font-weight:700}.org-info-menu-star{color:red}.org-info-node{color:brown;font-weight:700;font-style:italic}.org-info-title-1{font-size:172%;font-weight:700}.org-info-title-2{font-size:144%;font-weight:700}.org-info-title-3{font-size:120%;font-weight:700}.org-info-title-4{font-weight:700}.org-info-xref{color:#3a5fcd;text-decoration:underline}.org-isearch{color:#b0e2ff;background-color:#cd00cd}.org-isearch-fail{background-color:#ffc1c1}.org-italic{font-style:italic}.org-keyword{color:#a020f0}.org-lazy-highlight{background-color:#afeeee}.org-link{color:#3a5fcd;text-decoration:underline}.org-link-visited{color:#8b008b;text-decoration:underline}.org-lv-separator{background-color:#ccc}.org-match{background-color:#ff0}.org-mcXcursor-bar{background-color:#000}.org-mcXregion{background-color:gtk_selection_bg_color}.org-me-dired-dim-0{color:#b3b3b3}.org-me-dired-dim-1{color:#7f7f7f}.org-me-dired-executable{color:#0f0}.org-message-cited-text{color:red}.org-message-header-cc{color:#191970}.org-message-header-name{color:#6495ed}.org-message-header-newsgroups{color:#00008b;font-weight:700;font-style:italic}.org-message-header-other{color:#4682b4}.org-message-header-subject{color:navy;font-weight:700}.org-message-header-to{color:#191970;font-weight:700}.org-message-header-xheader{color:#00f}.org-message-mml{color:#228b22}.org-message-separator{color:brown}.org-minibuffer-prompt{color:#0000cd}.org-mm-command-output{color:#cd0000}.org-mode-line{color:#000;background-color:#bfbfbf}.org-mode-line-buffer-id,.org-mode-line-buffer-id-inactive,.org-mode-line-emphasis{font-weight:700}.org-mode-line-inactive{color:#333;background-color:#e5e5e5}.org-mu4e-attach-number{color:sienna;font-weight:700}.org-mu4e-cited-1{color:#483d8b;font-style:italic}.org-mu4e-cited-2{color:#5cacee;font-style:italic}.org-mu4e-cited-3{color:sienna;font-style:italic}.org-mu4e-cited-4{color:#a020f0;font-style:italic}.org-mu4e-cited-5,.org-mu4e-cited-6{color:#b22222;font-style:italic}.org-mu4e-cited-7{color:#228b22;font-style:italic}.org-mu4e-compose-header,.org-mu4e-compose-separator{color:brown;font-style:italic}.org-mu4e-contact{color:sienna}.org-mu4e-context{color:#006400;font-weight:700}.org-mu4e-draft{color:#8b2252}.org-mu4e-flagged{color:#008b8b;font-weight:700}.org-mu4e-footer{color:#b22222}.org-mu4e-forwarded{color:#483d8b}.org-mu4e-header{color:#000;background-color:#fff}.org-mu4e-header-highlight{background-color:#000;font-weight:700;text-decoration:underline}.org-mu4e-header-key{color:#6495ed;font-weight:700}.org-mu4e-header-marks{color:#483d8b}.org-mu4e-header-title,.org-mu4e-header-value{color:#228b22}.org-mu4e-highlight{background-color:#b4eeb4}.org-mu4e-link{color:#3a5fcd;text-decoration:underline}.org-mu4e-modeline{color:#8b4500;font-weight:700}.org-mu4e-moved{color:#b22222;font-style:italic}.org-mu4e-ok{color:#b22222;font-weight:700}.org-mu4e-region-code{background-color:#2f4f4f}.org-mu4e-replied,.org-mu4e-special-header-value{color:#483d8b}.org-mu4e-system{color:#b22222;font-style:italic}.org-mu4e-title{color:#228b22;font-weight:700}.org-mu4e-trashed{color:#b22222;text-decoration:line-through}.org-mu4e-unread{color:#a020f0;font-weight:700}.org-mu4e-url-number{color:#008b8b;font-weight:700}.org-mu4e-view-body{color:#000;background-color:#fff}.org-mu4e-warning{color:red;font-weight:700}.org-next-error{background-color:gtk_selection_bg_color}.org-nobreak-space{color:brown;text-decoration:underline}.org-org-agenda-calendar-event,.org-org-agenda-calendar-sexp{color:#000;background-color:#fff}.org-org-agenda-clocking{background-color:#ff0}.org-org-agenda-column-dateline{background-color:#e5e5e5}.org-org-agenda-current-time{color:#b8860b}.org-org-agenda-date{color:#00f}.org-org-agenda-date-today{color:#00f;font-weight:700;font-style:italic}.org-org-agenda-date-weekend{color:#00f;font-weight:700}.org-org-agenda-diary{color:#000;background-color:#fff}.org-org-agenda-dimmed-todo{color:#7f7f7f}.org-org-agenda-done{color:#228b22}.org-org-agenda-filter-category,.org-org-agenda-filter-effort,.org-org-agenda-filter-regexp,.org-org-agenda-filter-tags{color:#000;background-color:#bfbfbf}.org-org-agenda-restriction-lock{background-color:#eee}.org-org-agenda-structure{color:#00f}.org-org-archived{color:#7f7f7f}.org-org-block{color:#7f7f7f}.org-org-block-begin-line,.org-org-block-end-line{color:#b22222}.org-org-checkbox{font-weight:700}.org-org-checkbox-statistics-done{color:#228b22;font-weight:700}.org-org-checkbox-statistics-todo{color:red;font-weight:700}.org-org-clock-overlay{color:#000;background-color:#d3d3d3}.org-org-code{color:#7f7f7f}.org-org-column,.org-org-column-title{background-color:#e5e5e5}.org-org-column-title{font-weight:700;text-decoration:underline}.org-org-date{color:#bfaf87;text-decoration:underline}.org-org-date-selected{color:red}.org-org-default{color:#000;background-color:#fff}.org-org-document-info{color:#191970}.org-org-document-info-keyword{color:#7f7f7f}.org-org-document-title{color:#191970;font-weight:700}.org-org-done{color:#228b22;font-weight:700}.org-org-drawer{color:#00f}.org-org-ellipsis{color:#b8860b;text-decoration:underline}.org-org-footnote{color:#96b4cd;text-decoration:underline}.org-org-formula{color:#b22222}.org-org-habit-alert{background-color:#f5f946}.org-org-habit-alert-future{background-color:#fafca9}.org-org-habit-clear{background-color:#8270f9}.org-org-habit-clear-future{background-color:#d6e4fc}.org-org-habit-overdue{background-color:#f9372d}.org-org-habit-overdue-future{background-color:#fc9590}.org-org-habit-ready{background-color:#4df946}.org-org-habit-ready-future{background-color:#acfca9}.org-org-headline-done{color:#bc8f8f}.org-org-hide{color:#fff}.org-org-latex-and-related{color:#8b4513}.org-org-level-1{color:#edd1c5}.org-org-level-2{color:#ebebb7}.org-org-level-3{color:#cce8cc}.org-org-level-4{color:#c9deec}.org-org-level-5{color:#dce3e8}.org-org-level-6{color:#dde6dd}.org-org-level-7{color:#e8e8ce}.org-org-level-8{color:#e8dedb}.org-org-link{color:#c5d2dc;text-decoration:underline}.org-org-list-dt{font-weight:700}.org-org-macro{color:#8b4513}.org-org-meta-line{color:#b22222}.org-org-mode-line-clock{color:#000;background-color:#bfbfbf}.org-org-mode-line-clock-overrun{color:#000;background-color:red}.org-org-priority{color:#a020f0}.org-org-quote{color:#7f7f7f}.org-org-ref-acronym{color:#ee7600;text-decoration:underline}.org-org-ref-cite{color:#c3d5c3;text-decoration:underline}.org-org-ref-glossary{color:#8968cd;text-decoration:underline}.org-org-ref-label{color:#8b008b;text-decoration:underline}.org-org-ref-ref{color:#e1cc96;text-decoration:underline}.org-org-scheduled{color:#006400}.org-org-scheduled-previously{color:#b22222}.org-org-scheduled-today{color:#006400}.org-org-sexp-date{color:#a020f0}.org-org-special-keyword{color:#88949f}.org-org-table{color:#00f}.org-org-tag,.org-org-tag-group{font-weight:700}.org-org-target{text-decoration:underline}.org-org-time-grid{color:#b8860b}.org-org-todo{color:red;font-weight:700}.org-org-upcoming-deadline{color:#b22222}.org-org-verbatim,.org-org-verse{color:#7f7f7f}.org-org-warning{color:red;font-weight:700}.org-outline-1{color:#00f}.org-outline-2{color:sienna}.org-outline-3{color:#a020f0}.org-outline-4{color:#b22222}.org-outline-5{color:#228b22}.org-outline-6{color:#008b8b}.org-outline-7{color:#483d8b}.org-outline-8{color:#8b2252}.org-package-description{color:#000;background-color:#fff}.org-package-name{color:#3a5fcd;text-decoration:underline}.org-package-status-avail-obso{color:#b22222}.org-package-status-available{color:#000;background-color:#fff}.org-package-status-built-in{color:#483d8b}.org-package-status-dependency{color:#b22222}.org-package-status-disabled{color:red;font-weight:700}.org-package-status-external{color:#483d8b}.org-package-status-held{color:#008b8b}.org-package-status-incompat,.org-package-status-installed{color:#b22222}.org-package-status-unsigned{color:red;font-weight:700}.org-pdf-isearch-batch{background-color:#ff0}.org-pdf-isearch-lazy{background-color:#afeeee}.org-pdf-isearch-match{color:#b0e2ff;background-color:#cd00cd}.org-pdf-occur-document{color:#8b2252}.org-pdf-occur-page{color:#228b22}.org-pdf-view-rectangle{background-color:#b4eeb4}.org-pdf-view-region{background-color:gtk_selection_bg_color}.org-powerline-active0{color:#000;background-color:#bfbfbf}.org-powerline-active1{color:#fff;background-color:#2b2b2b}.org-powerline-active2{color:#fff;background-color:#666}.org-powerline-inactive0{color:#333;background-color:#e5e5e5}.org-powerline-inactive1{color:#333;background-color:#1c1c1c}.org-powerline-inactive2{color:#333;background-color:#333}.org-preprocessor{color:#483d8b}.org-query-replace{color:#b0e2ff;background-color:#cd00cd}.org-rainbow-delimiters-depth-1{color:#ffdead}.org-rainbow-delimiters-depth-2{color:#00bfff}.org-rainbow-delimiters-depth-3{color:#ffdead}.org-rainbow-delimiters-depth-4{color:#00bfff}.org-rainbow-delimiters-depth-5{color:#ffdead}.org-rainbow-delimiters-depth-6{color:#00bfff}.org-rainbow-delimiters-depth-7{color:#ffdead}.org-rainbow-delimiters-depth-8{color:#00bfff}.org-rainbow-delimiters-depth-9{color:#ffdead}.org-rainbow-delimiters-unmatched{color:#88090b}.org-reb-match-0{background-color:#add8e6}.org-reb-match-1{background-color:#7fffd4}.org-reb-match-2{background-color:#00ff7f}.org-reb-match-3{background-color:#ff0}.org-rectangle-preview{background-color:gtk_selection_bg_color}.org-regexp-grouping-backslash,.org-regexp-grouping-construct{font-weight:700}.org-region{background-color:gtk_selection_bg_color}.org-secondary-selection{background-color:#ff0}.org-semantic-highlight-edits,.org-semantic-highlight-func-current-tag{background-color:#e5e5e5}.org-semantic-unmatched-syntax{text-decoration:underline}.org-sgml-namespace{color:#483d8b}.org-sh-escaped-newline{color:#8b2252}.org-sh-heredoc{color:#ee0}.org-sh-quoted-exec{color:#f0f}.org-shadow{color:#7f7f7f}.org-show-paren-match{background-color:#40e0d0}.org-show-paren-mismatch{color:#fff;background-color:#a020f0}.org-sp-pair-overlay,.org-sp-show-pair-enclosing{background-color:#b4eeb4}.org-sp-show-pair-match{background-color:#40e0d0}.org-sp-show-pair-mismatch{color:#fff;background-color:#a020f0}.org-sp-wrap-overlay{background-color:#b4eeb4}.org-sp-wrap-overlay-closing-pair{color:red;background-color:#b4eeb4}.org-sp-wrap-overlay-opening-pair{color:#0f0;background-color:#b4eeb4}.org-sp-wrap-tag-overlay{background-color:#b4eeb4}.org-spaceline-flycheck-error{color:#fc5c94;background-color:#333}.org-spaceline-flycheck-info{color:#8de6f7;background-color:#333}.org-spaceline-flycheck-warning{color:#f3ea98;background-color:#333}.org-spaceline-python-venv{color:#fbf}.org-speedbar-button{color:#008b00}.org-speedbar-directory{color:#00008b}.org-speedbar-file{color:#008b8b}.org-speedbar-highlight{background-color:#0f0}.org-speedbar-selected{color:red;text-decoration:underline}.org-speedbar-separator{color:#fff;background-color:#00f;text-decoration:overline}.org-speedbar-tag{color:brown}.org-string{color:#8b2252}.org-success{color:#228b22;font-weight:700}.org-table-cell{color:#e5e5e5;background-color:#00f}.org-tex-math{color:#8b2252}.org-tool-bar{color:#000;background-color:#bfbfbf}.org-tooltip{color:#000;background-color:#ffffe0}.org-trailing-whitespace{background-color:red}.org-tty-menu-disabled{color:#d3d3d3;background-color:#00f}.org-tty-menu-enabled{color:#ff0;background-color:#00f;font-weight:700}.org-tty-menu-selected{background-color:red}.org-type{color:#228b22}.org-underline{text-decoration:underline}.org-undo-tree-visualizer-active-branch{color:#000;font-weight:700}.org-undo-tree-visualizer-current{color:red}.org-undo-tree-visualizer-default{color:#bebebe}.org-undo-tree-visualizer-register{color:#ff0}.org-undo-tree-visualizer-unmodified{color:#0ff}.org-variable-name{color:sienna}.org-vhlXdefault{background-color:#ff0}.org-warning{color:#ff8c00;font-weight:700}.org-warning-1{color:red;font-weight:700}.org-wgrep{color:#fff;background-color:#228b22}.org-wgrep-delete{color:pink;background-color:#228b22}.org-wgrep-done{color:#00f}.org-wgrep-file{color:#fff;background-color:#228b22}.org-wgrep-reject{color:red;font-weight:700}.org-which-key-command-description{color:#00f}.org-which-key-docstring{color:#b22222}.org-which-key-group-description{color:#a020f0}.org-which-key-highlighted-command{color:#00f;text-decoration:underline}.org-which-key-key{color:#008b8b}.org-which-key-local-map-description{color:#00f}.org-which-key-note,.org-which-key-separator{color:#b22222}.org-which-key-special-key{color:#008b8b;font-weight:700}.org-whitespace-big-indent{color:#b22222;background-color:red}.org-whitespace-empty{color:#b22222;background-color:#ff0}.org-whitespace-hspace{color:#d3d3d3;background-color:#cdc9a5}.org-whitespace-indentation{color:#b22222;background-color:#ff0}.org-whitespace-line{color:violet;background-color:#333}.org-whitespace-newline{color:#d3d3d3}.org-whitespace-space{color:#d3d3d3;background-color:#ffffe0}.org-whitespace-space-after-tab{color:#b22222;background-color:#ff0}.org-whitespace-space-before-tab{color:#b22222;background-color:#ff8c00}.org-whitespace-tab{color:#d3d3d3;background-color:beige}.org-whitespace-trailing{color:#ff0;background-color:red;font-weight:700}.org-widget-button{font-weight:700}.org-widget-button-pressed{color:red}.org-widget-documentation{color:#006400}.org-widget-field{background-color:#d9d9d9}.org-widget-inactive{color:#7f7f7f}.org-widget-single-line-field{background-color:#d9d9d9}.org-window-divider{color:#999}.org-window-divider-first-pixel{color:#ccc}.org-window-divider-last-pixel{color:#666}a{color:inherit;background-color:inherit;font:inherit;text-decoration:inherit}a:hover{text-decoration:underline}body{width:95%;margin:2% auto;font-size:14px;line-height:1.4em;font-family:Georgia,serif;color:#333}@media screen and (min-width:600px){body{font-size:18px}}@media screen and (min-width:910px){body{width:900px}}::selection{background:#d6edff}p{margin:1em auto}dl,ol,ul{margin:0 auto}.title{text-align:center;margin:.8em auto;color:#000}.subtitle{text-align:center;font-size:1.1em;line-height:1.4;font-weight:700;margin:1em auto}.abstract{margin:auto;width:80%;font-style:italic}.abstract p:last-of-type:before{content:"    ";white-space:pre}.status{font-size:90%;margin:2em auto}[class^=section-number-]{margin-right:.5em}[id^=orgheadline]{clear:both}#footnotes{font-size:90%}.footpara{display:inline;margin:.2em auto}.footdef{margin-bottom:1em}.footdef sup{padding-right:.5em}a{color:#527d9a;text-decoration:none}a:hover{color:#035;border-bottom:1px dotted}figure{padding:0;margin:1em auto;text-align:center}img{max-width:100%;vertical-align:middle}.MathJax_Display{margin:0!important;width:90%!important}h1,h2,h3,h4,h5,h6{color:#a5573e;line-height:1em;font-family:Helvetica,sans-serif}h1,h2,h3{line-height:1.4em}h4,h5,h6{font-size:1em}@media screen and (min-width:600px){h1{font-size:2em}h2{font-size:1.5em}h3{font-size:1.3em}h1,h2,h3{line-height:1.4em}h4,h5,h6{font-size:1.1em}}dt{font-weight:700}table{margin:1em auto;border-top:2px solid;border-bottom:2px solid;border-collapse:collapse}thead{border-bottom:2px solid}table td+td,table th+th{border-left:1px solid grey}table tr{border-top:1px solid #d3d3d3}td,th{padding:.3em .6em;vertical-align:middle}caption.t-above{caption-side:top}caption.t-bottom{caption-side:bottom}caption{margin-bottom:.3em}figcaption{margin-top:.3em}th.org-center,th.org-left,th.org-right{text-align:center}td.org-right{text-align:right}td.org-left{text-align:left}td.org-center{text-align:center}blockquote{margin:1em 2em;padding-left:1em;border-left:3px solid #ccc}kbd{background-color:#f7f7f7;font-size:80%;margin:0 .1em;padding:.1em .6em}.todo{background-color:red;color:#fff;padding:.1em .3em;border-radius:3px;background-clip:padding-box;font-size:80%;font-family:Lucida Console,monospace;line-height:1}.done{background-color:green;color:#fff;padding:.1em .3em;border-radius:3px;background-clip:padding-box;font-size:80%;font-family:Lucida Console,monospace;line-height:1}.priority{color:orange;font-family:Lucida Console,monospace}#table-of-contents li{clear:both}.tag{font-family:Lucida Console,monospace;font-size:.7em;font-weight:400}.tag span{padding:.3em;float:right;margin-right:.5em;border:1px solid #bbb;border-radius:3px;background-clip:padding-box;color:#333;background-color:#eee;line-height:1}.timestamp{color:#bebebe;font-size:90%}.timestamp-kwd{color:#5f9ea0}.org-right{margin-left:auto;margin-right:0;text-align:right}.org-left{margin-left:0;margin-right:auto;text-align:left}.org-center{margin-left:auto;margin-right:auto;text-align:center}.underline{text-decoration:underline}#postamble p,#preamble p{font-size:90%;margin:.2em}p.verse{margin-left:3%}:not(pre)>code{padding:2px 5px;margin:auto 1px;border:1px solid #ddd;border-radius:3px;background-clip:padding-box;color:#333;font-size:80%}.org-src-container{border:1px solid #ccc;box-shadow:3px 3px 3px #eee;font-family:Lucida Console,monospace;font-size:80%;margin:1em auto;padding:.1em .5em;position:relative}.org-src-container>pre{overflow:auto}.org-src-container>pre:before{display:block;position:absolute;background-color:#b3b3b3;top:0;right:0;padding:0 .5em;border-bottom-left-radius:8px;border:0;color:#fff;font-size:80%}.org-src-container>pre.src-sh:before{content:"sh"}.org-src-container>pre.src-bash:before{content:"bash"}.org-src-container>pre.src-emacs-lisp:before{content:"Emacs Lisp"}.org-src-container>pre.src-R:before{content:"R"}.org-src-container>pre.src-cpp:before{content:"C++"}.org-src-container>pre.src-c:before{content:"C"}.org-src-container>pre.src-html:before{content:"HTML"}.org-src-container>pre.src-javascript:before,.org-src-container>pre.src-js:before{content:"Javascript"}// More languages 0% http://orgmode.org/worg/org-contrib/babel/languages.html .org-src-container>pre.src-abc:before{content:"ABC"}.org-src-container>pre.src-asymptote:before{content:"Asymptote"}.org-src-container>pre.src-awk:before{content:"Awk"}.org-src-container>pre.src-C:before{content:"C"}.org-src-container>pre.src-calc:before{content:"Calc"}.org-src-container>pre.src-clojure:before{content:"Clojure"}.org-src-container>pre.src-comint:before{content:"comint"}.org-src-container>pre.src-css:before{content:"CSS"}.org-src-container>pre.src-D:before{content:"D"}.org-src-container>pre.src-ditaa:before{content:"Ditaa"}.org-src-container>pre.src-dot:before{content:"Dot"}.org-src-container>pre.src-ebnf:before{content:"ebnf"}.org-src-container>pre.src-forth:before{content:"Forth"}.org-src-container>pre.src-F90:before{content:"Fortran"}.org-src-container>pre.src-gnuplot:before{content:"Gnuplot"}.org-src-container>pre.src-haskell:before{content:"Haskell"}.org-src-container>pre.src-io:before{content:"Io"}.org-src-container>pre.src-java:before{content:"Java"}.org-src-container>pre.src-latex:before{content:"LaTeX"}.org-src-container>pre.src-ledger:before{content:"Ledger"}.org-src-container>pre.src-ly:before{content:"Lilypond"}.org-src-container>pre.src-lisp:before{content:"Lisp"}.org-src-container>pre.src-makefile:before{content:"Make"}.org-src-container>pre.src-matlab:before{content:"Matlab"}.org-src-container>pre.src-max:before{content:"Maxima"}.org-src-container>pre.src-mscgen:before{content:"Mscgen"}.org-src-container>pre.src-Caml:before{content:"Objective"}.org-src-container>pre.src-octave:before{content:"Octave"}.org-src-container>pre.src-org:before{content:"Org"}.org-src-container>pre.src-perl:before{content:"Perl"}.org-src-container>pre.src-picolisp:before{content:"Picolisp"}.org-src-container>pre.src-plantuml:before{content:"PlantUML"}.org-src-container>pre.src-python:before{content:"Python"}.org-src-container>pre.src-ruby:before{content:"Ruby"}.org-src-container>pre.src-sass:before{content:"Sass"}.org-src-container>pre.src-scala:before{content:"Scala"}.org-src-container>pre.src-scheme:before{content:"Scheme"}.org-src-container>pre.src-screen:before{content:"Screen"}.org-src-container>pre.src-sed:before{content:"Sed"}.org-src-container>pre.src-shell:before{content:"shell"}.org-src-container>pre.src-shen:before{content:"Shen"}.org-src-container>pre.src-sql:before{content:"SQL"}.org-src-container>pre.src-sqlite:before{content:"SQLite"}.org-src-container>pre.src-stan:before{content:"Stan"}.org-src-container>pre.src-vala:before{content:"Vala"}.org-src-container>pre.src-axiom:before{content:"Axiom"}.org-src-container>pre.src-browser:before{content:"HTML"}.org-src-container>pre.src-cypher:before{content:"Neo4j"}.org-src-container>pre.src-elixir:before{content:"Elixir"}.org-src-container>pre.src-request:before{content:"http"}.org-src-container>pre.src-ipython:before{content:"iPython"}.org-src-container>pre.src-kotlin:before{content:"Kotlin"}.org-src-container>pre.src-Flavored Erlang lfe:before{content:"Lisp"}.org-src-container>pre.src-mongo:before{content:"MongoDB"}.org-src-container>pre.src-prolog:before{content:"Prolog"}.org-src-container>pre.src-rec:before{content:"rec"}.org-src-container>pre.src-ML sml:before{content:"Standard"}.org-src-container>pre.src-Translate translate:before{content:"Google"}.org-src-container>pre.src-typescript:before{content:"Typescript"}.org-src-container>pre.src-rust:before{content:"Rust"}.inlinetask{background:#ffc;border:2px solid grey;margin:10px;padding:10px}#org-div-home-and-up{font-size:70%;text-align:right;white-space:nowrap}.linenr{font-size:90%}.code-highlighted{background-color:#ff0}#bibliography{font-size:90%}#bibliography table{width:100%}.creator{display:block}@media screen and (min-width:600px){.creator{display:inline;float:right}}
+</style>
 <script type="text/javascript">
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
 <!--/*--><![CDATA[/*><!--*/
@@ -224,6 +220,28 @@
     /*]]>*///-->
 // @license-end
 </script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
@@ -235,133 +253,107 @@
 <li><a href="#basic">1. The Basics</a></li>
 <li><a href="#resources">2. Learning Resources</a>
 <ul>
-<li><a href="#org3e2cf6b">2.1. Web sites</a></li>
-<li><a href="#org4c26d61">2.2. Videos</a></li>
+<li><a href="#org450fd18">2.1. Web sites</a></li>
+<li><a href="#org0a9441d">2.2. Videos</a></li>
 </ul>
 </li>
 <li><a href="#variable">3. Swift 常數與變數</a>
 <ul>
-<li><a href="#org07be40e">3.1. 宣告常數和變數</a></li>
-<li><a href="#org9ad5eb4">3.2. Swift v.s. C/C++</a></li>
-<li><a href="#org557f3b7">3.3. Swift is a type-safe language</a></li>
-<li><a href="#org141154a">3.4. 常數與變數的命名</a></li>
-<li><a href="#org58d71a2">3.5. 變數與常數的輸出</a></li>
-<li><a href="#orga5e3612">3.6. 變數與常數的基本規範</a></li>
-<li><a href="#org1dc6c67">3.7. Stored variable v.s. Computed variable</a>
+<li><a href="#orgc89ad8b">3.1. 宣告常數和變數</a></li>
+<li><a href="#org7568249">3.2. Swift v.s. C/C++</a></li>
+<li><a href="#org31f5fcb">3.3. Swift is a type-safe language</a></li>
+<li><a href="#org5d17883">3.4. 常數與變數的命名</a></li>
+<li><a href="#org06e1334">3.5. 變數與常數的輸出</a></li>
+<li><a href="#org3be9bfe">3.6. 變數與常數的基本規範</a></li>
+<li><a href="#org969c635">3.7. Stored variable v.s. Computed variable</a>
 <ul>
-<li><a href="#orgc396acd">3.7.1. computed variable</a></li>
-<li><a href="#orgb8d8f8f">3.7.2. contentView 裡的 body 就是 computed variable</a></li>
+<li><a href="#org5cc252c">3.7.1. computed variable</a></li>
+<li><a href="#org76eacce">3.7.2. contentView 裡的 body 就是 computed variable</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><a href="#operation">4. 基本運算</a>
 <ul>
-<li><a href="#org5147b20">4.1. 指派運算子</a></li>
-<li><a href="#orgcd70005">4.2. 數值運算子</a>
+<li><a href="#org61dd64f">4.1. 指派運算子</a></li>
+<li><a href="#org233e8d0">4.2. 數值運算子</a>
 <ul>
-<li><a href="#orgacf568c">4.2.1. Swift 支援所有數值型別基本運算：</a></li>
-<li><a href="#org760cdc0">4.2.2. 不同數值的運算</a></li>
-<li><a href="#orgc862775">4.2.3. 加法運算子也用於 String 的拼接：</a></li>
+<li><a href="#orgb939131">4.2.1. Swift 支援所有數值型別基本運算：</a></li>
+<li><a href="#orge6ca5b1">4.2.2. 不同數值的運算</a></li>
+<li><a href="#orgfbc07da">4.2.3. 加法運算子也用於 String 的拼接：</a></li>
 </ul>
 </li>
-<li><a href="#orgb1d3627">4.3. 複合指派運算子（Compound Assignment Operators）</a></li>
-<li><a href="#org6b39aa1">4.4. 邏輯運算子</a></li>
+<li><a href="#orgd6ae28c">4.3. 複合指派運算子（Compound Assignment Operators）</a></li>
+<li><a href="#org093f53d">4.4. 邏輯運算子</a></li>
 </ul>
 </li>
 <li><a href="#observer">5. Property Observers</a>
 <ul>
-<li><a href="#org5dd6066">5.1. Set/Get</a></li>
-<li><a href="#orgaadb6dc">5.2. willSet/set/didSet</a></li>
+<li><a href="#org9251d15">5.1. Set/Get</a></li>
+<li><a href="#org7b6b2e7">5.2. willSet/set/didSet</a></li>
 </ul>
 </li>
 <li><a href="#flow-control">6. 控制流程</a>
 <ul>
-<li><a href="#org29367ea">6.1. Conditional Statement</a>
+<li><a href="#org51080f7">6.1. Conditional Statement</a>
 <ul>
-<li><a href="#org41ad325">6.1.1. if</a>
-<ul>
-<li><a href="#org845d3eb">6.1.1.1. single condition</a></li>
-<li><a href="#org68b3abd">6.1.1.2. combined conditions</a></li>
+<li><a href="#orgba5a8c2">6.1.1. if</a></li>
+<li><a href="#org24c41ba">6.1.2. if-else</a></li>
+<li><a href="#org3eb2271">6.1.3. if-else if</a></li>
+<li><a href="#org905607b">6.1.4. switch</a></li>
 </ul>
 </li>
-<li><a href="#org013da24">6.1.2. if-else</a></li>
-<li><a href="#orgb011733">6.1.3. if-else if</a></li>
-<li><a href="#org8da69c0">6.1.4. switch</a></li>
+<li><a href="#org2ba9925">6.2. For-In Loops</a>
+<ul>
+<li><a href="#org4c7715a">6.2.1. 語法</a></li>
+<li><a href="#orgff68791">6.2.2. DEMO</a></li>
 </ul>
 </li>
-<li><a href="#orgdd3d45d">6.2. For-In Loops</a>
+<li><a href="#org3b21628">6.3. While Loops</a>
 <ul>
-<li><a href="#org4c05691">6.2.1. 語法</a></li>
-<li><a href="#org1d7cb58">6.2.2. DEMO</a></li>
-</ul>
-</li>
-<li><a href="#orgb7fe9a6">6.3. While Loops</a>
-<ul>
-<li><a href="#org8da912f">6.3.1. while</a>
-<ul>
-<li><a href="#orgd6a4ebb">6.3.1.1. 語法</a></li>
-<li><a href="#orga8c4b3c">6.3.1.2. DEMO</a></li>
-</ul>
-</li>
-<li><a href="#org22745c3">6.3.2. repeat &#x2026; while</a>
-<ul>
-<li><a href="#orgf5996df">6.3.2.1. 語法</a></li>
-<li><a href="#orge9421a3">6.3.2.2. DEMO</a></li>
-</ul>
-</li>
+<li><a href="#org21126db">6.3.1. while</a></li>
+<li><a href="#org5241eba">6.3.2. repeat &#x2026; while</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><a href="#set">7. 集合型別</a>
 <ul>
-<li><a href="#org7e0916e">7.1. 陣列（Arrays）</a>
+<li><a href="#org1189215">7.1. 陣列（Arrays）</a>
 <ul>
-<li><a href="#org56fe8fb">7.1.1. 陣列建構語法</a></li>
-<li><a href="#orgf7628a0">7.1.2. 存取和修改陣列</a></li>
-<li><a href="#org81bac00">7.1.3. 以 for 遍歷陣列</a></li>
-<li><a href="#org5317392">7.1.4. 以 repeat 產生 array</a></li>
-<li><a href="#org2d9f569">7.1.5. Modify array</a>
-<ul>
-<li><a href="#orgf328002">7.1.5.1. map: 批次 update array</a></li>
+<li><a href="#org303ed7b">7.1.1. 陣列建構語法</a></li>
+<li><a href="#org999a3d3">7.1.2. 存取和修改陣列</a></li>
+<li><a href="#org650712c">7.1.3. 以 for 遍歷陣列</a></li>
+<li><a href="#orga3c6aa9">7.1.4. 以 repeat 產生 array</a></li>
+<li><a href="#orgfe060e3">7.1.5. Modify array</a></li>
+<li><a href="#org45e29c4">7.1.6. flatMap()</a></li>
+<li><a href="#org343b35f">7.1.7. compactMap</a></li>
+<li><a href="#org6061a28">7.1.8. Array of Struct</a></li>
 </ul>
 </li>
-<li><a href="#orgc3e08b0">7.1.6. flatMap()</a></li>
-<li><a href="#orgbf33466">7.1.7. compactMap</a></li>
-<li><a href="#orgbc75db3">7.1.8. Array of Struct</a></li>
+<li><a href="#orga2338b9">7.2. 集合（Sets）</a>
+<ul>
+<li><a href="#org42aa247">7.2.1. 宣告</a></li>
+<li><a href="#org10fd0a3">7.2.2. 存取集合</a></li>
+<li><a href="#org0e208cc">7.2.3. 交集、聯集</a></li>
+<li><a href="#orgad273d3">7.2.4. 學習資源</a></li>
 </ul>
 </li>
-<li><a href="#orgc6a7a55">7.2. 集合（Sets）</a>
+<li><a href="#org7c7b053">7.3. 字典（Dictionaries）</a>
 <ul>
-<li><a href="#orga8b1133">7.2.1. 宣告</a></li>
-<li><a href="#org7290ac0">7.2.2. 存取集合</a></li>
-<li><a href="#orge841e0c">7.2.3. 交集、聯集</a></li>
-<li><a href="#org4daaec6">7.2.4. 學習資源</a></li>
-</ul>
-</li>
-<li><a href="#org0a10674">7.3. 字典（Dictionaries）</a>
-<ul>
-<li><a href="#org35c021b">7.3.1. 建立字典</a></li>
-<li><a href="#org6bf1bb7">7.3.2. 存取字典</a></li>
+<li><a href="#orgea54c6a">7.3.1. 建立字典</a></li>
+<li><a href="#orgdf3a081">7.3.2. 存取字典</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><a href="#function">8. Functions</a>
 <ul>
-<li><a href="#org501ebd2">8.1. Functions 的定義與呼叫</a>
+<li><a href="#orga045888">8.1. Functions 的定義與呼叫</a>
 <ul>
-<li><a href="#orgc2a3d34">8.1.1. 語法</a></li>
-<li><a href="#orgceb0c48">8.1.2. DEMO</a></li>
-<li><a href="#org13114b9">8.1.3. Functions 的參數與傳回值</a>
-<ul>
-<li><a href="#orge8f0823">8.1.3.1. 沒有參數</a></li>
-<li><a href="#org677ac28">8.1.3.2. 有很多參數</a></li>
-<li><a href="#org4ec6ee6">8.1.3.3. 沒有傳回值</a></li>
-<li><a href="#org1415d57">8.1.3.4. 有很多傳回值</a></li>
-</ul>
-</li>
+<li><a href="#orgeb8a39f">8.1.1. 語法</a></li>
+<li><a href="#org7a1c2eb">8.1.2. DEMO</a></li>
+<li><a href="#org8738367">8.1.3. Functions 的參數與傳回值</a></li>
 </ul>
 </li>
 </ul>
@@ -369,105 +361,91 @@
 <li><a href="#generics">9. Generics</a></li>
 <li><a href="#types">10. Types</a>
 <ul>
-<li><a href="#orgf463796">10.1. Varietities of Types</a></li>
-<li><a href="#org1d15774">10.2. Functions as Types</a></li>
-<li><a href="#orgd7eceb4">10.3. Closures</a>
+<li><a href="#orgf737ad4">10.1. Varietities of Types</a></li>
+<li><a href="#org8751fea">10.2. Functions as Types</a></li>
+</ul>
+</li>
+<li><a href="#org8f29a58">11. Closures</a>
 <ul>
-<li><a href="#orgb14ba72">10.3.1. syntax</a></li>
-<li><a href="#org8811731">10.3.2. closure as function parameter</a></li>
+<li><a href="#orgbe1e636">11.1. closure語法與簡化</a></li>
+<li><a href="#org0eff5fb">11.2. closure as function parameter</a></li>
+<li><a href="#org0da4b3c">11.3. Completion Handler</a></li>
+<li><a href="#org266b550">11.4. @nonescaping closures:</a>
+<ul>
+<li><a href="#org87d9056">11.4.1. Multi-Threading</a></li>
+</ul>
+</li>
+<li><a href="#org848adcd">11.5. @escaping closure:</a></li>
+</ul>
+</li>
+<li><a href="#SW-Struct-Class-Enum">12. Struct, Class, and Enum</a>
+<ul>
+<li><a href="#orgd17e6cb">12.1. 語法</a></li>
+<li><a href="#org55fe93b">12.2. DEMO</a>
+<ul>
+<li><a href="#org7f9cab2">12.2.1. 宣告</a></li>
+<li><a href="#org2586ef8">12.2.2. Init</a></li>
+<li><a href="#org6084f5f">12.2.3. Structure and Class Instances</a></li>
+<li><a href="#org44425ec">12.2.4. Accessing Properties</a></li>
+</ul>
+</li>
+<li><a href="#org55f0236">12.3. Struct</a>
+<ul>
+<li><a href="#org6fa9ada">12.3.1. stored properties和computed properties</a></li>
+<li><a href="#org75884ff">12.3.2. type properties</a></li>
+<li><a href="#orgb59afde">12.3.3. property observers</a></li>
+<li><a href="#orgcc3f0df">12.3.4. Struct中的methods</a></li>
+<li><a href="#org92c4303">12.3.5. Mutating methods</a></li>
+</ul>
+</li>
+<li><a href="#orgdd1440c">12.4. Classes</a>
+<ul>
+<li><a href="#org36f5c8b">12.4.1. Struct v.s. Class</a></li>
+<li><a href="#org6489e9b">12.4.2. Inheritance &amp; Override methods and properties</a></li>
+</ul>
+</li>
+<li><a href="#orgb7481ae">12.5. 結構跟類的比較 (Comparing Structures and Classes) </a>
+<ul>
+<li><a href="#org321403b">12.5.1. 在 Swift 中的結構與類有許多相同之處，兩者皆能：</a></li>
+<li><a href="#orgc4483ce">12.5.2. 類具有的附加功能，但結構沒有：</a></li>
+<li><a href="#org08fa7e4">12.5.3. 結構和列舉是值型別 (Structures and Enumerations Are Value Types)</a></li>
+<li><a href="#orga559ae8">12.5.4. 類是參考型別 (Classes Are Reference Types)</a></li>
+</ul>
+</li>
+<li><a href="#orga02ffed">12.6. with v.s. without struct: Why you need struct</a>
+<ul>
+<li><a href="#org5cb08a3">12.6.1. 狀況一: without struct</a></li>
+<li><a href="#org79475b8">12.6.2. 狀況二: with struct</a></li>
+</ul>
+</li>
+<li><a href="#orge8c5e81">12.7. Inheritance</a>
+<ul>
+<li><a href="#orgad47101">12.7.1. 使用 inheritance 的優點</a></li>
+</ul>
+</li>
+<li><a href="#org1068464">12.8. Computer property</a></li>
+<li><a href="#org15ed2da">12.9. Structures and Enumerations Are Value Types</a></li>
+<li><a href="#orgb25ae66">12.10. Classes Are Reference Types</a></li>
+<li><a href="#org6c5f94e">12.11. Enumerations</a>
+<ul>
+<li><a href="#orgba2e903">12.11.1. Raw Values</a></li>
+</ul>
+</li>
+<li><a href="#orgebc26ad">12.12. 結構和類之間的選擇 (Choosing Between Structures and Classes)</a>
+<ul>
+<li><a href="#org0877ac5">12.12.1. 選擇原則</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#SW-Struct-Class-Enum">11. Struct, Class, and Enum</a>
+<li><a href="#PatternMatching">13. Pattern Matching</a>
 <ul>
-<li><a href="#org12f39b5">11.1. 語法</a></li>
-<li><a href="#orgda82c07">11.2. DEMO</a>
-<ul>
-<li><a href="#orgfef3709">11.2.1. 宣告</a></li>
-<li><a href="#org2917779">11.2.2. Init</a></li>
-<li><a href="#org50e2cb9">11.2.3. Structure and Class Instances</a></li>
-<li><a href="#org9d7e122">11.2.4. Accessing Properties</a></li>
-</ul>
-</li>
-<li><a href="#orgcac70dc">11.3. Struct</a>
-<ul>
-<li><a href="#orgc720f1d">11.3.1. stored properties和computed properties</a></li>
-<li><a href="#org48ba549">11.3.2. type properties</a></li>
-<li><a href="#orgf860ea1">11.3.3. property observers</a></li>
-<li><a href="#org110235c">11.3.4. Struct中的methods</a></li>
-<li><a href="#org8629dab">11.3.5. Mutating methods</a></li>
-</ul>
-</li>
-<li><a href="#org455bc29">11.4. Classes</a>
-<ul>
-<li><a href="#org79e02a0">11.4.1. Struct v.s. Class</a>
-<ul>
-<li><a href="#orgc008a65">11.4.1.1. init</a></li>
-<li><a href="#orgf1a9d89">11.4.1.2. reference type v.s. value type</a></li>
-<li><a href="#org60b11ab">11.4.1.3. 判定相等or not</a></li>
-<li><a href="#org4edaaba">11.4.1.4. constant or variable</a></li>
-<li><a href="#orgb5d1ec0">11.4.1.5. 如何选择用Class还是Struct</a></li>
-</ul>
-</li>
-<li><a href="#org999fb64">11.4.2. Inheritance &amp; Override methods and properties</a></li>
-</ul>
-</li>
-<li><a href="#org91f9ca2">11.5. 結構跟類的比較 (Comparing Structures and Classes) </a>
-<ul>
-<li><a href="#orgf6fe374">11.5.1. 在 Swift 中的結構與類有許多相同之處，兩者皆能：</a></li>
-<li><a href="#org52e2180">11.5.2. 類具有的附加功能，但結構沒有：</a></li>
-<li><a href="#orgad8727d">11.5.3. 結構和列舉是值型別 (Structures and Enumerations Are Value Types)</a>
-<ul>
-<li><a href="#orgd8ad877">11.5.3.1. 範例</a></li>
-</ul>
-</li>
-<li><a href="#orgbcb6931">11.5.4. 類是參考型別 (Classes Are Reference Types)</a>
-<ul>
-<li><a href="#orgf342207">11.5.4.1. 範例</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#org276b380">11.6. with v.s. without struct: Why you need struct</a>
-<ul>
-<li><a href="#orgfdc6316">11.6.1. 狀況一: without struct</a></li>
-<li><a href="#org0383396">11.6.2. 狀況二: with struct</a></li>
-</ul>
-</li>
-<li><a href="#org8d796b3">11.7. Inheritance</a>
-<ul>
-<li><a href="#org7c5e94e">11.7.1. 使用 inheritance 的優點</a>
-<ul>
-<li><a href="#org23381a7">11.7.1.1. 不用 inheritance</a></li>
-<li><a href="#org4e37ed9">11.7.1.2. 使用 inheritance</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#org1e6d799">11.8. Computer property</a></li>
-<li><a href="#orgebedfd8">11.9. Structures and Enumerations Are Value Types</a></li>
-<li><a href="#org9a8645e">11.10. Classes Are Reference Types</a></li>
-<li><a href="#org6b2761a">11.11. Enumerations</a>
-<ul>
-<li><a href="#orge808488">11.11.1. Raw Values</a></li>
-</ul>
-</li>
-<li><a href="#org27c3075">11.12. 結構和類之間的選擇 (Choosing Between Structures and Classes)</a>
-<ul>
-<li><a href="#org827f6e3">11.12.1. 選擇原則</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#PatternMatching">12. Pattern Matching</a>
-<ul>
-<li><a href="#orgc654eb5">12.1. if case</a></li>
-<li><a href="#org3148cca">12.2. wildcard</a></li>
-<li><a href="#orgb9131bb">12.3. for case</a></li>
-<li><a href="#orge67017d">12.4. 检查数据类型</a></li>
-<li><a href="#org10a4d00">12.5. case&#x2026;where&#x2026;</a></li>
-<li><a href="#orgc2d87ef">12.6. if多个条件</a></li>
+<li><a href="#org7b6749d">13.1. if case</a></li>
+<li><a href="#orgb0f69a7">13.2. wildcard</a></li>
+<li><a href="#org18d1898">13.3. for case</a></li>
+<li><a href="#org61560aa">13.4. 检查数据类型</a></li>
+<li><a href="#org0c6c5ac">13.5. case&#x2026;where&#x2026;</a></li>
+<li><a href="#orgf541fac">13.6. if多个条件</a></li>
 </ul>
 </li>
 </ul>
@@ -478,17 +456,17 @@
 <h2 id="basic"><span class="section-number-2">1</span> The Basics</h2>
 <div class="outline-text-2" id="text-basic">
 <p>
-Swift 是 2014 年由蘋果公司在其開發者大會 WWDC 上所發佈的程式語言<br />
+Swift 是 2014 年由蘋果公司在其開發者大會 WWDC 上所發佈的程式語言
 </p>
 
 <p>
-The Swift Programming Language 一書中提到<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>：<br />
+The Swift Programming Language 一書中提到<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>：
 </p>
 <ol class="org-ol">
-<li>Swift 用來撰寫 iOS 及 Mac OSX 的程式。<br /></li>
-<li>Swift 吸收了 C 和 Objective-C 的優點，使其在設計更具彈性、容易，且撰寫時有更多樂趣。<br /></li>
-<li>Swift 是基於成熟而且倍受喜愛的 Cocoa 和 Cocoa Touch framework，意即 Swift 可以直接使用這些現有的框架<br /></li>
-<li>Swift 兼具編譯語言的性能，以及直譯式語言的特性。<br /></li>
+<li>Swift 用來撰寫 iOS 及 Mac OSX 的程式。</li>
+<li>Swift 吸收了 C 和 Objective-C 的優點，使其在設計更具彈性、容易，且撰寫時有更多樂趣。</li>
+<li>Swift 是基於成熟而且倍受喜愛的 Cocoa 和 Cocoa Touch framework，意即 Swift 可以直接使用這些現有的框架</li>
+<li>Swift 兼具編譯語言的性能，以及直譯式語言的特性。</li>
 </ol>
 </div>
 </div>
@@ -497,30 +475,30 @@ The Swift Programming Language 一書中提到<sup><a id="fnr.1" class="footref"
 <h2 id="resources"><span class="section-number-2">2</span> Learning Resources</h2>
 <div class="outline-text-2" id="text-resources">
 </div>
-<div id="outline-container-org3e2cf6b" class="outline-3">
-<h3 id="org3e2cf6b"><span class="section-number-3">2.1</span> Web sites</h3>
+<div id="outline-container-org450fd18" class="outline-3">
+<h3 id="org450fd18"><span class="section-number-3">2.1</span> Web sites</h3>
 <div class="outline-text-3" id="text-2-1">
 <ul class="org-ul">
-<li><a href="https://swiftdoc.org/">swiftdoc.org</a><br /></li>
-<li>Swift 官方線上學習手冊: <a href="https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html">The Swift Programming Language</a><br /></li>
-<li><a href="https://www.cnswift.org/the-basics">Swift 编程语言</a><br /></li>
-<li><a href="https://www.hackingwithswift.com/quick-start/swiftui">SwiftUI by Example</a><br /></li>
-<li><a href="https://www.hackingwithswift.com/100/swiftui">https://www.hackingwithswift.com/100/swiftui</a><br /></li>
-<li><a href="http://swiftdeveloperblog.com/code-examples/">Swift Developer Blog</a><br /></li>
-<li><a href="https://gradyzhuo.gitbooks.io/meetswifttutorial/content/Episode_1/Chapter_1.html">第一章 - Class, Struct and Enum 的抉擇</a><br /></li>
-<li><a href="https://www.hackingwithswift.com/quick-start/swiftui">Hacking with SWIFT</a><br /></li>
-<li><a href="https://github.com/search?q=language%3Aswift&amp;ref=cmdform">Github#swift</a><br /></li>
-<li><a href="https://stackoverflow.com/questions/tagged/swift">Stack Overflow#swift</a><br /></li>
+<li><a href="https://swiftdoc.org/">swiftdoc.org</a></li>
+<li>Swift 官方線上學習手冊: <a href="https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html">The Swift Programming Language</a></li>
+<li><a href="https://www.cnswift.org/the-basics">Swift 编程语言</a></li>
+<li><a href="https://www.hackingwithswift.com/quick-start/swiftui">SwiftUI by Example</a></li>
+<li><a href="https://www.hackingwithswift.com/100/swiftui">https://www.hackingwithswift.com/100/swiftui</a></li>
+<li><a href="http://swiftdeveloperblog.com/code-examples/">Swift Developer Blog</a></li>
+<li><a href="https://gradyzhuo.gitbooks.io/meetswifttutorial/content/Episode_1/Chapter_1.html">第一章 - Class, Struct and Enum 的抉擇</a></li>
+<li><a href="https://www.hackingwithswift.com/quick-start/swiftui">Hacking with SWIFT</a></li>
+<li><a href="https://github.com/search?q=language%3Aswift&amp;ref=cmdform">Github#swift</a></li>
+<li><a href="https://stackoverflow.com/questions/tagged/swift">Stack Overflow#swift</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org4c26d61" class="outline-3">
-<h3 id="org4c26d61"><span class="section-number-3">2.2</span> Videos</h3>
+<div id="outline-container-org0a9441d" class="outline-3">
+<h3 id="org0a9441d"><span class="section-number-3">2.2</span> Videos</h3>
 <div class="outline-text-3" id="text-2-2">
 <ul class="org-ul">
-<li><a href="https://www.youtube.com/watch?v=Ulp1Kimblg0">Swift Programming Tutorial for Beginners (Full Tutorial)</a><br /></li>
-<li><a href="https://www.raywenderlich.com/ios">iOS &amp; Swift Videos</a><br /></li>
+<li><a href="https://www.youtube.com/watch?v=Ulp1Kimblg0">Swift Programming Tutorial for Beginners (Full Tutorial)</a></li>
+<li><a href="https://www.raywenderlich.com/ios">iOS &amp; Swift Videos</a></li>
 </ul>
 </div>
 </div>
@@ -530,19 +508,20 @@ The Swift Programming Language 一書中提到<sup><a id="fnr.1" class="footref"
 <h2 id="variable"><span class="section-number-2">3</span> Swift 常數與變數</h2>
 <div class="outline-text-2" id="text-variable">
 </div>
-<div id="outline-container-org07be40e" class="outline-3">
-<h3 id="org07be40e"><span class="section-number-3">3.1</span> 宣告常數和變數</h3>
+<div id="outline-container-orgc89ad8b" class="outline-3">
+<h3 id="orgc89ad8b"><span class="section-number-3">3.1</span> 宣告常數和變數</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
-常數和變數必須在使用前宣告，用 let 來宣告常數，用 var 來宣告變數。下面的範例展示了如何用常數和變數來記錄使用者嘗試登錄的次數：<br />
+常數和變數必須在使用前宣告，用 let 來宣告常數，用 var 來宣告變數。下面的範例展示了如何用常數和變數來記錄使用者嘗試登錄的次數：
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">let</span> maximumNumberOfLoginAttempts = <span style="color: #da8548; font-weight: bold;">10</span>
 <span class="linenr">2: </span><span style="color: #51afef;">var</span> currentLoginAttempt = <span style="color: #da8548; font-weight: bold;">0</span>
 </pre>
 </div>
+
 <p>
-你可以在一行中宣告多個常數或者多個變數，用逗號隔開：<br />
+你可以在一行中宣告多個常數或者多個變數，用逗號隔開：
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">var</span> x = <span style="color: #da8548; font-weight: bold;">0.0</span>, y = <span style="color: #da8548; font-weight: bold;">0.0</span>, z = <span style="color: #da8548; font-weight: bold;">0.0</span>
@@ -554,19 +533,20 @@ The Swift Programming Language 一書中提到<sup><a id="fnr.1" class="footref"
 </div>
 </div>
 
-<div id="outline-container-org9ad5eb4" class="outline-3">
-<h3 id="org9ad5eb4"><span class="section-number-3">3.2</span> Swift v.s. C/C++</h3>
+<div id="outline-container-org7568249" class="outline-3">
+<h3 id="org7568249"><span class="section-number-3">3.2</span> Swift v.s. C/C++</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
-Swift 的變數宣告與 C/C++的差異之一在於宣告時不必要先宣告變數型別，例如，同樣要宣告一小數變數與整數變數，C++的做法為<br />
+Swift 的變數宣告與 C/C++的差異之一在於宣告時不必要先宣告變數型別，例如，同樣要宣告一小數變數與整數變數，C++的做法為
 </p>
 <div class="org-src-container">
-<pre class="src src-swift"><span class="linenr">1: </span>int x = <span style="color: #da8548; font-weight: bold;">20</span>;
-<span class="linenr">2: </span>double pi = <span style="color: #da8548; font-weight: bold;">3.1416</span>;
+<pre class="src src-cpp"><span class="linenr">1: </span><span style="color: #ECBE7B;">int</span> <span style="color: #dcaeea;">x</span> = <span style="color: #da8548; font-weight: bold;">20</span>;
+<span class="linenr">2: </span><span style="color: #ECBE7B;">double</span> <span style="color: #dcaeea;">pi</span> = <span style="color: #da8548; font-weight: bold;">3.1416</span>;
 </pre>
 </div>
+
 <p>
-而 Swift 的寫法為：<br />
+而 Swift 的寫法為：
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">var</span> x = <span style="color: #da8548; font-weight: bold;">20</span>
@@ -576,11 +556,11 @@ Swift 的變數宣告與 C/C++的差異之一在於宣告時不必要先宣告�
 </div>
 </div>
 
-<div id="outline-container-org557f3b7" class="outline-3">
-<h3 id="org557f3b7"><span class="section-number-3">3.3</span> Swift is a type-safe language</h3>
+<div id="outline-container-org31f5fcb" class="outline-3">
+<h3 id="org31f5fcb"><span class="section-number-3">3.3</span> Swift is a type-safe language</h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
-We declared the variable <i>numOfStudent</i> and assigned 42 (第<a href="#coderef-safeType" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-safeType');" onmouseout="CodeHighlightOff(this, 'coderef-safeType');">1</a>行) as its initial value, Swift will assigned it the type integer. We can&rsquo;t change its type: it will always be an integer.<br />
+We declared the variable <i>numOfStudent</i> and assigned 42 (第<a href="#coderef-safeType" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-safeType');" onmouseout="CodeHighlightOff(this, 'coderef-safeType');">1</a>行) as its initial value, Swift will assigned it the type integer. We can&rsquo;t change its type: it will always be an integer.
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span id="coderef-safeType" class="coderef-off"><span class="linenr">1: </span><span style="color: #51afef;">var</span> numOfStudent = <span style="color: #da8548; font-weight: bold;">42</span></span>
@@ -592,11 +572,11 @@ We declared the variable <i>numOfStudent</i> and assigned 42 (第<a href="#coder
 </div>
 </div>
 
-<div id="outline-container-org141154a" class="outline-3">
-<h3 id="org141154a"><span class="section-number-3">3.4</span> 常數與變數的命名</h3>
+<div id="outline-container-org5d17883" class="outline-3">
+<h3 id="org5d17883"><span class="section-number-3">3.4</span> 常數與變數的命名</h3>
 <div class="outline-text-3" id="text-3-4">
 <p>
-我們可以使用喜歡的字元作為常數和變數名，包括 Unicode 字元：<br />
+我們可以使用喜歡的字元作為常數和變數名，包括 Unicode 字元：
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">let</span> &#960; = <span style="color: #da8548; font-weight: bold;">3.14159</span>
@@ -606,13 +586,13 @@ We declared the variable <i>numOfStudent</i> and assigned 42 (第<a href="#coder
 </pre>
 </div>
 <p>
-但 Swift 的變數亦有其限制，包括：常數與變數名不能包含數學符號、箭頭、保留的（或者非法的）Unicode 碼位、連線與制表字元（box-drawing characters），也不能以數字開頭，但是可以在常數與變數名的其他地方包含數字。<br />
+但 Swift 的變數亦有其限制，包括：常數與變數名不能包含數學符號、箭頭、保留的（或者非法的）Unicode 碼位、連線與制表字元（box-drawing characters），也不能以數字開頭，但是可以在常數與變數名的其他地方包含數字。
 </p>
 </div>
 </div>
 
-<div id="outline-container-org58d71a2" class="outline-3">
-<h3 id="org58d71a2"><span class="section-number-3">3.5</span> 變數與常數的輸出</h3>
+<div id="outline-container-org06e1334" class="outline-3">
+<h3 id="org06e1334"><span class="section-number-3">3.5</span> 變數與常數的輸出</h3>
 <div class="outline-text-3" id="text-3-5">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">var</span> x = <span style="color: #da8548; font-weight: bold;">20</span>
@@ -629,12 +609,12 @@ We declared the variable <i>numOfStudent</i> and assigned 42 (第<a href="#coder
 </div>
 </div>
 
-<div id="outline-container-orga5e3612" class="outline-3">
-<h3 id="orga5e3612"><span class="section-number-3">3.6</span> 變數與常數的基本規範</h3>
+<div id="outline-container-org3be9bfe" class="outline-3">
+<h3 id="org3be9bfe"><span class="section-number-3">3.6</span> 變數與常數的基本規範</h3>
 <div class="outline-text-3" id="text-3-6">
 <ul class="org-ul">
-<li>使用前需先宣告<br /></li>
-<li>不能重複宣告<br /></li>
+<li>使用前需先宣告</li>
+<li>不能重複宣告</li>
 </ul>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">var</span> x = <span style="color: #da8548; font-weight: bold;">30</span>
@@ -647,12 +627,12 @@ We declared the variable <i>numOfStudent</i> and assigned 42 (第<a href="#coder
 </div>
 </div>
 
-<div id="outline-container-org1dc6c67" class="outline-3">
-<h3 id="org1dc6c67"><span class="section-number-3">3.7</span> Stored variable v.s. Computed variable</h3>
+<div id="outline-container-org969c635" class="outline-3">
+<h3 id="org969c635"><span class="section-number-3">3.7</span> Stored variable v.s. Computed variable</h3>
 <div class="outline-text-3" id="text-3-7">
 </div>
-<div id="outline-container-orgc396acd" class="outline-4">
-<h4 id="orgc396acd"><span class="section-number-4">3.7.1</span> computed variable</h4>
+<div id="outline-container-org5cc252c" class="outline-4">
+<h4 id="org5cc252c"><span class="section-number-4">3.7.1</span> computed variable</h4>
 <div class="outline-text-4" id="text-3-7-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">var</span> x: <span style="color: #c678dd;">Double</span> = <span style="color: #da8548; font-weight: bold;">4.3</span>
@@ -674,8 +654,8 @@ We declared the variable <i>numOfStudent</i> and assigned 42 (第<a href="#coder
 </div>
 </div>
 
-<div id="outline-container-orgb8d8f8f" class="outline-4">
-<h4 id="orgb8d8f8f"><span class="section-number-4">3.7.2</span> contentView 裡的 body 就是 computed variable</h4>
+<div id="outline-container-org76eacce" class="outline-4">
+<h4 id="org76eacce"><span class="section-number-4">3.7.2</span> contentView 裡的 body 就是 computed variable</h4>
 <div class="outline-text-4" id="text-3-7-2">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">var</span> body: som View {
@@ -692,11 +672,11 @@ We declared the variable <i>numOfStudent</i> and assigned 42 (第<a href="#coder
 <h2 id="operation"><span class="section-number-2">4</span> 基本運算</h2>
 <div class="outline-text-2" id="text-operation">
 </div>
-<div id="outline-container-org5147b20" class="outline-3">
-<h3 id="org5147b20"><span class="section-number-3">4.1</span> 指派運算子</h3>
+<div id="outline-container-org61dd64f" class="outline-3">
+<h3 id="org61dd64f"><span class="section-number-3">4.1</span> 指派運算子</h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
-指派運算（a = b），表示用 b 的值來初始化或更新 a 的值：<br />
+指派運算（a = b），表示用 b 的值來初始化或更新 a 的值：
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">let</span> b = <span style="color: #da8548; font-weight: bold;">10</span>
@@ -713,19 +693,19 @@ We declared the variable <i>numOfStudent</i> and assigned 42 (第<a href="#coder
 </div>
 </div>
 
-<div id="outline-container-orgcd70005" class="outline-3">
-<h3 id="orgcd70005"><span class="section-number-3">4.2</span> 數值運算子</h3>
+<div id="outline-container-org233e8d0" class="outline-3">
+<h3 id="org233e8d0"><span class="section-number-3">4.2</span> 數值運算子</h3>
 <div class="outline-text-3" id="text-4-2">
 </div>
-<div id="outline-container-orgacf568c" class="outline-4">
-<h4 id="orgacf568c"><span class="section-number-4">4.2.1</span> Swift 支援所有數值型別基本運算：</h4>
+<div id="outline-container-orgb939131" class="outline-4">
+<h4 id="orgb939131"><span class="section-number-4">4.2.1</span> Swift 支援所有數值型別基本運算：</h4>
 <div class="outline-text-4" id="text-4-2-1">
 <ul class="org-ul">
-<li>加法(+)<br /></li>
-<li>減法(-)<br /></li>
-<li>乘法(*)<br /></li>
-<li>除法(/)<br /></li>
-<li>餘數(%)<br /></li>
+<li>加法(+)</li>
+<li>減法(-)</li>
+<li>乘法(*)</li>
+<li>除法(/)</li>
+<li>餘數(%)</li>
 </ul>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #c678dd;">print</span>(<span style="color: #da8548; font-weight: bold;">1</span> + <span style="color: #da8548; font-weight: bold;">2</span>)       <span style="color: #5B6268;">// </span><span style="color: #5B6268;">&#31561;&#26044; 3</span>
@@ -743,13 +723,13 @@ We declared the variable <i>numOfStudent</i> and assigned 42 (第<a href="#coder
 6
 4.0
 3
-32.0
+2
 </pre>
 </div>
 </div>
 
-<div id="outline-container-org760cdc0" class="outline-4">
-<h4 id="org760cdc0"><span class="section-number-4">4.2.2</span> 不同數值的運算</h4>
+<div id="outline-container-orge6ca5b1" class="outline-4">
+<h4 id="orge6ca5b1"><span class="section-number-4">4.2.2</span> 不同數值的運算</h4>
 <div class="outline-text-4" id="text-4-2-2">
 <div class="org-src-container">
 <pre class="src src-"exports">"exports both"body
@@ -758,41 +738,47 @@ We declared the variable <i>numOfStudent</i> and assigned 42 (第<a href="#coder
 </div>
 </div>
 
-<div id="outline-container-orgc862775" class="outline-4">
-<h4 id="orgc862775"><span class="section-number-4">4.2.3</span> 加法運算子也用於 String 的拼接：</h4>
+<div id="outline-container-orgfbc07da" class="outline-4">
+<h4 id="orgfbc07da"><span class="section-number-4">4.2.3</span> 加法運算子也用於 String 的拼接：</h4>
 <div class="outline-text-4" id="text-4-2-3">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #98be65;">"hello, "</span> + <span style="color: #98be65;">"world"</span>  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">&#31561;&#26044; "hello, world"</span>
 </pre>
 </div>
+
+<pre class="example">
+&lt;stdin&gt;:1:11: warning: result of operator '+' is unused
+"hello, " + "world"  // 等於 "hello, world"
+</pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgb1d3627" class="outline-3">
-<h3 id="orgb1d3627"><span class="section-number-3">4.3</span> 複合指派運算子（Compound Assignment Operators）</h3>
+<div id="outline-container-orgd6ae28c" class="outline-3">
+<h3 id="orgd6ae28c"><span class="section-number-3">4.3</span> 複合指派運算子（Compound Assignment Operators）</h3>
 <div class="outline-text-3" id="text-4-3">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">var</span> a = <span style="color: #da8548; font-weight: bold;">1</span>
 <span class="linenr">2: </span>a += <span style="color: #da8548; font-weight: bold;">2</span> <span style="color: #5B6268;">// </span><span style="color: #5B6268;">a &#29694;&#22312;&#26159; 3 (ref:+=)</span>
 </pre>
 </div>
+
 <p>
-上述程式第<a href="#coderef-+=" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-+=');" onmouseout="CodeHighlightOff(this, 'coderef-+=');">2</a>行中的 a += 2 為 a = a + 2 的另一種寫法，其他運算子如-、*、/、%皆可套用同樣的簡寫方式。<br />
+上述程式第<a href="#coderef-+=" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-+=');" onmouseout="CodeHighlightOff(this, 'coderef-+=');">2</a>行中的 a += 2 為 a = a + 2 的另一種寫法，其他運算子如-、*、/、%皆可套用同樣的簡寫方式。
 </p>
 </div>
 </div>
 
-<div id="outline-container-org6b39aa1" class="outline-3">
-<h3 id="org6b39aa1"><span class="section-number-3">4.4</span> 邏輯運算子</h3>
+<div id="outline-container-org093f53d" class="outline-3">
+<h3 id="org093f53d"><span class="section-number-3">4.4</span> 邏輯運算子</h3>
 <div class="outline-text-3" id="text-4-4">
 <p>
-邏輯運算的操作物件是邏輯布林值。Swift 支援基於 C 語言的三個標準邏輯運算。<br />
+邏輯運算的操作物件是邏輯布林值。Swift 支援基於 C 語言的三個標準邏輯運算。
 </p>
 <ul class="org-ul">
-<li>邏輯非（!a）<br /></li>
-<li>邏輯且（a &amp;&amp; b）<br /></li>
-<li>邏輯或（a || b）<br /></li>
+<li>邏輯非（!a）</li>
+<li>邏輯且（a &amp;&amp; b）</li>
+<li>邏輯或（a || b）</li>
 </ul>
 </div>
 </div>
@@ -802,11 +788,11 @@ We declared the variable <i>numOfStudent</i> and assigned 42 (第<a href="#coder
 <h2 id="observer"><span class="section-number-2">5</span> Property Observers</h2>
 <div class="outline-text-2" id="text-observer">
 </div>
-<div id="outline-container-org5dd6066" class="outline-3">
-<h3 id="org5dd6066"><span class="section-number-3">5.1</span> Set/Get</h3>
+<div id="outline-container-org9251d15" class="outline-3">
+<h3 id="org9251d15"><span class="section-number-3">5.1</span> Set/Get</h3>
 <div class="outline-text-3" id="text-5-1">
 <p>
-在以往的經驗中，對變數進行 assign 是一件直覺而簡單的事，例如：<br />
+在以往的經驗中，對變數進行 assign 是一件直覺而簡單的事，例如：
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">var</span> x: <span style="color: #c678dd;">Int</span> = <span style="color: #da8548; font-weight: bold;">4</span>
@@ -824,7 +810,7 @@ We declared the variable <i>numOfStudent</i> and assigned 42 (第<a href="#coder
 
 
 <p>
-類似 C#，在 Swift 中，我們卻能透過 Set/Get 來介入 assign 的過程，例如：<br />
+類似 C#，在 Swift 中，我們卻能透過 Set/Get 來介入 assign 的過程，例如：
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">var</span> x: <span style="color: #c678dd;">Int</span> = <span style="color: #da8548; font-weight: bold;">4</span>
@@ -847,11 +833,11 @@ x 新值: 4, y 新值: 26
 
 
 <p>
-如上例中，我們可以夾帶一些程式碼，在有人賦予 z 新值時(z=?)利用 set(第<a href="#coderef-set" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-set');" onmouseout="CodeHighlightOff(this, 'coderef-set');">5</a>行)觸發這些程式碼；同理，也可以在有人讀取其值時觸發。而 newValue 代表被 assign 的新值。<br />
+如上例中，我們可以夾帶一些程式碼，在有人賦予 z 新值時(z=?)利用 set(第<a href="#coderef-set" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-set');" onmouseout="CodeHighlightOff(this, 'coderef-set');">5</a>行)觸發這些程式碼；同理，也可以在有人讀取其值時觸發。而 newValue 代表被 assign 的新值。
 </p>
 
 <p>
-又如下例，某學生的期中考三科成績就可以在輸入成績後自行判斷各科是否及格<br />
+又如下例，某學生的期中考三科成績就可以在輸入成績後自行判斷各科是否及格
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">class</span> <span style="color: #c678dd;">MidExam</span> {
@@ -887,21 +873,21 @@ false
 
 
 <p>
-上述程式第<a href="#coderef-didset1" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-didset1');" onmouseout="CodeHighlightOff(this, 'coderef-didset1');">5</a>及<a href="#coderef-didset2" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-didset2');" onmouseout="CodeHighlightOff(this, 'coderef-didset2');">11</a>行中的 didSet 會在變數被 assign 新值時觸發執行，而 willSet 則是在變數即將被 assign 時觸發。<br />
+上述程式第<a href="#coderef-didset1" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-didset1');" onmouseout="CodeHighlightOff(this, 'coderef-didset1');">5</a>及<a href="#coderef-didset2" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-didset2');" onmouseout="CodeHighlightOff(this, 'coderef-didset2');">11</a>行中的 didSet 會在變數被 assign 新值時觸發執行，而 willSet 則是在變數即將被 assign 時觸發。
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgaadb6dc" class="outline-3">
-<h3 id="orgaadb6dc"><span class="section-number-3">5.2</span> willSet/set/didSet</h3>
+<div id="outline-container-org7b6b2e7" class="outline-3">
+<h3 id="org7b6b2e7"><span class="section-number-3">5.2</span> willSet/set/didSet</h3>
 <div class="outline-text-3" id="text-5-2">
 <ul class="org-ul">
-<li>使用 set 時，因為變數的值正在被改變，所以有 newValue 來儲存新值；<br /></li>
-<li>使用 willSet 則變數尚未被改變；<br /></li>
-<li>使用 didSet 則是變數已被改變，所以有 oldValue<br /></li>
+<li>使用 set 時，因為變數的值正在被改變，所以有 newValue 來儲存新值；</li>
+<li>使用 willSet 則變數尚未被改變；</li>
+<li>使用 didSet 則是變數已被改變，所以有 oldValue</li>
 </ul>
 <p>
-根據 apple 的說法，willSet 和 didSet 不會在 init 中被呼叫：The willSet and didSet observers of superclass properties are called when a property is set in a subclass initializer, after the superclass initializer has been called. They are not called while a class is setting its own properties, before the superclass initializer has been called.<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup><br />
+根據 apple 的說法，willSet 和 didSet 不會在 init 中被呼叫：The willSet and didSet observers of superclass properties are called when a property is set in a subclass initializer, after the superclass initializer has been called. They are not called while a class is setting its own properties, before the superclass initializer has been called.<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup>
 </p>
 </div>
 </div>
@@ -911,22 +897,22 @@ false
 <h2 id="flow-control"><span class="section-number-2">6</span> 控制流程</h2>
 <div class="outline-text-2" id="text-flow-control">
 </div>
-<div id="outline-container-org29367ea" class="outline-3">
-<h3 id="org29367ea"><span class="section-number-3">6.1</span> Conditional Statement</h3>
+<div id="outline-container-org51080f7" class="outline-3">
+<h3 id="org51080f7"><span class="section-number-3">6.1</span> Conditional Statement</h3>
 <div class="outline-text-3" id="text-6-1">
 <p>
-The following examples were from <a href="https://docs.swift.org/swift-book/LanguageGuide/ControlFlow.html#">docs.swift.org.</a><br />
+The following examples were from <a href="https://docs.swift.org/swift-book/LanguageGuide/ControlFlow.html#">docs.swift.org.</a>
 </p>
 </div>
-<div id="outline-container-org41ad325" class="outline-4">
-<h4 id="org41ad325"><span class="section-number-4">6.1.1</span> if</h4>
+<div id="outline-container-orgba5a8c2" class="outline-4">
+<h4 id="orgba5a8c2"><span class="section-number-4">6.1.1</span> if</h4>
 <div class="outline-text-4" id="text-6-1-1">
 <p>
-In its simplest form, the if statement has a single if condition. It executes a set of statements only if that condition is true.<br />
+In its simplest form, the if statement has a single if condition. It executes a set of statements only if that condition is true.
 </p>
 </div>
-<div id="outline-container-org845d3eb" class="outline-5">
-<h5 id="org845d3eb"><span class="section-number-5">6.1.1.1</span> single condition</h5>
+<ol class="org-ol">
+<li><a id="org34e1c00"></a>single condition<br />
 <div class="outline-text-5" id="text-6-1-1-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">var</span> temperatureInFahrenheit = <span style="color: #da8548; font-weight: bold;">30</span>
@@ -936,10 +922,9 @@ In its simplest form, the if statement has a single if condition. It executes a 
 </pre>
 </div>
 </div>
-</div>
+</li>
 
-<div id="outline-container-org68b3abd" class="outline-5">
-<h5 id="org68b3abd"><span class="section-number-5">6.1.1.2</span> combined conditions</h5>
+<li><a id="orgce4b41f"></a>combined conditions<br />
 <div class="outline-text-5" id="text-6-1-1-2">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">var</span> mathScore = <span style="color: #da8548; font-weight: bold;">91</span>
@@ -949,14 +934,15 @@ In its simplest form, the if statement has a single if condition. It executes a 
 </pre>
 </div>
 </div>
-</div>
+</li>
+</ol>
 </div>
 
-<div id="outline-container-org013da24" class="outline-4">
-<h4 id="org013da24"><span class="section-number-4">6.1.2</span> if-else</h4>
+<div id="outline-container-org24c41ba" class="outline-4">
+<h4 id="org24c41ba"><span class="section-number-4">6.1.2</span> if-else</h4>
 <div class="outline-text-4" id="text-6-1-2">
 <p>
-The if statement can provide an alternative set of statements, known as an else clause, for situations when the if condition is false.<br />
+The if statement can provide an alternative set of statements, known as an else clause, for situations when the if condition is false.
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span>temperatureInFahrenheit = <span style="color: #da8548; font-weight: bold;">40</span>
@@ -970,11 +956,11 @@ The if statement can provide an alternative set of statements, known as an else 
 </div>
 </div>
 
-<div id="outline-container-orgb011733" class="outline-4">
-<h4 id="orgb011733"><span class="section-number-4">6.1.3</span> if-else if</h4>
+<div id="outline-container-org3eb2271" class="outline-4">
+<h4 id="org3eb2271"><span class="section-number-4">6.1.3</span> if-else if</h4>
 <div class="outline-text-4" id="text-6-1-3">
 <p>
-You can chain multiple if statements together to consider additional clauses.<br />
+You can chain multiple if statements together to consider additional clauses.
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span>temperatureInFahrenheit = <span style="color: #da8548; font-weight: bold;">90</span>
@@ -990,11 +976,11 @@ You can chain multiple if statements together to consider additional clauses.<br
 </div>
 </div>
 
-<div id="outline-container-org8da69c0" class="outline-4">
-<h4 id="org8da69c0"><span class="section-number-4">6.1.4</span> switch</h4>
+<div id="outline-container-org905607b" class="outline-4">
+<h4 id="org905607b"><span class="section-number-4">6.1.4</span> switch</h4>
 <div class="outline-text-4" id="text-6-1-4">
 <p>
-In its simplest form, a switch statement compares a value against one or more values of the same type.<br />
+In its simplest form, a switch statement compares a value against one or more values of the same type.
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">switch</span> <span style="color: #51afef;">some</span> value to consider {
@@ -1009,7 +995,7 @@ In its simplest form, a switch statement compares a value against one or more va
 </pre>
 </div>
 <p>
-This example uses a switch statement to consider a single lowercase character called someCharacter:<br />
+This example uses a switch statement to consider a single lowercase character called someCharacter:
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">let</span> someCharacter: <span style="color: #c678dd;">Character</span> = <span style="color: #98be65;">"z"</span>
@@ -1048,12 +1034,12 @@ This example uses a switch statement to consider a single lowercase character ca
 </div>
 </div>
 
-<div id="outline-container-orgdd3d45d" class="outline-3">
-<h3 id="orgdd3d45d"><span class="section-number-3">6.2</span> For-In Loops</h3>
+<div id="outline-container-org2ba9925" class="outline-3">
+<h3 id="org2ba9925"><span class="section-number-3">6.2</span> For-In Loops</h3>
 <div class="outline-text-3" id="text-6-2">
 </div>
-<div id="outline-container-org4c05691" class="outline-4">
-<h4 id="org4c05691"><span class="section-number-4">6.2.1</span> 語法</h4>
+<div id="outline-container-org4c7715a" class="outline-4">
+<h4 id="org4c7715a"><span class="section-number-4">6.2.1</span> 語法</h4>
 <div class="outline-text-4" id="text-6-2-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">for</span> counter <span style="color: #51afef;">in</span> lower...<span style="color: #dcaeea;">upper</span>{
@@ -1063,8 +1049,8 @@ This example uses a switch statement to consider a single lowercase character ca
 </div>
 </div>
 </div>
-<div id="outline-container-org1d7cb58" class="outline-4">
-<h4 id="org1d7cb58"><span class="section-number-4">6.2.2</span> DEMO</h4>
+<div id="outline-container-orgff68791" class="outline-4">
+<h4 id="orgff68791"><span class="section-number-4">6.2.2</span> DEMO</h4>
 <div class="outline-text-4" id="text-6-2-2">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">for</span> index <span style="color: #51afef;">in</span> <span style="color: #da8548; font-weight: bold;">1</span>...<span style="color: #da8548; font-weight: bold;">5</span> {
@@ -1100,29 +1086,29 @@ This example uses a switch statement to consider a single lowercase character ca
 </div>
 </div>
 
-<div id="outline-container-orgb7fe9a6" class="outline-3">
-<h3 id="orgb7fe9a6"><span class="section-number-3">6.3</span> While Loops</h3>
+<div id="outline-container-org3b21628" class="outline-3">
+<h3 id="org3b21628"><span class="section-number-3">6.3</span> While Loops</h3>
 <div class="outline-text-3" id="text-6-3">
 <p>
-A while loop performs a set of statements until a condition becomes false. These kinds of loops are best used when the number of iterations is not known before the first iteration begins. Swift provides two kinds of while loops:<br />
+A while loop performs a set of statements until a condition becomes false. These kinds of loops are best used when the number of iterations is not known before the first iteration begins. Swift provides two kinds of while loops:
 </p>
 
 <ul class="org-ul">
-<li>while evaluates its condition at the start of each pass through the loop.<br /></li>
-<li>repeat-while evaluates its condition at the end of each pass through the loop.<br /></li>
+<li>while evaluates its condition at the start of each pass through the loop.</li>
+<li>repeat-while evaluates its condition at the end of each pass through the loop.</li>
 </ul>
 </div>
 
-<div id="outline-container-org8da912f" class="outline-4">
-<h4 id="org8da912f"><span class="section-number-4">6.3.1</span> while</h4>
+<div id="outline-container-org21126db" class="outline-4">
+<h4 id="org21126db"><span class="section-number-4">6.3.1</span> while</h4>
 <div class="outline-text-4" id="text-6-3-1">
 <p>
-A while loop starts by evaluating a single condition. If the condition is true, a set of statements is repeated until the condition becomes false.<br />
+A while loop starts by evaluating a single condition. If the condition is true, a set of statements is repeated until the condition becomes false.
 </p>
 </div>
 
-<div id="outline-container-orgd6a4ebb" class="outline-5">
-<h5 id="orgd6a4ebb"><span class="section-number-5">6.3.1.1</span> 語法</h5>
+<ol class="org-ol">
+<li><a id="org56d8c26"></a>語法<br />
 <div class="outline-text-5" id="text-6-3-1-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">while</span> condition {
@@ -1131,10 +1117,9 @@ A while loop starts by evaluating a single condition. If the condition is true, 
 </pre>
 </div>
 </div>
-</div>
+</li>
 
-<div id="outline-container-orga8c4b3c" class="outline-5">
-<h5 id="orga8c4b3c"><span class="section-number-5">6.3.1.2</span> DEMO</h5>
+<li><a id="org3cd607c"></a>DEMO<br />
 <div class="outline-text-5" id="text-6-3-1-2">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">var</span> counter = <span style="color: #da8548; font-weight: bold;">5</span>
@@ -1153,19 +1138,20 @@ Hello, 2
 Hello, 1
 </pre>
 </div>
-</div>
+</li>
+</ol>
 </div>
 
-<div id="outline-container-org22745c3" class="outline-4">
-<h4 id="org22745c3"><span class="section-number-4">6.3.2</span> repeat &#x2026; while</h4>
+<div id="outline-container-org5241eba" class="outline-4">
+<h4 id="org5241eba"><span class="section-number-4">6.3.2</span> repeat &#x2026; while</h4>
 <div class="outline-text-4" id="text-6-3-2">
 <p>
-The other variation of the while loop, known as the repeat-while loop, performs a single pass through the loop block first, before considering the loop’s condition. It then continues to repeat the loop until the condition is false.<br />
+The other variation of the while loop, known as the repeat-while loop, performs a single pass through the loop block first, before considering the loop’s condition. It then continues to repeat the loop until the condition is false.
 </p>
 </div>
 
-<div id="outline-container-orgf5996df" class="outline-5">
-<h5 id="orgf5996df"><span class="section-number-5">6.3.2.1</span> 語法</h5>
+<ol class="org-ol">
+<li><a id="org92627d7"></a>語法<br />
 <div class="outline-text-5" id="text-6-3-2-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">repeat</span> {
@@ -1174,10 +1160,9 @@ The other variation of the while loop, known as the repeat-while loop, performs 
 </pre>
 </div>
 </div>
-</div>
+</li>
 
-<div id="outline-container-orge9421a3" class="outline-5">
-<h5 id="orge9421a3"><span class="section-number-5">6.3.2.2</span> DEMO</h5>
+<li><a id="org9abcc39"></a>DEMO<br />
 <div class="outline-text-5" id="text-6-3-2-2">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">var</span> counter = <span style="color: #da8548; font-weight: bold;">5</span>
@@ -1196,7 +1181,8 @@ Hello, 2
 Hello, 1
 </pre>
 </div>
-</div>
+</li>
+</ol>
 </div>
 </div>
 </div>
@@ -1205,27 +1191,27 @@ Hello, 1
 <h2 id="set"><span class="section-number-2">7</span> 集合型別</h2>
 <div class="outline-text-2" id="text-set">
 <p>
-Swift provides three primary collection types, known as arrays, sets, and dictionaries, for storing collections of values. Arrays are ordered collections of values. Sets are unordered collections of unique values. Dictionaries are unordered collections of key-value associations.<sup><a id="fnr.3" class="footref" href="#fn.3">3</a></sup><br />
+Swift provides three primary collection types, known as arrays, sets, and dictionaries, for storing collections of values. Arrays are ordered collections of values. Sets are unordered collections of unique values. Dictionaries are unordered collections of key-value associations.<sup><a id="fnr.3" class="footref" href="#fn.3">3</a></sup>
 </p>
 
-<div id="org198f7d4" class="figure">
-<p><img src="images/CollectionTypes_intro_2x.png" alt="CollectionTypes_intro_2x.png" width="400" /><br />
+<div id="org7bdeb6f" class="figure">
+<p><img src="images/CollectionTypes_intro_2x.png" alt="CollectionTypes_intro_2x.png" width="400" />
 </p>
 <p><span class="figure-number">Figure 1: </span>Collection Types of Swift</p>
 </div>
 </div>
-<div id="outline-container-org7e0916e" class="outline-3">
-<h3 id="org7e0916e"><span class="section-number-3">7.1</span> 陣列（Arrays）</h3>
+<div id="outline-container-org1189215" class="outline-3">
+<h3 id="org1189215"><span class="section-number-3">7.1</span> 陣列（Arrays）</h3>
 <div class="outline-text-3" id="text-7-1">
 <p>
-陣列使用有序列表儲存同一型別的多個值。相同的值可以多次出現在一個陣列的不同位置中。<br />
+陣列使用有序列表儲存同一型別的多個值。相同的值可以多次出現在一個陣列的不同位置中。
 </p>
 </div>
-<div id="outline-container-org56fe8fb" class="outline-4">
-<h4 id="org56fe8fb"><span class="section-number-4">7.1.1</span> 陣列建構語法</h4>
+<div id="outline-container-org303ed7b" class="outline-4">
+<h4 id="org303ed7b"><span class="section-number-4">7.1.1</span> 陣列建構語法</h4>
 <div class="outline-text-4" id="text-7-1-1">
 <p>
-要建立一個空的整數陣列：<br />
+要建立一個空的整數陣列：
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">var</span> EnglishScores = [<span style="color: #c678dd;">Int</span>]()
@@ -1241,7 +1227,7 @@ Swift provides three primary collection types, known as arrays, sets, and dictio
 
 
 <p>
-下面這個範例創建了一個叫做 shoppingList 並且儲存字串的陣列：<br />
+下面這個範例創建了一個叫做 shoppingList 並且儲存字串的陣列：
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">var</span> shoppingList: [<span style="color: #c678dd;">String</span>] = [<span style="color: #98be65;">"Eggs"</span>, <span style="color: #98be65;">"Milk"</span>]
@@ -1251,18 +1237,18 @@ Swift provides three primary collection types, known as arrays, sets, and dictio
 </div>
 </div>
 
-<div id="outline-container-orgf7628a0" class="outline-4">
-<h4 id="orgf7628a0"><span class="section-number-4">7.1.2</span> 存取和修改陣列</h4>
+<div id="outline-container-org999a3d3" class="outline-4">
+<h4 id="org999a3d3"><span class="section-number-4">7.1.2</span> 存取和修改陣列</h4>
 <div class="outline-text-4" id="text-7-1-2">
 <p>
-我們可以通過陣列的方法和屬性來存取和修改陣列，或者下標語法。 還可以<br />
+我們可以通過陣列的方法和屬性來存取和修改陣列，或者下標語法。 還可以
 </p>
 <ul class="org-ul">
-<li>使用陣列的唯讀屬性 count 來獲取陣列中的資料項數量<br /></li>
-<li>使用布林項 isEmpty 來作為檢查 count 屬性的值是否為 0<br /></li>
-<li>使用 append 方法在陣列後面添加新的資料項<br /></li>
-<li>+=<br /></li>
-<li>remove(at: index)<br /></li>
+<li>使用陣列的唯讀屬性 count 來獲取陣列中的資料項數量</li>
+<li>使用布林項 isEmpty 來作為檢查 count 屬性的值是否為 0</li>
+<li>使用 append 方法在陣列後面添加新的資料項</li>
+<li>+=</li>
+<li>remove(at: index)</li>
 </ul>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">var</span> shoppingList: [<span style="color: #c678dd;">String</span>]  = [<span style="color: #98be65;">"Eggs"</span>, <span style="color: #98be65;">"Milk"</span>]
@@ -1290,8 +1276,8 @@ Eggs
 </div>
 </div>
 
-<div id="outline-container-org81bac00" class="outline-4">
-<h4 id="org81bac00"><span class="section-number-4">7.1.3</span> 以 for 遍歷陣列</h4>
+<div id="outline-container-org650712c" class="outline-4">
+<h4 id="org650712c"><span class="section-number-4">7.1.3</span> 以 for 遍歷陣列</h4>
 <div class="outline-text-4" id="text-7-1-3">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">var</span> shoppingList: [<span style="color: #c678dd;">String</span>]  = [<span style="color: #98be65;">"Eggs"</span>, <span style="color: #98be65;">"Milk"</span>, <span style="color: #98be65;">"Beer"</span>]
@@ -1315,11 +1301,11 @@ Beer
 </div>
 </div>
 
-<div id="outline-container-org5317392" class="outline-4">
-<h4 id="org5317392"><span class="section-number-4">7.1.4</span> 以 repeat 產生 array</h4>
+<div id="outline-container-orga3c6aa9" class="outline-4">
+<h4 id="orga3c6aa9"><span class="section-number-4">7.1.4</span> 以 repeat 產生 array</h4>
 <div class="outline-text-4" id="text-7-1-4">
 <p>
-If you need to create an array of a specific size holding some default values, Swift has a built-in initializer called repeating:count:. You tell it what to repeat, and how often, and Swift will generate an array of that size.<sup><a id="fnr.4" class="footref" href="#fn.4">4</a></sup><br />
+If you need to create an array of a specific size holding some default values, Swift has a built-in initializer called repeating:count:. You tell it what to repeat, and how often, and Swift will generate an array of that size.<sup><a id="fnr.4" class="footref" href="#fn.4">4</a></sup>
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">let</span> nums1 = [<span style="color: #c678dd;">Int</span>](repeating: <span style="color: #da8548; font-weight: bold;">0</span>, count: <span style="color: #da8548; font-weight: bold;">10</span>)
@@ -1340,15 +1326,15 @@ If you need to create an array of a specific size holding some default values, S
 </div>
 </div>
 
-<div id="outline-container-org2d9f569" class="outline-4">
-<h4 id="org2d9f569"><span class="section-number-4">7.1.5</span> Modify array</h4>
+<div id="outline-container-orgfe060e3" class="outline-4">
+<h4 id="orgfe060e3"><span class="section-number-4">7.1.5</span> Modify array</h4>
 <div class="outline-text-4" id="text-7-1-5">
 </div>
-<div id="outline-container-orgf328002" class="outline-5">
-<h5 id="orgf328002"><span class="section-number-5">7.1.5.1</span> map: 批次 update array</h5>
+<ol class="org-ol">
+<li><a id="org88ab545"></a>map: 批次 update array<br />
 <div class="outline-text-5" id="text-7-1-5-1">
 <p>
-通常我們會使用到 map 函數的原因，主要是要將陣列的內容進行批次變更<sup><a id="fnr.5" class="footref" href="#fn.5">5</a></sup>，如：<br />
+通常我們會使用到 map 函數的原因，主要是要將陣列的內容進行批次變更<sup><a id="fnr.5" class="footref" href="#fn.5">5</a></sup>，如：
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">let</span> origin = [<span style="color: #98be65;">"James"</span>, <span style="color: #98be65;">"Vanessa"</span>, <span style="color: #98be65;">"Ruby"</span>, <span style="color: #98be65;">"Letranger"</span>]
@@ -1378,14 +1364,15 @@ If you need to create an array of a specific size holding some default values, S
 ["2 * 0 = 0", "2 * 1 = 2", "2 * 2 = 4", "2 * 3 = 6", "2 * 4 = 8", "2 * 5 = 10"]
 </pre>
 </div>
-</div>
+</li>
+</ol>
 </div>
 
-<div id="outline-container-orgc3e08b0" class="outline-4">
-<h4 id="orgc3e08b0"><span class="section-number-4">7.1.6</span> flatMap()</h4>
+<div id="outline-container-org45e29c4" class="outline-4">
+<h4 id="org45e29c4"><span class="section-number-4">7.1.6</span> flatMap()</h4>
 <div class="outline-text-4" id="text-7-1-6">
 <p>
-flatMap 其實就是 flat + map 的結果。而 flatMap 最常是用來處理攤平某個陣列的狀況<sup><a id="fnr.5.100" class="footref" href="#fn.5">5</a></sup><br />
+flatMap 其實就是 flat + map 的結果。而 flatMap 最常是用來處理攤平某個陣列的狀況<sup><a id="fnr.5.100" class="footref" href="#fn.5">5</a></sup>
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">let</span> nums = [<span style="color: #da8548; font-weight: bold;">2</span>, <span style="color: #da8548; font-weight: bold;">3</span>, <span style="color: #da8548; font-weight: bold;">4</span>]
@@ -1405,16 +1392,16 @@ flatMap 其實就是 flat + map 的結果。而 flatMap 最常是用來處理攤
 
 
 <p>
-上述程式中第<a href="#coderef-flat" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-flat');" onmouseout="CodeHighlightOff(this, 'coderef-flat');">5</a>行的效果與 Array(nums.map(transform).joined())相同。<br />
+上述程式中第<a href="#coderef-flat" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-flat');" onmouseout="CodeHighlightOff(this, 'coderef-flat');">5</a>行的效果與 Array(nums.map(transform).joined())相同。
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgbf33466" class="outline-4">
-<h4 id="orgbf33466"><span class="section-number-4">7.1.7</span> compactMap</h4>
+<div id="outline-container-org343b35f" class="outline-4">
+<h4 id="org343b35f"><span class="section-number-4">7.1.7</span> compactMap</h4>
 <div class="outline-text-4" id="text-7-1-7">
 <p>
-compactMap 所映射出的元素結果都是非可選（non-nil）的值。因此，當你的希望映射結果的陣列是非可選類型的，那麼使用 compactMap 是一個適合的做法<sup><a id="fnr.5.100" class="footref" href="#fn.5">5</a></sup>。<br />
+compactMap 所映射出的元素結果都是非可選（non-nil）的值。因此，當你的希望映射結果的陣列是非可選類型的，那麼使用 compactMap 是一個適合的做法<sup><a id="fnr.5.100" class="footref" href="#fn.5">5</a></sup>。
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">let</span> possibleNums = [<span style="color: #98be65;">"1"</span>, <span style="color: #98be65;">"2"</span>, <span style="color: #98be65;">"three"</span>, <span style="color: #98be65;">"///4///"</span>, <span style="color: #98be65;">"5"</span>]
@@ -1433,18 +1420,18 @@ compactMap 所映射出的元素結果都是非可選（non-nil）的值。因�
 </div>
 </div>
 
-<div id="outline-container-orgbc75db3" class="outline-4">
-<h4 id="orgbc75db3"><span class="section-number-4">7.1.8</span> Array of Struct</h4>
+<div id="outline-container-org6061a28" class="outline-4">
+<h4 id="org6061a28"><span class="section-number-4">7.1.8</span> Array of Struct</h4>
 <div class="outline-text-4" id="text-7-1-8">
 <p>
-基本的陣列提供了我們儲存大批資料的機制，然而，上述所示範的簡易型陣列彈性略嫌不足，如果我們想要開發一個圖書相關的 app，一開始我們至少需要這樣的陣列：<br />
+基本的陣列提供了我們儲存大批資料的機制，然而，上述所示範的簡易型陣列彈性略嫌不足，如果我們想要開發一個圖書相關的 app，一開始我們至少需要這樣的陣列：
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">let</span> book = [<span style="color: #98be65;">"X&#30340;&#24754;&#21127;"</span>, <span style="color: #98be65;">"&#22320;&#29508;&#34253;&#35519;"</span>,<span style="color: #98be65;">"&#26481;&#26041;&#21015;&#36554;&#35584;&#27578;&#26696;"</span>,<span style="color: #98be65;">"&#20843;&#30334;&#33836;&#31278;&#27515;&#27861;"</span>,<span style="color: #98be65;">"&#34880;&#23383;&#30740;&#31350;"</span>]
 </pre>
 </div>
 <p>
-然而，書本至少還要有作者吧，於是，我們可能又會加入作者的陣列:<br />
+然而，書本至少還要有作者吧，於是，我們可能又會加入作者的陣列:
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">let</span> book = [<span style="color: #98be65;">"X&#30340;&#24754;&#21127;"</span>, <span style="color: #98be65;">"&#22320;&#29508;&#34253;&#35519;"</span>,<span style="color: #98be65;">"&#26481;&#26041;&#21015;&#36554;&#35584;&#27578;&#26696;"</span>,<span style="color: #98be65;">"&#20843;&#30334;&#33836;&#31278;&#27515;&#27861;"</span>,<span style="color: #98be65;">"&#34880;&#23383;&#30740;&#31350;"</span>]
@@ -1452,15 +1439,15 @@ compactMap 所映射出的元素結果都是非可選（non-nil）的值。因�
 </pre>
 </div>
 <p>
-這種設計方式雖然可行，但是卻有幾個問題：<br />
+這種設計方式雖然可行，但是卻有幾個問題：
 </p>
 <ol class="org-ol">
-<li>書名與作者存在不同陣列中，而且書名與作者並無直接的連結<br /></li>
-<li>當我們要再加入出版年份、出版社、售價&#x2026;等資訊時，就會發現需要太多的陣列了<br /></li>
+<li>書名與作者存在不同陣列中，而且書名與作者並無直接的連結</li>
+<li>當我們要再加入出版年份、出版社、售價&#x2026;等資訊時，就會發現需要太多的陣列了</li>
 </ol>
 
 <p>
-Struct 就是一種十分適合用來儲存相關資料的型別，以上述書籍資料為例，我們可以先建立一個這樣的 Struct:<br />
+Struct 就是一種十分適合用來儲存相關資料的型別，以上述書籍資料為例，我們可以先建立一個這樣的 Struct:
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">Book</span> {
@@ -1470,7 +1457,7 @@ Struct 就是一種十分適合用來儲存相關資料的型別，以上述書�
 </pre>
 </div>
 <p>
-接下來，再建立一個上述 struct 的陣列，如此一來，不管書籍資料再如何複雜，我們都可以一個陣列來儲存：<br />
+接下來，再建立一個上述 struct 的陣列，如此一來，不管書籍資料再如何複雜，我們都可以一個陣列來儲存：
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">Book</span> {
@@ -1498,16 +1485,16 @@ Struct 就是一種十分適合用來儲存相關資料的型別，以上述書�
 </div>
 </div>
 
-<div id="outline-container-orgc6a7a55" class="outline-3">
-<h3 id="orgc6a7a55"><span class="section-number-3">7.2</span> 集合（Sets）</h3>
+<div id="outline-container-orga2338b9" class="outline-3">
+<h3 id="orga2338b9"><span class="section-number-3">7.2</span> 集合（Sets）</h3>
 <div class="outline-text-3" id="text-7-2">
 <p>
-集合（Set）是 Swift 集合類型（collection types）之一，集合用來存儲類型相同且沒有確定順序唯一的值。<br />
+集合（Set）是 Swift 集合類型（collection types）之一，集合用來存儲類型相同且沒有確定順序唯一的值。
 </p>
 </div>
 
-<div id="outline-container-orga8b1133" class="outline-4">
-<h4 id="orga8b1133"><span class="section-number-4">7.2.1</span> 宣告</h4>
+<div id="outline-container-org42aa247" class="outline-4">
+<h4 id="org42aa247"><span class="section-number-4">7.2.1</span> 宣告</h4>
 <div class="outline-text-4" id="text-7-2-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">var</span> letrers = <span style="color: #c678dd;">Set</span>&lt;<span style="color: #c678dd;">Character</span>&gt;()
@@ -1516,8 +1503,8 @@ Struct 就是一種十分適合用來儲存相關資料的型別，以上述書�
 </div>
 </div>
 
-<div id="outline-container-org7290ac0" class="outline-4">
-<h4 id="org7290ac0"><span class="section-number-4">7.2.2</span> 存取集合</h4>
+<div id="outline-container-org10fd0a3" class="outline-4">
+<h4 id="org10fd0a3"><span class="section-number-4">7.2.2</span> 存取集合</h4>
 <div class="outline-text-4" id="text-7-2-2">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">var</span> letters = <span style="color: #c678dd;">Set</span>&lt;<span style="color: #c678dd;">Character</span>&gt;()
@@ -1538,14 +1525,14 @@ Struct 就是一種十分適合用來儲存相關資料的型別，以上述書�
 0
 false
 a
-b
 d
+b
 </pre>
 </div>
 </div>
 
-<div id="outline-container-orge841e0c" class="outline-4">
-<h4 id="orge841e0c"><span class="section-number-4">7.2.3</span> 交集、聯集</h4>
+<div id="outline-container-org0e208cc" class="outline-4">
+<h4 id="org0e208cc"><span class="section-number-4">7.2.3</span> 交集、聯集</h4>
 <div class="outline-text-4" id="text-7-2-3">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">let</span> oddDigits: <span style="color: #c678dd;">Set</span> = [<span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #da8548; font-weight: bold;">3</span>, <span style="color: #da8548; font-weight: bold;">5</span>, <span style="color: #da8548; font-weight: bold;">7</span>, <span style="color: #da8548; font-weight: bold;">9</span>]
@@ -1561,7 +1548,7 @@ d
 </div>
 
 <pre class="example">
-[4, 7, 6, 1, 2, 3, 5, 8, 9, 0]
+[7, 5, 6, 3, 0, 4, 2, 8, 9, 1]
 [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 []
 [1, 9]
@@ -1570,26 +1557,26 @@ d
 </div>
 </div>
 
-<div id="outline-container-org4daaec6" class="outline-4">
-<h4 id="org4daaec6"><span class="section-number-4">7.2.4</span> 學習資源</h4>
+<div id="outline-container-orgad273d3" class="outline-4">
+<h4 id="orgad273d3"><span class="section-number-4">7.2.4</span> 學習資源</h4>
 <div class="outline-text-4" id="text-7-2-4">
 <ul class="org-ul">
-<li><a href="https://swift.gg/2019/07/09/Sets-in-Swift/">Swift中的集合(Set)</a><br /></li>
+<li><a href="https://swift.gg/2019/07/09/Sets-in-Swift/">Swift中的集合(Set)</a></li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org0a10674" class="outline-3">
-<h3 id="org0a10674"><span class="section-number-3">7.3</span> 字典（Dictionaries）</h3>
+<div id="outline-container-org7c7b053" class="outline-3">
+<h3 id="org7c7b053"><span class="section-number-3">7.3</span> 字典（Dictionaries）</h3>
 <div class="outline-text-3" id="text-7-3">
 <p>
-字典是一種儲存多個相同型別的值的容器。每個值（value）都關聯唯一的鍵（key），鍵作為字典中的這個值資料的識別符號。和陣列中的資料項不同，字典中的資料項並沒有具體順序。我們在需要通過識別符號（鍵）存取資料的時候使用字典，這種方法很大程度上和我們在現實世界中使用字典查字義的方法一樣<sup><a id="fnr.6" class="footref" href="#fn.6">6</a></sup>。<br />
+字典是一種儲存多個相同型別的值的容器。每個值（value）都關聯唯一的鍵（key），鍵作為字典中的這個值資料的識別符號。和陣列中的資料項不同，字典中的資料項並沒有具體順序。我們在需要通過識別符號（鍵）存取資料的時候使用字典，這種方法很大程度上和我們在現實世界中使用字典查字義的方法一樣<sup><a id="fnr.6" class="footref" href="#fn.6">6</a></sup>。
 </p>
 </div>
 
-<div id="outline-container-org35c021b" class="outline-4">
-<h4 id="org35c021b"><span class="section-number-4">7.3.1</span> 建立字典</h4>
+<div id="outline-container-orgea54c6a" class="outline-4">
+<h4 id="orgea54c6a"><span class="section-number-4">7.3.1</span> 建立字典</h4>
 <div class="outline-text-4" id="text-7-3-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">var</span> namesOfIntegers = [<span style="color: #c678dd;">Int</span>: <span style="color: #c678dd;">String</span>]()
@@ -1605,17 +1592,33 @@ d
 
 
 <p>
-一個字典字面量是一個定義擁有一個或者多個鍵值對的字典集合的簡單語句。一個鍵值對是一個 key 和一個 value 的結合體。在字典字面量中，每一個鍵值對的鍵和值都由冒號分割。這些鍵值對構成一個列表，其中這些鍵值對由方括號包含並且由逗號分割：<br />
+一個字典字面量是一個定義擁有一個或者多個鍵值對的字典集合的簡單語句。一個鍵值對是一個 key 和一個 value 的結合體。在字典字面量中，每一個鍵值對的鍵和值都由冒號分割。這些鍵值對構成一個列表，其中這些鍵值對由方括號包含並且由逗號分割：
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span>[key <span style="color: #da8548; font-weight: bold;">1</span>: value <span style="color: #da8548; font-weight: bold;">1</span>, key <span style="color: #da8548; font-weight: bold;">2</span>: value <span style="color: #da8548; font-weight: bold;">2</span>, key <span style="color: #da8548; font-weight: bold;">3</span>: value <span style="color: #da8548; font-weight: bold;">3</span>]
 </pre>
 </div>
+
+<pre class="example">
+&lt;stdin&gt;:1:6: error: expected ',' separator
+[key 1: value 1, key 2: value 2, key 3: value 3]
+     ^
+    ,
+&lt;stdin&gt;:1:2: error: cannot find 'key' in scope
+[key 1: value 1, key 2: value 2, key 3: value 3]
+ ^~~
+&lt;stdin&gt;:1:18: error: cannot find 'key' in scope
+[key 1: value 1, key 2: value 2, key 3: value 3]
+                 ^~~
+&lt;stdin&gt;:1:34: error: cannot find 'key' in scope
+[key 1: value 1, key 2: value 2, key 3: value 3]
+                                 ^~~
+</pre>
 </div>
 </div>
 
-<div id="outline-container-org6bf1bb7" class="outline-4">
-<h4 id="org6bf1bb7"><span class="section-number-4">7.3.2</span> 存取字典</h4>
+<div id="outline-container-orgdf3a081" class="outline-4">
+<h4 id="orgdf3a081"><span class="section-number-4">7.3.2</span> 存取字典</h4>
 <div class="outline-text-4" id="text-7-3-2">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">var</span> autherOfWriting: [<span style="color: #c678dd;">String</span>: <span style="color: #c678dd;">String</span>] = [<span style="color: #98be65;">"&#32769;&#20154;&#33287;&#28023;"</span>: <span style="color: #98be65;">"&#28023;&#26126;&#23041;"</span>, <span style="color: #98be65;">"&#30064;&#37129;&#20154;"</span>: <span style="color: #98be65;">"&#21345;&#35628;"</span>, <span style="color: #98be65;">"&#30334;&#24180;&#23396;&#23490;"</span>: <span style="color: #98be65;">"&#39340;&#22862;&#26031;"</span>, <span style="color: #98be65;">"&#28010;&#28120;&#27801;"</span>: <span style="color: #98be65;">"&#26481;&#26041;&#30333;"</span>]
@@ -1630,14 +1633,14 @@ d
 </div>
 
 <pre class="example">
-["浪淘沙": "東方白", "百年孤寂": "馬奎斯", "老人與海": "海明威", "異鄉人": "卡謬"]
-一共有 4 本書
+["百年孤寂": "馬奎斯", "浪淘沙": "東方白", "老人與海": "海明威", "異鄉人": "卡謬"]
+一共有4本書
 false
-浪淘沙的作者為東方白
 百年孤寂的作者為馬奎斯
+浪淘沙的作者為東方白
+鼠疫的作者為卡謬
 老人與海的作者為海明威
 異鄉人的作者為卡謬
-鼠疫的作者為卡謬
 </pre>
 </div>
 </div>
@@ -1648,20 +1651,20 @@ false
 <h2 id="function"><span class="section-number-2">8</span> Functions</h2>
 <div class="outline-text-2" id="text-function">
 <p>
-Functions are self-contained chunks of code that perform a specific task. You give a function a name that identifies what it does, and this name is used to “call” the function to perform its task when needed.<br />
+Functions are self-contained chunks of code that perform a specific task. You give a function a name that identifies what it does, and this name is used to “call” the function to perform its task when needed.
 </p>
 
 <p>
-Swift’s unified function syntax is flexible enough to express anything from a simple C-style function with no parameter names to a complex Objective-C-style method with names and argument labels for each parameter. Parameters can provide default values to simplify function calls and can be passed as in-out parameters, which modify a passed variable once the function has completed its execution.<br />
+Swift’s unified function syntax is flexible enough to express anything from a simple C-style function with no parameter names to a complex Objective-C-style method with names and argument labels for each parameter. Parameters can provide default values to simplify function calls and can be passed as in-out parameters, which modify a passed variable once the function has completed its execution.
 </p>
 </div>
 
-<div id="outline-container-org501ebd2" class="outline-3">
-<h3 id="org501ebd2"><span class="section-number-3">8.1</span> Functions 的定義與呼叫</h3>
+<div id="outline-container-orga045888" class="outline-3">
+<h3 id="orga045888"><span class="section-number-3">8.1</span> Functions 的定義與呼叫</h3>
 <div class="outline-text-3" id="text-8-1">
 </div>
-<div id="outline-container-orgc2a3d34" class="outline-4">
-<h4 id="orgc2a3d34"><span class="section-number-4">8.1.1</span> 語法</h4>
+<div id="outline-container-orgeb8a39f" class="outline-4">
+<h4 id="orgeb8a39f"><span class="section-number-4">8.1.1</span> 語法</h4>
 <div class="outline-text-4" id="text-8-1-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">func</span> <span style="color: #c678dd;">name</span>(arg1 param1: DataTyp, arg2 param2: DataType) -&gt; returnValue DataType {
@@ -1673,8 +1676,8 @@ Swift’s unified function syntax is flexible enough to express anything from a 
 </div>
 </div>
 
-<div id="outline-container-orgceb0c48" class="outline-4">
-<h4 id="orgceb0c48"><span class="section-number-4">8.1.2</span> DEMO</h4>
+<div id="outline-container-org7a1c2eb" class="outline-4">
+<h4 id="org7a1c2eb"><span class="section-number-4">8.1.2</span> DEMO</h4>
 <div class="outline-text-4" id="text-8-1-2">
 <div class="org-src-container">
 <pre class="src src-"exports">"exports both"body
@@ -1683,15 +1686,15 @@ Swift’s unified function syntax is flexible enough to express anything from a 
 </div>
 </div>
 
-<div id="outline-container-org13114b9" class="outline-4">
-<h4 id="org13114b9"><span class="section-number-4">8.1.3</span> Functions 的參數與傳回值</h4>
+<div id="outline-container-org8738367" class="outline-4">
+<h4 id="org8738367"><span class="section-number-4">8.1.3</span> Functions 的參數與傳回值</h4>
 <div class="outline-text-4" id="text-8-1-3">
 <p>
-Function 可以沒有參數，也可以有很多參數，可以沒有傳回值，也可以有很多傳回值(這點與 C/C++不同)<br />
+Function 可以沒有參數，也可以有很多參數，可以沒有傳回值，也可以有很多傳回值(這點與 C/C++不同)
 </p>
 </div>
-<div id="outline-container-orge8f0823" class="outline-5">
-<h5 id="orge8f0823"><span class="section-number-5">8.1.3.1</span> 沒有參數</h5>
+<ol class="org-ol">
+<li><a id="org7789c5a"></a>沒有參數<br />
 <div class="outline-text-5" id="text-8-1-3-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">func</span> <span style="color: #c678dd;">sayHelloWorld</span>() -&gt; <span style="color: #c678dd;">String</span> {
@@ -1701,9 +1704,8 @@ Function 可以沒有參數，也可以有很多參數，可以沒有傳回值�
 </pre>
 </div>
 </div>
-</div>
-<div id="outline-container-org677ac28" class="outline-5">
-<h5 id="org677ac28"><span class="section-number-5">8.1.3.2</span> 有很多參數</h5>
+</li>
+<li><a id="org82ec1ba"></a>有很多參數<br />
 <div class="outline-text-5" id="text-8-1-3-2">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">func</span> <span style="color: #c678dd;">greet</span>(person: <span style="color: #c678dd;">String</span>, alreadyGreeted: <span style="color: #c678dd;">Bool</span>) -&gt; <span style="color: #c678dd;">String</span> {
@@ -1719,7 +1721,7 @@ Function 可以沒有參數，也可以有很多參數，可以沒有傳回值�
 </div>
 
 <p>
-function 的參數可以有兩種名稱：internal name 與 external name，internal 用於 function 內；external name 提供外部程式呼叫 function 使用。若 function 有一個以上的參數，可以省略第一個參數的名稱，如：<br />
+function 的參數可以有兩種名稱：internal name 與 external name，internal 用於 function 內；external name 提供外部程式呼叫 function 使用。若 function 有一個以上的參數，可以省略第一個參數的名稱，如：
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">func</span> <span style="color: #c678dd;">greet</span>(_ person: <span style="color: #c678dd;">String</span>, hiAgain alreadyGreeted: <span style="color: #c678dd;">Bool</span>) -&gt; <span style="color: #c678dd;">String</span> {
@@ -1736,9 +1738,8 @@ function 的參數可以有兩種名稱：internal name 與 external name，inte
 </pre>
 </div>
 </div>
-</div>
-<div id="outline-container-org4ec6ee6" class="outline-5">
-<h5 id="org4ec6ee6"><span class="section-number-5">8.1.3.3</span> 沒有傳回值</h5>
+</li>
+<li><a id="org02f2a02"></a>沒有傳回值<br />
 <div class="outline-text-5" id="text-8-1-3-3">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">func</span> <span style="color: #c678dd;">greet</span>(person: <span style="color: #c678dd;">String</span>) {
@@ -1748,9 +1749,8 @@ function 的參數可以有兩種名稱：internal name 與 external name，inte
 </pre>
 </div>
 </div>
-</div>
-<div id="outline-container-org1415d57" class="outline-5">
-<h5 id="org1415d57"><span class="section-number-5">8.1.3.4</span> 有很多傳回值</h5>
+</li>
+<li><a id="orga4fd183"></a>有很多傳回值<br />
 <div class="outline-text-5" id="text-8-1-3-4">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">func</span> <span style="color: #c678dd;">myDiv</span>(dividend: <span style="color: #c678dd;">Int</span>, divisor: <span style="color: #c678dd;">Int</span>) -&gt; (quotient: <span style="color: #c678dd;">Int</span>, remainder: <span style="color: #c678dd;">Int</span>) {
@@ -1766,7 +1766,8 @@ function 的參數可以有兩種名稱：internal name 與 external name，inte
 商：3，餘數：1
 </pre>
 </div>
-</div>
+</li>
+</ol>
 </div>
 </div>
 </div>
@@ -1775,11 +1776,11 @@ function 的參數可以有兩種名稱：internal name 與 external name，inte
 <h2 id="generics"><span class="section-number-2">9</span> Generics</h2>
 <div class="outline-text-2" id="text-generics">
 <p>
-當使用者&ldquo;不在乎&rdquo;其資料型別時使用，典型的例子為陣列，陣列可以儲存各式各樣型態的資料：Int, Double, String, Struct&#x2026;<br />
+當使用者&ldquo;不在乎&rdquo;其資料型別時使用，典型的例子為陣列，陣列可以儲存各式各樣型態的資料：Int, Double, String, Struct&#x2026;
 </p>
 
 <p>
-陣列的定義方式如下<br />
+陣列的定義方式如下
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span>strut <span style="color: #c678dd;">Array</span>&lt;<span style="color: #c678dd;">Element</span>&gt; {
@@ -1789,7 +1790,7 @@ function 的參數可以有兩種名稱：internal name 與 external name，inte
 </pre>
 </div>
 <p>
-上述程式第<a href="#coderef-arap" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-arap');" onmouseout="CodeHighlightOff(this, 'coderef-arap');">3</a>行 append 的參數 Element 即為一&ldquo;don&rsquo;t care&rdquo;型別，代表&lt;Element&gt;裡可以填上 Int, String, Struct&#x2026;。其正式名稱為 Type Parameter。<br />
+上述程式第<a href="#coderef-arap" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-arap');" onmouseout="CodeHighlightOff(this, 'coderef-arap');">3</a>行 append 的參數 Element 即為一&ldquo;don&rsquo;t care&rdquo;型別，代表&lt;Element&gt;裡可以填上 Int, String, Struct&#x2026;。其正式名稱為 Type Parameter。
 </p>
 </div>
 </div>
@@ -1798,25 +1799,25 @@ function 的參數可以有兩種名稱：internal name 與 external name，inte
 <h2 id="types"><span class="section-number-2">10</span> Types</h2>
 <div class="outline-text-2" id="text-types">
 </div>
-<div id="outline-container-orgf463796" class="outline-3">
-<h3 id="orgf463796"><span class="section-number-3">10.1</span> Varietities of Types</h3>
+<div id="outline-container-orgf737ad4" class="outline-3">
+<h3 id="orgf737ad4"><span class="section-number-3">10.1</span> Varietities of Types</h3>
 <div class="outline-text-3" id="text-10-1">
 <ul class="org-ul">
-<li>struct<br /></li>
-<li>class<br /></li>
-<li>protocol<br /></li>
-<li>&ldquo;Dont&rsquo; Care&rdquo; type (generics)<br /></li>
-<li>enum<br /></li>
-<li>functions<br /></li>
+<li>struct</li>
+<li>class</li>
+<li>protocol</li>
+<li>&ldquo;Dont&rsquo; Care&rdquo; type (generics)</li>
+<li>enum</li>
+<li>functions</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org1d15774" class="outline-3">
-<h3 id="org1d15774"><span class="section-number-3">10.2</span> Functions as Types</h3>
+<div id="outline-container-org8751fea" class="outline-3">
+<h3 id="org8751fea"><span class="section-number-3">10.2</span> Functions as Types</h3>
 <div class="outline-text-3" id="text-10-2">
 <p>
-如同 Int 或 Double，function 也可以是一種 type，如：<br />
+如同 Int 或 Double，function 也可以是一種 type，如：
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">var</span> foo: (<span style="color: #c678dd;">Double</span>) -&gt; <span style="color: #c678dd;">Void</span>
@@ -1824,11 +1825,11 @@ function 的參數可以有兩種名稱：internal name 與 external name，inte
 </pre>
 </div>
 <p>
-上述程式中第 1 行的 foo 為一變數，其型別為：輸入一小數變數、不傳回值，第 2 行 function 中的參數 what 的型別為一個沒有輸入、傳回 bool 的變數。<br />
+上述程式中第 1 行的 foo 為一變數，其型別為：輸入一小數變數、不傳回值，第 2 行 function 中的參數 what 的型別為一個沒有輸入、傳回 bool 的變數。
 </p>
 
 <p>
-如下例：<br />
+如下例：
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">func</span> <span style="color: #c678dd;">square</span>(operand: <span style="color: #c678dd;">Double</span>) -&gt; <span style="color: #c678dd;">Double</span> {
@@ -1846,22 +1847,40 @@ function 的參數可以有兩種名稱：internal name 與 external name，inte
 </div>
 
 <p>
-程式中的第<a href="#coderef-fat" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-fat');" onmouseout="CodeHighlightOff(this, 'coderef-fat');">5</a>行中，令 operation 變數之型別為 square 這個 function，於是 operation 就可以如 function 般進行計算；也可以令 operation 為內建的 function(如 abs)<br />
+程式中的第<a href="#coderef-fat" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-fat');" onmouseout="CodeHighlightOff(this, 'coderef-fat');">5</a>行中，令 operation 變數之型別為 square 這個 function，於是 operation 就可以如 function 般進行計算；也可以令 operation 為內建的 function(如 abs)
 </p>
+</div>
 </div>
 </div>
 
-<div id="outline-container-orgd7eceb4" class="outline-3">
-<h3 id="orgd7eceb4"><span class="section-number-3">10.3</span> Closures</h3>
-<div class="outline-text-3" id="text-10-3">
+<div id="outline-container-org8f29a58" class="outline-2">
+<h2 id="org8f29a58"><span class="section-number-2">11</span> Closures</h2>
+<div class="outline-text-2" id="text-11">
 <p>
-在將 function 視為參數傳遞時，也可以把 function 內容直接寫出來，這種 inlined function 就稱為 closure<br />
-Closure(闭包) 就是没有名字的function，可以将它assign给variable或constant，也可以”现用现定义”。那么我们为什么要用Closure而不用function呢？怎么用Closure呢？往下看你就知道了！<br />
+It’s kinda like a function you can assign to a variable.一個能接受參數的變數。
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">let</span> makeGreeting: (<span style="color: #c678dd;">String</span>) -&gt; <span style="color: #c678dd;">String</span> = { name <span style="color: #51afef;">in</span>
+<span class="linenr">2: </span>    <span style="color: #51afef;">return</span> <span style="color: #98be65;">"Hello, \(</span>name<span style="color: #98be65;">)!"</span>
+<span class="linenr">3: </span>}
+<span class="linenr">4: </span>
+<span class="linenr">5: </span><span style="color: #51afef;">let</span> message = <span style="color: #c678dd;">makeGreeting</span>(<span style="color: #98be65;">"Bob"</span>)
+<span class="linenr">6: </span><span style="color: #c678dd;">print</span>(message)
+</pre>
+</div>
+
+<pre class="example">
+Hello, Bob!
+</pre>
+
+
+<p>
+上例中常數makeGreeting就包含了一個closure，作用與function一模一樣。
 </p>
 </div>
-<div id="outline-container-orgb14ba72" class="outline-4">
-<h4 id="orgb14ba72"><span class="section-number-4">10.3.1</span> syntax</h4>
-<div class="outline-text-4" id="text-10-3-1">
+<div id="outline-container-orgbe1e636" class="outline-3">
+<h3 id="orgbe1e636"><span class="section-number-3">11.1</span> closure語法與簡化</h3>
+<div class="outline-text-3" id="text-11-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">import</span> Foundation
 <span class="linenr">2: </span>
@@ -1878,7 +1897,7 @@ Closure(闭包) 就是没有名字的function，可以将它assign给variable或
 </pre>
 
 <p>
-因為第<a href="#coderef-dec1" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-dec1');" onmouseout="CodeHighlightOff(this, 'coderef-dec1');">3</a>行已宣告了參數與return type，故第<a href="#coderef-dec2" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-dec2');" onmouseout="CodeHighlightOff(this, 'coderef-dec2');">4</a>行也可以改寫成<br />
+因為第<a href="#coderef-dec1" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-dec1');" onmouseout="CodeHighlightOff(this, 'coderef-dec1');">3</a>行已宣告了參數與return type，故第<a href="#coderef-dec2" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-dec2');" onmouseout="CodeHighlightOff(this, 'coderef-dec2');">4</a>行也可以改寫成
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">import</span> Foundation
@@ -1897,7 +1916,7 @@ Closure(闭包) 就是没有名字的function，可以将它assign给variable或
 </pre>
 
 <p>
-也可再簡化為:<br />
+也可再簡化為:
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">import</span> Foundation
@@ -1915,43 +1934,350 @@ Closure(闭包) 就是没有名字的function，可以将它assign给variable或
 </pre>
 </div>
 </div>
-<div id="outline-container-org8811731" class="outline-4">
-<h4 id="org8811731"><span class="section-number-4">10.3.2</span> closure as function parameter</h4>
-<div class="outline-text-4" id="text-10-3-2">
+<div id="outline-container-org0eff5fb" class="outline-3">
+<h3 id="org0eff5fb"><span class="section-number-3">11.2</span> closure as function parameter</h3>
+<div class="outline-text-3" id="text-11-2">
+<p>
+既然closure與function作用一樣，那為什麼不直接用function呢?
+原因之一是closure可以拿來當成其他function的參數
+</p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> Foundation
 <span class="linenr"> 2: </span>
-<span id="coderef-dec1" class="coderef-off"><span class="linenr"> 3: </span><span style="color: #51afef;">var</span> simpleClosure: (<span style="color: #c678dd;">Int</span>, <span style="color: #c678dd;">Int</span>) -&gt; <span style="color: #c678dd;">Int</span></span>
-<span class="linenr"> 4: </span>simpleClosure = {
-<span class="linenr"> 5: </span>    <span style="color: #51afef;">return</span> $0 + $1
-<span class="linenr"> 6: </span>}
-<span class="linenr"> 7: </span>
-<span class="linenr"> 8: </span><span style="color: #51afef;">func</span> <span style="color: #c678dd;">operation</span>(_ a: <span style="color: #c678dd;">Int</span>, _ b: <span style="color: #c678dd;">Int</span>, op: (<span style="color: #c678dd;">Int</span>, <span style="color: #c678dd;">Int</span>) -&gt; <span style="color: #c678dd;">Int</span>) -&gt; <span style="color: #c678dd;">Int</span> {
-<span class="linenr"> 9: </span>    <span style="color: #51afef;">return</span> <span style="color: #c678dd;">op</span>(a, b)
-<span class="linenr">10: </span>}
-<span class="linenr">11: </span>
-<span class="linenr">12: </span><span style="color: #c678dd;">print</span>(<span style="color: #c678dd;">operation</span>(<span style="color: #da8548; font-weight: bold;">2</span>, <span style="color: #da8548; font-weight: bold;">3</span>, op: simpleClosure))
-<span class="linenr">13: </span>
+<span class="linenr"> 3: </span><span style="color: #5B6268;">// </span><span style="color: #5B6268;">simpleClosure: take two Int paprameters and return one Int</span>
+<span id="coderef-dec1" class="coderef-off"><span class="linenr"> 4: </span><span style="color: #51afef;">var</span> simpleAddClosure: (<span style="color: #c678dd;">Int</span>, <span style="color: #c678dd;">Int</span>) -&gt; <span style="color: #c678dd;">Int</span></span>
+<span class="linenr"> 5: </span>simpleAddClosure = {
+<span class="linenr"> 6: </span>    <span style="color: #51afef;">return</span> $0 + $1
+<span class="linenr"> 7: </span>}
+<span class="linenr"> 8: </span>
+<span class="linenr"> 9: </span><span style="color: #51afef;">var</span> simpleMinusClosure: (<span style="color: #c678dd;">Int</span>, <span style="color: #c678dd;">Int</span>) -&gt; <span style="color: #c678dd;">Int</span>
+<span class="linenr">10: </span>simpleMinusClosure = {
+<span class="linenr">11: </span>    <span style="color: #51afef;">return</span> $0 - $1
+<span class="linenr">12: </span>}
+<span class="linenr">13: </span><span style="color: #51afef;">func</span> <span style="color: #c678dd;">operation</span>(_ a: <span style="color: #c678dd;">Int</span>, _ b: <span style="color: #c678dd;">Int</span>, op: (<span style="color: #c678dd;">Int</span>, <span style="color: #c678dd;">Int</span>) -&gt; <span style="color: #c678dd;">Int</span>) -&gt; <span style="color: #c678dd;">Int</span> {
+<span class="linenr">14: </span>    <span style="color: #51afef;">return</span> <span style="color: #c678dd;">op</span>(a, b)
+<span class="linenr">15: </span>}
+<span class="linenr">16: </span>
+<span class="linenr">17: </span><span style="color: #c678dd;">print</span>(<span style="color: #c678dd;">operation</span>(<span style="color: #da8548; font-weight: bold;">2</span>, <span style="color: #da8548; font-weight: bold;">3</span>, op: simpleAddClosure))
+<span class="linenr">18: </span><span style="color: #c678dd;">print</span>(<span style="color: #c678dd;">operation</span>(<span style="color: #da8548; font-weight: bold;">2</span>, <span style="color: #da8548; font-weight: bold;">3</span>, op: simpleMinusClosure))
 </pre>
 </div>
 
 <pre class="example">
 5
+-1
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org0da4b3c" class="outline-3">
+<h3 id="org0da4b3c"><span class="section-number-3">11.3</span> Completion Handler</h3>
+<div class="outline-text-3" id="text-11-3">
+<p>
+用closure而不用function的另一個原因是: closureh佷適合拿來當成completion handler。
+Since you can move the closure around in your code and call it at a later point. This make closures exceptionally useful as useful as <i>completion handlers</i>, i.e. the code you call when a long-running task has finished.
+</p>
+
+<p>
+A common application of a closure is the completion handler. It works roughly like this:<sup><a id="fnr.7" class="footref" href="#fn.7">7</a></sup>
+</p>
+<ul class="org-ul">
+<li>You’re executing a lengthy task in your code, like downloading a file, making a calculation, or waiting for a webservice request</li>
+<li>You want to execute some code when the lengthy task is completed, but you don’t want to “poll” the task continuously to check if it’s finished</li>
+<li>Instead, you provide closure to the lengthy task, which it will call when the task is completed</li>
+</ul>
+
+<p>
+假設有一個輸出closure block，該closure傳入一整數，輸出結果
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">let</span> block: (<span style="color: #c678dd;">Int</span>) -&gt; <span style="color: #c678dd;">Void</span> = { total <span style="color: #51afef;">in</span>
+<span class="linenr">2: </span>   <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"Sum of the first 1000 number is \(</span>total<span style="color: #98be65;">)"</span>)
+<span class="linenr">3: </span>}
+<span class="linenr">4: </span><span style="color: #c678dd;">block</span>(<span style="color: #da8548; font-weight: bold;">20</span>)
+</pre>
+</div>
+
+<pre class="example">
+Sum of the first 1000 number is 20
+</pre>
+
+
+<p>
+現在另外設計一個\( \sum^{1000}_{n=1}{n} \)的function，等加總計算完畢後，就緊接著執行這個block將結果輸出:
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">let</span> block: (<span style="color: #c678dd;">Int</span>) -&gt; <span style="color: #c678dd;">Void</span> = { total <span style="color: #51afef;">in</span>
+<span class="linenr"> 2: </span>   <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"Sum of the first 1000 number is \(</span>total<span style="color: #98be65;">)"</span>)
+<span class="linenr"> 3: </span>}
+<span class="linenr"> 4: </span>
+<span class="linenr"> 5: </span><span style="color: #51afef;">func</span> <span style="color: #c678dd;">sumOfFirstThousandNumber</span>(completionHandler: (<span style="color: #c678dd;">Int</span>) -&gt; <span style="color: #c678dd;">Void</span>) {
+<span class="linenr"> 6: </span>    <span style="color: #51afef;">var</span> total = <span style="color: #da8548; font-weight: bold;">0</span>
+<span class="linenr"> 7: </span>    <span style="color: #51afef;">for</span> i <span style="color: #51afef;">in</span> <span style="color: #da8548; font-weight: bold;">1</span>...<span style="color: #da8548; font-weight: bold;">1000</span> {
+<span class="linenr"> 8: </span>        total = total + i
+<span class="linenr"> 9: </span>    }
+<span class="linenr">10: </span>
+<span class="linenr">11: </span>    <span style="color: #c678dd;">completionHandler</span>(total)
+<span class="linenr">12: </span>}
+<span class="linenr">13: </span>
+<span class="linenr">14: </span><span style="color: #c678dd;">sumOfFirstThousandNumber</span>(completionHandler: block)
+</pre>
+</div>
+
+<pre class="example">
+Sum of the first 1000 number is 500500
+</pre>
+
+
+<p>
+From Swift 3.x, closure parameters are @nonescaping by default, It means closure will also be executed with the function body if you wanna escape closure execution mark it as @escaping.
+</p>
+
+<p>
+Completion handler另一個常見的例子是檔案下載，假設我們要自web下載一個image並將之顯示在View中，程式碼大致如下：
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">let</span> task = <span style="color: #c678dd;">URLSession</span>.<span style="color: #c678dd;">shared</span>.<span style="color: #c678dd;">dataTask</span>(with: <span style="color: #c678dd;">URL</span>(string: <span style="color: #98be65;">"http://example.com/cats.jpg"</span>)!, completionHandler: { data, response, error <span style="color: #51afef;">in</span>
+<span class="linenr">2: </span>    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Do something with image</span>
+<span class="linenr">3: </span>
+<span class="linenr">4: </span>})
+</pre>
+</div>
+<p>
+上例中，先以URLSession對網站提出HTTP request下載cats.jpg，closure <b>completionHandler</b> 為 <b>dataTask()</b> 函數的參數，會在cats.jpg被下載後執行，這就是所謂的 <i>completion handler</i> 。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org266b550" class="outline-3">
+<h3 id="org266b550"><span class="section-number-3">11.4</span> @nonescaping closures:</h3>
+<div class="outline-text-3" id="text-11-4">
+<p>
+參考以下範例:
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">class</span> <span style="color: #c678dd;">ClosureTesting</span> {
+<span class="linenr"> 2: </span>    <span style="color: #51afef;">func</span> <span style="color: #c678dd;">getUser</span>(completion: (<span style="color: #c678dd;">String</span>)-&gt;<span style="color: #c678dd;">Void</span>) {
+<span class="linenr"> 3: </span>        <span style="color: #c678dd;">completion</span>(<span style="color: #98be65;">"TNFSH"</span>)
+<span class="linenr"> 4: </span>    }
+<span class="linenr"> 5: </span>    <span style="color: #51afef;">func</span> <span style="color: #c678dd;">execute</span>() {
+<span class="linenr"> 6: </span>        getUser { user <span style="color: #51afef;">in</span>
+<span class="linenr"> 7: </span>            <span style="color: #c678dd;">print</span>(user)
+<span class="linenr"> 8: </span>        }
+<span class="linenr"> 9: </span>    }
+<span class="linenr">10: </span>}
+<span class="linenr">11: </span>
+<span class="linenr">12: </span><span style="color: #51afef;">let</span> test = <span style="color: #c678dd;">ClosureTesting</span>()
+<span class="linenr">13: </span>test.<span style="color: #c678dd;">execute</span>()
+</pre>
+</div>
+
+<pre class="example">
+TNFSH
+</pre>
+
+
+<p>
+Class ClosureTesting有一function getUser, getUser會接受一個傳入參數completion，該參數為一closure，接受一個傳入參數(字串)，傳回Void，並在geUser中執行所傳入的closure。
+</p>
+
+<p>
+Class還有一function execute，該function呼叫getUser，所以要傳入一個closure參數，這個closure接受一個參數並將之輸出。
+</p>
+
+<p>
+以上即為non-escaping closure，因為function getuser在execute()執行後就return了。如果getUser裡的closure(completion)執行很久呢?能不能讓一段程式碼在function return後執行?
+</p>
+</div>
+
+<div id="outline-container-org87d9056" class="outline-4">
+<h4 id="org87d9056"><span class="section-number-4">11.4.1</span> Multi-Threading</h4>
+<div class="outline-text-4" id="text-11-4-1">
+<p>
+一種方式是利用concurrent queue讓closure在不同thread執行:
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> Foundation
+<span class="linenr"> 2: </span>
+<span class="linenr"> 3: </span><span style="color: #51afef;">class</span> <span style="color: #c678dd;">ClosureTesting</span> {
+<span class="linenr"> 4: </span>    <span style="color: #51afef;">let</span> queue = <span style="color: #c678dd;">DispatchQueue</span>(label: <span style="color: #98be65;">"concurrentQueue"</span>, attributes: .<span style="color: #c678dd;">concurrent</span>)
+<span class="linenr"> 5: </span>    <span style="color: #51afef;">func</span> <span style="color: #c678dd;">getUser</span>(completion: (<span style="color: #c678dd;">String</span>)-&gt;<span style="color: #c678dd;">Void</span>) {
+<span class="linenr"> 6: </span>        queue.<span style="color: #dcaeea;">async</span> {
+<span class="linenr"> 7: </span>            <span style="color: #5B6268;">// </span><span style="color: #5B6268;">let sepnd some time to fetch the data</span>
+<span class="linenr"> 8: </span>            <span style="color: #c678dd;">Thread</span>.<span style="color: #c678dd;">sleep</span>(forTimeInterval: <span style="color: #c678dd;">Double</span>.<span style="color: #c678dd;">random</span>(<span style="color: #51afef;">in</span>: <span style="color: #da8548; font-weight: bold;">0</span>...<span style="color: #da8548; font-weight: bold;">2</span>))
+<span class="linenr"> 9: </span>            <span style="color: #c678dd;">completion</span>(<span style="color: #98be65;">"TNFSH"</span>)
+<span class="linenr">10: </span>        }
+<span class="linenr">11: </span>    }
+<span class="linenr">12: </span>    <span style="color: #51afef;">func</span> <span style="color: #c678dd;">execute</span>() {
+<span class="linenr">13: </span>        getUser { user <span style="color: #51afef;">in</span>
+<span class="linenr">14: </span>            <span style="color: #c678dd;">print</span>(user)
+<span class="linenr">15: </span>        }
+<span class="linenr">16: </span>    }
+<span class="linenr">17: </span>}
+<span class="linenr">18: </span><span style="color: #51afef;">let</span> test = <span style="color: #c678dd;">ClosureTesting</span>()
+<span class="linenr">19: </span>test.<span style="color: #c678dd;">execute</span>()
+</pre>
+</div>
+<p>
+這段程式碼中，getUser裡的closure被設定為非同步執行，如此一來，這個function會在closure執行前就return了，這是十分常見的網路行為，例如closure正在下載資料，然而這段程式碼會導致如下錯誤:
+</p>
+<pre class="example">
+&lt;stdin&gt;:6:21: error: escaping closure captures non-escaping parameter 'completion'
+        queue.async {
+                    ^
+&lt;stdin&gt;:5:18: note: parameter 'completion' is implicitly non-escaping
+    func getUser(completion: (String)-&gt;Void) {
+                 ^
+&lt;stdin&gt;:9:13: note: captured here
+            completion("TNFSH")
+            ^
+</pre>
+
+<p>
+Swift官方文件解釋:
+</p>
+<p class="verse">
+“When you declare a function that takes a closure as one of its parameters, you can write @escaping before the parameter’s type to indicate that the closure is allowed to escape.”<br />
+</p>
+<p>
+即，為了讓closure能合法「逃脫」，closure必須在前面冠上 *@escaping 。如下:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">import</span> Foundation
+<span class="linenr"> 2: </span>
+<span class="linenr"> 3: </span><span style="color: #51afef;">class</span> <span style="color: #c678dd;">ClosureTesting</span> {
+<span class="linenr"> 4: </span>    <span style="color: #51afef;">let</span> queue = <span style="color: #c678dd;">DispatchQueue</span>(label: <span style="color: #98be65;">"concurrentQueue"</span>, attributes: .<span style="color: #c678dd;">concurrent</span>)
+<span class="linenr"> 5: </span>    <span style="color: #51afef;">func</span> <span style="color: #c678dd;">getUser</span>(completion: <span style="color: #51afef;">@escaping</span> (<span style="color: #c678dd;">String</span>)-&gt;<span style="color: #c678dd;">Void</span>) {
+<span class="linenr"> 6: </span>        queue.<span style="color: #dcaeea;">async</span> {
+<span class="linenr"> 7: </span>            <span style="color: #5B6268;">// </span><span style="color: #5B6268;">let sepnd some time to fetch the data</span>
+<span class="linenr"> 8: </span>            <span style="color: #c678dd;">Thread</span>.<span style="color: #c678dd;">sleep</span>(forTimeInterval: <span style="color: #c678dd;">Double</span>.<span style="color: #c678dd;">random</span>(<span style="color: #51afef;">in</span>: <span style="color: #da8548; font-weight: bold;">0</span>...<span style="color: #da8548; font-weight: bold;">2</span>))
+<span class="linenr"> 9: </span>            <span style="color: #c678dd;">completion</span>(<span style="color: #98be65;">"TNFSH"</span>)
+<span class="linenr">10: </span>        }
+<span class="linenr">11: </span>    }
+<span class="linenr">12: </span>    <span style="color: #51afef;">func</span> <span style="color: #c678dd;">execute</span>() {
+<span class="linenr">13: </span>        getUser { user <span style="color: #51afef;">in</span>
+<span class="linenr">14: </span>            <span style="color: #c678dd;">print</span>(user)
+<span class="linenr">15: </span>        }
+<span class="linenr">16: </span>    }
+<span class="linenr">17: </span>}
+<span class="linenr">18: </span><span style="color: #51afef;">let</span> test = <span style="color: #c678dd;">ClosureTesting</span>()
+<span class="linenr">19: </span>test.<span style="color: #c678dd;">execute</span>()
+<span class="linenr">20: </span>
+</pre>
+</div>
+
+<pre class="example">
+TNFSH
+</pre>
+
+
+<p>
+再看看以下的例子，function sortArray接受一個整數陣列參數、並設置一個handler:一個傳入Int傳回Void的closure,function將傳入的陣列進行排序，然後執行handler。
+doSomething呼叫sortArray後，傳入一組整數陣列，希望做到的handler是將排序後的Array輸出。
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">func</span> <span style="color: #c678dd;">sortArray</span>(array:[<span style="color: #c678dd;">Int</span>], handler: (([<span style="color: #c678dd;">Int</span>])-&gt;<span style="color: #c678dd;">Void</span>)) {
+<span class="linenr"> 2: </span>    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">step 2</span>
+<span class="linenr"> 3: </span>    <span style="color: #51afef;">var</span> sortedArray: [<span style="color: #c678dd;">Int</span>] = []
+<span class="linenr"> 4: </span>    sortedArray = array.<span style="color: #c678dd;">sorted</span>();
+<span class="linenr"> 5: </span>    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">step 3</span>
+<span id="coderef-return" class="coderef-off"><span class="linenr"> 6: </span>    <span style="color: #c678dd;">handler</span>(sortedArray)</span>
+<span class="linenr"> 7: </span>}
+<span class="linenr"> 8: </span><span style="color: #51afef;">func</span> <span style="color: #c678dd;">doSomething</span>() {
+<span class="linenr"> 9: </span>    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">setp 1</span>
+<span class="linenr">10: </span>    <span style="color: #c678dd;">sortArray</span>(array: [<span style="color: #da8548; font-weight: bold;">50</span>,<span style="color: #da8548; font-weight: bold;">333</span>,<span style="color: #da8548; font-weight: bold;">434</span>,<span style="color: #da8548; font-weight: bold;">2</span>,<span style="color: #da8548; font-weight: bold;">8</span>,<span style="color: #da8548; font-weight: bold;">3</span>,<span style="color: #da8548; font-weight: bold;">54</span>,<span style="color: #da8548; font-weight: bold;">73</span>,<span style="color: #da8548; font-weight: bold;">99</span>,<span style="color: #da8548; font-weight: bold;">83</span>,<span style="color: #da8548; font-weight: bold;">13</span>]) {(result) <span style="color: #51afef;">in</span>
+<span class="linenr">11: </span>        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">step 4</span>
+<span class="linenr">12: </span>        <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"Sorted Array: \(</span>result<span style="color: #98be65;">)"</span>)
+<span class="linenr">13: </span>    }
+<span class="linenr">14: </span>}
+<span class="linenr">15: </span><span style="color: #c678dd;">doSomething</span>()
+</pre>
+</div>
+
+<pre class="example">
+Sorted Array: [2, 3, 8, 13, 50, 54, 73, 83, 99, 333, 434]
 </pre>
 </div>
 </div>
 </div>
+
+<div id="outline-container-org848adcd" class="outline-3">
+<h3 id="org848adcd"><span class="section-number-3">11.5</span> @escaping closure:</h3>
+<div class="outline-text-3" id="text-11-5">
+<p>
+在前例中，如果我們在function sortArray return後仍需取用array的內容，則就需要將之設為@escaping closure。
+即，我們希望在第<a href="#coderef-return" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-return');" onmouseout="CodeHighlightOff(this, 'coderef-return');">6</a>行後取得已排序的值進行其他應用，則要將之設定為@escaping closure
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">var</span> findMaxFromArray: (([<span style="color: #c678dd;">Int</span>])-&gt; <span style="color: #c678dd;">Void</span>)?
+<span class="linenr"> 2: </span>
+<span class="linenr"> 3: </span><span style="color: #51afef;">func</span> <span style="color: #c678dd;">findMaxNumber</span>(array:[<span style="color: #c678dd;">Int</span>], handler: <span style="color: #51afef;">@escaping</span> ([<span style="color: #c678dd;">Int</span>])-&gt;<span style="color: #c678dd;">Void</span>) {
+<span class="linenr"> 4: </span>    <span style="color: #5B6268;">//</span><span style="color: #5B6268;">step 2</span>
+<span class="linenr"> 5: </span>    <span style="color: #c678dd;">handler</span>(array)
+<span class="linenr"> 6: </span>    <span style="color: #5B6268;">//</span><span style="color: #5B6268;">setp 3</span>
+<span class="linenr"> 7: </span>    findMaxFromArray = handler
+<span class="linenr"> 8: </span>}
+<span class="linenr"> 9: </span><span style="color: #51afef;">func</span> <span style="color: #c678dd;">doSomething</span>() {
+<span class="linenr">10: </span>    <span style="color: #5B6268;">//</span><span style="color: #5B6268;">setp 1</span>
+<span class="linenr">11: </span>    <span style="color: #c678dd;">findMaxNumber</span>(array: [<span style="color: #da8548; font-weight: bold;">11</span>,<span style="color: #da8548; font-weight: bold;">52</span>,<span style="color: #da8548; font-weight: bold;">33</span>,<span style="color: #da8548; font-weight: bold;">34</span>,<span style="color: #da8548; font-weight: bold;">5</span>,<span style="color: #da8548; font-weight: bold;">65</span>,<span style="color: #da8548; font-weight: bold;">7</span>,<span style="color: #da8548; font-weight: bold;">8</span>,<span style="color: #da8548; font-weight: bold;">29</span>,<span style="color: #da8548; font-weight: bold;">10</span>]) {(result) <span style="color: #51afef;">in</span>
+<span class="linenr">12: </span>        <span style="color: #51afef;">let</span> maxNumber = result.<span style="color: #c678dd;">max</span>()!
+<span class="linenr">13: </span>
+<span class="linenr">14: </span>        <span style="color: #5B6268;">//</span><span style="color: #5B6268;">step 4</span>
+<span class="linenr">15: </span>        <span style="color: #c678dd;">print</span>(<span style="color: #98be65;">"Max number from Array: \(</span>maxNumber<span style="color: #98be65;">)"</span>)
+<span class="linenr">16: </span>    }
+<span class="linenr">17: </span>}
+<span class="linenr">18: </span><span style="color: #c678dd;">doSomething</span>()
+<span class="linenr">19: </span><span style="color: #5B6268;">//</span><span style="color: #5B6268;">setp 5</span>
+<span class="linenr">20: </span>findMaxFromArray!([<span style="color: #da8548; font-weight: bold;">100</span>,<span style="color: #da8548; font-weight: bold;">300</span>,<span style="color: #da8548; font-weight: bold;">754</span>,<span style="color: #da8548; font-weight: bold;">222</span>,<span style="color: #da8548; font-weight: bold;">44</span>,<span style="color: #da8548; font-weight: bold;">432</span>,<span style="color: #da8548; font-weight: bold;">535</span>])
+</pre>
 </div>
 
-<div id="outline-container-SW-Struct-Class-Enum" class="outline-2">
-<h2 id="SW-Struct-Class-Enum"><span class="section-number-2">11</span> Struct, Class, and Enum</h2>
-<div class="outline-text-2" id="text-SW-Struct-Class-Enum">
-<p class="verse">
-struct, class, and enum are fundamentally important concepts for every iOS developer. It’s difficult to imagine common iOS apps without them. <sup><a id="fnr.7" class="footref" href="#fn.7">7</a></sup><br />
+<pre class="example">
+Max number from Array: 65
+Max number from Array: 754
+</pre>
+
+
+<p>
+A Closure is said to <b>escape</b> a function when the closure is passed as an argument to the function, but is called after the function returns.
 </p>
 
 <p>
-Class 和 Struct 是一種多功能且靈活的構造體，作為程式碼中的構造基礎。你可以使用與常數，變數和函數完全相同的語法來定義屬性和方法，以便為 Class 和 Struct 增加功能<sup><a id="fnr.8" class="footref" href="#fn.8">8</a></sup>。<br />
+再看另一個@escaping例子
+</p>
+<div class="org-src-container">
+<pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">func</span> <span style="color: #c678dd;">dataTask</span>(with url: <span style="color: #c678dd;">URL</span>,
+<span class="linenr">2: </span>completionHandler: <span style="color: #51afef;">@escaping</span> (<span style="color: #c678dd;">Data</span>?, <span style="color: #c678dd;">URLResponse</span>?, <span style="color: #c678dd;">Error</span>?) -&gt; <span style="color: #c678dd;">Void</span>) -&gt; <span style="color: #c678dd;">URLSessionDataTask</span>
+</pre>
+</div>
+<p>
+function dataTask有兩個參數: 網址資源url以及closure completionHandler，而closure completionHandler有三個參數：
+</p>
+<ul class="org-ul">
+<li>data?: 即所下載的資料本身，如圖片</li>
+<li>URLResponse?: 包含網路回應資訊的object</li>
+<li>Error?: 包含錯誤訊息的object，也有可能是一個nil</li>
+</ul>
+
+<p>
+function參數中的 <b>@escaping</b> 意謂著做為參數傳入dataTask function的closure被允許逃離dataTask，換句話說， <b>這個closure會在function dataTask結束後才被執行</b> 。
+</p>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-SW-Struct-Class-Enum" class="outline-2">
+<h2 id="SW-Struct-Class-Enum"><span class="section-number-2">12</span> Struct, Class, and Enum</h2>
+<div class="outline-text-2" id="text-SW-Struct-Class-Enum">
+<p class="verse">
+struct, class, and enum are fundamentally important concepts for every iOS developer. It’s difficult to imagine common iOS apps without them. <sup><a id="fnr.8" class="footref" href="#fn.8">8</a></sup><br />
+</p>
+
+<p>
+Class 和 Struct 是一種多功能且靈活的構造體，作為程式碼中的構造基礎。你可以使用與常數，變數和函數完全相同的語法來定義屬性和方法，以便為 Class 和 Struct 增加功能<sup><a id="fnr.9" class="footref" href="#fn.9">9</a></sup>。
 </p>
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -2021,17 +2347,17 @@ Class 和 Struct 是一種多功能且靈活的構造體，作為程式碼中的
 </table>
 
 <ul class="org-ul">
-<li>大多變數均為 struct(除了 View 之外)，如 arrays, dictionaries, Ints, Bools, Doubles,<br /></li>
-<li>functional programming: foucs 在資料的 functionality<br /></li>
-<li>object-oriented programming: focus 在將資料與其 functionality 封裝(encapsulate)入某個 object<br /></li>
-<li>single inheritance: 只能繼承自一個 class<br /></li>
-<li>支援 multiple inheritance 的語言：C++, Common Lisp, Perl, Python, R, Raku, Tcl<sup><a id="fnr.9" class="footref" href="#fn.9">9</a></sup>.<br /></li>
+<li>大多變數均為 struct(除了 View 之外)，如 arrays, dictionaries, Ints, Bools, Doubles,</li>
+<li>functional programming: foucs 在資料的 functionality</li>
+<li>object-oriented programming: focus 在將資料與其 functionality 封裝(encapsulate)入某個 object</li>
+<li>single inheritance: 只能繼承自一個 class</li>
+<li>支援 multiple inheritance 的語言：C++, Common Lisp, Perl, Python, R, Raku, Tcl<sup><a id="fnr.10" class="footref" href="#fn.10">10</a></sup>.</li>
 </ul>
 </div>
 
-<div id="outline-container-org12f39b5" class="outline-3">
-<h3 id="org12f39b5"><span class="section-number-3">11.1</span> 語法</h3>
-<div class="outline-text-3" id="text-11-1">
+<div id="outline-container-orgd17e6cb" class="outline-3">
+<h3 id="orgd17e6cb"><span class="section-number-3">12.1</span> 語法</h3>
+<div class="outline-text-3" id="text-12-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">SomeStructure</span> {
 <span class="linenr">2: </span>    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">structure definition goes here</span>
@@ -2044,13 +2370,13 @@ Class 和 Struct 是一種多功能且靈活的構造體，作為程式碼中的
 </div>
 </div>
 
-<div id="outline-container-orgda82c07" class="outline-3">
-<h3 id="orgda82c07"><span class="section-number-3">11.2</span> DEMO</h3>
-<div class="outline-text-3" id="text-11-2">
+<div id="outline-container-org55fe93b" class="outline-3">
+<h3 id="org55fe93b"><span class="section-number-3">12.2</span> DEMO</h3>
+<div class="outline-text-3" id="text-12-2">
 </div>
-<div id="outline-container-orgfef3709" class="outline-4">
-<h4 id="orgfef3709"><span class="section-number-4">11.2.1</span> 宣告</h4>
-<div class="outline-text-4" id="text-11-2-1">
+<div id="outline-container-org7f9cab2" class="outline-4">
+<h4 id="org7f9cab2"><span class="section-number-4">12.2.1</span> 宣告</h4>
+<div class="outline-text-4" id="text-12-2-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">Resolution</span> {
 <span class="linenr"> 2: </span>    <span style="color: #51afef;">var</span> width = <span style="color: #da8548; font-weight: bold;">0</span>
@@ -2068,11 +2394,11 @@ Class 和 Struct 是一種多功能且靈活的構造體，作為程式碼中的
 </div>
 </div>
 
-<div id="outline-container-org2917779" class="outline-4">
-<h4 id="org2917779"><span class="section-number-4">11.2.2</span> Init</h4>
-<div class="outline-text-4" id="text-11-2-2">
+<div id="outline-container-org2586ef8" class="outline-4">
+<h4 id="org2586ef8"><span class="section-number-4">12.2.2</span> Init</h4>
+<div class="outline-text-4" id="text-12-2-2">
 <p>
-用於建立 stuct 或 class，為內部變數進行初始化。<br />
+用於建立 stuct 或 class，為內部變數進行初始化。
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">DiceGme</span> {
@@ -2085,11 +2411,11 @@ Class 和 Struct 是一種多功能且靈活的構造體，作為程式碼中的
 </div>
 </div>
 
-<div id="outline-container-org50e2cb9" class="outline-4">
-<h4 id="org50e2cb9"><span class="section-number-4">11.2.3</span> Structure and Class Instances</h4>
-<div class="outline-text-4" id="text-11-2-3">
+<div id="outline-container-org6084f5f" class="outline-4">
+<h4 id="org6084f5f"><span class="section-number-4">12.2.3</span> Structure and Class Instances</h4>
+<div class="outline-text-4" id="text-12-2-3">
 <p>
-The Resolution structure definition and the VideoMode class definition only describe what a Resolution or VideoMode will look like. They themselves don’t describe a specific resolution or video mode. To do that, you need to create an instance of the structure or class.<br />
+The Resolution structure definition and the VideoMode class definition only describe what a Resolution or VideoMode will look like. They themselves don’t describe a specific resolution or video mode. To do that, you need to create an instance of the structure or class.
 </p>
 
 <div class="org-src-container">
@@ -2100,11 +2426,11 @@ The Resolution structure definition and the VideoMode class definition only desc
 </div>
 </div>
 
-<div id="outline-container-org9d7e122" class="outline-4">
-<h4 id="org9d7e122"><span class="section-number-4">11.2.4</span> Accessing Properties</h4>
-<div class="outline-text-4" id="text-11-2-4">
+<div id="outline-container-org44425ec" class="outline-4">
+<h4 id="org44425ec"><span class="section-number-4">12.2.4</span> Accessing Properties</h4>
+<div class="outline-text-4" id="text-12-2-4">
 <p>
-You can access the properties of an instance using dot syntax. In dot syntax, you write the property name immediately after the instance name, separated by a period (.), without any spaces:<br />
+You can access the properties of an instance using dot syntax. In dot syntax, you write the property name immediately after the instance name, separated by a period (.), without any spaces:
 </p>
 
 <div class="org-src-container">
@@ -2116,7 +2442,7 @@ You can access the properties of an instance using dot syntax. In dot syntax, yo
 </div>
 
 <p>
-You can also use dot syntax to assign a new value to a variable property:<br />
+You can also use dot syntax to assign a new value to a variable property:
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span>someVideoMode.<span style="color: #dcaeea;">resolution</span>.<span style="color: #dcaeea;">width</span> = <span style="color: #da8548; font-weight: bold;">1280</span>
@@ -2128,13 +2454,13 @@ You can also use dot syntax to assign a new value to a variable property:<br />
 </div>
 </div>
 
-<div id="outline-container-orgcac70dc" class="outline-3">
-<h3 id="orgcac70dc"><span class="section-number-3">11.3</span> Struct</h3>
-<div class="outline-text-3" id="text-11-3">
+<div id="outline-container-org55f0236" class="outline-3">
+<h3 id="org55f0236"><span class="section-number-3">12.3</span> Struct</h3>
+<div class="outline-text-3" id="text-12-3">
 </div>
-<div id="outline-container-orgc720f1d" class="outline-4">
-<h4 id="orgc720f1d"><span class="section-number-4">11.3.1</span> stored properties和computed properties</h4>
-<div class="outline-text-4" id="text-11-3-1">
+<div id="outline-container-org6fa9ada" class="outline-4">
+<h4 id="org6fa9ada"><span class="section-number-4">12.3.1</span> stored properties和computed properties</h4>
+<div class="outline-text-4" id="text-12-3-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">Person</span> {
 <span class="linenr"> 2: </span>    <span style="color: #51afef;">let</span> firstName: <span style="color: #c678dd;">String</span>
@@ -2164,7 +2490,7 @@ CEO
 
 
 <p>
-Person與Employee下的firstName, lastName, jobTitle都為stored property,也都存了值，會佔用memory，另竹種properties為計算所得，稱computed properties。<br />
+Person與Employee下的firstName, lastName, jobTitle都為stored property,也都存了值，會佔用memory，另竹種properties為計算所得，稱computed properties。
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">Person</span> {
@@ -2194,11 +2520,11 @@ Person與Employee下的firstName, lastName, jobTitle都為stored property,也都
 </pre>
 </div>
 </div>
-<div id="outline-container-org48ba549" class="outline-4">
-<h4 id="org48ba549"><span class="section-number-4">11.3.2</span> type properties</h4>
-<div class="outline-text-4" id="text-11-3-2">
+<div id="outline-container-org75884ff" class="outline-4">
+<h4 id="org75884ff"><span class="section-number-4">12.3.2</span> type properties</h4>
+<div class="outline-text-4" id="text-12-3-2">
 <p>
-computed property和stored property都是instance的属性，数据类型也有自己的属性，这就是type property。例如：<br />
+computed property和stored property都是instance的属性，数据类型也有自己的属性，这就是type property。例如：
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">Person</span> {
@@ -2221,15 +2547,15 @@ computed property和stored property都是instance的属性，数据类型也有�
 
 
 <p>
-location前面加了static，这就意味着location是Employee这个类型的属性，不用创建instance就可以读取。在实践中有时候会很有用。<br />
+location前面加了static，这就意味着location是Employee这个类型的属性，不用创建instance就可以读取。在实践中有时候会很有用。
 </p>
 </div>
 </div>
-<div id="outline-container-orgf860ea1" class="outline-4">
-<h4 id="orgf860ea1"><span class="section-number-4">11.3.3</span> property observers</h4>
-<div class="outline-text-4" id="text-11-3-3">
+<div id="outline-container-orgb59afde" class="outline-4">
+<h4 id="orgb59afde"><span class="section-number-4">12.3.3</span> property observers</h4>
+<div class="outline-text-4" id="text-12-3-3">
 <p>
-store property是有observer观察者的，willSet会在属性即将更新的时候执行；didSet会在属性刚更新完的时候执行。<br />
+store property是有observer观察者的，willSet会在属性即将更新的时候执行；didSet会在属性刚更新完的时候执行。
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">Person</span> {
@@ -2271,11 +2597,11 @@ store property是有observer观察者的，willSet会在属性即将更新的时
 </pre>
 </div>
 </div>
-<div id="outline-container-org110235c" class="outline-4">
-<h4 id="org110235c"><span class="section-number-4">11.3.4</span> Struct中的methods</h4>
-<div class="outline-text-4" id="text-11-3-4">
+<div id="outline-container-orgcc3f0df" class="outline-4">
+<h4 id="orgcc3f0df"><span class="section-number-4">12.3.4</span> Struct中的methods</h4>
+<div class="outline-text-4" id="text-12-3-4">
 <p>
-首先如果一个func定义在struct的外面，那他就是个function，如果定义在struct的里面那他就是method。但因为我们已经有了computed property, 我们在需要大量计算或者需要读写数据库的时候用methods，其他情况一般用computed property就可以了。<br />
+首先如果一个func定义在struct的外面，那他就是个function，如果定义在struct的里面那他就是method。但因为我们已经有了computed property, 我们在需要大量计算或者需要读写数据库的时候用methods，其他情况一般用computed property就可以了。
 </p>
 
 <div class="org-src-container">
@@ -2304,11 +2630,11 @@ store property是有observer观察者的，willSet会在属性即将更新的时
 </div>
 </div>
 
-<div id="outline-container-org8629dab" class="outline-4">
-<h4 id="org8629dab"><span class="section-number-4">11.3.5</span> Mutating methods</h4>
-<div class="outline-text-4" id="text-11-3-5">
+<div id="outline-container-org92c4303" class="outline-4">
+<h4 id="org92c4303"><span class="section-number-4">12.3.5</span> Mutating methods</h4>
+<div class="outline-text-4" id="text-12-3-5">
 <p class="verse">
-Structs have also got so-called mutating methods that play a role in updating the property values of a structure within an instance method. <sup><a id="fnr.7.100" class="footref" href="#fn.7">7</a></sup><br />
+Structs have also got so-called mutating methods that play a role in updating the property values of a structure within an instance method. <sup><a id="fnr.8.100" class="footref" href="#fn.8">8</a></sup><br />
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">Counter</span> {
@@ -2334,11 +2660,11 @@ Structs have also got so-called mutating methods that play a role in updating th
 </div>
 </div>
 
-<div id="outline-container-org455bc29" class="outline-3">
-<h3 id="org455bc29"><span class="section-number-3">11.4</span> Classes</h3>
-<div class="outline-text-3" id="text-11-4">
+<div id="outline-container-orgdd1440c" class="outline-3">
+<h3 id="orgdd1440c"><span class="section-number-3">12.4</span> Classes</h3>
+<div class="outline-text-3" id="text-12-4">
 <p class="verse">
-Classes and structures are very similar, and both can be used to define properties and methods. <sup><a id="fnr.7.100" class="footref" href="#fn.7">7</a></sup><br />
+Classes and structures are very similar, and both can be used to define properties and methods. <sup><a id="fnr.8.100" class="footref" href="#fn.8">8</a></sup><br />
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">class</span> <span style="color: #c678dd;">Person</span> {
@@ -2364,23 +2690,22 @@ Classes and structures are very similar, and both can be used to define properti
 Joshua Jiang
 </pre>
 </div>
-<div id="outline-container-org79e02a0" class="outline-4">
-<h4 id="org79e02a0"><span class="section-number-4">11.4.1</span> Struct v.s. Class</h4>
-<div class="outline-text-4" id="text-11-4-1">
+<div id="outline-container-org36f5c8b" class="outline-4">
+<h4 id="org36f5c8b"><span class="section-number-4">12.4.1</span> Struct v.s. Class</h4>
+<div class="outline-text-4" id="text-12-4-1">
 </div>
-<div id="outline-container-orgc008a65" class="outline-5">
-<h5 id="orgc008a65"><span class="section-number-5">11.4.1.1</span> init</h5>
-<div class="outline-text-5" id="text-11-4-1-1">
+<ol class="org-ol">
+<li><a id="org060a922"></a>init<br />
+<div class="outline-text-5" id="text-12-4-1-1">
 <p>
-不像struct会自动生成一个init让你用，上述代码中的init是必须要写的，而且和struct一样，在init中所有stored property（不懂这个的去看上一篇struct哈）都必须赋初始值。<br />
+不像struct会自动生成一个init让你用，上述代码中的init是必须要写的，而且和struct一样，在init中所有stored property（不懂这个的去看上一篇struct哈）都必须赋初始值。
 </p>
 </div>
-</div>
-<div id="outline-container-orgf1a9d89" class="outline-5">
-<h5 id="orgf1a9d89"><span class="section-number-5">11.4.1.2</span> reference type v.s. value type</h5>
-<div class="outline-text-5" id="text-11-4-1-2">
+</li>
+<li><a id="orgc97509c"></a>reference type v.s. value type<br />
+<div class="outline-text-5" id="text-12-4-1-2">
 <p>
-Struct是值类型，class是引用类型。分别是什么意思呢？<br />
+Struct是值类型，class是引用类型。分别是什么意思呢？
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">class</span> <span style="color: #c678dd;">Person</span> {
@@ -2413,24 +2738,22 @@ coolboy, coolboy
 </pre>
 
 <p>
-上述程式第<a href="#coderef-copy" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-copy');" onmouseout="CodeHighlightOff(this, 'coderef-copy');">16</a>行將me assign給prince,并没有拷贝整个instance给prince，而是拷贝了指向instance的地址；所以当me的firstName变了，那么prince的自然也会变。<br />
+上述程式第<a href="#coderef-copy" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-copy');" onmouseout="CodeHighlightOff(this, 'coderef-copy');">16</a>行將me assign給prince,并没有拷贝整个instance给prince，而是拷贝了指向instance的地址；所以当me的firstName变了，那么prince的自然也会变。
 </p>
 </div>
-</div>
-<div id="outline-container-org60b11ab" class="outline-5">
-<h5 id="org60b11ab"><span class="section-number-5">11.4.1.3</span> 判定相等or not</h5>
-<div class="outline-text-5" id="text-11-4-1-3">
+</li>
+<li><a id="orgf70c8a4"></a>判定相等or not<br />
+<div class="outline-text-5" id="text-12-4-1-3">
 <p>
-当你比较值类型时，不管是struct还是Int，用==即可<br />
-当你比较引用类型时，需要用===，比较的是他们指向的地址是否相同<br />
+当你比较值类型时，不管是struct还是Int，用==即可
+当你比较引用类型时，需要用===，比较的是他们指向的地址是否相同
 </p>
 </div>
-</div>
-<div id="outline-container-org4edaaba" class="outline-5">
-<h5 id="org4edaaba"><span class="section-number-5">11.4.1.4</span> constant or variable</h5>
-<div class="outline-text-5" id="text-11-4-1-4">
+</li>
+<li><a id="orgb1106f3"></a>constant or variable<br />
+<div class="outline-text-5" id="text-12-4-1-4">
 <p>
-我们知道如果你把一个struct复制给constant的时候，你是不能修改他的属性的；但class确可以：<br />
+我们知道如果你把一个struct复制给constant的时候，你是不能修改他的属性的；但class确可以：
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">class</span> <span style="color: #c678dd;">Person</span> {
@@ -2457,26 +2780,26 @@ coolboy, coolboy
 </pre>
 </div>
 </div>
-</div>
-<div id="outline-container-orgb5d1ec0" class="outline-5">
-<h5 id="orgb5d1ec0"><span class="section-number-5">11.4.1.5</span> 如何选择用Class还是Struct</h5>
-<div class="outline-text-5" id="text-11-4-1-5">
+</li>
+<li><a id="org1aff812"></a>如何选择用Class还是Struct<br />
+<div class="outline-text-5" id="text-12-4-1-5">
 <p>
-Struct是用来代表值的，比如距离、名称之类的，用的时候创建不用的时候毁掉，很快的这种，你要用struct；<br />
+Struct是用来代表值的，比如距离、名称之类的，用的时候创建不用的时候毁掉，很快的这种，你要用struct；
 </p>
 
 <p>
-Class代表一个对象，像一个学生或者一个城市之类的，通常有超多的属性，一般长时间在内存里，不会随便就毁掉，这时候你当然要用class<br />
+Class代表一个对象，像一个学生或者一个城市之类的，通常有超多的属性，一般长时间在内存里，不会随便就毁掉，这时候你当然要用class
 </p>
 </div>
-</div>
+</li>
+</ol>
 </div>
 
-<div id="outline-container-org999fb64" class="outline-4">
-<h4 id="org999fb64"><span class="section-number-4">11.4.2</span> Inheritance &amp; Override methods and properties</h4>
-<div class="outline-text-4" id="text-11-4-2">
+<div id="outline-container-org6489e9b" class="outline-4">
+<h4 id="org6489e9b"><span class="section-number-4">12.4.2</span> Inheritance &amp; Override methods and properties</h4>
+<div class="outline-text-4" id="text-12-4-2">
 <p class="verse">
-The biggest difference that structs do not have is hierarchical relations. Classes can have parent classes, that are called superclass, and child classes, that are called subclasses. <sup><a id="fnr.7.100" class="footref" href="#fn.7">7</a></sup><br />
+The biggest difference that structs do not have is hierarchical relations. Classes can have parent classes, that are called superclass, and child classes, that are called subclasses. <sup><a id="fnr.8.100" class="footref" href="#fn.8">8</a></sup><br />
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">class</span> <span style="color: #c678dd;">Animals</span> {
@@ -2502,44 +2825,44 @@ The biggest difference that structs do not have is hierarchical relations. Class
 </div>
 </div>
 
-<div id="outline-container-org91f9ca2" class="outline-3">
-<h3 id="org91f9ca2"><span class="section-number-3">11.5</span> 結構跟類的比較 (Comparing Structures and Classes) <sup><a id="fnr.10" class="footref" href="#fn.10">10</a></sup></h3>
-<div class="outline-text-3" id="text-11-5">
+<div id="outline-container-orgb7481ae" class="outline-3">
+<h3 id="orgb7481ae"><span class="section-number-3">12.5</span> 結構跟類的比較 (Comparing Structures and Classes) <sup><a id="fnr.11" class="footref" href="#fn.11">11</a></sup></h3>
+<div class="outline-text-3" id="text-12-5">
 </div>
-<div id="outline-container-orgf6fe374" class="outline-4">
-<h4 id="orgf6fe374"><span class="section-number-4">11.5.1</span> 在 Swift 中的結構與類有許多相同之處，兩者皆能：</h4>
-<div class="outline-text-4" id="text-11-5-1">
+<div id="outline-container-org321403b" class="outline-4">
+<h4 id="org321403b"><span class="section-number-4">12.5.1</span> 在 Swift 中的結構與類有許多相同之處，兩者皆能：</h4>
+<div class="outline-text-4" id="text-12-5-1">
 <ul class="org-ul">
-<li>定義屬性來儲存值<br /></li>
-<li>定義方法來提供功能<br /></li>
-<li>定義下標來提供訪問他們用下標語法的值<br /></li>
-<li>定義初始化器來設定他們的初始狀態<br /></li>
-<li>可被擴展以擴展其功能，超越預設的實現<br /></li>
-<li>符合協議以提供某種標準功能<br /></li>
+<li>定義屬性來儲存值</li>
+<li>定義方法來提供功能</li>
+<li>定義下標來提供訪問他們用下標語法的值</li>
+<li>定義初始化器來設定他們的初始狀態</li>
+<li>可被擴展以擴展其功能，超越預設的實現</li>
+<li>符合協議以提供某種標準功能</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org52e2180" class="outline-4">
-<h4 id="org52e2180"><span class="section-number-4">11.5.2</span> 類具有的附加功能，但結構沒有：</h4>
-<div class="outline-text-4" id="text-11-5-2">
+<div id="outline-container-orgc4483ce" class="outline-4">
+<h4 id="orgc4483ce"><span class="section-number-4">12.5.2</span> 類具有的附加功能，但結構沒有：</h4>
+<div class="outline-text-4" id="text-12-5-2">
 <ul class="org-ul">
-<li>繼承使一個類能夠繼承另一個的特性<br /></li>
-<li>類型轉換使我們可以在運行時檢查和解釋類實例的類型<br /></li>
-<li>反初始化器允許類的實例釋放它已分配的任何資源<br /></li>
-<li>引用計數允許對類實例的多個引用<br /></li>
+<li>繼承使一個類能夠繼承另一個的特性</li>
+<li>類型轉換使我們可以在運行時檢查和解釋類實例的類型</li>
+<li>反初始化器允許類的實例釋放它已分配的任何資源</li>
+<li>引用計數允許對類實例的多個引用</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgad8727d" class="outline-4">
-<h4 id="orgad8727d"><span class="section-number-4">11.5.3</span> 結構和列舉是值型別 (Structures and Enumerations Are Value Types)</h4>
-<div class="outline-text-4" id="text-11-5-3">
+<div id="outline-container-org08fa7e4" class="outline-4">
+<h4 id="org08fa7e4"><span class="section-number-4">12.5.3</span> 結構和列舉是值型別 (Structures and Enumerations Are Value Types)</h4>
+<div class="outline-text-4" id="text-12-5-3">
 <p>
-值型別是一種其值在被賦值給變數或常數時被複製，或者在傳遞給函數時被複製。實際上，Swift 的整數、浮點數、布林值、字符串、數組和字典中的所有基本型別都是值型別，並且在幕後實現為結構。所有結構和列舉都是 Swift 中的值型別。這代表著我們創建的任何結構和列舉實例以及它們作為屬性的任何值類型在代碼中傳遞時始終會被複製。<sup><a id="fnr.10.100" class="footref" href="#fn.10">10</a></sup><br />
+值型別是一種其值在被賦值給變數或常數時被複製，或者在傳遞給函數時被複製。實際上，Swift 的整數、浮點數、布林值、字符串、數組和字典中的所有基本型別都是值型別，並且在幕後實現為結構。所有結構和列舉都是 Swift 中的值型別。這代表著我們創建的任何結構和列舉實例以及它們作為屬性的任何值類型在代碼中傳遞時始終會被複製。<sup><a id="fnr.11.100" class="footref" href="#fn.11">11</a></sup>
 </p>
 </div>
-<div id="outline-container-orgd8ad877" class="outline-5">
-<h5 id="orgd8ad877"><span class="section-number-5">11.5.3.1</span> 範例</h5>
-<div class="outline-text-5" id="text-11-5-3-1">
+<ol class="org-ol">
+<li><a id="org1093f65"></a>範例<br />
+<div class="outline-text-5" id="text-12-5-3-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">Resolution</span> {
 <span class="linenr"> 2: </span>    <span style="color: #51afef;">var</span> width = <span style="color: #da8548; font-weight: bold;">0</span>
@@ -2559,27 +2882,28 @@ The biggest difference that structs do not have is hierarchical relations. Class
 </pre>
 </div>
 <p>
-由上述例子可知，當 cinema 被賦予 hd 當前的值，儲存在 hd 的值被複製到新 cinema 的實例。最後結果兩個擁有相同值但完全不同的實例，所以當修改 cinema.width = 2048 的時候，並不會影響儲存在 hd 中的 width。<sup><a id="fnr.10.100" class="footref" href="#fn.10">10</a></sup><br />
+由上述例子可知，當 cinema 被賦予 hd 當前的值，儲存在 hd 的值被複製到新 cinema 的實例。最後結果兩個擁有相同值但完全不同的實例，所以當修改 cinema.width = 2048 的時候，並不會影響儲存在 hd 中的 width。<sup><a id="fnr.11.100" class="footref" href="#fn.11">11</a></sup>
 </p>
 
-<div id="org5f95611" class="figure">
-<p><img src="images/struct.png" alt="struct.png" width="400" /><br />
+<div id="org2fa5402" class="figure">
+<p><img src="images/struct.png" alt="struct.png" width="400" />
 </p>
 <p><span class="figure-number">Figure 2: </span>Struct value type</p>
 </div>
 </div>
+</li>
+</ol>
 </div>
-</div>
-<div id="outline-container-orgbcb6931" class="outline-4">
-<h4 id="orgbcb6931"><span class="section-number-4">11.5.4</span> 類是參考型別 (Classes Are Reference Types)</h4>
-<div class="outline-text-4" id="text-11-5-4">
+<div id="outline-container-orga559ae8" class="outline-4">
+<h4 id="orga559ae8"><span class="section-number-4">12.5.4</span> 類是參考型別 (Classes Are Reference Types)</h4>
+<div class="outline-text-4" id="text-12-5-4">
 <p>
-不同於值型別，當參考型別被指定給一個變數或常數，或是傳遞進一個函數的時候，並不會被複製。參考型別非副本，是使用相同存在的實例。<sup><a id="fnr.10.100" class="footref" href="#fn.10">10</a></sup><br />
+不同於值型別，當參考型別被指定給一個變數或常數，或是傳遞進一個函數的時候，並不會被複製。參考型別非副本，是使用相同存在的實例。<sup><a id="fnr.11.100" class="footref" href="#fn.11">11</a></sup>
 </p>
 </div>
-<div id="outline-container-orgf342207" class="outline-5">
-<h5 id="orgf342207"><span class="section-number-5">11.5.4.1</span> 範例</h5>
-<div class="outline-text-5" id="text-11-5-4-1">
+<ol class="org-ol">
+<li><a id="org74c517b"></a>範例<br />
+<div class="outline-text-5" id="text-12-5-4-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">class</span> <span style="color: #c678dd;">VideoMode</span> {
 <span class="linenr"> 2: </span>    <span style="color: #51afef;">var</span> interlaced = <span style="color: #a9a1e1;">false</span>
@@ -2602,26 +2926,27 @@ The biggest difference that structs do not have is hierarchical relations. Class
 </pre>
 </div>
 <p>
-由上述例子可知，當 alsoTenEighty 被指定為 tenEighty，並且修改 alsoTenEighty.frameRate = 30.0 時，也會更動到 tenEighty.frameRate 的值。<sup><a id="fnr.10.100" class="footref" href="#fn.10">10</a></sup><br />
+由上述例子可知，當 alsoTenEighty 被指定為 tenEighty，並且修改 alsoTenEighty.frameRate = 30.0 時，也會更動到 tenEighty.frameRate 的值。<sup><a id="fnr.11.100" class="footref" href="#fn.11">11</a></sup>
 </p>
 
-<div id="orgfcdf10c" class="figure">
-<p><img src="images/class.png" alt="class.png" width="400" /><br />
+<div id="org2bce8c2" class="figure">
+<p><img src="images/class.png" alt="class.png" width="400" />
 </p>
 <p><span class="figure-number">Figure 3: </span>Class Reference type</p>
 </div>
 </div>
-</div>
+</li>
+</ol>
 </div>
 </div>
 
-<div id="outline-container-org276b380" class="outline-3">
-<h3 id="org276b380"><span class="section-number-3">11.6</span> with v.s. without struct: Why you need struct</h3>
-<div class="outline-text-3" id="text-11-6">
+<div id="outline-container-orga02ffed" class="outline-3">
+<h3 id="orga02ffed"><span class="section-number-3">12.6</span> with v.s. without struct: Why you need struct</h3>
+<div class="outline-text-3" id="text-12-6">
 </div>
-<div id="outline-container-orgfdc6316" class="outline-4">
-<h4 id="orgfdc6316"><span class="section-number-4">11.6.1</span> 狀況一: without struct</h4>
-<div class="outline-text-4" id="text-11-6-1">
+<div id="outline-container-org5cb08a3" class="outline-4">
+<h4 id="org5cb08a3"><span class="section-number-4">12.6.1</span> 狀況一: without struct</h4>
+<div class="outline-text-4" id="text-12-6-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #5B6268;">//</span><span style="color: #5B6268;">&#23416;&#29983;1&#36039;&#26009;</span>
 <span class="linenr"> 2: </span><span style="color: #51afef;">var</span> st1-no = <span style="color: #98be65;">"S01"</span>
@@ -2637,9 +2962,9 @@ The biggest difference that structs do not have is hierarchical relations. Class
 </div>
 </div>
 </div>
-<div id="outline-container-org0383396" class="outline-4">
-<h4 id="org0383396"><span class="section-number-4">11.6.2</span> 狀況二: with struct</h4>
-<div class="outline-text-4" id="text-11-6-2">
+<div id="outline-container-org79475b8" class="outline-4">
+<h4 id="org79475b8"><span class="section-number-4">12.6.2</span> 狀況二: with struct</h4>
+<div class="outline-text-4" id="text-12-6-2">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">Student</span> {
 <span class="linenr"> 2: </span>    <span style="color: #51afef;">var</span> no: <span style="color: #c678dd;">String</span>?
@@ -2660,17 +2985,17 @@ The biggest difference that structs do not have is hierarchical relations. Class
 </div>
 </div>
 
-<div id="outline-container-org8d796b3" class="outline-3">
-<h3 id="org8d796b3"><span class="section-number-3">11.7</span> Inheritance</h3>
-<div class="outline-text-3" id="text-11-7">
+<div id="outline-container-orge8c5e81" class="outline-3">
+<h3 id="orge8c5e81"><span class="section-number-3">12.7</span> Inheritance</h3>
+<div class="outline-text-3" id="text-12-7">
 </div>
-<div id="outline-container-org7c5e94e" class="outline-4">
-<h4 id="org7c5e94e"><span class="section-number-4">11.7.1</span> 使用 inheritance 的優點</h4>
-<div class="outline-text-4" id="text-11-7-1">
+<div id="outline-container-orgad47101" class="outline-4">
+<h4 id="orgad47101"><span class="section-number-4">12.7.1</span> 使用 inheritance 的優點</h4>
+<div class="outline-text-4" id="text-12-7-1">
 </div>
-<div id="outline-container-org23381a7" class="outline-5">
-<h5 id="org23381a7"><span class="section-number-5">11.7.1.1</span> 不用 inheritance</h5>
-<div class="outline-text-5" id="text-11-7-1-1">
+<ol class="org-ol">
+<li><a id="orga40c556"></a>不用 inheritance<br />
+<div class="outline-text-5" id="text-12-7-1-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">class</span> <span style="color: #c678dd;">Car</span> {
 <span class="linenr"> 2: </span>    <span style="color: #51afef;">var</span> topSpeed = <span style="color: #da8548; font-weight: bold;">200</span>
@@ -2704,10 +3029,9 @@ Driving at 300
 Auto-driving
 </pre>
 </div>
-</div>
-<div id="outline-container-org4e37ed9" class="outline-5">
-<h5 id="org4e37ed9"><span class="section-number-5">11.7.1.2</span> 使用 inheritance</h5>
-<div class="outline-text-5" id="text-11-7-1-2">
+</li>
+<li><a id="org75bf51c"></a>使用 inheritance<br />
+<div class="outline-text-5" id="text-12-7-1-2">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">class</span> <span style="color: #c678dd;">Car</span> {
 <span class="linenr"> 2: </span>    <span style="color: #51afef;">var</span> topSpeed = <span style="color: #da8548; font-weight: bold;">200</span>
@@ -2737,13 +3061,14 @@ Driving at 200
 and rockets boosting at 50
 </pre>
 </div>
-</div>
+</li>
+</ol>
 </div>
 </div>
 
-<div id="outline-container-org1e6d799" class="outline-3">
-<h3 id="org1e6d799"><span class="section-number-3">11.8</span> Computer property</h3>
-<div class="outline-text-3" id="text-11-8">
+<div id="outline-container-org1068464" class="outline-3">
+<h3 id="org1068464"><span class="section-number-3">12.8</span> Computer property</h3>
+<div class="outline-text-3" id="text-12-8">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">class</span> <span style="color: #c678dd;">Square</span> {
 <span class="linenr"> 2: </span>    <span style="color: #51afef;">var</span> edge = <span style="color: #da8548; font-weight: bold;">0.0</span>
@@ -2772,9 +3097,9 @@ and rockets boosting at 50
 </div>
 </div>
 
-<div id="outline-container-orgebedfd8" class="outline-3">
-<h3 id="orgebedfd8"><span class="section-number-3">11.9</span> Structures and Enumerations Are Value Types</h3>
-<div class="outline-text-3" id="text-11-9">
+<div id="outline-container-org15ed2da" class="outline-3">
+<h3 id="org15ed2da"><span class="section-number-3">12.9</span> Structures and Enumerations Are Value Types</h3>
+<div class="outline-text-3" id="text-12-9">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">Resolution</span> {
 <span class="linenr">2: </span>  <span style="color: #51afef;">var</span> width = <span style="color: #da8548; font-weight: bold;">0</span>
@@ -2787,21 +3112,21 @@ and rockets boosting at 50
 </div>
 
 <p>
-When cinema was given the current value of hd, the values stored in hd were copied into the new cinema instance. The end result was two completely separate instances that contained the same numeric values. However, because they are separate instances, setting the width of cinema to 2048 doesn’t affect the width stored in hd, as shown in the figure below<sup><a id="fnr.11" class="footref" href="#fn.11">11</a></sup>:<br />
+When cinema was given the current value of hd, the values stored in hd were copied into the new cinema instance. The end result was two completely separate instances that contained the same numeric values. However, because they are separate instances, setting the width of cinema to 2048 doesn’t affect the width stored in hd, as shown in the figure below<sup><a id="fnr.12" class="footref" href="#fn.12">12</a></sup>:
 </p>
 
 
-<div id="org5a42ff5" class="figure">
-<p><img src="images/sharedStateStruct_2x.png" alt="sharedStateStruct_2x.png" width="400" /><br />
+<div id="org2693954" class="figure">
+<p><img src="images/sharedStateStruct_2x.png" alt="sharedStateStruct_2x.png" width="400" />
 </p>
 <p><span class="figure-number">Figure 4: </span>Value Types</p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org9a8645e" class="outline-3">
-<h3 id="org9a8645e"><span class="section-number-3">11.10</span> Classes Are Reference Types</h3>
-<div class="outline-text-3" id="text-11-10">
+<div id="outline-container-orgb25ae66" class="outline-3">
+<h3 id="orgb25ae66"><span class="section-number-3">12.10</span> Classes Are Reference Types</h3>
+<div class="outline-text-3" id="text-12-10">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span>
 <span class="linenr"> 2: </span><span style="color: #51afef;">struct</span> <span style="color: #c678dd;">Resolution</span> {
@@ -2826,27 +3151,34 @@ When cinema was given the current value of hd, the values stored in hd were copi
 </pre>
 </div>
 
+<pre class="example">
+&lt;stdin&gt;:14:24: error: cannot find 'hd' in scope
+tenEighty.resolution = hd
+                       ^~
+</pre>
+
+
 <p>
-Because classes are reference types, tenEighty and alsoTenEighty actually both refer to the same VideoMode instance. Effectively, they are just two different names for the same single instance, as shown in the figure below<sup><a id="fnr.11.100" class="footref" href="#fn.11">11</a></sup>:<br />
+Because classes are reference types, tenEighty and alsoTenEighty actually both refer to the same VideoMode instance. Effectively, they are just two different names for the same single instance, as shown in the figure below<sup><a id="fnr.12.100" class="footref" href="#fn.12">12</a></sup>:
 </p>
 
 
-<div id="org5fd185a" class="figure">
-<p><img src="images/sharedStateClass_2x.png" alt="sharedStateClass_2x.png" width="400" /><br />
+<div id="org6e848fd" class="figure">
+<p><img src="images/sharedStateClass_2x.png" alt="sharedStateClass_2x.png" width="400" />
 </p>
 <p><span class="figure-number">Figure 5: </span>Value Types</p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org6b2761a" class="outline-3">
-<h3 id="org6b2761a"><span class="section-number-3">11.11</span> Enumerations</h3>
-<div class="outline-text-3" id="text-11-11">
+<div id="outline-container-org6c5f94e" class="outline-3">
+<h3 id="org6c5f94e"><span class="section-number-3">12.11</span> Enumerations</h3>
+<div class="outline-text-3" id="text-12-11">
 <p class="verse">
-Enumerations are different from structs and classes. Enum is a special Swift type that defines a common type for a group of related values. Then, enums can be interacted with other data types such as a switch, if statements, and others. <sup><a id="fnr.7.100" class="footref" href="#fn.7">7</a></sup><br />
+Enumerations are different from structs and classes. Enum is a special Swift type that defines a common type for a group of related values. Then, enums can be interacted with other data types such as a switch, if statements, and others. <sup><a id="fnr.8.100" class="footref" href="#fn.8">8</a></sup><br />
 </p>
 <p>
-從 Swift 3 開始，我們的 enum 內設定的情境字串要以小寫字母開頭。<br />
+從 Swift 3 開始，我們的 enum 內設定的情境字串要以小寫字母開頭。
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #5B6268;">//</span><span style="color: #5B6268;">1 representation of enum</span>
@@ -2883,15 +3215,15 @@ let currentStatus = downloadStatus[0]<br />
 <br />
 你可以這樣做沒錯，但是如此一來會有兩個缺點，首先，你可能會不知道 downloadStatus[0]代表什麼，除非你引用 downloadStatus array，若是比較 downloadStatus[0]與 DownloadStatus.downloading 這兩種表達方式，很明顯的是後者的可讀性比較高。<br />
 <br />
-其次，因為 currentStatus 是 String 類型，變量可以被賦予任何字符串值，無法將它限制為 “downloading”, “finished”, “failed” 以及 “cancelled”，除非執行一些額外的驗證。反之，如果使用 enum，我們可以將 myDirection 限制在 .downloading、.finished、.failed 或 .cancelled 等四種情境之一，不會出現其他意料之外的情況。 <sup><a id="fnr.12" class="footref" href="#fn.12">12</a></sup><br />
+其次，因為 currentStatus 是 String 類型，變量可以被賦予任何字符串值，無法將它限制為 “downloading”, “finished”, “failed” 以及 “cancelled”，除非執行一些額外的驗證。反之，如果使用 enum，我們可以將 myDirection 限制在 .downloading、.finished、.failed 或 .cancelled 等四種情境之一，不會出現其他意料之外的情況。 <sup><a id="fnr.13" class="footref" href="#fn.13">13</a></sup><br />
 <br />
 </p>
 </div>
-<div id="outline-container-orge808488" class="outline-4">
-<h4 id="orge808488"><span class="section-number-4">11.11.1</span> Raw Values</h4>
-<div class="outline-text-4" id="text-11-11-1">
+<div id="outline-container-orgba2e903" class="outline-4">
+<h4 id="orgba2e903"><span class="section-number-4">12.11.1</span> Raw Values</h4>
+<div class="outline-text-4" id="text-12-11-1">
 <p>
-Swift的enum可以加raw values，像上述例子，有了raw values，我们完全不需要getStatus这个func了。<br />
+Swift的enum可以加raw values，像上述例子，有了raw values，我们完全不需要getStatus这个func了。
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">enum</span> <span style="color: #c678dd;">Status</span>: <span style="color: #c678dd;">String</span> {
@@ -2909,9 +3241,9 @@ Swift的enum可以加raw values，像上述例子，有了raw values，我们完
 
 
 <ol class="org-ol">
-<li>如果raw value的类型是Int的话，你要是不给他们赋值，swift会自动从0一个个赋值；你可以给第一个赋值一个int，那么swift也会把后面逐次加1；<br /></li>
-<li>像这个例子，如果我没有赋值，那么pending的rawValue就是&ldquo;pending&rdquo;<br /></li>
-<li>你还可以通过rawValue来获得case，比如let pending = Status(rawValue: &ldquo;审核中&rdquo;)，但是pending会是个optional你要注意<br /></li>
+<li>如果raw value的类型是Int的话，你要是不给他们赋值，swift会自动从0一个个赋值；你可以给第一个赋值一个int，那么swift也会把后面逐次加1；</li>
+<li>像这个例子，如果我没有赋值，那么pending的rawValue就是&ldquo;pending&rdquo;</li>
+<li>你还可以通过rawValue来获得case，比如let pending = Status(rawValue: &ldquo;审核中&rdquo;)，但是pending会是个optional你要注意</li>
 </ol>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">enum</span> <span style="color: #c678dd;">Status</span>: <span style="color: #c678dd;">String</span> {
@@ -2952,34 +3284,34 @@ review("dsafsdfsdfsd") // failed(msg: "名字太长了")
 </div>
 </div>
 
-<div id="outline-container-org27c3075" class="outline-3">
-<h3 id="org27c3075"><span class="section-number-3">11.12</span> 結構和類之間的選擇 (Choosing Between Structures and Classes)</h3>
-<div class="outline-text-3" id="text-11-12">
+<div id="outline-container-orgebc26ad" class="outline-3">
+<h3 id="orgebc26ad"><span class="section-number-3">12.12</span> 結構和類之間的選擇 (Choosing Between Structures and Classes)</h3>
+<div class="outline-text-3" id="text-12-12">
 <p class="verse">
 總的來說，用 class 來定義資料物件的話，就好像是在用雲端共享文件一樣：每個人的螢幕上都會有一份文件可以編輯，但這個文件並沒有存在電腦裡，而是跟雲端的版本連線，所以所有的變動都是直接在雲端版本上更新的。好處是方便，壞處是誰修改了甚麼東西經理不會知道（class 本身沒有帳號功能！）。<br />
 <br />
-用 struct 的話，則是像傳統的離線文件檔案一樣。一開始文件只有經理有，而如果他想要讓手下小美去修改文件的話，他就需要拷貝一份檔案給小美。小美修改完檔案後，必須把它交還給經理，然後經理再決定要不要用修改過的檔案取代原本的文件。<sup><a id="fnr.13" class="footref" href="#fn.13">13</a></sup><br />
+用 struct 的話，則是像傳統的離線文件檔案一樣。一開始文件只有經理有，而如果他想要讓手下小美去修改文件的話，他就需要拷貝一份檔案給小美。小美修改完檔案後，必須把它交還給經理，然後經理再決定要不要用修改過的檔案取代原本的文件。<sup><a id="fnr.14" class="footref" href="#fn.14">14</a></sup><br />
 </p>
 
-<div id="org731ea36" class="figure">
-<p><img src="images/mvc-1.png" alt="mvc-1.png" width="400" /><br />
+<div id="org76b637d" class="figure">
+<p><img src="images/mvc-1.png" alt="mvc-1.png" width="400" />
 </p>
 <p><span class="figure-number">Figure 6: </span>MVC</p>
 </div>
 <ul class="org-ul">
-<li>在 MVC 架構中，Model 包含了 Data Objects 與 Document，其中 Documents 包含所有的資料管理者元件(如 Core Data 的 NSManagedObjectContext，或是任何負責下載、上傳資料物件的網路層元件，如自訂的 NetworkManager)。<br /></li>
-<li>Document 最好是用 class 來定義，因為它肩負了許多溝通的工作。Data Objects 則是資料的代表，要用 class 或 struct 來定義都可以。<br /></li>
-<li>用 class 定義 Data Objects 的話，任何變動只要執行一次就可以了，因為它的實體只會有一個。然而，用 struct 定義的話，則需要將變動手動套用到文件所管理的那份實體，好讓整個 app 都能使用最新的資料。這雖然寫起來較為囉唆，卻讓閱讀與維護更為簡單(可以確定是在哪裡被變更資料)<sup><a id="fnr.13.100" class="footref" href="#fn.13">13</a></sup>。<br /></li>
+<li>在 MVC 架構中，Model 包含了 Data Objects 與 Document，其中 Documents 包含所有的資料管理者元件(如 Core Data 的 NSManagedObjectContext，或是任何負責下載、上傳資料物件的網路層元件，如自訂的 NetworkManager)。</li>
+<li>Document 最好是用 class 來定義，因為它肩負了許多溝通的工作。Data Objects 則是資料的代表，要用 class 或 struct 來定義都可以。</li>
+<li>用 class 定義 Data Objects 的話，任何變動只要執行一次就可以了，因為它的實體只會有一個。然而，用 struct 定義的話，則需要將變動手動套用到文件所管理的那份實體，好讓整個 app 都能使用最新的資料。這雖然寫起來較為囉唆，卻讓閱讀與維護更為簡單(可以確定是在哪裡被變更資料)<sup><a id="fnr.14.100" class="footref" href="#fn.14">14</a></sup>。</li>
 </ul>
 </div>
-<div id="outline-container-org827f6e3" class="outline-4">
-<h4 id="org827f6e3"><span class="section-number-4">11.12.1</span> 選擇原則</h4>
-<div class="outline-text-4" id="text-11-12-1">
+<div id="outline-container-org0877ac5" class="outline-4">
+<h4 id="org0877ac5"><span class="section-number-4">12.12.1</span> 選擇原則</h4>
+<div class="outline-text-4" id="text-12-12-1">
 <ul class="org-ul">
-<li>Choose Structures by Default<br /></li>
-<li>Use Classes When You Need Objective-C Interoperability<br /></li>
-<li>Use Classes When You Need to Control Identity<br /></li>
-<li>Use Structures When You Don&rsquo;t Control Identity<br /></li>
+<li>Choose Structures by Default</li>
+<li>Use Classes When You Need Objective-C Interoperability</li>
+<li>Use Classes When You Need to Control Identity</li>
+<li>Use Structures When You Don&rsquo;t Control Identity</li>
 </ul>
 </div>
 </div>
@@ -2987,14 +3319,14 @@ review("dsafsdfsdfsd") // failed(msg: "名字太长了")
 </div>
 
 <div id="outline-container-PatternMatching" class="outline-2">
-<h2 id="PatternMatching"><span class="section-number-2">12</span> Pattern Matching</h2>
+<h2 id="PatternMatching"><span class="section-number-2">13</span> Pattern Matching</h2>
 <div class="outline-text-2" id="text-PatternMatching">
 </div>
-<div id="outline-container-orgc654eb5" class="outline-3">
-<h3 id="orgc654eb5"><span class="section-number-3">12.1</span> if case</h3>
-<div class="outline-text-3" id="text-12-1">
+<div id="outline-container-org7b6749d" class="outline-3">
+<h3 id="org7b6749d"><span class="section-number-3">13.1</span> if case</h3>
+<div class="outline-text-3" id="text-13-1">
 <p>
-if case你可以当成switch(x) { case &#x2026;: }的简化版<br />
+if case你可以当成switch(x) { case &#x2026;: }的简化版
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">let</span> point = (<span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">1</span>)
@@ -3006,9 +3338,9 @@ if case你可以当成switch(x) { case &#x2026;: }的简化版<br />
 </div>
 </div>
 </div>
-<div id="outline-container-org3148cca" class="outline-3">
-<h3 id="org3148cca"><span class="section-number-3">12.2</span> wildcard</h3>
-<div class="outline-text-3" id="text-12-2">
+<div id="outline-container-orgb0f69a7" class="outline-3">
+<h3 id="orgb0f69a7"><span class="section-number-3">13.2</span> wildcard</h3>
+<div class="outline-text-3" id="text-13-2">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">let</span> point = (<span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">3</span>, <span style="color: #da8548; font-weight: bold;">8</span>)
 <span class="linenr"> 2: </span><span style="color: #51afef;">switch</span> point {
@@ -3031,11 +3363,11 @@ if case你可以当成switch(x) { case &#x2026;: }的简化版<br />
 </div>
 </div>
 
-<div id="outline-container-orgb9131bb" class="outline-3">
-<h3 id="orgb9131bb"><span class="section-number-3">12.3</span> for case</h3>
-<div class="outline-text-3" id="text-12-3">
+<div id="outline-container-org18d1898" class="outline-3">
+<h3 id="org18d1898"><span class="section-number-3">13.3</span> for case</h3>
+<div class="outline-text-3" id="text-13-3">
 <p>
-for后面也可以跟case，同时也可以赋值<br />
+for后面也可以跟case，同时也可以赋值
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">let</span> groupSizes = [<span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #da8548; font-weight: bold;">5</span>, <span style="color: #da8548; font-weight: bold;">4</span>, <span style="color: #da8548; font-weight: bold;">6</span>, <span style="color: #da8548; font-weight: bold;">2</span>, <span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #da8548; font-weight: bold;">3</span>]
@@ -3059,14 +3391,14 @@ Joshua Dog
 </pre>
 
 <p>
-上面的例子第一个只有值是1的时候才会print；第二个是Optional的特殊用法，name？代表不是nil的值，只有在name不是nil的时候才会被print。<br />
+上面的例子第一个只有值是1的时候才会print；第二个是Optional的特殊用法，name？代表不是nil的值，只有在name不是nil的时候才会被print。
 </p>
 </div>
 </div>
 
-<div id="outline-container-orge67017d" class="outline-3">
-<h3 id="orge67017d"><span class="section-number-3">12.4</span> 检查数据类型</h3>
-<div class="outline-text-3" id="text-12-4">
+<div id="outline-container-org61560aa" class="outline-3">
+<h3 id="org61560aa"><span class="section-number-3">13.4</span> 检查数据类型</h3>
+<div class="outline-text-3" id="text-13-4">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">let</span> array: [Any] = [<span style="color: #da8548; font-weight: bold;">15</span>, <span style="color: #98be65;">"George"</span>, <span style="color: #da8548; font-weight: bold;">2.0</span>]
 <span class="linenr"> 2: </span>
@@ -3094,11 +3426,11 @@ George是String
 </div>
 </div>
 
-<div id="outline-container-org10a4d00" class="outline-3">
-<h3 id="org10a4d00"><span class="section-number-3">12.5</span> case&#x2026;where&#x2026;</h3>
-<div class="outline-text-3" id="text-12-5">
+<div id="outline-container-org0c6c5ac" class="outline-3">
+<h3 id="org0c6c5ac"><span class="section-number-3">13.5</span> case&#x2026;where&#x2026;</h3>
+<div class="outline-text-3" id="text-13-5">
 <p>
-case后面还可以再加where进一步的筛选：<br />
+case后面还可以再加where进一步的筛选：
 </p>
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #51afef;">for</span> number <span style="color: #51afef;">in</span> <span style="color: #da8548; font-weight: bold;">1</span>...<span style="color: #da8548; font-weight: bold;">9</span> {
@@ -3128,9 +3460,9 @@ case后面还可以再加where进一步的筛选：<br />
 </div>
 </div>
 
-<div id="outline-container-orgc2d87ef" class="outline-3">
-<h3 id="orgc2d87ef"><span class="section-number-3">12.6</span> if多个条件</h3>
-<div class="outline-text-3" id="text-12-6">
+<div id="outline-container-orgf541fac" class="outline-3">
+<h3 id="orgf541fac"><span class="section-number-3">13.6</span> if多个条件</h3>
+<div class="outline-text-3" id="text-13-6">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr">1: </span><span style="color: #51afef;">var</span> a: <span style="color: #c678dd;">Int</span>? = <span style="color: #da8548; font-weight: bold;">6</span>
 <span class="linenr">2: </span><span style="color: #51afef;">if</span> <span style="color: #51afef;">let</span> a = a, a &gt; <span style="color: #da8548; font-weight: bold;">5</span>, <span style="color: #51afef;">case</span> <span style="color: #da8548; font-weight: bold;">1</span>...<span style="color: #da8548; font-weight: bold;">9</span> = a {
@@ -3146,55 +3478,59 @@ case后面还可以再加where进一步的筛选：<br />
 <div id="text-footnotes">
 
 <div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
-<a href="https://ithelp.ithome.com.tw/articles/10157433">[Swift] (1) - Swift 簡介 </a><br />
+<a href="https://ithelp.ithome.com.tw/articles/10157433">[Swift] (1) - Swift 簡介 </a>
 </p></div></div>
 
 <div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2">2</a></sup> <div class="footpara"><p class="footpara">
-<a href="https://docs.swift.org/swift-book/LanguageGuide/Properties.html#//apple_ref/doc/uid/TP40014097-CH14-XID_368">Properties</a><br />
+<a href="https://docs.swift.org/swift-book/LanguageGuide/Properties.html#//apple_ref/doc/uid/TP40014097-CH14-XID_368">Properties</a>
 </p></div></div>
 
 <div class="footdef"><sup><a id="fn.3" class="footnum" href="#fnr.3">3</a></sup> <div class="footpara"><p class="footpara">
-<a href="https://docs.swift.org/swift-book/LanguageGuide/CollectionTypes.html">The Swift Programming Language Swift 5.3</a><br />
+<a href="https://docs.swift.org/swift-book/LanguageGuide/CollectionTypes.html">The Swift Programming Language Swift 5.3</a>
 </p></div></div>
 
 <div class="footdef"><sup><a id="fn.4" class="footnum" href="#fnr.4">4</a></sup> <div class="footpara"><p class="footpara">
-<a href="https://www.hackingwithswift.com/example-code/language/how-to-create-an-array-by-repeating-an-item">How to create an array by repeating an item</a><br />
+<a href="https://www.hackingwithswift.com/example-code/language/how-to-create-an-array-by-repeating-an-item">How to create an array by repeating an item</a>
 </p></div></div>
 
 <div class="footdef"><sup><a id="fn.5" class="footnum" href="#fnr.5">5</a></sup> <div class="footpara"><p class="footpara">
-<a href="https://medium.com/jeremy-xue-s-blog/swift-transforming-an-array-e2bcb4f4d67d">Swift — Transforming an Array</a><br />
+<a href="https://medium.com/jeremy-xue-s-blog/swift-transforming-an-array-e2bcb4f4d67d">Swift — Transforming an Array</a>
 </p></div></div>
 
 <div class="footdef"><sup><a id="fn.6" class="footnum" href="#fnr.6">6</a></sup> <div class="footpara"><p class="footpara">
-<a href="https://tommy60703.gitbooks.io/swift-language-traditional-chinese/content/chapter2/04_Collection_Types.html">《The Sw­ift Pr­ogramm­ing La­nguage­》正體中文版</a><br />
+<a href="https://tommy60703.gitbooks.io/swift-language-traditional-chinese/content/chapter2/04_Collection_Types.html">《The Sw­ift Pr­ogramm­ing La­nguage­》正體中文版</a>
 </p></div></div>
 
 <div class="footdef"><sup><a id="fn.7" class="footnum" href="#fnr.7">7</a></sup> <div class="footpara"><p class="footpara">
-<a href="https://levelup.gitconnected.com/demystifying-struct-class-and-enum-in-swift-5-43dde089e96a">Demystifying Struct, Class, and Enum in Swift 5</a><br />
+<a href="https://medium.com/@dhavalkansara51/completion-handler-in-swift-with-escaping-and-nonescaping-closures-1ea717dc93a4">Completion Handler in Swift with @escaping and @nonescaping closures.</a>
 </p></div></div>
 
 <div class="footdef"><sup><a id="fn.8" class="footnum" href="#fnr.8">8</a></sup> <div class="footpara"><p class="footpara">
-<a href="https://ithelp.ithome.com.tw/articles/10195467">Day-15 Swift 語法(11) - Class 與 Struct 的愛恨交織 </a><br />
+<a href="https://levelup.gitconnected.com/demystifying-struct-class-and-enum-in-swift-5-43dde089e96a">Demystifying Struct, Class, and Enum in Swift 5</a>
 </p></div></div>
 
 <div class="footdef"><sup><a id="fn.9" class="footnum" href="#fnr.9">9</a></sup> <div class="footpara"><p class="footpara">
-<a href="https://en.wikipedia.org/wiki/Multiple_inheritance">Multiple inheritance</a><br />
+<a href="https://ithelp.ithome.com.tw/articles/10195467">Day-15 Swift 語法(11) - Class 與 Struct 的愛恨交織 </a>
 </p></div></div>
 
 <div class="footdef"><sup><a id="fn.10" class="footnum" href="#fnr.10">10</a></sup> <div class="footpara"><p class="footpara">
-<a href="https://ithelp.ithome.com.tw/articles/10220520"> Day 10: [Swift] 結構和類 (Struct and Class) </a><br />
+<a href="https://en.wikipedia.org/wiki/Multiple_inheritance">Multiple inheritance</a>
 </p></div></div>
 
 <div class="footdef"><sup><a id="fn.11" class="footnum" href="#fnr.11">11</a></sup> <div class="footpara"><p class="footpara">
-<a href="https://docs.swift.org/swift-book/LanguageGuide/ClassesAndStructures.html">Structures and Classes</a><br />
+<a href="https://ithelp.ithome.com.tw/articles/10220520"> Day 10: [Swift] 結構和類 (Struct and Class) </a>
 </p></div></div>
 
 <div class="footdef"><sup><a id="fn.12" class="footnum" href="#fnr.12">12</a></sup> <div class="footpara"><p class="footpara">
-<a href="https://appcoda.com.tw/mastering-swift/">精通Swift：列舉、閉包、泛型、Protocols和高階函數</a><br />
+<a href="https://docs.swift.org/swift-book/LanguageGuide/ClassesAndStructures.html">Structures and Classes</a>
 </p></div></div>
 
 <div class="footdef"><sup><a id="fn.13" class="footnum" href="#fnr.13">13</a></sup> <div class="footpara"><p class="footpara">
-<a href="https://www.appcoda.com.tw/swift-class/">Swift Class vs Struct：設計 Model 時，該用 Struct 還是 Class 呢？</a><br />
+<a href="https://appcoda.com.tw/mastering-swift/">精通Swift：列舉、閉包、泛型、Protocols和高階函數</a>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.14" class="footnum" href="#fnr.14">14</a></sup> <div class="footpara"><p class="footpara">
+<a href="https://www.appcoda.com.tw/swift-class/">Swift Class vs Struct：設計 Model 時，該用 Struct 還是 Class 呢？</a>
 </p></div></div>
 
 
@@ -3202,7 +3538,7 @@ case后面还可以再加where进一步的筛选：<br />
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Yung Chin, Yen</p>
-<p class="date">Created: 2021-04-26 Mon 15:52</p>
+<p class="date">Created: 2021-05-12 Wed 09:12</p>
 </div>
 </body>
 </html>

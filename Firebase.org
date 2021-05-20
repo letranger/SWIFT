@@ -1279,6 +1279,9 @@ class TaskCellViewModel: ObservableObject, Identifiable {
 #+ATTR_HTML: :width 300
 [[file:images/Update-Edit.gif]]
 
+** Topics:
+- Detection of Modified: [[https://www.youtube.com/watch?v=imTjGvSjBEw][Adding data to Firestore from a SwiftUI App]]
+
 * Add Icon to App
 :PROPERTIES:
 :CUSTOM_ID: SW-Icon

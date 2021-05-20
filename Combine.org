@@ -1,0 +1,334 @@
+#+TITLE: Combine
+#+INCLUDE: ../themes/comfy_inline/comfy_inline.theme
+#+OPTIONS: ^:nil
+# -*- org-export-babel-evaluate: nil -*-
+#+latex:\newpage
+
+* FRP (Functional Reactive Programming
+Functional reactive programming (FRP) is a programming paradigm for reactive programming (asynchronous dataflow programming) using the building blocks of functional programming (e.g. map, reduce, filter). FRP has been used for programming graphical user interfaces (GUIs), robotics, games, and music, aiming to simplify these problems by explicitly modeling time[fn:1].
+
+假設我們修改了網頁表單內的內容，並希望改變的值能夠「即時」反映在 UI 上頭。最直覺的做法就是在 input 當中監聽 input（或 change）事件，然後讓 UI 上的值改變。
+
+#+begin_src javascript -r -n :results output :exports both
+input.addEventListener('change', e => {
+  price.textContent = e.target.value;
+});
+
+#+end_src
+
+以剛剛的例子來說，我們透過 addEventListener 監聽 input，再將 input 的值綁定到 UI 上（或是資料上）。這是一種很常見且有效的方式，對於 input 來說，只要乖乖地將事件吐出來就好，不需要知道其他事。
+
+但在 UI 上，這樣的案例似乎過於理想。例如我們在實作打折的計算時，恐怕需要根據 1. 價格 2. 折數 來決定最終數字，這樣就需要在 UI 上加入兩個監聽器。一旦來源變多了之後，恐怕會難以 debug，因為你不知道哪些 event listener 造成數據變化；而且 UI 上的變化可能依賴於不只一個事件。
+
+#+begin_src javascript -r -n :results output :exports both
+input.addEventListener('change', e => {
+  price.textContent = e.target.value;
+
+  // update UI part B
+  // update UI part C
+  // ...
+});
+#+end_src
+
+或者這個事件的發佈，不只會更新一個地方的 UI，也會讓數個 UI 更新，這時事件處理器就會變得比較複雜一些。因此在處理上，有時會用另外一種方式 — data binding 來做處理。在 UI 產生的時候，就先將 UI 上的顯示與數據綁定在一起，在數據改變的時候，UI 做對應的處理。
+
+FRP看似神秘，是因為它混合了多種概念：Reactive是其目的，也就是強調必須即時地反應變化，非同步是達到此目的之手段，為了能讓客戶端訂閱感興趣的資料流，採用了觀察者模式，為了能讓開發者不落入如何處理（事件）資料的繁雜程式邏輯中，採用了函數式的典範，隱藏了（事件）資料的迭代、轉換等細節，從而能讓開發者根據規格進行宣告，以突顯出程式本身的意圖[fn:2]。
+
+* Combine Framework
+Combine Framework為Apple於WWDC2019推出的官方FRP框架。
+Combine 框架主要分成發布者 (Publisher)、操作者 (Operator)、和訂閱者 (Subscriber) 三大部分。我們可以透過這三種元件的組裝，來建立各式各樣的訂閱關係 (Subscription)[fn:3]。
+
+** 命令式程式設計 (Imperative Programming) v.s. Functional Reactive Programming[fn:3]
+同樣是做一個網路呼叫:
+#+begin_src swift -r -n :results output :exports nil
+// 一般的命令式寫法
+let task = URLSession.shared.dataTask(with: url, completionHandler: { data, response, error in
+    if let data = data {
+        // 處理 data...
+    }
+})
+task.resume()
+
+// Combine 的宣告式寫法
+let subscription = URLSession.shared.dataTaskPublisher(for: url)
+    .map { $0.data }
+    .sink(receiveCompletion: { completion in // 處理 completion...  },
+          receiveValue: { data in // 處理 data...  })
+#+end_src
+在命令式寫法中，我們是把 url 跟一個名為 completionHandler 的閉包放進 dataTask(with:completionHandler:) 裡面。呼叫之後，我們取回一個 URLSessionDataTask，並以此來控制網路呼叫的生命週期（開始、取消等）。
+
+但是在宣告式寫法中，以上的做法都被打破、重組了。風格上來說，不同的陳述句被整合在一起，變成中間有斷行的同一個句子。completionHandler 被拆解成更小的閉包，並且少了 if、else 等控制流 (Control Flow) 語法。另一方面，則是多了 map(_:)、sink(receiveCompletion:receiveValue:) 等可以連鎖呼叫的方法。
+
+** 時間性的序列 (Temporal Sequence)
+#+begin_verse
+The Combine framework provides a declarative Swift API for processing values over time. These values can represent many kinds of asynchronous events.
+#+end_verse
+values over time 就可以解釋成「隨著時間推移而存在的多個值」。而如果我們把「多個值」以序列 (Sequence) 來表示的話，它也可以被描述為「時間性的序列」。事實上，這也就是 Streams 的概念。Combine 提供了宣告形式的 Swift API，主要處理隨時間處理值變化(各種異步行程產出的事件)。發布者(publisher) 產出可隨時間變化的值，訂閱者(subscriber) 從發布者接收這些值。
+
+Publisher 的角色是提供數據, 不論是被動請求或是主動提供. 其中有兩個 container 泛型, Output 與 Failure. subscriber 同時也有泛型, Input 與 Failure. Publishers 和 subscribers 必須互相連接才能運作. 而當連接一個 subscriber 到 任何 publisher 時, 所有相對應的資料型別都必須相同: Output 與 Input 對應, Failure 對應 Failure.
+
+* Using Combine
+對照Combine的三大元件: Publisher, Operator, Subscriber，一支下載網頁資源的程式可視拆解為:
+#+begin_src swift -r -n :results output :exports nil
+// 4. 訂閱關係
+let subscription =
+    // 1. 發布者
+    URLSession.shared.dataTaskPublisher(for: url)
+    // 2. 操作者
+    .map { $0.data }
+    // 3. 訂閱者
+    .sink(receiveCompletion: { completion in // 處理 completion...  },
+          receiveValue: { data in // 處理 data...  })
+#+end_src
+1. 回傳一個發布者結構體。發布者代表的，是值的產生源頭。
+2. 使用 map(_:) 與其它操作者方法，來對發布者產生的值做變動。
+3. 使用 sink(receiveCompletion:receiveValue:) 等訂閱者方法，來處理最後拿到的值，並且啟動與發布者之間的訂閱關係。[fn:2]
+4. 代表訂閱關係的實體，可以用來取消訂閱。
+
+上述程式係係由不同的寫法演化而成：
+
+1. 一般寫法
+   #+begin_src swift -r -n :results output :exports nil :eval no
+let task = URLSession.shared.dataTask(with: url) { data, response, error in
+    if let data = data {
+        // 處理 data...
+    }
+}
+task.resume()
+   #+end_src
+
+2. 把整段程式碼包到一個closure
+   #+begin_src swift -r -n :results output :exports nil
+// 相當於建造者
+let subscribe = {
+    let task = URLSession.shared.dataTask(with: url) { data, response, error in
+        if let data = data {
+            // 處理 data...
+        }
+    }
+    task.resume()
+}
+// 相當於建造者的 build()
+subscribe()
+   #+end_src
+
+3. 這段closure應該要可以注入一個 completionHandler，否則我們就完全無法更動它，獲得伺服器回應之後的行為了
+   #+begin_src swift -r -n :results output :exports nil
+let subscribe = { (dataHandler: @escaping (Data) -> Void) in
+    let task = URLSession.shared.dataTask(with: url) { data, response, error in
+        if let data = data {
+            dataHandler(data)
+        }
+    }
+    task.resume()
+}
+subscribe { data in
+    // 處理 data...
+}
+   #+end_src
+
+4. 以struct實作
+   #+begin_src swift -r -n :results output :exports nil
+// 直接把程式碼用一個 struct 包起來。
+struct Publisher {
+    let subscribe = { (dataHandler: @escaping (Data) -> Void) in
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            if let data = data {
+                dataHandler(data)
+            }
+        }
+        task.resume()
+    }
+}
+
+Publisher().subscribe { data in
+    // 處理 data...
+}
+  #+end_src
+
+5. 抽象化
+   把subscribe 閉包的實作從 Publisher 的定義裡面拿走，只剩型別的描述。如此一來，就可以在每次初始化 Publisher 實體的時候，去提供不同的 subscribe 閉包，支援不同種類的時間性序列了，比如說 NotificationCenter。
+   #+begin_src swift -r -n :results output :exports nil
+// 把閉包的內容剪下，只留下閉包的型別描述。
+struct Publisher {
+    let subscribe: (@escaping (Data) -> Void) -> Void
+}
+
+// 把閉包的內容直接貼到 Publisher 的建構式後面，然後再整理一下。
+Publisher { dataHandler in
+    let task = URLSession.shared.dataTask(with: url) { data, response, error in
+        if let data = data {
+            dataHandler(data)
+        }
+    }
+    task.resume()
+}.subscribe { data in
+    // 處理 data...
+}
+  #+end_src
+
+7. 如果每次初始化 Publisher，都要重新寫整個 subscribe 實作的話，其實蠻麻煩的。所以，我們可以用工廠方法模式再封裝它：
+   #+begin_src swift -r -n :results output :exports nil
+struct Publisher<Value> {
+    let subscribe: (@escaping (Value) -> Void) -> Void
+}
+
+// 將工廠方法放到 extension 裡。
+extension URLSession {
+
+    // 將 url 當作參數傳進去。
+    func dataTaskPublisher(with url: URL) -> Publisher<Data> {
+        return Publisher<Data> { valueHandler in
+
+            // 將 URLSession.shared 替換成 self。
+            let task = self.dataTask(with: url) { data, response, error in
+                if let data = data {
+                    valueHandler(data)
+                }
+            }
+            task.resume()
+        }
+    }
+}
+
+// 呼叫端的寫法。
+URLSession.shared.dataTaskPublisher(with: url)
+    .subscribe { data in
+    // 處理 data...
+}
+   #+end_src
+
+
+* Operator
+About [[file:AdvancedSwiftUI.org::*Publisher and Subscriber][Publisher and Subscriber]]
+Operators 可以轉換 publisher 與 subscriber 之間的數據，如map
+#+begin_src swift -r -n :results output :exports nil
+import Combine
+
+// Publisher
+let publisher = Just(5)
+// Operator
+let publisherString = publisher
+  .map{$0.description}
+let publisherDouble = publisher
+  .map{Double($0)}
+// Subscriber
+let subcriber = publisher
+  .sink(receiveValue: {print($0)})        // 5
+let anotherScriber = publisherDouble
+  .sink(receiveValue: {print("Another",$0)})         //Another 5.0
+
+#+end_src
+
+#+RESULTS:
+: 5
+: Another 5.0
+
+** Cancelable
+Combine 之中, Publisher 是資料來源, Subscriber 是控制資料流的操作員, Subscriber 可以限制接收的資料信息量, 透過 Demand (需求), 使 Subscriber 得以在連接 Publisher 之後, 得到透過 Pipeline 處理後的資料.
+
+Combine 同時使 Subscriber 可以取消(cancel) Demand 的要求, 在 Combine 里, 所有的 Subscriber 都具備 Cancelable, 每個 Subscriber 都可以透過 Cancel() 函式, 取消 Publisher 或 pipeline 的 連接.
+
+** Publisher 與 Subscriber 的生命週期
+1. Publisher 透過 .subscribe(Subscriber), 將指定的 Subscriber 連接在一起.
+2. Publisher 透過 Combine 的架構, 利用 subscriber.receive(subscription), 將 Publisher 與 subscriber 綁定在一起.
+   + 在綁定事件成立之後, Subscriber 會 .request(_:Demand) 來接收 Publisher 的資料.
+   + 同時, Publisher 可以透過 .received(_:Input) 的方式將資料給 Subscriber, 但是會將數量限制在 Subscriber 的 demand 之下.
+   + Subscriber 可以在任何時候使用 .cancel()來結束綁定的生命週期.
+3. Publisher 可在錯誤產生時用 receive(completion:)做處理.
+
+** Marble diagram
+*** 使用符號
+
+#+begin_example
+// 這是註解
+- //單位時間, 沒有特別寫會是 1 秒
+X //Error 發生
+| //代表 Complete normally
+source: //表示事件來源
+operat: //代表 operation 表示上流事件的轉換
+output: //表示最後結果, 只有在 operation 之後才會出現
+#+end_example
+例如：
+#+BEGIN_EXAMPLE
+// Attach subscribtion then complete without notify
+-------------------|
+// Attach subscribtion then error occur before any notify
+-------------------X
+// Attach subscribtion then nothing happen yet
+--------------------
+
+#+END_EXAMPLE
+with Operator
+#+BEGIN_EXAMPLE
+1.
+source: ------1------2------3---|
+                map{$0 + 1}
+output: ------2------3------4---|
+
+2.
+source: ------1------2------3---|
+   filter{$0.isMultiple(of: 2)}
+output: -------------2----------|
+
+3.
+source: ------1------2------3---|
+                map{$0 + 1}
+operat: ------2------3------4---|
+   filter{$0.isMultiple(of: 2)}
+output: ------2-------------4---|
+#+END_EXAMPLE
+
+1. sink(receiveCompletion:receiveValue:) 會在 Subscriber 接收到 新的事件與事件終止時, 分別執行 相對應的閉包.
+
+2. assign(to:on:) 會直接將事件值寫入一個 Referance type 的屬性, 透過 keypath 的方式, 直接綁定了事件.
+
+** Cancellable
+雖然 Subscriber 感覺好像是 必須相依與 Publisher 的, 但是事實上是 Publisher 將事件源頭確立之後, 提供了一個建立 Subscriber 的工廠接口, 而這些接口都會回傳一個 AnyCancellable 的參考型別, 依照 AnyCancellable 文件, 其代表的是 cancellation token 作為取消事件流的途徑, 而由於 ARC 的記憶體管理, 這個 Token 若是沒有保持 ARC 的計數時, 將會在 function Scope 結束後自動解除訂閱.
+
+在 AnyCancellable 只有 3 個 API 可以使用:
+#+begin_src swift -r -n :results output :exports nil :eval no
+AnyCancellable.cancel()
+AnyCancellable.store<C>(in: inout C) where C : RangeReplaceableCollection, C.Element == AnyCancellable
+AnyCancellable.store(in: inout Set<AnyCancellable>)
+#+end_src
+
+例如：
+#+begin_src swift -r -n :results output :exports nil
+import Combine
+
+class Weather {
+    @Published var temperature: Double
+    init(temperature: Double) {
+        self.temperature = temperature
+    }
+}
+
+let weather = Weather(temperature: 20)
+let cancellable = weather.$temperature
+  .sink() {
+      print("Temperature now: \($0)")
+  }
+
+weather.temperature = 25
+cancellable.cancel() // 取消subscribe
+weather.temperature = 30
+
+#+end_src
+
+#+RESULTS:
+: Temperature now: 20.0
+: Temperature now: 25.0
+
+** Subject
+Subject 是一種特殊的 Publisher, protocol Subject 是 protocol Publisher 的繼承類:
+#+begin_src swift -r -n :results output :exports nil
+protocol Subject : AnyObject, Publisher
+Subject.send()
+Subject.send(subscription:)
+Subject.send(completion:)
+#+end_src
+
+
+* Good Video
+- [[https://www.youtube.com/watch?v=bRpFHqv0tRQ][SwiftUI 2.0 + Combine - Getting Started (2020)]]

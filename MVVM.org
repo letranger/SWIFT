@@ -10,3 +10,4 @@
 - [[https://www.youtube.com/watch?v=4GjXq2Sr55Q&t=5254s][Lecture 2: MVVM and the Swift Type System]]
 - [[https://www.youtube.com/watch?v=dodQeGmf5a0&list=PLOAhunPTyNdllmzgEo59sVQWQ6-27cb_d][SwiftUI Amiibo App Series]]
 - [[https://www.youtube.com/watch?v=qDyb6AkX0s0][iPlayground 2019 | 漫談 iOS 架構：MVC / MVVM / VIPER 與 Redux]]
+- [[https://www.youtube.com/watch?v=LntH6moCuo0][SwiftUI 2.0: MVVM - A Practical Approach]]

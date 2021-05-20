@@ -1,6 +1,7 @@
 #+TITLE: Swift Introduction
-#+INCLUDE: ../web.org
+#+INCLUDE: ../themes/comfy_inline/comfy_inline.theme
 
+# -*- org-export-babel-evaluate: nil -*-
 #+latex:\newpage
 
 * The Basics
@@ -55,7 +56,7 @@ y = 4
 
 ** Swift v.s. C/C++
 Swift 的變數宣告與 C/C++的差異之一在於宣告時不必要先宣告變數型別，例如，同樣要宣告一小數變數與整數變數，C++的做法為
-#+begin_src swift -r -n :results output :exports both
+#+begin_src cpp -r -n :results output :exports both
 int x = 20;
 double pi = 3.1416;
 #+end_src
@@ -84,7 +85,7 @@ numOfStudent = "fourty" // wrong
 
 ** 常數與變數的命名
 我們可以使用喜歡的字元作為常數和變數名，包括 Unicode 字元：
-#+begin_src swift -r -n :results output :exports both
+#+begin_src swift -r -n :results output :exports both :eval no
 let π = 3.14159
 let 你好 = "你好世界"
 let 🐶🐮 = "dogcow"
@@ -139,6 +140,40 @@ var body: som View {
     return Text("Hello world")
 }
 #+end_src
+
+** 可用來延伸事件(value change)影響範圍的方式
+*** didSet
+
+#+begin_src swift -r -n :results output :exports nil
+var source = 1
+var associated = 2 {
+    didSet {
+        source = associated
+    }
+}
+print("source: \(source), associaed: \(associated)")
+associated = 3
+print("source: \(source), associaed: \(associated)")
+#+end_src
+
+#+RESULTS:
+: source: 1, associaed: 2
+: source: 3, associaed: 3
+
+*** closure
+#+begin_src swift -r -n :results output :exports nil
+func add(left: Int, right: Int, onComplete:(Int)->Void) {
+    let result = left + right
+    onComplete(result)
+}
+
+add(left: 1, right: 2) { returnValue in
+    print(returnValue)
+}
+#+end_src
+
+#+RESULTS:
+: 3
 
 * 基本運算
 :PROPERTIES:
@@ -557,7 +592,7 @@ for item in shoppingList {
 : Beer
 
 *** 以 repeat 產生 array
-If you need to create an array of a specific size holding some default values, Swift has a built-in initializer called repeating:count:. You tell it what to repeat, and how often, and Swift will generate an array of that size.[fn:13]
+If you need to create an array of a specific size holding some default values, Swift has a built-in initializer called repeating:count:. You tell it what to repeat, and how often, and Swift will generate an array of that size.[fn:4]
 #+begin_src swift -r -n :results output :exports nil
 let nums1 = [Int](repeating: 0, count: 10)
 let str1 = [String](repeating: "TNFSH", count: 5)
@@ -575,7 +610,7 @@ print(nums2)
 
 *** Modify array
 **** map: 批次 update array
-通常我們會使用到 map 函數的原因，主要是要將陣列的內容進行批次變更[fn:12]，如：
+通常我們會使用到 map 函數的原因，主要是要將陣列的內容進行批次變更[fn:5]，如：
   #+begin_src swift -r -n :results output :exports nil
 let origin = ["James", "Vanessa", "Ruby", "Letranger"]
 let lowercaseVersion = origin.map { $0.lowercased() }
@@ -603,7 +638,7 @@ print(doubleStrings)
   : ["2 * 0 = 0", "2 * 1 = 2", "2 * 2 = 4", "2 * 3 = 6", "2 * 4 = 8", "2 * 5 = 10"]
 
 *** flatMap()
-flatMap 其實就是 flat + map 的結果。而 flatMap 最常是用來處理攤平某個陣列的狀況[fn:12]
+flatMap 其實就是 flat + map 的結果。而 flatMap 最常是用來處理攤平某個陣列的狀況[fn:5]
 #+begin_src swift -r -n :results output :exports nil
 let nums = [2, 3, 4]
 let mapped = nums.map { Array(repeating: $0, count: $0) }
@@ -621,7 +656,7 @@ print(flatMapped)
 上述程式中第[[(flat)]]行的效果與 Array(nums.map(transform).joined())相同。
 
 *** compactMap
-compactMap 所映射出的元素結果都是非可選（non-nil）的值。因此，當你的希望映射結果的陣列是非可選類型的，那麼使用 compactMap 是一個適合的做法[fn:12]。
+compactMap 所映射出的元素結果都是非可選（non-nil）的值。因此，當你的希望映射結果的陣列是非可選類型的，那麼使用 compactMap 是一個適合的做法[fn:5]。
 #+begin_src swift -r -n :results output :exports nil
 let possibleNums = ["1", "2", "three", "///4///", "5"]
 let mapped = possibleNums.map { str in Int(str) }
@@ -732,7 +767,7 @@ print(oddDigits.symmetricDifference(primeNumbers).sorted())
 - [[https://swift.gg/2019/07/09/Sets-in-Swift/][Swift中的集合(Set)]]
 
 ** 字典（Dictionaries）
-字典是一種儲存多個相同型別的值的容器。每個值（value）都關聯唯一的鍵（key），鍵作為字典中的這個值資料的識別符號。和陣列中的資料項不同，字典中的資料項並沒有具體順序。我們在需要通過識別符號（鍵）存取資料的時候使用字典，這種方法很大程度上和我們在現實世界中使用字典查字義的方法一樣[fn:4]。
+字典是一種儲存多個相同型別的值的容器。每個值（value）都關聯唯一的鍵（key），鍵作為字典中的這個值資料的識別符號。和陣列中的資料項不同，字典中的資料項並沒有具體順序。我們在需要通過識別符號（鍵）存取資料的時候使用字典，這種方法很大程度上和我們在現實世界中使用字典查字義的方法一樣[fn:6]。
 
 *** 建立字典
 #+begin_src swift -r -n :results output :exports both
@@ -921,10 +956,22 @@ print(result2)
 
 程式中的第[[(fat)]]行中，令 operation 變數之型別為 square 這個 function，於是 operation 就可以如 function 般進行計算；也可以令 operation 為內建的 function(如 abs)
 
-** Closures
-在將 function 視為參數傳遞時，也可以把 function 內容直接寫出來，這種 inlined function 就稱為 closure
-Closure(闭包) 就是没有名字的function，可以将它assign给variable或constant，也可以”现用现定义”。那么我们为什么要用Closure而不用function呢？怎么用Closure呢？往下看你就知道了！
-*** syntax
+* Closures
+It’s kinda like a function you can assign to a variable.一個能接受參數的變數。
+#+begin_src swift -r -n :results output :exports nil
+let makeGreeting: (String) -> String = { name in
+    return "Hello, \(name)!"
+}
+
+let message = makeGreeting("Bob")
+print(message)
+#+end_src
+
+#+RESULTS:
+: Hello, Bob!
+
+上例中常數makeGreeting就包含了一個closure，作用與function一模一樣。
+** closure語法與簡化
 #+begin_src swift -r -n :results output :exports nil
 import Foundation
 
@@ -964,35 +1011,304 @@ print(simpleClosure(3, 4))
 
 #+RESULTS:
 : 7
-*** closure as function parameter
+** closure as function parameter
+既然closure與function作用一樣，那為什麼不直接用function呢?
+原因之一是closure可以拿來當成其他function的參數
 #+begin_src swift -r -n :results output :exports nil
 import Foundation
 
-var simpleClosure: (Int, Int) -> Int (ref:dec1)
-simpleClosure = {
+// simpleClosure: take two Int paprameters and return one Int
+var simpleAddClosure: (Int, Int) -> Int (ref:dec1)
+simpleAddClosure = {
     return $0 + $1
 }
 
+var simpleMinusClosure: (Int, Int) -> Int
+simpleMinusClosure = {
+    return $0 - $1
+}
 func operation(_ a: Int, _ b: Int, op: (Int, Int) -> Int) -> Int {
     return op(a, b)
 }
 
-print(operation(2, 3, op: simpleClosure))
-
+print(operation(2, 3, op: simpleAddClosure))
+print(operation(2, 3, op: simpleMinusClosure))
 #+end_src
 
 #+RESULTS:
 : 5
+: -1
+
+** Completion Handler
+用closure而不用function的另一個原因是: closureh佷適合拿來當成completion handler。
+Since you can move the closure around in your code and call it at a later point. This make closures exceptionally useful as useful as /completion handlers/, i.e. the code you call when a long-running task has finished.
+
+A common application of a closure is the completion handler. It works roughly like this:[fn:7]
+- You’re executing a lengthy task in your code, like downloading a file, making a calculation, or waiting for a webservice request
+- You want to execute some code when the lengthy task is completed, but you don’t want to “poll” the task continuously to check if it’s finished
+- Instead, you provide closure to the lengthy task, which it will call when the task is completed
+
+假設有一個輸出closure block，該closure傳入一整數，輸出結果
+#+begin_src swift -r -n :results output :exports nil
+let block: (Int) -> Void = { total in
+   print("Sum of the first 1000 number is \(total)")
+}
+block(20)
+#+end_src
+
+#+RESULTS:
+: Sum of the first 1000 number is 20
+
+現在另外設計一個\( \sum^{1000}_{n=1}{n} \)的function，等加總計算完畢後，就緊接著執行這個block將結果輸出:
+#+begin_src swift -r -n :results output :exports nil
+let block: (Int) -> Void = { total in
+   print("Sum of the first 1000 number is \(total)")
+}
+
+func sumOfFirstThousandNumber(completionHandler: (Int) -> Void) {
+    var total = 0
+    for i in 1...1000 {
+        total = total + i
+    }
+
+    completionHandler(total)
+}
+
+sumOfFirstThousandNumber(completionHandler: block)
+#+end_src
+
+#+RESULTS:
+: Sum of the first 1000 number is 500500
+
+From Swift 3.x, closure parameters are @nonescaping by default, It means closure will also be executed with the function body if you wanna escape closure execution mark it as @escaping.
+
+Completion handler另一個常見的例子是檔案下載，假設我們要自web下載一個image並將之顯示在View中，程式碼大致如下：
+#+begin_src swift -r -n :results output :exports nil :eval no
+let task = URLSession.shared.dataTask(with: URL(string: "http://example.com/cats.jpg")!, completionHandler: { data, response, error in
+    // Do something with image
+
+})
+#+end_src
+上例中，先以URLSession對網站提出HTTP request下載cats.jpg，closure *completionHandler* 為 *dataTask()* 函數的參數，會在cats.jpg被下載後執行，這就是所謂的 /completion handler/ 。
+
+** @nonescaping closures:
+#+BEGIN_COMMENT
+When passing a closure as the function argument, the closure gets execute with the function’s body and returns the closure back. As the execution ends, the passed closure goes out of scope and have no more existence in memory.
+#+END_COMMENT
+參考以下範例:
+#+begin_src swift -r -n :results output :exports nil
+class ClosureTesting {
+    func getUser(completion: (String)->Void) {
+        completion("TNFSH")
+    }
+    func execute() {
+        getUser { user in
+            print(user)
+        }
+    }
+}
+
+let test = ClosureTesting()
+test.execute()
+#+end_src
+
+#+RESULTS:
+: TNFSH
+
+Class ClosureTesting有一function getUser, getUser會接受一個傳入參數completion，該參數為一closure，接受一個傳入參數(字串)，傳回Void，並在geUser中執行所傳入的closure。
+
+Class還有一function execute，該function呼叫getUser，所以要傳入一個closure參數，這個closure接受一個參數並將之輸出。
+
+以上即為non-escaping closure，因為function getuser在execute()執行後就return了。如果getUser裡的closure(completion)執行很久呢?能不能讓一段程式碼在function return後執行?
+
+*** Multi-Threading
+一種方式是利用concurrent queue讓closure在不同thread執行:
+#+begin_src swift -r -n :results output :exports nil :eval no
+import Foundation
+
+class ClosureTesting {
+    let queue = DispatchQueue(label: "concurrentQueue", attributes: .concurrent)
+    func getUser(completion: (String)->Void) {
+        queue.async {
+            // let sepnd some time to fetch the data
+            Thread.sleep(forTimeInterval: Double.random(in: 0...2))
+            completion("TNFSH")
+        }
+    }
+    func execute() {
+        getUser { user in
+            print(user)
+        }
+    }
+}
+let test = ClosureTesting()
+test.execute()
+#+end_src
+這段程式碼中，getUser裡的closure被設定為非同步執行，如此一來，這個function會在closure執行前就return了，這是十分常見的網路行為，例如closure正在下載資料，然而這段程式碼會導致如下錯誤:
+#+RESULTS:
+: <stdin>:6:21: error: escaping closure captures non-escaping parameter 'completion'
+:         queue.async {
+:                     ^
+: <stdin>:5:18: note: parameter 'completion' is implicitly non-escaping
+:     func getUser(completion: (String)->Void) {
+:                  ^
+: <stdin>:9:13: note: captured here
+:             completion("TNFSH")
+:             ^
+Swift官方文件解釋:
+#+begin_verse
+“When you declare a function that takes a closure as one of its parameters, you can write @escaping before the parameter’s type to indicate that the closure is allowed to escape.”
+#+end_verse
+即，為了讓closure能合法「逃脫」，closure必須在前面冠上 *@escaping 。如下:
+
+#+begin_src swift -r -n :results output :exports nil :eval no
+import Foundation
+
+class ClosureTesting {
+    let queue = DispatchQueue(label: "concurrentQueue", attributes: .concurrent)
+    func getUser(completion: @escaping (String)->Void) {
+        queue.async {
+            // let sepnd some time to fetch the data
+            Thread.sleep(forTimeInterval: Double.random(in: 0...2))
+            completion("TNFSH")
+        }
+    }
+    func execute() {
+        getUser { user in
+            print(user)
+        }
+    }
+}
+let test = ClosureTesting()
+test.execute()
+
+#+end_src
+
+#+RESULTS:
+: TNFSH
+
+再看看以下的例子，function sortArray接受一個整數陣列參數、並設置一個handler:一個傳入Int傳回Void的closure,function將傳入的陣列進行排序，然後執行handler。
+doSomething呼叫sortArray後，傳入一組整數陣列，希望做到的handler是將排序後的Array輸出。
+#+begin_src swift -r -n :results output :exports nil
+func sortArray(array:[Int], handler: (([Int])->Void)) {
+    // step 2
+    var sortedArray: [Int] = []
+    sortedArray = array.sorted();
+    // step 3
+    handler(sortedArray) (ref:return)
+}
+func doSomething() {
+    // setp 1
+    sortArray(array: [50,333,434,2,8,3,54,73,99,83,13]) {(result) in
+        // step 4
+        print("Sorted Array: \(result)")
+    }
+}
+doSomething()
+#+end_src
+
+#+RESULTS:
+: Sorted Array: [2, 3, 8, 13, 50, 54, 73, 83, 99, 333, 434]
+
+** @escaping closure:
+在前例中，如果我們在function sortArray return後仍需取用array的內容，則就需要將之設為@escaping closure。
+即，我們希望在第[[(return)]]行後取得已排序的值進行其他應用，則要將之設定為@escaping closure
+#+begin_src swift -r -n :results output :exports nil
+var findMaxFromArray: (([Int])-> Void)?
+
+func findMaxNumber(array:[Int], handler: @escaping ([Int])->Void) {
+    //step 2
+    handler(array)
+    //setp 3
+    findMaxFromArray = handler
+}
+func doSomething() {
+    //setp 1
+    findMaxNumber(array: [11,52,33,34,5,65,7,8,29,10]) {(result) in
+        let maxNumber = result.max()!
+
+        //step 4
+        print("Max number from Array: \(maxNumber)")
+    }
+}
+doSomething()
+//setp 5
+findMaxFromArray!([100,300,754,222,44,432,535])
+#+end_src
+
+#+RESULTS:
+: Max number from Array: 65
+: Max number from Array: 754
+
+A Closure is said to *escape* a function when the closure is passed as an argument to the function, but is called after the function returns.
+
+再看另一個@escaping例子
+#+begin_src swift -r -n :results output :exports nil
+func dataTask(with url: URL,
+completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask
+#+end_src
+function dataTask有兩個參數: 網址資源url以及closure completionHandler，而closure completionHandler有三個參數：
+- data?: 即所下載的資料本身，如圖片
+- URLResponse?: 包含網路回應資訊的object
+- Error?: 包含錯誤訊息的object，也有可能是一個nil
+
+function參數中的 *@escaping* 意謂著做為參數傳入dataTask function的closure被允許逃離dataTask，換句話說， *這個closure會在function dataTask結束執行後才被呼叫* 。
+
+如果把escaping closure看成一段在function外部的程式碼大概會比較容易理解這個邏輯，function為監獄，而closure為犯人。典型的例子就是completion handler，這個handler在他的建立環境(fuction)消失之後仍然強悍地生存下來並執行任務。
+
+** escaping v.s. non-escaping closure
+- An *escaping closure* is a closure that's called /after/ the function it was passed to returns. In other words, it /outlives/ the function it was passwd to.
+- A *non-escaping closure* is a closure that's called /within/ the function it was passed into, i.e., /before/ it returns. This closure never passes the bounds of the function it was passed into.
+再看兩個較簡單的例子
+*** @noescaping
+#+begin_src swift -r -n :results output :exports nil
+func doSomething(callback:()->Void) {
+    callback()
+}
+let onComplete:()->Void = { debugPrint("executed") }
+doSomething(callback: onComplete) // executed
+
+#+end_src
+
+#+RESULTS:
+: "executed"
+*** @escaping
+#+begin_src swift -r -n :results output :exports nil
+class SomeClass {
+    var callback:(()->Void)?
+    func doSomething(callback:@escaping ()->Void) {
+        self.callback = callback  // error: 閉包逃離該函式
+    }
+}
+
+let onComplete:()->Void = { debugPrint("executed") }
+
+let someObj = SomeClass()
+someObj.doSomething(callback : onComplete)
+#+end_src
+
+#+RESULTS:
+
+同理，如果閉包被放進async dispatch queue，則該閉包也會被queue retain，同樣可能在函式結束後才被執行，因此也算是「逃離」。
+
+*** @noescape有什麼限制
+- 不能在函式外儲存
+- 不能進async dispatch queue
+- 不能丟進其他non-@noescape參數
+
+** 進階概念
+- [[https://learnappmaking.com/escaping-closures-swift/][Escaping Closures in Swift Explained ]]
+- [[https://www.jianshu.com/p/9fb444e88d26][Swift @noescape與@escaping]]
 
 * Struct, Class, and Enum
 :PROPERTIES:
 :CUSTOM_ID: SW-Struct-Class-Enum
 :END:
 #+begin_verse
-struct, class, and enum are fundamentally important concepts for every iOS developer. It’s difficult to imagine common iOS apps without them. [fn:5]
+struct, class, and enum are fundamentally important concepts for every iOS developer. It’s difficult to imagine common iOS apps without them. [fn:8]
 #+end_verse
 
-Class 和 Struct 是一種多功能且靈活的構造體，作為程式碼中的構造基礎。你可以使用與常數，變數和函數完全相同的語法來定義屬性和方法，以便為 Class 和 Struct 增加功能[fn:6]。
+Class 和 Struct 是一種多功能且靈活的構造體，作為程式碼中的構造基礎。你可以使用與常數，變數和函數完全相同的語法來定義屬性和方法，以便為 Class 和 Struct 增加功能[fn:9]。
 
 | strudt                                    | class                                   |
 | Value type                                | Reference type                          |
@@ -1010,7 +1326,7 @@ Class 和 Struct 是一種多功能且靈活的構造體，作為程式碼中的
 - functional programming: foucs 在資料的 functionality
 - object-oriented programming: focus 在將資料與其 functionality 封裝(encapsulate)入某個 object
 - single inheritance: 只能繼承自一個 class
-- 支援 multiple inheritance 的語言：C++, Common Lisp, Perl, Python, R, Raku, Tcl[fn:7].
+- 支援 multiple inheritance 的語言：C++, Common Lisp, Perl, Python, R, Raku, Tcl[fn:10].
 
 ** 語法
 #+begin_src swift -r -n :eval no
@@ -1211,7 +1527,7 @@ struct Person {
 
 *** Mutating methods
 #+begin_verse
-Structs have also got so-called mutating methods that play a role in updating the property values of a structure within an instance method. [fn:5]
+Structs have also got so-called mutating methods that play a role in updating the property values of a structure within an instance method. [fn:8]
 #+end_verse
 #+begin_src swift -r -n :eval no
 struct Counter {
@@ -1235,7 +1551,7 @@ counter.reset()           //reset to 0
 
 ** Classes
 #+begin_verse
-Classes and structures are very similar, and both can be used to define properties and methods. [fn:5]
+Classes and structures are very similar, and both can be used to define properties and methods. [fn:8]
 #+end_verse
 #+begin_src swift -r -n :results output :exports nil
 class Person {
@@ -1328,7 +1644,7 @@ Class代表一个对象，像一个学生或者一个城市之类的，通常有
 
 *** Inheritance & Override methods and properties
 #+begin_verse
-The biggest difference that structs do not have is hierarchical relations. Classes can have parent classes, that are called superclass, and child classes, that are called subclasses. [fn:5]
+The biggest difference that structs do not have is hierarchical relations. Classes can have parent classes, that are called superclass, and child classes, that are called subclasses. [fn:8]
 #+end_verse
 #+begin_src swift -r -n :eval no
 class Animals {
@@ -1350,7 +1666,7 @@ class Cat: LandAnimals {
 }
 #+end_src
 
-** 結構跟類的比較 (Comparing Structures and Classes) [fn:8]
+** 結構跟類的比較 (Comparing Structures and Classes) [fn:11]
 *** 在 Swift 中的結構與類有許多相同之處，兩者皆能：
 - 定義屬性來儲存值
 - 定義方法來提供功能
@@ -1364,7 +1680,7 @@ class Cat: LandAnimals {
 - 反初始化器允許類的實例釋放它已分配的任何資源
 - 引用計數允許對類實例的多個引用
 *** 結構和列舉是值型別 (Structures and Enumerations Are Value Types)
-值型別是一種其值在被賦值給變數或常數時被複製，或者在傳遞給函數時被複製。實際上，Swift 的整數、浮點數、布林值、字符串、數組和字典中的所有基本型別都是值型別，並且在幕後實現為結構。所有結構和列舉都是 Swift 中的值型別。這代表著我們創建的任何結構和列舉實例以及它們作為屬性的任何值類型在代碼中傳遞時始終會被複製。[fn:8]
+值型別是一種其值在被賦值給變數或常數時被複製，或者在傳遞給函數時被複製。實際上，Swift 的整數、浮點數、布林值、字符串、數組和字典中的所有基本型別都是值型別，並且在幕後實現為結構。所有結構和列舉都是 Swift 中的值型別。這代表著我們創建的任何結構和列舉實例以及它們作為屬性的任何值類型在代碼中傳遞時始終會被複製。[fn:11]
 **** 範例
 #+begin_src swift -r -n :eval no
 struct Resolution {
@@ -1383,7 +1699,7 @@ print("cinema is now \(cinema.width) pixels wide")
 print("hd is still \(hd.width) pixels wide")
 // Prints "hd is still 1920 pixels wide"
 #+end_src
-由上述例子可知，當 cinema 被賦予 hd 當前的值，儲存在 hd 的值被複製到新 cinema 的實例。最後結果兩個擁有相同值但完全不同的實例，所以當修改 cinema.width = 2048 的時候，並不會影響儲存在 hd 中的 width。[fn:8]
+由上述例子可知，當 cinema 被賦予 hd 當前的值，儲存在 hd 的值被複製到新 cinema 的實例。最後結果兩個擁有相同值但完全不同的實例，所以當修改 cinema.width = 2048 的時候，並不會影響儲存在 hd 中的 width。[fn:11]
 #+CAPTION: Struct value type
 #+LABEL:fig:Structure
 #+name: fig:Structure
@@ -1392,7 +1708,7 @@ print("hd is still \(hd.width) pixels wide")
 #+ATTR_HTML: :width 400
 [[file:images/struct.png]]
 *** 類是參考型別 (Classes Are Reference Types)
-不同於值型別，當參考型別被指定給一個變數或常數，或是傳遞進一個函數的時候，並不會被複製。參考型別非副本，是使用相同存在的實例。[fn:8]
+不同於值型別，當參考型別被指定給一個變數或常數，或是傳遞進一個函數的時候，並不會被複製。參考型別非副本，是使用相同存在的實例。[fn:11]
 **** 範例
 #+begin_src swift -r -n :eval no
 class VideoMode {
@@ -1414,7 +1730,7 @@ alsoTenEighty.frameRate = 30.0
 print("The frameRate property of tenEighty is now \(tenEighty.frameRate)")
 // Prints "The frameRate property of tenEighty is now 30.0"
 #+end_src
-由上述例子可知，當 alsoTenEighty 被指定為 tenEighty，並且修改 alsoTenEighty.frameRate = 30.0 時，也會更動到 tenEighty.frameRate 的值。[fn:8]
+由上述例子可知，當 alsoTenEighty 被指定為 tenEighty，並且修改 alsoTenEighty.frameRate = 30.0 時，也會更動到 tenEighty.frameRate 的值。[fn:11]
 #+CAPTION: Class Reference type
 #+LABEL:fig:Class-1
 #+name: fig:Class-1
@@ -1551,7 +1867,7 @@ let hd = Resolution(width: 1920, height: 1080)
 var cinema = hd
 #+end_src
 
-When cinema was given the current value of hd, the values stored in hd were copied into the new cinema instance. The end result was two completely separate instances that contained the same numeric values. However, because they are separate instances, setting the width of cinema to 2048 doesn’t affect the width stored in hd, as shown in the figure below[fn:9]:
+When cinema was given the current value of hd, the values stored in hd were copied into the new cinema instance. The end result was two completely separate instances that contained the same numeric values. However, because they are separate instances, setting the width of cinema to 2048 doesn’t affect the width stored in hd, as shown in the figure below[fn:12]:
 
 #+CAPTION: Value Types
 #+LABEL:fig:vt
@@ -1585,7 +1901,7 @@ let alsoTenEighty = tenEighty
 alsoTenEighty.frameRate = 30.0
 #+end_src
 
-Because classes are reference types, tenEighty and alsoTenEighty actually both refer to the same VideoMode instance. Effectively, they are just two different names for the same single instance, as shown in the figure below[fn:9]:
+Because classes are reference types, tenEighty and alsoTenEighty actually both refer to the same VideoMode instance. Effectively, they are just two different names for the same single instance, as shown in the figure below[fn:12]:
 
 #+CAPTION: Value Types
 #+LABEL:fig:vt
@@ -1597,7 +1913,7 @@ Because classes are reference types, tenEighty and alsoTenEighty actually both r
 
 ** Enumerations
 #+begin_verse
-Enumerations are different from structs and classes. Enum is a special Swift type that defines a common type for a group of related values. Then, enums can be interacted with other data types such as a switch, if statements, and others. [fn:5]
+Enumerations are different from structs and classes. Enum is a special Swift type that defines a common type for a group of related values. Then, enums can be interacted with other data types such as a switch, if statements, and others. [fn:8]
 #+end_verse
 從 Swift 3 開始，我們的 enum 內設定的情境字串要以小寫字母開頭。
 #+begin_src swift -r -n :eval no
@@ -1634,7 +1950,7 @@ let currentStatus = downloadStatus[0]
 
 你可以這樣做沒錯，但是如此一來會有兩個缺點，首先，你可能會不知道 downloadStatus[0]代表什麼，除非你引用 downloadStatus array，若是比較 downloadStatus[0]與 DownloadStatus.downloading 這兩種表達方式，很明顯的是後者的可讀性比較高。
 
-其次，因為 currentStatus 是 String 類型，變量可以被賦予任何字符串值，無法將它限制為 “downloading”, “finished”, “failed” 以及 “cancelled”，除非執行一些額外的驗證。反之，如果使用 enum，我們可以將 myDirection 限制在 .downloading、.finished、.failed 或 .cancelled 等四種情境之一，不會出現其他意料之外的情況。 [fn:10]
+其次，因為 currentStatus 是 String 類型，變量可以被賦予任何字符串值，無法將它限制為 “downloading”, “finished”, “failed” 以及 “cancelled”，除非執行一些額外的驗證。反之，如果使用 enum，我們可以將 myDirection 限制在 .downloading、.finished、.failed 或 .cancelled 等四種情境之一，不會出現其他意料之外的情況。 [fn:13]
 
 #+end_verse
 *** Raw Values
@@ -1694,7 +2010,7 @@ review("dsafsdfsdfsd") // failed(msg: "名字太长了")
 #+begin_verse
 總的來說，用 class 來定義資料物件的話，就好像是在用雲端共享文件一樣：每個人的螢幕上都會有一份文件可以編輯，但這個文件並沒有存在電腦裡，而是跟雲端的版本連線，所以所有的變動都是直接在雲端版本上更新的。好處是方便，壞處是誰修改了甚麼東西經理不會知道（class 本身沒有帳號功能！）。
 
-用 struct 的話，則是像傳統的離線文件檔案一樣。一開始文件只有經理有，而如果他想要讓手下小美去修改文件的話，他就需要拷貝一份檔案給小美。小美修改完檔案後，必須把它交還給經理，然後經理再決定要不要用修改過的檔案取代原本的文件。[fn:11]
+用 struct 的話，則是像傳統的離線文件檔案一樣。一開始文件只有經理有，而如果他想要讓手下小美去修改文件的話，他就需要拷貝一份檔案給小美。小美修改完檔案後，必須把它交還給經理，然後經理再決定要不要用修改過的檔案取代原本的文件。[fn:14]
 #+end_verse
 #+CAPTION: MVC
 #+LABEL:fig:MVC
@@ -1705,7 +2021,7 @@ review("dsafsdfsdfsd") // failed(msg: "名字太长了")
 [[file:images/mvc-1.png]]
 - 在 MVC 架構中，Model 包含了 Data Objects 與 Document，其中 Documents 包含所有的資料管理者元件(如 Core Data 的 NSManagedObjectContext，或是任何負責下載、上傳資料物件的網路層元件，如自訂的 NetworkManager)。
 - Document 最好是用 class 來定義，因為它肩負了許多溝通的工作。Data Objects 則是資料的代表，要用 class 或 struct 來定義都可以。
-- 用 class 定義 Data Objects 的話，任何變動只要執行一次就可以了，因為它的實體只會有一個。然而，用 struct 定義的話，則需要將變動手動套用到文件所管理的那份實體，好讓整個 app 都能使用最新的資料。這雖然寫起來較為囉唆，卻讓閱讀與維護更為簡單(可以確定是在哪裡被變更資料)[fn:11]。
+- 用 class 定義 Data Objects 的話，任何變動只要執行一次就可以了，因為它的實體只會有一個。然而，用 struct 定義的話，則需要將變動手動套用到文件所管理的那份實體，好讓整個 app 都能使用最新的資料。這雖然寫起來較為囉唆，卻讓閱讀與維護更為簡單(可以確定是在哪裡被變更資料)[fn:14]。
 *** 選擇原則
 - Choose Structures by Default
 - Use Classes When You Need Objective-C Interoperability
@@ -1828,28 +2144,30 @@ if let a = a, a > 5, case 1...9 = a {
 
 * Footnotes
 
-[fn:13] [[https://www.hackingwithswift.com/example-code/language/how-to-create-an-array-by-repeating-an-item][How to create an array by repeating an item]]
-
-[fn:12] [[https://medium.com/jeremy-xue-s-blog/swift-transforming-an-array-e2bcb4f4d67d][Swift — Transforming an Array]]
-
 [fn:1] [[https://ithelp.ithome.com.tw/articles/10157433][[Swift] (1) - Swift 簡介 ]]
 
 [fn:2] [[https://docs.swift.org/swift-book/LanguageGuide/Properties.html#//apple_ref/doc/uid/TP40014097-CH14-XID_368][Properties]]
 
 [fn:3] [[https://docs.swift.org/swift-book/LanguageGuide/CollectionTypes.html][The Swift Programming Language Swift 5.3]]
 
-[fn:4] [[https://tommy60703.gitbooks.io/swift-language-traditional-chinese/content/chapter2/04_Collection_Types.html][《The Sw­ift Pr­ogramm­ing La­nguage­》正體中文版]]
+[fn:4] [[https://www.hackingwithswift.com/example-code/language/how-to-create-an-array-by-repeating-an-item][How to create an array by repeating an item]]
 
-[fn:5] [[https://levelup.gitconnected.com/demystifying-struct-class-and-enum-in-swift-5-43dde089e96a][Demystifying Struct, Class, and Enum in Swift 5]]
+[fn:5] [[https://medium.com/jeremy-xue-s-blog/swift-transforming-an-array-e2bcb4f4d67d][Swift — Transforming an Array]]
 
-[fn:6] [[https://ithelp.ithome.com.tw/articles/10195467][Day-15 Swift 語法(11) - Class 與 Struct 的愛恨交織 ]]
+[fn:6] [[https://tommy60703.gitbooks.io/swift-language-traditional-chinese/content/chapter2/04_Collection_Types.html][《The Sw­ift Pr­ogramm­ing La­nguage­》正體中文版]]
 
-[fn:7] [[https://en.wikipedia.org/wiki/Multiple_inheritance][Multiple inheritance]]
+[fn:7] [[https://medium.com/@dhavalkansara51/completion-handler-in-swift-with-escaping-and-nonescaping-closures-1ea717dc93a4][Completion Handler in Swift with @escaping and @nonescaping closures.]]
 
-[fn:8] [[https://ithelp.ithome.com.tw/articles/10220520][ Day 10: [Swift] 結構和類 (Struct and Class) ]]
+[fn:8] [[https://levelup.gitconnected.com/demystifying-struct-class-and-enum-in-swift-5-43dde089e96a][Demystifying Struct, Class, and Enum in Swift 5]]
 
-[fn:9] [[https://docs.swift.org/swift-book/LanguageGuide/ClassesAndStructures.html][Structures and Classes]]
+[fn:9] [[https://ithelp.ithome.com.tw/articles/10195467][Day-15 Swift 語法(11) - Class 與 Struct 的愛恨交織 ]]
 
-[fn:10] [[https://appcoda.com.tw/mastering-swift/][精通Swift：列舉、閉包、泛型、Protocols和高階函數]]
+[fn:10] [[https://en.wikipedia.org/wiki/Multiple_inheritance][Multiple inheritance]]
 
-[fn:11] [[https://www.appcoda.com.tw/swift-class/][Swift Class vs Struct：設計 Model 時，該用 Struct 還是 Class 呢？]]
+[fn:11] [[https://ithelp.ithome.com.tw/articles/10220520][ Day 10: [Swift] 結構和類 (Struct and Class) ]]
+
+[fn:12] [[https://docs.swift.org/swift-book/LanguageGuide/ClassesAndStructures.html][Structures and Classes]]
+
+[fn:13] [[https://appcoda.com.tw/mastering-swift/][精通Swift：列舉、閉包、泛型、Protocols和高階函數]]
+
+[fn:14] [[https://www.appcoda.com.tw/swift-class/][Swift Class vs Struct：設計 Model 時，該用 Struct 還是 Class 呢？]]
