@@ -251,4 +251,119 @@ VBoxManage setextradata "macOS" "VBoxInternal/Devices/smc/0/Config/DeviceKey" "o
 VBoxManage setextradata "macOS" "VBoxInternal/Devices/smc/0/Config/GetKeyFromRealSMC" 1
 #+end_src
 **** 執行上述修正指令
-將上面的修正指令 *逐行* 複製下來，貼到命令提示字元，然後按Enter執行。例如
+將上面的修正指令 *逐行* 複製下來，貼到命令提示字元，然後按Enter執行。例如:
+1. 選取第一行指令，按 右鍵  選複製(C)
+   #+CAPTION: Caption
+   #+LABEL:fig:Labl
+   #+name: fig:Name
+   #+ATTR_LATEX: :width 400
+   #+ATTR_ORG: :width 400
+   #+ATTR_HTML: :width 600
+   [[file:images/2021-05-20_16-48-50.jpg]]
+2. 切換到命令提示字元，在視窗中按 右鍵 ，將複製的指令貼上去，然後按Enter執行指令
+   #+CAPTION: Caption
+   #+LABEL:fig:Labl
+   #+name: fig:Name
+   #+ATTR_LATEX: :width 400
+   #+ATTR_ORG: :width 400
+   #+ATTR_HTML: :width 600
+   [[file:images/2021-05-20_16-43-34.jpg]]
+3. 回到瀏覽器，複製第二行指令
+   #+CAPTION: Caption
+   #+LABEL:fig:Labl
+   #+name: fig:Name
+   #+ATTR_LATEX: :width 400
+   #+ATTR_ORG: :width 400
+   #+ATTR_HTML: :width 600
+   [[file:images/2021-05-20_16-47-55.jpg]]
+4. 切換到命令提示字元，在視窗中按 右鍵 ，將複製的指令貼上去，然後按Enter執行指令
+   #+CAPTION: Caption
+   #+LABEL:fig:Labl
+   #+name: fig:Name
+   #+ATTR_LATEX: :width 400
+   #+ATTR_ORG: :width 400
+   #+ATTR_HTML: :width 600
+   [[file:images/2021-05-20_16-48-08.jpg]]
+5. 依此類推.....
+
+** 設定虛擬機
+1. 啟動VirtualBox, 點選左側 *macOS* ，點選右側 *設定*
+   這裡的macOS是虛擬機名稱，如果你有改名，請自改參考
+   #+CAPTION: Caption
+   #+LABEL:fig:Labl
+   #+name: fig:Name
+   #+ATTR_LATEX: :width 400
+   #+ATTR_ORG: :width 400
+   #+ATTR_HTML: :width 600
+   [[file:images/2021-05-20_16-54-57.jpg]]
+2. 左側選取 *一般* ，右側選取 *進階* ，將 *共用剪貼簿* 和 *拖放* 都改為雙向
+   #+CAPTION: Caption
+   #+LABEL:fig:Labl
+   #+name: fig:Name
+   #+ATTR_LATEX: :width 400
+   #+ATTR_ORG: :width 400
+   #+ATTR_HTML: :width 600
+   [[file:images/2021-05-20_16-56-21.jpg]]
+3. 左側選取 *系統* ，右側取消 *軟碟* 和 *光碟*
+   #+CAPTION: Caption
+   #+LABEL:fig:Labl
+   #+name: fig:Name
+   #+ATTR_LATEX: :width 400
+   #+ATTR_ORG: :width 400
+   #+ATTR_HTML: :width 600
+   [[file:images/2021-05-20_17-00-15.jpg]]
+4. 左側選取 *顯示* ，右側將 *圖形控制器* 改為 *VMSVGA，把上面的 *視訊記憶體* 全部撥給虛擬機
+   #+CAPTION: Caption
+   #+LABEL:fig:Labl
+   #+name: fig:Name
+   #+ATTR_LATEX: :width 400
+   #+ATTR_ORG: :width 400
+   #+ATTR_HTML: :width 600
+   [[file:images/2021-05-20_17-00-40.jpg]]
+5. 左側選取 *USB* ，右側可以點選 *USB 2.0* 、 *USB 3.0*
+   #+CAPTION: Caption
+   #+LABEL:fig:Labl
+   #+name: fig:Name
+   #+ATTR_LATEX: :width 400
+   #+ATTR_ORG: :width 400
+   #+ATTR_HTML: :width 600
+   [[file:images/2021-05-20_17-01-08.jpg]]
+
+** 首次啟動虛擬機
+1. 回到VirtualBox，左側選取 *macOS* ,右側點 *啟動*
+   #+CAPTION: Caption
+   #+LABEL:fig:Labl
+   #+name: fig:Name
+   #+ATTR_LATEX: :width 400
+   #+ATTR_ORG: :width 400
+   #+ATTR_HTML: :width 600
+   [[file:images/2021-05-20_17-01-51.jpg]]
+2. 出現初次啟動開機畫面
+   #+CAPTION: Caption
+   #+LABEL:fig:Labl
+   #+name: fig:Name
+   #+ATTR_LATEX: :width 400
+   #+ATTR_ORG: :width 400
+   #+ATTR_HTML: :width 600
+   [[file:images/2021-05-20_17-02-37.jpg]]
+3. 然後過一陣子會看到期待已久的MAC開機畫面
+   #+CAPTION: Caption
+   #+LABEL:fig:Labl
+   #+name: fig:Name
+   #+ATTR_LATEX: :width 400
+   #+ATTR_ORG: :width 400
+   #+ATTR_HTML: :width 600
+   [[file:images/2021-05-20_17-06-26.jpg]]
+4. 安裝macOS Catalina...
+   可以再去煮杯咖啡、上個厠所、洗個澡、再背三課單字
+   #+CAPTION: Caption
+   #+LABEL:fig:Labl
+   #+name: fig:Name
+   #+ATTR_LATEX: :width 400
+   #+ATTR_ORG: :width 400
+   #+ATTR_HTML: :width 600
+   [[file:images/2021-05-20_17-07-40.jpg]]
+
+** 初次設定macOS
+
+* 安裝Xcode
