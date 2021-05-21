@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-05-21 Fri 00:04 -->
+<!-- 2021-05-21 Fri 09:01 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>VNC遠端連線</title>
@@ -228,20 +228,20 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org3ebf285">1. 學生/MAC分配</a></li>
-<li><a href="#org968f313">2. 遠端登入設定</a>
+<li><a href="#orgb09ea02">1. 學生/MAC分配</a></li>
+<li><a href="#orgc2666b9">2. 遠端登入設定</a>
 <ul>
-<li><a href="#org120b357">2.1. 工具: VNC遠端連線</a></li>
-<li><a href="#org7288fa6">2.2. 執行vnc</a></li>
-<li><a href="#orgde77a18">2.3. 帳號資訊</a></li>
+<li><a href="#org440c646">2.1. 工具: VNC遠端連線</a></li>
+<li><a href="#org0768cf0">2.2. 執行vnc</a></li>
+<li><a href="#org7da1a1d">2.3. 帳號資訊</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org3ebf285" class="outline-2">
-<h2 id="org3ebf285"><span class="section-number-2">1</span> 學生/MAC分配</h2>
+<div id="outline-container-orgb09ea02" class="outline-2">
+<h2 id="orgb09ea02"><span class="section-number-2">1</span> 學生/MAC分配</h2>
 <div class="outline-text-2" id="text-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -251,86 +251,86 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 
 <col  class="org-right" />
 
-<col  class="org-left" />
+<col  class="org-right" />
 </colgroup>
 <thead>
 <tr>
 <th scope="col" class="org-right">班級座號</th>
 <th scope="col" class="org-right">內部IP</th>
-<th scope="col" class="org-left">外部IP</th>
+<th scope="col" class="org-right">外部IP</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="org-right">10209</td>
 <td class="org-right">192.168.16.3</td>
-<td class="org-left">&#xa0;</td>
+<td class="org-right">210.70.138.3</td>
 </tr>
 
 <tr>
 <td class="org-right">10237</td>
 <td class="org-right">192.168.16.5</td>
-<td class="org-left">&#xa0;</td>
+<td class="org-right">210.70.138.5</td>
 </tr>
 
 <tr>
 <td class="org-right">10531</td>
 <td class="org-right">192.168.16.7</td>
-<td class="org-left">&#xa0;</td>
+<td class="org-right">210.70.138.7</td>
 </tr>
 
 <tr>
 <td class="org-right">10135</td>
 <td class="org-right">192.168.16.9</td>
-<td class="org-left">&#xa0;</td>
+<td class="org-right">210.70.138.9</td>
 </tr>
 
 <tr>
 <td class="org-right">11626</td>
 <td class="org-right">192.168.16.11</td>
-<td class="org-left">&#xa0;</td>
+<td class="org-right">210.70.138.11</td>
 </tr>
 
 <tr>
 <td class="org-right">10721</td>
 <td class="org-right">192.168.16.15</td>
-<td class="org-left">&#xa0;</td>
+<td class="org-right">210.70.138.15</td>
 </tr>
 
 <tr>
 <td class="org-right">11020</td>
 <td class="org-right">192.168.16.19</td>
-<td class="org-left">&#xa0;</td>
+<td class="org-right">210.70.138.19</td>
 </tr>
 
 <tr>
 <td class="org-right">10818</td>
 <td class="org-right">192.168.16.21</td>
-<td class="org-left">&#xa0;</td>
+<td class="org-right">210.70.138.21</td>
 </tr>
 
 <tr>
 <td class="org-right">10823</td>
 <td class="org-right">192.168.16.23</td>
-<td class="org-left">&#xa0;</td>
+<td class="org-right">210.70.138.23</td>
 </tr>
 
 <tr>
 <td class="org-right">11102</td>
 <td class="org-right">192.168.16.27</td>
-<td class="org-left">&#xa0;</td>
+<td class="org-right">210.70.138.27</td>
 </tr>
 
 <tr>
 <td class="org-right">11412</td>
 <td class="org-right">192.168.16.29</td>
-<td class="org-left">&#xa0;</td>
+<td class="org-right">210.70.138.29</td>
 </tr>
 
 <tr>
 <td class="org-right">11401</td>
 <td class="org-right">192.168.16.31</td>
-<td class="org-left">&#xa0;</td>
+<td class="org-right">210.70.138.31</td>
 </tr>
 </tbody>
 </table>
@@ -339,12 +339,12 @@ port: 5900 tcp
 </p>
 </div>
 </div>
-<div id="outline-container-org968f313" class="outline-2">
-<h2 id="org968f313"><span class="section-number-2">2</span> 遠端登入設定</h2>
+<div id="outline-container-orgc2666b9" class="outline-2">
+<h2 id="orgc2666b9"><span class="section-number-2">2</span> 遠端登入設定</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org120b357" class="outline-3">
-<h3 id="org120b357"><span class="section-number-3">2.1</span> 工具: VNC遠端連線</h3>
+<div id="outline-container-org440c646" class="outline-3">
+<h3 id="org440c646"><span class="section-number-3">2.1</span> 工具: VNC遠端連線</h3>
 <div class="outline-text-3" id="text-2-1">
 <ul class="org-ul">
 <li>下載VNC Viewer: <a href="https://www.realvnc.com/en/connect/download/viewer/windows/">https://www.realvnc.com/en/connect/download/viewer/windows/</a></li>
@@ -352,15 +352,15 @@ port: 5900 tcp
 </ul>
 </div>
 </div>
-<div id="outline-container-org7288fa6" class="outline-3">
-<h3 id="org7288fa6"><span class="section-number-3">2.2</span> 執行vnc</h3>
+<div id="outline-container-org0768cf0" class="outline-3">
+<h3 id="org0768cf0"><span class="section-number-3">2.2</span> 執行vnc</h3>
 <div class="outline-text-3" id="text-2-2">
 <ul class="org-ul">
 <li><p>
 新增連線
 </p>
 
-<div id="org1299fb1" class="figure">
+<div id="org56b477e" class="figure">
 <p><img src="images/2021-05-20_23-57-03.jpg" alt="2021-05-20_23-57-03.jpg" width="600" />
 </p>
 <p><span class="figure-number">Figure 1: </span>Caption</p>
@@ -369,7 +369,7 @@ port: 5900 tcp
 在VNC Server欄填入你分配到的外部IP，然後按 OK
 </p>
 
-<div id="orgd3bc000" class="figure">
+<div id="org0bfd62b" class="figure">
 <p><img src="images/2021-05-21_00-00-54.jpg" alt="2021-05-21_00-00-54.jpg" width="600" />
 </p>
 <p><span class="figure-number">Figure 2: </span>Caption</p>
@@ -378,7 +378,7 @@ port: 5900 tcp
 Double Click你新增的連線，Username欄填入student，然後按 OK
 </p>
 
-<div id="orgfb77cff" class="figure">
+<div id="orgfa8da3c" class="figure">
 <p><img src="images/2021-05-21_00-02-37.jpg" alt="2021-05-21_00-02-37.jpg" width="600" />
 </p>
 <p><span class="figure-number">Figure 3: </span>Caption</p>
@@ -386,8 +386,8 @@ Double Click你新增的連線，Username欄填入student，然後按 OK
 </ul>
 </div>
 </div>
-<div id="outline-container-orgde77a18" class="outline-3">
-<h3 id="orgde77a18"><span class="section-number-3">2.3</span> 帳號資訊</h3>
+<div id="outline-container-org7da1a1d" class="outline-3">
+<h3 id="org7da1a1d"><span class="section-number-3">2.3</span> 帳號資訊</h3>
 <div class="outline-text-3" id="text-2-3">
 <ul class="org-ul">
 <li>以student登入</li>
@@ -400,7 +400,7 @@ Double Click你新增的連線，Username欄填入student，然後按 OK
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Yung Chin, Yen</p>
-<p class="date">Created: 2021-05-21 Fri 00:04</p>
+<p class="date">Created: 2021-05-21 Fri 09:01</p>
 </div>
 </body>
 </html>

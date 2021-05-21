@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-05-08 Sat 08:50 -->
+<!-- 2021-05-21 Fri 01:19 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>SwiftUI v.s. Firebase</title>
@@ -231,32 +231,32 @@ html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-t
 <ul>
 <li><a href="#SW-Firebase-Intro">1. Introduction</a>
 <ul>
-<li><a href="#orge3959ec">1.1. A Brief History</a></li>
-<li><a href="#orgb997762">1.2. With Firebase you can</a>
+<li><a href="#org5b075e9">1.1. A Brief History</a></li>
+<li><a href="#orge3744b5">1.2. With Firebase you can</a>
 <ul>
-<li><a href="#orgf8b76df">1.2.1. Build better apps</a></li>
-<li><a href="#org79bc50f">1.2.2. Improve app quality</a></li>
-<li><a href="#org7569d62">1.2.3. Grow your business</a></li>
+<li><a href="#org7614364">1.2.1. Build better apps</a></li>
+<li><a href="#org2d973cd">1.2.2. Improve app quality</a></li>
+<li><a href="#orgcf7994c">1.2.3. Grow your business</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><a href="#SW-Firebase-database">2. Firebase database</a>
 <ul>
-<li><a href="#org0416406">2.1. Data model</a></li>
+<li><a href="#orga7ed84c">2.1. Data model</a></li>
 </ul>
 </li>
 <li><a href="#SW-Firebase-datamodel">3. Cloud Firestore Data model</a>
 <ul>
-<li><a href="#orgbbdac66">3.1. Documents</a></li>
-<li><a href="#orgfe5bc29">3.2. Collections</a></li>
-<li><a href="#org3a925bd">3.3. References</a></li>
-<li><a href="#orgd51476d">3.4. Supported data types</a></li>
-<li><a href="#org9cda49a">3.5. Index types in Cloud Firestore</a>
+<li><a href="#orgc81bd47">3.1. Documents</a></li>
+<li><a href="#orgf7a5816">3.2. Collections</a></li>
+<li><a href="#org20f3d53">3.3. References</a></li>
+<li><a href="#orge0b03c5">3.4. Supported data types</a></li>
+<li><a href="#orga3f6afd">3.5. Index types in Cloud Firestore</a>
 <ul>
-<li><a href="#org4c11419">3.5.1. An index behind every query</a></li>
-<li><a href="#org0913351">3.5.2. Less index management, more app development</a></li>
-<li><a href="#org538ae2c">3.5.3. Automatic indexing</a></li>
+<li><a href="#orged49ed9">3.5.1. An index behind every query</a></li>
+<li><a href="#org5c60a3c">3.5.2. Less index management, more app development</a></li>
+<li><a href="#orgf385f28">3.5.3. Automatic indexing</a></li>
 </ul>
 </li>
 </ul>
@@ -264,112 +264,113 @@ html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-t
 <li><a href="#SW-Firebase-CreateDatabase">4. Create your own Cloud Firestore database</a></li>
 <li><a href="#SW-Firebase-AddFirebase">5. Adding Firebase to your iOS project</a>
 <ul>
-<li><a href="#org5337041">5.1. key process</a></li>
-<li><a href="#org6cb90a5">5.2. Setting up Firebase project: Step by step</a>
+<li><a href="#org793fa32">5.1. key process</a></li>
+<li><a href="#org5b54f66">5.2. Setting up Firebase project: Step by step</a>
 <ul>
-<li><a href="#orged9a0b4">5.2.1. Create/Register</a></li>
-<li><a href="#orgd779927">5.2.2. Install SDKs</a></li>
+<li><a href="#orgf9ca22e">5.2.1. Create/Register</a></li>
+<li><a href="#orgda5be8b">5.2.2. Install SDKs</a></li>
 </ul>
 </li>
-<li><a href="#org3b05124">5.3. 資料來源</a></li>
+<li><a href="#org409acf0">5.3. 資料來源</a></li>
 </ul>
 </li>
 <li><a href="#SW-Firebase-BasicOperations">6. Basic operations to Firebase with iOS</a>
 <ul>
-<li><a href="#orgee241e3">6.1. Add document</a>
+<li><a href="#orgfa64c81">6.1. Add document</a>
 <ul>
-<li><a href="#org97dd9da">6.1.1. create a document with specific document ID</a></li>
-<li><a href="#org5ac021c">6.1.2. create a document with auto-generate document ID</a></li>
+<li><a href="#org72f3542">6.1.1. create a document with specific document ID</a></li>
+<li><a href="#org466ce1f">6.1.2. create a document with auto-generate document ID</a></li>
 </ul>
 </li>
-<li><a href="#orgfa435c8">6.2. Get data from Cloud Firestore: Basic</a>
+<li><a href="#org1561b56">6.2. Get data from Cloud Firestore: Basic</a>
 <ul>
-<li><a href="#orga4746b5">6.2.1. Getting collection</a></li>
-<li><a href="#org36c8dfd">6.2.2. Getting document</a></li>
+<li><a href="#org0b7451f">6.2.1. Getting collection</a></li>
+<li><a href="#org186a851">6.2.2. Getting document</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><a href="#SW-GetDataFromCloud">7. Get data from Cloud: UI with Firebase [MVVM]</a>
 <ul>
-<li><a href="#org1c2d5ed">7.1. MVVM architecture</a></li>
-<li><a href="#org9d42b76">7.2. Model</a></li>
-<li><a href="#orga0fc882">7.3. View</a></li>
-<li><a href="#org30f4d46">7.4. ViewModel</a></li>
-<li><a href="#org4394ebc">7.5. Repository</a></li>
-<li><a href="#org8b44d65">7.6. 資料來源</a></li>
+<li><a href="#org259d167">7.1. MVVM architecture</a></li>
+<li><a href="#org714d72d">7.2. Model</a></li>
+<li><a href="#org3b25fbf">7.3. View</a></li>
+<li><a href="#orgeb0467f">7.4. ViewModel</a></li>
+<li><a href="#orgca3e2b4">7.5. Repository</a></li>
+<li><a href="#orgfcbd3ef">7.6. 資料來源</a></li>
 </ul>
 </li>
 <li><a href="#SW-Delete">8. Add, Delete #1 data from Cloud: UI with Firebase [MVVM]</a>
 <ul>
-<li><a href="#orge2528f2">8.1. Repository</a></li>
-<li><a href="#org0a0d27c">8.2. View</a></li>
-<li><a href="#org658278a">8.3. ViewModel</a></li>
+<li><a href="#org9b145cf">8.1. Repository</a></li>
+<li><a href="#org820622f">8.2. View</a></li>
+<li><a href="#org6688d5d">8.3. ViewModel</a></li>
 </ul>
 </li>
-<li><a href="#org5b0c1aa">9. Delete #2 data from Cloud: UI with Firebase [MVVM]</a>
+<li><a href="#orgaa7644a">9. Delete #2 data from Cloud: UI with Firebase [MVVM]</a>
 <ul>
-<li><a href="#org4003138">9.1. Repository</a></li>
-<li><a href="#org9d11418">9.2. View</a></li>
-<li><a href="#org4f15e7c">9.3. ViewModel</a></li>
+<li><a href="#org0c3e1d9">9.1. Repository</a></li>
+<li><a href="#orgd227a43">9.2. View</a></li>
+<li><a href="#org4c8a926">9.3. ViewModel</a></li>
 </ul>
 </li>
 <li><a href="#SW-Detail">10. Detail/Edit data from Cloud: UI with Firebase [MVVM]</a>
 <ul>
-<li><a href="#orgd525789">10.1. Repository</a></li>
-<li><a href="#org05458c7">10.2. View</a>
+<li><a href="#orgd58107b">10.1. Repository</a></li>
+<li><a href="#orgebd3a7d">10.2. View</a>
 <ul>
-<li><a href="#org1e000fa">10.2.1. TaskListView.swift</a></li>
-<li><a href="#orgd48e695">10.2.2. TaskDetailView.swift</a></li>
-<li><a href="#org2ac6239">10.2.3. UpdateListView.swift</a></li>
+<li><a href="#org376e5c5">10.2.1. TaskListView.swift</a></li>
+<li><a href="#org8c73f49">10.2.2. TaskDetailView.swift</a></li>
+<li><a href="#orgb0b674a">10.2.3. UpdateListView.swift</a></li>
 </ul>
 </li>
-<li><a href="#orgfa16f82">10.3. ViewModel</a>
+<li><a href="#orgf97c0a6">10.3. ViewModel</a>
 <ul>
-<li><a href="#orgd413bcb">10.3.1. TaskListViewModel.swift</a></li>
-<li><a href="#orgd845fdd">10.3.2. TaskCellViewModel.swift</a></li>
-<li><a href="#org3f2e1ce">10.3.3. DEMO</a></li>
+<li><a href="#org9ffeecd">10.3.1. TaskListViewModel.swift</a></li>
+<li><a href="#org6adb011">10.3.2. TaskCellViewModel.swift</a></li>
+<li><a href="#org615d823">10.3.3. DEMO</a></li>
 </ul>
 </li>
+<li><a href="#org4b8a6dd">10.4. Topics:</a></li>
 </ul>
 </li>
 <li><a href="#SW-Icon">11. Add Icon to App</a>
 <ul>
-<li><a href="#orgf2d217d">11.1. ViewModel</a>
+<li><a href="#orga1b0791">11.1. ViewModel</a>
 <ul>
-<li><a href="#orgb071e66">11.1.1. TaskCellViewModel.swift</a></li>
+<li><a href="#org58e3592">11.1.1. TaskCellViewModel.swift</a></li>
 </ul>
 </li>
-<li><a href="#org7028cac">11.2. View</a>
+<li><a href="#org0c10371">11.2. View</a>
 <ul>
-<li><a href="#org880a50a">11.2.1. TaskListView.swift</a></li>
+<li><a href="#org1b6d633">11.2.1. TaskListView.swift</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><a href="#SW-Firebase-Storage">12. Storage</a>
 <ul>
-<li><a href="#org022f67f">12.1. preparation</a></li>
-<li><a href="#org6ded674">12.2. tips</a></li>
-<li><a href="#org0d3f925">12.3. How to pick image in iOS</a>
+<li><a href="#orgd2aab43">12.1. preparation</a></li>
+<li><a href="#orgedf629a">12.2. tips</a></li>
+<li><a href="#org1189bc6">12.3. How to pick image in iOS</a>
 <ul>
-<li><a href="#org57b68bb">12.3.1. Utility: ImagePicker</a></li>
-<li><a href="#org59b22e1">12.3.2. How to call ImagePicker in SwiftUI</a></li>
+<li><a href="#org3bf8258">12.3.1. Utility: ImagePicker</a></li>
+<li><a href="#org96c2c06">12.3.2. How to call ImagePicker in SwiftUI</a></li>
 </ul>
 </li>
-<li><a href="#org447b3ac">12.4. How to upload image to Firebase storage</a></li>
-<li><a href="#orgf7e1510">12.5. How to show online image: Kingfisher</a>
+<li><a href="#org7e65a9d">12.4. How to upload image to Firebase storage</a></li>
+<li><a href="#orgf8e219a">12.5. How to show online image: Kingfisher</a>
 <ul>
-<li><a href="#orgea38453">12.5.1. Install 3rd party swift library</a></li>
-<li><a href="#org53af4a6">12.5.2. Show online image</a></li>
+<li><a href="#org558ce93">12.5.1. Install 3rd party swift library</a></li>
+<li><a href="#org0fa513c">12.5.2. Show online image</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><a href="#SW-Firebase-LearningResource">13. Learning resources</a>
 <ul>
-<li><a href="#org26bbcf5">13.1. web</a></li>
-<li><a href="#org6343072">13.2. Videos</a></li>
+<li><a href="#org338ea0e">13.1. web</a></li>
+<li><a href="#org35d4046">13.2. Videos</a></li>
 </ul>
 </li>
 </ul>
@@ -388,8 +389,8 @@ Firebase can power your app’s backend, including data storage, user authentica
 </p>
 </div>
 
-<div id="outline-container-orge3959ec" class="outline-3">
-<h3 id="orge3959ec"><span class="section-number-3">1.1</span> A Brief History<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup></h3>
+<div id="outline-container-org5b075e9" class="outline-3">
+<h3 id="org5b075e9"><span class="section-number-3">1.1</span> A Brief History<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup></h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 Back in 2011, before Firebase was Firebase, it was a startup called <b>Envolve</b>. As Envolve, it provided developers with an API that enabled <b>the integration of online chat functionality into their website</b>.
@@ -409,8 +410,8 @@ After it was acquired by Google in 2014, Firebase rapidly evolved into the multi
 </div>
 </div>
 
-<div id="outline-container-orgb997762" class="outline-3">
-<h3 id="orgb997762"><span class="section-number-3">1.2</span> With Firebase you can<sup><a id="fnr.2.100" class="footref" href="#fn.2">2</a></sup></h3>
+<div id="outline-container-orge3744b5" class="outline-3">
+<h3 id="orge3744b5"><span class="section-number-3">1.2</span> With Firebase you can<sup><a id="fnr.2.100" class="footref" href="#fn.2">2</a></sup></h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 Firebase helps mobile app teams succeed. With Firebase you can:
@@ -421,8 +422,8 @@ Firebase helps mobile app teams succeed. With Firebase you can:
 <li>Grow your business</li>
 </ol>
 </div>
-<div id="outline-container-orgf8b76df" class="outline-4">
-<h4 id="orgf8b76df"><span class="section-number-4">1.2.1</span> Build better apps</h4>
+<div id="outline-container-org7614364" class="outline-4">
+<h4 id="org7614364"><span class="section-number-4">1.2.1</span> Build better apps</h4>
 <div class="outline-text-4" id="text-1-2-1">
 <p>
 Firebase lets you build more powerful, secure and scalable apps, using world-class infrastructure using:
@@ -439,8 +440,8 @@ Firebase lets you build more powerful, secure and scalable apps, using world-cla
 </div>
 </div>
 
-<div id="outline-container-org79bc50f" class="outline-4">
-<h4 id="org79bc50f"><span class="section-number-4">1.2.2</span> Improve app quality</h4>
+<div id="outline-container-org2d973cd" class="outline-4">
+<h4 id="org2d973cd"><span class="section-number-4">1.2.2</span> Improve app quality</h4>
 <div class="outline-text-4" id="text-1-2-2">
 <p>
 Firebase gives you insights into app performance and stability, so you can channel your resources effectively using:
@@ -454,8 +455,8 @@ Firebase gives you insights into app performance and stability, so you can chann
 </div>
 </div>
 
-<div id="outline-container-org7569d62" class="outline-4">
-<h4 id="org7569d62"><span class="section-number-4">1.2.3</span> Grow your business</h4>
+<div id="outline-container-orgcf7994c" class="outline-4">
+<h4 id="orgcf7994c"><span class="section-number-4">1.2.3</span> Grow your business</h4>
 <div class="outline-text-4" id="text-1-2-3">
 <p>
 Firebase helps you grow to millions of users, simplifying user engagement and retention using:
@@ -489,13 +490,13 @@ Firebase offers two cloud-based, client-accessible database solutions that suppo
 </ul>
 </div>
 
-<div id="outline-container-org0416406" class="outline-3">
-<h3 id="org0416406"><span class="section-number-3">2.1</span> Data model</h3>
+<div id="outline-container-orga7ed84c" class="outline-3">
+<h3 id="orga7ed84c"><span class="section-number-3">2.1</span> Data model</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 Both Realtime Database and Cloud Firestore are NoSQL Databases<sup><a id="fnr.3" class="footref" href="#fn.3">3</a></sup>.
 </p>
-<table id="org052c5ec" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="orgc3fdbba" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
@@ -555,8 +556,8 @@ Collections and documents are created implicitly in Cloud Firestore. Simply assi
 </p>
 </div>
 
-<div id="outline-container-orgbbdac66" class="outline-3">
-<h3 id="orgbbdac66"><span class="section-number-3">3.1</span> Documents</h3>
+<div id="outline-container-orgc81bd47" class="outline-3">
+<h3 id="orgc81bd47"><span class="section-number-3">3.1</span> Documents</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 In Cloud Firestore, the unit of storage is the document. A document is a lightweight record that contains fields, which map to values. Each document is identified by a name.
@@ -588,8 +589,8 @@ You may notice that documents <b>look a lot like JSON</b>. In fact, <b>they basi
 </div>
 </div>
 
-<div id="outline-container-orgfe5bc29" class="outline-3">
-<h3 id="orgfe5bc29"><span class="section-number-3">3.2</span> Collections</h3>
+<div id="outline-container-orgf7a5816" class="outline-3">
+<h3 id="orgf7a5816"><span class="section-number-3">3.2</span> Collections</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 Documents live in collections, which are simply containers for documents.
@@ -631,8 +632,8 @@ You do not need to &ldquo;create&rdquo; or &ldquo;delete&rdquo; collections. Aft
 </div>
 </div>
 
-<div id="outline-container-org3a925bd" class="outline-3">
-<h3 id="org3a925bd"><span class="section-number-3">3.3</span> References</h3>
+<div id="outline-container-org20f3d53" class="outline-3">
+<h3 id="org20f3d53"><span class="section-number-3">3.3</span> References</h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
 Every document in Cloud Firestore is <b>uniquely identified</b> by its location within the database. The previous example showed a document alovelace within the collection users. To refer to this location in your code, you can create a reference to it.
@@ -656,8 +657,8 @@ You can also create references to collections:
 </div>
 </div>
 
-<div id="outline-container-orgd51476d" class="outline-3">
-<h3 id="orgd51476d"><span class="section-number-3">3.4</span> Supported data types</h3>
+<div id="outline-container-orge0b03c5" class="outline-3">
+<h3 id="orge0b03c5"><span class="section-number-3">3.4</span> Supported data types</h3>
 <div class="outline-text-3" id="text-3-4">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -747,8 +748,8 @@ You can also create references to collections:
 </div>
 </div>
 
-<div id="outline-container-org9cda49a" class="outline-3">
-<h3 id="org9cda49a"><span class="section-number-3">3.5</span> Index types in Cloud Firestore</h3>
+<div id="outline-container-orga3f6afd" class="outline-3">
+<h3 id="orga3f6afd"><span class="section-number-3">3.5</span> Index types in Cloud Firestore</h3>
 <div class="outline-text-3" id="text-3-5">
 <p>
 Indexes are an important factor in the performance of a database. Much like the index of a book which maps topics in a book to page numbers, a database index maps the items in a database to their locations in the database. When you send a database a query, the database can use an index to quickly look up the locations of the items you requested.
@@ -759,8 +760,8 @@ This page describes the two types of indexes that Cloud Firestore uses, single-f
 </p>
 </div>
 
-<div id="outline-container-org4c11419" class="outline-4">
-<h4 id="org4c11419"><span class="section-number-4">3.5.1</span> An index behind every query</h4>
+<div id="outline-container-orged49ed9" class="outline-4">
+<h4 id="orged49ed9"><span class="section-number-4">3.5.1</span> An index behind every query</h4>
 <div class="outline-text-4" id="text-3-5-1">
 <p>
 If no index exists for a query, most databases crawl through their contents item by item, a slow process that slows down even more as the database grows. Cloud Firestore guarantees high query performance by using indexes for all queries. As a result, query performance depends on the size of the result set and not on the number of items in the database.
@@ -768,8 +769,8 @@ If no index exists for a query, most databases crawl through their contents item
 </div>
 </div>
 
-<div id="outline-container-org0913351" class="outline-4">
-<h4 id="org0913351"><span class="section-number-4">3.5.2</span> Less index management, more app development</h4>
+<div id="outline-container-org5c60a3c" class="outline-4">
+<h4 id="org5c60a3c"><span class="section-number-4">3.5.2</span> Less index management, more app development</h4>
 <div class="outline-text-4" id="text-3-5-2">
 <p>
 Cloud Firestore includes features that reduce the amount of time you need to spend managing indexes. The indexes required for the most basic queries are automatically created for you. As you use and test your app, Cloud Firestore helps you identify and create additional indexes your app requires.
@@ -777,8 +778,8 @@ Cloud Firestore includes features that reduce the amount of time you need to spe
 </div>
 </div>
 
-<div id="outline-container-org538ae2c" class="outline-4">
-<h4 id="org538ae2c"><span class="section-number-4">3.5.3</span> Automatic indexing</h4>
+<div id="outline-container-orgf385f28" class="outline-4">
+<h4 id="orgf385f28"><span class="section-number-4">3.5.3</span> Automatic indexing</h4>
 <div class="outline-text-4" id="text-3-5-3">
 <p>
 By default, Cloud Firestore automatically maintains single-field indexes for each field in a document and each subfield in a map. Cloud Firestore uses the following default settings for single-field indexes:
@@ -866,8 +867,8 @@ You can create multiple collections in one database</li>
 <h2 id="SW-Firebase-AddFirebase"><span class="section-number-2">5</span> Adding Firebase to your iOS project</h2>
 <div class="outline-text-2" id="text-SW-Firebase-AddFirebase">
 </div>
-<div id="outline-container-org5337041" class="outline-3">
-<h3 id="org5337041"><span class="section-number-3">5.1</span> key process</h3>
+<div id="outline-container-org793fa32" class="outline-3">
+<h3 id="org793fa32"><span class="section-number-3">5.1</span> key process</h3>
 <div class="outline-text-3" id="text-5-1">
 <ol class="org-ol">
 <li>Create a FIrebase project [DONE]</li>
@@ -882,12 +883,12 @@ You can create multiple collections in one database</li>
 </div>
 </div>
 
-<div id="outline-container-org6cb90a5" class="outline-3">
-<h3 id="org6cb90a5"><span class="section-number-3">5.2</span> Setting up Firebase project: Step by step</h3>
+<div id="outline-container-org5b54f66" class="outline-3">
+<h3 id="org5b54f66"><span class="section-number-3">5.2</span> Setting up Firebase project: Step by step</h3>
 <div class="outline-text-3" id="text-5-2">
 </div>
-<div id="outline-container-orged9a0b4" class="outline-4">
-<h4 id="orged9a0b4"><span class="section-number-4">5.2.1</span> Create/Register</h4>
+<div id="outline-container-orgf9ca22e" class="outline-4">
+<h4 id="orgf9ca22e"><span class="section-number-4">5.2.1</span> Create/Register</h4>
 <div class="outline-text-4" id="text-5-2-1">
 <ol class="org-ol">
 <li>Create or open a Firebase project
@@ -906,12 +907,12 @@ this config file (GoogleService-info.plist) will be added to your project</li>
 </ol>
 </div>
 </div>
-<div id="outline-container-orgd779927" class="outline-4">
-<h4 id="orgd779927"><span class="section-number-4">5.2.2</span> Install SDKs</h4>
+<div id="outline-container-orgda5be8b" class="outline-4">
+<h4 id="orgda5be8b"><span class="section-number-4">5.2.2</span> Install SDKs</h4>
 <div class="outline-text-4" id="text-5-2-2">
 </div>
 <ol class="org-ol">
-<li><a id="org0cde88a"></a>Method #1: CocoaPods<br />
+<li><a id="org0e3b21e"></a>Method #1: CocoaPods<br />
 <div class="outline-text-5" id="text-5-2-2-1">
 <ol class="org-ol">
 <li>Add Firebase SDKs
@@ -988,7 +989,7 @@ and then wait&#x2026;&#x2026;
 </ol>
 </div>
 </li>
-<li><a id="orgd442de0"></a>Method #2: Swift Package Manager for Firebase<br />
+<li><a id="org85147cb"></a>Method #2: Swift Package Manager for Firebase<br />
 <div class="outline-text-5" id="text-5-2-2-2">
 <ol class="org-ol">
 <li>If you&rsquo;ve previously used CocoaPods, remove them from the project with pod deintegrate.</li>
@@ -996,7 +997,7 @@ and then wait&#x2026;&#x2026;
 Install Firebase via Swift Package Manager:
 </p>
 
-<div id="orgbfdc20a" class="figure">
+<div id="org23e33a8" class="figure">
 <p><img src="images/sdk-1.jpg" alt="sdk-1.jpg" width="500" />
 </p>
 <p><span class="figure-number">Figure 1: </span>Install Firebase SDK #1</p>
@@ -1006,7 +1007,7 @@ Select the Firebase GitHub repository
 ios sdk URL: <a href="https://github.com/firebase/firebase-ios-sdk.git">https://github.com/firebase/firebase-ios-sdk.git</a>:
 </p>
 
-<div id="orgaee4ef1" class="figure">
+<div id="orgadda826" class="figure">
 <p><img src="images/sdk-2.jpg" alt="sdk-2.jpg" width="500" />
 </p>
 <p><span class="figure-number">Figure 2: </span>Install Firebase SDK #2</p>
@@ -1015,7 +1016,7 @@ ios sdk URL: <a href="https://github.com/firebase/firebase-ios-sdk.git">https://
 Select the Branch: maser
 </p>
 
-<div id="org118bcc2" class="figure">
+<div id="org6068715" class="figure">
 <p><img src="images/sdk-3.jpg" alt="sdk-3.jpg" width="500" />
 </p>
 <p><span class="figure-number">Figure 3: </span>Install Firebase SDK #3</p>
@@ -1024,7 +1025,7 @@ Select the Branch: maser
 Wait about 2000 years
 </p>
 
-<div id="orgf1fceff" class="figure">
+<div id="org22432a1" class="figure">
 <p><img src="images/sdk-3.jpg" alt="sdk-3.jpg" width="500" />
 </p>
 <p><span class="figure-number">Figure 4: </span>Install Firebase SDK #3</p>
@@ -1033,7 +1034,7 @@ Wait about 2000 years
 Choose the Firebase products that you want installed in your app.
 </p>
 
-<div id="org6f3523a" class="figure">
+<div id="orge49edd6" class="figure">
 <p><img src="images/sdk-4.jpg" alt="sdk-4.jpg" width="500" />
 </p>
 <p><span class="figure-number">Figure 5: </span>Install Firebase SDK #4</p>
@@ -1042,7 +1043,7 @@ Choose the Firebase products that you want installed in your app.
 DEMO
 </p>
 
-<div id="orgf9b03fb" class="figure">
+<div id="org5bfc4c0" class="figure">
 <p><img src="images/sdk.gif" alt="sdk.gif" width="500" />
 </p>
 <p><span class="figure-number">Figure 6: </span>Install Firebase SDK #DEMO</p>
@@ -1050,7 +1051,7 @@ DEMO
 </ol>
 </div>
 </li>
-<li><a id="org0fc5bd9"></a>Initialize Project<br />
+<li><a id="orgf306b5a"></a>Initialize Project<br />
 <div class="outline-text-5" id="text-5-2-2-3">
 <ol class="org-ol">
 <li>Open your project (xcworkspace)</li>
@@ -1089,8 +1090,8 @@ Initilize the App struct by adding the following code
 </div>
 </div>
 
-<div id="outline-container-org3b05124" class="outline-3">
-<h3 id="org3b05124"><span class="section-number-3">5.3</span> 資料來源</h3>
+<div id="outline-container-org409acf0" class="outline-3">
+<h3 id="org409acf0"><span class="section-number-3">5.3</span> 資料來源</h3>
 <div class="outline-text-3" id="text-5-3">
 <ul class="org-ul">
 <li><a href="https://1998design.medium.com/%E5%A6%82%E4%BD%95-%E5%B0%87firebase%E5%8A%A0%E5%85%A5ios-swiftui-2-2020-d4315d0173ca">如何：將Firebase加入iOS SwiftUI 2 (2020)</a></li>
@@ -1109,12 +1110,12 @@ Initilize the App struct by adding the following code
 Create a button on View for trying the following function
 </p>
 </div>
-<div id="outline-container-orgee241e3" class="outline-3">
-<h3 id="orgee241e3"><span class="section-number-3">6.1</span> Add document</h3>
+<div id="outline-container-orgfa64c81" class="outline-3">
+<h3 id="orgfa64c81"><span class="section-number-3">6.1</span> Add document</h3>
 <div class="outline-text-3" id="text-6-1">
 </div>
-<div id="outline-container-org97dd9da" class="outline-4">
-<h4 id="org97dd9da"><span class="section-number-4">6.1.1</span> create a document with specific document ID</h4>
+<div id="outline-container-org72f3542" class="outline-4">
+<h4 id="org72f3542"><span class="section-number-4">6.1.1</span> create a document with specific document ID</h4>
 <div class="outline-text-4" id="text-6-1-1">
 <ul class="org-ul">
 <li><p>
@@ -1164,8 +1165,8 @@ ContentView.swift
 </ul>
 </div>
 </div>
-<div id="outline-container-org5ac021c" class="outline-4">
-<h4 id="org5ac021c"><span class="section-number-4">6.1.2</span> create a document with auto-generate document ID</h4>
+<div id="outline-container-org466ce1f" class="outline-4">
+<h4 id="org466ce1f"><span class="section-number-4">6.1.2</span> create a document with auto-generate document ID</h4>
 <div class="outline-text-4" id="text-6-1-2">
 <ul class="org-ul">
 <li><p>
@@ -1219,12 +1220,12 @@ ContentView.swift</li>
 </div>
 </div>
 
-<div id="outline-container-orgfa435c8" class="outline-3">
-<h3 id="orgfa435c8"><span class="section-number-3">6.2</span> Get data from Cloud Firestore: Basic</h3>
+<div id="outline-container-org1561b56" class="outline-3">
+<h3 id="org1561b56"><span class="section-number-3">6.2</span> Get data from Cloud Firestore: Basic</h3>
 <div class="outline-text-3" id="text-6-2">
 </div>
-<div id="outline-container-orga4746b5" class="outline-4">
-<h4 id="orga4746b5"><span class="section-number-4">6.2.1</span> Getting collection</h4>
+<div id="outline-container-org0b7451f" class="outline-4">
+<h4 id="org0b7451f"><span class="section-number-4">6.2.1</span> Getting collection</h4>
 <div class="outline-text-4" id="text-6-2-1">
 <ul class="org-ul">
 <li><p>
@@ -1267,8 +1268,8 @@ ContentView.swift
 </ul>
 </div>
 </div>
-<div id="outline-container-org36c8dfd" class="outline-4">
-<h4 id="org36c8dfd"><span class="section-number-4">6.2.2</span> Getting document</h4>
+<div id="outline-container-org186a851" class="outline-4">
+<h4 id="org186a851"><span class="section-number-4">6.2.2</span> Getting document</h4>
 <div class="outline-text-4" id="text-6-2-2">
 <ul class="org-ul">
 <li><p>
@@ -1327,19 +1328,19 @@ ContentView.swift
 <h2 id="SW-GetDataFromCloud"><span class="section-number-2">7</span> Get data from Cloud: UI with Firebase [MVVM]</h2>
 <div class="outline-text-2" id="text-SW-GetDataFromCloud">
 </div>
-<div id="outline-container-org1c2d5ed" class="outline-3">
-<h3 id="org1c2d5ed"><span class="section-number-3">7.1</span> MVVM architecture</h3>
+<div id="outline-container-org259d167" class="outline-3">
+<h3 id="org259d167"><span class="section-number-3">7.1</span> MVVM architecture</h3>
 <div class="outline-text-3" id="text-7-1">
 
-<div id="orgf8e11c3" class="figure">
+<div id="orgafc67bc" class="figure">
 <p><img src="images/mvvm-d2.png" alt="mvvm-d2.png" width="500" />
 </p>
 <p><span class="figure-number">Figure 7: </span>MVVM for FirebaseApp</p>
 </div>
 </div>
 </div>
-<div id="outline-container-org9d42b76" class="outline-3">
-<h3 id="org9d42b76"><span class="section-number-3">7.2</span> Model</h3>
+<div id="outline-container-org714d72d" class="outline-3">
+<h3 id="org714d72d"><span class="section-number-3">7.2</span> Model</h3>
 <div class="outline-text-3" id="text-7-2">
 <p>
 Task.swift
@@ -1359,8 +1360,8 @@ Task.swift
 </div>
 </div>
 </div>
-<div id="outline-container-orga0fc882" class="outline-3">
-<h3 id="orga0fc882"><span class="section-number-3">7.3</span> View</h3>
+<div id="outline-container-org3b25fbf" class="outline-3">
+<h3 id="org3b25fbf"><span class="section-number-3">7.3</span> View</h3>
 <div class="outline-text-3" id="text-7-3">
 <p>
 TaskListView.swift
@@ -1382,8 +1383,8 @@ TaskListView.swift
 </div>
 </div>
 </div>
-<div id="outline-container-org30f4d46" class="outline-3">
-<h3 id="org30f4d46"><span class="section-number-3">7.4</span> ViewModel</h3>
+<div id="outline-container-orgeb0467f" class="outline-3">
+<h3 id="orgeb0467f"><span class="section-number-3">7.4</span> ViewModel</h3>
 <div class="outline-text-3" id="text-7-4">
 <ul class="org-ul">
 <li><p>
@@ -1439,8 +1440,8 @@ TaskListViewModel.swift
 </ul>
 </div>
 </div>
-<div id="outline-container-org4394ebc" class="outline-3">
-<h3 id="org4394ebc"><span class="section-number-3">7.5</span> Repository</h3>
+<div id="outline-container-orgca3e2b4" class="outline-3">
+<h3 id="orgca3e2b4"><span class="section-number-3">7.5</span> Repository</h3>
 <div class="outline-text-3" id="text-7-5">
 <p>
 TaskRepository.swift
@@ -1479,8 +1480,8 @@ TaskRepository.swift
 </div>
 </div>
 
-<div id="outline-container-org8b44d65" class="outline-3">
-<h3 id="org8b44d65"><span class="section-number-3">7.6</span> 資料來源</h3>
+<div id="outline-container-orgfcbd3ef" class="outline-3">
+<h3 id="orgfcbd3ef"><span class="section-number-3">7.6</span> 資料來源</h3>
 <div class="outline-text-3" id="text-7-6">
 <ul class="org-ul">
 <li><a href="https://www.raywenderlich.com/11609977-getting-started-with-cloud-firestore-and-swiftui">Getting Started with Cloud Firestore and SwiftUI</a></li>
@@ -1498,8 +1499,8 @@ TaskRepository.swift
 <h2 id="SW-Delete"><span class="section-number-2">8</span> Add, Delete #1 data from Cloud: UI with Firebase [MVVM]</h2>
 <div class="outline-text-2" id="text-SW-Delete">
 </div>
-<div id="outline-container-orge2528f2" class="outline-3">
-<h3 id="orge2528f2"><span class="section-number-3">8.1</span> Repository</h3>
+<div id="outline-container-org9b145cf" class="outline-3">
+<h3 id="org9b145cf"><span class="section-number-3">8.1</span> Repository</h3>
 <div class="outline-text-3" id="text-8-1">
 <p>
 TaskRepository.swift
@@ -1533,8 +1534,8 @@ TaskRepository.swift
 </div>
 </div>
 
-<div id="outline-container-org0a0d27c" class="outline-3">
-<h3 id="org0a0d27c"><span class="section-number-3">8.2</span> View</h3>
+<div id="outline-container-org820622f" class="outline-3">
+<h3 id="org820622f"><span class="section-number-3">8.2</span> View</h3>
 <div class="outline-text-3" id="text-8-2">
 <p>
 TaskListView.swift
@@ -1583,8 +1584,8 @@ TaskListView.swift
 </div>
 </div>
 
-<div id="outline-container-org658278a" class="outline-3">
-<h3 id="org658278a"><span class="section-number-3">8.3</span> ViewModel</h3>
+<div id="outline-container-org6688d5d" class="outline-3">
+<h3 id="org6688d5d"><span class="section-number-3">8.3</span> ViewModel</h3>
 <div class="outline-text-3" id="text-8-3">
 <p>
 TaskListViewModel.swift
@@ -1629,12 +1630,12 @@ TaskListViewModel.swift
 </div>
 </div>
 
-<div id="outline-container-org5b0c1aa" class="outline-2">
-<h2 id="org5b0c1aa"><span class="section-number-2">9</span> Delete #2 data from Cloud: UI with Firebase [MVVM]</h2>
+<div id="outline-container-orgaa7644a" class="outline-2">
+<h2 id="orgaa7644a"><span class="section-number-2">9</span> Delete #2 data from Cloud: UI with Firebase [MVVM]</h2>
 <div class="outline-text-2" id="text-9">
 </div>
-<div id="outline-container-org4003138" class="outline-3">
-<h3 id="org4003138"><span class="section-number-3">9.1</span> Repository</h3>
+<div id="outline-container-org0c3e1d9" class="outline-3">
+<h3 id="org0c3e1d9"><span class="section-number-3">9.1</span> Repository</h3>
 <div class="outline-text-3" id="text-9-1">
 <div class="org-src-container">
 <pre class="src src-python"><span class="linenr"> 1: </span>//
@@ -1715,8 +1716,8 @@ TaskListViewModel.swift
 </div>
 </div>
 
-<div id="outline-container-org9d11418" class="outline-3">
-<h3 id="org9d11418"><span class="section-number-3">9.2</span> View</h3>
+<div id="outline-container-orgd227a43" class="outline-3">
+<h3 id="orgd227a43"><span class="section-number-3">9.2</span> View</h3>
 <div class="outline-text-3" id="text-9-2">
 <div class="org-src-container">
 <pre class="src src-python"><span class="linenr"> 1: </span>//
@@ -1771,8 +1772,8 @@ TaskListViewModel.swift
 </div>
 </div>
 
-<div id="outline-container-org4f15e7c" class="outline-3">
-<h3 id="org4f15e7c"><span class="section-number-3">9.3</span> ViewModel</h3>
+<div id="outline-container-org4c8a926" class="outline-3">
+<h3 id="org4c8a926"><span class="section-number-3">9.3</span> ViewModel</h3>
 <div class="outline-text-3" id="text-9-3">
 <div class="org-src-container">
 <pre class="src src-python"><span class="linenr"> 1: </span>//
@@ -1822,8 +1823,8 @@ TaskListViewModel.swift
 <h2 id="SW-Detail"><span class="section-number-2">10</span> Detail/Edit data from Cloud: UI with Firebase [MVVM]</h2>
 <div class="outline-text-2" id="text-SW-Detail">
 </div>
-<div id="outline-container-orgd525789" class="outline-3">
-<h3 id="orgd525789"><span class="section-number-3">10.1</span> Repository</h3>
+<div id="outline-container-orgd58107b" class="outline-3">
+<h3 id="orgd58107b"><span class="section-number-3">10.1</span> Repository</h3>
 <div class="outline-text-3" id="text-10-1">
 <p>
 TaskRepository.swift
@@ -1914,12 +1915,12 @@ TaskRepository.swift
 </div>
 </div>
 
-<div id="outline-container-org05458c7" class="outline-3">
-<h3 id="org05458c7"><span class="section-number-3">10.2</span> View</h3>
+<div id="outline-container-orgebd3a7d" class="outline-3">
+<h3 id="orgebd3a7d"><span class="section-number-3">10.2</span> View</h3>
 <div class="outline-text-3" id="text-10-2">
 </div>
-<div id="outline-container-org1e000fa" class="outline-4">
-<h4 id="org1e000fa"><span class="section-number-4">10.2.1</span> TaskListView.swift</h4>
+<div id="outline-container-org376e5c5" class="outline-4">
+<h4 id="org376e5c5"><span class="section-number-4">10.2.1</span> TaskListView.swift</h4>
 <div class="outline-text-4" id="text-10-2-1">
 <div class="org-src-container">
 <pre class="src src-python"><span class="linenr"> 1: </span>//
@@ -1979,8 +1980,8 @@ TaskRepository.swift
 </div>
 </div>
 
-<div id="outline-container-orgd48e695" class="outline-4">
-<h4 id="orgd48e695"><span class="section-number-4">10.2.2</span> TaskDetailView.swift</h4>
+<div id="outline-container-org8c73f49" class="outline-4">
+<h4 id="org8c73f49"><span class="section-number-4">10.2.2</span> TaskDetailView.swift</h4>
 <div class="outline-text-4" id="text-10-2-2">
 <div class="org-src-container">
 <pre class="src src-python"><span class="linenr"> 1: </span>//
@@ -2030,8 +2031,8 @@ TaskRepository.swift
 </div>
 </div>
 
-<div id="outline-container-org2ac6239" class="outline-4">
-<h4 id="org2ac6239"><span class="section-number-4">10.2.3</span> UpdateListView.swift</h4>
+<div id="outline-container-orgb0b674a" class="outline-4">
+<h4 id="orgb0b674a"><span class="section-number-4">10.2.3</span> UpdateListView.swift</h4>
 <div class="outline-text-4" id="text-10-2-3">
 <div class="org-src-container">
 <pre class="src src-python"><span class="linenr"> 1: </span>//
@@ -2078,12 +2079,12 @@ TaskRepository.swift
 </div>
 </div>
 
-<div id="outline-container-orgfa16f82" class="outline-3">
-<h3 id="orgfa16f82"><span class="section-number-3">10.3</span> ViewModel</h3>
+<div id="outline-container-orgf97c0a6" class="outline-3">
+<h3 id="orgf97c0a6"><span class="section-number-3">10.3</span> ViewModel</h3>
 <div class="outline-text-3" id="text-10-3">
 </div>
-<div id="outline-container-orgd413bcb" class="outline-4">
-<h4 id="orgd413bcb"><span class="section-number-4">10.3.1</span> TaskListViewModel.swift</h4>
+<div id="outline-container-org9ffeecd" class="outline-4">
+<h4 id="org9ffeecd"><span class="section-number-4">10.3.1</span> TaskListViewModel.swift</h4>
 <div class="outline-text-4" id="text-10-3-1">
 <div class="org-src-container">
 <pre class="src src-python"><span class="linenr"> 1: </span>//
@@ -2131,8 +2132,8 @@ TaskRepository.swift
 </div>
 </div>
 
-<div id="outline-container-orgd845fdd" class="outline-4">
-<h4 id="orgd845fdd"><span class="section-number-4">10.3.2</span> TaskCellViewModel.swift</h4>
+<div id="outline-container-org6adb011" class="outline-4">
+<h4 id="org6adb011"><span class="section-number-4">10.3.2</span> TaskCellViewModel.swift</h4>
 <div class="outline-text-4" id="text-10-3-2">
 <div class="org-src-container">
 <pre class="src src-python"><span class="linenr"> 1: </span>//
@@ -2168,16 +2169,25 @@ TaskRepository.swift
 </div>
 </div>
 
-<div id="outline-container-org3f2e1ce" class="outline-4">
-<h4 id="org3f2e1ce"><span class="section-number-4">10.3.3</span> DEMO</h4>
+<div id="outline-container-org615d823" class="outline-4">
+<h4 id="org615d823"><span class="section-number-4">10.3.3</span> DEMO</h4>
 <div class="outline-text-4" id="text-10-3-3">
 
-<div id="orge59bc8c" class="figure">
+<div id="org40fdf24" class="figure">
 <p><img src="images/Update-Edit.gif" alt="Update-Edit.gif" width="300" />
 </p>
 <p><span class="figure-number">Figure 8: </span>Detail / Edit DEMO</p>
 </div>
 </div>
+</div>
+</div>
+
+<div id="outline-container-org4b8a6dd" class="outline-3">
+<h3 id="org4b8a6dd"><span class="section-number-3">10.4</span> Topics:</h3>
+<div class="outline-text-3" id="text-10-4">
+<ul class="org-ul">
+<li>Detection of Modified: <a href="https://www.youtube.com/watch?v=imTjGvSjBEw">Adding data to Firestore from a SwiftUI App</a></li>
+</ul>
 </div>
 </div>
 </div>
@@ -2186,12 +2196,12 @@ TaskRepository.swift
 <h2 id="SW-Icon"><span class="section-number-2">11</span> Add Icon to App</h2>
 <div class="outline-text-2" id="text-SW-Icon">
 </div>
-<div id="outline-container-orgf2d217d" class="outline-3">
-<h3 id="orgf2d217d"><span class="section-number-3">11.1</span> ViewModel</h3>
+<div id="outline-container-orga1b0791" class="outline-3">
+<h3 id="orga1b0791"><span class="section-number-3">11.1</span> ViewModel</h3>
 <div class="outline-text-3" id="text-11-1">
 </div>
-<div id="outline-container-orgb071e66" class="outline-4">
-<h4 id="orgb071e66"><span class="section-number-4">11.1.1</span> TaskCellViewModel.swift</h4>
+<div id="outline-container-org58e3592" class="outline-4">
+<h4 id="org58e3592"><span class="section-number-4">11.1.1</span> TaskCellViewModel.swift</h4>
 <div class="outline-text-4" id="text-11-1-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #5B6268;">//</span>
@@ -2237,12 +2247,12 @@ TaskRepository.swift
 </div>
 </div>
 </div>
-<div id="outline-container-org7028cac" class="outline-3">
-<h3 id="org7028cac"><span class="section-number-3">11.2</span> View</h3>
+<div id="outline-container-org0c10371" class="outline-3">
+<h3 id="org0c10371"><span class="section-number-3">11.2</span> View</h3>
 <div class="outline-text-3" id="text-11-2">
 </div>
-<div id="outline-container-org880a50a" class="outline-4">
-<h4 id="org880a50a"><span class="section-number-4">11.2.1</span> TaskListView.swift</h4>
+<div id="outline-container-org1b6d633" class="outline-4">
+<h4 id="org1b6d633"><span class="section-number-4">11.2.1</span> TaskListView.swift</h4>
 <div class="outline-text-4" id="text-11-2-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #5B6268;">//</span>
@@ -2314,8 +2324,8 @@ TaskRepository.swift
 <h2 id="SW-Firebase-Storage"><span class="section-number-2">12</span> Storage</h2>
 <div class="outline-text-2" id="text-SW-Firebase-Storage">
 </div>
-<div id="outline-container-org022f67f" class="outline-3">
-<h3 id="org022f67f"><span class="section-number-3">12.1</span> preparation</h3>
+<div id="outline-container-orgd2aab43" class="outline-3">
+<h3 id="orgd2aab43"><span class="section-number-3">12.1</span> preparation</h3>
 <div class="outline-text-3" id="text-12-1">
 <ol class="org-ol">
 <li>Add Firebase/Strage Library</li>
@@ -2327,8 +2337,8 @@ TaskRepository.swift
 </div>
 </div>
 
-<div id="outline-container-org6ded674" class="outline-3">
-<h3 id="org6ded674"><span class="section-number-3">12.2</span> tips</h3>
+<div id="outline-container-orgedf629a" class="outline-3">
+<h3 id="orgedf629a"><span class="section-number-3">12.2</span> tips</h3>
 <div class="outline-text-3" id="text-12-2">
 <ol class="org-ol">
 <li><p>
@@ -2401,12 +2411,12 @@ User based security with Storage Security Rules
 </div>
 </div>
 
-<div id="outline-container-org0d3f925" class="outline-3">
-<h3 id="org0d3f925"><span class="section-number-3">12.3</span> How to pick image in iOS</h3>
+<div id="outline-container-org1189bc6" class="outline-3">
+<h3 id="org1189bc6"><span class="section-number-3">12.3</span> How to pick image in iOS</h3>
 <div class="outline-text-3" id="text-12-3">
 </div>
-<div id="outline-container-org57b68bb" class="outline-4">
-<h4 id="org57b68bb"><span class="section-number-4">12.3.1</span> Utility: ImagePicker</h4>
+<div id="outline-container-org3bf8258" class="outline-4">
+<h4 id="org3bf8258"><span class="section-number-4">12.3.1</span> Utility: ImagePicker</h4>
 <div class="outline-text-4" id="text-12-3-1">
 <p>
 ImagePicker.swift
@@ -2459,8 +2469,8 @@ ImagePicker.swift
 </div>
 </div>
 </div>
-<div id="outline-container-org59b22e1" class="outline-4">
-<h4 id="org59b22e1"><span class="section-number-4">12.3.2</span> How to call ImagePicker in SwiftUI</h4>
+<div id="outline-container-org96c2c06" class="outline-4">
+<h4 id="org96c2c06"><span class="section-number-4">12.3.2</span> How to call ImagePicker in SwiftUI</h4>
 <div class="outline-text-4" id="text-12-3-2">
 <p>
 TaskNewView.swift
@@ -2490,7 +2500,7 @@ TaskNewView.swift
 <span class="linenr">22: </span>            Image(uiImage: ((pickedImage ?? UIImage(systemName: <span style="color: #98be65;">"camera"</span>))!))
 <span class="linenr">23: </span>                .resizable()
 <span class="linenr">24: </span>                .aspectRatio(contentMode: .fill)
-<span class="linenr">25: </span>                .frame(width: <span style="color: #da8548; font-weight: bold;">200</span>, height: <span style="color: #da8548; font-weight: bold;">180</span>, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+<span class="linenr">25: </span>                .frame(width: <span style="color: #da8548; font-weight: bold;">200</span>, height: <span style="color: #da8548; font-weight: bold;">180</span>, alignment: .center)
 <span class="linenr">26: </span>                .clipped()
 <span class="linenr">27: </span>                .aspectRatio(contentMode: .fit)
 <span class="linenr">28: </span>
@@ -2528,8 +2538,8 @@ TaskNewView.swift
 </div>
 </div>
 
-<div id="outline-container-org447b3ac" class="outline-3">
-<h3 id="org447b3ac"><span class="section-number-3">12.4</span> How to upload image to Firebase storage</h3>
+<div id="outline-container-org7e65a9d" class="outline-3">
+<h3 id="org7e65a9d"><span class="section-number-3">12.4</span> How to upload image to Firebase storage</h3>
 <div class="outline-text-3" id="text-12-4">
 <p>
 TaskRepository.swift: Upload image and get image URL
@@ -2679,20 +2689,20 @@ TaskRepository.swift: Upload image and get image URL
 </div>
 </div>
 
-<div id="outline-container-orgf7e1510" class="outline-3">
-<h3 id="orgf7e1510"><span class="section-number-3">12.5</span> How to show online image: Kingfisher</h3>
+<div id="outline-container-orgf8e219a" class="outline-3">
+<h3 id="orgf8e219a"><span class="section-number-3">12.5</span> How to show online image: Kingfisher</h3>
 <div class="outline-text-3" id="text-12-5">
 </div>
-<div id="outline-container-orgea38453" class="outline-4">
-<h4 id="orgea38453"><span class="section-number-4">12.5.1</span> Install 3rd party swift library</h4>
+<div id="outline-container-org558ce93" class="outline-4">
+<h4 id="org558ce93"><span class="section-number-4">12.5.1</span> Install 3rd party swift library</h4>
 <div class="outline-text-4" id="text-12-5-1">
 <p>
 Kingfisher (a powerful, pure-Swift library for downloading and caching images from the web.)
 </p>
 </div>
 </div>
-<div id="outline-container-org53af4a6" class="outline-4">
-<h4 id="org53af4a6"><span class="section-number-4">12.5.2</span> Show online image</h4>
+<div id="outline-container-org0fa513c" class="outline-4">
+<h4 id="org0fa513c"><span class="section-number-4">12.5.2</span> Show online image</h4>
 <div class="outline-text-4" id="text-12-5-2">
 <p>
 TaskDetailView.swift
@@ -2760,8 +2770,8 @@ TaskDetailView.swift
 <h2 id="SW-Firebase-LearningResource"><span class="section-number-2">13</span> Learning resources</h2>
 <div class="outline-text-2" id="text-SW-Firebase-LearningResource">
 </div>
-<div id="outline-container-org26bbcf5" class="outline-3">
-<h3 id="org26bbcf5"><span class="section-number-3">13.1</span> web</h3>
+<div id="outline-container-org338ea0e" class="outline-3">
+<h3 id="org338ea0e"><span class="section-number-3">13.1</span> web</h3>
 <div class="outline-text-3" id="text-13-1">
 <ul class="org-ul">
 <li><a href="https://medium.com/flawless-app-stories/how-to-build-a-firebase-app-with-swiftui-5919d2d8a396">How To Build A Firebase App With SwiftUI</a></li>
@@ -2769,8 +2779,8 @@ TaskDetailView.swift
 </ul>
 </div>
 </div>
-<div id="outline-container-org6343072" class="outline-3">
-<h3 id="org6343072"><span class="section-number-3">13.2</span> Videos</h3>
+<div id="outline-container-org35d4046" class="outline-3">
+<h3 id="org35d4046"><span class="section-number-3">13.2</span> Videos</h3>
 <div class="outline-text-3" id="text-13-2">
 <ul class="org-ul">
 <li><a href="https://www.youtube.com/watch?v=GGp-wT693IY">Downloading Images in SwiftUI</a></li>
@@ -2814,7 +2824,7 @@ TaskDetailView.swift
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Yung Chin, Yen</p>
-<p class="date">Created: 2021-05-08 Sat 08:50</p>
+<p class="date">Created: 2021-05-21 Fri 01:19</p>
 </div>
 </body>
 </html>
