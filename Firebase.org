@@ -1454,6 +1454,9 @@ service firebase.storage {
 [[https://firebase.googleblog.com/2016/07/5-tips-for-firebase-storage.html][5 tips for Firebase Storage ]]
 
 ** How to pick image in iOS
+:PROPERTIES:
+:CUSTOM_ID: SW-ImagePicker
+:END:
 *** Utility: ImagePicker
 ImagePicker.swift
 #+begin_src swift :noevl
@@ -1560,6 +1563,29 @@ struct TaskNewView_Previews: PreviewProvider {
         TaskNewView()
     }
 }
+#+end_src
+
+** Just Upload Image to Firebase Storage
+:PROPERTIES:
+:CUSTOM_ID: SW-UploadImage
+:END:
+#+begin_src swift -r -n :results output :exports nil
+// 隨機產生上傳的檔名
+let imageRefStr = "images/\(UUID().uuidString).jpg"
+// 設好檔案的storage reference
+let imageRef = Storage.storage().reference().child(imageRefStr)
+// 壓縮圖片
+guard let sureImage = image.jpegData(compressionQuality: 1) else {
+    print("error when processing image compression")
+    return
+}
+// 上傳
+imageRef.putData(sureImage, metadata: nil) { (meta, err) in
+    if let err = err {
+        print(err)
+        return
+    }}
+
 #+end_src
 
 ** How to upload image to Firebase storage
