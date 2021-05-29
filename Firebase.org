@@ -1,5 +1,5 @@
 #+TITLE: SwiftUI v.s. Firebase
-#+INCLUDE: ../themes/comfy_inline/comfy_inline.theme
+#+SETUPFILE: ../themes/simple_white/simple_white.theme
 #+HTML_HEAD_EXTRA: <style>*{font-family: Courier New !important}</style>
 #+OPTIONS: ^:nil
 #+latex:\newpage

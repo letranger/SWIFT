@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-05-29 Sat 20:50 -->
+<!-- 2021-05-29 Sat 21:46 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>SwiftUI v.s. Firebase</title>
@@ -193,9 +193,7 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
-<style type="text/css">
-html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block}audio:not([controls]){display:none;height:0}progress{vertical-align:baseline}[hidden],template{display:none}a{background-color:transparent;-webkit-text-decoration-skip:objects}a:active,a:hover{outline-width:0}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:inherit;font-weight:bolder}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background-color:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}svg:not(:root){overflow:hidden}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}figure{margin:1em 40px}hr{box-sizing:content-box;height:0;overflow:visible}button,input,optgroup,select,textarea{font:inherit;margin:0}optgroup{font-weight:700}button,input{overflow:visible}button,select{text-transform:none}[type=reset],[type=submit],button,html [type=button]{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-cancel-button,[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-input-placeholder{color:inherit;opacity:.54}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}body{color:#000;background-color:#fff}.org-alert-high{color:#ff8c00;font-weight:700}.org-alert-low{color:#00008b}.org-alert-moderate{color:gold;font-weight:700}.org-alert-saved-fringe{background-color:#f2f2f2}.org-alert-trivial{color:Dark purple}.org-alert-urgent{color:red;font-weight:700}.org-anzu-match-1{color:#000;background-color:#7fffd4}.org-anzu-match-2{color:#000;background-color:#00ff7f}.org-anzu-match-3{color:#000;background-color:#ff0}.org-anzu-mode-line,.org-anzu-mode-line-no-match{color:#008b00;font-weight:700}.org-anzu-replace-highlight{color:#b0e2ff;background-color:#cd00cd}.org-anzu-replace-to{color:red}.org-bbdb-field-name{color:sienna}.org-bbdb-name{color:#00f}.org-bbdb-organization{color:#b22222}.org-beacon-fallback-background{background-color:#000}.org-biblio-results-header{color:#483d8b;font-size:150%;font-weight:700}.org-bold{font-weight:700}.org-bold-italic{font-weight:700;font-style:italic}.org-bookmark-menu-bookmark{font-weight:700}.org-bookmark-menu-heading{color:#228b22}.org-buffer-menu-buffer{font-weight:700}.org-builtin{color:#483d8b}.org-button{color:#3a5fcd;text-decoration:underline}.org-c-annotation{color:#008b8b}.org-cal-china-x-general-holiday{background-color:#228b22}.org-cal-china-x-important-holiday{background-color:#8b0000}.org-calendar-iso-week{color:pink;font-weight:700}.org-calendar-iso-week-header{color:#0ff}.org-calendar-month-header{color:#00f}.org-calendar-today{text-decoration:underline}.org-calendar-weekday-header{color:#008b8b}.org-calendar-weekend-header{color:#b22222}.org-comint-highlight-input{font-weight:700}.org-comint-highlight-prompt{color:#0000cd}.org-comment,.org-comment-delimiter{color:#b22222}.org-compilation-column-number{color:#8b2252}.org-compilation-error{color:red;font-weight:700}.org-compilation-info{color:#228b22;font-weight:700}.org-compilation-line-number{color:#a020f0}.org-compilation-mode-line-exit{color:#228b22;font-weight:700}.org-compilation-mode-line-fail{color:red;font-weight:700}.org-compilation-mode-line-run,.org-compilation-warning{color:#ff8c00;font-weight:700}.org-completions-annotations{font-style:italic}.org-completions-first-difference{font-weight:700}.org-constant{color:#008b8b}.org-cursor{background-color:#eead0e}.org-custom-button{color:#000;background-color:#d3d3d3}.org-custom-button-mouse{color:#000;background-color:#e5e5e5}.org-custom-button-pressed{color:#000;background-color:#d3d3d3}.org-custom-button-pressed-unraised{color:#8b008b;text-decoration:underline}.org-custom-button-unraised{text-decoration:underline}.org-custom-changed{color:#fff;background-color:#00f}.org-custom-comment{background-color:#d9d9d9}.org-custom-comment-tag{color:#00008b}.org-custom-face-tag{color:#00f;font-weight:700}.org-custom-group-subtitle{font-weight:700}.org-custom-group-tag{color:#00f;font-size:120%;font-weight:700}.org-custom-group-tag-1{color:red;font-size:120%;font-weight:700}.org-custom-invalid{color:#ff0;background-color:red}.org-custom-link{color:#3a5fcd;text-decoration:underline}.org-custom-modified{color:#fff;background-color:#00f}.org-custom-rogue{color:pink;background-color:#000}.org-custom-saved{text-decoration:underline}.org-custom-set{color:#00f;background-color:#fff}.org-custom-state{color:#006400}.org-custom-themed{color:#fff;background-color:#00f}.org-custom-variable-button{font-weight:700;text-decoration:underline}.org-custom-variable-tag{color:#00f;font-weight:700}.org-custom-visibility{color:#3a5fcd;font-size:80%;text-decoration:underline}.org-diary{color:red}.org-diary-anniversary{color:#a020f0}.org-diary-time{color:sienna}.org-dired-async-failures{color:red}.org-dired-async-message{color:#ff0}.org-dired-async-mode-message{color:gold}.org-dired-directory{color:#00f}.org-dired-flagged{color:red;font-weight:700}.org-dired-header{color:#228b22}.org-dired-ignored{color:#7f7f7f}.org-dired-mark{color:#008b8b}.org-dired-marked{color:#ff8c00;font-weight:700}.org-dired-perm-write{color:#b22222}.org-dired-symlink{color:#a020f0}.org-dired-warning{color:red;font-weight:700}.org-doc{color:#8b2252}.org-eldoc-highlight-function-argument{font-weight:700}.org-epa-field-body{font-style:italic}.org-epa-field-name,.org-epa-mark{font-weight:700}.org-epa-mark{color:red}.org-epa-string{color:#00008b}.org-epa-validity-disabled{font-style:italic}.org-epa-validity-high{font-weight:700}.org-epa-validity-low,.org-epa-validity-medium{font-style:italic}.org-error{color:red;font-weight:700}.org-escape-glyph{color:brown}.org-evil-ex-commands{font-style:italic;text-decoration:underline}.org-evil-ex-info{color:red;font-style:italic}.org-evil-ex-lazy-highlight{background-color:#afeeee}.org-evil-ex-search{color:#b0e2ff;background-color:#cd00cd}.org-evil-ex-substitute-matches{background-color:#afeeee}.org-evil-ex-substitute-replacement{color:red;text-decoration:underline}.org-ffap{background-color:#b4eeb4}.org-file-name-shadow{color:#7f7f7f}.org-flycheck-error{text-decoration:underline}.org-flycheck-error-list-checker-name{color:#00f}.org-flycheck-error-list-column-number{color:#008b8b}.org-flycheck-error-list-error{color:red;font-weight:700}.org-flycheck-error-list-filename{color:sienna}.org-flycheck-error-list-highlight{background-color:#b4eeb4}.org-flycheck-error-list-id,.org-flycheck-error-list-id-with-explainer{color:#228b22}.org-flycheck-error-list-info{color:#228b22;font-weight:700}.org-flycheck-error-list-line-number{color:#008b8b}.org-flycheck-error-list-warning{color:#ff8c00;font-weight:700}.org-flycheck-fringe-error{color:red;font-weight:700}.org-flycheck-fringe-info{color:#228b22;font-weight:700}.org-flycheck-fringe-warning{color:#ff8c00;font-weight:700}.org-flycheck-info,.org-flycheck-warning,.org-flyspell-duplicate,.org-flyspell-incorrect{text-decoration:underline}.org-fringe{background-color:#f2f2f2}.org-function-name{color:#00f}.org-glyphless-char{font-size:60%}.org-golden-ratio-scroll-highlight-line{color:#fff;background-color:#53868b;font-weight:700}.org-header-line{color:#333;background-color:#e5e5e5}.org-helm-action{text-decoration:underline}.org-helm-bookmark-addressbook{color:tomato}.org-helm-bookmark-directory{color:#8b0000;background-color:#d3d3d3}.org-helm-bookmark-file{color:#00b2ee}.org-helm-bookmark-file-not-found{color:#6c7b8b}.org-helm-bookmark-gnus{color:#f0f}.org-helm-bookmark-info{color:#0f0}.org-helm-bookmark-man{color:#8b5a00}.org-helm-bookmark-w3m{color:#ff0}.org-helm-buffer-archive{color:gold}.org-helm-buffer-directory{color:#8b0000;background-color:#d3d3d3}.org-helm-buffer-file{color:#483d8b}.org-helm-buffer-modified{color:#b22222}.org-helm-buffer-not-saved{color:#ee6363}.org-helm-buffer-process{color:#cd6839}.org-helm-buffer-saved-out{color:red;background-color:#000}.org-helm-buffer-size{color:#708090}.org-helm-candidate-number,.org-helm-candidate-number-suspended{color:#000;background-color:#faffb5}.org-helm-delete-async-message{color:#ff0}.org-helm-etags-file{color:#8b814c;text-decoration:underline}.org-helm-ff-denied{color:red;background-color:#000}.org-helm-ff-directory{color:#8b0000;background-color:#d3d3d3}.org-helm-ff-dirs{color:#00f}.org-helm-ff-dotted-directory{color:#000;background-color:#696969}.org-helm-ff-dotted-symlink-directory{color:#ff8c00;background-color:#696969}.org-helm-ff-executable{color:#0f0}.org-helm-ff-file{color:#483d8b}.org-helm-ff-invalid-symlink{color:#000;background-color:red}.org-helm-ff-pipe{color:#ff0;background-color:#000}.org-helm-ff-prefix{color:#000;background-color:#ff0}.org-helm-ff-socket{color:#ff1493}.org-helm-ff-suid{color:#fff;background-color:red}.org-helm-ff-symlink{color:#b22222}.org-helm-ff-truename{color:#8b2252}.org-helm-grep-cmd-line{color:#228b22}.org-helm-grep-file{color:#8a2be2;text-decoration:underline}.org-helm-grep-finish{color:#0f0}.org-helm-grep-lineno{color:#ff7f00}.org-helm-grep-match{color:#b00000}.org-helm-header{color:#333;background-color:#e5e5e5}.org-helm-header-line-left-margin{color:#000;background-color:#ff0}.org-helm-helper{color:#333;background-color:#e5e5e5}.org-helm-history-deleted{color:#000;background-color:red}.org-helm-history-remote{color:#ff6a6a}.org-helm-lisp-completion-info{color:red}.org-helm-lisp-show-completion{background-color:#2f4f4f}.org-helm-locate-finish{color:#0f0}.org-helm-m-x-key{color:orange;text-decoration:underline}.org-helm-match{color:#b00000}.org-helm-match-item{color:#b0e2ff;background-color:#cd00cd}.org-helm-minibuffer-prompt{color:#0000cd}.org-helm-moccur-buffer{color:#00ced1;text-decoration:underline}.org-helm-non-file-buffer{font-style:italic}.org-helm-prefarg{color:red}.org-helm-resume-need-update{background-color:red}.org-helm-selection{background-color:#097209}.org-helm-selection-line{background-color:#b4eeb4}.org-helm-separator{color:#ffbfb5}.org-helm-source-header{color:#000;background-color:#abd7f0;font-size:130%;font-weight:700}.org-helm-visible-mark{background-color:#d1f5ea}.org-help-argument-name{font-style:italic}.org-highlight{background-color:#b4eeb4}.org-highlight-indent-guides-character{color:#e6e6e6}.org-highlight-indent-guides-even{background-color:#e6e6e6}.org-highlight-indent-guides-odd{background-color:#f3f3f3}.org-highlight-indent-guides-stack-character{color:#ccc}.org-highlight-indent-guides-stack-even{background-color:#ccc}.org-highlight-indent-guides-stack-odd{background-color:#d9d9d9}.org-highlight-indent-guides-top-character{color:#b3b3b3}.org-highlight-indent-guides-top-even{background-color:#b3b3b3}.org-highlight-indent-guides-top-odd{background-color:silver}.org-highlight-numbers-number{color:#008b8b}.org-hl-line{background-color:#b4eeb4}.org-holiday{background-color:pink}.org-hydra-face-amaranth{color:#e52b50;font-weight:700}.org-hydra-face-blue{color:#00f;font-weight:700}.org-hydra-face-pink{color:#ff6eb4;font-weight:700}.org-hydra-face-red{color:red;font-weight:700}.org-hydra-face-teal{color:#367588;font-weight:700}.org-ido-first-match{font-weight:700}.org-ido-incomplete-regexp{color:red;font-weight:700}.org-ido-indicator{color:#ff0;background-color:red}.org-ido-only-match{color:#228b22}.org-ido-subdir{color:red}.org-ido-virtual{color:#483d8b}.org-info-header-node{color:brown;font-weight:700;font-style:italic}.org-info-header-xref{color:#3a5fcd;text-decoration:underline}.org-info-index-match{background-color:#ff0}.org-info-menu-header{font-weight:700}.org-info-menu-star{color:red}.org-info-node{color:brown;font-weight:700;font-style:italic}.org-info-title-1{font-size:172%;font-weight:700}.org-info-title-2{font-size:144%;font-weight:700}.org-info-title-3{font-size:120%;font-weight:700}.org-info-title-4{font-weight:700}.org-info-xref{color:#3a5fcd;text-decoration:underline}.org-isearch{color:#b0e2ff;background-color:#cd00cd}.org-isearch-fail{background-color:#ffc1c1}.org-italic{font-style:italic}.org-keyword{color:#a020f0}.org-lazy-highlight{background-color:#afeeee}.org-link{color:#3a5fcd;text-decoration:underline}.org-link-visited{color:#8b008b;text-decoration:underline}.org-lv-separator{background-color:#ccc}.org-match{background-color:#ff0}.org-mcXcursor-bar{background-color:#000}.org-mcXregion{background-color:gtk_selection_bg_color}.org-me-dired-dim-0{color:#b3b3b3}.org-me-dired-dim-1{color:#7f7f7f}.org-me-dired-executable{color:#0f0}.org-message-cited-text{color:red}.org-message-header-cc{color:#191970}.org-message-header-name{color:#6495ed}.org-message-header-newsgroups{color:#00008b;font-weight:700;font-style:italic}.org-message-header-other{color:#4682b4}.org-message-header-subject{color:navy;font-weight:700}.org-message-header-to{color:#191970;font-weight:700}.org-message-header-xheader{color:#00f}.org-message-mml{color:#228b22}.org-message-separator{color:brown}.org-minibuffer-prompt{color:#0000cd}.org-mm-command-output{color:#cd0000}.org-mode-line{color:#000;background-color:#bfbfbf}.org-mode-line-buffer-id,.org-mode-line-buffer-id-inactive,.org-mode-line-emphasis{font-weight:700}.org-mode-line-inactive{color:#333;background-color:#e5e5e5}.org-mu4e-attach-number{color:sienna;font-weight:700}.org-mu4e-cited-1{color:#483d8b;font-style:italic}.org-mu4e-cited-2{color:#5cacee;font-style:italic}.org-mu4e-cited-3{color:sienna;font-style:italic}.org-mu4e-cited-4{color:#a020f0;font-style:italic}.org-mu4e-cited-5,.org-mu4e-cited-6{color:#b22222;font-style:italic}.org-mu4e-cited-7{color:#228b22;font-style:italic}.org-mu4e-compose-header,.org-mu4e-compose-separator{color:brown;font-style:italic}.org-mu4e-contact{color:sienna}.org-mu4e-context{color:#006400;font-weight:700}.org-mu4e-draft{color:#8b2252}.org-mu4e-flagged{color:#008b8b;font-weight:700}.org-mu4e-footer{color:#b22222}.org-mu4e-forwarded{color:#483d8b}.org-mu4e-header{color:#000;background-color:#fff}.org-mu4e-header-highlight{background-color:#000;font-weight:700;text-decoration:underline}.org-mu4e-header-key{color:#6495ed;font-weight:700}.org-mu4e-header-marks{color:#483d8b}.org-mu4e-header-title,.org-mu4e-header-value{color:#228b22}.org-mu4e-highlight{background-color:#b4eeb4}.org-mu4e-link{color:#3a5fcd;text-decoration:underline}.org-mu4e-modeline{color:#8b4500;font-weight:700}.org-mu4e-moved{color:#b22222;font-style:italic}.org-mu4e-ok{color:#b22222;font-weight:700}.org-mu4e-region-code{background-color:#2f4f4f}.org-mu4e-replied,.org-mu4e-special-header-value{color:#483d8b}.org-mu4e-system{color:#b22222;font-style:italic}.org-mu4e-title{color:#228b22;font-weight:700}.org-mu4e-trashed{color:#b22222;text-decoration:line-through}.org-mu4e-unread{color:#a020f0;font-weight:700}.org-mu4e-url-number{color:#008b8b;font-weight:700}.org-mu4e-view-body{color:#000;background-color:#fff}.org-mu4e-warning{color:red;font-weight:700}.org-next-error{background-color:gtk_selection_bg_color}.org-nobreak-space{color:brown;text-decoration:underline}.org-org-agenda-calendar-event,.org-org-agenda-calendar-sexp{color:#000;background-color:#fff}.org-org-agenda-clocking{background-color:#ff0}.org-org-agenda-column-dateline{background-color:#e5e5e5}.org-org-agenda-current-time{color:#b8860b}.org-org-agenda-date{color:#00f}.org-org-agenda-date-today{color:#00f;font-weight:700;font-style:italic}.org-org-agenda-date-weekend{color:#00f;font-weight:700}.org-org-agenda-diary{color:#000;background-color:#fff}.org-org-agenda-dimmed-todo{color:#7f7f7f}.org-org-agenda-done{color:#228b22}.org-org-agenda-filter-category,.org-org-agenda-filter-effort,.org-org-agenda-filter-regexp,.org-org-agenda-filter-tags{color:#000;background-color:#bfbfbf}.org-org-agenda-restriction-lock{background-color:#eee}.org-org-agenda-structure{color:#00f}.org-org-archived{color:#7f7f7f}.org-org-block{color:#7f7f7f}.org-org-block-begin-line,.org-org-block-end-line{color:#b22222}.org-org-checkbox{font-weight:700}.org-org-checkbox-statistics-done{color:#228b22;font-weight:700}.org-org-checkbox-statistics-todo{color:red;font-weight:700}.org-org-clock-overlay{color:#000;background-color:#d3d3d3}.org-org-code{color:#7f7f7f}.org-org-column,.org-org-column-title{background-color:#e5e5e5}.org-org-column-title{font-weight:700;text-decoration:underline}.org-org-date{color:#bfaf87;text-decoration:underline}.org-org-date-selected{color:red}.org-org-default{color:#000;background-color:#fff}.org-org-document-info{color:#191970}.org-org-document-info-keyword{color:#7f7f7f}.org-org-document-title{color:#191970;font-weight:700}.org-org-done{color:#228b22;font-weight:700}.org-org-drawer{color:#00f}.org-org-ellipsis{color:#b8860b;text-decoration:underline}.org-org-footnote{color:#96b4cd;text-decoration:underline}.org-org-formula{color:#b22222}.org-org-habit-alert{background-color:#f5f946}.org-org-habit-alert-future{background-color:#fafca9}.org-org-habit-clear{background-color:#8270f9}.org-org-habit-clear-future{background-color:#d6e4fc}.org-org-habit-overdue{background-color:#f9372d}.org-org-habit-overdue-future{background-color:#fc9590}.org-org-habit-ready{background-color:#4df946}.org-org-habit-ready-future{background-color:#acfca9}.org-org-headline-done{color:#bc8f8f}.org-org-hide{color:#fff}.org-org-latex-and-related{color:#8b4513}.org-org-level-1{color:#edd1c5}.org-org-level-2{color:#ebebb7}.org-org-level-3{color:#cce8cc}.org-org-level-4{color:#c9deec}.org-org-level-5{color:#dce3e8}.org-org-level-6{color:#dde6dd}.org-org-level-7{color:#e8e8ce}.org-org-level-8{color:#e8dedb}.org-org-link{color:#c5d2dc;text-decoration:underline}.org-org-list-dt{font-weight:700}.org-org-macro{color:#8b4513}.org-org-meta-line{color:#b22222}.org-org-mode-line-clock{color:#000;background-color:#bfbfbf}.org-org-mode-line-clock-overrun{color:#000;background-color:red}.org-org-priority{color:#a020f0}.org-org-quote{color:#7f7f7f}.org-org-ref-acronym{color:#ee7600;text-decoration:underline}.org-org-ref-cite{color:#c3d5c3;text-decoration:underline}.org-org-ref-glossary{color:#8968cd;text-decoration:underline}.org-org-ref-label{color:#8b008b;text-decoration:underline}.org-org-ref-ref{color:#e1cc96;text-decoration:underline}.org-org-scheduled{color:#006400}.org-org-scheduled-previously{color:#b22222}.org-org-scheduled-today{color:#006400}.org-org-sexp-date{color:#a020f0}.org-org-special-keyword{color:#88949f}.org-org-table{color:#00f}.org-org-tag,.org-org-tag-group{font-weight:700}.org-org-target{text-decoration:underline}.org-org-time-grid{color:#b8860b}.org-org-todo{color:red;font-weight:700}.org-org-upcoming-deadline{color:#b22222}.org-org-verbatim,.org-org-verse{color:#7f7f7f}.org-org-warning{color:red;font-weight:700}.org-outline-1{color:#00f}.org-outline-2{color:sienna}.org-outline-3{color:#a020f0}.org-outline-4{color:#b22222}.org-outline-5{color:#228b22}.org-outline-6{color:#008b8b}.org-outline-7{color:#483d8b}.org-outline-8{color:#8b2252}.org-package-description{color:#000;background-color:#fff}.org-package-name{color:#3a5fcd;text-decoration:underline}.org-package-status-avail-obso{color:#b22222}.org-package-status-available{color:#000;background-color:#fff}.org-package-status-built-in{color:#483d8b}.org-package-status-dependency{color:#b22222}.org-package-status-disabled{color:red;font-weight:700}.org-package-status-external{color:#483d8b}.org-package-status-held{color:#008b8b}.org-package-status-incompat,.org-package-status-installed{color:#b22222}.org-package-status-unsigned{color:red;font-weight:700}.org-pdf-isearch-batch{background-color:#ff0}.org-pdf-isearch-lazy{background-color:#afeeee}.org-pdf-isearch-match{color:#b0e2ff;background-color:#cd00cd}.org-pdf-occur-document{color:#8b2252}.org-pdf-occur-page{color:#228b22}.org-pdf-view-rectangle{background-color:#b4eeb4}.org-pdf-view-region{background-color:gtk_selection_bg_color}.org-powerline-active0{color:#000;background-color:#bfbfbf}.org-powerline-active1{color:#fff;background-color:#2b2b2b}.org-powerline-active2{color:#fff;background-color:#666}.org-powerline-inactive0{color:#333;background-color:#e5e5e5}.org-powerline-inactive1{color:#333;background-color:#1c1c1c}.org-powerline-inactive2{color:#333;background-color:#333}.org-preprocessor{color:#483d8b}.org-query-replace{color:#b0e2ff;background-color:#cd00cd}.org-rainbow-delimiters-depth-1{color:#ffdead}.org-rainbow-delimiters-depth-2{color:#00bfff}.org-rainbow-delimiters-depth-3{color:#ffdead}.org-rainbow-delimiters-depth-4{color:#00bfff}.org-rainbow-delimiters-depth-5{color:#ffdead}.org-rainbow-delimiters-depth-6{color:#00bfff}.org-rainbow-delimiters-depth-7{color:#ffdead}.org-rainbow-delimiters-depth-8{color:#00bfff}.org-rainbow-delimiters-depth-9{color:#ffdead}.org-rainbow-delimiters-unmatched{color:#88090b}.org-reb-match-0{background-color:#add8e6}.org-reb-match-1{background-color:#7fffd4}.org-reb-match-2{background-color:#00ff7f}.org-reb-match-3{background-color:#ff0}.org-rectangle-preview{background-color:gtk_selection_bg_color}.org-regexp-grouping-backslash,.org-regexp-grouping-construct{font-weight:700}.org-region{background-color:gtk_selection_bg_color}.org-secondary-selection{background-color:#ff0}.org-semantic-highlight-edits,.org-semantic-highlight-func-current-tag{background-color:#e5e5e5}.org-semantic-unmatched-syntax{text-decoration:underline}.org-sgml-namespace{color:#483d8b}.org-sh-escaped-newline{color:#8b2252}.org-sh-heredoc{color:#ee0}.org-sh-quoted-exec{color:#f0f}.org-shadow{color:#7f7f7f}.org-show-paren-match{background-color:#40e0d0}.org-show-paren-mismatch{color:#fff;background-color:#a020f0}.org-sp-pair-overlay,.org-sp-show-pair-enclosing{background-color:#b4eeb4}.org-sp-show-pair-match{background-color:#40e0d0}.org-sp-show-pair-mismatch{color:#fff;background-color:#a020f0}.org-sp-wrap-overlay{background-color:#b4eeb4}.org-sp-wrap-overlay-closing-pair{color:red;background-color:#b4eeb4}.org-sp-wrap-overlay-opening-pair{color:#0f0;background-color:#b4eeb4}.org-sp-wrap-tag-overlay{background-color:#b4eeb4}.org-spaceline-flycheck-error{color:#fc5c94;background-color:#333}.org-spaceline-flycheck-info{color:#8de6f7;background-color:#333}.org-spaceline-flycheck-warning{color:#f3ea98;background-color:#333}.org-spaceline-python-venv{color:#fbf}.org-speedbar-button{color:#008b00}.org-speedbar-directory{color:#00008b}.org-speedbar-file{color:#008b8b}.org-speedbar-highlight{background-color:#0f0}.org-speedbar-selected{color:red;text-decoration:underline}.org-speedbar-separator{color:#fff;background-color:#00f;text-decoration:overline}.org-speedbar-tag{color:brown}.org-string{color:#8b2252}.org-success{color:#228b22;font-weight:700}.org-table-cell{color:#e5e5e5;background-color:#00f}.org-tex-math{color:#8b2252}.org-tool-bar{color:#000;background-color:#bfbfbf}.org-tooltip{color:#000;background-color:#ffffe0}.org-trailing-whitespace{background-color:red}.org-tty-menu-disabled{color:#d3d3d3;background-color:#00f}.org-tty-menu-enabled{color:#ff0;background-color:#00f;font-weight:700}.org-tty-menu-selected{background-color:red}.org-type{color:#228b22}.org-underline{text-decoration:underline}.org-undo-tree-visualizer-active-branch{color:#000;font-weight:700}.org-undo-tree-visualizer-current{color:red}.org-undo-tree-visualizer-default{color:#bebebe}.org-undo-tree-visualizer-register{color:#ff0}.org-undo-tree-visualizer-unmodified{color:#0ff}.org-variable-name{color:sienna}.org-vhlXdefault{background-color:#ff0}.org-warning{color:#ff8c00;font-weight:700}.org-warning-1{color:red;font-weight:700}.org-wgrep{color:#fff;background-color:#228b22}.org-wgrep-delete{color:pink;background-color:#228b22}.org-wgrep-done{color:#00f}.org-wgrep-file{color:#fff;background-color:#228b22}.org-wgrep-reject{color:red;font-weight:700}.org-which-key-command-description{color:#00f}.org-which-key-docstring{color:#b22222}.org-which-key-group-description{color:#a020f0}.org-which-key-highlighted-command{color:#00f;text-decoration:underline}.org-which-key-key{color:#008b8b}.org-which-key-local-map-description{color:#00f}.org-which-key-note,.org-which-key-separator{color:#b22222}.org-which-key-special-key{color:#008b8b;font-weight:700}.org-whitespace-big-indent{color:#b22222;background-color:red}.org-whitespace-empty{color:#b22222;background-color:#ff0}.org-whitespace-hspace{color:#d3d3d3;background-color:#cdc9a5}.org-whitespace-indentation{color:#b22222;background-color:#ff0}.org-whitespace-line{color:violet;background-color:#333}.org-whitespace-newline{color:#d3d3d3}.org-whitespace-space{color:#d3d3d3;background-color:#ffffe0}.org-whitespace-space-after-tab{color:#b22222;background-color:#ff0}.org-whitespace-space-before-tab{color:#b22222;background-color:#ff8c00}.org-whitespace-tab{color:#d3d3d3;background-color:beige}.org-whitespace-trailing{color:#ff0;background-color:red;font-weight:700}.org-widget-button{font-weight:700}.org-widget-button-pressed{color:red}.org-widget-documentation{color:#006400}.org-widget-field{background-color:#d9d9d9}.org-widget-inactive{color:#7f7f7f}.org-widget-single-line-field{background-color:#d9d9d9}.org-window-divider{color:#999}.org-window-divider-first-pixel{color:#ccc}.org-window-divider-last-pixel{color:#666}a{color:inherit;background-color:inherit;font:inherit;text-decoration:inherit}a:hover{text-decoration:underline}body{width:95%;margin:2% auto;font-size:14px;line-height:1.4em;font-family:Georgia,serif;color:#333}@media screen and (min-width:600px){body{font-size:18px}}@media screen and (min-width:910px){body{width:900px}}::selection{background:#d6edff}p{margin:1em auto}dl,ol,ul{margin:0 auto}.title{text-align:center;margin:.8em auto;color:#000}.subtitle{text-align:center;font-size:1.1em;line-height:1.4;font-weight:700;margin:1em auto}.abstract{margin:auto;width:80%;font-style:italic}.abstract p:last-of-type:before{content:"    ";white-space:pre}.status{font-size:90%;margin:2em auto}[class^=section-number-]{margin-right:.5em}[id^=orgheadline]{clear:both}#footnotes{font-size:90%}.footpara{display:inline;margin:.2em auto}.footdef{margin-bottom:1em}.footdef sup{padding-right:.5em}a{color:#527d9a;text-decoration:none}a:hover{color:#035;border-bottom:1px dotted}figure{padding:0;margin:1em auto;text-align:center}img{max-width:100%;vertical-align:middle}.MathJax_Display{margin:0!important;width:90%!important}h1,h2,h3,h4,h5,h6{color:#a5573e;line-height:1em;font-family:Helvetica,sans-serif}h1,h2,h3{line-height:1.4em}h4,h5,h6{font-size:1em}@media screen and (min-width:600px){h1{font-size:2em}h2{font-size:1.5em}h3{font-size:1.3em}h1,h2,h3{line-height:1.4em}h4,h5,h6{font-size:1.1em}}dt{font-weight:700}table{margin:1em auto;border-top:2px solid;border-bottom:2px solid;border-collapse:collapse}thead{border-bottom:2px solid}table td+td,table th+th{border-left:1px solid grey}table tr{border-top:1px solid #d3d3d3}td,th{padding:.3em .6em;vertical-align:middle}caption.t-above{caption-side:top}caption.t-bottom{caption-side:bottom}caption{margin-bottom:.3em}figcaption{margin-top:.3em}th.org-center,th.org-left,th.org-right{text-align:center}td.org-right{text-align:right}td.org-left{text-align:left}td.org-center{text-align:center}blockquote{margin:1em 2em;padding-left:1em;border-left:3px solid #ccc}kbd{background-color:#f7f7f7;font-size:80%;margin:0 .1em;padding:.1em .6em}.todo{background-color:red;color:#fff;padding:.1em .3em;border-radius:3px;background-clip:padding-box;font-size:80%;font-family:Lucida Console,monospace;line-height:1}.done{background-color:green;color:#fff;padding:.1em .3em;border-radius:3px;background-clip:padding-box;font-size:80%;font-family:Lucida Console,monospace;line-height:1}.priority{color:orange;font-family:Lucida Console,monospace}#table-of-contents li{clear:both}.tag{font-family:Lucida Console,monospace;font-size:.7em;font-weight:400}.tag span{padding:.3em;float:right;margin-right:.5em;border:1px solid #bbb;border-radius:3px;background-clip:padding-box;color:#333;background-color:#eee;line-height:1}.timestamp{color:#bebebe;font-size:90%}.timestamp-kwd{color:#5f9ea0}.org-right{margin-left:auto;margin-right:0;text-align:right}.org-left{margin-left:0;margin-right:auto;text-align:left}.org-center{margin-left:auto;margin-right:auto;text-align:center}.underline{text-decoration:underline}#postamble p,#preamble p{font-size:90%;margin:.2em}p.verse{margin-left:3%}:not(pre)>code{padding:2px 5px;margin:auto 1px;border:1px solid #ddd;border-radius:3px;background-clip:padding-box;color:#333;font-size:80%}.org-src-container{border:1px solid #ccc;box-shadow:3px 3px 3px #eee;font-family:Lucida Console,monospace;font-size:80%;margin:1em auto;padding:.1em .5em;position:relative}.org-src-container>pre{overflow:auto}.org-src-container>pre:before{display:block;position:absolute;background-color:#b3b3b3;top:0;right:0;padding:0 .5em;border-bottom-left-radius:8px;border:0;color:#fff;font-size:80%}.org-src-container>pre.src-sh:before{content:"sh"}.org-src-container>pre.src-bash:before{content:"bash"}.org-src-container>pre.src-emacs-lisp:before{content:"Emacs Lisp"}.org-src-container>pre.src-R:before{content:"R"}.org-src-container>pre.src-cpp:before{content:"C++"}.org-src-container>pre.src-c:before{content:"C"}.org-src-container>pre.src-html:before{content:"HTML"}.org-src-container>pre.src-javascript:before,.org-src-container>pre.src-js:before{content:"Javascript"}// More languages 0% http://orgmode.org/worg/org-contrib/babel/languages.html .org-src-container>pre.src-abc:before{content:"ABC"}.org-src-container>pre.src-asymptote:before{content:"Asymptote"}.org-src-container>pre.src-awk:before{content:"Awk"}.org-src-container>pre.src-C:before{content:"C"}.org-src-container>pre.src-calc:before{content:"Calc"}.org-src-container>pre.src-clojure:before{content:"Clojure"}.org-src-container>pre.src-comint:before{content:"comint"}.org-src-container>pre.src-css:before{content:"CSS"}.org-src-container>pre.src-D:before{content:"D"}.org-src-container>pre.src-ditaa:before{content:"Ditaa"}.org-src-container>pre.src-dot:before{content:"Dot"}.org-src-container>pre.src-ebnf:before{content:"ebnf"}.org-src-container>pre.src-forth:before{content:"Forth"}.org-src-container>pre.src-F90:before{content:"Fortran"}.org-src-container>pre.src-gnuplot:before{content:"Gnuplot"}.org-src-container>pre.src-haskell:before{content:"Haskell"}.org-src-container>pre.src-io:before{content:"Io"}.org-src-container>pre.src-java:before{content:"Java"}.org-src-container>pre.src-latex:before{content:"LaTeX"}.org-src-container>pre.src-ledger:before{content:"Ledger"}.org-src-container>pre.src-ly:before{content:"Lilypond"}.org-src-container>pre.src-lisp:before{content:"Lisp"}.org-src-container>pre.src-makefile:before{content:"Make"}.org-src-container>pre.src-matlab:before{content:"Matlab"}.org-src-container>pre.src-max:before{content:"Maxima"}.org-src-container>pre.src-mscgen:before{content:"Mscgen"}.org-src-container>pre.src-Caml:before{content:"Objective"}.org-src-container>pre.src-octave:before{content:"Octave"}.org-src-container>pre.src-org:before{content:"Org"}.org-src-container>pre.src-perl:before{content:"Perl"}.org-src-container>pre.src-picolisp:before{content:"Picolisp"}.org-src-container>pre.src-plantuml:before{content:"PlantUML"}.org-src-container>pre.src-python:before{content:"Python"}.org-src-container>pre.src-ruby:before{content:"Ruby"}.org-src-container>pre.src-sass:before{content:"Sass"}.org-src-container>pre.src-scala:before{content:"Scala"}.org-src-container>pre.src-scheme:before{content:"Scheme"}.org-src-container>pre.src-screen:before{content:"Screen"}.org-src-container>pre.src-sed:before{content:"Sed"}.org-src-container>pre.src-shell:before{content:"shell"}.org-src-container>pre.src-shen:before{content:"Shen"}.org-src-container>pre.src-sql:before{content:"SQL"}.org-src-container>pre.src-sqlite:before{content:"SQLite"}.org-src-container>pre.src-stan:before{content:"Stan"}.org-src-container>pre.src-vala:before{content:"Vala"}.org-src-container>pre.src-axiom:before{content:"Axiom"}.org-src-container>pre.src-browser:before{content:"HTML"}.org-src-container>pre.src-cypher:before{content:"Neo4j"}.org-src-container>pre.src-elixir:before{content:"Elixir"}.org-src-container>pre.src-request:before{content:"http"}.org-src-container>pre.src-ipython:before{content:"iPython"}.org-src-container>pre.src-kotlin:before{content:"Kotlin"}.org-src-container>pre.src-Flavored Erlang lfe:before{content:"Lisp"}.org-src-container>pre.src-mongo:before{content:"MongoDB"}.org-src-container>pre.src-prolog:before{content:"Prolog"}.org-src-container>pre.src-rec:before{content:"rec"}.org-src-container>pre.src-ML sml:before{content:"Standard"}.org-src-container>pre.src-Translate translate:before{content:"Google"}.org-src-container>pre.src-typescript:before{content:"Typescript"}.org-src-container>pre.src-rust:before{content:"Rust"}.inlinetask{background:#ffc;border:2px solid grey;margin:10px;padding:10px}#org-div-home-and-up{font-size:70%;text-align:right;white-space:nowrap}.linenr{font-size:90%}.code-highlighted{background-color:#ff0}#bibliography{font-size:90%}#bibliography table{width:100%}.creator{display:block}@media screen and (min-width:600px){.creator{display:inline;float:right}}
-</style>
+<style type="text/css"> * { font-family: "Georgia";}h1, h2, h3, h4, h5, h6,h1 span, h2 span, h3 span, h4 span, h5 span, h6 span,h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {    font-family: "Arial";}pre, code {    font-family: Monaco, "Courier New", Courier;}#text-table-of-contents a {    font-family: "Arial";}/* @end *//* @group Baseline */body {	font-size: 14px;	line-height: 1.5em;	padding: 0;	margin: 0;}h1 {	margin: 0;	font-size: 1.6666666666666667em;	line-height: 0.9em;	margin-bottom: 0.9em;}h2 {	margin: 0;	font-size: 1.5em;	line-height: 1em;	margin-bottom: 1em;}h3 {	margin: 0;	font-size: 1.3333333333333333em;	line-height: 1.125em;	margin-bottom: 1.125em;}h4 {	margin: 0;	font-size: 1.1666666666666667em;	line-height: 1.2857142857142858em;	margin-bottom: 1.2857142857142858em;}p, ul, blockquote, pre, td, th, label {	margin: 0;	font-size: 1em;	line-height: 1.5em;	margin-bottom: 1.5em;}p.small, #postamble {	margin: 0;	font-size: 0.8333333333333334em;	line-height: 1.8em;	margin-bottom: 1.8em;}table {	border-collapse: collapse;	margin-bottom: 1.5em;}/* @end *//* @group Layout */#content {	width: 70em;	margin-left: auto;	margin-right: auto;}/* #header {	height: 10em;}*/#table-of-contents {	width: 15em;	float: left;	overflow: auto;}/* #main { */div.outline-2 {        width: 52em;	float: right;	/* The lines below are useful if the "main" div isn't available and	   div.outline-2 has to be used. */	position: relative;}#postamble {	clear: both;	text-align: center;}div.outline-2 pre {    width: 40em;    overflow: auto;}/* @end *//* @group Header */h1.title {	margin-top: 10px;	text-align: center;}h1.title {	font-size: 3em;	font-weight: bold;	margin-bottom: 0.8em;}/* @end *//* @group Org Keywords */.todo {	color: red;}.done {	color: green;}.tag {	color: blue;	text-transform: lowercase;	/* This will be obscured by the surrounding span tag, so blank everything. */	background: #fff;	border: none;	/* position: relative;	text-align: right;	right: 1em; */}.timestamp {}.timestamp-kwd  {	/* keyword associated with a time stamp, like SCHEDULED */}.target {	/* target for links */}/* @end *//* @group Table of Contents */#table-of-contents h2 {	letter-spacing: -0.1em;}#table-of-contents ul,#table-of-contents ol {    padding-left: 1em;}/* @end *//* @group Outline Level 2 */.outline-2 h2 {    background: #ffc;    border-bottom: 1px solid #ccc;}.outline-2 h2, .outline-2 h3 {    letter-spacing: -0.05em;}.outline-2 {	padding: 5px;	/* margin-bottom: 10px; */	/* border-top: 1px solid #ccc; */}/* @end */td {	border: 1px solid #ccc;}h1 span, h2 span, h3 span, h4 span, h5 span, h6 span {    background-color: #eee;    padding: 2px;    border: 1px solid #ccc;}.outline-1, .outline-2, .outline-3, .outline-4, .outline-5, .outline-6 {    margin-left: 2em;}a {    text-decoration: none;    color: #57d; /* TODO: Find a better colour for this. */}a:hover {    border-bottom: 1px dotted #57d;}#postamble p {    margin: 0px;}.footpara { display: inline; }.footdef { margin-bottom: 3em; font-size: 80%; }/*]]>*/--></style><script type="text/javascript">/*@licstart  The following is the entire license notice for theJavaScript code in this tag.Copyright (C) 2012-2013 Free Software Foundation, Inc.The JavaScript code in this tag is free software: you canredistribute it and/or modify it under the terms of the GNUGeneral Public License (GNU GPL) as published by the Free SoftwareFoundation, either version 3 of the License, or (at your option)any later version.  The code is distributed WITHOUT ANY WARRANTY;without even the implied warranty of MERCHANTABILITY or FITNESSFOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.As additional permission under GNU GPL version 3 section 7, youmay distribute non-source (e.g., minimized or compacted) forms ofthat code without the copy of the GNU GPL normally required bysection 4, provided you include this license notice and a URLthrough which recipients can access the Corresponding Source.@licend  The above is the entire license noticefor the JavaScript code in this tag.*/<!--/*--><![CDATA[/*><!--*/ function CodeHighlightOn(elem, id) {   var target = document.getElementById(id);   if(null != target) {     elem.cacheClassElem = elem.className;     elem.cacheClassTarget = target.className;     target.className = "code-highlighted";     elem.className   = "code-highlighted";   } } function CodeHighlightOff(elem, id) {   var target = document.getElementById(id);   if(elem.cacheClassElem)     elem.className = elem.cacheClassElem;   if(elem.cacheClassTarget)     target.className = elem.cacheClassTarget; }</script>
 <style>*{font-family: Courier New !important}</style>
 <script type="text/javascript">
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
@@ -231,32 +229,32 @@ html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-t
 <ul>
 <li><a href="#SW-Firebase-Intro">1. Introduction</a>
 <ul>
-<li><a href="#orgab8f53f">1.1. A Brief History</a></li>
-<li><a href="#org583af67">1.2. With Firebase you can</a>
+<li><a href="#org8d57399">1.1. A Brief History</a></li>
+<li><a href="#org15a9164">1.2. With Firebase you can</a>
 <ul>
-<li><a href="#orgf8c026e">1.2.1. Build better apps</a></li>
-<li><a href="#org536c7bc">1.2.2. Improve app quality</a></li>
-<li><a href="#org44b30b0">1.2.3. Grow your business</a></li>
+<li><a href="#org22a9653">1.2.1. Build better apps</a></li>
+<li><a href="#orgfc088c5">1.2.2. Improve app quality</a></li>
+<li><a href="#org231c052">1.2.3. Grow your business</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><a href="#SW-Firebase-database">2. Firebase database</a>
 <ul>
-<li><a href="#org0f7c143">2.1. Data model</a></li>
+<li><a href="#org930ee54">2.1. Data model</a></li>
 </ul>
 </li>
 <li><a href="#SW-Firebase-datamodel">3. Cloud Firestore Data model</a>
 <ul>
-<li><a href="#orgefaa475">3.1. Documents</a></li>
-<li><a href="#org21fe007">3.2. Collections</a></li>
-<li><a href="#org5317aee">3.3. References</a></li>
-<li><a href="#orgb16d5a8">3.4. Supported data types</a></li>
-<li><a href="#org2dcad46">3.5. Index types in Cloud Firestore</a>
+<li><a href="#orgc26efd9">3.1. Documents</a></li>
+<li><a href="#orgd5ba4f1">3.2. Collections</a></li>
+<li><a href="#org753d928">3.3. References</a></li>
+<li><a href="#org689c399">3.4. Supported data types</a></li>
+<li><a href="#org338e843">3.5. Index types in Cloud Firestore</a>
 <ul>
-<li><a href="#org33ea1eb">3.5.1. An index behind every query</a></li>
-<li><a href="#orge9c54da">3.5.2. Less index management, more app development</a></li>
-<li><a href="#orgb8f2e60">3.5.3. Automatic indexing</a></li>
+<li><a href="#org68112ec">3.5.1. An index behind every query</a></li>
+<li><a href="#org3396ba1">3.5.2. Less index management, more app development</a></li>
+<li><a href="#org0cb29be">3.5.3. Automatic indexing</a></li>
 </ul>
 </li>
 </ul>
@@ -264,114 +262,114 @@ html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-t
 <li><a href="#SW-Firebase-CreateDatabase">4. Create your own Cloud Firestore database</a></li>
 <li><a href="#SW-Firebase-AddFirebase">5. Adding Firebase to your iOS project</a>
 <ul>
-<li><a href="#orgff98fff">5.1. key process</a></li>
-<li><a href="#org24796a7">5.2. Setting up Firebase project: Step by step</a>
+<li><a href="#orgd21e28f">5.1. key process</a></li>
+<li><a href="#orgaa08b15">5.2. Setting up Firebase project: Step by step</a>
 <ul>
-<li><a href="#orgcc72b91">5.2.1. Create/Register</a></li>
-<li><a href="#orgbcb1cd9">5.2.2. Install SDKs</a></li>
+<li><a href="#org7f155ae">5.2.1. Create/Register</a></li>
+<li><a href="#org8811d86">5.2.2. Install SDKs</a></li>
 </ul>
 </li>
-<li><a href="#org529d118">5.3. 資料來源</a></li>
+<li><a href="#org47d328b">5.3. 資料來源</a></li>
 </ul>
 </li>
 <li><a href="#SW-Firebase-BasicOperations">6. Basic operations to Firebase with iOS</a>
 <ul>
-<li><a href="#orge1db4d2">6.1. Add document</a>
+<li><a href="#orgf8991f3">6.1. Add document</a>
 <ul>
-<li><a href="#orge119b44">6.1.1. create a document with specific document ID</a></li>
-<li><a href="#orgfeae2ea">6.1.2. create a document with auto-generate document ID</a></li>
+<li><a href="#org76bc0e7">6.1.1. create a document with specific document ID</a></li>
+<li><a href="#orgdbbbbe2">6.1.2. create a document with auto-generate document ID</a></li>
 </ul>
 </li>
-<li><a href="#org738cf50">6.2. Get data from Cloud Firestore: Basic</a>
+<li><a href="#org0a34c29">6.2. Get data from Cloud Firestore: Basic</a>
 <ul>
-<li><a href="#org255be80">6.2.1. Getting collection</a></li>
-<li><a href="#org703fce1">6.2.2. Getting document</a></li>
+<li><a href="#org9f29909">6.2.1. Getting collection</a></li>
+<li><a href="#org13b4bd5">6.2.2. Getting document</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><a href="#SW-GetDataFromCloud">7. Get data from Cloud: UI with Firebase [MVVM]</a>
 <ul>
-<li><a href="#orgfa6865b">7.1. MVVM architecture</a></li>
-<li><a href="#org7f90c53">7.2. Model</a></li>
-<li><a href="#orgf709741">7.3. View</a></li>
-<li><a href="#orgee0cddd">7.4. ViewModel</a></li>
-<li><a href="#org0bed0e5">7.5. Repository</a></li>
-<li><a href="#org8c0312c">7.6. 資料來源</a></li>
+<li><a href="#org8672b36">7.1. MVVM architecture</a></li>
+<li><a href="#orgeaed1b5">7.2. Model</a></li>
+<li><a href="#org7200dc0">7.3. View</a></li>
+<li><a href="#org9893b5c">7.4. ViewModel</a></li>
+<li><a href="#org467cdea">7.5. Repository</a></li>
+<li><a href="#orgb4f8983">7.6. 資料來源</a></li>
 </ul>
 </li>
 <li><a href="#SW-Delete">8. Add, Delete #1 data from Cloud: UI with Firebase [MVVM]</a>
 <ul>
-<li><a href="#org3fc125f">8.1. Repository</a></li>
-<li><a href="#org93fef7a">8.2. View</a></li>
-<li><a href="#org741bdbe">8.3. ViewModel</a></li>
+<li><a href="#org00bf9cf">8.1. Repository</a></li>
+<li><a href="#orgf22e0cf">8.2. View</a></li>
+<li><a href="#orgbefaa84">8.3. ViewModel</a></li>
 </ul>
 </li>
-<li><a href="#org974743e">9. Delete #2 data from Cloud: UI with Firebase [MVVM]</a>
+<li><a href="#orgfc7ee79">9. Delete #2 data from Cloud: UI with Firebase [MVVM]</a>
 <ul>
-<li><a href="#orgaf701ee">9.1. Repository</a></li>
-<li><a href="#org80ae747">9.2. View</a></li>
-<li><a href="#orgcc97a8f">9.3. ViewModel</a></li>
+<li><a href="#orgbd9964b">9.1. Repository</a></li>
+<li><a href="#org68faf35">9.2. View</a></li>
+<li><a href="#org48ee1c6">9.3. ViewModel</a></li>
 </ul>
 </li>
 <li><a href="#SW-Detail">10. Detail/Edit data from Cloud: UI with Firebase [MVVM]</a>
 <ul>
-<li><a href="#org619ba58">10.1. Repository</a></li>
-<li><a href="#orgfcff8dc">10.2. View</a>
+<li><a href="#orgd6acf0a">10.1. Repository</a></li>
+<li><a href="#org90c839c">10.2. View</a>
 <ul>
-<li><a href="#org4643240">10.2.1. TaskListView.swift</a></li>
-<li><a href="#orgdc16712">10.2.2. TaskDetailView.swift</a></li>
-<li><a href="#org9c9dc07">10.2.3. UpdateListView.swift</a></li>
+<li><a href="#org9ffe39f">10.2.1. TaskListView.swift</a></li>
+<li><a href="#org34a528e">10.2.2. TaskDetailView.swift</a></li>
+<li><a href="#orgfe630b6">10.2.3. UpdateListView.swift</a></li>
 </ul>
 </li>
-<li><a href="#org5cf370e">10.3. ViewModel</a>
+<li><a href="#orga61e1d1">10.3. ViewModel</a>
 <ul>
-<li><a href="#orgf8af705">10.3.1. TaskListViewModel.swift</a></li>
-<li><a href="#orgf0d7f4d">10.3.2. TaskCellViewModel.swift</a></li>
-<li><a href="#orgfd875cf">10.3.3. DEMO</a></li>
+<li><a href="#org67cea7a">10.3.1. TaskListViewModel.swift</a></li>
+<li><a href="#orgef49500">10.3.2. TaskCellViewModel.swift</a></li>
+<li><a href="#org179c0e2">10.3.3. DEMO</a></li>
 </ul>
 </li>
-<li><a href="#orge96e055">10.4. Topics:</a></li>
+<li><a href="#org36a65d7">10.4. Topics:</a></li>
 </ul>
 </li>
 <li><a href="#SW-Icon">11. Add Icon to App</a>
 <ul>
-<li><a href="#orga08730b">11.1. ViewModel</a>
+<li><a href="#orga030ffc">11.1. ViewModel</a>
 <ul>
-<li><a href="#org5def144">11.1.1. TaskCellViewModel.swift</a></li>
+<li><a href="#org2c0e6fe">11.1.1. TaskCellViewModel.swift</a></li>
 </ul>
 </li>
-<li><a href="#org0c7194b">11.2. View</a>
+<li><a href="#orge471da1">11.2. View</a>
 <ul>
-<li><a href="#org8bbf27c">11.2.1. TaskListView.swift</a></li>
+<li><a href="#org3fb64e6">11.2.1. TaskListView.swift</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><a href="#SW-Firebase-Storage">12. Storage</a>
 <ul>
-<li><a href="#org4a40451">12.1. preparation</a></li>
-<li><a href="#orgec534a1">12.2. tips</a></li>
+<li><a href="#org7722427">12.1. preparation</a></li>
+<li><a href="#org375f287">12.2. tips</a></li>
 <li><a href="#SW-ImagePicker">12.3. How to pick image in iOS</a>
 <ul>
-<li><a href="#orgf5d37bb">12.3.1. Utility: ImagePicker</a></li>
-<li><a href="#org04cfe77">12.3.2. How to call ImagePicker in SwiftUI</a></li>
+<li><a href="#org8886ced">12.3.1. Utility: ImagePicker</a></li>
+<li><a href="#orgab6bcb6">12.3.2. How to call ImagePicker in SwiftUI</a></li>
 </ul>
 </li>
 <li><a href="#SW-UploadImage">12.4. Just Upload Image to Firebase Storage</a></li>
 <li><a href="#SW-UploadSaveImage">12.5. How to upload image to Firebase storage and get download URL (for saving into database)</a></li>
 <li><a href="#SW-URLImage">12.6. Show online image: URLImage</a>
 <ul>
-<li><a href="#org90b1038">12.6.1. url-image</a></li>
-<li><a href="#org6d3380c">12.6.2. TaskDetailView.swift</a></li>
+<li><a href="#org22f24ec">12.6.1. url-image</a></li>
+<li><a href="#orgb9e4095">12.6.2. TaskDetailView.swift</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><a href="#SW-Firebase-LearningResource">13. Learning resources</a>
 <ul>
-<li><a href="#orgac342e1">13.1. web</a></li>
-<li><a href="#orgb125d50">13.2. Videos</a></li>
+<li><a href="#org3792176">13.1. web</a></li>
+<li><a href="#orgf54e7c7">13.2. Videos</a></li>
 </ul>
 </li>
 </ul>
@@ -390,8 +388,8 @@ Firebase can power your app’s backend, including data storage, user authentica
 </p>
 </div>
 
-<div id="outline-container-orgab8f53f" class="outline-3">
-<h3 id="orgab8f53f"><span class="section-number-3">1.1</span> A Brief History<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup></h3>
+<div id="outline-container-org8d57399" class="outline-3">
+<h3 id="org8d57399"><span class="section-number-3">1.1</span> A Brief History<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup></h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 Back in 2011, before Firebase was Firebase, it was a startup called <b>Envolve</b>. As Envolve, it provided developers with an API that enabled <b>the integration of online chat functionality into their website</b>.
@@ -411,8 +409,8 @@ After it was acquired by Google in 2014, Firebase rapidly evolved into the multi
 </div>
 </div>
 
-<div id="outline-container-org583af67" class="outline-3">
-<h3 id="org583af67"><span class="section-number-3">1.2</span> With Firebase you can<sup><a id="fnr.2.100" class="footref" href="#fn.2">2</a></sup></h3>
+<div id="outline-container-org15a9164" class="outline-3">
+<h3 id="org15a9164"><span class="section-number-3">1.2</span> With Firebase you can<sup><a id="fnr.2.100" class="footref" href="#fn.2">2</a></sup></h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 Firebase helps mobile app teams succeed. With Firebase you can:
@@ -423,8 +421,8 @@ Firebase helps mobile app teams succeed. With Firebase you can:
 <li>Grow your business</li>
 </ol>
 </div>
-<div id="outline-container-orgf8c026e" class="outline-4">
-<h4 id="orgf8c026e"><span class="section-number-4">1.2.1</span> Build better apps</h4>
+<div id="outline-container-org22a9653" class="outline-4">
+<h4 id="org22a9653"><span class="section-number-4">1.2.1</span> Build better apps</h4>
 <div class="outline-text-4" id="text-1-2-1">
 <p>
 Firebase lets you build more powerful, secure and scalable apps, using world-class infrastructure using:
@@ -441,8 +439,8 @@ Firebase lets you build more powerful, secure and scalable apps, using world-cla
 </div>
 </div>
 
-<div id="outline-container-org536c7bc" class="outline-4">
-<h4 id="org536c7bc"><span class="section-number-4">1.2.2</span> Improve app quality</h4>
+<div id="outline-container-orgfc088c5" class="outline-4">
+<h4 id="orgfc088c5"><span class="section-number-4">1.2.2</span> Improve app quality</h4>
 <div class="outline-text-4" id="text-1-2-2">
 <p>
 Firebase gives you insights into app performance and stability, so you can channel your resources effectively using:
@@ -456,8 +454,8 @@ Firebase gives you insights into app performance and stability, so you can chann
 </div>
 </div>
 
-<div id="outline-container-org44b30b0" class="outline-4">
-<h4 id="org44b30b0"><span class="section-number-4">1.2.3</span> Grow your business</h4>
+<div id="outline-container-org231c052" class="outline-4">
+<h4 id="org231c052"><span class="section-number-4">1.2.3</span> Grow your business</h4>
 <div class="outline-text-4" id="text-1-2-3">
 <p>
 Firebase helps you grow to millions of users, simplifying user engagement and retention using:
@@ -491,13 +489,13 @@ Firebase offers two cloud-based, client-accessible database solutions that suppo
 </ul>
 </div>
 
-<div id="outline-container-org0f7c143" class="outline-3">
-<h3 id="org0f7c143"><span class="section-number-3">2.1</span> Data model</h3>
+<div id="outline-container-org930ee54" class="outline-3">
+<h3 id="org930ee54"><span class="section-number-3">2.1</span> Data model</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 Both Realtime Database and Cloud Firestore are NoSQL Databases<sup><a id="fnr.3" class="footref" href="#fn.3">3</a></sup>.
 </p>
-<table id="org1b0483f" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org21c3191" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
@@ -557,8 +555,8 @@ Collections and documents are created implicitly in Cloud Firestore. Simply assi
 </p>
 </div>
 
-<div id="outline-container-orgefaa475" class="outline-3">
-<h3 id="orgefaa475"><span class="section-number-3">3.1</span> Documents</h3>
+<div id="outline-container-orgc26efd9" class="outline-3">
+<h3 id="orgc26efd9"><span class="section-number-3">3.1</span> Documents</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 In Cloud Firestore, the unit of storage is the document. A document is a lightweight record that contains fields, which map to values. Each document is identified by a name.
@@ -590,8 +588,8 @@ You may notice that documents <b>look a lot like JSON</b>. In fact, <b>they basi
 </div>
 </div>
 
-<div id="outline-container-org21fe007" class="outline-3">
-<h3 id="org21fe007"><span class="section-number-3">3.2</span> Collections</h3>
+<div id="outline-container-orgd5ba4f1" class="outline-3">
+<h3 id="orgd5ba4f1"><span class="section-number-3">3.2</span> Collections</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 Documents live in collections, which are simply containers for documents.
@@ -633,8 +631,8 @@ You do not need to &ldquo;create&rdquo; or &ldquo;delete&rdquo; collections. Aft
 </div>
 </div>
 
-<div id="outline-container-org5317aee" class="outline-3">
-<h3 id="org5317aee"><span class="section-number-3">3.3</span> References</h3>
+<div id="outline-container-org753d928" class="outline-3">
+<h3 id="org753d928"><span class="section-number-3">3.3</span> References</h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
 Every document in Cloud Firestore is <b>uniquely identified</b> by its location within the database. The previous example showed a document alovelace within the collection users. To refer to this location in your code, you can create a reference to it.
@@ -658,8 +656,8 @@ You can also create references to collections:
 </div>
 </div>
 
-<div id="outline-container-orgb16d5a8" class="outline-3">
-<h3 id="orgb16d5a8"><span class="section-number-3">3.4</span> Supported data types</h3>
+<div id="outline-container-org689c399" class="outline-3">
+<h3 id="org689c399"><span class="section-number-3">3.4</span> Supported data types</h3>
 <div class="outline-text-3" id="text-3-4">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -749,8 +747,8 @@ You can also create references to collections:
 </div>
 </div>
 
-<div id="outline-container-org2dcad46" class="outline-3">
-<h3 id="org2dcad46"><span class="section-number-3">3.5</span> Index types in Cloud Firestore</h3>
+<div id="outline-container-org338e843" class="outline-3">
+<h3 id="org338e843"><span class="section-number-3">3.5</span> Index types in Cloud Firestore</h3>
 <div class="outline-text-3" id="text-3-5">
 <p>
 Indexes are an important factor in the performance of a database. Much like the index of a book which maps topics in a book to page numbers, a database index maps the items in a database to their locations in the database. When you send a database a query, the database can use an index to quickly look up the locations of the items you requested.
@@ -761,8 +759,8 @@ This page describes the two types of indexes that Cloud Firestore uses, single-f
 </p>
 </div>
 
-<div id="outline-container-org33ea1eb" class="outline-4">
-<h4 id="org33ea1eb"><span class="section-number-4">3.5.1</span> An index behind every query</h4>
+<div id="outline-container-org68112ec" class="outline-4">
+<h4 id="org68112ec"><span class="section-number-4">3.5.1</span> An index behind every query</h4>
 <div class="outline-text-4" id="text-3-5-1">
 <p>
 If no index exists for a query, most databases crawl through their contents item by item, a slow process that slows down even more as the database grows. Cloud Firestore guarantees high query performance by using indexes for all queries. As a result, query performance depends on the size of the result set and not on the number of items in the database.
@@ -770,8 +768,8 @@ If no index exists for a query, most databases crawl through their contents item
 </div>
 </div>
 
-<div id="outline-container-orge9c54da" class="outline-4">
-<h4 id="orge9c54da"><span class="section-number-4">3.5.2</span> Less index management, more app development</h4>
+<div id="outline-container-org3396ba1" class="outline-4">
+<h4 id="org3396ba1"><span class="section-number-4">3.5.2</span> Less index management, more app development</h4>
 <div class="outline-text-4" id="text-3-5-2">
 <p>
 Cloud Firestore includes features that reduce the amount of time you need to spend managing indexes. The indexes required for the most basic queries are automatically created for you. As you use and test your app, Cloud Firestore helps you identify and create additional indexes your app requires.
@@ -779,8 +777,8 @@ Cloud Firestore includes features that reduce the amount of time you need to spe
 </div>
 </div>
 
-<div id="outline-container-orgb8f2e60" class="outline-4">
-<h4 id="orgb8f2e60"><span class="section-number-4">3.5.3</span> Automatic indexing</h4>
+<div id="outline-container-org0cb29be" class="outline-4">
+<h4 id="org0cb29be"><span class="section-number-4">3.5.3</span> Automatic indexing</h4>
 <div class="outline-text-4" id="text-3-5-3">
 <p>
 By default, Cloud Firestore automatically maintains single-field indexes for each field in a document and each subfield in a map. Cloud Firestore uses the following default settings for single-field indexes:
@@ -868,8 +866,8 @@ You can create multiple collections in one database</li>
 <h2 id="SW-Firebase-AddFirebase"><span class="section-number-2">5</span> Adding Firebase to your iOS project</h2>
 <div class="outline-text-2" id="text-SW-Firebase-AddFirebase">
 </div>
-<div id="outline-container-orgff98fff" class="outline-3">
-<h3 id="orgff98fff"><span class="section-number-3">5.1</span> key process</h3>
+<div id="outline-container-orgd21e28f" class="outline-3">
+<h3 id="orgd21e28f"><span class="section-number-3">5.1</span> key process</h3>
 <div class="outline-text-3" id="text-5-1">
 <ol class="org-ol">
 <li>Create a FIrebase project [DONE]</li>
@@ -884,12 +882,12 @@ You can create multiple collections in one database</li>
 </div>
 </div>
 
-<div id="outline-container-org24796a7" class="outline-3">
-<h3 id="org24796a7"><span class="section-number-3">5.2</span> Setting up Firebase project: Step by step</h3>
+<div id="outline-container-orgaa08b15" class="outline-3">
+<h3 id="orgaa08b15"><span class="section-number-3">5.2</span> Setting up Firebase project: Step by step</h3>
 <div class="outline-text-3" id="text-5-2">
 </div>
-<div id="outline-container-orgcc72b91" class="outline-4">
-<h4 id="orgcc72b91"><span class="section-number-4">5.2.1</span> Create/Register</h4>
+<div id="outline-container-org7f155ae" class="outline-4">
+<h4 id="org7f155ae"><span class="section-number-4">5.2.1</span> Create/Register</h4>
 <div class="outline-text-4" id="text-5-2-1">
 <ol class="org-ol">
 <li>Create or open a Firebase project
@@ -908,12 +906,12 @@ this config file (GoogleService-info.plist) will be added to your project</li>
 </ol>
 </div>
 </div>
-<div id="outline-container-orgbcb1cd9" class="outline-4">
-<h4 id="orgbcb1cd9"><span class="section-number-4">5.2.2</span> Install SDKs</h4>
+<div id="outline-container-org8811d86" class="outline-4">
+<h4 id="org8811d86"><span class="section-number-4">5.2.2</span> Install SDKs</h4>
 <div class="outline-text-4" id="text-5-2-2">
 </div>
 <ol class="org-ol">
-<li><a id="org4b275ab"></a>Method #1: CocoaPods<br />
+<li><a id="org25a13eb"></a>Method #1: CocoaPods<br />
 <div class="outline-text-5" id="text-5-2-2-1">
 <ol class="org-ol">
 <li>Add Firebase SDKs
@@ -990,7 +988,7 @@ and then wait&#x2026;&#x2026;
 </ol>
 </div>
 </li>
-<li><a id="org1e28fe2"></a>Method #2: Swift Package Manager for Firebase<br />
+<li><a id="org6163de4"></a>Method #2: Swift Package Manager for Firebase<br />
 <div class="outline-text-5" id="text-5-2-2-2">
 <ol class="org-ol">
 <li>If you&rsquo;ve previously used CocoaPods, remove them from the project with pod deintegrate.</li>
@@ -998,7 +996,7 @@ and then wait&#x2026;&#x2026;
 Install Firebase via Swift Package Manager:
 </p>
 
-<div id="org67acf56" class="figure">
+<div id="orgdc5ad51" class="figure">
 <p><img src="images/sdk-1.jpg" alt="sdk-1.jpg" width="500" />
 </p>
 <p><span class="figure-number">Figure 1: </span>Install Firebase SDK #1</p>
@@ -1008,7 +1006,7 @@ Select the Firebase GitHub repository
 ios sdk URL: <a href="https://github.com/firebase/firebase-ios-sdk.git">https://github.com/firebase/firebase-ios-sdk.git</a>:
 </p>
 
-<div id="org17d8c92" class="figure">
+<div id="orge8de814" class="figure">
 <p><img src="images/sdk-2.jpg" alt="sdk-2.jpg" width="500" />
 </p>
 <p><span class="figure-number">Figure 2: </span>Install Firebase SDK #2</p>
@@ -1017,7 +1015,7 @@ ios sdk URL: <a href="https://github.com/firebase/firebase-ios-sdk.git">https://
 Select the Branch: maser
 </p>
 
-<div id="orgd104137" class="figure">
+<div id="orgd0591cf" class="figure">
 <p><img src="images/sdk-3.jpg" alt="sdk-3.jpg" width="500" />
 </p>
 <p><span class="figure-number">Figure 3: </span>Install Firebase SDK #3</p>
@@ -1026,7 +1024,7 @@ Select the Branch: maser
 Wait about 2000 years
 </p>
 
-<div id="orgd4942e8" class="figure">
+<div id="org2908224" class="figure">
 <p><img src="images/sdk-3.jpg" alt="sdk-3.jpg" width="500" />
 </p>
 <p><span class="figure-number">Figure 4: </span>Install Firebase SDK #3</p>
@@ -1035,7 +1033,7 @@ Wait about 2000 years
 Choose the Firebase products that you want installed in your app.
 </p>
 
-<div id="org5fd48c1" class="figure">
+<div id="orgaaacd94" class="figure">
 <p><img src="images/sdk-4.jpg" alt="sdk-4.jpg" width="500" />
 </p>
 <p><span class="figure-number">Figure 5: </span>Install Firebase SDK #4</p>
@@ -1044,7 +1042,7 @@ Choose the Firebase products that you want installed in your app.
 DEMO
 </p>
 
-<div id="orgba0f32d" class="figure">
+<div id="org6953abb" class="figure">
 <p><img src="images/sdk.gif" alt="sdk.gif" width="500" />
 </p>
 <p><span class="figure-number">Figure 6: </span>Install Firebase SDK #DEMO</p>
@@ -1052,7 +1050,7 @@ DEMO
 </ol>
 </div>
 </li>
-<li><a id="orgd949bc9"></a>Initialize Project<br />
+<li><a id="org4de5ae3"></a>Initialize Project<br />
 <div class="outline-text-5" id="text-5-2-2-3">
 <ol class="org-ol">
 <li>Open your project (xcworkspace)</li>
@@ -1091,8 +1089,8 @@ Initilize the App struct by adding the following code
 </div>
 </div>
 
-<div id="outline-container-org529d118" class="outline-3">
-<h3 id="org529d118"><span class="section-number-3">5.3</span> 資料來源</h3>
+<div id="outline-container-org47d328b" class="outline-3">
+<h3 id="org47d328b"><span class="section-number-3">5.3</span> 資料來源</h3>
 <div class="outline-text-3" id="text-5-3">
 <ul class="org-ul">
 <li><a href="https://1998design.medium.com/%E5%A6%82%E4%BD%95-%E5%B0%87firebase%E5%8A%A0%E5%85%A5ios-swiftui-2-2020-d4315d0173ca">如何：將Firebase加入iOS SwiftUI 2 (2020)</a></li>
@@ -1111,12 +1109,12 @@ Initilize the App struct by adding the following code
 Create a button on View for trying the following function
 </p>
 </div>
-<div id="outline-container-orge1db4d2" class="outline-3">
-<h3 id="orge1db4d2"><span class="section-number-3">6.1</span> Add document</h3>
+<div id="outline-container-orgf8991f3" class="outline-3">
+<h3 id="orgf8991f3"><span class="section-number-3">6.1</span> Add document</h3>
 <div class="outline-text-3" id="text-6-1">
 </div>
-<div id="outline-container-orge119b44" class="outline-4">
-<h4 id="orge119b44"><span class="section-number-4">6.1.1</span> create a document with specific document ID</h4>
+<div id="outline-container-org76bc0e7" class="outline-4">
+<h4 id="org76bc0e7"><span class="section-number-4">6.1.1</span> create a document with specific document ID</h4>
 <div class="outline-text-4" id="text-6-1-1">
 <ul class="org-ul">
 <li><p>
@@ -1166,8 +1164,8 @@ ContentView.swift
 </ul>
 </div>
 </div>
-<div id="outline-container-orgfeae2ea" class="outline-4">
-<h4 id="orgfeae2ea"><span class="section-number-4">6.1.2</span> create a document with auto-generate document ID</h4>
+<div id="outline-container-orgdbbbbe2" class="outline-4">
+<h4 id="orgdbbbbe2"><span class="section-number-4">6.1.2</span> create a document with auto-generate document ID</h4>
 <div class="outline-text-4" id="text-6-1-2">
 <ul class="org-ul">
 <li><p>
@@ -1221,12 +1219,12 @@ ContentView.swift</li>
 </div>
 </div>
 
-<div id="outline-container-org738cf50" class="outline-3">
-<h3 id="org738cf50"><span class="section-number-3">6.2</span> Get data from Cloud Firestore: Basic</h3>
+<div id="outline-container-org0a34c29" class="outline-3">
+<h3 id="org0a34c29"><span class="section-number-3">6.2</span> Get data from Cloud Firestore: Basic</h3>
 <div class="outline-text-3" id="text-6-2">
 </div>
-<div id="outline-container-org255be80" class="outline-4">
-<h4 id="org255be80"><span class="section-number-4">6.2.1</span> Getting collection</h4>
+<div id="outline-container-org9f29909" class="outline-4">
+<h4 id="org9f29909"><span class="section-number-4">6.2.1</span> Getting collection</h4>
 <div class="outline-text-4" id="text-6-2-1">
 <ul class="org-ul">
 <li><p>
@@ -1269,8 +1267,8 @@ ContentView.swift
 </ul>
 </div>
 </div>
-<div id="outline-container-org703fce1" class="outline-4">
-<h4 id="org703fce1"><span class="section-number-4">6.2.2</span> Getting document</h4>
+<div id="outline-container-org13b4bd5" class="outline-4">
+<h4 id="org13b4bd5"><span class="section-number-4">6.2.2</span> Getting document</h4>
 <div class="outline-text-4" id="text-6-2-2">
 <ul class="org-ul">
 <li><p>
@@ -1329,19 +1327,19 @@ ContentView.swift
 <h2 id="SW-GetDataFromCloud"><span class="section-number-2">7</span> Get data from Cloud: UI with Firebase [MVVM]</h2>
 <div class="outline-text-2" id="text-SW-GetDataFromCloud">
 </div>
-<div id="outline-container-orgfa6865b" class="outline-3">
-<h3 id="orgfa6865b"><span class="section-number-3">7.1</span> MVVM architecture</h3>
+<div id="outline-container-org8672b36" class="outline-3">
+<h3 id="org8672b36"><span class="section-number-3">7.1</span> MVVM architecture</h3>
 <div class="outline-text-3" id="text-7-1">
 
-<div id="org148adcd" class="figure">
+<div id="org02357d6" class="figure">
 <p><img src="images/mvvm-d2.png" alt="mvvm-d2.png" width="500" />
 </p>
 <p><span class="figure-number">Figure 7: </span>MVVM for FirebaseApp</p>
 </div>
 </div>
 </div>
-<div id="outline-container-org7f90c53" class="outline-3">
-<h3 id="org7f90c53"><span class="section-number-3">7.2</span> Model</h3>
+<div id="outline-container-orgeaed1b5" class="outline-3">
+<h3 id="orgeaed1b5"><span class="section-number-3">7.2</span> Model</h3>
 <div class="outline-text-3" id="text-7-2">
 <p>
 Task.swift
@@ -1361,8 +1359,8 @@ Task.swift
 </div>
 </div>
 </div>
-<div id="outline-container-orgf709741" class="outline-3">
-<h3 id="orgf709741"><span class="section-number-3">7.3</span> View</h3>
+<div id="outline-container-org7200dc0" class="outline-3">
+<h3 id="org7200dc0"><span class="section-number-3">7.3</span> View</h3>
 <div class="outline-text-3" id="text-7-3">
 <p>
 TaskListView.swift
@@ -1384,8 +1382,8 @@ TaskListView.swift
 </div>
 </div>
 </div>
-<div id="outline-container-orgee0cddd" class="outline-3">
-<h3 id="orgee0cddd"><span class="section-number-3">7.4</span> ViewModel</h3>
+<div id="outline-container-org9893b5c" class="outline-3">
+<h3 id="org9893b5c"><span class="section-number-3">7.4</span> ViewModel</h3>
 <div class="outline-text-3" id="text-7-4">
 <ul class="org-ul">
 <li><p>
@@ -1441,8 +1439,8 @@ TaskListViewModel.swift
 </ul>
 </div>
 </div>
-<div id="outline-container-org0bed0e5" class="outline-3">
-<h3 id="org0bed0e5"><span class="section-number-3">7.5</span> Repository</h3>
+<div id="outline-container-org467cdea" class="outline-3">
+<h3 id="org467cdea"><span class="section-number-3">7.5</span> Repository</h3>
 <div class="outline-text-3" id="text-7-5">
 <p>
 TaskRepository.swift
@@ -1481,8 +1479,8 @@ TaskRepository.swift
 </div>
 </div>
 
-<div id="outline-container-org8c0312c" class="outline-3">
-<h3 id="org8c0312c"><span class="section-number-3">7.6</span> 資料來源</h3>
+<div id="outline-container-orgb4f8983" class="outline-3">
+<h3 id="orgb4f8983"><span class="section-number-3">7.6</span> 資料來源</h3>
 <div class="outline-text-3" id="text-7-6">
 <ul class="org-ul">
 <li><a href="https://www.raywenderlich.com/11609977-getting-started-with-cloud-firestore-and-swiftui">Getting Started with Cloud Firestore and SwiftUI</a></li>
@@ -1500,8 +1498,8 @@ TaskRepository.swift
 <h2 id="SW-Delete"><span class="section-number-2">8</span> Add, Delete #1 data from Cloud: UI with Firebase [MVVM]</h2>
 <div class="outline-text-2" id="text-SW-Delete">
 </div>
-<div id="outline-container-org3fc125f" class="outline-3">
-<h3 id="org3fc125f"><span class="section-number-3">8.1</span> Repository</h3>
+<div id="outline-container-org00bf9cf" class="outline-3">
+<h3 id="org00bf9cf"><span class="section-number-3">8.1</span> Repository</h3>
 <div class="outline-text-3" id="text-8-1">
 <p>
 TaskRepository.swift
@@ -1535,8 +1533,8 @@ TaskRepository.swift
 </div>
 </div>
 
-<div id="outline-container-org93fef7a" class="outline-3">
-<h3 id="org93fef7a"><span class="section-number-3">8.2</span> View</h3>
+<div id="outline-container-orgf22e0cf" class="outline-3">
+<h3 id="orgf22e0cf"><span class="section-number-3">8.2</span> View</h3>
 <div class="outline-text-3" id="text-8-2">
 <p>
 TaskListView.swift
@@ -1585,8 +1583,8 @@ TaskListView.swift
 </div>
 </div>
 
-<div id="outline-container-org741bdbe" class="outline-3">
-<h3 id="org741bdbe"><span class="section-number-3">8.3</span> ViewModel</h3>
+<div id="outline-container-orgbefaa84" class="outline-3">
+<h3 id="orgbefaa84"><span class="section-number-3">8.3</span> ViewModel</h3>
 <div class="outline-text-3" id="text-8-3">
 <p>
 TaskListViewModel.swift
@@ -1631,12 +1629,12 @@ TaskListViewModel.swift
 </div>
 </div>
 
-<div id="outline-container-org974743e" class="outline-2">
-<h2 id="org974743e"><span class="section-number-2">9</span> Delete #2 data from Cloud: UI with Firebase [MVVM]</h2>
+<div id="outline-container-orgfc7ee79" class="outline-2">
+<h2 id="orgfc7ee79"><span class="section-number-2">9</span> Delete #2 data from Cloud: UI with Firebase [MVVM]</h2>
 <div class="outline-text-2" id="text-9">
 </div>
-<div id="outline-container-orgaf701ee" class="outline-3">
-<h3 id="orgaf701ee"><span class="section-number-3">9.1</span> Repository</h3>
+<div id="outline-container-orgbd9964b" class="outline-3">
+<h3 id="orgbd9964b"><span class="section-number-3">9.1</span> Repository</h3>
 <div class="outline-text-3" id="text-9-1">
 <div class="org-src-container">
 <pre class="src src-python"><span class="linenr"> 1: </span>//
@@ -1717,8 +1715,8 @@ TaskListViewModel.swift
 </div>
 </div>
 
-<div id="outline-container-org80ae747" class="outline-3">
-<h3 id="org80ae747"><span class="section-number-3">9.2</span> View</h3>
+<div id="outline-container-org68faf35" class="outline-3">
+<h3 id="org68faf35"><span class="section-number-3">9.2</span> View</h3>
 <div class="outline-text-3" id="text-9-2">
 <div class="org-src-container">
 <pre class="src src-python"><span class="linenr"> 1: </span>//
@@ -1773,8 +1771,8 @@ TaskListViewModel.swift
 </div>
 </div>
 
-<div id="outline-container-orgcc97a8f" class="outline-3">
-<h3 id="orgcc97a8f"><span class="section-number-3">9.3</span> ViewModel</h3>
+<div id="outline-container-org48ee1c6" class="outline-3">
+<h3 id="org48ee1c6"><span class="section-number-3">9.3</span> ViewModel</h3>
 <div class="outline-text-3" id="text-9-3">
 <div class="org-src-container">
 <pre class="src src-python"><span class="linenr"> 1: </span>//
@@ -1824,8 +1822,8 @@ TaskListViewModel.swift
 <h2 id="SW-Detail"><span class="section-number-2">10</span> Detail/Edit data from Cloud: UI with Firebase [MVVM]</h2>
 <div class="outline-text-2" id="text-SW-Detail">
 </div>
-<div id="outline-container-org619ba58" class="outline-3">
-<h3 id="org619ba58"><span class="section-number-3">10.1</span> Repository</h3>
+<div id="outline-container-orgd6acf0a" class="outline-3">
+<h3 id="orgd6acf0a"><span class="section-number-3">10.1</span> Repository</h3>
 <div class="outline-text-3" id="text-10-1">
 <p>
 TaskRepository.swift
@@ -1916,12 +1914,12 @@ TaskRepository.swift
 </div>
 </div>
 
-<div id="outline-container-orgfcff8dc" class="outline-3">
-<h3 id="orgfcff8dc"><span class="section-number-3">10.2</span> View</h3>
+<div id="outline-container-org90c839c" class="outline-3">
+<h3 id="org90c839c"><span class="section-number-3">10.2</span> View</h3>
 <div class="outline-text-3" id="text-10-2">
 </div>
-<div id="outline-container-org4643240" class="outline-4">
-<h4 id="org4643240"><span class="section-number-4">10.2.1</span> TaskListView.swift</h4>
+<div id="outline-container-org9ffe39f" class="outline-4">
+<h4 id="org9ffe39f"><span class="section-number-4">10.2.1</span> TaskListView.swift</h4>
 <div class="outline-text-4" id="text-10-2-1">
 <div class="org-src-container">
 <pre class="src src-python"><span class="linenr"> 1: </span>//
@@ -1981,8 +1979,8 @@ TaskRepository.swift
 </div>
 </div>
 
-<div id="outline-container-orgdc16712" class="outline-4">
-<h4 id="orgdc16712"><span class="section-number-4">10.2.2</span> TaskDetailView.swift</h4>
+<div id="outline-container-org34a528e" class="outline-4">
+<h4 id="org34a528e"><span class="section-number-4">10.2.2</span> TaskDetailView.swift</h4>
 <div class="outline-text-4" id="text-10-2-2">
 <div class="org-src-container">
 <pre class="src src-python"><span class="linenr"> 1: </span>//
@@ -2032,8 +2030,8 @@ TaskRepository.swift
 </div>
 </div>
 
-<div id="outline-container-org9c9dc07" class="outline-4">
-<h4 id="org9c9dc07"><span class="section-number-4">10.2.3</span> UpdateListView.swift</h4>
+<div id="outline-container-orgfe630b6" class="outline-4">
+<h4 id="orgfe630b6"><span class="section-number-4">10.2.3</span> UpdateListView.swift</h4>
 <div class="outline-text-4" id="text-10-2-3">
 <div class="org-src-container">
 <pre class="src src-python"><span class="linenr"> 1: </span>//
@@ -2080,12 +2078,12 @@ TaskRepository.swift
 </div>
 </div>
 
-<div id="outline-container-org5cf370e" class="outline-3">
-<h3 id="org5cf370e"><span class="section-number-3">10.3</span> ViewModel</h3>
+<div id="outline-container-orga61e1d1" class="outline-3">
+<h3 id="orga61e1d1"><span class="section-number-3">10.3</span> ViewModel</h3>
 <div class="outline-text-3" id="text-10-3">
 </div>
-<div id="outline-container-orgf8af705" class="outline-4">
-<h4 id="orgf8af705"><span class="section-number-4">10.3.1</span> TaskListViewModel.swift</h4>
+<div id="outline-container-org67cea7a" class="outline-4">
+<h4 id="org67cea7a"><span class="section-number-4">10.3.1</span> TaskListViewModel.swift</h4>
 <div class="outline-text-4" id="text-10-3-1">
 <div class="org-src-container">
 <pre class="src src-python"><span class="linenr"> 1: </span>//
@@ -2133,8 +2131,8 @@ TaskRepository.swift
 </div>
 </div>
 
-<div id="outline-container-orgf0d7f4d" class="outline-4">
-<h4 id="orgf0d7f4d"><span class="section-number-4">10.3.2</span> TaskCellViewModel.swift</h4>
+<div id="outline-container-orgef49500" class="outline-4">
+<h4 id="orgef49500"><span class="section-number-4">10.3.2</span> TaskCellViewModel.swift</h4>
 <div class="outline-text-4" id="text-10-3-2">
 <div class="org-src-container">
 <pre class="src src-python"><span class="linenr"> 1: </span>//
@@ -2170,11 +2168,11 @@ TaskRepository.swift
 </div>
 </div>
 
-<div id="outline-container-orgfd875cf" class="outline-4">
-<h4 id="orgfd875cf"><span class="section-number-4">10.3.3</span> DEMO</h4>
+<div id="outline-container-org179c0e2" class="outline-4">
+<h4 id="org179c0e2"><span class="section-number-4">10.3.3</span> DEMO</h4>
 <div class="outline-text-4" id="text-10-3-3">
 
-<div id="orgcc318cd" class="figure">
+<div id="org30cda38" class="figure">
 <p><img src="images/Update-Edit.gif" alt="Update-Edit.gif" width="300" />
 </p>
 <p><span class="figure-number">Figure 8: </span>Detail / Edit DEMO</p>
@@ -2183,8 +2181,8 @@ TaskRepository.swift
 </div>
 </div>
 
-<div id="outline-container-orge96e055" class="outline-3">
-<h3 id="orge96e055"><span class="section-number-3">10.4</span> Topics:</h3>
+<div id="outline-container-org36a65d7" class="outline-3">
+<h3 id="org36a65d7"><span class="section-number-3">10.4</span> Topics:</h3>
 <div class="outline-text-3" id="text-10-4">
 <ul class="org-ul">
 <li>Detection of Modified: <a href="https://www.youtube.com/watch?v=imTjGvSjBEw">Adding data to Firestore from a SwiftUI App</a></li>
@@ -2197,12 +2195,12 @@ TaskRepository.swift
 <h2 id="SW-Icon"><span class="section-number-2">11</span> Add Icon to App</h2>
 <div class="outline-text-2" id="text-SW-Icon">
 </div>
-<div id="outline-container-orga08730b" class="outline-3">
-<h3 id="orga08730b"><span class="section-number-3">11.1</span> ViewModel</h3>
+<div id="outline-container-orga030ffc" class="outline-3">
+<h3 id="orga030ffc"><span class="section-number-3">11.1</span> ViewModel</h3>
 <div class="outline-text-3" id="text-11-1">
 </div>
-<div id="outline-container-org5def144" class="outline-4">
-<h4 id="org5def144"><span class="section-number-4">11.1.1</span> TaskCellViewModel.swift</h4>
+<div id="outline-container-org2c0e6fe" class="outline-4">
+<h4 id="org2c0e6fe"><span class="section-number-4">11.1.1</span> TaskCellViewModel.swift</h4>
 <div class="outline-text-4" id="text-11-1-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #5B6268;">//</span>
@@ -2248,12 +2246,12 @@ TaskRepository.swift
 </div>
 </div>
 </div>
-<div id="outline-container-org0c7194b" class="outline-3">
-<h3 id="org0c7194b"><span class="section-number-3">11.2</span> View</h3>
+<div id="outline-container-orge471da1" class="outline-3">
+<h3 id="orge471da1"><span class="section-number-3">11.2</span> View</h3>
 <div class="outline-text-3" id="text-11-2">
 </div>
-<div id="outline-container-org8bbf27c" class="outline-4">
-<h4 id="org8bbf27c"><span class="section-number-4">11.2.1</span> TaskListView.swift</h4>
+<div id="outline-container-org3fb64e6" class="outline-4">
+<h4 id="org3fb64e6"><span class="section-number-4">11.2.1</span> TaskListView.swift</h4>
 <div class="outline-text-4" id="text-11-2-1">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #5B6268;">//</span>
@@ -2325,8 +2323,8 @@ TaskRepository.swift
 <h2 id="SW-Firebase-Storage"><span class="section-number-2">12</span> Storage</h2>
 <div class="outline-text-2" id="text-SW-Firebase-Storage">
 </div>
-<div id="outline-container-org4a40451" class="outline-3">
-<h3 id="org4a40451"><span class="section-number-3">12.1</span> preparation</h3>
+<div id="outline-container-org7722427" class="outline-3">
+<h3 id="org7722427"><span class="section-number-3">12.1</span> preparation</h3>
 <div class="outline-text-3" id="text-12-1">
 <ol class="org-ol">
 <li>Add Firebase/Strage Library</li>
@@ -2338,8 +2336,8 @@ TaskRepository.swift
 </div>
 </div>
 
-<div id="outline-container-orgec534a1" class="outline-3">
-<h3 id="orgec534a1"><span class="section-number-3">12.2</span> tips</h3>
+<div id="outline-container-org375f287" class="outline-3">
+<h3 id="org375f287"><span class="section-number-3">12.2</span> tips</h3>
 <div class="outline-text-3" id="text-12-2">
 <ol class="org-ol">
 <li><p>
@@ -2416,8 +2414,8 @@ User based security with Storage Security Rules
 <h3 id="SW-ImagePicker"><span class="section-number-3">12.3</span> How to pick image in iOS</h3>
 <div class="outline-text-3" id="text-SW-ImagePicker">
 </div>
-<div id="outline-container-orgf5d37bb" class="outline-4">
-<h4 id="orgf5d37bb"><span class="section-number-4">12.3.1</span> Utility: ImagePicker</h4>
+<div id="outline-container-org8886ced" class="outline-4">
+<h4 id="org8886ced"><span class="section-number-4">12.3.1</span> Utility: ImagePicker</h4>
 <div class="outline-text-4" id="text-12-3-1">
 <p>
 ImagePicker.swift
@@ -2470,8 +2468,8 @@ ImagePicker.swift
 </div>
 </div>
 </div>
-<div id="outline-container-org04cfe77" class="outline-4">
-<h4 id="org04cfe77"><span class="section-number-4">12.3.2</span> How to call ImagePicker in SwiftUI</h4>
+<div id="outline-container-orgab6bcb6" class="outline-4">
+<h4 id="orgab6bcb6"><span class="section-number-4">12.3.2</span> How to call ImagePicker in SwiftUI</h4>
 <div class="outline-text-4" id="text-12-3-2">
 <p>
 TaskNewView.swift
@@ -2705,22 +2703,22 @@ TaskRepository.swift: Upload image and get image URL
 <h3 id="SW-URLImage"><span class="section-number-3">12.6</span> Show online image: URLImage</h3>
 <div class="outline-text-3" id="text-SW-URLImage">
 </div>
-<div id="outline-container-org90b1038" class="outline-4">
-<h4 id="org90b1038"><span class="section-number-4">12.6.1</span> url-image</h4>
+<div id="outline-container-org22f24ec" class="outline-4">
+<h4 id="org22f24ec"><span class="section-number-4">12.6.1</span> url-image</h4>
 <div class="outline-text-4" id="text-12-6-1">
 <p>
 URLImage is a SwiftUI view that displays an image downloaded from provided URL. URLImage manages downloading remote image and caching it locally, both in memory and on disk, for you.
 </p>
 </div>
 <ol class="org-ol">
-<li><a id="org4073c18"></a>Install<br />
+<li><a id="org578cacf"></a>Install<br />
 <div class="outline-text-5" id="text-12-6-1-1">
 <p>
 <a href="https://github.com/dmytro-anokhin/url-image">https://github.com/dmytro-anokhin/url-image</a>
 </p>
 </div>
 </li>
-<li><a id="orgbd16bb6"></a>Using<br />
+<li><a id="org64cee8d"></a>Using<br />
 <div class="outline-text-5" id="text-12-6-1-2">
 <p>
 Using URLImage is dead simple:
@@ -2737,8 +2735,8 @@ Using URLImage is dead simple:
 </li>
 </ol>
 </div>
-<div id="outline-container-org6d3380c" class="outline-4">
-<h4 id="org6d3380c"><span class="section-number-4">12.6.2</span> TaskDetailView.swift</h4>
+<div id="outline-container-orgb9e4095" class="outline-4">
+<h4 id="orgb9e4095"><span class="section-number-4">12.6.2</span> TaskDetailView.swift</h4>
 <div class="outline-text-4" id="text-12-6-2">
 <div class="org-src-container">
 <pre class="src src-swift"><span class="linenr"> 1: </span><span style="color: #5B6268;">//</span>
@@ -2803,8 +2801,8 @@ Using URLImage is dead simple:
 <h2 id="SW-Firebase-LearningResource"><span class="section-number-2">13</span> Learning resources</h2>
 <div class="outline-text-2" id="text-SW-Firebase-LearningResource">
 </div>
-<div id="outline-container-orgac342e1" class="outline-3">
-<h3 id="orgac342e1"><span class="section-number-3">13.1</span> web</h3>
+<div id="outline-container-org3792176" class="outline-3">
+<h3 id="org3792176"><span class="section-number-3">13.1</span> web</h3>
 <div class="outline-text-3" id="text-13-1">
 <ul class="org-ul">
 <li><a href="https://medium.com/flawless-app-stories/how-to-build-a-firebase-app-with-swiftui-5919d2d8a396">How To Build A Firebase App With SwiftUI</a></li>
@@ -2812,8 +2810,8 @@ Using URLImage is dead simple:
 </ul>
 </div>
 </div>
-<div id="outline-container-orgb125d50" class="outline-3">
-<h3 id="orgb125d50"><span class="section-number-3">13.2</span> Videos</h3>
+<div id="outline-container-orgf54e7c7" class="outline-3">
+<h3 id="orgf54e7c7"><span class="section-number-3">13.2</span> Videos</h3>
 <div class="outline-text-3" id="text-13-2">
 <ul class="org-ul">
 <li><a href="https://www.youtube.com/watch?v=GGp-wT693IY">Downloading Images in SwiftUI</a></li>
@@ -2857,7 +2855,7 @@ Using URLImage is dead simple:
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Yung Chin, Yen</p>
-<p class="date">Created: 2021-05-29 Sat 20:50</p>
+<p class="date">Created: 2021-05-29 Sat 21:46</p>
 </div>
 </body>
 </html>
