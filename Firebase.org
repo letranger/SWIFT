@@ -1588,7 +1588,10 @@ imageRef.putData(sureImage, metadata: nil) { (meta, err) in
 
 #+end_src
 
-** How to upload image to Firebase storage
+** How to upload image to Firebase storage and get download URL (for saving into database)
+:PROPERTIES:
+:CUSTOM_ID: SW-UploadSaveImage
+:END:
 TaskRepository.swift: Upload image and get image URL
 #+begin_src swift -r -n :results output :exports nil
 //
@@ -1621,12 +1624,7 @@ class TaskRepository: ObservableObject {
             if let error = error {
                 print("錯誤: \(error.localizedDescription)")
             }
-            // method #1
-            self.tasks = querySanpshot?.documents.compactMap { document in
-                try? document.data(as: Task.self)
-            } ?? []
 
-            // method #2
             if let querySnapshot = querySanpshot {
                 self.tasks = querySnapshot.documents.compactMap({ (queryDocumentSnapshot) -> Task? in
                     return try? queryDocumentSnapshot.data(as: Task.self)
@@ -1636,36 +1634,36 @@ class TaskRepository: ObservableObject {
     }
 
     func add(task: Task, image: UIImage) {
+        // 設定圖片檔名及存檔位置
         let imageRefStr = "images/\(UUID().uuidString).jpg"
-        // Upload image and return URL and add task
+        // 以上述資料建立Storage reference
         let imageRef = Storage.storage().reference().child(imageRefStr)
-        // we create an upload task using our reference and upload the
-        // data using the metadata object
-        guard let imageData = image.jpegData(compressionQuality: 1) else {
+        // 上傳 前對圖片進行壓縮
+        guard let imageData = image.jpegData(compressionQuality: 0.5) else {
             print("compress jpg failed")
             return
         }
+        // 上傳圖片
         imageRef.putData(imageData, metadata: nil, completion: { (metadata, error) in
-            // first we check if the error is nil
+            // 若出現錯誤則輸出錯誤、結束add
             if let error = error {
-                print("putData Errir: \(error)")
+                print("putData Errir: \(error.localizedDescription)")
                 return
             }
-            // get downloadURL
+            // 取得該圖片的下載網址
             imageRef.downloadURL(completion: { (url, error) in
                 if let error = error {
                     print("getting downloadURL Errir: \(error)")
                     return
                 }
-                // OK, add task
+                // 確定有拿到網址
                 guard let imageURL = url else {
                     print("Error while uploading image")
                     return
                 }
-
                 let urlString = imageURL.absoluteString
+                // 成功上傳檔案、取得下載網址，進行新增任務
                 let newTask = Task(title: task.title, imageRefStr: imageRefStr, imageUrlStr: urlString, completed: task.completed)
-
                 do {
                     _ = try self.db.collection("todo").addDocument(from: newTask)
                 } catch {
@@ -1677,10 +1675,6 @@ class TaskRepository: ObservableObject {
     }
 
     func delete(indexset: IndexSet) {
-        // pass in IndexSet
-        for i in indexset {
-            print(i)
-        }
         indexset.forEach { index in
             let task = tasks[index]
             db.collection("todo").document(task.id!).delete() { error in
@@ -1712,13 +1706,6 @@ class TaskRepository: ObservableObject {
             }
         }
 
-        /*
-         db.collection("todo").document(documentID).delete { error in
-         if let error = error {
-         print("Deleteing a task failed, \(error.localizedDescription)")
-         }
-         }
-         */
     }
 
     func update(task: Task) {
@@ -1730,13 +1717,28 @@ class TaskRepository: ObservableObject {
         }
     }
 }
+
+
 #+end_src
 
-** How to show online image: Kingfisher
-*** Install 3rd party swift library
-Kingfisher (a powerful, pure-Swift library for downloading and caching images from the web.)
-*** Show online image
-TaskDetailView.swift
+** Show online image: URLImage
+:PROPERTIES:
+:CUSTOM_ID: SW-URLImage
+:END:
+*** url-image
+URLImage is a SwiftUI view that displays an image downloaded from provided URL. URLImage manages downloading remote image and caching it locally, both in memory and on disk, for you.
+**** Install
+https://github.com/dmytro-anokhin/url-image
+**** Using
+Using URLImage is dead simple:
+#+begin_src swift -r -n :results output :exports nil
+URLImage(url: url) { image in
+    image
+        .resizable()
+        .aspectRatio(contentMode: .fit)
+}
+#+end_src
+*** TaskDetailView.swift
 #+begin_src swift -r -n :results output :exports nil
 //
 //  TaskCellView.swift
@@ -1747,6 +1749,7 @@ TaskDetailView.swift
 
 import SwiftUI
 import Kingfisher
+import URLImage
 
 struct TaskDetailView: View {
     @ObservedObject var taskCellVM: TaskCellViewModel
@@ -1755,16 +1758,15 @@ struct TaskDetailView: View {
         NavigationView {
             Form {
                 Section(header: Text("Task")) {
-                    VStack {
+                    VStack (alignment: .center, spacing: 20) {
                         Text(taskCellVM.task.title)
-                        KFImage(URL(string: taskCellVM.imageURLString))
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(height: 300, alignment: .center)
-                            .clipped()
-                            .cornerRadius(20.0)
-                            .animation(.default)
-                            .progressViewStyle(LinearProgressViewStyle())
+                        Divider()
+                        URLImage(URL(string: taskCellVM.task.imageUrlStr)!) { Image in
+                            Image
+                                .resizable()
+                                .frame(width: 200, height: 200, alignment: .center)
+                                .aspectRatio(contentMode: .fit)
+                        }
                     }
                 }
                 Section(header: Text("Done")) {
