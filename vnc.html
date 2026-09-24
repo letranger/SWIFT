@@ -3,14 +3,14 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-05-21 Fri 09:01 -->
+<!-- 2022-11-22 Tue 21:38 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>VNC遠端連線</title>
-<meta name="generator" content="Org mode" />
 <meta name="author" content="Yung Chin, Yen" />
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
   .subtitle { text-align: center;
@@ -31,8 +31,9 @@
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
   pre {
-    border: 1px solid #ccc;
-    box-shadow: 3px 3px 3px #eee;
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
     padding: 8pt;
     font-family: monospace;
     overflow: auto;
@@ -40,22 +41,22 @@
   }
   pre.src {
     position: relative;
-    overflow: visible;
-    padding-top: 1.2em;
+    overflow: auto;
   }
   pre.src:before {
     display: none;
     position: absolute;
-    background-color: white;
-    top: -10px;
-    right: 10px;
+    top: -8px;
+    right: 12px;
     padding: 3px;
-    border: 1px solid black;
+    color: #555;
+    background-color: #f2f2f299;
   }
-  pre.src:hover:before { display: inline;}
+  pre.src:hover:before { display: inline; margin-top: 14px;}
   /* Languages per Org manual */
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -190,58 +191,33 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
-  /*]]>*/-->
+  .org-svg { }
 </style>
-<style type="text/css">
-article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary{display:block}audio,canvas,video{display:inline-block}audio:not([controls]){display:none;height:0}[hidden]{display:none}html{font-family:sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}body{margin:0}a:focus{outline:thin dotted}a:active,a:hover{outline:0}h1{font-size:2em}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:bold}dfn{font-style:italic}mark{background:#ff0;color:#000}code,kbd,pre,samp{font-family:monospace,serif;font-size:1em}pre{white-space:pre-wrap;word-wrap:break-word}q{quotes:"\201C" "\201D" "\2018" "\2019"}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-0.5em}sub{bottom:-0.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:0}fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:.35em .625em .75em}legend{border:0;padding:0}button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}button,input{line-height:normal}button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}button[disabled],input[disabled]{cursor:default}input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0}input[type="search"]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}textarea{overflow:auto;vertical-align:top}table{border-collapse:collapse;border-spacing:0}html{font-family:'PT Sans',sans-serif}pre,code{font-family:'Inconsolata',sans-serif}h1,h2,h3,h4,h5,h6{font-family:'PT Sans Narrow',sans-serif;font-weight:700}html{background-color:#eee8d5;color:#657b83;margin:1em}body{background-color:#fdf6e3;margin:0 auto;max-width:23cm;border:1pt solid #93a1a1;padding:1em}code{background-color:#eee8d5;padding:2px}a{color:#b58900}a:visited{color:#cb4b16}a:hover{color:#cb4b16}h1{color:#d33682}h2,h3,h4,h5,h6{color:#859900}pre{background-color:#fdf6e3;color:#657b83;border:1pt solid #93a1a1;padding:1em;box-shadow:5pt 5pt 8pt #eee8d5}pre code{background-color:#fdf6e3}h1{font-size:2.8em}h2{font-size:2.4em}h3{font-size:1.8em}h4{font-size:1.4em}h5{font-size:1.3em}h6{font-size:1.15em}.tag{background-color:#eee8d5;color:#d33682;padding:0 .2em}.todo,.next,.done{color:#fdf6e3;background-color:#dc322f;padding:0 .2em}.tag{-webkit-border-radius:.35em;-moz-border-radius:.35em;border-radius:.35em}.TODO{-webkit-border-radius:.2em;-moz-border-radius:.2em;border-radius:.2em;background-color:#2aa198}.NEXT{-webkit-border-radius:.2em;-moz-border-radius:.2em;border-radius:.2em;background-color:#268bd2}.ACTIVE{-webkit-border-radius:.2em;-moz-border-radius:.2em;border-radius:.2em;background-color:#268bd2}.DONE{-webkit-border-radius:.2em;-moz-border-radius:.2em;border-radius:.2em;background-color:#859900}.WAITING{-webkit-border-radius:.2em;-moz-border-radius:.2em;border-radius:.2em;background-color:#cb4b16}.HOLD{-webkit-border-radius:.2em;-moz-border-radius:.2em;border-radius:.2em;background-color:#d33682}.NOTE{-webkit-border-radius:.2em;-moz-border-radius:.2em;border-radius:.2em;background-color:#d33682}.CANCELLED{-webkit-border-radius:.2em;-moz-border-radius:.2em;border-radius:.2em;background-color:#859900}
-</style>
-<script type="text/javascript">
-// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
-<!--/*--><![CDATA[/*><!--*/
-     function CodeHighlightOn(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.cacheClassElem = elem.className;
-         elem.cacheClassTarget = target.className;
-         target.className = "code-highlighted";
-         elem.className   = "code-highlighted";
-       }
-     }
-     function CodeHighlightOff(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(elem.cacheClassElem)
-         elem.className = elem.cacheClassElem;
-       if(elem.cacheClassTarget)
-         target.className = elem.cacheClassTarget;
-     }
-    /*]]>*///-->
-// @license-end
-</script>
+<link rel="stylesheet" type="text/css" href="../css/muse.css" />
 </head>
 <body>
-<div id="content">
-<h1 class="title">VNC遠端連線</h1>
-<div id="table-of-contents">
+<div id="content" class="content">
+<h1 class="title">VNC遠端連線<br />
+<span class="subtitle">TNFSH Swift教材 / 顏永進</span>
+</h1>
+<div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
-<div id="text-table-of-contents">
+<div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgb09ea02">1. 學生/MAC分配</a></li>
-<li><a href="#orgc2666b9">2. 遠端登入設定</a>
+<li><a href="#org4f92e72">1. 學生/MAC分配</a></li>
+<li><a href="#orge4455df">2. 遠端登入設定</a>
 <ul>
-<li><a href="#org440c646">2.1. 工具: VNC遠端連線</a></li>
-<li><a href="#org0768cf0">2.2. 執行vnc</a></li>
-<li><a href="#org7da1a1d">2.3. 帳號資訊</a></li>
+<li><a href="#org6ced39e">2.1. 工具: VNC遠端連線</a></li>
+<li><a href="#org7b9699c">2.2. 執行vnc</a></li>
+<li><a href="#org15818e6">2.3. 帳號資訊</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgb09ea02" class="outline-2">
-<h2 id="orgb09ea02"><span class="section-number-2">1</span> 學生/MAC分配</h2>
+<div id="outline-container-org4f92e72" class="outline-2">
+<h2 id="org4f92e72"><span class="section-number-2">1.</span> 學生/MAC分配</h2>
 <div class="outline-text-2" id="text-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -339,12 +315,12 @@ port: 5900 tcp
 </p>
 </div>
 </div>
-<div id="outline-container-orgc2666b9" class="outline-2">
-<h2 id="orgc2666b9"><span class="section-number-2">2</span> 遠端登入設定</h2>
+<div id="outline-container-orge4455df" class="outline-2">
+<h2 id="orge4455df"><span class="section-number-2">2.</span> 遠端登入設定</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org440c646" class="outline-3">
-<h3 id="org440c646"><span class="section-number-3">2.1</span> 工具: VNC遠端連線</h3>
+<div id="outline-container-org6ced39e" class="outline-3">
+<h3 id="org6ced39e"><span class="section-number-3">2.1.</span> 工具: VNC遠端連線</h3>
 <div class="outline-text-3" id="text-2-1">
 <ul class="org-ul">
 <li>下載VNC Viewer: <a href="https://www.realvnc.com/en/connect/download/viewer/windows/">https://www.realvnc.com/en/connect/download/viewer/windows/</a></li>
@@ -352,15 +328,15 @@ port: 5900 tcp
 </ul>
 </div>
 </div>
-<div id="outline-container-org0768cf0" class="outline-3">
-<h3 id="org0768cf0"><span class="section-number-3">2.2</span> 執行vnc</h3>
+<div id="outline-container-org7b9699c" class="outline-3">
+<h3 id="org7b9699c"><span class="section-number-3">2.2.</span> 執行vnc</h3>
 <div class="outline-text-3" id="text-2-2">
 <ul class="org-ul">
 <li><p>
 新增連線
 </p>
 
-<div id="org56b477e" class="figure">
+<div id="orgf3253f1" class="figure">
 <p><img src="images/2021-05-20_23-57-03.jpg" alt="2021-05-20_23-57-03.jpg" width="600" />
 </p>
 <p><span class="figure-number">Figure 1: </span>Caption</p>
@@ -369,7 +345,7 @@ port: 5900 tcp
 在VNC Server欄填入你分配到的外部IP，然後按 OK
 </p>
 
-<div id="org0bfd62b" class="figure">
+<div id="org37a0ccb" class="figure">
 <p><img src="images/2021-05-21_00-00-54.jpg" alt="2021-05-21_00-00-54.jpg" width="600" />
 </p>
 <p><span class="figure-number">Figure 2: </span>Caption</p>
@@ -378,7 +354,7 @@ port: 5900 tcp
 Double Click你新增的連線，Username欄填入student，然後按 OK
 </p>
 
-<div id="orgfa8da3c" class="figure">
+<div id="org979c1b4" class="figure">
 <p><img src="images/2021-05-21_00-02-37.jpg" alt="2021-05-21_00-02-37.jpg" width="600" />
 </p>
 <p><span class="figure-number">Figure 3: </span>Caption</p>
@@ -386,8 +362,8 @@ Double Click你新增的連線，Username欄填入student，然後按 OK
 </ul>
 </div>
 </div>
-<div id="outline-container-org7da1a1d" class="outline-3">
-<h3 id="org7da1a1d"><span class="section-number-3">2.3</span> 帳號資訊</h3>
+<div id="outline-container-org15818e6" class="outline-3">
+<h3 id="org15818e6"><span class="section-number-3">2.3.</span> 帳號資訊</h3>
 <div class="outline-text-3" id="text-2-3">
 <ul class="org-ul">
 <li>以student登入</li>
@@ -400,7 +376,7 @@ Double Click你新增的連線，Username欄填入student，然後按 OK
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Yung Chin, Yen</p>
-<p class="date">Created: 2021-05-21 Fri 09:01</p>
+<p class="date">Created: 2022-11-22 Tue 21:38</p>
 </div>
 </body>
 </html>

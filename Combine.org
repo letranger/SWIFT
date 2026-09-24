@@ -1,8 +1,13 @@
 #+TITLE: Combine
-#+INCLUDE: ../themes/comfy_inline/comfy_inline.theme
+#+SUBTITLE: TNFSH Swift教材 / 顏永進
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../css/muse.css" />
 #+OPTIONS: ^:nil
 # -*- org-export-babel-evaluate: nil -*-
 #+latex:\newpage
+#+begin_export html
+<a href="https://hits.sh/letranger.github.io/Swift/Combine.html/"><img align="right" alt="Hits" src="https://hits.sh/letranger.github.io/Swift/Combine.html.svg"/></a>
+#+end_export
+
 
 * FRP (Functional Reactive Programming
 Functional reactive programming (FRP) is a programming paradigm for reactive programming (asynchronous dataflow programming) using the building blocks of functional programming (e.g. map, reduce, filter). FRP has been used for programming graphical user interfaces (GUIs), robotics, games, and music, aiming to simplify these problems by explicitly modeling time[fn:1].

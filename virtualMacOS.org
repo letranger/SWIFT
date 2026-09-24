@@ -1,7 +1,13 @@
 #+TITLE: Creating virtual macOS environment
+#+SUBTITLE: TNFSH Swift教材 / 顏永進
 #+OPTION: num:2
 #+LATEX:\newpage
-#+SETUPFILE: ../themes/solarized_light/solarized_light.theme
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../css/muse.css" />
+#+begin_export html
+<a href="https://hits.sh/letranger.github.io/Swift/virtualMacOS.html/"><img align="right" alt="Hits" src="https://hits.sh/letranger.github.io/Swift/virtualMacOS.html.svg"/></a>
+#+end_export
+
+
 
 這裡簡單介紹兩個重點：在windows安裝VirtualBox、在VirtualBox新增macOS的虛擬機
 

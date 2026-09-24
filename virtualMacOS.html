@@ -3,14 +3,14 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-05-20 Thu 17:19 -->
+<!-- 2022-11-22 Tue 21:38 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Creating virtual macOS environment</title>
-<meta name="generator" content="Org mode" />
 <meta name="author" content="Yung Chin, Yen" />
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
   .subtitle { text-align: center;
@@ -31,8 +31,9 @@
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
   pre {
-    border: 1px solid #ccc;
-    box-shadow: 3px 3px 3px #eee;
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
     padding: 8pt;
     font-family: monospace;
     overflow: auto;
@@ -40,22 +41,22 @@
   }
   pre.src {
     position: relative;
-    overflow: visible;
-    padding-top: 1.2em;
+    overflow: auto;
   }
   pre.src:before {
     display: none;
     position: absolute;
-    background-color: white;
-    top: -10px;
-    right: 10px;
+    top: -8px;
+    right: 12px;
     padding: 3px;
-    border: 1px solid black;
+    color: #555;
+    background-color: #f2f2f299;
   }
-  pre.src:hover:before { display: inline;}
+  pre.src:hover:before { display: inline; margin-top: 14px;}
   /* Languages per Org manual */
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -190,36 +191,9 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
-  /*]]>*/-->
+  .org-svg { }
 </style>
-<style type="text/css">
-article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary{display:block}audio,canvas,video{display:inline-block}audio:not([controls]){display:none;height:0}[hidden]{display:none}html{font-family:sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}body{margin:0}a:focus{outline:thin dotted}a:active,a:hover{outline:0}h1{font-size:2em}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:bold}dfn{font-style:italic}mark{background:#ff0;color:#000}code,kbd,pre,samp{font-family:monospace,serif;font-size:1em}pre{white-space:pre-wrap;word-wrap:break-word}q{quotes:"\201C" "\201D" "\2018" "\2019"}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-0.5em}sub{bottom:-0.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:0}fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:.35em .625em .75em}legend{border:0;padding:0}button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}button,input{line-height:normal}button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}button[disabled],input[disabled]{cursor:default}input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0}input[type="search"]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}textarea{overflow:auto;vertical-align:top}table{border-collapse:collapse;border-spacing:0}html{font-family:'PT Sans',sans-serif}pre,code{font-family:'Inconsolata',sans-serif}h1,h2,h3,h4,h5,h6{font-family:'PT Sans Narrow',sans-serif;font-weight:700}html{background-color:#eee8d5;color:#657b83;margin:1em}body{background-color:#fdf6e3;margin:0 auto;max-width:23cm;border:1pt solid #93a1a1;padding:1em}code{background-color:#eee8d5;padding:2px}a{color:#b58900}a:visited{color:#cb4b16}a:hover{color:#cb4b16}h1{color:#d33682}h2,h3,h4,h5,h6{color:#859900}pre{background-color:#fdf6e3;color:#657b83;border:1pt solid #93a1a1;padding:1em;box-shadow:5pt 5pt 8pt #eee8d5}pre code{background-color:#fdf6e3}h1{font-size:2.8em}h2{font-size:2.4em}h3{font-size:1.8em}h4{font-size:1.4em}h5{font-size:1.3em}h6{font-size:1.15em}.tag{background-color:#eee8d5;color:#d33682;padding:0 .2em}.todo,.next,.done{color:#fdf6e3;background-color:#dc322f;padding:0 .2em}.tag{-webkit-border-radius:.35em;-moz-border-radius:.35em;border-radius:.35em}.TODO{-webkit-border-radius:.2em;-moz-border-radius:.2em;border-radius:.2em;background-color:#2aa198}.NEXT{-webkit-border-radius:.2em;-moz-border-radius:.2em;border-radius:.2em;background-color:#268bd2}.ACTIVE{-webkit-border-radius:.2em;-moz-border-radius:.2em;border-radius:.2em;background-color:#268bd2}.DONE{-webkit-border-radius:.2em;-moz-border-radius:.2em;border-radius:.2em;background-color:#859900}.WAITING{-webkit-border-radius:.2em;-moz-border-radius:.2em;border-radius:.2em;background-color:#cb4b16}.HOLD{-webkit-border-radius:.2em;-moz-border-radius:.2em;border-radius:.2em;background-color:#d33682}.NOTE{-webkit-border-radius:.2em;-moz-border-radius:.2em;border-radius:.2em;background-color:#d33682}.CANCELLED{-webkit-border-radius:.2em;-moz-border-radius:.2em;border-radius:.2em;background-color:#859900}
-</style>
-<script type="text/javascript">
-// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
-<!--/*--><![CDATA[/*><!--*/
-     function CodeHighlightOn(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.cacheClassElem = elem.className;
-         elem.cacheClassTarget = target.className;
-         target.className = "code-highlighted";
-         elem.className   = "code-highlighted";
-       }
-     }
-     function CodeHighlightOff(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(elem.cacheClassElem)
-         elem.className = elem.cacheClassElem;
-       if(elem.cacheClassTarget)
-         target.className = elem.cacheClassTarget;
-     }
-    /*]]>*///-->
-// @license-end
-</script>
+<link rel="stylesheet" type="text/css" href="../css/muse.css" />
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
         displayAlign: "center",
@@ -240,39 +214,40 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
              }
 });
 </script>
-<script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
-<div id="content">
-<h1 class="title">Creating virtual macOS environment</h1>
-<div id="table-of-contents">
+<div id="content" class="content">
+<h1 class="title">Creating virtual macOS environment<br />
+<span class="subtitle">TNFSH Swift教材 / 顏永進</span>
+</h1>
+<div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
-<div id="text-table-of-contents">
+<div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org6bab925">1. 安裝VirtualBox</a>
+<li><a href="#org2857a67">1. 安裝VirtualBox</a>
 <ul>
-<li><a href="#orgd0c0d0a">1.1. 下載&#xa0;&#xa0;&#xa0;<span class="tag"><span class="TNFSH">TNFSH</span></span></a></li>
-<li><a href="#orgd2a195c">1.2. 安裝</a></li>
-<li><a href="#orga005113">1.3. 安裝VirtualBox Extenstion Pack</a></li>
+<li><a href="#org45f2b02">1.1. 下載&#xa0;&#xa0;&#xa0;<span class="tag"><span class="TNFSH">TNFSH</span></span></a></li>
+<li><a href="#orge4162f3">1.2. 安裝</a></li>
+<li><a href="#org5babc2a">1.3. 安裝VirtualBox Extenstion Pack</a></li>
 </ul>
 </li>
-<li><a href="#org0ca3bce">2. 新增macOS虛擬機</a>
+<li><a href="#orgec18a43">2. 新增macOS虛擬機</a>
 <ul>
-<li><a href="#orgc7028ea">2.1. 下載macOS虛擬機映像檔</a></li>
-<li><a href="#orgef65796">2.2. 新增空白虛擬機</a></li>
-<li><a href="#org19eced3">2.3. 執行修正程式</a>
+<li><a href="#orgcf012c7">2.1. 下載macOS虛擬機映像檔</a></li>
+<li><a href="#org19909e6">2.2. 新增空白虛擬機</a></li>
+<li><a href="#org025140a">2.3. 執行修正程式</a>
 <ul>
-<li><a href="#org14d8cda">2.3.1. 以系統管理員身份執行 命令提示字元</a></li>
-<li><a href="#org543438a">2.3.2. 執行修正程式</a></li>
+<li><a href="#org54984f6">2.3.1. 以系統管理員身份執行 命令提示字元</a></li>
+<li><a href="#orgfcaf8ff">2.3.2. 執行修正程式</a></li>
 </ul>
 </li>
-<li><a href="#org2e14380">2.4. 設定虛擬機</a></li>
-<li><a href="#orgaa1deaf">2.5. 首次啟動虛擬機</a></li>
-<li><a href="#org00069ff">2.6. 初次設定macOS</a></li>
+<li><a href="#org43bc0d0">2.4. 設定虛擬機</a></li>
+<li><a href="#org964e871">2.5. 首次啟動虛擬機</a></li>
+<li><a href="#orgc2581c8">2.6. 初次設定macOS</a></li>
 </ul>
 </li>
-<li><a href="#org1070441">3. 安裝Xcode</a></li>
+<li><a href="#org8fbee93">3. 安裝Xcode</a></li>
 </ul>
 </div>
 </div>
@@ -280,12 +255,12 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 這裡簡單介紹兩個重點：在windows安裝VirtualBox、在VirtualBox新增macOS的虛擬機
 </p>
 
-<div id="outline-container-org6bab925" class="outline-2">
-<h2 id="org6bab925"><span class="section-number-2">1</span> 安裝VirtualBox</h2>
+<div id="outline-container-org2857a67" class="outline-2">
+<h2 id="org2857a67"><span class="section-number-2">1.</span> 安裝VirtualBox</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-orgd0c0d0a" class="outline-3">
-<h3 id="orgd0c0d0a"><span class="section-number-3">1.1</span> 下載&#xa0;&#xa0;&#xa0;<span class="tag"><span class="TNFSH">TNFSH</span></span></h3>
+<div id="outline-container-org45f2b02" class="outline-3">
+<h3 id="org45f2b02"><span class="section-number-3">1.1.</span> 下載&#xa0;&#xa0;&#xa0;<span class="tag"><span class="TNFSH">TNFSH</span></span></h3>
 <div class="outline-text-3" id="text-1-1">
 <ol class="org-ol">
 <li>點選<a href="https://www.virtualbox.org/wiki/Downloads">https://www.virtualbox.org/wiki/Downloads</a>進入下載頁面</li>
@@ -293,7 +268,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 點選Windows hosts
 </p>
 
-<div id="org4925680" class="figure">
+<div id="org51e8779" class="figure">
 <p><img src="images/2021-05-20_10-33-07.jpg" alt="2021-05-20_10-33-07.jpg" width="600" />
 </p>
 <p><span class="figure-number">Figure 1: </span>Caption</p>
@@ -302,7 +277,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 點選 儲存檔案 下載安裝檔
 </p>
 
-<div id="orgfd57c8e" class="figure">
+<div id="org8ecb1dc" class="figure">
 <p><img src="images/2021-05-20_10-35-26.jpg" alt="2021-05-20_10-35-26.jpg" width="600" />
 </p>
 <p><span class="figure-number">Figure 2: </span>Caption</p>
@@ -311,7 +286,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 找到下載的安裝檔，準備安裝
 </p>
 
-<div id="orgd0fa2e3" class="figure">
+<div id="orgea2fd2c" class="figure">
 <p><img src="images/2021-05-20_10-35-58.jpg" alt="2021-05-20_10-35-58.jpg" width="600" />
 </p>
 <p><span class="figure-number">Figure 3: </span>Caption</p>
@@ -320,8 +295,8 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 </div>
 </div>
 
-<div id="outline-container-orgd2a195c" class="outline-3">
-<h3 id="orgd2a195c"><span class="section-number-3">1.2</span> 安裝</h3>
+<div id="outline-container-orge4162f3" class="outline-3">
+<h3 id="orge4162f3"><span class="section-number-3">1.2.</span> 安裝</h3>
 <div class="outline-text-3" id="text-1-2">
 <ol class="org-ol">
 <li><p>
@@ -329,7 +304,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 預設安裝目錄為: C:\Program Files\Oracle\VirtualBox\
 </p>
 
-<div id="org35e4be6" class="figure">
+<div id="org0f3ab85" class="figure">
 <p><img src="images/2021-05-20_10-43-58.jpg" alt="2021-05-20_10-43-58.jpg" width="600" />
 </p>
 <p><span class="figure-number">Figure 4: </span>Caption</p>
@@ -338,7 +313,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 無腦下一步&#x2026;.
 </p>
 
-<div id="org3ac06c7" class="figure">
+<div id="org3d12de6" class="figure">
 <p><img src="images/2021-05-20_10-45-23.jpg" alt="2021-05-20_10-45-23.jpg" width="600" />
 </p>
 <p><span class="figure-number">Figure 5: </span>Caption</p>
@@ -347,7 +322,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 無腦允許/同意/是&#x2026;.
 </p>
 
-<div id="org435be39" class="figure">
+<div id="org2201b2b" class="figure">
 <p><img src="images/2021-05-20_10-47-27.jpg" alt="2021-05-20_10-47-27.jpg" width="600" />
 </p>
 <p><span class="figure-number">Figure 6: </span>Caption</p>
@@ -357,15 +332,15 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 </div>
 </div>
 
-<div id="outline-container-orga005113" class="outline-3">
-<h3 id="orga005113"><span class="section-number-3">1.3</span> 安裝VirtualBox Extenstion Pack</h3>
+<div id="outline-container-org5babc2a" class="outline-3">
+<h3 id="org5babc2a"><span class="section-number-3">1.3.</span> 安裝VirtualBox Extenstion Pack</h3>
 <div class="outline-text-3" id="text-1-3">
 <ol class="org-ol">
 <li><p>
 打開剛才的VirtualBox下載網頁: <a href="https://www.virtualbox.org/wiki/Downloads">https://www.virtualbox.org/wiki/Downloads</a>
 </p>
 
-<div id="org36c919b" class="figure">
+<div id="org66b96d2" class="figure">
 <p><img src="images/2021-05-20_11-05-35.jpg" alt="2021-05-20_11-05-35.jpg" width="600" />
 </p>
 <p><span class="figure-number">Figure 7: </span>Caption</p>
@@ -374,7 +349,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 找到VirtualBox 6.1.22 Oracle VM VirtualBox Extension Pack、點選All supported platforms、 以VirtualBox Manager打開下載的檔案
 </p>
 
-<div id="org99af56f" class="figure">
+<div id="orge4f7a59" class="figure">
 <p><img src="images/2021-05-20_11-17-17.jpg" alt="2021-05-20_11-17-17.jpg" width="600" />
 </p>
 <p><span class="figure-number">Figure 8: </span>Caption</p>
@@ -383,7 +358,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 安裝
 </p>
 
-<div id="org3471205" class="figure">
+<div id="org9b93d89" class="figure">
 <p><img src="images/2021-05-20_11-18-49.jpg" alt="2021-05-20_11-18-49.jpg" width="600" />
 </p>
 <p><span class="figure-number">Figure 9: </span>Caption</p>
@@ -392,7 +367,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 讀完授權說明後無腦同意
 </p>
 
-<div id="org353d373" class="figure">
+<div id="orgdc9a1d7" class="figure">
 <p><img src="images/2021-05-20_11-19-23.jpg" alt="2021-05-20_11-19-23.jpg" width="600" />
 </p>
 <p><span class="figure-number">Figure 10: </span>Caption</p>
@@ -401,7 +376,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 無腦允許
 </p>
 
-<div id="org25dc4a2" class="figure">
+<div id="org05d2714" class="figure">
 <p><img src="images/2021-05-20_11-19-31.jpg" alt="2021-05-20_11-19-31.jpg" width="600" />
 </p>
 <p><span class="figure-number">Figure 11: </span>Caption</p>
@@ -410,7 +385,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 無腦安裝
 </p>
 
-<div id="orga6cc7cc" class="figure">
+<div id="org07aca14" class="figure">
 <p><img src="images/2021-05-20_11-19-41.jpg" alt="2021-05-20_11-19-41.jpg" width="600" />
 </p>
 <p><span class="figure-number">Figure 12: </span>Caption</p>
@@ -419,7 +394,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 無腦完成
 </p>
 
-<div id="orgf1196e0" class="figure">
+<div id="org31a8934" class="figure">
 <p><img src="images/2021-05-20_11-19-48.jpg" alt="2021-05-20_11-19-48.jpg" width="600" />
 </p>
 <p><span class="figure-number">Figure 13: </span>Caption</p>
@@ -430,12 +405,12 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 </div>
 
 
-<div id="outline-container-org0ca3bce" class="outline-2">
-<h2 id="org0ca3bce"><span class="section-number-2">2</span> 新增macOS虛擬機</h2>
+<div id="outline-container-orgec18a43" class="outline-2">
+<h2 id="orgec18a43"><span class="section-number-2">2.</span> 新增macOS虛擬機</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-orgc7028ea" class="outline-3">
-<h3 id="orgc7028ea"><span class="section-number-3">2.1</span> 下載macOS虛擬機映像檔</h3>
+<div id="outline-container-orgcf012c7" class="outline-3">
+<h3 id="orgcf012c7"><span class="section-number-3">2.1.</span> 下載macOS虛擬機映像檔</h3>
 <div class="outline-text-3" id="text-2-1">
 <ul class="org-ul">
 <li><a href="https://moodle.tnfsh.tn.edu.tw/downloads/macOS/macOS-Catalina-Virtual-Disk-Image.vmdk">點選這裡可以下載映像檔</a>，檔案有6G，下載時間視你的網路速度而定，反正應該夠去煮杯咖啡</li>
@@ -445,15 +420,15 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 </div>
 </div>
 
-<div id="outline-container-orgef65796" class="outline-3">
-<h3 id="orgef65796"><span class="section-number-3">2.2</span> 新增空白虛擬機</h3>
+<div id="outline-container-org19909e6" class="outline-3">
+<h3 id="org19909e6"><span class="section-number-3">2.2.</span> 新增空白虛擬機</h3>
 <div class="outline-text-3" id="text-2-2">
 <ol class="org-ol">
 <li><p>
 開啟VirtualBox，點選新增、點選專家模式
 </p>
 
-<div id="orge4f291c" class="figure">
+<div id="orged93f6e" class="figure">
 <p><img src="images/2021-05-20_13-17-47.jpg" alt="2021-05-20_13-17-47.jpg" width="600" />
 </p>
 <p><span class="figure-number">Figure 14: </span>Caption</p>
@@ -462,7 +437,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 輸入名稱，這裡就統一定為  macOS  ，等一下比較好說明
 </p>
 
-<div id="org24d246c" class="figure">
+<div id="org4bd42bb" class="figure">
 <p><img src="images/2021-05-20_13-20-01.jpg" alt="2021-05-20_13-20-01.jpg" width="600" />
 </p>
 <p><span class="figure-number">Figure 15: </span>Caption</p>
@@ -471,7 +446,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 確定類型為 Mac OS X,版本為 Mac OS X (64-bit)
 </p>
 
-<div id="org5ae35c2" class="figure">
+<div id="orgd89eaa1" class="figure">
 <p><img src="images/2021-05-20_13-20-02.jpg" alt="2021-05-20_13-20-02.jpg" width="600" />
 </p>
 <p><span class="figure-number">Figure 16: </span>Caption</p>
@@ -480,7 +455,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 分一半的計憶體給這台虛擬機
 </p>
 
-<div id="org216072e" class="figure">
+<div id="org2301b67" class="figure">
 <p><img src="images/2021-05-20_13-20-02.jpg" alt="2021-05-20_13-20-02.jpg" width="600" />
 </p>
 <p><span class="figure-number">Figure 17: </span>Caption</p>
@@ -492,7 +467,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 點選開啟資料夾icon
 </p>
 
-<div id="orgb987ff6" class="figure">
+<div id="org5c0b57c" class="figure">
 <p><img src="images/2021-05-20_13-20-03.jpg" alt="2021-05-20_13-20-03.jpg" width="600" />
 </p>
 <p><span class="figure-number">Figure 18: </span>Caption</p>
@@ -501,7 +476,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 點選 加入(A)
 </p>
 
-<div id="org8572a56" class="figure">
+<div id="orgc39e34e" class="figure">
 <p><img src="images/2021-05-20_13-30-35.jpg" alt="2021-05-20_13-30-35.jpg" width="600" />
 </p>
 <p><span class="figure-number">Figure 19: </span>Caption</p>
@@ -510,7 +485,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 找到下載完的macOS虛擬機映像檔(應該在下載資料夾)，選取該檔案，點選開啟
 </p>
 
-<div id="org35cfdda" class="figure">
+<div id="orgd067a84" class="figure">
 <p><img src="images/2021-05-20_13-30-50.jpg" alt="2021-05-20_13-30-50.jpg" width="600" />
 </p>
 <p><span class="figure-number">Figure 20: </span>Caption</p>
@@ -519,7 +494,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 點選「選擇」按鈕
 </p>
 
-<div id="org0cd13fd" class="figure">
+<div id="org14d3c3d" class="figure">
 <p><img src="images/2021-05-20_13-31-07.jpg" alt="2021-05-20_13-31-07.jpg" width="600" />
 </p>
 <p><span class="figure-number">Figure 21: </span>Caption</p>
@@ -528,7 +503,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 此時應該會出現一個硬碟檔案，按建立
 </p>
 
-<div id="orgf45dace" class="figure">
+<div id="org5be1520" class="figure">
 <p><img src="images/2021-05-20_13-31-18.jpg" alt="2021-05-20_13-31-18.jpg" width="600" />
 </p>
 <p><span class="figure-number">Figure 22: </span>Caption</p>
@@ -537,7 +512,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 終於設定完成，可以喘口氣了，但是現在還不能啟動，後面大概還有幾十個步驟&#x2026;&#x2026;
 </p>
 
-<div id="orga2b79b5" class="figure">
+<div id="org4f22804" class="figure">
 <p><img src="images/2021-05-20_13-31-33.jpg" alt="2021-05-20_13-31-33.jpg" width="600" />
 </p>
 <p><span class="figure-number">Figure 23: </span>Caption</p>
@@ -547,19 +522,19 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 </div>
 </div>
 
-<div id="outline-container-org19eced3" class="outline-3">
-<h3 id="org19eced3"><span class="section-number-3">2.3</span> 執行修正程式</h3>
+<div id="outline-container-org025140a" class="outline-3">
+<h3 id="org025140a"><span class="section-number-3">2.3.</span> 執行修正程式</h3>
 <div class="outline-text-3" id="text-2-3">
 </div>
-<div id="outline-container-org14d8cda" class="outline-4">
-<h4 id="org14d8cda"><span class="section-number-4">2.3.1</span> 以系統管理員身份執行 命令提示字元</h4>
+<div id="outline-container-org54984f6" class="outline-4">
+<h4 id="org54984f6"><span class="section-number-4">2.3.1.</span> 以系統管理員身份執行 命令提示字元</h4>
 <div class="outline-text-4" id="text-2-3-1">
 <ol class="org-ol">
 <li><p>
 在工作列搜尋欄中輸入 cmd
 </p>
 
-<div id="org95ede73" class="figure">
+<div id="org7c26f79" class="figure">
 <p><img src="images/2021-05-20_13-45-10.jpg" alt="2021-05-20_13-45-10.jpg" width="600" />
 </p>
 <p><span class="figure-number">Figure 24: </span>Caption</p>
@@ -568,7 +543,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 在上方 命令提示字元 按 右鍵 ，選擇 以系統管理員身份執行
 </p>
 
-<div id="orgd61cb66" class="figure">
+<div id="orgce8ccaa" class="figure">
 <p><img src="images/2021-05-20_13-45-10.jpg" alt="2021-05-20_13-45-10.jpg" width="600" />
 </p>
 <p><span class="figure-number">Figure 25: </span>Caption</p>
@@ -576,12 +551,12 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 </ol>
 </div>
 </div>
-<div id="outline-container-org543438a" class="outline-4">
-<h4 id="org543438a"><span class="section-number-4">2.3.2</span> 執行修正程式</h4>
+<div id="outline-container-orgfcaf8ff" class="outline-4">
+<h4 id="orgfcaf8ff"><span class="section-number-4">2.3.2.</span> 執行修正程式</h4>
 <div class="outline-text-4" id="text-2-3-2">
 </div>
 <ol class="org-ol">
-<li><a id="org835f3a4"></a>設定修正程式<br />
+<li><a id="orgfcdc021"></a>設定修正程式<br />
 <div class="outline-text-5" id="text-2-3-2-1">
 <p>
 原本的修正程式長的像這樣，但是這裡有地方要做修正，就是所有的 Youur Virtual Machine Name 都要改成我們在上述2.2中命名的虛擬機名稱: macOS
@@ -611,7 +586,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 </div>
 </div>
 </li>
-<li><a id="org3c22c93"></a>執行上述修正指令<br />
+<li><a id="orga346ea7"></a>執行上述修正指令<br />
 <div class="outline-text-5" id="text-2-3-2-2">
 <p>
 將上面的修正指令 <b>逐行</b> 複製下來，貼到命令提示字元，然後按Enter執行。例如:
@@ -621,7 +596,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 選取第一行指令，按 右鍵  選複製(C)
 </p>
 
-<div id="orgd3009c7" class="figure">
+<div id="org3f1b98d" class="figure">
 <p><img src="images/2021-05-20_16-48-50.jpg" alt="2021-05-20_16-48-50.jpg" width="600" />
 </p>
 <p><span class="figure-number">Figure 26: </span>Caption</p>
@@ -630,7 +605,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 切換到命令提示字元，在視窗中按 右鍵 ，將複製的指令貼上去，然後按Enter執行指令
 </p>
 
-<div id="orgdd8d33a" class="figure">
+<div id="org25d430b" class="figure">
 <p><img src="images/2021-05-20_16-43-34.jpg" alt="2021-05-20_16-43-34.jpg" width="600" />
 </p>
 <p><span class="figure-number">Figure 27: </span>Caption</p>
@@ -639,7 +614,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 回到瀏覽器，複製第二行指令
 </p>
 
-<div id="org6b8cb11" class="figure">
+<div id="org8ac9c9a" class="figure">
 <p><img src="images/2021-05-20_16-47-55.jpg" alt="2021-05-20_16-47-55.jpg" width="600" />
 </p>
 <p><span class="figure-number">Figure 28: </span>Caption</p>
@@ -648,7 +623,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 切換到命令提示字元，在視窗中按 右鍵 ，將複製的指令貼上去，然後按Enter執行指令
 </p>
 
-<div id="org702fe4f" class="figure">
+<div id="org49c4163" class="figure">
 <p><img src="images/2021-05-20_16-48-08.jpg" alt="2021-05-20_16-48-08.jpg" width="600" />
 </p>
 <p><span class="figure-number">Figure 29: </span>Caption</p>
@@ -661,8 +636,8 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 </div>
 </div>
 
-<div id="outline-container-org2e14380" class="outline-3">
-<h3 id="org2e14380"><span class="section-number-3">2.4</span> 設定虛擬機</h3>
+<div id="outline-container-org43bc0d0" class="outline-3">
+<h3 id="org43bc0d0"><span class="section-number-3">2.4.</span> 設定虛擬機</h3>
 <div class="outline-text-3" id="text-2-4">
 <ol class="org-ol">
 <li><p>
@@ -670,7 +645,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 這裡的macOS是虛擬機名稱，如果你有改名，請自改參考
 </p>
 
-<div id="org93a4e9c" class="figure">
+<div id="orge882549" class="figure">
 <p><img src="images/2021-05-20_16-54-57.jpg" alt="2021-05-20_16-54-57.jpg" width="600" />
 </p>
 <p><span class="figure-number">Figure 30: </span>Caption</p>
@@ -679,7 +654,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 左側選取 <b>一般</b> ，右側選取 <b>進階</b> ，將 <b>共用剪貼簿</b> 和 <b>拖放</b> 都改為雙向
 </p>
 
-<div id="org9908325" class="figure">
+<div id="org8cf6541" class="figure">
 <p><img src="images/2021-05-20_16-56-21.jpg" alt="2021-05-20_16-56-21.jpg" width="600" />
 </p>
 <p><span class="figure-number">Figure 31: </span>Caption</p>
@@ -688,7 +663,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 左側選取 <b>系統</b> ，右側取消 <b>軟碟</b> 和 <b>光碟</b>
 </p>
 
-<div id="org3d7ed4c" class="figure">
+<div id="org4f95baf" class="figure">
 <p><img src="images/2021-05-20_17-00-15.jpg" alt="2021-05-20_17-00-15.jpg" width="600" />
 </p>
 <p><span class="figure-number">Figure 32: </span>Caption</p>
@@ -697,7 +672,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 左側選取 <b>顯示</b> ，右側將 <b>圖形控制器</b> 改為 <b>VMSVGA，把上面的 *視訊記憶體</b> 全部撥給虛擬機
 </p>
 
-<div id="org8633c97" class="figure">
+<div id="orgb198476" class="figure">
 <p><img src="images/2021-05-20_17-00-40.jpg" alt="2021-05-20_17-00-40.jpg" width="600" />
 </p>
 <p><span class="figure-number">Figure 33: </span>Caption</p>
@@ -706,7 +681,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 左側選取 <b>USB</b> ，右側可以點選 <b>USB 2.0</b> 、 <b>USB 3.0</b>
 </p>
 
-<div id="orgaa73011" class="figure">
+<div id="org0ee5206" class="figure">
 <p><img src="images/2021-05-20_17-01-08.jpg" alt="2021-05-20_17-01-08.jpg" width="600" />
 </p>
 <p><span class="figure-number">Figure 34: </span>Caption</p>
@@ -715,15 +690,15 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 </div>
 </div>
 
-<div id="outline-container-orgaa1deaf" class="outline-3">
-<h3 id="orgaa1deaf"><span class="section-number-3">2.5</span> 首次啟動虛擬機</h3>
+<div id="outline-container-org964e871" class="outline-3">
+<h3 id="org964e871"><span class="section-number-3">2.5.</span> 首次啟動虛擬機</h3>
 <div class="outline-text-3" id="text-2-5">
 <ol class="org-ol">
 <li><p>
 回到VirtualBox，左側選取 <b>macOS</b> ,右側點 <b>啟動</b>
 </p>
 
-<div id="org1add1c2" class="figure">
+<div id="org9f3d370" class="figure">
 <p><img src="images/2021-05-20_17-01-51.jpg" alt="2021-05-20_17-01-51.jpg" width="600" />
 </p>
 <p><span class="figure-number">Figure 35: </span>Caption</p>
@@ -732,7 +707,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 出現初次啟動開機畫面
 </p>
 
-<div id="org317df30" class="figure">
+<div id="org28912e3" class="figure">
 <p><img src="images/2021-05-20_17-02-37.jpg" alt="2021-05-20_17-02-37.jpg" width="600" />
 </p>
 <p><span class="figure-number">Figure 36: </span>Caption</p>
@@ -741,7 +716,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 然後過一陣子會看到期待已久的MAC開機畫面
 </p>
 
-<div id="org479ef75" class="figure">
+<div id="org66b8e47" class="figure">
 <p><img src="images/2021-05-20_17-06-26.jpg" alt="2021-05-20_17-06-26.jpg" width="600" />
 </p>
 <p><span class="figure-number">Figure 37: </span>Caption</p>
@@ -751,27 +726,27 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 可以再去煮杯咖啡、上個厠所、洗個澡、再背三課單字
 </p>
 
-<div id="orgf6afb3e" class="figure">
+<div id="orga7a9f70" class="figure">
 <p><img src="images/2021-05-20_17-07-40.jpg" alt="2021-05-20_17-07-40.jpg" width="600" />
 </p>
 <p><span class="figure-number">Figure 38: </span>Caption</p>
 </div></li>
+<li>不要被上面的預估時間騙了，我盯著那個14分鐘看了10分鐘，一點也沒變化&#x2026;..(不過我是在VM的虛擬機上跑，算是虛擬中的虛擬，會慢大概也不奇怪，希望大家的運氣比我好&#x2026;)</li>
 </ol>
 </div>
 </div>
-
-<div id="outline-container-org00069ff" class="outline-3">
-<h3 id="org00069ff"><span class="section-number-3">2.6</span> 初次設定macOS</h3>
+<div id="outline-container-orgc2581c8" class="outline-3">
+<h3 id="orgc2581c8"><span class="section-number-3">2.6.</span> 初次設定macOS</h3>
 </div>
 </div>
 
-<div id="outline-container-org1070441" class="outline-2">
-<h2 id="org1070441"><span class="section-number-2">3</span> 安裝Xcode</h2>
+<div id="outline-container-org8fbee93" class="outline-2">
+<h2 id="org8fbee93"><span class="section-number-2">3.</span> 安裝Xcode</h2>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Yung Chin, Yen</p>
-<p class="date">Created: 2021-05-20 Thu 17:19</p>
+<p class="date">Created: 2022-11-22 Tue 21:38</p>
 </div>
 </body>
 </html>

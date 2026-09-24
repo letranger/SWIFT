@@ -1,4 +1,5 @@
 #+TITLE: SwiftUI v.s. Firebase
+#+SUBTITLE: TNFSH Swift教材 / 顏永進
 #+AUTHOR: 顏永進
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../css/muse.css" />
 

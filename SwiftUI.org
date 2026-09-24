@@ -1,6 +1,19 @@
 #+TITLE: SwiftUI
+#+SUBTITLE: TNFSH Swift教材 / 顏永進
 #+INCLUDE: ../purpleweb.org
 #+latex:\newpage
+#+begin_export html
+<a href="https://hits.sh/letranger.github.io/Swift/SwiftUI.html/"><img align="right" alt="Hits" src="https://hits.sh/letranger.github.io/Swift/SwiftUI.html.svg"/></a>
+#+end_export
+
+
+* TODO Video
+:PROPERTIES:
+:ID:       091273a9-f678-433f-a4da-367208c33084
+:END:
+- [[https://www.youtube.com/watch?v=F-PcYUgUySk&t=57s][SwiftUI Grid Tutorial: How to MASTER SwiftUI Grid View (SwiftUI 2.0 Tutorial)]]
+- [[https://www.youtube.com/watch?v=EBNZF-UbBv0][屬性包裝 Property Wrapper 介紹 - Swift 新手入門]]
+- [[https://www.youtube.com/c/ChaoCode/videos][ ChaoCode Videos ]]
 
 * Recommending Reading
 這些都只是為了選修課臨時整理的教材，內容深度與廣度都有限，建議有學習野心的同學還是多多去讀其他的資料：
@@ -1060,7 +1073,11 @@ var body: some View {
 - [[https://developer.apple.com/tutorials/swiftui/building-lists-and-navigation][Building Lists and Navigation]]
 
 #+latex:\newpage
-
+** Action on List
+*** Swipe to Edit/Delete
+[[https://www.youtube.com/watch?v=Zmh9uFdBLgE][Swipe Actions in SwiftUI]]
+*** Pull to Refresh
+[[https://www.youtube.com/watch?v=zbSvO6ItmeU][Pull to Refresh in SwiftUI]]
 * Passing data between Views #1: @Binding
 :PROPERTIES:
 :CUSTOM_ID: StateBinding

@@ -1,4 +1,9 @@
 #+TITLE: CoreData
+#+SUBTITLE: TNFSH Swift教材 / 顏永進
+#+begin_export html
+<a href="https://hits.sh/letranger.github.io/Swift/CoreData.html/"><img align="right" alt="Hits" src="https://hits.sh/letranger.github.io/Swift/CoreData.html.svg"/></a>
+#+end_export
+
 
 * Video:
 - [[https://www.youtube.com/watch?v=ehV2gp5uVhs][Core Data in SwiftUI Using MVVM Design Pattern]]

@@ -1,8 +1,13 @@
 #+TITLE: Swift Introduction
-#+INCLUDE: ../themes/comfy_inline/comfy_inline.theme
+#+SUBTITLE: TNFSH Swift教材 / 顏永進
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../css/muse.css" />
 
 # -*- org-export-babel-evaluate: nil -*-
 #+latex:\newpage
+#+begin_export html
+<a href="https://hits.sh/letranger.github.io/Swift/Swift-Intro.html/"><img align="right" alt="Hits" src="https://hits.sh/letranger.github.io/Swift/Swift-Intro.html.svg"/></a>
+#+end_export
+
 
 * The Basics
 :PROPERTIES:

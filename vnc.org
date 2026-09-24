@@ -1,7 +1,12 @@
 #+TITLE: VNC遠端連線
+#+SUBTITLE: TNFSH Swift教材 / 顏永進
 #+OPTION: num:2
 #+LATEX:\newpage
-#+SETUPFILE: ../themes/solarized_light/solarized_light.theme
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../css/muse.css" />
+#+begin_export html
+<a href="https://hits.sh/letranger.github.io/Swift/vnc.html/"><img align="right" alt="Hits" src="https://hits.sh/letranger.github.io/Swift/vnc.html.svg"/></a>
+#+end_export
+
 
 * 學生/MAC分配
 |----------+---------------+---------------|
