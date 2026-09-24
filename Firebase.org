@@ -1,8 +1,14 @@
 #+TITLE: SwiftUI v.s. Firebase
-#+SETUPFILE: ../themes/simple_white/simple_white.theme
+#+AUTHOR: 顏永進
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../css/muse.css" />
+
 #+HTML_HEAD_EXTRA: <style>*{font-family: Courier New !important}</style>
 #+OPTIONS: ^:nil
 #+latex:\newpage
+#+begin_export html
+<a href="https://hits.sh/letranger.github.io/Swift/Firebase.html/"><img align="right" alt="Hits" src="https://hits.sh/letranger.github.io/Swift/Firebase.html.svg"/></a>
+#+end_export
+
 
 * Introduction
 :PROPERTIES:

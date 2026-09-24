@@ -1,8 +1,13 @@
 #+TITLE: Advanced Swift Ui
+#+AUTHOR: 顏永進
 
-#+INCLUDE: ../purpleweb.org
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../css/muse.css" />
 #+INClude: ../pdf.org
 #+latex:\newpage
+#+begin_export html
+<a href="https://hits.sh/letranger.github.io/Swift/AdvancedSwiftUI.html/"><img align="right" alt="Hits" src="https://hits.sh/letranger.github.io/Swift/AdvancedSwiftUI.html.svg"/></a>
+#+end_export
+
 
 * MVVM
 :PROPERTIES:
@@ -2056,7 +2061,6 @@ weather.temperature = 30
 
 Calcellable為一個表示活動或動作支持取消的protocol，調用 cancel() 釋放任何分配的資源。它還可以停止副作用，像是計時器、網路訪問或硬碟 I/O。
 
-
 * Combine
 在 2019 年時，Apple 推出了兩套強大的框架分別是 SwiftUI 以及 Combine，而這兩種全新的框架對於開發者來說是一個重大的改動，它也跟以往我們熟悉的編成方式不同，因此要能夠熟悉這兩個新推出的框架也算是一個大挑戰[fn:16]。
 ** Publisher[fn:16]
@@ -2982,6 +2986,7 @@ AnyCancellable.store(in: inout Set<AnyCancellable>)
 * TODO some
 :PROPERTIES:
 :CUSTOM_ID: some
+:ID:       60dff758-3b5c-4daf-8029-6c55143aa485
 :END:
 #+begin_verse
 Adding the keyword some in front of a return type indicates that the return type is opaque. [fn:17]
@@ -3071,11 +3076,13 @@ stackOfStrings.push("cuatro")
 * TODO 進階主題
 :PROPERTIES:
 :CUSTOM_ID: advanced
+:ID:       1dbb6096-10aa-4b19-8113-53fa5a9371f9
 :END:
 - [[https://developer.apple.com/design/human-interface-guidelines/][Human Interface Guidelines]]: Apple 的人機設計界面指南
 - [[https://developer.apple.com/documentation][Apple Developer Documentation]]: Apple 開發者文件
 - [[https://www.appcoda.com.tw/protocol-extension/][利用 Protocol Extension 減少重覆的 Code　大大增強 Code 的維護性]]
 - [[https://appcoda.com.tw/mastering-swift/][精通Swift：列舉、閉包、泛型、Protocols和高階函數]]
+-
 #+latex:\newpage
 
 * Footnotes
